@@ -1,5 +1,6 @@
 .DS_Store
 .idea
+condenser.iml
 coverage
 node_modules
 *.log
@@ -8,4 +9,4 @@ vendor/*
 tmp/*
 .vagrant
 lib
-
+setenv.sh
