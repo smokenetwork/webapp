@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import transaction from '../../redux/Transaction'
 import TransactionError from '../elements/TransactionError'
 import DepthChart from '../elements/DepthChart';
-import Orderbook from "../elements/Orderbook";
-import OrderHistory from "../elements/OrderHistory";
-import {Order, TradeHistory} from "../../utils/MarketClasses";
-import {roundDown, roundUp} from "../../utils/MarketUtils";
+import Orderbook from '../elements/Orderbook';
+import OrderHistory from '../elements/OrderHistory';
+import {Order, TradeHistory} from '../../utils/MarketClasses';
+import {roundDown, roundUp} from '../../utils/MarketUtils';
 import tt from 'counterpart';
 import {
     CURRENCY_SIGN,

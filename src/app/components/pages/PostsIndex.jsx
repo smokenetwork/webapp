@@ -8,7 +8,7 @@ import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {Link} from 'react-router';
 import MarkNotificationRead from '../elements/MarkNotificationRead';
 import tt from 'counterpart';
-import Immutable from "immutable";
+import Immutable from 'immutable';
 import Callout from '../elements/Callout';
 import SidebarLinks from '../elements/SidebarLinks';
 import SidebarNewUsers from '../elements/SidebarNewUsers';

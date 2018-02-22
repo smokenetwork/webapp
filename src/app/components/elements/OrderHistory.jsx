@@ -1,5 +1,5 @@
-import React from "react";
-import HistoryRow from "./OrderhistoryRow";
+import React from 'react';
+import HistoryRow from './OrderhistoryRow';
 import tt from 'counterpart';
 import {CURRENCY_SIGN, DEBT_TOKEN_SHORT, LIQUID_TOKEN} from '../../client_config';
 

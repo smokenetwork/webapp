@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import MarkdownViewer from '../cards/MarkdownViewer';
 import Icon from './Icon';
 import {renderToString} from 'react-dom/server';

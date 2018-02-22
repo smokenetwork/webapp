@@ -1,4 +1,4 @@
-import {roundDown, roundUp} from "./MarketUtils";
+import {roundDown, roundUp} from './MarketUtils';
 import {DEBT_TICKER, LIQUID_TICKER} from '../client_config'
 
 const precision = 1000;

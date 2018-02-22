@@ -4,7 +4,7 @@ import Tarantool from 'db/tarantool';
 import config from 'config';
 import webPush from 'web-push';
 import {checkCSRF} from 'server/utils/misc';
-import sendEmail from "../sendEmail";
+import sendEmail from '../sendEmail';
 
 if(config.has('notify.gcm_key')) {
     webPush.setGCMAPIKey(config.get('notify.gcm_key'));

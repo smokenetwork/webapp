@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default class OrderRow extends React.Component {
 

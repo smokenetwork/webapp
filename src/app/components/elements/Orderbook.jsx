@@ -1,5 +1,5 @@
-import React from "react";
-import OrderbookRow from "./OrderbookRow";
+import React from 'react';
+import OrderbookRow from './OrderbookRow';
 import tt from 'counterpart';
 import {CURRENCY_SIGN, DEBT_TOKEN_SHORT, LIQUID_TOKEN} from '../../client_config';
 
