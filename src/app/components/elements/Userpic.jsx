@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import { imageProxy } from 'app/utils/ProxifyUrl';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import {imageProxy} from '../../utils/ProxifyUrl';
 
 export const SIZE_SMALL = 'small';
 export const SIZE_MED = 'medium';

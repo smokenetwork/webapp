@@ -1,17 +1,20 @@
 import {takeEvery} from 'redux-saga';
 import {call, put, select} from 'redux-saga/effects';
-import {fromJS, Set, Map} from 'immutable'
-import {getAccount, getContent} from 'app/redux/SagaShared'
-import {findSigningKey} from 'app/redux/AuthSaga'
-import g from 'app/redux/GlobalReducer'
-import user from 'app/redux/User'
-import tr from 'app/redux/Transaction'
+import {fromJS, Map, Set} from 'immutable'
+import {getAccount, getContent} from './SagaShared'
+import {findSigningKey} from './AuthSaga'
+import g from './GlobalReducer'
+import user from './User'
+import tr from './Transaction'
 import tt from 'counterpart'
 import getSlug from 'speakingurl'
-import {DEBT_TICKER} from 'app/client_config'
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient'
+import {DEBT_TICKER} from '../client_config'
+import {serverApiRecordEvent} from '../utils/ServerApiClient'
 import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
-import {api, broadcast, auth, memo} from 'steem';
+import {api, auth, broadcast, memo} from 'steem';
+import base58 from 'bs58'
+import secureRandom from 'secure-random'
+import diff_match_patch from 'diff-match-patch'
 
 export const transactionWatches = [
     watchForBroadcast,
@@ -339,9 +342,6 @@ function* accepted_account_update({operation}) {
 //     }
 // }
 
-import base58 from 'bs58'
-import secureRandom from 'secure-random'
-
 // function* preBroadcast_account_witness_vote({operation, username}) {
 // }
 function* preBroadcast_comment({operation, username}) {
@@ -441,7 +441,6 @@ function* createPermlink(title, author, parent_author, parent_permlink) {
     return permlink
 }
 
-import diff_match_patch from 'diff-match-patch'
 const dmp = new diff_match_patch()
 
 function createPatch(text1, text2) {

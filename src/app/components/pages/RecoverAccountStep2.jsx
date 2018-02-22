@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import GeneratedPasswordInput from 'app/components/elements/GeneratedPasswordInput';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
+import GeneratedPasswordInput from '../elements/GeneratedPasswordInput';
+import LoadingIndicator from '../elements/LoadingIndicator';
 import tt from 'counterpart';
-import Callout from 'app/components/elements/Callout';
+import Callout from '../elements/Callout';
 import {PrivateKey} from 'steem/lib/auth/ecc';
 import {api} from 'steem';
 

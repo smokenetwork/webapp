@@ -1,11 +1,10 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import {connect} from 'react-redux'
-import TransferHistoryRow from 'app/components/cards/TransferHistoryRow';
-import {numberWithCommas, vestsToSp, assetFloat} from 'app/utils/StateFunctions'
+import TransferHistoryRow from '../cards/TransferHistoryRow';
+import {assetFloat, numberWithCommas, vestsToSp} from '../../utils/StateFunctions'
 import tt from 'counterpart';
-import { APP_NAME, DEBT_TOKEN, DEBT_TOKEN_SHORT, LIQUID_TOKEN, CURRENCY_SIGN,
-VESTING_TOKEN, LIQUID_TICKER, VEST_TICKER } from 'app/client_config';
+import {LIQUID_TICKER, VEST_TICKER, VESTING_TOKEN} from '../../client_config';
 
 class CurationRewards extends React.Component {
     constructor() {

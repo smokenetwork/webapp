@@ -2,10 +2,11 @@
 import React from 'react'
 import Reveal from 'react-foundation-components/lib/global/reveal';
 import CloseButton from 'react-foundation-components/lib/global/close-button';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
+import TimeAgoWrapper from './TimeAgoWrapper';
 import {browserHistory} from 'react-router';
 import tt from 'counterpart';
 import {FormattedDate} from 'react-intl';
+import {connect} from 'react-redux'
 
 class CheckLoginOwner extends React.Component {
     constructor() {
@@ -87,7 +88,7 @@ class CheckLoginOwner extends React.Component {
         </span>
     }
 }
-import {connect} from 'react-redux'
+
 export default connect(
     // mapStateToProps
     (state, ownProps) => {

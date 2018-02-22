@@ -1,11 +1,10 @@
 import React from 'react';
-import SvgImage from 'app/components/elements/SvgImage';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import PasswordInput from 'app/components/elements/PasswordInput';
-import constants from 'app/redux/constants';
+import SvgImage from '../elements/SvgImage';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import PasswordInput from '../elements/PasswordInput';
+import constants from '../../redux/constants';
 import tt from 'counterpart';
-import { FormattedHTMLMessage } from 'app/Translator';
-import { APP_DOMAIN, APP_NAME, SUPPORT_EMAIL } from 'app/client_config';
+import {APP_DOMAIN, APP_NAME, SUPPORT_EMAIL} from '../../client_config';
 import {PrivateKey} from 'steem/lib/auth/ecc';
 import {api} from 'steem';
 

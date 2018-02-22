@@ -1,29 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import Icon from 'app/components/elements/Icon';
-import { connect } from 'react-redux';
-import user from 'app/redux/User';
-import transaction from 'app/redux/Transaction'
-import Voting from 'app/components/elements/Voting';
-import Reblog from 'app/components/elements/Reblog';
-import MarkdownViewer from 'app/components/cards/MarkdownViewer';
-import ReplyEditor from 'app/components/elements/ReplyEditor';
-import {immutableAccessor} from 'app/utils/Accessors';
-import extractContent from 'app/utils/ExtractContent';
-import TagList from 'app/components/elements/TagList';
-import Author from 'app/components/elements/Author';
-import {repLog10, parsePayoutAmount} from 'app/utils/ParsersAndFormatters';
-import DMCAList from 'app/utils/DMCAList'
-import PageViewsCounter from 'app/components/elements/PageViewsCounter';
-import ShareMenu from 'app/components/elements/ShareMenu';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import Userpic from 'app/components/elements/Userpic';
-import { APP_DOMAIN, APP_NAME } from 'app/client_config';
+import {Link} from 'react-router';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import Icon from '../elements/Icon';
+import {connect} from 'react-redux';
+import user from '../../redux/User';
+import transaction from '../../redux/Transaction'
+import Voting from '../elements/Voting';
+import Reblog from '../elements/Reblog';
+import MarkdownViewer from './MarkdownViewer';
+import ReplyEditor from '../elements/ReplyEditor';
+import {immutableAccessor} from '../../utils/Accessors';
+import extractContent from '../../utils/ExtractContent';
+import TagList from '../elements/TagList';
+import Author from '../elements/Author';
+import {parsePayoutAmount, repLog10} from '../../utils/ParsersAndFormatters';
+import DMCAList from '../../utils/DMCAList'
+import PageViewsCounter from '../elements/PageViewsCounter';
+import ShareMenu from '../elements/ShareMenu';
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
+import Userpic from '../elements/Userpic';
+import {APP_DOMAIN, APP_NAME} from '../../client_config';
 import tt from 'counterpart';
-import userIllegalContent from 'app/utils/userIllegalContent';
-import ImageUserBlockList from 'app/utils/ImageUserBlockList';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
+import userIllegalContent from '../../utils/userIllegalContent';
+import ImageUserBlockList from '../../utils/ImageUserBlockList';
+import LoadingIndicator from '../elements/LoadingIndicator';
 
 // function loadFbSdk(d, s, id) {
 //     return new Promise(resolve => {

@@ -1,6 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 
 const {string, number} = React.PropTypes
 

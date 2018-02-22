@@ -1,8 +1,8 @@
 import xmldom from 'xmldom'
 import tt from 'counterpart'
-import linksRe, { any as linksAny } from 'app/utils/Links'
-import {validate_account_name} from 'app/utils/ChainValidation'
-import proxifyImageUrl from 'app/utils/ProxifyUrl'
+import linksRe, { any as linksAny } from '../app/utils/Links'
+import {validate_account_name} from '../app/utils/ChainValidation'
+import proxifyImageUrl from '../app/utils/ProxifyUrl'
 
 export const getPhishingWarningMessage = () => tt('g.phishy_message');
 

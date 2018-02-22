@@ -1,8 +1,8 @@
 import {takeEvery} from 'redux-saga';
 import {call, put, select} from 'redux-saga/effects';
-import {Set, Map, fromJS, List} from 'immutable'
-import user from 'app/redux/User'
-import {getAccount} from 'app/redux/SagaShared'
+import {fromJS, List, Map, Set} from 'immutable'
+import user from './User'
+import {getAccount} from './SagaShared'
 import {PrivateKey} from 'steem/lib/auth/ecc';
 import {api} from 'steem';
 

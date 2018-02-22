@@ -4,6 +4,7 @@ import chai, {expect} from 'chai';
 import chaiImmutable from 'chai-immutable';
 import Immutable, {Map} from 'immutable';
 import ReducerModule from '../GlobalReducer';
+
 chai.use(chaiImmutable);
 
 const {reducer, actions} = ReducerModule;

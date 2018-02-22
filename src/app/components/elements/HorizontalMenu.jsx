@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router'
-import Icon from 'app/components/elements/Icon';
+import {Link} from 'react-router'
+import Icon from './Icon';
 
 export default class HorizontalMenu extends React.Component {
     static propTypes = {

@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import TopRightMenu from 'app/components/modules/TopRightMenu';
-import Icon from 'app/components/elements/Icon';
-import resolveRoute from 'app/ResolveRoute';
-import DropdownMenu from 'app/components/elements/DropdownMenu';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import HorizontalMenu from 'app/components/elements/HorizontalMenu';
-import normalizeProfile from 'app/utils/NormalizeProfile';
+import TopRightMenu from './TopRightMenu';
+import resolveRoute from '../../ResolveRoute';
+import DropdownMenu from '../elements/DropdownMenu';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import HorizontalMenu from '../elements/HorizontalMenu';
+import normalizeProfile from '../../utils/NormalizeProfile';
 import tt from 'counterpart';
-import { APP_NAME } from 'app/client_config';
+import {APP_NAME} from '../../client_config';
 
 function sortOrderToLink(so, topic, account) {
     if (so === 'home') return '/@' + account + '/feed';

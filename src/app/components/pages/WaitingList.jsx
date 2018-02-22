@@ -1,5 +1,5 @@
 import React from 'react';
-import AddToWaitingList from 'app/components/modules/AddToWaitingList';
+import AddToWaitingList from '../modules/AddToWaitingList';
 import tt from 'counterpart';
 
 class WaitingList extends React.Component {

@@ -1,11 +1,12 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper'
-import transaction from 'app/redux/Transaction'
-import Memo from 'app/components/elements/Memo'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import LoadingIndicator from './LoadingIndicator'
+import TimeAgoWrapper from './TimeAgoWrapper'
+import transaction from '../../redux/Transaction'
+import Memo from './Memo'
 import tt from 'counterpart'
+import {connect} from 'react-redux'
 
 class SavingsWithdrawHistory extends React.Component {
 
@@ -85,8 +86,6 @@ class SavingsWithdrawHistory extends React.Component {
         </div>
     }
 }
-
-import {connect} from 'react-redux'
 
 export default connect(
     (state, ownProps) => {

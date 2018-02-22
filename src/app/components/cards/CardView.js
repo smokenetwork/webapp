@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import Link from 'app/components/elements/Link'
-import g from 'app/redux/GlobalReducer'
-import links from 'app/utils/Links'
+import Link from '../elements/Link'
+import g from '../../redux/GlobalReducer'
+import links from '../../utils/Links'
 import tt from 'counterpart';
 
 /** @deprecated */

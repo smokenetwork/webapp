@@ -1,7 +1,7 @@
-import React, {PropTypes, Component} from 'react'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import Keys from 'app/components/elements/Keys'
-import g from 'app/redux/GlobalReducer'
+import React, {Component, PropTypes} from 'react'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import Keys from './Keys'
+import g from '../../redux/GlobalReducer'
 import {connect} from 'react-redux';
 import QRCode from 'react-qr'
 import tt from 'counterpart';

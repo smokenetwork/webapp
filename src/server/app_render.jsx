@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
 import Tarantool from 'db/tarantool';
 import ServerHTML from './server-html';
 import universalRender from '../shared/UniversalRender';

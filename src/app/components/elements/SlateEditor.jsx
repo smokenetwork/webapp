@@ -1,13 +1,15 @@
 import React from 'react'
-import Slate, { Editor, Mark, Raw, Html } from 'slate'
+import {Editor, Html, Mark, Raw} from 'slate'
 import Portal from 'react-portal'
 import position from 'selection-position'
-import Icon from 'app/components/elements/Icon';
+import Icon from './Icon';
 import ReactDOMServer from 'react-dom/server'
 
-import {getCollapsedClientRect} from 'app/utils/SlateEditor/Helpers'
-import demoState from 'app/utils/SlateEditor/DemoState'
-import {HtmlRules, schema, getMarkdownType} from 'app/utils/SlateEditor/Schema'
+import {getCollapsedClientRect} from '../../utils/SlateEditor/Helpers'
+import demoState from '../../utils/SlateEditor/DemoState'
+import {getMarkdownType, HtmlRules, schema} from '../../utils/SlateEditor/Schema'
+import InsertBlockOnEnter from 'slate-insert-block-on-enter'
+import TrailingBlock from 'slate-trailing-block'
 
 const serializer = new Html({rules: HtmlRules})
 export const serializeHtml   = (state) => serializer.serialize(state, {render: false}).map(el => ReactDOMServer.renderToStaticMarkup(el)).join("\n")
@@ -18,9 +20,6 @@ const DEFAULT_NODE = 'paragraph'
 
 let plugins = []
 
-
-import InsertBlockOnEnter from 'slate-insert-block-on-enter'
-import TrailingBlock from 'slate-trailing-block'
 
 if(process.env.BROWSER) {
     //import InsertImages from 'slate-drop-or-paste-images'

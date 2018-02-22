@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { Link } from 'react-router';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-// import Icon from 'app/components/elements/Icon';
-import Memo from 'app/components/elements/Memo'
-import {numberWithCommas, vestsToSp} from 'app/utils/StateFunctions'
+import {Link} from 'react-router';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+// import Icon from '../elements/Icon';
+import Memo from '../elements/Memo'
+import {numberWithCommas, vestsToSp} from '../../utils/StateFunctions'
 import tt from 'counterpart';
 
 class TransferHistoryRow extends React.Component {

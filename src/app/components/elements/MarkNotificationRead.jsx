@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {markNotificationRead} from 'app/utils/ServerApiClient';
+import {markNotificationRead} from '../../utils/ServerApiClient';
 
 class MarkNotificationRead extends React.Component {
 

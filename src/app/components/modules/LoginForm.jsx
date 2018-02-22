@@ -1,16 +1,17 @@
 /* eslint react/prop-types: 0 */
-import React, { PropTypes, Component } from 'react';
-import transaction from 'app/redux/Transaction'
-import g from 'app/redux/GlobalReducer'
-import user from 'app/redux/User'
-import {validate_account_name} from 'app/utils/ChainValidation';
-import runTests from 'app/utils/BrowserTests';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import reactForm from 'app/utils/ReactForm'
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
+import React, {Component, PropTypes} from 'react';
+import transaction from '../../redux/Transaction'
+import g from '../../redux/GlobalReducer'
+import user from '../../redux/User'
+import {validate_account_name} from '../../utils/ChainValidation';
+import runTests from '../../utils/BrowserTests';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import reactForm from '../../utils/ReactForm'
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
 import tt from 'counterpart';
-import { APP_URL } from 'app/client_config';
+import {APP_URL} from '../../client_config';
 import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
+import {connect} from 'react-redux'
 
 class LoginForm extends Component {
 
@@ -199,7 +200,7 @@ class LoginForm extends Component {
                 </div>}
                 <div>
                     <label className="LoginForm__save-login" htmlFor="saveLogin">
-                        
+
                         <input id="saveLogin" type="checkbox" ref="pw" {...saveLogin.props} onChange={this.saveLoginToggle} disabled={submitting} />&nbsp;{tt('loginform_jsx.keep_me_logged_in')}</label>
                 </div>
                 <div className="login-modal-buttons">
@@ -258,7 +259,6 @@ function checkPasswordChecksum(password) {
     return PrivateKey.isWif(wif)
 }
 
-import {connect} from 'react-redux'
 export default connect(
 
     // mapStateToProps

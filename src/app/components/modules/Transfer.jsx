@@ -1,15 +1,16 @@
-import React, { PropTypes, Component } from 'react';
+import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
-import reactForm from 'app/utils/ReactForm';
+import reactForm from '../../utils/ReactForm';
 import {Map} from 'immutable';
-import transaction from 'app/redux/Transaction';
-import user from 'app/redux/User';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import runTests, {browserTests} from 'app/utils/BrowserTests'
-import {validate_account_name, validate_memo_field} from 'app/utils/ChainValidation';
-import {countDecimals} from 'app/utils/ParsersAndFormatters'
+import transaction from '../../redux/Transaction';
+import user from '../../redux/User';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import runTests, {browserTests} from '../../utils/BrowserTests'
+import {validate_account_name, validate_memo_field} from '../../utils/ChainValidation';
+import {countDecimals} from '../../utils/ParsersAndFormatters'
 import tt from 'counterpart';
-import { APP_NAME, LIQUID_TOKEN, VESTING_TOKEN } from 'app/client_config';
+import {APP_NAME, LIQUID_TOKEN, VESTING_TOKEN} from '../../client_config';
+import {connect} from 'react-redux'
 
 /** Warning .. This is used for Power UP too. */
 class TransferForm extends Component {
@@ -257,8 +258,6 @@ class TransferForm extends Component {
 
 const AssetBalance = ({onClick, balanceValue}) =>
     <a onClick={onClick} style={{borderBottom: '#A09F9F 1px dotted', cursor: 'pointer'}}>{tt('g.balance') + ": " + balanceValue}</a>;
-
-import {connect} from 'react-redux'
 
 export default connect(
     // mapStateToProps

@@ -2,17 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CloseButton from 'react-foundation-components/lib/global/close-button';
 import Reveal from 'react-foundation-components/lib/global/reveal';
-import LoginForm from 'app/components/modules/LoginForm';
-import ConfirmTransactionForm from 'app/components/modules/ConfirmTransactionForm';
-import Transfer from 'app/components/modules/Transfer';
-import SignUp from 'app/components/modules/SignUp';
-import user from 'app/redux/User';
-import Powerdown from 'app/components/modules/Powerdown';
-import tr from 'app/redux/Transaction';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
+import LoginForm from './LoginForm';
+import ConfirmTransactionForm from './ConfirmTransactionForm';
+import Transfer from './Transfer';
+import SignUp from './SignUp';
+import user from '../../redux/User';
+import Powerdown from './Powerdown';
+import tr from '../../redux/Transaction';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import {NotificationStack} from 'react-notification';
-import {OrderedSet} from 'immutable';
-import TermsAgree from 'app/components/modules/TermsAgree';
+import TermsAgree from './TermsAgree';
 
 class Modals extends React.Component {
     static propTypes = {

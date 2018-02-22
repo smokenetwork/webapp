@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import transaction from 'app/redux/Transaction'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
+import transaction from '../../redux/Transaction'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 import {Map} from 'immutable'
 
 const {func, string} = React.PropTypes

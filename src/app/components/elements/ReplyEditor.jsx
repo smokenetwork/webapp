@@ -1,20 +1,20 @@
 import React from 'react';
-import reactForm from 'app/utils/ReactForm'
-import transaction from 'app/redux/Transaction';
-import MarkdownViewer from 'app/components/cards/MarkdownViewer'
-import CategorySelector from 'app/components/cards/CategorySelector'
-import {validateCategory} from 'app/components/cards/CategorySelector'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import Tooltip from 'app/components/elements/Tooltip'
-import sanitizeConfig, {allowedTags} from 'app/utils/SanitizeConfig'
+import reactForm from '../../utils/ReactForm'
+import transaction from '../../redux/Transaction';
+import MarkdownViewer from '../cards/MarkdownViewer'
+import CategorySelector, {validateCategory} from '../cards/CategorySelector'
+import LoadingIndicator from './LoadingIndicator'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import Tooltip from './Tooltip'
+import sanitizeConfig, {allowedTags} from '../../utils/SanitizeConfig'
 import sanitize from 'sanitize-html'
-import HtmlReady from 'shared/HtmlReady'
-import g from 'app/redux/GlobalReducer'
+import HtmlReady from '../../../shared/HtmlReady'
+import g from '../../redux/GlobalReducer'
 import {Set} from 'immutable'
 import Remarkable from 'remarkable'
 import Dropzone from 'react-dropzone'
 import tt from 'counterpart'
+import {connect} from 'react-redux';
 
 const remarkable = new Remarkable({ html: true, linkify: false, breaks: true })
 
@@ -494,7 +494,6 @@ function stateFromMarkdown(RichTextEditor, markdown) {
     return stateFromHtml(RichTextEditor, html)
 }
 
-import {connect} from 'react-redux';
 const richTextEditor = process.env.BROWSER ? require('react-rte-image').default : null;
 
 export default (formId) => connect(

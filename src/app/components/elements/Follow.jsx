@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import transaction from 'app/redux/Transaction';
-import {Set, Map} from 'immutable'
+import LoadingIndicator from './LoadingIndicator';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import transaction from '../../redux/Transaction';
+import {Map, Set} from 'immutable'
 import tt from 'counterpart';
-import user from 'app/redux/User';
+import user from '../../redux/User';
 
 const {string, bool, any} = PropTypes;
 

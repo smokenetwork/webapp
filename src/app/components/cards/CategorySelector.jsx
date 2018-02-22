@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import {cleanReduxInput} from 'app/utils/ReduxForms'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import {cleanReduxInput} from '../../utils/ReduxForms'
 import tt from 'counterpart';
 
 class CategorySelector extends React.Component {

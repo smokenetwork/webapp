@@ -1,8 +1,7 @@
-import React, {PropTypes, Component} from 'react'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import g from 'app/redux/GlobalReducer'
+import React, {Component, PropTypes} from 'react'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 import {connect} from 'react-redux';
-import ChangePassword from 'app/components/elements/ChangePassword'
+import ChangePassword from './ChangePassword'
 
 class PasswordReset extends Component {
     static propTypes = {

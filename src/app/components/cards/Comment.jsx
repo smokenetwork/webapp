@@ -1,20 +1,19 @@
 import React from 'react';
-import Author from 'app/components/elements/Author';
-import ReplyEditor from 'app/components/elements/ReplyEditor';
-import MarkdownViewer from 'app/components/cards/MarkdownViewer';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import Voting from 'app/components/elements/Voting';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import user from 'app/redux/User';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import Userpic from 'app/components/elements/Userpic';
-import transaction from 'app/redux/Transaction'
-import {List} from 'immutable'
+import Author from '../elements/Author';
+import ReplyEditor from '../elements/ReplyEditor';
+import MarkdownViewer from './MarkdownViewer';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import Voting from '../elements/Voting';
+import {connect} from 'react-redux';
+import {Link} from 'react-router';
+import user from '../../redux/User';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import Userpic from '../elements/Userpic';
+import transaction from '../../redux/Transaction'
 import tt from 'counterpart';
-import {parsePayoutAmount} from 'app/utils/ParsersAndFormatters';
+import {parsePayoutAmount} from '../../utils/ParsersAndFormatters';
 import {Long} from 'bytebuffer';
-import ImageUserBlockList from 'app/utils/ImageUserBlockList';
+import ImageUserBlockList from '../../utils/ImageUserBlockList';
 
 // returns true if the comment has a 'hide' flag AND has no descendants w/ positive payout
 function hideSubtree(cont, c) {
@@ -355,7 +354,7 @@ class CommentImpl extends React.Component {
             <div className={innerCommentClass}>
                 <div className="Comment__Userpic show-for-medium">
                   <Userpic account={comment.author} />
-                </div>            
+                </div>
               <div className="Comment__header">
                 <div className="Comment__header_collapse">
                   <Voting post={post} flag />

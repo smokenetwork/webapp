@@ -1,15 +1,14 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import Icon from 'app/components/elements/Icon';
-import { Link } from 'react-router';
-import {authorNameAndRep} from 'app/utils/ComponentFormatters';
+import ReactDOM, {findDOMNode} from 'react-dom';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import Icon from './Icon';
+import {Link} from 'react-router';
 import AuthorDropdown from './AuthorDropdown';
-import Reputation from 'app/components/elements/Reputation';
-import normalizeProfile from 'app/utils/NormalizeProfile';
+import Reputation from './Reputation';
+import normalizeProfile from '../../utils/NormalizeProfile';
 import Overlay from 'react-overlays/lib/Overlay';
-import { findDOMNode } from 'react-dom';
+import {connect} from 'react-redux'
 
 const {string, bool, number} = React.PropTypes;
 
@@ -126,8 +125,6 @@ class Author extends React.Component {
         );
     }
 }
-
-import {connect} from 'react-redux'
 
 export default connect(
     (state, ownProps) => {

@@ -1,6 +1,6 @@
-import extractContent from 'app/utils/ExtractContent';
-import {objAccessor} from 'app/utils/Accessors';
-import normalizeProfile from 'app/utils/NormalizeProfile';
+import extractContent from './ExtractContent';
+import {objAccessor} from './Accessors';
+import normalizeProfile from './NormalizeProfile';
 
 const siteDescription = 'Smoke, Get Paid. Repeat.';
 
@@ -11,13 +11,13 @@ function addSiteMeta(metas) {
     metas.push({property: 'og:site_name', content: 'Smoke'});
     metas.push({property: 'og:title', content: 'Smoke'});
     metas.push({property: 'og:description', content: siteDescription});
-    metas.push({property: 'og:image', content: 'https://smoke.io/images/steemit.png'});
+    metas.push({property: 'og:image', content: 'https://smoke.io/images/smoke.png'});
     metas.push({property: 'fb:app_id', content: $STM_Config.fb_app});
     metas.push({name: 'twitter:card', content: 'summary'});
     metas.push({name: 'twitter:site', content: '@steemit'});
     metas.push({name: 'twitter:title', content: '#Smoke'});
     metas.push({name: 'twitter:description', site_desc: siteDescription});
-    metas.push({name: 'twitter:image', content: 'https://smoke.io/images/steemit.png'});
+    metas.push({name: 'twitter:image', content: 'https://smoke.io/images/smoke.png'});
 }
 
 export default function extractMeta(chain_data, rp) {
@@ -44,7 +44,7 @@ export default function extractMeta(chain_data, rp) {
             metas.push({property: 'og:title', content: title});
             metas.push({property: 'og:type', content: 'article'});
             metas.push({property: 'og:url', content: url});
-            metas.push({property: 'og:image', content: image || 'https://smoke.io/images/steemit.png'});
+            metas.push({property: 'og:image', content: image || 'https://smoke.io/images/smoke.png'});
             metas.push({property: 'og:description', content: desc});
             metas.push({property: 'og:site_name', content: 'Smoke'});
             metas.push({property: 'fb:app_id', content: $STM_Config.fb_app});

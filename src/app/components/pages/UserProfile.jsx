@@ -1,36 +1,35 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import { Link } from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router';
-import transaction from 'app/redux/Transaction';
-import user from 'app/redux/User';
-import Icon from 'app/components/elements/Icon'
-import UserKeys from 'app/components/elements/UserKeys';
-import PasswordReset from 'app/components/elements/PasswordReset';
-import UserWallet from 'app/components/modules/UserWallet';
-import Settings from 'app/components/modules/Settings';
-import CurationRewards from 'app/components/modules/CurationRewards';
-import AuthorRewards from 'app/components/modules/AuthorRewards';
-import UserList from 'app/components/elements/UserList';
-import Follow from 'app/components/elements/Follow';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import PostsList from 'app/components/cards/PostsList';
-import {isFetchingOrRecentlyUpdated} from 'app/utils/StateFunctions';
-import {repLog10} from 'app/utils/ParsersAndFormatters.js';
-import Tooltip from 'app/components/elements/Tooltip';
-import { LinkWithDropdown } from 'react-foundation-components/lib/global/dropdown';
-import VerticalMenu from 'app/components/elements/VerticalMenu';
-import MarkNotificationRead from 'app/components/elements/MarkNotificationRead';
-import NotifiCounter from 'app/components/elements/NotifiCounter';
-import DateJoinWrapper from 'app/components/elements/DateJoinWrapper';
+import transaction from '../../redux/Transaction';
+import user from '../../redux/User';
+import Icon from '../elements/Icon'
+import UserKeys from '../elements/UserKeys';
+import PasswordReset from '../elements/PasswordReset';
+import UserWallet from '../modules/UserWallet';
+import Settings from '../modules/Settings';
+import CurationRewards from '../modules/CurationRewards';
+import AuthorRewards from '../modules/AuthorRewards';
+import UserList from '../elements/UserList';
+import Follow from '../elements/Follow';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import PostsList from '../cards/PostsList';
+import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
+import {repLog10} from '../../utils/ParsersAndFormatters.js';
+import Tooltip from '../elements/Tooltip';
+import {LinkWithDropdown} from 'react-foundation-components/lib/global/dropdown';
+import VerticalMenu from '../elements/VerticalMenu';
+import MarkNotificationRead from '../elements/MarkNotificationRead';
+import NotifiCounter from '../elements/NotifiCounter';
+import DateJoinWrapper from '../elements/DateJoinWrapper';
 import tt from 'counterpart';
-import WalletSubMenu from 'app/components/elements/WalletSubMenu';
-import Userpic from 'app/components/elements/Userpic';
-import Callout from 'app/components/elements/Callout';
-import normalizeProfile from 'app/utils/NormalizeProfile';
-import userIllegalContent from 'app/utils/userIllegalContent';
-import proxifyImageUrl from 'app/utils/ProxifyUrl';
+import WalletSubMenu from '../elements/WalletSubMenu';
+import Userpic from '../elements/Userpic';
+import Callout from '../elements/Callout';
+import normalizeProfile from '../../utils/NormalizeProfile';
+import userIllegalContent from '../../utils/userIllegalContent';
+import proxifyImageUrl from '../../utils/ProxifyUrl';
 
 export default class UserProfile extends React.Component {
     constructor() {

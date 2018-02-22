@@ -1,7 +1,7 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import Icon from 'app/components/elements/Icon';
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
+import Icon from '../elements/Icon';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import tt from 'counterpart';
 

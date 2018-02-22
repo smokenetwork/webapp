@@ -1,4 +1,4 @@
-import {NTYPES, notificationsArrayToMap} from 'app/utils/Notifications';
+import {notificationsArrayToMap, NTYPES} from './Notifications';
 import {api} from 'steem';
 
 const request_base = {

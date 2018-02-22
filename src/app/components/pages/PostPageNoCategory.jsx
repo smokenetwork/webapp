@@ -1,7 +1,7 @@
 import React from 'react';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import SvgImage from 'app/components/elements/SvgImage';
-import { browserHistory } from 'react-router';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import SvgImage from '../elements/SvgImage';
+import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 
 class PostWrapper extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import Icon from 'app/components/elements/Icon';
+import {Link} from 'react-router';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import Icon from '../elements/Icon';
 import tt from 'counterpart';
 
 export default class VoteHistoryRow extends React.Component {

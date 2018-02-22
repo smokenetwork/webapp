@@ -1,4 +1,4 @@
-import {WebEvent, esc} from 'db/models';
+import {esc, WebEvent} from 'db/models';
 
 export default function recordWebEvent(ctx, event_type, value) {
     if (ctx.state.isBot) return;

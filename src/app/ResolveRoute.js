@@ -12,8 +12,7 @@ export const routeRegex = {
     UserNameJson: /^.*(?=(\.json))/,
 };
 
-export default function resolveRoute(path)
-{
+export default function resolveRoute(path) {
     if (path === '/') {
         return {page: 'PostsIndex', params: ['trending']};
     }

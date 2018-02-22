@@ -1,7 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import Tooltip from 'app/components/elements/Tooltip'
-import {connect} from 'react-redux'
-import user from 'app/redux/User'
+import Tooltip from './Tooltip'
 import tt from 'counterpart';
 
 const {bool, func} = PropTypes

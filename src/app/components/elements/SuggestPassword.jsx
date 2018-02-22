@@ -2,11 +2,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {renderToString} from 'react-dom/server'
-import g from 'app/redux/GlobalReducer'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import Icon from 'app/components/elements/Icon'
+import g from '../../redux/GlobalReducer'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import Icon from './Icon'
 import tt from 'counterpart';
-import { APP_NAME, APP_ICON } from 'app/client_config';
+import {APP_ICON, APP_NAME} from '../../client_config';
 import {key_utils} from 'steem/lib/auth/ecc';
 
 

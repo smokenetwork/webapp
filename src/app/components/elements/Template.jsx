@@ -1,8 +1,9 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
-// import g from 'app/redux/GlobalReducer'
-// import transaction from 'app/redux/Transaction'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
+// import g from '../../redux/GlobalReducer'
+// import transaction from '../../redux/Transaction'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import {connect} from 'react-redux'
 // import {Map} from 'immutable'
 
 // const {string, object} = React.PropTypes
@@ -50,8 +51,6 @@ class Template extends React.Component {
         )
     }
 }
-
-import {connect} from 'react-redux'
 
 export default connect(
     (state, ownProps) => {

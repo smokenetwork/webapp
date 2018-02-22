@@ -2,15 +2,15 @@
 /*global $STM_csrf, $STM_Config */
 import React from 'react';
 import {connect} from 'react-redux';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import user from 'app/redux/User';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import user from '../../redux/User';
 import {PrivateKey} from 'steem/lib/auth/ecc';
-import {validate_account_name} from 'app/utils/ChainValidation';
-import runTests from 'app/utils/BrowserTests';
-import GeneratedPasswordInput from 'app/components/elements/GeneratedPasswordInput';
-import {saveCords} from 'app/utils/ServerApiClient';
+import {validate_account_name} from '../../utils/ChainValidation';
+import runTests from '../../utils/BrowserTests';
+import GeneratedPasswordInput from '../elements/GeneratedPasswordInput';
+import {saveCords} from '../../utils/ServerApiClient';
 import {api} from 'steem';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 class CreateAccount extends React.Component {
 

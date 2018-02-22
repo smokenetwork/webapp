@@ -1,13 +1,14 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
-import transaction from 'app/redux/Transaction'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
-import {validate_account_name} from 'app/utils/ChainValidation'
-import {cleanReduxInput} from 'app/utils/ReduxForms'
+import transaction from '../../redux/Transaction'
+import LoadingIndicator from './LoadingIndicator'
+import {validate_account_name} from '../../utils/ChainValidation'
+import {cleanReduxInput} from '../../utils/ReduxForms'
 import tt from 'counterpart';
-import { APP_NAME } from 'app/client_config';
-import {PrivateKey, PublicKey, key_utils} from 'steem/lib/auth/ecc';
+import {APP_NAME} from '../../client_config';
+import {key_utils, PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
 import {api} from 'steem';
+import {reduxForm} from 'redux-form' // @deprecated, instead use: app/utils/ReactForm.js
 
 const {string, oneOf} = React.PropTypes
 
@@ -222,7 +223,7 @@ const keyValidate = (values) => ({
     confirmSaved: ! values.confirmSaved ? tt('g.required') : null,
 })
 
-import {reduxForm} from 'redux-form' // @deprecated, instead use: app/utils/ReactForm.js
+
 export default reduxForm(
     { form: 'changePassword', fields: ['password', 'confirmPassword', 'confirmCheck', 'confirmSaved', 'twofa'] },
     // mapStateToProps

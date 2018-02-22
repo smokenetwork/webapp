@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import Userpic from 'app/components/elements/Userpic';
-import Follow from 'app/components/elements/Follow';
-import Reputation from 'app/components/elements/Reputation';
+import {Link} from 'react-router';
+import Userpic from './Userpic';
+import Follow from './Follow';
+import Reputation from './Reputation';
 
 const AuthorDropdown = (props) => {
     const author_link = <span className="author" itemProp="author" itemScope itemType="http://schema.org/Person">

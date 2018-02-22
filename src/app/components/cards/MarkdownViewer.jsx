@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {Component} from 'react'
 import Remarkable from 'remarkable'
-import YoutubePreview from 'app/components/elements/YoutubePreview'
-import sanitizeConfig, {noImageText} from 'app/utils/SanitizeConfig'
+import YoutubePreview from '../elements/YoutubePreview'
+import sanitizeConfig, {noImageText} from '../../utils/SanitizeConfig'
 import sanitize from 'sanitize-html'
-import HtmlReady from 'shared/HtmlReady'
+import HtmlReady from '../../../shared/HtmlReady'
 import tt from 'counterpart';
 
 const remarkable = new Remarkable({

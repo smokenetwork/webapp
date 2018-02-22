@@ -1,6 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import UserListRow from 'app/components/cards/UserListRow';
+import UserListRow from '../cards/UserListRow';
 import tt from 'counterpart';
 
 const PER_PAGE = 50;

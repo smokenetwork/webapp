@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-// import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import transaction from 'app/redux/Transaction';
-import Icon from 'app/components/elements/Icon';
+// import LoadingIndicator from './LoadingIndicator';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import transaction from '../../redux/Transaction';
+import Icon from './Icon';
 import tt from 'counterpart';
 
 const {string, func} = PropTypes

@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
-import Icon from 'app/components/elements/Icon';
-import user from 'app/redux/User';
-import Userpic from 'app/components/elements/Userpic';
-import { browserHistory } from 'react-router';
-import { LinkWithDropdown } from 'react-foundation-components/lib/global/dropdown';
-import VerticalMenu from 'app/components/elements/VerticalMenu';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import NotifiCounter from 'app/components/elements/NotifiCounter';
+import Icon from '../elements/Icon';
+import user from '../../redux/User';
+import Userpic from '../elements/Userpic';
+import {LinkWithDropdown} from 'react-foundation-components/lib/global/dropdown';
+import VerticalMenu from '../elements/VerticalMenu';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import NotifiCounter from '../elements/NotifiCounter';
 import tt from 'counterpart';
 
 const defaultNavigate = (e) => {

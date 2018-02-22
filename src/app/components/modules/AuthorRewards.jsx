@@ -1,10 +1,10 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import {connect} from 'react-redux'
-import TransferHistoryRow from 'app/components/cards/TransferHistoryRow';
-import {numberWithCommas, vestsToSp, assetFloat} from 'app/utils/StateFunctions'
+import TransferHistoryRow from '../cards/TransferHistoryRow';
+import {assetFloat, numberWithCommas, vestsToSp} from '../../utils/StateFunctions'
 import tt from 'counterpart';
-import { VESTING_TOKEN, LIQUID_TICKER, VEST_TICKER, DEBT_TICKER, DEBT_TOKEN_SHORT } from 'app/client_config';
+import {DEBT_TICKER, DEBT_TOKEN_SHORT, LIQUID_TICKER, VEST_TICKER, VESTING_TOKEN} from '../../client_config';
 
 class AuthorRewards extends React.Component {
     constructor() {

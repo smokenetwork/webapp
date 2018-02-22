@@ -1,9 +1,9 @@
-import React, { PropTypes, Component } from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import ReactDOM from 'react-dom';
-import transaction from 'app/redux/Transaction';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import { DEBT_TOKEN, DEBT_TOKEN_SHORT, CURRENCY_SIGN, DEBT_TICKER} from 'app/client_config';
+import transaction from '../../redux/Transaction';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import {CURRENCY_SIGN, DEBT_TICKER, DEBT_TOKEN, DEBT_TOKEN_SHORT} from '../../client_config';
 import tt from 'counterpart';
 
 class PromotePost extends Component {

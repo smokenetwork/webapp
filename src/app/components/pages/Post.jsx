@@ -1,18 +1,16 @@
 import React from 'react';
 // import ReactMarkdown from 'react-markdown';
-import Comment from 'app/components/cards/Comment';
-import PostFull from 'app/components/cards/PostFull';
+import Comment, {sortComments} from '../cards/Comment';
+import PostFull from '../cards/PostFull';
 import {connect} from 'react-redux';
-
-import {sortComments} from 'app/components/cards/Comment';
 // import { Link } from 'react-router';
-import FoundationDropdownMenu from 'app/components/elements/FoundationDropdownMenu';
+import FoundationDropdownMenu from '../elements/FoundationDropdownMenu';
 import {Set} from 'immutable'
 import tt from 'counterpart';
-import { localizedCurrency } from 'app/components/elements/LocalizedCurrency';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import { INVEST_TOKEN_UPPERCASE } from 'app/client_config';
+import {localizedCurrency} from '../elements/LocalizedCurrency';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
+import {INVEST_TOKEN_UPPERCASE} from '../../client_config';
 
 class Post extends React.Component {
 

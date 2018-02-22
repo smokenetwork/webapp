@@ -1,7 +1,7 @@
 /*global describe, it, before, beforeEach, after, afterEach */
 import React from 'react';
-import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import {expect} from 'chai';
+import {shallow} from 'enzyme';
 import {_Header_} from './Header';
 
 describe('Header', () => {

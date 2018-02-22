@@ -1,5 +1,5 @@
 import React from 'react';
-import {findParent} from 'app/utils/DomUtils';
+import {findParent} from '../../utils/DomUtils';
 import {Dropdown} from 'react-foundation-components/lib/global/dropdown';
 
 export default class FoundationDropdown extends React.Component {

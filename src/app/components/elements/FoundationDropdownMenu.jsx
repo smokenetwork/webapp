@@ -1,7 +1,7 @@
 import React from 'react';
-import Icon from 'app/components/elements/Icon';
-import { LinkWithDropdown } from 'react-foundation-components/lib/global/dropdown';
-import VerticalMenu from 'app/components/elements/VerticalMenu';
+import Icon from './Icon';
+import {LinkWithDropdown} from 'react-foundation-components/lib/global/dropdown';
+import VerticalMenu from './VerticalMenu';
 
 const FoundationDropdownMenu = ({menu, icon, label, dropdownPosition, dropdownAlignment, className, onClick}) => {
     return <LinkWithDropdown

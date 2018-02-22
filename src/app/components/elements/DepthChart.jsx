@@ -1,8 +1,8 @@
 import React from 'react';
+import tt from 'counterpart';
+import {CURRENCY_SIGN, DEBT_TOKEN_SHORT, LIQUID_TICKER, LIQUID_TOKEN_UPPERCASE} from '../../client_config';
 //import Highcharts from 'highcharts';
 const ReactHighcharts = require("react-highcharts/dist/ReactHighstock");
-import tt from 'counterpart';
-import { LIQUID_TOKEN_UPPERCASE, DEBT_TOKEN_SHORT, LIQUID_TICKER, CURRENCY_SIGN } from 'app/client_config';
 
 //Highstock does not play well with decimal x values, so we need to
 // multiply the x values by a constant factor and divide by this factor for

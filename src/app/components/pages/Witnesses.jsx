@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
-import links from 'app/utils/Links'
-import Icon from 'app/components/elements/Icon';
-import transaction from 'app/redux/Transaction'
+import {Link} from 'react-router';
+import links from '../../utils/Links'
+import Icon from '../elements/Icon';
+import transaction from '../../redux/Transaction'
 import ByteBuffer from 'bytebuffer'
 import {is} from 'immutable'
-import g from 'app/redux/GlobalReducer';
+import g from '../../redux/GlobalReducer';
 import tt from 'counterpart';
 
 const Long = ByteBuffer.Long

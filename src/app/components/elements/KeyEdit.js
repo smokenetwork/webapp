@@ -1,7 +1,7 @@
-import React, {PropTypes, Component} from 'react'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
+import React, {Component, PropTypes} from 'react'
+import LoadingIndicator from './LoadingIndicator'
 import {reduxForm} from 'redux-form' // @deprecated, instead use: app/utils/ReactForm.js
-import {cleanReduxInput} from 'app/utils/ReduxForms'
+import {cleanReduxInput} from '../../utils/ReduxForms'
 import tt from 'counterpart';
 import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
 

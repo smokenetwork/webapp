@@ -1,5 +1,5 @@
 var React = require("react");
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
+import TimeAgoWrapper from './TimeAgoWrapper';
 
 export default class OrderhistoryRow extends React.Component {
 

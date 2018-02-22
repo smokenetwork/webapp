@@ -1,22 +1,22 @@
 import React from 'react';
-import { Link, browserHistory } from 'react-router';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import Icon from 'app/components/elements/Icon';
-import { connect } from 'react-redux';
-import user from 'app/redux/User';
-import Reblog from 'app/components/elements/Reblog';
-import Voting from 'app/components/elements/Voting';
-import {immutableAccessor} from 'app/utils/Accessors';
-import extractContent from 'app/utils/ExtractContent';
-import VotesAndComments from 'app/components/elements/VotesAndComments';
+import {browserHistory, Link} from 'react-router';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import Icon from '../elements/Icon';
+import {connect} from 'react-redux';
+import user from '../../redux/User';
+import Reblog from '../elements/Reblog';
+import Voting from '../elements/Voting';
+import {immutableAccessor} from '../../utils/Accessors';
+import extractContent from '../../utils/ExtractContent';
+import VotesAndComments from '../elements/VotesAndComments';
 import {Map} from 'immutable';
-import Author from 'app/components/elements/Author';
-import TagList from 'app/components/elements/TagList';
-import UserNames from 'app/components/elements/UserNames';
+import Author from '../elements/Author';
+import TagList from '../elements/TagList';
+import UserNames from '../elements/UserNames';
 import tt from 'counterpart';
-import ImageUserBlockList from 'app/utils/ImageUserBlockList';
-import proxifyImageUrl from 'app/utils/ProxifyUrl';
-import Userpic, { avatarSize } from 'app/components/elements/Userpic';
+import ImageUserBlockList from '../../utils/ImageUserBlockList';
+import proxifyImageUrl from '../../utils/ProxifyUrl';
+import Userpic, {avatarSize} from '../elements/Userpic';
 
 function isLeftClickEvent(event) {
     return event.button === 0

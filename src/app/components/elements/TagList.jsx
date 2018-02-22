@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import DropdownMenu from 'app/components/elements/DropdownMenu';
+import {Link} from 'react-router';
+import DropdownMenu from './DropdownMenu';
 
 export default ({post, horizontal, single}) => {
     let sort_order = 'trending';

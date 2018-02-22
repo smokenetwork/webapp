@@ -1,14 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import transaction from 'app/redux/Transaction';
+import {connect} from 'react-redux';
+import transaction from '../../redux/Transaction';
 import Slider from 'react-rangeslider';
-import Icon from 'app/components/elements/Icon';
-import FormattedAsset from 'app/components/elements/FormattedAsset';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import {formatDecimal, parsePayoutAmount} from 'app/utils/ParsersAndFormatters';
-import DropdownMenu from 'app/components/elements/DropdownMenu';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import FoundationDropdown from 'app/components/elements/FoundationDropdown';
+import Icon from './Icon';
+import FormattedAsset from './FormattedAsset';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import {formatDecimal, parsePayoutAmount} from '../../utils/ParsersAndFormatters';
+import DropdownMenu from './DropdownMenu';
+import TimeAgoWrapper from './TimeAgoWrapper';
+import FoundationDropdown from './FoundationDropdown';
 import CloseButton from 'react-foundation-components/lib/global/close-button';
 import tt from 'counterpart';
 

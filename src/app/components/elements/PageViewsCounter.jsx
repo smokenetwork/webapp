@@ -1,6 +1,6 @@
 import React from 'react';
-import {recordPageView} from 'app/utils/ServerApiClient';
-import Icon from 'app/components/elements/Icon';
+import {recordPageView} from '../../utils/ServerApiClient';
+import Icon from './Icon';
 import tt from 'counterpart';
 
 export default class PageViewsCounter extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {formatDecimal, parsePayoutAmount} from 'app/utils/ParsersAndFormatters';
+import {formatDecimal, parsePayoutAmount} from '../../utils/ParsersAndFormatters';
 
 const FormattedAsset = ({amount, asset, classname}) => {
     if (amount && typeof(amount) === 'string') {

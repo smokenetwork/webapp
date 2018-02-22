@@ -1,8 +1,9 @@
 /* eslint react/prop-types: 0 */
-import React, { PropTypes, Component } from 'react';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import { translate } from 'app/Translator';
-import { Tos } from 'app/components/pages/Tos';
+import React, {Component} from 'react';
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
+import {translate} from '../../Translator';
+import {Tos} from '../pages/Tos';
+import {connect} from 'react-redux'
 
 class TermsAgree extends Component {
 
@@ -170,7 +171,6 @@ class TermsAgree extends Component {
     }
 }
 
-import {connect} from 'react-redux'
 export default connect(
     // mapStateToProps
 )(TermsAgree)

@@ -1,4 +1,4 @@
-import {Map, fromJS} from 'immutable';
+import {fromJS, Map} from 'immutable';
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 import appReducer from './AppReducer';
@@ -10,7 +10,7 @@ import user from './User';
 import transaction from './Transaction';
 import offchain from './Offchain';
 import {reducer as formReducer} from 'redux-form'; // @deprecated, instead use: app/utils/ReactForm.js
-import {contentStats} from 'app/utils/StateFunctions'
+import {contentStats} from '../utils/StateFunctions'
 
 function initReducer(reducer, type) {
     return (state, action) => {

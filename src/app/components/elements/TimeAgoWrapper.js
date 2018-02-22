@@ -1,8 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import { FormattedRelative } from 'react-intl';
-import Tooltip from 'app/components/elements/Tooltip';
-import {injectIntl} from 'react-intl';
+import {FormattedRelative, injectIntl} from 'react-intl';
+import Tooltip from './Tooltip';
 
 class TimeAgoWrapper extends React.Component {
     render() {

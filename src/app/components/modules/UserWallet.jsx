@@ -2,21 +2,21 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
-import g from 'app/redux/GlobalReducer'
-import SavingsWithdrawHistory from 'app/components/elements/SavingsWithdrawHistory';
-import TransferHistoryRow from 'app/components/cards/TransferHistoryRow';
-import TransactionError from 'app/components/elements/TransactionError';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import {numberWithCommas, vestingSteem, delegatedSteem} from 'app/utils/StateFunctions'
-import FoundationDropdownMenu from 'app/components/elements/FoundationDropdownMenu'
-import WalletSubMenu from 'app/components/elements/WalletSubMenu'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import Tooltip from 'app/components/elements/Tooltip'
-import {FormattedHTMLMessage} from 'app/Translator';
+import g from '../../redux/GlobalReducer'
+import SavingsWithdrawHistory from '../elements/SavingsWithdrawHistory';
+import TransferHistoryRow from '../cards/TransferHistoryRow';
+import TransactionError from '../elements/TransactionError';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import {delegatedSteem, numberWithCommas, vestingSteem} from '../../utils/StateFunctions'
+import FoundationDropdownMenu from '../elements/FoundationDropdownMenu'
+import WalletSubMenu from '../elements/WalletSubMenu'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import Tooltip from '../elements/Tooltip'
+import {FormattedHTMLMessage} from '../../Translator';
 import tt from 'counterpart';
 import {List} from 'immutable'
-import { LIQUID_TOKEN, LIQUID_TICKER, DEBT_TOKENS, VESTING_TOKEN } from 'app/client_config';
-import transaction from 'app/redux/Transaction';
+import {DEBT_TOKENS, LIQUID_TICKER, LIQUID_TOKEN, VESTING_TOKEN} from '../../client_config';
+import transaction from '../../redux/Transaction';
 
 const assetPrecision = 1000;
 

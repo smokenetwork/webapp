@@ -1,10 +1,9 @@
-import {takeLatest, takeEvery} from 'redux-saga';
-import {call, put, select, fork} from 'redux-saga/effects';
-import {loadFollows, fetchFollowCount} from 'app/redux/FollowSaga';
-import {getContent} from 'app/redux/SagaShared';
+import {takeEvery, takeLatest} from 'redux-saga';
+import {call, fork, put, select} from 'redux-saga/effects';
+import {fetchFollowCount, loadFollows} from './FollowSaga';
+import {getContent} from './SagaShared';
 import GlobalReducer from './GlobalReducer';
 import constants from './constants';
-import {fromJS, Map} from 'immutable'
 import {api} from 'steem';
 
 export const fetchDataWatches = [watchLocationChange, watchDataRequests, watchFetchJsonRequests, watchFetchState, watchGetContent];

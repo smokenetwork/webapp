@@ -3,6 +3,7 @@
 import chai, {expect} from 'chai';
 import dirtyChai from 'dirty-chai';
 import {formatDecimal} from './ParsersAndFormatters';
+
 chai.use(dirtyChai);
 
 describe('formatDecimal', () => {

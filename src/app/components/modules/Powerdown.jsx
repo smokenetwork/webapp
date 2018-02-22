@@ -1,13 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import g from 'app/redux/GlobalReducer'
-import reactForm from 'app/utils/ReactForm'
+import g from '../../redux/GlobalReducer'
 import Slider from 'react-rangeslider';
-import transaction from 'app/redux/Transaction';
-import user from 'app/redux/User';
+import transaction from '../../redux/Transaction';
+import user from '../../redux/User';
 import tt from 'counterpart'
-import {VEST_TICKER, LIQUID_TICKER, VESTING_TOKEN} from 'app/client_config'
-import {numberWithCommas, spToVestsf, vestsToSpf, vestsToSp, assetFloat} from 'app/utils/StateFunctions'
+import {LIQUID_TICKER, VEST_TICKER, VESTING_TOKEN} from '../../client_config'
+import {assetFloat, numberWithCommas, spToVestsf, vestsToSp, vestsToSpf} from '../../utils/StateFunctions'
 
 class Powerdown extends React.Component {
 

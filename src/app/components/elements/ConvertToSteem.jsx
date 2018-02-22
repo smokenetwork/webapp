@@ -2,13 +2,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import {reduxForm} from 'redux-form'; // @deprecated, instead use: app/utils/ReactForm.js
-import transaction from 'app/redux/Transaction'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import TransactionError from 'app/components/elements/TransactionError'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
-import {cleanReduxInput} from 'app/utils/ReduxForms'
+import transaction from '../../redux/Transaction'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import TransactionError from './TransactionError'
+import LoadingIndicator from './LoadingIndicator'
+import {cleanReduxInput} from '../../utils/ReduxForms'
 import tt from 'counterpart';
-import { DEBT_TOKEN, DEBT_TICKER, LIQUID_TOKEN } from 'app/client_config';
+import {DEBT_TICKER, DEBT_TOKEN, LIQUID_TOKEN} from '../../client_config';
 
 class ConvertToSteem extends React.Component {
     constructor() {

@@ -1,4 +1,4 @@
-import { getPhishingWarningMessage } from 'shared/HtmlReady'; // the only allowable title attribute for a div
+import {getPhishingWarningMessage} from '../../shared/HtmlReady'; // the only allowable title attribute for a div
 
 const iframeWhitelist = [
     {

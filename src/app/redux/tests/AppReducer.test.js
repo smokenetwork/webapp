@@ -4,6 +4,7 @@ import dirtyChai from 'dirty-chai';
 import chaiImmutable from 'chai-immutable';
 import {Map} from 'immutable';
 import reducer from '../AppReducer';
+
 chai.use(dirtyChai);
 chai.use(chaiImmutable);
 

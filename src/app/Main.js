@@ -2,11 +2,11 @@ import 'babel-core/register';
 import 'babel-polyfill';
 import 'whatwg-fetch';
 import './assets/stylesheets/app.scss';
-import plugins from 'app/utils/JsPlugins';
+import plugins from './utils/JsPlugins';
 import Iso from 'iso';
-import universalRender from 'shared/UniversalRender';
+import universalRender from '../shared/UniversalRender';
 import ConsoleExports from './utils/ConsoleExports';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
+import {serverApiRecordEvent} from './utils/ServerApiClient';
 import * as steem from 'steem';
 
 window.onerror = error => {

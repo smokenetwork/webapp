@@ -1,7 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux'
-import transaction from 'app/redux/Transaction'
-import {findParent} from 'app/utils/DomUtils';
+import transaction from '../../redux/Transaction'
+import {findParent} from '../../utils/DomUtils';
 import tt from 'counterpart';
 
 class ConfirmTransactionForm extends Component {

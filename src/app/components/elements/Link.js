@@ -1,7 +1,7 @@
 import React from 'react';
-import links from 'app/utils/Links'
+import links from '../../utils/Links'
 import {browserHistory} from 'react-router'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 
 export default class Link extends React.Component {
     static propTypes = {

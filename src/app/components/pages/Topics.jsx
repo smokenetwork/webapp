@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router';
 import tt from 'counterpart';
 
 class Topics extends React.Component {

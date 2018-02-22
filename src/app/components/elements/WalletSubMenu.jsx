@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import NotifiCounter from 'app/components/elements/NotifiCounter';
+import {Link} from 'react-router';
+import NotifiCounter from './NotifiCounter';
 import tt from 'counterpart';
 
 

@@ -1,9 +1,4 @@
-import {PrivateKey, PublicKey, Aes, key_utils} from 'steem/lib/auth/ecc';
-
-
-// import secureRandom from 'secure-random'
-// import links from 'app/utils/Links'
-// import assert from 'assert'
+import {Aes, key_utils, PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
 
 module.exports = {
 
@@ -28,7 +23,7 @@ module.exports = {
     },
 
     resolve: (object, atty = '_') => {
-        if (! object.then) {
+        if (!object.then) {
             console.log(object)
             return object
         }
@@ -46,22 +41,12 @@ module.exports = {
     },
 
     init: context => {
-        if (! context) return
+        if (!context) return
         for (const obj in module.exports) {
             if (obj === 'init') continue
             context[obj] = module.exports[obj]
         }
     },
-
-    // retest: () => {
-    //     const largeData = secureRandom.randomBuffer(1024 * 10).toString('hex')
-    //     const all = links.any()
-    //     for (let i = 0; i < 10000; i++) {
-    //         const match = (largeData + 'https://example.com').match(all)
-    //         assert(match, 'no match')
-    //         assert(match[0] === 'https://example.com', 'no match')
-    //     }
-    // },
 }
 
 let perfStarted = false

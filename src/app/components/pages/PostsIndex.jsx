@@ -1,20 +1,19 @@
 /* eslint react/prop-types: 0 */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import constants from 'app/redux/constants';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import PostsList from 'app/components/cards/PostsList';
-import {isFetchingOrRecentlyUpdated} from 'app/utils/StateFunctions';
+import constants from '../../redux/constants';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import PostsList from '../cards/PostsList';
+import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {Link} from 'react-router';
-import MarkNotificationRead from 'app/components/elements/MarkNotificationRead';
+import MarkNotificationRead from '../elements/MarkNotificationRead';
 import tt from 'counterpart';
 import Immutable from "immutable";
-import Callout from 'app/components/elements/Callout';
-// import SidebarStats from 'app/components/elements/SidebarStats';
-import SidebarLinks from 'app/components/elements/SidebarLinks';
-import SidebarNewUsers from 'app/components/elements/SidebarNewUsers';
+import Callout from '../elements/Callout';
+import SidebarLinks from '../elements/SidebarLinks';
+import SidebarNewUsers from '../elements/SidebarNewUsers';
 import Topics from './Topics';
-import ArticleLayoutSelector from 'app/components/modules/ArticleLayoutSelector';
+import ArticleLayoutSelector from '../modules/ArticleLayoutSelector';
 
 class PostsIndex extends React.Component {
 
@@ -64,9 +63,11 @@ class PostsIndex extends React.Component {
         const [author, permlink] = last_post.split('/');
         this.props.requestData({author, permlink, order, category, accountname});
     }
+
     onShowSpam = () => {
         this.setState({showSpam: !this.state.showSpam})
     }
+
     render() {
         let {category, order = constants.DEFAULT_SORT_ORDER} = this.props.routeParams;
         let topics_order = order;
@@ -81,13 +82,13 @@ class PostsIndex extends React.Component {
             const isMyAccount = this.props.username === account_name;
             if (isMyAccount) {
                 emptyText = <div>
-                    {tt('posts_index.empty_feed_1')}.<br /><br />
-                    {tt('posts_index.empty_feed_2')}.<br /><br />
-                    <Link to="/trending">{tt('posts_index.empty_feed_3')}</Link><br />
-                    <Link to="/welcome">{tt('posts_index.empty_feed_4')}</Link><br />
-                    <Link to="/faq.html">{tt('posts_index.empty_feed_5')}</Link><br />
+                    {tt('posts_index.empty_feed_1')}.<br/><br/>
+                    {tt('posts_index.empty_feed_2')}.<br/><br/>
+                    <Link to="/trending">{tt('posts_index.empty_feed_3')}</Link><br/>
+                    <Link to="/welcome">{tt('posts_index.empty_feed_4')}</Link><br/>
+                    <Link to="/faq.html">{tt('posts_index.empty_feed_5')}</Link><br/>
                 </div>;
-                markNotificationRead = <MarkNotificationRead fields="feed" account={account_name} />
+                markNotificationRead = <MarkNotificationRead fields="feed" account={account_name}/>
             } else {
                 emptyText = <div>{tt('user_profile.user_hasnt_followed_anything_yet', {name: account_name})}</div>;
             }
@@ -145,12 +146,12 @@ class PostsIndex extends React.Component {
                         </div>
                         <div className="articles__header-col articles__header-col--right">
                             <div className="articles__tag-selector">
-                                <Topics order={topics_order} current={category} compact />
+                                <Topics order={topics_order} current={category} compact/>
                             </div>
-                            <ArticleLayoutSelector />
-                        </div>         
-                    </div> 
-                    <hr className="articles__hr" />
+                            <ArticleLayoutSelector/>
+                        </div>
+                    </div>
+                    <hr className="articles__hr"/>
                     {markNotificationRead}
                     {(!fetching && (posts && !posts.size)) ? <Callout>{emptyText}</Callout> :
                         <PostsList
@@ -162,20 +163,22 @@ class PostsIndex extends React.Component {
                             showSpam={showSpam}
                         />
                     }
-                </article>                
-                 <aside className="c-sidebar c-sidebar--right">
-                    { !this.props.username
-                        ? <SidebarNewUsers />
+                </article>
+                <aside className="c-sidebar c-sidebar--right">
+                    {!this.props.username
+                        ? <SidebarNewUsers/>
                         : <div>
-                              {/* <SidebarStats steemPower={123} followers={23} reputation={62} />  */}
-                              <SidebarLinks username={this.props.username} />
-                            </div>
+                            {/* <SidebarStats steemPower={123} followers={23} reputation={62} />  */}
+                            <SidebarLinks username={this.props.username}/>
+                        </div>
                     }
                 </aside>
                 <aside className="c-sidebar c-sidebar--left">
-                    <Topics order={topics_order} current={category} compact={false} />
-                    <small><a className="c-sidebar__more-link" onClick={this.onShowSpam}>{showSpam ? tt('g.next_3_strings_together.show_less') : tt('g.next_3_strings_together.show_more')}</a>{' ' + tt('g.next_3_strings_together.value_posts')}</small>
-                </aside>                  
+                    <Topics order={topics_order} current={category} compact={false}/>
+                    <small><a className="c-sidebar__more-link"
+                              onClick={this.onShowSpam}>{showSpam ? tt('g.next_3_strings_together.show_less') : tt('g.next_3_strings_together.show_more')}</a>{' ' + tt('g.next_3_strings_together.value_posts')}
+                    </small>
+                </aside>
             </div>
         );
     }

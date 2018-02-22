@@ -1,8 +1,7 @@
-import remarkableStripper from 'app/utils/RemarkableStripper'
-import links from 'app/utils/Links'
+import remarkableStripper from './RemarkableStripper'
 import sanitize from 'sanitize-html'
-import {htmlDecode} from 'app/utils/Html'
-import HtmlReady from 'shared/HtmlReady'
+import {htmlDecode} from './Html'
+import HtmlReady from '../../shared/HtmlReady'
 import Remarkable from 'remarkable'
 
 const remarkable = new Remarkable({ html: true, linkify: false })

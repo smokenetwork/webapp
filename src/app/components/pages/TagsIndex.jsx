@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router';
-import { numberWithCommas } from 'app/utils/StateFunctions';
+import {numberWithCommas} from '../../utils/StateFunctions';
 import tt from 'counterpart';
 
 export default class TagsIndex extends React.Component {

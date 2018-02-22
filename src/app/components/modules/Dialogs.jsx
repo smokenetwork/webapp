@@ -2,17 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CloseButton from 'react-foundation-components/lib/global/close-button';
 import Reveal from 'react-foundation-components/lib/global/reveal';
-import g from 'app/redux/GlobalReducer'
-import {Map, List} from 'immutable'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import QrReader from 'app/components/elements/QrReader'
-import ConvertToSteem from 'app/components/elements/ConvertToSteem'
-import SuggestPassword from 'app/components/elements/SuggestPassword'
-import ChangePassword from 'app/components/elements/ChangePassword'
-import CheckLoginOwner from 'app/components/elements/CheckLoginOwner'
-import QrKeyView from 'app/components/elements/QrKeyView'
-import PromotePost from 'app/components/modules/PromotePost';
-import ExplorePost from 'app/components/modules/ExplorePost';
+import g from '../../redux/GlobalReducer'
+import {List, Map} from 'immutable'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import QrReader from '../elements/QrReader'
+import ConvertToSteem from '../elements/ConvertToSteem'
+import SuggestPassword from '../elements/SuggestPassword'
+import ChangePassword from '../elements/ChangePassword'
+import CheckLoginOwner from '../elements/CheckLoginOwner'
+import QrKeyView from '../elements/QrKeyView'
+import PromotePost from './PromotePost';
+import ExplorePost from './ExplorePost';
 
 class Dialogs extends React.Component {
     static propTypes = {

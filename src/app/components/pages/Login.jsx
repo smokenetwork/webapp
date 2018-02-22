@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from 'app/components/modules/LoginForm';
+import LoginForm from '../modules/LoginForm';
 import tt from 'counterpart';
 
 class Login extends React.Component {

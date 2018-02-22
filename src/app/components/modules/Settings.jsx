@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import user from 'app/redux/User';
+import user from '../../redux/User';
 import tt from 'counterpart';
-import transaction from 'app/redux/Transaction'
-import o2j from 'shared/clash/object2json'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
-import reactForm from 'app/utils/ReactForm'
-import UserList from 'app/components/elements/UserList';
+import transaction from '../../redux/Transaction'
+import o2j from '../../../shared/clash/object2json'
+import LoadingIndicator from '../elements/LoadingIndicator'
+import reactForm from '../../utils/ReactForm'
+import UserList from '../elements/UserList';
 
 
 class Settings extends React.Component {

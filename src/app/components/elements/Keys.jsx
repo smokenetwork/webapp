@@ -1,10 +1,9 @@
 /* eslint react/prop-types: 0 */
-import React, {PropTypes, Component} from 'react'
-import {Map, List} from 'immutable'
+import React, {Component, PropTypes} from 'react'
+import {List, Map} from 'immutable'
 import {connect} from 'react-redux'
-import user from 'app/redux/User'
-import g from 'app/redux/GlobalReducer'
-import ShowKey from 'app/components/elements/ShowKey'
+import g from '../../redux/GlobalReducer'
+import ShowKey from './ShowKey'
 import tt from 'counterpart';
 
 class Keys extends Component {

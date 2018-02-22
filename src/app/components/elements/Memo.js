@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import tt from 'counterpart';
 import {memo} from 'steem';
 

@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import Experiment from 'react-ab-test/lib/Experiment';
 import emitter from 'react-ab-test/lib/emitter';
 import experimentDebugger from 'react-ab-test/lib/debugger';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
 
 /*
 Usage example:
 
-import Experiment from 'app/components/elements/ExperimentWrapper';
+import Experiment from './ExperimentWrapper';
 
 win() {
  Experiment.win('MyExample1');

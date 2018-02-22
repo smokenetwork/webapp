@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
-//import Highcharts from 'highcharts';
-
-import transaction from 'app/redux/Transaction'
-import TransactionError from 'app/components/elements/TransactionError'
-import DepthChart from 'app/components/elements/DepthChart';
-import Orderbook from "app/components/elements/Orderbook";
-import OrderHistory from "app/components/elements/OrderHistory";
-import {Order, TradeHistory} from "app/utils/MarketClasses";
-import {roundUp, roundDown} from "app/utils/MarketUtils";
+import transaction from '../../redux/Transaction'
+import TransactionError from '../elements/TransactionError'
+import DepthChart from '../elements/DepthChart';
+import Orderbook from "../elements/Orderbook";
+import OrderHistory from "../elements/OrderHistory";
+import {Order, TradeHistory} from "../../utils/MarketClasses";
+import {roundDown, roundUp} from "../../utils/MarketUtils";
 import tt from 'counterpart';
-import { LIQUID_TOKEN, LIQUID_TOKEN_UPPERCASE, DEBT_TOKEN_SHORT, CURRENCY_SIGN, LIQUID_TICKER, DEBT_TICKER } from 'app/client_config';
+import {
+    CURRENCY_SIGN,
+    DEBT_TICKER,
+    DEBT_TOKEN_SHORT,
+    LIQUID_TICKER,
+    LIQUID_TOKEN,
+    LIQUID_TOKEN_UPPERCASE
+} from '../../client_config';
+
+//import Highcharts from 'highcharts';
 
 class Market extends React.Component {
     static propTypes = {

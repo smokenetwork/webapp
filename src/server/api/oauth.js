@@ -1,8 +1,7 @@
 import route from 'koa-route';
 import Purest from 'purest';
-import models from 'db/models';
+import models, {esc, escAttrs} from 'db/models';
 import findUser from 'db/utils/find_user';
-import {esc, escAttrs} from 'db/models';
 
 const facebook = new Purest({provider: 'facebook'});
 const reddit = new Purest({provider: 'reddit'});

@@ -1,9 +1,10 @@
-import React, {PropTypes, Component} from 'react';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
+import React, {Component, PropTypes} from 'react';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import {connect} from 'react-redux';
-import user from 'app/redux/User';
+import user from '../../redux/User';
 import tt from 'counterpart';
-import g from 'app/redux/GlobalReducer';
+import g from '../../redux/GlobalReducer';
+import qrCodeImage from '../../assets/images/qrcode.png';
 
 /** Display a public key.  Offer to show a private key, but only if it matches the provided public key */
 class ShowKey extends Component {
@@ -82,7 +83,7 @@ class ShowKey extends Component {
         return (<div className="row">
             <div className="column small-12 medium-10">
                 <div style={{display: "inline-block", paddingRight: 10, cursor: "pointer"}} onClick={this.showQr}>
-                    <img src={require("app/assets/images/qrcode.png")} height="40" width="40" />
+                    <img src={qrCodeImage} height="40" width="40" />
                 </div>
                 {/* Keep this as wide as possible, check print preview makes sure WIF it not cut off */}
                 <span {...cmpProps}>{show ? wif : pubkey}</span>

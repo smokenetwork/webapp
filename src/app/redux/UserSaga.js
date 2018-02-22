@@ -1,17 +1,16 @@
-import {fromJS, Set, List} from 'immutable'
+import {fromJS, List, Set} from 'immutable'
 import {takeLatest} from 'redux-saga';
-import {call, put, select, fork} from 'redux-saga/effects';
-import {accountAuthLookup} from 'app/redux/AuthSaga'
-import user from 'app/redux/User'
-import {getAccount} from 'app/redux/SagaShared'
+import {call, fork, put, select} from 'redux-saga/effects';
+import {accountAuthLookup} from './AuthSaga'
+import user from './User'
+import {getAccount} from './SagaShared'
 import {browserHistory} from 'react-router'
-import {serverApiLogin, serverApiLogout} from 'app/utils/ServerApiClient';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import {loadFollows} from 'app/redux/FollowSaga'
-import {PrivateKey, Signature, hash} from 'steem/lib/auth/ecc';
+import {serverApiLogin, serverApiLogout, serverApiRecordEvent} from '../utils/ServerApiClient';
+import {loadFollows} from './FollowSaga'
+import {hash, PrivateKey, Signature} from 'steem/lib/auth/ecc';
 import {api} from 'steem';
-import {translate} from 'app/Translator';
-import DMCAUserList from 'app/utils/DMCAUserList';
+import {translate} from '../Translator';
+import DMCAUserList from '../utils/DMCAUserList';
 
 
 export const userWatches = [
@@ -253,7 +252,7 @@ function* usernamePasswordLogin2({payload: {username, password, saveLogin,
          received_vesting_shares: account.get('received_vesting_shares'),
          delegated_vesting_shares: account.get('delegated_vesting_shares')}))
     } else {
-        yield put(user.actions.setUser({username, vesting_shares: account.get('vesting_shares'), 
+        yield put(user.actions.setUser({username, vesting_shares: account.get('vesting_shares'),
          received_vesting_shares: account.get('received_vesting_shares'),
          delegated_vesting_shares: account.get('delegated_vesting_shares')}))
     }
