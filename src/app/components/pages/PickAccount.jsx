@@ -119,7 +119,7 @@ class PickAccount extends React.Component {
                         <h4>Browser Out of Date</h4>
                         <p>We will be unable to create your Steem account with this browser.</p>
                         <p>The latest versions of <a href="https://www.google.com/chrome/">Chrome</a> and <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>
-                            are well-tested and known to work well with steemit.com.</p>
+                            are well-tested and known to work well with smoke.io.</p>
                     </div>
                 </div>
             </div>;
@@ -168,7 +168,7 @@ class PickAccount extends React.Component {
         //                 <p>Our records indicate that you already have steem account: <strong>{existingUserAccount}</strong></p>
         //                 <p>In order to prevent abuse Steemit can only register one account per verified user.</p>
         //                 <p>You can either <a href="/login.html">login</a> to your existing account
-        //                     or <a href="mailto:support@steemit.com">send us email</a> if you need a new account.</p>
+        //                     or <a href="mailto:support@smoke.io">send us email</a> if you need a new account.</p>
         //             </div>
         //         </div>
         //     </div>;
@@ -201,7 +201,7 @@ class PickAccount extends React.Component {
                         <br />
                         <h4 className="CreateAccount__title">Welcome to Steemit</h4>
                         <div>
-                             <p>Your account name is how you will be known on steemit.com.<br />
+                             <p>Your account name is how you will be known on smoke.io.<br />
                                  {/*Your account name <strong>can never be changed</strong>, so please choose carefully.*/}</p>
                         </div>
                         <form onSubmit={this.onSubmit} autoComplete="off" noValidate method="post">

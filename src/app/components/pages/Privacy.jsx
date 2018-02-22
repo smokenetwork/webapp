@@ -338,7 +338,7 @@ class Privacy extends React.Component {
                         <h2>Contact Us</h2>
                         <p>
                             <span className="section">33</span>
-                            If you have any questions about this Privacy Policy, please email <a href="mailto:contact@steemit.com">contact@steemit.com</a>.
+                            If you have any questions about this Privacy Policy, please email <a href="mailto:contact@smoke.io">contact@smoke.io</a>.
                         </p>
                     </div>
                 </div>

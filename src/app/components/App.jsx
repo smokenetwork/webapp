@@ -152,7 +152,7 @@ class App extends React.Component {
                         <CloseButton onClick={() => this.setState({showCallout: false})} />
                         <ul>
                             <li>
-                                /*<a href="https://steemit.com/steemit/@steemitblog/steemit-com-is-now-open-source">
+                                /*<a href="https://smoke.io/steemit/@steemitblog/steemit-com-is-now-open-source">
                                    ...STORY TEXT...
                                 </a>*/
                             </li>

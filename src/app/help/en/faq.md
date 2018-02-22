@@ -312,9 +312,9 @@ The only way to have an account created via Steemit.com is to supply your email 
 
 If you are willing to pay your own signup fee, then there are other ways to create a new account on the blockchain.
 
-There is a third-party tool called <a href="https://steemit.com/steemit/@someguy123/anonsteem-create-anonymous-steem-accounts-without-social-media">AnonSteem</a> that accepts bitcoin, Litecoin, STEEM, or SBD to anonymously create a Steem account. You do not need to have an existing Steem blockchain account to use the service, but there is a charge on top of the blockchain account creation fee for using the service.
+There is a third-party tool called <a href="https://smoke.io/steemit/@someguy123/anonsteem-create-anonymous-steem-accounts-without-social-media">AnonSteem</a> that accepts bitcoin, Litecoin, STEEM, or SBD to anonymously create a Steem account. You do not need to have an existing Steem blockchain account to use the service, but there is a charge on top of the blockchain account creation fee for using the service.
 
-There is also a third-party tool called <a href="https://steemit.com/news/@timcliff/new-tool-from-busy-org-create-new-steem-blockchain-accounts-with-steemconnect">SteemConnect</a> that allows you to create accounts by paying or delegating the account creation fee. There is no additional fee to use the service, but does require an existing Steem blockchain account to pay the account creation fee to create the account.
+There is also a third-party tool called <a href="https://smoke.io/news/@timcliff/new-tool-from-busy-org-create-new-steem-blockchain-accounts-with-steemconnect">SteemConnect</a> that allows you to create accounts by paying or delegating the account creation fee. There is no additional fee to use the service, but does require an existing Steem blockchain account to pay the account creation fee to create the account.
 
 <a href="/faq.html#Table_of_Contents_Accounts">^</a>
 <a class="anchor" name="It_is_not_letting_me_create_an_account_with_my_phone_number__What_should_I_do"></a>
@@ -346,7 +346,7 @@ Accounts can not be deactivated or deleted. The account along with all of its ac
 <a class="anchor" name="Is_there_an_Etiquette_Guide_for_Steemit"></a>
 ## Is there an Etiquette Guide for Steemit?
 
-There are no official rules for participating on Steemit.com, but one of the users @thecryptofiend has created an <a href="https://steemit.com/steemit/@thecryptofiend/the-complete-steemit-etiquette-guide-revision-2-0">Etiquette Guide</a> for the community. While it is not required to follow the suggestions in the guide, they are standards that many users in the community choose to follow.
+There are no official rules for participating on Steemit.com, but one of the users @thecryptofiend has created an <a href="https://smoke.io/steemit/@thecryptofiend/the-complete-steemit-etiquette-guide-revision-2-0">Etiquette Guide</a> for the community. While it is not required to follow the suggestions in the guide, they are standards that many users in the community choose to follow.
 
 <a href="/faq.html#Table_of_Contents_Community">^</a>
 <a class="anchor" name="Am_I_required_to_verify_my_identity"></a>
@@ -558,7 +558,7 @@ The recommend aspect ratio for thumbnail images is 16x9.
 
 To add a YouTube or Vimeo video to your blog post, simply paste the link to the video into the post. 
 
-You can also read <a href="https://steemit.com/steemitguide/@algimantas/detailed-guide-how-to-add-videos-in-steemit">this guide</a> from @algimantas, which has more detailed instructions:
+You can also read <a href="https://smoke.io/steemitguide/@algimantas/detailed-guide-how-to-add-videos-in-steemit">this guide</a> from @algimantas, which has more detailed instructions:
 
 <a href="/faq.html#Table_of_Contents_Posting">^</a>
 <a class="anchor" name="Is_there_a_way_I_can_make_my_images_smaller"></a>
@@ -658,7 +658,7 @@ The blockchain will always contain the full edit history of posts and comments, 
 
 When you make a post, there is the option to promote it with Steem Dollars. It will then show up in the “Promoted” tab. The order that it appears in the list depends on how much the post was promoted for. Posts with a higher promoted amount will be higher than posts with less.
 
-Steem Dollars spent to promote a post are paid to the account @null, which nobody owns or controls. Once a user transfers SBD to @null, the Steem blockchain removes them from the currency supply. Details can be found in this <a href="https://steemit.com/steemit/@steemitblog/introducing-promoted-content">official post</a>.
+Steem Dollars spent to promote a post are paid to the account @null, which nobody owns or controls. Once a user transfers SBD to @null, the Steem blockchain removes them from the currency supply. Details can be found in this <a href="https://smoke.io/steemit/@steemitblog/introducing-promoted-content">official post</a>.
 
 You can promote your own posts, or posts that you like from other users.
 
@@ -879,16 +879,16 @@ There are several guides that have been posted by users in the community for usi
 It is recommended that you withdraw a small amount first, to verify it works before withdrawing a larger amount.
 
 #### Sell Steem Dollars via Poloniex
-https://steemit.com/steemit/@ash/steemit-how-to-sell-steem-dollars-via-poloniex-newbie-friendly
+https://smoke.io/steemit/@ash/steemit-how-to-sell-steem-dollars-via-poloniex-newbie-friendly
 
 #### Withdraw Steem Dollars to a Bitcoin address
-https://steemit.com/steem-help/@piedpiper/how-to-withdraw-your-steem-dollars-in-less-that-a-minute
+https://smoke.io/steem-help/@piedpiper/how-to-withdraw-your-steem-dollars-in-less-that-a-minute
 
 #### Convert Steem Dollars to a country’s currency and withdraw to a bank account
-https://steemit.com/tutorial/@beanz/how-to-get-my-usdteemit-money-into-my-bank-account
+https://smoke.io/tutorial/@beanz/how-to-get-my-usdteemit-money-into-my-bank-account
 
 #### Convert STEEM to many other cryptocurrencies via ShapeShift
-https://steemit.com/steemit/@shapeshiftio/official-announcement-shapeshift-has-added-steem-to-the-exchange
+https://smoke.io/steemit/@shapeshiftio/official-announcement-shapeshift-has-added-steem-to-the-exchange
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="Will_I_get_a_1099_from_Steemit"></a>
@@ -1037,14 +1037,14 @@ If you are using an image that is not your own, make sure you are allowed to use
 Using random pictures from the internet without giving credit is discouraged. You may, however, use photos from “free image” websites such as Pexels.com or Pixabay.com. All photos on Pexels and Pixabay are free for personal and commercial use.
 
 Here is a post from @mindover that has links to many websites that have images you can use:
-https://steemit.com/steem-help/@mindover/don-t-plagiarize-images-here-are-13-free-and-legal-ways-to-find-high-quality-photos-you-can-use-on-steemit
+https://smoke.io/steem-help/@mindover/don-t-plagiarize-images-here-are-13-free-and-legal-ways-to-find-high-quality-photos-you-can-use-on-steemit
 
 <a href="/faq.html#Table_of_Contents_Plagiarism__Spam__and_Abuse">^</a>
 <a class="anchor" name="What_is_Steemcleaners"></a>
 ## What is Steemcleaners?
 
 Steemcleaners are a group of Steemians concerned with plagiarism, copy/paste, spam, scams and other forms of abuse on Steemit. 
-https://steemit.com/steemcleaners/@steemcleaners/announcing-steemcleaners-the-steemit-abuse-fighting-team
+https://smoke.io/steemcleaners/@steemcleaners/announcing-steemcleaners-the-steemit-abuse-fighting-team
 
 <a href="/faq.html#Table_of_Contents_Plagiarism__Spam__and_Abuse">^</a>
 <a class="anchor" name="What_is__cheetah"></a>
@@ -1055,7 +1055,7 @@ https://steemit.com/steemcleaners/@steemcleaners/announcing-steemcleaners-the-st
 Abusive accounts (serial plagiarists or identity thieves, for example) will go on Cheetah’s blacklist. These users will get downvoted by @cheetah accounts when they post.
 
 More information on the @cheetah bot can be found in this post:
-https://steemit.com/steemit/@cheetah/faq-about-cheetah
+https://smoke.io/steemit/@cheetah/faq-about-cheetah
 
 <a href="/faq.html#Table_of_Contents_Plagiarism__Spam__and_Abuse">^</a>
 <a class="anchor" name="Where_do_I_report_a_post_or_comment_that_contains_plagiarism__spam__or_abuse"></a>
@@ -1084,7 +1084,7 @@ Every new user starts off with a reputation score of 25.
 The reputation score is based off of a `log10` system, which means that a score of 40 is about 10x better than a score of 30.
 
 More information about the calculation of the reputation score can be found in this post from @digitalnotvir:
-https://steemit.com/steemit/@digitalnotvir/how-reputation-scores-are-calculated-the-details-explained-with-simple-math
+https://smoke.io/steemit/@digitalnotvir/how-reputation-scores-are-calculated-the-details-explained-with-simple-math
 
 <a href="/faq.html#Table_of_Contents_Reputation">^</a>
 <a class="anchor" name="How_do_I_improve_my_reputation_score"></a>
@@ -1211,7 +1211,7 @@ Though not considered an investment, you can purchase STEEM tokens which can go 
 ## What does Steemit’s development roadmap look like?
 
 You can view the 2017 Roadmap here:
-https://steemit.com/steemit/@steemitblog/steemit-2017-roadmap
+https://smoke.io/steemit/@steemitblog/steemit-2017-roadmap
 
 <a href="/faq.html#Table_of_Contents_Steemit__Inc">^</a>
 <a class="anchor" name="Am_I_allowed_to_use_the_Steemit_logo"></a>
@@ -1235,7 +1235,7 @@ The STEEM tokens mined by Steemit, Inc. were not "pre-mined". All mining took pl
 <a class="anchor" name="What_is_the_Steemit_Privacy_Policy"></a>
 ## What is the Steemit Privacy Policy?
 
-https://steemit.com/privacy.html
+https://smoke.io/privacy.html
 
 <a href="/faq.html#Table_of_Contents_Steemit__Inc">^</a>
 # Security
@@ -1296,7 +1296,7 @@ No, liquid tokens can not be taken back if stolen or sent to the wrong account. 
 <a class="anchor" name="What_should_I_do_if_I_discover_that_someone_hacked_my_account"></a>
 ## What should I do if I discover that someone hacked my account?
 
-If you made your account through Steemit and it is compromised, immediately visit the <a href="https://steemit.com/recover_account_step_1">Stolen Account Recovery</a> page. This link is also available in the main site menu. You will need to provide the email address that you used when you signed up, your account name, and a master password that was used in the last 30 days.
+If you made your account through Steemit and it is compromised, immediately visit the <a href="https://smoke.io/recover_account_step_1">Stolen Account Recovery</a> page. This link is also available in the main site menu. You will need to provide the email address that you used when you signed up, your account name, and a master password that was used in the last 30 days.
 
 <a href="/faq.html#Table_of_Contents_Security">^</a>
 <a class="anchor" name="How_does_the_stolen_account_recovery_process_work"></a>
@@ -1312,7 +1312,7 @@ If you don't have the master password or owner key that was valid the past 30 da
 <a class="anchor" name="How_do_I_report_a_security_vulnerability"></a>
 ## How do I report a security vulnerability?
 
-If you find a security issue please report the details to security@steemit.com.
+If you find a security issue please report the details to security@smoke.io.
 
 <a href="/faq.html#Table_of_Contents_Security">^</a>
 # Developers
@@ -1343,14 +1343,14 @@ https://github.com/steemit/steem
 Many software engineers are currently leveraging the open-source code to build their applications on Steem. There are more than sixty so far.
 
 This post from the user @fabien has more information about the Steem API:
-https://steemit.com/steemjs/@fabien/steem-api-now-released
+https://smoke.io/steemjs/@fabien/steem-api-now-released
 
 <a href="/faq.html#Table_of_Contents_Developers">^</a>
 <a class="anchor" name="How_do_I_use_cli_wallet"></a>
 ## How do I use cli_wallet?
 
 Here is a guide from the user @pfunk explaining how to use the cli_wallet:
-https://steemit.com/steemhelp/@pfunk/a-learner-s-guide-to-using-steem-s-cliwallet-part-1
+https://smoke.io/steemhelp/@pfunk/a-learner-s-guide-to-using-steem-s-cliwallet-part-1
 
 <a href="/faq.html#Table_of_Contents_Developers">^</a>
 # Witnesses
@@ -1366,7 +1366,7 @@ Steemit leverages Steem because the founders of Steemit believe Steem’s decent
 <a class="anchor" name="How_can_I_vote_for_witnesses"></a>
 ## How can I vote for witnesses?
 
-Visit https://steemit.com/~witnesses
+Visit https://smoke.io/~witnesses
 
 <a href="/faq.html#Table_of_Contents_Witnesses">^</a>
 <a class="anchor" name="How_many_witnesses_can_I_vote_for"></a>

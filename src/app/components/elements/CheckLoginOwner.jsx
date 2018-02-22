@@ -60,7 +60,7 @@ class CheckLoginOwner extends React.Component {
         const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000
         const deadline = last_valid_date.getTime() + THIRTY_DAYS
 
-        // https://steemit.com/steem/@originate/steem-s-new-alert-after-key-updates-is-excellent-but-here-s-a-quick-update-that-would-make-it-even-better
+        // https://smoke.io/steem/@originate/steem-s-new-alert-after-key-updates-is-excellent-but-here-s-a-quick-update-that-would-make-it-even-better
         // "If you recently reset your password at(timestamp in strftime, example:  Thu, 21 Jul 2016 02:39:19 PST) this alert was most likely prompted by this action, otherwise your immediate attention is needed"
         return <span>
             <Reveal show>

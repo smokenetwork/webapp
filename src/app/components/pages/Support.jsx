@@ -9,7 +9,7 @@ class Support extends React.Component {
                 <div>
                     <h2>{tt('g.APP_NAME_support', {APP_NAME})}</h2>
                     <p>
-                        {tt('g.please_email_questions_to')} <a href="mailto:contact@steemit.com">contact@steemit.com</a>.
+                        {tt('g.please_email_questions_to')} <a href="mailto:contact@smoke.io">contact@smoke.io</a>.
                     </p>
                 </div>
             </div>

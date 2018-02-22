@@ -8,4 +8,4 @@ dependencies:
 
 test:
     override:
-        - docker build -t steemit/steemit.com .
+        - docker build -t steemit/smoke.io .

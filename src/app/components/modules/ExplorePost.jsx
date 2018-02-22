@@ -50,8 +50,8 @@ class ExplorePost extends Component {
         const steemd = 'https://steemd.com' + link;
         const steemdb = 'https://steemdb.com' + link;
         const busy = 'https://busy.org' + link;
-        const steemit = 'https://steemit.com' + link;
-        const phist = 'https://phist.steemdata.com/history?identifier=steemit.com' + link;
+        const steemit = 'https://smoke.io' + link;
+        const phist = 'https://phist.steemdata.com/history?identifier=smoke.io' + link;
         let text = this.state.copied == true ? tt('explorepost_jsx.copied') : tt('explorepost_jsx.copy');
         return (
             <span className="ExplorePost">

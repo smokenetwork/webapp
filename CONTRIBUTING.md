@@ -12,7 +12,7 @@ If you are having trouble using the website but it is not an error with the webs
 
 ## Enhancement Suggestions
 
-Do **not** use the issue tracker to suggest enhancements or improvements to the platform. The best place for these discussions is on Steemit.com. If there is a well vetted idea that has the support of the community that you feel should be considered by the development team, please email it to [sneak@steemit.com](mailto:sneak@steemit.com) for review.
+Do **not** use the issue tracker to suggest enhancements or improvements to the platform. The best place for these discussions is on Steemit.com. If there is a well vetted idea that has the support of the community that you feel should be considered by the development team, please email it to [sneak@smoke.io](mailto:sneak@smoke.io) for review.
 
 ## Implementation Discussion
 
@@ -34,4 +34,4 @@ This issue tracker is only intended to track issues for the Steemit.com website.
 
 Anybody in the community is welcome and encouraged to submit pull requests with any desired changes to the platform!
 
-Requests to make changes to steemit.com that include working, tested pull requests jump to the top of the queue. There is not a guarantee that all functionality submitted as a PR will be accepted and merged, however.
+Requests to make changes to smoke.io that include working, tested pull requests jump to the top of the queue. There is not a guarantee that all functionality submitted as a PR will be accepted and merged, however.

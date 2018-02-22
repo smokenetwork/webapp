@@ -194,7 +194,7 @@ class CreateAccount extends React.Component {
                         <h4>Cryptography test failed</h4>
                         <p>We will be unable to create your Steem account with this browser.</p>
                         <p>The latest versions of <a href="https://www.google.com/chrome/">Chrome</a> and <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>
-                            are well tested and known to work with steemit.com.</p>
+                            are well tested and known to work with smoke.io.</p>
                     </div>
                 </div>
             </div>;
@@ -218,7 +218,7 @@ class CreateAccount extends React.Component {
                     <br />
                     <div className="callout alert">
                         <p>It looks like your sign up request is not approved yet or you already created an account.<br />
-                           Please try again later or contact <a href="mailto:support@steemit.com">support@steemit.com</a> for the status of your request.<br />
+                           Please try again later or contact <a href="mailto:support@smoke.io">support@smoke.io</a> for the status of your request.<br />
                            If you didn't submit your sign up application yet, <Link to="/pick_account">apply now</Link>!
                         </p>
                     </div>
