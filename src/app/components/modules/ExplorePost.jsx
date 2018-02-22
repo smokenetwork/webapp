@@ -56,19 +56,25 @@ class ExplorePost extends Component {
         return (
             <span className="ExplorePost">
                 <h4>{tt('g.share_this_post')}</h4>
-                <hr />
+                <hr/>
                 <div className="input-group">
-                    <input className="input-group-field share-box" type="text" value={steemit} onChange={(e) => e.preventDefault()} />
-                    <CopyToClipboard text={steemit} onCopy={this.onCopy} className="ExplorePost__copy-button input-group-label">
+                    <input className="input-group-field share-box" type="text" value={steemit}
+                           onChange={(e) => e.preventDefault()}/>
+                    <CopyToClipboard text={steemit} onCopy={this.onCopy}
+                                     className="ExplorePost__copy-button input-group-label">
                       <span>{text}</span>
                     </CopyToClipboard>
                 </div>
                 <h5>{tt('explorepost_jsx.alternative_sources')}</h5>
                 <ul>
-                    <li><a href={steemd} onClick={this.Steemd} target="_blank" rel="noopener noreferrer">steemd.com <Icon name="extlink" /></a></li>
-                    <li><a href={steemdb} onClick={this.Steemdb} target="_blank" rel="noopener noreferrer">steemdb.com <Icon name="extlink" /></a></li>
-                    <li><a href={busy} onClick={this.Busy} target="_blank" rel="noopener noreferrer">busy.org <Icon name="extlink" /></a></li>
-                    <li><a href={phist} onClick={this.Phist} target="_blank" rel="noopener noreferrer">phist.steemdata.com <Icon name="extlink" /></a></li>
+                    <li><a href={steemd} onClick={this.Steemd} target="_blank"
+                           rel="noopener noreferrer">steemd.com <Icon name="extlink"/></a></li>
+                    <li><a href={steemdb} onClick={this.Steemdb} target="_blank"
+                           rel="noopener noreferrer">steemdb.com <Icon name="extlink"/></a></li>
+                    <li><a href={busy} onClick={this.Busy} target="_blank" rel="noopener noreferrer">busy.org <Icon
+                        name="extlink"/></a></li>
+                    <li><a href={phist} onClick={this.Phist} target="_blank"
+                           rel="noopener noreferrer">phist.steemdata.com <Icon name="extlink"/></a></li>
                 </ul>
             </span>
         )

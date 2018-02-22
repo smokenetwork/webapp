@@ -6,16 +6,16 @@ import Reputation from './Reputation';
 
 const AuthorDropdown = (props) => {
     const author_link = <span className="author" itemProp="author" itemScope itemType="http://schema.org/Person">
-        <Link to={'/@' + props.author}><strong>{props.author}</strong></Link> <Reputation value={props.authorRepLog10} />
+        <Link to={'/@' + props.author}><strong>{props.author}</strong></Link> <Reputation value={props.authorRepLog10}/>
     </span>;
-    if(!(props.follow || props.mute) || props.username === props.author) {
+    if (!(props.follow || props.mute) || props.username === props.author) {
         return author_link;
     } else {
         return (
-            <div className = "Author__container">
+            <div className="Author__container">
                 <div className="Author__dropdown">
                     <Link to={'/@' + props.author}>
-                        <Userpic account={props.author} />
+                        <Userpic account={props.author}/>
                     </Link>
                     <Link to={'/@' + props.author} className="Author__name">
                         {props.name}
@@ -24,7 +24,8 @@ const AuthorDropdown = (props) => {
                         @{props.author}
                     </Link>
                     <div>
-                        <Follow className="float-right" follower={props.username} following={props.author} what="blog" showFollow={props.follow} showMute={props.mute} />
+                        <Follow className="float-right" follower={props.username} following={props.author} what="blog"
+                                showFollow={props.follow} showMute={props.mute}/>
                     </div>
                     <div className="Author__bio">
                         {props.about}
@@ -37,7 +38,5 @@ const AuthorDropdown = (props) => {
 
 export default AuthorDropdown;
 
-AuthorDropdown.propTypes = {
-
-}
+AuthorDropdown.propTypes = {}
 AuthorDropdown.defaultProps = {}

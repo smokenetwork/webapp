@@ -4,7 +4,7 @@ import DropdownMenu from './DropdownMenu';
 import {Link} from 'react-router';
 
 function userLink(name) {
-    return <Link className="username" key={name} to={'/@'+name}>{name}</Link>
+    return <Link className="username" key={name} to={'/@' + name}>{name}</Link>
 }
 
 class UserNames extends Component {
@@ -19,12 +19,12 @@ class UserNames extends Component {
     render() {
         let {names, size} = this.props
 
-        if(!names) {
-          return null;
+        if (!names) {
+            return null;
         }
 
         // `size` is max number of names to list before "and <x>"
-        if(size >= names.length) {
+        if (size >= names.length) {
             // enforce bounds
             size = names.length - 1;
         }
@@ -35,22 +35,24 @@ class UserNames extends Component {
         let out = [];
 
         // build first portion of output: "name1, name2, name3"
-        for(var i = 0; i < names.length; i++) {
-            if(i > 0) out.push(<span key={"_comma"+i}>, </span>);
+        for (var i = 0; i < names.length; i++) {
+            if (i > 0) out.push(<span key={"_comma" + i}>, </span>);
             out.push(userLink(names[i]));
         }
 
         // build suffix: " and name4" or " and 3 others" (dropdown if and_names > 1)
-        if(and_names.length > 0) {
+        if (and_names.length > 0) {
             out.push(<span key="_and"> and </span>);
-            if(and_names.length == 1) { // and <name>
+            if (and_names.length == 1) { // and <name>
                 out.push(userLink(and_names[0]));
             } else { // and <x> others...
-                out.push(<DropdownMenu 
+                out.push(<DropdownMenu
                     key="_others"
-                    selected={and_names.length + " others"} 
-                    items={and_names.map(name => {return {value: name, link: '/@' + name}})}
-                    el="div" />);
+                    selected={and_names.length + " others"}
+                    items={and_names.map(name => {
+                        return {value: name, link: '/@' + name}
+                    })}
+                    el="div"/>);
             }
         }
 

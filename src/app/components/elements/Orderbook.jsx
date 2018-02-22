@@ -18,7 +18,7 @@ export default class Orderbook extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({
-            animate: true
+                animate: true
             });
         }, 2000);
     }
@@ -48,12 +48,18 @@ export default class Orderbook extends React.Component {
 
         return (
             <thead>
-                <tr>
-                    <th>{buy ? tt('market_jsx.total_DEBT_TOKEN_SHORT_CURRENCY_SIGN', {DEBT_TOKEN_SHORT, CURRENCY_SIGN}) : tt('g.price')}</th>
-                    <th>{buy ? `${DEBT_TOKEN_SHORT} (${CURRENCY_SIGN})` : LIQUID_TOKEN}</th>
-                    <th>{buy ? LIQUID_TOKEN : `${DEBT_TOKEN_SHORT} (${CURRENCY_SIGN})`}</th>
-                    <th>{buy ? tt('g.price') : tt('market_jsx.total_DEBT_TOKEN_SHORT_CURRENCY_SIGN', {DEBT_TOKEN_SHORT, CURRENCY_SIGN})}</th>
-                </tr>
+            <tr>
+                <th>{buy ? tt('market_jsx.total_DEBT_TOKEN_SHORT_CURRENCY_SIGN', {
+                    DEBT_TOKEN_SHORT,
+                    CURRENCY_SIGN
+                }) : tt('g.price')}</th>
+                <th>{buy ? `${DEBT_TOKEN_SHORT} (${CURRENCY_SIGN})` : LIQUID_TOKEN}</th>
+                <th>{buy ? LIQUID_TOKEN : `${DEBT_TOKEN_SHORT} (${CURRENCY_SIGN})`}</th>
+                <th>{buy ? tt('g.price') : tt('market_jsx.total_DEBT_TOKEN_SHORT_CURRENCY_SIGN', {
+                    DEBT_TOKEN_SHORT,
+                    CURRENCY_SIGN
+                })}</th>
+            </tr>
             </thead>
         );
     }
@@ -69,25 +75,25 @@ export default class Orderbook extends React.Component {
 
         let total = 0;
         return orders
-        .map((order, index) => {
-            total += order.getSBDAmount();
-            if (index >= (buy ? buyIndex : sellIndex) && index < ((buy ? buyIndex : sellIndex) + 10)) {
-                return (
-                    <OrderbookRow
-                        onClick={this.props.onClick}
-                        animate={this.state.animate}
-                        key={side + order.getStringSBD() + order.getStringPrice()}
-                        index={index}
-                        order={order}
-                        side={side}
-                        total={total}
-                    />
-                );
-            }
-            return null;
-        }).filter(a => {
-            return !!a;
-        });
+            .map((order, index) => {
+                total += order.getSBDAmount();
+                if (index >= (buy ? buyIndex : sellIndex) && index < ((buy ? buyIndex : sellIndex) + 10)) {
+                    return (
+                        <OrderbookRow
+                            onClick={this.props.onClick}
+                            animate={this.state.animate}
+                            key={side + order.getStringSBD() + order.getStringPrice()}
+                            index={index}
+                            order={order}
+                            side={side}
+                            total={total}
+                        />
+                    );
+                }
+                return null;
+            }).filter(a => {
+                return !!a;
+            });
     }
 
     render() {
@@ -102,22 +108,28 @@ export default class Orderbook extends React.Component {
                 <table className="Market__orderbook">
                     {this.renderBuySellHeader()}
                     <tbody>
-                            {this.renderOrdersRows()}
+                    {this.renderOrdersRows()}
                     </tbody>
                 </table>
                 <nav>
-                  <ul className="pager">
-                    <li>
-                        <div className={"button tiny hollow " + (buy ? "float-left" : "float-left") + (currentIndex === 0 ? " disabled" : "")} onClick={this._setBuySellPage.bind(this, false)} aria-label="Previous">
-                            <span aria-hidden="true">&larr; {buy ? tt('market_jsx.higher') : tt('market_jsx.lower')}</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div className={"button tiny hollow " + (buy ? "float-right" : "float-right") + (currentIndex >= (orders.length - 10) ? " disabled" : "")} onClick={this._setBuySellPage.bind(this, true)} aria-label="Next">
-                            <span aria-hidden="true">{buy ? tt('market_jsx.lower') : tt('market_jsx.higher')} &rarr;</span>
-                        </div>
-                    </li>
-                  </ul>
+                    <ul className="pager">
+                        <li>
+                            <div
+                                className={"button tiny hollow " + (buy ? "float-left" : "float-left") + (currentIndex === 0 ? " disabled" : "")}
+                                onClick={this._setBuySellPage.bind(this, false)} aria-label="Previous">
+                                <span
+                                    aria-hidden="true">&larr; {buy ? tt('market_jsx.higher') : tt('market_jsx.lower')}</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div
+                                className={"button tiny hollow " + (buy ? "float-right" : "float-right") + (currentIndex >= (orders.length - 10) ? " disabled" : "")}
+                                onClick={this._setBuySellPage.bind(this, true)} aria-label="Next">
+                                <span
+                                    aria-hidden="true">{buy ? tt('market_jsx.lower') : tt('market_jsx.higher')} &rarr;</span>
+                            </div>
+                        </li>
+                    </ul>
                 </nav>
             </div>
 

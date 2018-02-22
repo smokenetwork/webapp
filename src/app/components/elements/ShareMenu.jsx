@@ -18,11 +18,11 @@ export default class ShareMenu extends React.Component {
                 {items.map(i => {
                     return <li key={i.value}>
                         {i.link ? <Link to={i.link} onClick={i.onClick} title={i.title}>
-                            {i.icon && <Icon name={i.icon} />}{}
-                            &nbsp; {i.addon}
-                        </Link> :
+                                {i.icon && <Icon name={i.icon}/>}{}
+                                &nbsp; {i.addon}
+                            </Link> :
                             <span>
-                        {i.icon && <Icon name={i.icon} />}{i.label ? i.label : i.value}
+                        {i.icon && <Icon name={i.icon}/>}{i.label ? i.label : i.value}
                     </span>
                         }
                     </li>

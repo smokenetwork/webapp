@@ -1,4 +1,12 @@
-
+$primary-color: #171F24;
+$secondary-color: #18ce0f;
+$foundation-palette: (
+    primary: $primary-color,
+    secondary: $secondary-color,
+    success: #18ce0f,
+    warning: #ffae00,
+    alert: #ec5840,
+);
 
 $color-white: #fff;
 $color-black: #000;
@@ -9,9 +17,9 @@ $color-blue-original-light: #4BA2F2;
 $color-blue-black: #171F24;
 $color-blue-black-darkest: #11161A;
 $color-blue-dark: #2C3A45;
-$color-teal: #06D6A9;
-$color-teal-light:#00FFC8;
-$color-teal-dark:#049173;
+$color-teal: #18ce0f;
+$color-teal-light: #18ce0f;
+$color-teal-dark: #18ce0f;
 
 $color-yellow: #fce76c;
 $color-transparent: transparent;
@@ -24,7 +32,7 @@ $color-text-white: #fcfcfc;
 $color-text-blue: #004EFF;
 $color-text-gray: #788187;
 $color-text-gray-light: #A6B2BA;
-$color-text-teal: #1FBF8F;
+$color-text-teal: #18ce0f;
 $color-text-red: $color-red;
 
 $color-border-light: #eee;
@@ -35,3 +43,15 @@ $color-border-dark-lightest: #2B3A45;
 $font-primary: helvetica, sans-serif;
 
 $alert-color: $color-red;
+
+$primary-text-color: $primary-color;
+$primary-link-color: $primary-color;
+$primary-link-hover-color: $secondary-color;
+$primary-button-background-color: $secondary-color;
+$primary-button-text-color: #FFF;
+
+$secondary-text-color: $secondary-color;
+$secondary-link-color: $secondary-color;
+$secondary-link-hover-color: $primary-color;
+$secondary-button-background-color: $primary-color;
+$secondary-button-text-color: #FFF;

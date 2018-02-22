@@ -54,12 +54,13 @@ export default class AddToWaitingList extends React.Component {
         return <form onSubmit={this.onSubmit}>
             <div>
                 <label>{tt('g.email')}
-                    <input ref="email" type="text" name="name" autoComplete="off" value={email} onChange={this.onEmailChange} />
+                    <input ref="email" type="text" name="name" autoComplete="off" value={email}
+                           onChange={this.onEmailChange}/>
                 </label>
                 <p className="error">{email_error}</p>
             </div>
-            <br />
-            <input type="submit" className="button secondary" value={tt('g.submit')} />
+            <br/>
+            <input type="submit" className="button secondary" value={tt('g.submit')}/>
         </form>;
     }
 }

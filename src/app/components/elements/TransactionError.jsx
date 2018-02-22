@@ -19,25 +19,29 @@ class TransactionError extends React.Component {
         errorKey: string,
         exception: string,
     }
+
     componentWillMount() {
         const {opType, addListener} = this.props
         addListener(opType)
     }
+
     shouldComponentUpdate = shouldComponentUpdate(this, 'TransactionError')
+
     componentWillUnmount() {
         const {opType, removeListener} = this.props
         removeListener(opType)
     }
+
     render() {
-        const{errorKey, exception, error} = this.props
+        const {errorKey, exception, error} = this.props
         const cn = "error callout alert"
-        if(!errorKey && !exception) {
-            if(!error) return <span></span>
-                return (
-                    <span className="TransactionError">
+        if (!errorKey && !exception) {
+            if (!error) return <span></span>
+            return (
+                <span className="TransactionError">
                         <div className={cn}>{error}</div>
                     </span>
-                )
+            )
         }
         const text = (errorKey ? errorKey : exception)
         return (

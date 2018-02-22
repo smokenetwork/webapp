@@ -19,6 +19,7 @@ class ShowKey extends Component {
         children: PropTypes.object,
         onKey: PropTypes.func,
     }
+
     constructor() {
         super()
         this.state = {}
@@ -27,7 +28,7 @@ class ShowKey extends Component {
             const {state: {show, wif}} = this
             const {onKey, pubkey} = this.props
             this.setState({show: !show})
-            if(onKey) onKey(!show ? wif : null, pubkey)
+            if (onKey) onKey(!show ? wif : null, pubkey)
         }
         this.showLogin = () => {
             const {showLogin, accountName, authType} = this.props
@@ -35,16 +36,20 @@ class ShowKey extends Component {
         }
         this.showLogin = this.showLogin.bind(this)
     }
+
     componentWillMount() {
         this.setWif(this.props, this.state)
         this.setOnKey(this.props, this.state)
     }
+
     componentWillReceiveProps(nextProps) {
         this.setWif(nextProps)
     }
+
     componentWillUpdate(nextProps, nextState) {
         this.setOnKey(nextProps, nextState)
     }
+
     setWif(props) {
         const {privateKey, pubkey} = props
         if (privateKey && pubkey === privateKey.toPublicKey().toString()) {
@@ -54,15 +59,18 @@ class ShowKey extends Component {
             this.setState({wif: undefined})
         }
     }
+
     setOnKey(nextProps, nextState) {
         const {show, wif} = nextState
         const {onKey, pubkey} = nextProps
-        if(onKey) onKey((show ? wif : null), pubkey)
+        if (onKey) onKey((show ? wif : null), pubkey)
     }
+
     showQr = () => {
         const {show, wif} = this.state;
         this.props.showQRKey({type: this.props.authType, text: show ? wif : this.props.pubkey, isPrivate: show});
     }
+
     render() {
         const {onShow, showLogin, props: {pubkey, cmpProps, children, authType}} = this
         const {show, wif} = this.state
@@ -73,17 +81,19 @@ class ShowKey extends Component {
 
 
         const keyLink = wif ?
-            <div style={{marginBottom: 0}} className="hollow tiny button slim"><a onClick={onShow}>{show ? keyIcon : showTip}</a></div> :
+            <div style={{marginBottom: 0}} className="hollow tiny button slim"><a
+                onClick={onShow}>{show ? keyIcon : showTip}</a></div> :
             authType === 'memo' ? null :
-            authType === 'owner' ? null :
+                authType === 'owner' ? null :
 
-            <div style={{marginBottom: 0}} className="hollow tiny button slim"><a onClick={showLogin}>{tt('g.login_to_show')}</a></div>;
+                    <div style={{marginBottom: 0}} className="hollow tiny button slim"><a
+                        onClick={showLogin}>{tt('g.login_to_show')}</a></div>;
 
 
         return (<div className="row">
             <div className="column small-12 medium-10">
                 <div style={{display: "inline-block", paddingRight: 10, cursor: "pointer"}} onClick={this.showQr}>
-                    <img src={qrCodeImage} height="40" width="40" />
+                    <img src={qrCodeImage} height="40" width="40"/>
                 </div>
                 {/* Keep this as wide as possible, check print preview makes sure WIF it not cut off */}
                 <span {...cmpProps}>{show ? wif : pubkey}</span>
@@ -97,6 +107,7 @@ class ShowKey extends Component {
         </div>)
     }
 }
+
 export default connect(
     (state, ownProps) => ownProps,
     dispatch => ({

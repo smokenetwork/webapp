@@ -29,7 +29,7 @@ export default class DropdownMenu extends React.Component {
 
     toggle = (e) => {
         const {shown} = this.state
-        if(shown) this.hide(e)
+        if (shown) this.hide(e)
         else this.show(e)
     }
 
@@ -69,12 +69,13 @@ export default class DropdownMenu extends React.Component {
 
         let entry = children || <span>
                 {this.getSelectedLabel(items, selected)}
-                {hasDropdown && <Icon name="dropdown-arrow" />}
+            {hasDropdown && <Icon name="dropdown-arrow"/>}
             </span>
 
-        if(hasDropdown) entry = <a key="entry" href={href || '#'} onClick={this.toggle}>{entry}</a>
+        if (hasDropdown) entry = <a key="entry" href={href || '#'} onClick={this.toggle}>{entry}</a>
 
-        const menu = <VerticalMenu key="menu" title={title} items={items} hideValue={selected} className="VerticalMenu" />;
+        const menu = <VerticalMenu key="menu" title={title} items={items} hideValue={selected}
+                                   className="VerticalMenu"/>;
         const cls = 'DropdownMenu' + (this.state.shown ? ' show' : '') + (className ? ` ${className}` : '')
         return React.createElement(el, {className: cls}, [entry, menu]);
     }

@@ -8,6 +8,7 @@ export default class Link extends React.Component {
         // HTML properties
         href: React.PropTypes.string,
     }
+
     constructor(props) {
         super()
         const {href} = props
@@ -18,9 +19,10 @@ export default class Link extends React.Component {
             browserHistory.push(this.props.href)
         }
     }
+
     render() {
         const {props: {href, children}, onLocalClick} = this
-        if(this.localLink) return <a onClick={onLocalClick}>{children}</a>
+        if (this.localLink) return <a onClick={onLocalClick}>{children}</a>
         return <a target="_blank" rel="noopener" href={href}>{children}</a>
     }
 }

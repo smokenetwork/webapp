@@ -40,7 +40,7 @@ class LoginForm extends Component {
             this.state.username.props.onChange(value)
         };
         this.onCancel = (e) => {
-            if(e.preventDefault) e.preventDefault()
+            if (e.preventDefault) e.preventDefault()
             const {onCancel, loginBroadcastOperation} = this.props;
             const errorCallback = loginBroadcastOperation && loginBroadcastOperation.get('errorCallback');
             if (errorCallback) errorCallback('Canceled');
@@ -49,7 +49,9 @@ class LoginForm extends Component {
         this.qrReader = () => {
             const {qrReader} = props
             const {password} = this.state
-            qrReader(data => {password.props.onChange(data)})
+            qrReader(data => {
+                password.props.onChange(data)
+            })
         };
         this.initForm(props)
     }
@@ -68,8 +70,8 @@ class LoginForm extends Component {
             fields: ['username', 'password', 'saveLogin:checked'],
             initialValues: props.initialValues,
             validation: values => ({
-                username: ! values.username ? tt('g.required') : validate_account_name(values.username.split('/')[0]),
-                password: ! values.password ? tt('g.required') :
+                username: !values.username ? tt('g.required') : validate_account_name(values.username.split('/')[0]),
+                password: !values.password ? tt('g.required') :
                     PublicKey.fromString(values.password) ? tt('loginform_jsx.you_need_a_private_password_or_key') :
                         null,
             })
@@ -113,7 +115,10 @@ class LoginForm extends Component {
                     <div className="callout alert">
                         <h4>{tt('loginform_jsx.cryptography_test_failed')}</h4>
                         <p>{tt('loginform_jsx.unable_to_log_you_in')}</p>
-                        <p>{tt('loginform_jsx.the_latest_versions_of')} <a href="https://www.google.com/chrome/">Chrome</a> {tt('g.and')} <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> {tt('loginform_jsx.are_well_tested_and_known_to_work_with', {APP_URL})}</p>
+                        <p>{tt('loginform_jsx.the_latest_versions_of')} <a
+                            href="https://www.google.com/chrome/">Chrome</a> {tt('g.and')} <a
+                            href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> {tt('loginform_jsx.are_well_tested_and_known_to_work_with', {APP_URL})}
+                        </p>
                     </div>
                 </div>
             </div>;
@@ -149,19 +154,21 @@ class LoginForm extends Component {
         let error = password.touched && password.error ? password.error : this.props.login_error;
         if (error === 'owner_login_blocked') {
             error = <span>{tt('loginform_jsx.this_password_is_bound_to_your_account_owner_key')}
-                {tt('loginform_jsx.however_you_can_use_it_to')}<a onClick={this.showChangePassword}>{tt('loginform_jsx.update_your_password')}</a> {tt('loginform_jsx.to_obtain_a_more_secure_set_of_keys')}</span>
+                {tt('loginform_jsx.however_you_can_use_it_to')}<a
+                    onClick={this.showChangePassword}>{tt('loginform_jsx.update_your_password')}</a> {tt('loginform_jsx.to_obtain_a_more_secure_set_of_keys')}</span>
         } else if (error === 'active_login_blocked') {
-            error = <span>{tt('loginform_jsx.this_password_is_bound_to_your_account_active_key')} {tt('loginform_jsx.you_may_use_this_active_key_on_other_more')}</span>
+            error =
+                <span>{tt('loginform_jsx.this_password_is_bound_to_your_account_active_key')} {tt('loginform_jsx.you_may_use_this_active_key_on_other_more')}</span>
         }
         let message = null;
         if (msg) {
             if (msg === 'accountcreated') {
-                message =<div className="callout primary">
+                message = <div className="callout primary">
                     <p>{tt('loginform_jsx.you_account_has_been_successfully_created')}</p>
                 </div>;
             }
             else if (msg === 'accountrecovered') {
-                message =<div className="callout primary">
+                message = <div className="callout primary">
                     <p>{tt('loginform_jsx.you_account_has_been_successfully_recovered')}</p>
                 </div>;
             }
@@ -184,38 +191,50 @@ class LoginForm extends Component {
             >
                 <div className="input-group">
                     <span className="input-group-label">@</span>
-                    <input className="input-group-field" type="text" required placeholder={tt('loginform_jsx.enter_your_username')} ref="username"
+                    <input className="input-group-field" type="text" required
+                           placeholder={tt('loginform_jsx.enter_your_username')} ref="username"
                            {...username.props} onChange={usernameOnChange} autoComplete="on" disabled={submitting}
                     />
                 </div>
-                {username.touched && username.blur && username.error ? <div className="error">{username.error}&nbsp;</div> : null}
+                {username.touched && username.blur && username.error ?
+                    <div className="error">{username.error}&nbsp;</div> : null}
 
                 <div>
-                    <input type="password" required ref="pw" placeholder={tt('loginform_jsx.password_or_wif')} {...password.props} autoComplete="on" disabled={submitting} />
+                    <input type="password" required ref="pw"
+                           placeholder={tt('loginform_jsx.password_or_wif')} {...password.props} autoComplete="on"
+                           disabled={submitting}/>
                     {error && <div className="error">{error}&nbsp;</div>}
                     {error && password_info && <div className="warning">{password_info}&nbsp;</div>}
                 </div>
                 {loginBroadcastOperation && <div>
-                    <div className="info">{tt('loginform_jsx.this_operation_requires_your_key_or_master_password', {authType})}</div>
+                    <div
+                        className="info">{tt('loginform_jsx.this_operation_requires_your_key_or_master_password', {authType})}</div>
                 </div>}
                 <div>
                     <label className="LoginForm__save-login" htmlFor="saveLogin">
 
-                        <input id="saveLogin" type="checkbox" ref="pw" {...saveLogin.props} onChange={this.saveLoginToggle} disabled={submitting} />&nbsp;{tt('loginform_jsx.keep_me_logged_in')}</label>
+                        <input id="saveLogin" type="checkbox" ref="pw" {...saveLogin.props}
+                               onChange={this.saveLoginToggle}
+                               disabled={submitting}/>&nbsp;{tt('loginform_jsx.keep_me_logged_in')}</label>
                 </div>
                 <div className="login-modal-buttons">
-                    <br />
+                    <br/>
                     <button type="submit" disabled={submitting || disabled} className="button" onClick={this.SignIn}>
                         {submitLabel}
                     </button>
-                    {this.props.onCancel && <button type="button float-right" disabled={submitting} className="button hollow" onClick={onCancel}>
+                    {this.props.onCancel &&
+                    <button type="button float-right" disabled={submitting} className="button hollow"
+                            onClick={onCancel}>
                         {tt('g.cancel')}
                     </button>}
                 </div>
                 <div className="sign-up">
-                    <hr />
-                    <p>{tt('loginform_jsx.join_our')} <em>{tt('loginform_jsx.amazing_community')}</em>{tt('loginform_jsx.to_comment_and_reward_others')}</p>
-                    <button type="button" className="button hollow" onClick={this.SignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
+                    <hr/>
+                    <p>{tt('loginform_jsx.join_our')}
+                        <em>{tt('loginform_jsx.amazing_community')}</em>{tt('loginform_jsx.to_comment_and_reward_others')}
+                    </p>
+                    <button type="button" className="button hollow"
+                            onClick={this.SignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
                 </div>
             </form>
         );
@@ -251,7 +270,7 @@ function checkPasswordChecksum(password) {
     // It is possible to login directly with a WIF
     const wif = /^P/.test(password) ? password.substring(1) : password
 
-    if(!/^5[HJK].{45,}/i.test(wif)) {// 51 is the wif length
+    if (!/^5[HJK].{45,}/i.test(wif)) {// 51 is the wif length
         // not even close
         return undefined
     }
@@ -260,7 +279,6 @@ function checkPasswordChecksum(password) {
 }
 
 export default connect(
-
     // mapStateToProps
     (state) => {
         const login_error = state.user.get('login_error')
@@ -274,9 +292,9 @@ export default connect(
         // The username input has a value prop, so it should not use initialValues
         const initialUsername = currentUser && currentUser.has('username') ? currentUser.get('username') : urlAccountName()
         const loginDefault = state.user.get('loginDefault')
-        if(loginDefault) {
+        if (loginDefault) {
             const {username, authType} = loginDefault.toJS()
-            if(username && authType) initialValues.username = username + '/' + authType
+            if (username && authType) initialValues.username = username + '/' + authType
         } else if (initialUsername) {
             initialValues.username = initialUsername;
         }
@@ -305,14 +323,34 @@ export default connect(
             const username = data.username.trim().toLowerCase()
             if (loginBroadcastOperation) {
                 const {type, operation, successCallback, errorCallback} = loginBroadcastOperation.toJS()
-                dispatch(transaction.actions.broadcastOperation({type, operation, username, password, successCallback, errorCallback}))
-                dispatch(user.actions.usernamePasswordLogin({username, password, saveLogin, afterLoginRedirectToWelcome, operationType: type}))
+                dispatch(transaction.actions.broadcastOperation({
+                    type,
+                    operation,
+                    username,
+                    password,
+                    successCallback,
+                    errorCallback
+                }))
+                dispatch(user.actions.usernamePasswordLogin({
+                    username,
+                    password,
+                    saveLogin,
+                    afterLoginRedirectToWelcome,
+                    operationType: type
+                }))
                 dispatch(user.actions.closeLogin())
             } else {
-                dispatch(user.actions.usernamePasswordLogin({username, password, saveLogin, afterLoginRedirectToWelcome}))
+                dispatch(user.actions.usernamePasswordLogin({
+                    username,
+                    password,
+                    saveLogin,
+                    afterLoginRedirectToWelcome
+                }))
             }
         },
-        clearError: () => { if (hasError) dispatch(user.actions.loginError({error: null})) },
+        clearError: () => {
+            if (hasError) dispatch(user.actions.loginError({error: null}))
+        },
         qrReader: (dataCallback) => {
             dispatch(g.actions.showDialog({name: 'qr_reader', params: {handleScan: dataCallback}}));
         },

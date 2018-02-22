@@ -117,18 +117,19 @@ class Powerdown extends React.Component {
                     onChange={sliderChange}
                 />
                 <p className="powerdown-amount">
-                    {tt('powerdown_jsx.amount')}<br />
+                    {tt('powerdown_jsx.amount')}<br/>
                     <input
                         value={manual_entry ? manual_entry : formatSp(new_withdraw)}
                         onChange={inputChange}
-                        autoCorrect={false} />
+                        autoCorrect={false}/>
                     {LIQUID_TICKER}
                 </p>
                 <ul className="powerdown-notes">{notes}</ul>
-                <button type="submit" className="button" onClick={powerDown} disabled={broadcasting}>{tt('powerdown_jsx.power_down')}</button>
+                <button type="submit" className="button" onClick={powerDown}
+                        disabled={broadcasting}>{tt('powerdown_jsx.power_down')}</button>
             </div>
         )
-     }
+    }
 }
 
 export default connect(

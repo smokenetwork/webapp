@@ -30,7 +30,7 @@ class UserList extends React.Component {
 
         let idx = 0
         let user_list = users.map(user =>
-            <UserListRow account={account} user={user} key={idx++} />
+            <UserListRow account={account} user={user} key={idx++}/>
         )
         user_list = user_list.toArray();
 
@@ -43,20 +43,24 @@ class UserList extends React.Component {
         });
 
         const navButtons = (
-             <nav>
-               <ul className="pager">
-                 <li>
-                     <div className={"button tiny hollow float-left " + (historyIndex === 0 ? " disabled" : "")} onClick={this._setHistoryPagePrevious} aria-label={tt('g.previous')}>
-                         <span aria-hidden="true">&larr; {tt('g.previous')}</span>
-                     </div>
-                 </li>
-                 <li>
-                     <div className={"button tiny hollow float-right " + (historyIndex >= (usersLength - PER_PAGE) ? " disabled" : "")} onClick={historyIndex >= (usersLength - PER_PAGE) ? null : this._setHistoryPageNext} aria-label={tt('g.next')}>
-                         <span aria-hidden="true">{tt('g.next')} &rarr;</span>
-                     </div>
-                 </li>
-               </ul>
-             </nav>
+            <nav>
+                <ul className="pager">
+                    <li>
+                        <div className={"button tiny hollow float-left " + (historyIndex === 0 ? " disabled" : "")}
+                             onClick={this._setHistoryPagePrevious} aria-label={tt('g.previous')}>
+                            <span aria-hidden="true">&larr; {tt('g.previous')}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div
+                            className={"button tiny hollow float-right " + (historyIndex >= (usersLength - PER_PAGE) ? " disabled" : "")}
+                            onClick={historyIndex >= (usersLength - PER_PAGE) ? null : this._setHistoryPageNext}
+                            aria-label={tt('g.next')}>
+                            <span aria-hidden="true">{tt('g.next')} &rarr;</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         );
 
         return (<div className="UserList">
@@ -66,7 +70,7 @@ class UserList extends React.Component {
                     {navButtons}
                     <table>
                         <tbody>
-                            {user_list}
+                        {user_list}
                         </tbody>
                     </table>
                     {navButtons}

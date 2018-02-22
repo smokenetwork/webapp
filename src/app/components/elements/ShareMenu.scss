@@ -19,8 +19,8 @@
         color: #ffffff;
         svg {
             @include themify($themes) {
-              fill: themed('colorAccent');
-            }  
+                fill: themed('colorAccent');
+            }
         }
     }
     li > a:link {
@@ -29,5 +29,5 @@
 }
 
 .RightShare__Menu {
-    padding-right: 0.6rem!important;
+    padding-right: 0.6rem !important;
 }

@@ -22,7 +22,7 @@ class PasswordReset extends Component {
 
         return (<div className="row">
             <div className="column large-6 small-12">
-                 <ChangePassword username={accountName} />
+                <ChangePassword username={accountName}/>
             </div>
         </div>)
     }
@@ -37,6 +37,5 @@ export default connect(
         const isMyAccount = username === accountName
         return {...ownProps, isMyAccount, accountName}
     },
-    dispatch => ({
-    })
+    dispatch => ({})
 )(PasswordReset)

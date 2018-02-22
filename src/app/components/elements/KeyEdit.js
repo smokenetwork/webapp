@@ -23,6 +23,7 @@ class KeyEdit extends Component {
         submitting: PropTypes.bool.isRequired,
         error: PropTypes.string,
     }
+
     constructor() {
         super()
         this.state = {}
@@ -39,9 +40,13 @@ class KeyEdit extends Component {
         }
         this.onKeyChanged = this.onKeyChanged.bind(this)
     }
+
     componentDidMount() {
-        setTimeout(() => { this.refs.key.focus() }, 300)
+        setTimeout(() => {
+            this.refs.key.focus()
+        }, 300)
     }
+
     componentWillReceiveProps(nextProps) {
         const {fields: {password, confirm}} = nextProps
         let isWif
@@ -56,6 +61,7 @@ class KeyEdit extends Component {
         }
         this.setState({isWif})
     }
+
     render() {
         const {
             onCancel, onKeyChanged, // see constructor
@@ -72,21 +78,21 @@ class KeyEdit extends Component {
                     <div className={'column small-12' + (password.touched && password.error ? ' error' : '')}>
                         <label>Change “{authType}” Key (Password or WIF)</label>
                         <input ref="key" type="password" {...cleanReduxInput(password)}
-                            placeholder="Password or WIF" autoComplete="off" />
+                               placeholder="Password or WIF" autoComplete="off"/>
                         <span className="error">{password.touched && password.error && password.error}&nbsp;</span>
                     </div>
                     <div className={'column small-12' + (confirm.touched && confirm.error ? ' error' : '')}>
                         <label>{tt('g.confirm_password')}</label>
                         <input ref="keyConfirm" type="password" {...cleanReduxInput(confirm)} disabled={isWif}
-                            placeholder="Confirm Password" autoComplete="off" />
+                               placeholder="Confirm Password" autoComplete="off"/>
                         <div className="error">{confirm.touched && confirm.error && confirm.error}&nbsp;</div>
                     </div>
                     <div className="column small-12">
                         {error && <div className="error">{error}</div>}
-                        {submitting && <LoadingIndicator type="circle" />}
+                        {submitting && <LoadingIndicator type="circle"/>}
                         {accountChanged && <span>
                             <div className="success">{tt('g.account_updated')}</div>
-                            <br />
+                            <br/>
                             <button className="button" type="button" onClick={onCancel}>
                                 {tt('g.close')}
                             </button>
@@ -107,16 +113,16 @@ class KeyEdit extends Component {
 }
 
 const keyValidate = values => ({
-    password: ! values.password ? tt('g.required') :
+    password: !values.password ? tt('g.required') :
         values.password.length < 32 ? tt('g.password_must_be_characters_or_more', {amount: 32}) :
-        PublicKey.fromString(values.password) ? tt('g.need_password_or_key') :
-        null,
+            PublicKey.fromString(values.password) ? tt('g.need_password_or_key') :
+                null,
     confirm: values.confirm !== values.password ? tt('g.passwords_do_not_match') : null,
 })
 
 export default reduxForm(
     //config
-    { form: 'KeyEdit', fields: ['password', 'confirm'], validate: keyValidate},
+    {form: 'KeyEdit', fields: ['password', 'confirm'], validate: keyValidate},
     (state, ownProps) => {
         const {oldAuth} = ownProps
         const private_keys = state.user.getIn(['current', 'private_keys'])

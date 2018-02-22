@@ -30,6 +30,6 @@ class SubmitPost extends React.Component {
 }
 
 module.exports = {
-    path: 'submit.html',
+    path: 'post',
     component: SubmitPost // connect(state => ({ global: state.global }))(SubmitPost)
 };

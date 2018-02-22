@@ -16,7 +16,7 @@ const closers = [];
 
 const fnCloseAll = () => {
     var close;
-    while(close = closers.shift()) {
+    while (close = closers.shift()) {
         close();
     }
 }
@@ -35,13 +35,13 @@ class Author extends React.Component {
 
     constructor(...args) {
         super(...args);
-        this.state = { show: false };
+        this.state = {show: false};
         this.toggle = this.toggle.bind(this);
         this.close = this.close.bind(this);
     }
 
     componentDidMount() {
-        if(!this.authorProfileLink) {
+        if (!this.authorProfileLink) {
             return;
         }
         const node = ReactDOM.findDOMNode(this.authorProfileLink);
@@ -53,7 +53,7 @@ class Author extends React.Component {
     }
 
     componentWillUnmount() {
-        if(!this.authorProfileLink) {
+        if (!this.authorProfileLink) {
             return;
         }
         const node = ReactDOM.findDOMNode(this.authorProfileLink);
@@ -65,12 +65,12 @@ class Author extends React.Component {
     }
 
     toggle = (e) => {
-        if(!(e.metaKey || e.ctrlKey)) {
+        if (!(e.metaKey || e.ctrlKey)) {
             e.preventDefault();
             e.stopPropagation();
             const show = !this.state.show;
             fnCloseAll();
-            if(show) {
+            if (show) {
                 this.setState({show})
                 closers.push(this.close)
             }
@@ -84,6 +84,7 @@ class Author extends React.Component {
     }
 
     shouldComponentUpdate = shouldComponentUpdate(this, 'Author');
+
     render() {
         const {author, follow, mute, authorRepLog10} = this.props; // html
         const {username} = this.props; // redux
@@ -92,7 +93,7 @@ class Author extends React.Component {
         if (!(follow || mute) || username === author) {
             return (
                 <span className="author" itemProp="author" itemScope itemType="http://schema.org/Person">
-                    <strong><Link to={'/@' + author}>{author}</Link></strong> <Reputation value={authorRepLog10} />
+                    <strong><Link to={'/@' + author}>{author}</Link></strong> <Reputation value={authorRepLog10}/>
                 </span>
             );
         }
@@ -100,8 +101,10 @@ class Author extends React.Component {
         return (
             <span className="Author">
                 <span itemProp="author" itemScope itemType="http://schema.org/Person">
-                    <strong><Link className="ptc" ref={(link) => {this.authorProfileLink = link}} to={'/@' + author}>{author}<Icon name="dropdown-arrow" /></Link></strong>
-                    <Reputation value={authorRepLog10} />
+                    <strong><Link className="ptc" ref={(link) => {
+                        this.authorProfileLink = link
+                    }} to={'/@' + author}>{author}<Icon name="dropdown-arrow"/></Link></strong>
+                    <Reputation value={authorRepLog10}/>
                 </span>
                 <Overlay
                     show={this.state.show}

@@ -1,14 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import TopRightMenu from './TopRightMenu';
 import resolveRoute from '../../ResolveRoute';
-import DropdownMenu from '../elements/DropdownMenu';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import HorizontalMenu from '../elements/HorizontalMenu';
 import normalizeProfile from '../../utils/NormalizeProfile';
 import tt from 'counterpart';
 import {APP_NAME} from '../../client_config';
+import SvgImage from "../elements/SvgImage";
 
 function sortOrderToLink(so, topic, account) {
     if (so === 'home') return '/@' + account + '/feed';
@@ -85,10 +84,10 @@ class Header extends React.Component {
                 topic = (route.params.length > 1 ? route.params[1] : '')
                 const type = (route.params[0] == 'payout_comments' ? 'comments' : 'posts');
                 let prefix = route.params[0];
-                if(prefix == 'created') prefix = 'New'
-                if(prefix == 'payout') prefix = 'Pending payout'
-                if(prefix == 'payout_comments') prefix = 'Pending payout'
-                if(topic !== '') prefix += ` ${topic}`;
+                if (prefix == 'created') prefix = 'New'
+                if (prefix == 'payout') prefix = 'Pending payout'
+                if (prefix == 'payout_comments') prefix = 'Pending payout'
+                if (topic !== '') prefix += ` ${topic}`;
                 page_title = `${prefix} ${type}`
             }
         } else if (route.page === 'Post') {
@@ -118,23 +117,23 @@ class Header extends React.Component {
             const name = acct_meta ? normalizeProfile(acct_meta.toJS()).name : null;
             const user_title = name ? `${name} (@${user_name})` : user_name;
             page_title = user_title;
-            if(route.params[1] === "followers"){
+            if (route.params[1] === "followers") {
                 page_title = tt('header_jsx.people_following') + " " + user_title;
             }
-            if(route.params[1] === "followed"){
+            if (route.params[1] === "followed") {
                 page_title = tt('header_jsx.people_followed_by') + " " + user_title;
             }
-            if(route.params[1] === "curation-rewards"){
+            if (route.params[1] === "curation-rewards") {
                 page_title = tt('header_jsx.curation_rewards_by') + " " + user_title;
             }
-            if(route.params[1] === "author-rewards"){
+            if (route.params[1] === "author-rewards") {
                 page_title = tt('header_jsx.author_rewards_by') + " " + user_title;
             }
-            if(route.params[1] === "recent-replies"){
+            if (route.params[1] === "recent-replies") {
                 page_title = tt('header_jsx.replies_to') + " " + user_title;
             }
             // @user/"posts" is deprecated in favor of "comments" as of oct-2016 (#443)
-            if(route.params[1] === "posts" || route.params[1] === "comments"){
+            if (route.params[1] === "posts" || route.params[1] === "comments") {
                 page_title = tt('header_jsx.comments_by') + " " + user_title;
             }
         } else {
@@ -146,64 +145,42 @@ class Header extends React.Component {
             page_title = page_title.charAt(0).toUpperCase() + page_title.slice(1);
         }
 
-
         if (process.env.BROWSER && (route.page !== 'Post' && route.page !== 'PostNoCategory')) document.title = page_title + ' — ' + APP_NAME;
 
-        const logo_link = route.params && route.params.length > 1 && this.last_sort_order ? '/' + this.last_sort_order : (current_account_name ? `/@${current_account_name}/feed` : '/');
-        const topic_link = topic ? <Link to={`/${this.last_sort_order || 'trending'}/${topic}`}>{topic}</Link> : null;
+        const logoLink = route.params && route.params.length > 1 && this.last_sort_order ? '/' + this.last_sort_order : (current_account_name ? `/@${current_account_name}/feed` : '/');
 
-        const sort_orders = [
-            ['trending', tt('main_menu.trending')],
-            ['created', tt('g.new')],
-            ['hot', tt('main_menu.hot')],
-            ['promoted', tt('g.promoted')]
+        const menuItems = [
+            {
+                value: tt('main_menu.explore'),
+                link: '/created',
+                icon: 'home',
+            },
+            {
+                value: tt('main_menu.wallet'),
+                link: `@${current_account_name}/transfers`,
+                icon: 'wallet',
+            },
         ];
-        if (current_account_name) sort_orders.unshift(['home', tt('header_jsx.home')]);
-        const sort_order_menu = sort_orders.filter(so => so[0] !== sort_order).map(so => ({link: sortOrderToLink(so[0], topic, current_account_name), value: so[1]}));
-        const selected_sort_order = sort_orders.find(so => so[0] === sort_order);
-
-        const sort_orders_horizontal = [
-            ['trending', tt('main_menu.trending')],
-            ['created', tt('g.new')],
-            ['hot', tt('main_menu.hot')],
-            ['promoted', tt('g.promoted')]
-        ];
-        // if (current_account_name) sort_orders_horizontal.unshift(['home', tt('header_jsx.home')]);
-        const sort_order_menu_horizontal = sort_orders_horizontal.map((so) => {
-            let active = (so[0] === sort_order);
-            if (so[0] === 'home' && sort_order === 'home' && !home_account) active = false;
-            return {link: sortOrderToLink(so[0], topic, current_account_name), value: so[1], active};
-        });
 
         return (
             <header className="Header noPrint">
                 <div className="Header__top header">
                     <div className="expanded row">
-                        <div className="columns">
+                        <div className="columns large-offset-2 large-8">
                             <ul className="menu">
                                 <li className="Header__top-logo">
-                                    <Link to={logo_link}>
-                                        <svg className="logo-new logo-new--mobile" viewBox="0 0 38 38" version="1.1">
-
-                                        </svg>
-
-                                        <svg className="logo-new logo-new--desktop" width="148px" height="38px" viewBox="0 0 148 38" version="1.1">
-                                        <title>Steemit Logo</title>
-
-                                        </svg>
-
+                                    <Link to={logoLink}>
+                                        <span className="logo-new logo-new--mobile">
+                                            <SvgImage name="smoke" width="148px" height="38px"></SvgImage>
+                                        </span>
+                                        <span className="logo-new logo-new--desktop">
+                                            <SvgImage name="smoke" width="148px" height="38px"></SvgImage>
+                                        </span>
                                     </Link>
                                 </li>
-                                <li className="Header__top-steemit show-for-medium noPrint"><Link to={logo_link}><span className="beta fade-in--10">beta</span></Link></li>
 
-
-                                {(topic_link || user_name || page_name) && sort_order }
-                                {selected_sort_order && <DropdownMenu className="Header__sort-order-menu menu-hide-for-large" items={sort_order_menu} selected={selected_sort_order[1]} el="li" />}
-                                <HorizontalMenu items={sort_order_menu_horizontal} />
+                                <HorizontalMenu className="align-right" items={menuItems}/>
                             </ul>
-                        </div>
-                        <div className="columns shrink">
-                            <TopRightMenu {...this.props} />
                         </div>
                     </div>
                 </div>

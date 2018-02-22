@@ -24,13 +24,13 @@ function ordersEqual(a, b) {
     }
 
     for (let key in a) {
-        if(!(key in b) || !orderEqual(a[key], b[key])) {
+        if (!(key in b) || !orderEqual(a[key], b[key])) {
             return false;
         }
     }
 
     for (let key in b) {
-        if(!(key in a) || !orderEqual(a[key], b[key])) {
+        if (!(key in a) || !orderEqual(a[key], b[key])) {
             return false;
         }
     }
@@ -75,7 +75,7 @@ class DepthChart extends React.Component {
         }
         const depth_chart_config = generateDepthChart(bids, asks);
         return (
-            <div className="DepthChart"><ReactHighcharts ref="depthChart" config={depth_chart_config} /></div>
+            <div className="DepthChart"><ReactHighcharts ref="depthChart" config={depth_chart_config}/></div>
         );
     }
 }
@@ -87,12 +87,12 @@ function generateBidAsk(bidsArray, asksArray) {
 
     // Input raw orders (from TOP of order book DOWN), output grouped depth
     function aggregateOrders(orders) {
-        if(typeof orders == 'undefined') {
-          return [];
+        if (typeof orders == 'undefined') {
+            return [];
         }
 
         let ttl = 0
-        return orders.map( o => {
+        return orders.map(o => {
             ttl += o.sbd;
             return [o.price * power, ttl]
         }).sort((a, b) => { // Sort here to make sure arrays are in the right direction for HighCharts
@@ -112,14 +112,14 @@ function generateBidAsk(bidsArray, asksArray) {
 }
 
 function getMinMax(bids, asks) {
-    const highestBid = bids.length ? bids[bids.length-1][0] : 0;
+    const highestBid = bids.length ? bids[bids.length - 1][0] : 0;
     const lowestAsk = asks.length ? asks[0][0] : 1;
 
     const middle = (highestBid + lowestAsk) / 2;
 
     return {
         min: Math.max(middle * 0.65, bids[0][0]),
-        max: Math.min(middle * 1.35, asks[asks.length-1][0])
+        max: Math.min(middle * 1.35, asks[asks.length - 1][0])
     }
 }
 
@@ -130,26 +130,40 @@ function generateDepthChart(bidsArray, asksArray) {
 
     const {min, max} = getMinMax(bids, asks);
 
-    if(process.env.BROWSER) {
-        if(bids[0]) {
-            series.push({step: 'right', name: tt('g.bid'), color: 'rgba(0,150,0,1.0)', fillColor: 'rgba(0,150,0,0.2)', tooltip: {valueSuffix: ' ' + LIQUID_TICKER},
-             data:  bids})
+    if (process.env.BROWSER) {
+        if (bids[0]) {
+            series.push({
+                step: 'right',
+                name: tt('g.bid'),
+                color: 'rgba(0,150,0,1.0)',
+                fillColor: 'rgba(0,150,0,0.2)',
+                tooltip: {valueSuffix: ' ' + LIQUID_TICKER},
+                data: bids
+            })
         }
-        if(asks[0]) {
-            series.push({step: 'left', name: tt('g.ask'), color: 'rgba(150,0,0,1.0)', fillColor: 'rgba(150,0,0,0.2)', tooltip: {valueSuffix: ' ' + LIQUID_TICKER},
-             data: asks})
+        if (asks[0]) {
+            series.push({
+                step: 'left',
+                name: tt('g.ask'),
+                color: 'rgba(150,0,0,1.0)',
+                fillColor: 'rgba(150,0,0,0.2)',
+                tooltip: {valueSuffix: ' ' + LIQUID_TICKER},
+                data: asks
+            })
         }
     }
 
     let depth_chart_config = {
-        title:    {text: null},
+        title: {text: null},
         subtitle: {text: null},
-        chart:    {type: 'area', zoomType: 'x'},
-        xAxis:    {
+        chart: {type: 'area', zoomType: 'x'},
+        xAxis: {
             min: min,
             max: max,
             labels: {
-                formatter: function() {return this.value / power;}
+                formatter: function () {
+                    return this.value / power;
+                }
             },
             ordinal: false,
             lineColor: "#000000",
@@ -157,21 +171,21 @@ function generateDepthChart(bidsArray, asksArray) {
                 text: null
             }
         },
-        yAxis:    {
+        yAxis: {
             title: {text: null},
             lineWidth: 2,
             labels: {
                 align: "left",
-                formatter: function() {
+                formatter: function () {
                     const value = this.value / precision;
                     return '$' + (value > 1e6 ? (value / 1e6).toFixed(3) + "M" :
                         value > 10000 ? (value / 1e3).toFixed(0) + "k" :
-                        value);
+                            value);
                 }
             },
             gridLineWidth: 1,
         },
-        legend:   {enabled: false},
+        legend: {enabled: false},
         credits: {
             enabled: false
         },

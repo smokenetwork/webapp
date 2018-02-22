@@ -56,16 +56,16 @@ class TransferForm extends Component {
             const balanceValue =
                 !asset || asset === 'STEEM' ?
                     isWithdraw ? currentAccount.get('savings_balance') : currentAccount.get('balance') :
-                asset === 'SBD' ?
-                    isWithdraw ? currentAccount.get('savings_sbd_balance') : currentAccount.get('sbd_balance') :
-                null;
-            if(!balanceValue) return false;
+                    asset === 'SBD' ?
+                        isWithdraw ? currentAccount.get('savings_sbd_balance') : currentAccount.get('sbd_balance') :
+                        null;
+            if (!balanceValue) return false;
             const balance = balanceValue.split(' ')[0];
             return parseFloat(amount) > parseFloat(balance)
         };
         const {toVesting} = props;
         const fields = toVesting ? ['to', 'amount'] : ['to', 'amount', 'asset'];
-        if(!toVesting && transferType !== 'Transfer to Savings' && transferType !== 'Savings Withdraw')
+        if (!toVesting && transferType !== 'Transfer to Savings' && transferType !== 'Savings Withdraw')
             fields.push('memo');
         reactForm({
             name: 'transfer',
@@ -73,28 +73,32 @@ class TransferForm extends Component {
             initialValues: props.initialValues,
             validation: values => ({
                 to:
-                    ! values.to ? tt('g.required') : validate_account_name(values.to, values.memo),
+                    !values.to ? tt('g.required') : validate_account_name(values.to, values.memo),
                 amount:
-                    ! values.amount ? 'Required' :
-                    ! /^\d+(\.\d+)?$/.test(values.amount) ? tt('transfer_jsx.amount_is_in_form') :
-                    insufficientFunds(values.asset, values.amount) ? tt('transfer_jsx.insufficient_funds') :
-                    countDecimals(values.amount) > 3 ? tt('transfer_jsx.use_only_3_digits_of_precison') :
-                    null,
+                    !values.amount ? 'Required' :
+                        !/^\d+(\.\d+)?$/.test(values.amount) ? tt('transfer_jsx.amount_is_in_form') :
+                            insufficientFunds(values.asset, values.amount) ? tt('transfer_jsx.insufficient_funds') :
+                                countDecimals(values.amount) > 3 ? tt('transfer_jsx.use_only_3_digits_of_precison') :
+                                    null,
                 asset:
                     props.toVesting ? null :
-                    ! values.asset ? tt('g.required') : null,
+                        !values.asset ? tt('g.required') : null,
                 memo:
-                    values.memo ? validate_memo_field(values.memo, props.currentUser.get('username'), props.currentAccount.get('memo_key')):
-                    values.memo && (!browserTests.memo_encryption && /^#/.test(values.memo)) ?
-                    'Encrypted memos are temporarily unavailable (issue #98)' :
-                    null,
+                    values.memo ? validate_memo_field(values.memo, props.currentUser.get('username'), props.currentAccount.get('memo_key')) :
+                        values.memo && (!browserTests.memo_encryption && /^#/.test(values.memo)) ?
+                            'Encrypted memos are temporarily unavailable (issue #98)' :
+                            null,
             })
         })
     }
 
-    clearError = () => {this.setState({ trxError: undefined })};
+    clearError = () => {
+        this.setState({trxError: undefined})
+    };
 
-    errorCallback = estr => { this.setState({ trxError: estr, loading: false }) };
+    errorCallback = estr => {
+        this.setState({trxError: estr, loading: false})
+    };
 
     balanceValue() {
         const {transferType} = this.props.initialValues;
@@ -102,11 +106,11 @@ class TransferForm extends Component {
         const {asset} = this.state;
         const isWithdraw = transferType && transferType === 'Savings Withdraw';
         return !asset ||
-            asset.value === 'STEEM' ?
-                isWithdraw ? currentAccount.get('savings_balance') : currentAccount.get('balance') :
+        asset.value === 'STEEM' ?
+            isWithdraw ? currentAccount.get('savings_balance') : currentAccount.get('balance') :
             asset.value === 'SBD' ?
                 isWithdraw ? currentAccount.get('savings_sbd_balance') : currentAccount.get('sbd_balance') :
-            null
+                null
     }
 
     assetBalanceClick = e => {
@@ -126,7 +130,10 @@ class TransferForm extends Component {
             'Transfer to Savings': tt('transfer_jsx.protect_funds_by_requiring_a_3_day_withdraw_waiting_period'),
             'Savings Withdraw': tt('transfer_jsx.withdraw_funds_after_the_required_3_day_waiting_period'),
         };
-        const powerTip3 = tt('tips_js.converted_VESTING_TOKEN_can_be_sent_to_yourself_but_can_not_transfer_again', {LIQUID_TOKEN, VESTING_TOKEN})
+        const powerTip3 = tt('tips_js.converted_VESTING_TOKEN_can_be_sent_to_yourself_but_can_not_transfer_again', {
+            LIQUID_TOKEN,
+            VESTING_TOKEN
+        })
         const {to, amount, asset, memo} = this.state;
         const {loading, trxError, advanced} = this.state;
         const {currentUser, toVesting, transferToSelf, dispatchSubmit} = this.props;
@@ -139,7 +146,7 @@ class TransferForm extends Component {
                 this.setState({loading: true});
                 dispatchSubmit({...data, errorCallback: this.errorCallback, currentUser, toVesting, transferType})
             })}
-                onChange={this.clearError}
+                  onChange={this.clearError}
             >
                 {toVesting && <div className="row">
                     <div className="column small-12">
@@ -154,7 +161,7 @@ class TransferForm extends Component {
                             {transferTips[transferType]}
                         </div>
                     </div>
-                    <br />
+                    <br/>
                 </div>}
 
                 <div className="row">
@@ -202,22 +209,30 @@ class TransferForm extends Component {
                     <div className="column small-2" style={{paddingTop: 5}}>{tt('g.amount')}</div>
                     <div className="column small-10">
                         <div className="input-group" style={{marginBottom: 5}}>
-                            <input type="text" placeholder={tt('g.amount')} {...amount.props} ref="amount" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" disabled={loading} />
+                            <input type="text" placeholder={tt('g.amount')} {...amount.props} ref="amount"
+                                   autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false"
+                                   disabled={loading}/>
                             {asset && <span className="input-group-label" style={{paddingLeft: 0, paddingRight: 0}}>
-                                <select {...asset.props} placeholder={tt('transfer_jsx.asset')} disabled={loading} style={{minWidth: "5rem", height: "inherit", backgroundColor: "transparent", border: "none"}}>
+                                <select {...asset.props} placeholder={tt('transfer_jsx.asset')} disabled={loading}
+                                        style={{
+                                            minWidth: "5rem",
+                                            height: "inherit",
+                                            backgroundColor: "transparent",
+                                            border: "none"
+                                        }}>
                                     <option value="STEEM">STEEM</option>
                                     <option value="SBD">SBD</option>
                                 </select>
                             </span>}
                         </div>
                         <div style={{marginBottom: "0.6rem"}}>
-                            <AssetBalance balanceValue={this.balanceValue()} onClick={this.assetBalanceClick} />
+                            <AssetBalance balanceValue={this.balanceValue()} onClick={this.assetBalanceClick}/>
                         </div>
-                        {(asset && asset.touched && asset.error ) || (amount.touched && amount.error) ?
-                        <div className="error">
-                            {asset && asset.touched && asset.error && asset.error}&nbsp;
-                            {amount.touched && amount.error && amount.error}&nbsp;
-                        </div> : null}
+                        {(asset && asset.touched && asset.error) || (amount.touched && amount.error) ?
+                            <div className="error">
+                                {asset && asset.touched && asset.error && asset.error}&nbsp;
+                                {amount.touched && amount.error && amount.error}&nbsp;
+                            </div> : null}
                     </div>
                 </div>
 
@@ -226,13 +241,14 @@ class TransferForm extends Component {
                     <div className="column small-10">
                         <small>{isMemoPrivate ? tt('transfer_jsx.this_memo_is_private') : tt('transfer_jsx.this_memo_is_public')}</small>
                         <input type="text" placeholder={tt('g.memo')} {...memo.props}
-                            ref="memo" autoComplete="on" autoCorrect="off" autoCapitalize="off" spellCheck="false" disabled={loading} />
+                               ref="memo" autoComplete="on" autoCorrect="off" autoCapitalize="off" spellCheck="false"
+                               disabled={loading}/>
                         <div className="error">{memo.touched && memo.error && memo.error}&nbsp;</div>
                     </div>
                 </div>}
                 <div className="row">
                     <div className="column">
-                        {loading && <span><LoadingIndicator type="circle" /><br /></span>}
+                        {loading && <span><LoadingIndicator type="circle"/><br/></span>}
                         {!loading && <span>
                             {trxError && <div className="error">{trxError}</div>}
                             <button type="submit" disabled={submitting || !valid} className="button">
@@ -246,18 +262,19 @@ class TransferForm extends Component {
             </form>
         );
         return (
-           <div>
-               <div className="row">
+            <div>
+                <div className="row">
                     <h3 className="column">{toVesting ? tt('transfer_jsx.convert_to_VESTING_TOKEN', {VESTING_TOKEN}) : transferType}</h3>
-               </div>
-               {form}
-           </div>
-       )
+                </div>
+                {form}
+            </div>
+        )
     }
 }
 
 const AssetBalance = ({onClick, balanceValue}) =>
-    <a onClick={onClick} style={{borderBottom: '#A09F9F 1px dotted', cursor: 'pointer'}}>{tt('g.balance') + ": " + balanceValue}</a>;
+    <a onClick={onClick}
+       style={{borderBottom: '#A09F9F 1px dotted', cursor: 'pointer'}}>{tt('g.balance') + ": " + balanceValue}</a>;
 
 export default connect(
     // mapStateToProps
@@ -267,14 +284,14 @@ export default connect(
         const currentUser = state.user.getIn(['current']);
         const currentAccount = state.global.getIn(['accounts', currentUser.get('username')]);
 
-        if(!toVesting && !initialValues.transferType)
+        if (!toVesting && !initialValues.transferType)
             initialValues.transferType = 'Transfer to Account';
 
         let transferToSelf = toVesting || /Transfer to Savings|Savings Withdraw/.test(initialValues.transferType);
         if (transferToSelf && !initialValues.to)
             initialValues.to = currentUser.get('username');
 
-        if(initialValues.to !== currentUser.get('username'))
+        if (initialValues.to !== currentUser.get('username'))
             transferToSelf = false // don't hide the to field
 
         return {...ownProps, currentUser, currentAccount, toVesting, transferToSelf, initialValues}
@@ -283,17 +300,17 @@ export default connect(
     // mapDispatchToProps
     dispatch => ({
         dispatchSubmit: ({
-            to, amount, asset, memo, transferType,
-            toVesting, currentUser, errorCallback
-        }) => {
-            if(!toVesting && !/Transfer to Account|Transfer to Savings|Savings Withdraw/.test(transferType))
+                             to, amount, asset, memo, transferType,
+                             toVesting, currentUser, errorCallback
+                         }) => {
+            if (!toVesting && !/Transfer to Account|Transfer to Savings|Savings Withdraw/.test(transferType))
                 throw new Error(`Invalid transfer params: toVesting ${toVesting}, transferType ${transferType}`);
 
             const username = currentUser.get('username');
             const successCallback = () => {
                 // refresh transfer history
                 dispatch({type: 'global/GET_STATE', payload: {url: `@${username}/transfers`}});
-                if(/Savings Withdraw/.test(transferType)) {
+                if (/Savings Withdraw/.test(transferType)) {
                     dispatch({type: 'user/LOAD_SAVINGS_WITHDRAW', payload: {}})
                 }
                 dispatch(user.actions.hideTransfer())
@@ -305,15 +322,15 @@ export default connect(
                 memo: toVesting ? undefined : (memo ? memo : '')
             }
 
-            if(transferType === 'Savings Withdraw')
+            if (transferType === 'Savings Withdraw')
                 operation.request_id = Math.floor((Date.now() / 1000) % 4294967295);
 
             dispatch(transaction.actions.broadcastOperation({
                 type: toVesting ? 'transfer_to_vesting' : (
                     transferType === 'Transfer to Account' ? 'transfer' :
-                    transferType === 'Transfer to Savings' ? 'transfer_to_savings' :
-                    transferType === 'Savings Withdraw' ? 'transfer_from_savings' :
-                    null
+                        transferType === 'Transfer to Savings' ? 'transfer_to_savings' :
+                            transferType === 'Savings Withdraw' ? 'transfer_from_savings' :
+                                null
                 ),
                 operation,
                 successCallback,

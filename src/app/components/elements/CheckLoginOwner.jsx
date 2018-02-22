@@ -13,18 +13,19 @@ class CheckLoginOwner extends React.Component {
         super()
         this.state = {}
     }
+
     componentWillReceiveProps(nextProps) {
         const {login_owner_pubkey} = nextProps
-        if(login_owner_pubkey && this.props.login_owner_pubkey !== login_owner_pubkey)
+        if (login_owner_pubkey && this.props.login_owner_pubkey !== login_owner_pubkey)
             this.props.lookupPreviousOwnerAuthority()
 
         const {previous_owner_authority} = nextProps
-        if(previous_owner_authority && this.props.previous_owner_authority !== previous_owner_authority) {
+        if (previous_owner_authority && this.props.previous_owner_authority !== previous_owner_authority) {
             const last_valid_time = previous_owner_authority.get('last_valid_time')
             // has this been shown already?
-            if(localStorage[this.getKey(nextProps)] !== last_valid_time) {
+            if (localStorage[this.getKey(nextProps)] !== last_valid_time) {
                 let last_valid_date
-                if(!/Z$/.test(last_valid_time))
+                if (!/Z$/.test(last_valid_time))
                     last_valid_date = last_valid_time + 'Z'
                 last_valid_date = new Date(last_valid_date)
 
@@ -32,9 +33,10 @@ class CheckLoginOwner extends React.Component {
             }
         }
     }
+
     hide = () => {
         const {understood} = this.state
-        if(understood) {
+        if (understood) {
             const {last_valid_time} = this.state
             localStorage[this.getKey()] = last_valid_time
         }
@@ -55,9 +57,10 @@ class CheckLoginOwner extends React.Component {
         console.log('understood', understood)
         this.setState({understood})
     }
+
     render() {
         const {last_valid_time, last_valid_date} = this.state
-        if(!last_valid_time) return <span></span>
+        if (!last_valid_time) return <span></span>
         const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000
         const deadline = last_valid_date.getTime() + THIRTY_DAYS
 
@@ -65,22 +68,23 @@ class CheckLoginOwner extends React.Component {
         // "If you recently reset your password at(timestamp in strftime, example:  Thu, 21 Jul 2016 02:39:19 PST) this alert was most likely prompted by this action, otherwise your immediate attention is needed"
         return <span>
             <Reveal show>
-                <CloseButton onClick={this.hide} />
+                <CloseButton onClick={this.hide}/>
                 <h3>{tt('g.account_updated')}</h3>
                 <p>
                     <span className="warning uppercase">{tt('g.warning')}:</span>
                     {tt('checkloginowner_jsx.your_password_permissions_were_reduced')}
-                    <TimeAgoWrapper date={last_valid_time} />. {tt('checkloginowner_jsx.if_you_did_not_make_this_change') + ' '}
+                    <TimeAgoWrapper
+                        date={last_valid_time}/>. {tt('checkloginowner_jsx.if_you_did_not_make_this_change') + ' '}
                     <a onClick={this.recover}>{tt('g.recover_your_account')}</a>.
                 </p>
                 <p>
-                    {tt('checkloginowner_jsx.ownership_changed_on')} <FormattedDate value={last_valid_date} />
+                    {tt('checkloginowner_jsx.ownership_changed_on')} <FormattedDate value={last_valid_date}/>
                 </p>
                 <p>
-                    {tt('checkloginowner_jsx.deadline_for_recovery_is')} <b><TimeAgoWrapper date={deadline} /></b>.
+                    {tt('checkloginowner_jsx.deadline_for_recovery_is')} <b><TimeAgoWrapper date={deadline}/></b>.
                 </p>
                 <p>
-                    <input type="checkbox" onChange={this.onUnderstood} />&nbsp;&nbsp;
+                    <input type="checkbox" onChange={this.onUnderstood}/>&nbsp;&nbsp;
                     {tt('checkloginowner_jsx.i_understand_dont_show_again')}
                 </p>
                 <div className="button" onClick={this.hide}>{tt('g.ok')}</div>

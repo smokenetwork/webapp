@@ -52,26 +52,26 @@ class Modals extends React.Component {
         return (
             <div>
                 {show_login_modal && <Reveal onHide={hideLogin} show={show_login_modal}>
-                    <LoginForm onCancel={hideLogin} />
+                    <LoginForm onCancel={hideLogin}/>
                 </Reveal>}
                 {show_confirm_modal && <Reveal onHide={hideConfirm} show={show_confirm_modal}>
-                    <CloseButton onClick={hideConfirm} />
-                    <ConfirmTransactionForm onCancel={hideConfirm} />
+                    <CloseButton onClick={hideConfirm}/>
+                    <ConfirmTransactionForm onCancel={hideConfirm}/>
                 </Reveal>}
                 {show_transfer_modal && <Reveal onHide={hideTransfer} show={show_transfer_modal}>
-                    <CloseButton onClick={hideTransfer} />
-                    <Transfer />
+                    <CloseButton onClick={hideTransfer}/>
+                    <Transfer/>
                 </Reveal>}
                 {show_powerdown_modal && <Reveal onHide={hidePowerdown} show={show_powerdown_modal}>
-                    <CloseButton onClick={hidePowerdown} />
-                    <Powerdown />
+                    <CloseButton onClick={hidePowerdown}/>
+                    <Powerdown/>
                 </Reveal>}
                 {show_signup_modal && <Reveal onHide={hideSignUp} show={show_signup_modal}>
-                    <CloseButton onClick={hideSignUp} />
-                    <SignUp />
+                    <CloseButton onClick={hideSignUp}/>
+                    <SignUp/>
                 </Reveal>}
                 {show_terms_modal && <Reveal show={show_terms_modal}>
-                    <TermsAgree onCancel={hideLogin} />
+                    <TermsAgree onCancel={hideLogin}/>
                 </Reveal>}
                 <NotificationStack
                     style={false}

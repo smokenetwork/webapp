@@ -16,6 +16,7 @@ export default class Reblog extends React.Component {
         permlink: string,
         reblog: func,
     }
+
     constructor(props) {
         super(props)
         this.shouldComponentUpdate = shouldComponentUpdate(this, 'Reblog')
@@ -24,26 +25,30 @@ export default class Reblog extends React.Component {
 
     componentWillMount() {
         const {account} = this.props
-        if(account) {
+        if (account) {
             this.setState({active: this.isReblogged(account)})
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.account) {
+        if (nextProps.account) {
             this.setState({active: this.isReblogged(nextProps.account)})
         }
     }
 
     reblog = e => {
         e.preventDefault()
-        if(this.state.active) return;
+        if (this.state.active) return;
         this.setState({loading: true});
         const {reblog, account, author, parent_author, permlink} = this.props;
         reblog(account, author, permlink,
-            () => {this.setState({active: true, loading: false});
-                   this.setReblogged(account)},
-            () => {this.setState({active: false, loading: false})},
+            () => {
+                this.setState({active: true, loading: false});
+                this.setReblogged(account)
+            },
+            () => {
+                this.setState({active: false, loading: false})
+            },
         )
     }
 
@@ -57,19 +62,19 @@ export default class Reblog extends React.Component {
         clearRebloggedCache()
         let posts = getRebloggedList(account)
         posts.push(author + '/' + permlink)
-        if(posts.length > 200)
+        if (posts.length > 200)
             posts.shift(1)
 
         localStorage.setItem("reblogged_" + account, JSON.stringify(posts))
     }
 
     render() {
-        if(this.props.author == this.props.account || this.props.parent_author) return null;
+        if (this.props.author == this.props.account || this.props.parent_author) return null;
 
         const state = this.state.active ? 'active' : 'inactive'
         const loading = this.state.loading ? ' loading' : ''
-        return <span className={'Reblog__button Reblog__button-'+state + loading}>
-            <a href="#" onClick={this.reblog} title={tt('g.reblog')}><Icon name="reblog" /></a>
+        return <span className={'Reblog__button Reblog__button-' + state + loading}>
+            <a href="#" onClick={this.reblog} title={tt('g.reblog')}><Icon name="reblog"/></a>
         </span>
     }
 }
@@ -100,17 +105,17 @@ let lastAccount
 let cachedPosts
 
 function getRebloggedList(account) {
-    if(!process.env.BROWSER)
+    if (!process.env.BROWSER)
         return []
 
-    if(lastAccount === account)
+    if (lastAccount === account)
         return cachedPosts
 
     lastAccount = account
     const posts = localStorage.getItem("reblogged_" + account)
     try {
         cachedPosts = JSON.parse(posts) || []
-    } catch(e) {
+    } catch (e) {
         cachedPosts = []
     }
     return cachedPosts

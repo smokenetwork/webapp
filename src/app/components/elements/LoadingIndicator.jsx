@@ -44,7 +44,8 @@ class LoadingIndicator extends React.Component {
                 );
             default:
                 return (
-                    <div className={'LoadingIndicator loading-overlay' + ((this.progress > 0)? ' with-progress' : '')} style={style}>
+                    <div className={'LoadingIndicator loading-overlay' + ((this.progress > 0) ? ' with-progress' : '')}
+                         style={style}>
                         <div className="loading-panel">
                             <div className="spinner">
                                 <div className="bounce1"></div>

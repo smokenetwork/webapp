@@ -58,12 +58,12 @@ class ExperimentWrapper extends React.Component {
     }
 }
 
-emitter.addPlayListener( (experimentName, variantName) => {
+emitter.addPlayListener((experimentName, variantName) => {
     // console.log("Displaying experiment ‘" + experimentName + "’ variant ‘" + variantName + "’");
     serverApiRecordEvent('Ex:' + experimentName, 'Show:' + variantName, 10);
 });
 
-emitter.addWinListener( (experimentName, variantName) => {
+emitter.addWinListener((experimentName, variantName) => {
     // console.log("Variant ‘" + variantName + "’ of experiment ‘" + experimentName + "’  was clicked");
     serverApiRecordEvent('Ex: ' + experimentName, 'Win:' + variantName, 10);
 });

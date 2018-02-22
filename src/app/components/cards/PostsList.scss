@@ -21,12 +21,12 @@
   overflow-x: hidden;
   overflow-y: scroll;
   @include themify($themes) {
-    border-bottom: themed('border');  
-  } 
-  @media screen and (min-width: 60rem) {  
+    border-bottom: themed('border');
+  }
+  @media screen and (min-width: 60rem) {
     @include themify($themes) {
-      border-bottom: themed('borderTransparent');  
-    } 
+      border-bottom: themed('borderTransparent');
+    }
   }
 }
 
@@ -38,17 +38,17 @@
   overflow: hidden;
   @include themify($themes) {
     background-color: themed('navBackgroundColor');
-  } 
-  @media screen and (min-width: 60rem) {  
+  }
+  @media screen and (min-width: 60rem) {
     @include themify($themes) {
-      background-color: themed('backgroundTransparent');  
-    } 
+      background-color: themed('backgroundTransparent');
+    }
   }
   a {
     span.Icon path {
       @include themify($themes) {
-        fill: themed('textColorAccent');  
-      } 
+        fill: themed('textColorAccent');
+      }
     }
   }
   > .close-button {
@@ -61,7 +61,7 @@
 .PostsList__post_container {
   position: relative;
   @include themify($themes) {
-      background-color: themed('moduleBackgroundColor');       
+      background-color: themed('moduleBackgroundColor');
     }
   margin: 1rem auto;
   padding: 2rem 0.9rem 0 0.9rem;
@@ -93,8 +93,7 @@ body.with-post-overlay {
     width: 56rem;
     margin-bottom: 3em;
     @include themify($themes) {
-      box-shadow: 5px 5px 0 0 themed('contentBorderAccent');        
-    }    
+    }
   }
 }
 

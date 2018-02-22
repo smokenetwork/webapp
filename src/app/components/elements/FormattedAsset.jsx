@@ -7,8 +7,10 @@ const FormattedAsset = ({amount, asset, classname}) => {
     }
     const amnt = formatDecimal(amount);
     return asset === '$' ?
-        <span className={`FormattedAsset ${classname}`}><span className="prefix">$</span><span className="integer">{amnt[0]}</span><span className="decimal">{amnt[1]}</span></span> :
-        <span className="FormattedAsset"><span className="integer">{amnt[0]}</span><span className="decimal">{amnt[1]}</span> <span className="asset">{asset}</span></span>;
+        <span className={`FormattedAsset ${classname}`}><span className="prefix">$</span><span
+            className="integer">{amnt[0]}</span><span className="decimal">{amnt[1]}</span></span> :
+        <span className="FormattedAsset"><span className="integer">{amnt[0]}</span><span
+            className="decimal">{amnt[1]}</span> <span className="asset">{asset}</span></span>;
 };
 
 export default FormattedAsset;
