@@ -460,19 +460,41 @@ export default function useGeneralApi(app) {
 }
 
 /**
+ * TODO: Here, we need to 2 operations
+ *  1. create new account
+ *  2. transfer to vest to new account ~4.2 SMOKE POWER
+ *
+ *  const data = yield call([api, api.getDynamicGlobalPropertiesAsync]);
+ *
+ *
  @arg signingKey {string|PrivateKey} - WIF or PrivateKey object
  */
 function* createAccount({
     signingKey, fee, creator, new_account_name, json_metadata = '', delegation,
     owner, active, posting, memo
 }) {
-    const operations = [['account_create_with_delegation', {
-        fee, creator, new_account_name, json_metadata, delegation,
-        owner: {weight_threshold: 1, account_auths: [], key_auths: [[owner, 1]]},
-        active: {weight_threshold: 1, account_auths: [], key_auths: [[active, 1]]},
-        posting: {weight_threshold: 1, account_auths: [], key_auths: [[posting, 1]]},
-        memo_key: memo,
-    }]]
+    // '0.000000 VESTS'
+    const operations = [
+        [
+            'account_create_with_delegation',
+            {
+                fee, creator, new_account_name, json_metadata, delegation,
+                owner: {weight_threshold: 1, account_auths: [], key_auths: [[owner, 1]]},
+                active: {weight_threshold: 1, account_auths: [], key_auths: [[active, 1]]},
+                posting: {weight_threshold: 1, account_auths: [], key_auths: [[posting, 1]]},
+                memo_key: memo,
+            }
+        ],
+        [
+            'transfer_to_vesting',
+            {
+                from: creator,
+                to: new_account_name,
+                amount: '4.200 SMOKE'
+            }
+        ]
+    ];
+
     yield broadcast.sendAsync({
         extensions: [],
         operations
