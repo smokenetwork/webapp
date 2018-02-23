@@ -26,7 +26,7 @@ class Approval extends React.Component {
         } else {
             body = <div>
                 {/*<h4>Thanks for confirming your phone number!</h4>*/}
-                <h4>Thanks for confirming your email!</h4>
+                <h4>Thanks for signing up!</h4>
                 <p>You're a few steps away from getting to the top of the list. Check your email and click the email validation link.</p>
                 <p>After validating your sign up request with us we'll look it over for approval. As soon as your turn is up and you're approved, you'll be sent a link to finalize your account!</p>
                 <p>You'll be among the earliest members of the Steemit community!</p>
