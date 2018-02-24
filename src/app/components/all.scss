@@ -1,12 +1,10 @@
 @import "./App";
-
 // cards
 @import "./cards/Comment";
 @import "./cards/MarkdownViewer";
 @import "./cards/PostSummary";
 @import "./cards/PostFull";
 @import "./cards/PostsList";
-
 // elements
 @import "./elements/Icon";
 @import "./elements/LoadingIndicator";
@@ -33,7 +31,6 @@
 @import "./elements/UserNames";
 @import "./elements/UserKeys";
 @import "./elements/QrKeyView";
-
 // modules
 @import "./modules/Header";
 @import "./modules/Footer";
@@ -49,7 +46,6 @@
 @import "./modules/Powerdown";
 @import "./modules/TopRightMenu";
 @import "./modules/ConfirmTransactionForm";
-
 // pages
 @import "./pages/PostsIndex";
 @import "./pages/Topics";

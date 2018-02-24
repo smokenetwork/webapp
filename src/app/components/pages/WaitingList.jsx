@@ -10,11 +10,12 @@ class WaitingList extends React.Component {
                     <p>
                         {tt('g.sorry_your_reddit_account_doesnt_have_enough_karma')}
                     </p>
-                    <AddToWaitingList />
-                    <br />
-                    <hr />
-                <p>{tt('g.or_click_the_button_below_to_register_with_facebook')}</p>
-                    <a href="/connect/facebook" className="button SignUp--fb-button">{tt('g.register_with_facebook')}</a>
+                    <AddToWaitingList/>
+                    <br/>
+                    <hr/>
+                    <p>{tt('g.or_click_the_button_below_to_register_with_facebook')}</p>
+                    <a href="/connect/facebook"
+                       className="button SignUp--fb-button">{tt('g.register_with_facebook')}</a>
                 </div>
             </div>
         );

@@ -64,8 +64,8 @@
     }
     > ul > li.current:before {
         color: $white;
-        border-color: $color-teal;
-        background-color: $color-teal;
+        border-color: $primary-brand-color;
+        background-color: $primary-brand-color;
     }
     > ul > li.current:after {
         background-color: #1A5099;

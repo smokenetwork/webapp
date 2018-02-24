@@ -9,17 +9,13 @@ $foundation-palette: (
 );
 
 $color-white: #fff;
-$color-black: #000;
 $color-red: #ff0264;
 $color-blue: #004EFF;
-$color-blue-original-dark: #1A5099;
-$color-blue-original-light: #4BA2F2;
 $color-blue-black: #171F24;
 $color-blue-black-darkest: #11161A;
 $color-blue-dark: #2C3A45;
-$color-teal: #18ce0f;
-$color-teal-light: #18ce0f;
-$color-teal-dark: #18ce0f;
+$primary-brand-color: #18ce0f;
+$primary-brand-color-dark: #1e7e34;
 
 $color-yellow: #fce76c;
 $color-transparent: transparent;
@@ -40,18 +36,21 @@ $color-border-light-lightest: #f6f6f6;
 $color-border-dark: #232F38;
 $color-border-dark-lightest: #2B3A45;
 
-$font-primary: helvetica, sans-serif;
+$font-primary: $body-font-family;
 
 $alert-color: $color-red;
 
+// creating a new set of variables not associated with the theme. These are the variables that can be changed to alter the style.
+$primary-text-font: $body-font-family;
 $primary-text-color: $primary-color;
 $primary-link-color: $primary-color;
 $primary-link-hover-color: $secondary-color;
 $primary-button-background-color: $secondary-color;
-$primary-button-text-color: #FFF;
+$primary-button-text-color: #fff;
 
+$secondary-text-font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 $secondary-text-color: $secondary-color;
 $secondary-link-color: $secondary-color;
 $secondary-link-hover-color: $primary-color;
 $secondary-button-background-color: $primary-color;
-$secondary-button-text-color: #FFF;
+$secondary-button-text-color: #fff;

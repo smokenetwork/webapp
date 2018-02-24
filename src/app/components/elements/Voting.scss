@@ -99,7 +99,7 @@
 .Voting__button-up.votingUp {
     padding-right: 0.5rem;
     svg {
-        border: 1px solid $color-teal;
+        border: 1px solid $primary-brand-color;
         border-radius: 50%;
         border-right-color: transparent;
         border-top-color: transparent;
@@ -281,7 +281,7 @@
             display: inline-block;
             position: absolute;
             &:active {
-                background: $color-teal;
+                background: $primary-brand-color;
             }
         }
     }
@@ -293,7 +293,7 @@
         margin-top: 18px;
         .rangeslider__fill {
             height: 100%;
-            background: $color-teal;
+            background: $primary-brand-color;
             box-shadow: none;
             left: 0;
         }
@@ -336,8 +336,6 @@
         }
     }
 }
-
-
 
 .weight-container {
     min-width: 300px;

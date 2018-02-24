@@ -7,7 +7,7 @@ import tt from 'counterpart';
 export default class VoteHistoryRow extends React.Component {
 
     render() {
-        let op      = this.props.op;
+        let op = this.props.op;
         // console.log( "op: ", op );
         let context = this.props.context; /// account perspective
 
@@ -18,26 +18,27 @@ export default class VoteHistoryRow extends React.Component {
         let parent_perm = op[1].op[1].parent_permlink;
         let permlink = op[1].op[1].permlink;
         let in_reply_to = <span></span>;
-        if( parent_author && parent_author != context )
+        if (parent_author && parent_author != context)
             in_reply_to = <span>{tt('g.in_reply_to')} <Link to={parent_link}>@{parent_author}</Link></span>;
-        else if( parent_author == context )
-            in_reply_to = <span><Link to={author_link}>@{author}</Link> {tt('g.replied_to', {account: parent_author})}</span>;
+        else if (parent_author == context)
+            in_reply_to =
+                <span><Link to={author_link}>@{author}</Link> {tt('g.replied_to', {account: parent_author})}</span>;
 
         //    const content_markdown = op[1].op[1].body;
         //    const body = (<MarkdownViewer formId={} text={content_markdown} jsonMetadata={} />)
         let post_link = '/' + op[1].op[1].parent_permlink + author_link + '/' + permlink;
 
-        return( <div>
+        return (<div>
 
             <div className="row">
-                <div className="column small-12" >
+                <div className="column small-12">
                     <h2><Link to={post_link}>{op[1].op[1].title}</Link></h2>
                 </div>
             </div>
             <div className="row">
-                <div className="column small-12" >
-                    <Icon name="clock" className="space-right" />
-                    <TimeAgoWrapper date={op[1].timestamp} /> {in_reply_to}
+                <div className="column small-12">
+                    <Icon name="clock" className="space-right"/>
+                    <TimeAgoWrapper date={op[1].timestamp}/> {in_reply_to}
                 </div>
             </div>
 

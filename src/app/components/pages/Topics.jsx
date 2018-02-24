@@ -48,8 +48,8 @@ class Topics extends React.Component {
         categories = categories.map(cat => {
             const link = order ? `/${order}/${cat}` : `/hot/${cat}`;
             return (<li className="c-sidebar__list-item" key={cat}>
-                        <Link to={link} className="c-sidebar__link" activeClassName="active">{cat}</Link>
-                    </li>);
+                <Link to={link} className="c-sidebar__link" activeClassName="active">{cat}</Link>
+            </li>);
         });
         return (
             <div className="c-sidebar__module">
@@ -60,7 +60,8 @@ class Topics extends React.Component {
                     <ul className="c-sidebar__list">
                         {categories}
                         <li className="c-sidebar__link">
-                            <Link className="c-sidebar__link c-sidebar__link--emphasis" to={`/tags`}>{tt('g.show_more_topics')}..</Link>
+                            <Link className="c-sidebar__link c-sidebar__link--emphasis"
+                                  to={`/tags`}>{tt('g.show_more_topics')}..</Link>
                         </li>
                     </ul>
                 </div>

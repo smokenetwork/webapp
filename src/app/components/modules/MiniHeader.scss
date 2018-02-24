@@ -5,14 +5,14 @@
         width: 120px;
         height: auto;
         opacity: 1;
-        fill: $color-teal;
+        fill: $primary-brand-color;
         @include MQ(M) {
             width: 144px;
             height: auto;
         }
     }
     .icon-svg {
-        fill: $color-teal;
+        fill: $primary-brand-color;
     }
     .logo-new:hover .icon-svg {
         fill: $color-blue-black;

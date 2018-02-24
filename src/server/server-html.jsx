@@ -46,8 +46,7 @@ export default function ServerHTML({ body, assets, locale, title, meta }) {
             <meta name="msapplication-square150x150logo" content="/images/favicons/mstile-150x150.png" />
             <meta name="msapplication-wide310x150logo" content="/images/favicons/mstile-310x150.png" />
             <meta name="msapplication-square310x310logo" content="/images/favicons/mstile-310x310.png" />
-            <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-            <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600" rel="stylesheet" type="text/css" />
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" type="text/css" />
             { assets.style.map((href, idx) =>
                 <link href={href} key={idx} rel="stylesheet" type="text/css" />) }
             <title>{page_title}</title>

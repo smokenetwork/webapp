@@ -20,11 +20,11 @@ class PostWrapper extends React.Component {
         const dis = this.props.content.get(post);
         if (!dis) {
             this.props.getContent({author: route_params.username, permlink: route_params.slug})
-            .then(content => {
-                if (content) {
-                    browserHistory.replace(`/${content.category}/@${post}`)
-                }
-            }).catch(() => {
+                .then(content => {
+                    if (content) {
+                        browserHistory.replace(`/${content.category}/@${post}`)
+                    }
+                }).catch(() => {
                 this.setState({loading: false});
             });
         } else if (dis.get("id") === "0.0.0") { // non-existing post
@@ -44,9 +44,9 @@ class PostWrapper extends React.Component {
         return (
             <div>
                 {this.state.loading ?
-                    <center><LoadingIndicator type="circle" /></center> :
+                    <center><LoadingIndicator type="circle"/></center> :
                     <div className="NotFound float-center">
-                        <a href="/"><SvgImage name="404" width="640px" height="480px" /></a>
+                        <a href="/"><SvgImage name="404" width="640px" height="480px"/></a>
                     </div>}
             </div>
         );

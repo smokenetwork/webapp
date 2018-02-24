@@ -24,10 +24,10 @@ $menu-width: 250px;
             }
             > a:hover, &:focus {
                 background-color: $color-blue-black;
-                border-bottom: 1px solid $color-teal;
+                border-bottom: 1px solid $primary-brand-color;
 
                 path {
-                    fill: $color-teal;
+                    fill: $primary-brand-color;
                 }
             }
             path {

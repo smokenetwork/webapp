@@ -35,7 +35,9 @@ export default class UserProfile extends React.Component {
     constructor() {
         super()
         this.state = {}
-        this.onPrint = () => {window.print()}
+        this.onPrint = () => {
+            window.print()
+        }
         this.loadMore = this.loadMore.bind(this);
     }
 
@@ -80,12 +82,21 @@ export default class UserProfile extends React.Component {
         if (!last_post) return;
 
         let order;
-        switch(category) {
-          case 'feed': order = 'by_feed'; break;
-          case 'blog': order = 'by_author'; break;
-          case 'comments': order = 'by_comments'; break;
-          case 'recent_replies': order = 'by_replies'; break;
-          default: console.log('unhandled category:', category);
+        switch (category) {
+            case 'feed':
+                order = 'by_feed';
+                break;
+            case 'blog':
+                order = 'by_author';
+                break;
+            case 'comments':
+                order = 'by_comments';
+                break;
+            case 'recent_replies':
+                order = 'by_replies';
+                break;
+            default:
+                console.log('unhandled category:', category);
         }
 
         if (isFetchingOrRecentlyUpdated(this.props.global_status, order, category)) return;
@@ -98,15 +109,15 @@ export default class UserProfile extends React.Component {
             props: {current_user, wifShown, global_status, follow},
             onPrint
         } = this;
-        let { accountname, section } = this.props.routeParams;
+        let {accountname, section} = this.props.routeParams;
         // normalize account from cased params
         accountname = accountname.toLowerCase();
         const username = current_user ? current_user.get('username') : null
         // const gprops = this.props.global.getIn( ['props'] ).toJS();
-        if( !section ) section = 'blog';
+        if (!section) section = 'blog';
 
         // @user/"posts" is deprecated in favor of "comments" as of oct-2016 (#443)
-        if( section == 'posts' ) section = 'comments';
+        if (section == 'posts') section = 'comments';
 
         // const isMyAccount = current_user ? current_user.get('username') === accountname : false;
 
@@ -116,12 +127,14 @@ export default class UserProfile extends React.Component {
 
         let account
         let accountImm = this.props.accounts.get(accountname);
-        if( accountImm ) {
+        if (accountImm) {
             account = accountImm.toJS();
         } else if (fetching) {
-            return <center><LoadingIndicator type="circle" /></center>;
+            return <center><LoadingIndicator type="circle"/></center>;
         } else {
-            return <div><center>{tt('user_profile.unknown_account')}</center></div>
+            return <div>
+                <center>{tt('user_profile.unknown_account')}</center>
+            </div>
         }
         const followers = follow && follow.getIn(['getFollowersAsync', accountname]);
         const following = follow && follow.getIn(['getFollowingAsync', accountname]);
@@ -156,7 +169,7 @@ export default class UserProfile extends React.Component {
         // const sbd_balance_str = numberWithCommas('$' + sbd_balance.toFixed(2));
 
         let rewardsClass = "", walletClass = "";
-        if( section === 'transfers' ) {
+        if (section === 'transfers') {
             walletClass = 'active'
             tab_content = <div>
                 <UserWallet
@@ -164,55 +177,55 @@ export default class UserProfile extends React.Component {
                     showTransfer={this.props.showTransfer}
                     showPowerdown={this.props.showPowerdown}
                     current_user={current_user}
-                    withdrawVesting={this.props.withdrawVesting} />
-                {isMyAccount && <div><MarkNotificationRead fields="send,receive" account={account.name} /></div>}
-                </div>;
+                    withdrawVesting={this.props.withdrawVesting}/>
+                {isMyAccount && <div><MarkNotificationRead fields="send,receive" account={account.name}/></div>}
+            </div>;
         }
-        else if( section === 'curation-rewards' ) {
+        else if (section === 'curation-rewards') {
             rewardsClass = "active";
             tab_content = <CurationRewards
                 account={account}
                 current_user={current_user}
-                />
+            />
         }
-        else if( section === 'author-rewards' ) {
+        else if (section === 'author-rewards') {
             rewardsClass = "active";
             tab_content = <AuthorRewards
                 account={account}
                 current_user={current_user}
-                />
+            />
         }
-        else if( section === 'followers' ) {
+        else if (section === 'followers') {
             if (followers && followers.has('blog_result')) {
                 tab_content = <div>
                     <UserList
                         title={tt('user_profile.followers')}
                         account={account}
-                        users={followers.get('blog_result')} />
-                    {isMyAccount && <MarkNotificationRead fields="follow" account={account.name} />}
-                    </div>
+                        users={followers.get('blog_result')}/>
+                    {isMyAccount && <MarkNotificationRead fields="follow" account={account.name}/>}
+                </div>
             }
         }
-        else if( section === 'followed' ) {
+        else if (section === 'followed') {
             if (following && following.has('blog_result')) {
                 tab_content = <UserList
                     title="Followed"
                     account={account}
                     users={following.get('blog_result')}
-                    />
+                />
             }
         }
-        else if( section === 'settings' ) {
-            tab_content = <Settings routeParams={this.props.routeParams} />
+        else if (section === 'settings') {
+            tab_content = <Settings routeParams={this.props.routeParams}/>
         }
-        else if( section === 'comments' && account.post_history ) {
-           if( account.comments )
-           {
+        else if (section === 'comments' && account.post_history) {
+            if (account.comments) {
                 let posts = accountImm.get('posts') || accountImm.get('comments');
                 if (!fetching && (posts && !posts.size)) {
-                    tab_content = <Callout>{tt('user_profile.user_hasnt_made_any_posts_yet', {name: accountname})}</Callout>;
+                    tab_content =
+                        <Callout>{tt('user_profile.user_hasnt_made_any_posts_yet', {name: accountname})}</Callout>;
                 } else {
-                  tab_content = (
+                    tab_content = (
                         <PostsList
                             posts={posts}
                             loading={fetching}
@@ -222,20 +235,20 @@ export default class UserProfile extends React.Component {
                         />
                     );
                 }
-           }
-           else {
-              tab_content = (<center><LoadingIndicator type="circle" /></center>);
-           }
-        } else if(!section || section === 'blog') {
+            }
+            else {
+                tab_content = (<center><LoadingIndicator type="circle"/></center>);
+            }
+        } else if (!section || section === 'blog') {
             if (account.blog) {
                 let posts = accountImm.get('blog');
                 const emptyText = isMyAccount ? <div>
-                    {tt('user_profile.looks_like_you_havent_posted_anything_yet')}<br /><br />
-                    <Link to="/post">{tt('user_profile.create_a_post')}</Link><br />
-                    <Link to="/trending">{tt('user_profile.explore_trending_articles')}</Link><br />
-                    <Link to="/welcome">{tt('user_profile.read_the_quick_start_guide')}</Link><br />
-                    <Link to="/faq.html">{tt('user_profile.browse_the_faq')}</Link><br />
-                </div>:
+                        {tt('user_profile.looks_like_you_havent_posted_anything_yet')}<br/><br/>
+                        <Link to="/post">{tt('user_profile.create_a_post')}</Link><br/>
+                        <Link to="/trending">{tt('user_profile.explore_trending_articles')}</Link><br/>
+                        <Link to="/welcome">{tt('user_profile.read_the_quick_start_guide')}</Link><br/>
+                        <Link to="/faq.html">{tt('user_profile.browse_the_faq')}</Link><br/>
+                    </div> :
                     tt('user_profile.user_hasnt_started_bloggin_yet', {name: accountname});
 
                 if (!fetching && (posts && !posts.size)) {
@@ -253,14 +266,15 @@ export default class UserProfile extends React.Component {
                     );
                 }
             } else {
-                tab_content = (<center><LoadingIndicator type="circle" /></center>);
+                tab_content = (<center><LoadingIndicator type="circle"/></center>);
             }
         }
-        else if( (section === 'recent-replies')) {
+        else if ((section === 'recent-replies')) {
             if (account.recent_replies) {
                 let posts = accountImm.get('recent_replies');
                 if (!fetching && (posts && !posts.size)) {
-                    tab_content = <Callout>{tt('user_profile.user_hasnt_had_any_replies_yet', {name: accountname}) + '.'}</Callout>;
+                    tab_content =
+                        <Callout>{tt('user_profile.user_hasnt_had_any_replies_yet', {name: accountname}) + '.'}</Callout>;
                 } else {
                     tab_content = (
                         <div>
@@ -271,39 +285,39 @@ export default class UserProfile extends React.Component {
                                 loadMore={this.loadMore}
                                 showSpam={false}
                             />
-                            {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name} />}
+                            {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name}/>}
                         </div>
                     );
                 }
-          } else {
-              tab_content = (<center><LoadingIndicator type="circle" /></center>);
-          }
+            } else {
+                tab_content = (<center><LoadingIndicator type="circle"/></center>);
+            }
         }
-        else if( section === 'permissions' && isMyAccount ) {
+        else if (section === 'permissions' && isMyAccount) {
             walletClass = 'active'
             tab_content = <div>
                 <div className="row">
                     <div className="column">
-                        <WalletSubMenu account_name={account.name} />
+                        <WalletSubMenu account_name={account.name}/>
                     </div>
                 </div>
-                <br />
-                <UserKeys account={accountImm} />
-                {isMyAccount && <MarkNotificationRead fields="account_update" account={account.name} />}
-                </div>;
-        } else if( section === 'password' ) {
+                <br/>
+                <UserKeys account={accountImm}/>
+                {isMyAccount && <MarkNotificationRead fields="account_update" account={account.name}/>}
+            </div>;
+        } else if (section === 'password') {
             walletClass = 'active'
             tab_content = <div>
-                    <div className="row">
-                        <div className="column">
-                            <WalletSubMenu account_name={account.name} />
-                        </div>
+                <div className="row">
+                    <div className="column">
+                        <WalletSubMenu account_name={account.name}/>
                     </div>
-                    <br />
-                    <PasswordReset account={accountImm} />
                 </div>
+                <br/>
+                <PasswordReset account={accountImm}/>
+            </div>
         } else {
-        //    console.log( "no matches" );
+            //    console.log( "no matches" );
         }
 
         // detect illegal users
@@ -322,18 +336,22 @@ export default class UserProfile extends React.Component {
         }
 
         let printLink = null;
-        if( section === 'permissions' ) {
-           if(isMyAccount && wifShown) {
-               printLink = <div><a className="float-right noPrint" onClick={onPrint}>
-                       <Icon name="printer" />&nbsp;{tt('g.print')}&nbsp;&nbsp;
-                   </a></div>
-           }
+        if (section === 'permissions') {
+            if (isMyAccount && wifShown) {
+                printLink = <div><a className="float-right noPrint" onClick={onPrint}>
+                    <Icon name="printer"/>&nbsp;{tt('g.print')}&nbsp;&nbsp;
+                </a></div>
+            }
         }
 
         // const wallet_tab_active = section === 'transfers' || section === 'password' || section === 'permissions' ? 'active' : ''; // className={wallet_tab_active}
 
         let rewardsMenu = [
-            {link: `/@${accountname}/curation-rewards`, label: tt('g.curation_rewards'), value: tt('g.curation_rewards')},
+            {
+                link: `/@${accountname}/curation-rewards`,
+                label: tt('g.curation_rewards'),
+                value: tt('g.curation_rewards')
+            },
             {link: `/@${accountname}/author-rewards`, label: tt('g.author_rewards'), value: tt('g.author_rewards')}
         ];
 
@@ -346,7 +364,7 @@ export default class UserProfile extends React.Component {
                     <li><Link to={`/@${accountname}`} activeClassName="active">{tt('g.blog')}</Link></li>
                     <li><Link to={`/@${accountname}/comments`} activeClassName="active">{tt('g.comments')}</Link></li>
                     <li><Link to={`/@${accountname}/recent-replies`} activeClassName="active">
-                        {tt('g.replies')} {isMyAccount && <NotifiCounter fields="comment_reply" />}
+                        {tt('g.replies')} {isMyAccount && <NotifiCounter fields="comment_reply"/>}
                     </Link></li>
                     {/*<li><Link to={`/@${accountname}/feed`} activeClassName="active">Feed</Link></li>*/}
                     <li>
@@ -355,12 +373,12 @@ export default class UserProfile extends React.Component {
                             dropdownPosition="bottom"
                             dropdownAlignment="right"
                             dropdownContent={
-                                <VerticalMenu items={rewardsMenu} />
+                                <VerticalMenu items={rewardsMenu}/>
                             }
                         >
                             <a className={rewardsClass}>
                                 {tt('g.rewards')}
-                                <Icon name="dropdown-arrow" />
+                                <Icon name="dropdown-arrow"/>
                             </a>
                         </LinkWithDropdown>
                     </li>
@@ -369,8 +387,12 @@ export default class UserProfile extends React.Component {
             <div className="columns shrink">
                 <ul className="menu" style={{flexWrap: "wrap"}}>
                     <li>
-                        <a href={`/@${accountname}/transfers`} className={walletClass} onClick={e => { e.preventDefault(); browserHistory.push(e.target.pathname); return false; }}>
-                            {tt('g.wallet')} {isMyAccount && <NotifiCounter fields="send,receive,account_update" />}
+                        <a href={`/@${accountname}/transfers`} className={walletClass} onClick={e => {
+                            e.preventDefault();
+                            browserHistory.push(e.target.pathname);
+                            return false;
+                        }}>
+                            {tt('g.wallet')} {isMyAccount && <NotifiCounter fields="send,receive,account_update"/>}
                         </a>
                     </li>
                     {isMyAccount && <li>
@@ -378,13 +400,13 @@ export default class UserProfile extends React.Component {
                     </li>}
                 </ul>
             </div>
-         </div>;
+        </div>;
 
         const {name, location, about, website, cover_image} = normalizeProfile(account);
         const website_label = website ? website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '') : null
 
         let cover_image_style = {}
-        if(cover_image) {
+        if (cover_image) {
             cover_image_style = {backgroundImage: "url(" + proxifyImageUrl(cover_image, '2048x512') + ")"}
         }
 
@@ -396,14 +418,15 @@ export default class UserProfile extends React.Component {
                     <div className="column" style={cover_image_style}>
                         <div style={{position: "relative"}}>
                             <div className="UserProfile__buttons hide-for-small-only">
-                                <Follow follower={username} following={accountname} />
+                                <Follow follower={username} following={accountname}/>
                             </div>
                         </div>
 
                         <h1>
-                            <Userpic account={account.name} hideIfDefault />
+                            <Userpic account={account.name} hideIfDefault/>
                             {name || account.name}{' '}
-                            <Tooltip t={tt('user_profile.this_is_users_reputations_score_it_is_based_on_history_of_votes', {name: accountname})}>
+                            <Tooltip
+                                t={tt('user_profile.this_is_users_reputations_score_it_is_based_on_history_of_votes', {name: accountname})}>
                                 <span className="UserProfile__rep">({rep})</span>
                             </Tooltip>
                         </h1>
@@ -412,20 +435,23 @@ export default class UserProfile extends React.Component {
                             {about && <p className="UserProfile__bio">{about}</p>}
                             <div className="UserProfile__stats">
                                 <span>
-                                    <Link to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
-                                    {isMyAccount && <NotifiCounter fields="follow" />}
+                                    <Link
+                                        to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
+                                    {isMyAccount && <NotifiCounter fields="follow"/>}
                                 </span>
-                                <span><Link to={`/@${accountname}`}>{tt('user_profile.post_count', {count: account.post_count || 0})}</Link></span>
-                                <span><Link to={`/@${accountname}/followed`}>{tt('user_profile.followed_count', {count: followingCount})}</Link></span>
+                                <span><Link
+                                    to={`/@${accountname}`}>{tt('user_profile.post_count', {count: account.post_count || 0})}</Link></span>
+                                <span><Link
+                                    to={`/@${accountname}/followed`}>{tt('user_profile.followed_count', {count: followingCount})}</Link></span>
                             </div>
                             <p className="UserProfile__info">
-                                {location && <span><Icon name="location" /> {location}</span>}
-                                {website && <span><Icon name="link" /> <a href={website}>{website_label}</a></span>}
-                                <Icon name="calendar" /> <DateJoinWrapper date={accountjoin} />
+                                {location && <span><Icon name="location"/> {location}</span>}
+                                {website && <span><Icon name="link"/> <a href={website}>{website_label}</a></span>}
+                                <Icon name="calendar"/> <DateJoinWrapper date={accountjoin}/>
                             </p>
                         </div>
                         <div className="UserProfile__buttons_mobile show-for-small-only">
-                            <Follow follower={username} following={accountname} what="blog" />
+                            <Follow follower={username} following={accountname} what="blog"/>
                         </div>
                     </div>
                 </div>
@@ -433,10 +459,10 @@ export default class UserProfile extends React.Component {
                     {top_menu}
                 </div>
                 <div>
-                  {printLink}
+                    {printLink}
                 </div>
                 <div>
-                  {tab_content}
+                    {tab_content}
                 </div>
             </div>
         );
@@ -464,13 +490,19 @@ module.exports = {
             };
         },
         dispatch => ({
-            login: () => {dispatch(user.actions.showLogin())},
-            clearTransferDefaults: () => {dispatch(user.actions.clearTransferDefaults())},
+            login: () => {
+                dispatch(user.actions.showLogin())
+            },
+            clearTransferDefaults: () => {
+                dispatch(user.actions.clearTransferDefaults())
+            },
             showTransfer: (transferDefaults) => {
                 dispatch(user.actions.setTransferDefaults(transferDefaults))
                 dispatch(user.actions.showTransfer())
             },
-            clearPowerdownDefaults: () => {dispatch(user.actions.clearPowerdownDefaults())},
+            clearPowerdownDefaults: () => {
+                dispatch(user.actions.clearPowerdownDefaults())
+            },
             showPowerdown: (powerdownDefaults) => {
                 console.log('power down defaults:', powerdownDefaults)
                 dispatch(user.actions.setPowerdownDefaults(powerdownDefaults))

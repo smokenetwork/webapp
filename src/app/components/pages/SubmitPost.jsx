@@ -19,11 +19,12 @@ class SubmitPost extends React.Component {
             browserHistory.push('/created')//'/category/' + category)
         }
     }
+
     render() {
         const {success} = this
         return (
             <div className="SubmitPost">
-               <SubmitReplyEditor type="submit_story" successCallback={success} />
+                <SubmitReplyEditor type="submit_story" successCallback={success}/>
             </div>
         );
     }

@@ -132,7 +132,7 @@ class PostsList extends React.Component {
 
         // Detect if we're in mobile mode (renders larger preview imgs)
         const mq = window.matchMedia('screen and (max-width: 39.9375em)');
-        if(mq.matches) {
+        if (mq.matches) {
             this.setState({thumbSize: 'mobile'})
         } else {
             this.setState({thumbSize: 'desktop'})
@@ -159,19 +159,21 @@ class PostsList extends React.Component {
     }
 
     render() {
-        const {posts, showSpam, loading, category, content,
-            ignore_result, account, nsfwPref} = this.props;
+        const {
+            posts, showSpam, loading, category, content,
+            ignore_result, account, nsfwPref
+        } = this.props;
         const {thumbSize, showPost} = this.state
         const postsInfo = [];
         posts.forEach((item) => {
             const cont = content.get(item);
-            if(!cont) {
+            if (!cont) {
                 console.error('PostsList --> Missing cont key', item)
                 return
             }
             const ignore = ignore_result && ignore_result.has(cont.get('author'))
             const hide = cont.getIn(['stats', 'hide'])
-            if(!(ignore || hide) || showSpam) // rephide
+            if (!(ignore || hide) || showSpam) // rephide
                 postsInfo.push({item, ignore})
         });
         const renderSummary = items => items.map(item => <li key={item.item}>
@@ -190,18 +192,21 @@ class PostsList extends React.Component {
                 <ul className="PostsList__summaries hfeed" itemScope itemType="http://schema.org/blogPosts">
                     {renderSummary(postsInfo)}
                 </ul>
-                {loading && <center><LoadingIndicator style={{marginBottom: "2rem"}} type="circle" /></center>}
+                {loading && <center><LoadingIndicator style={{marginBottom: "2rem"}} type="circle"/></center>}
                 {showPost && <div id="post_overlay" className="PostsList__post_overlay" tabIndex={0}>
                     <div className="PostsList__post_top_overlay">
                         <div className="PostsList__post_top_bar">
                             <ul className="menu back-button-menu">
-                                <li><a onClick={(e) => {e.preventDefault(); this.setState({showPost: null}) }} href="#"><i><Icon name="chevron-left" /></i> <span>{tt('g.go_back')}</span></a></li>
+                                <li><a onClick={(e) => {
+                                    e.preventDefault();
+                                    this.setState({showPost: null})
+                                }} href="#"><i><Icon name="chevron-left"/></i> <span>{tt('g.go_back')}</span></a></li>
                             </ul>
-                            <CloseButton onClick={this.closePostModal} />
+                            <CloseButton onClick={this.closePostModal}/>
                         </div>
                     </div>
                     <div className="PostsList__post_container">
-                        <Post post={showPost} />
+                        <Post post={showPost}/>
                     </div>
                 </div>}
             </div>

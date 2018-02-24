@@ -148,7 +148,6 @@ class PostsIndex extends React.Component {
                             <div className="articles__tag-selector">
                                 <Topics order={topics_order} current={category} compact/>
                             </div>
-                            <ArticleLayoutSelector/>
                         </div>
                     </div>
                     <hr className="articles__hr"/>
@@ -164,21 +163,6 @@ class PostsIndex extends React.Component {
                         />
                     }
                 </article>
-                <aside className="c-sidebar c-sidebar--right">
-                    {!this.props.username
-                        ? <SidebarNewUsers/>
-                        : <div>
-                            {/* <SidebarStats steemPower={123} followers={23} reputation={62} />  */}
-                            <SidebarLinks username={this.props.username}/>
-                        </div>
-                    }
-                </aside>
-                <aside className="c-sidebar c-sidebar--left">
-                    <Topics order={topics_order} current={category} compact={false}/>
-                    <small><a className="c-sidebar__more-link"
-                              onClick={this.onShowSpam}>{showSpam ? tt('g.next_3_strings_together.show_less') : tt('g.next_3_strings_together.show_more')}</a>{' ' + tt('g.next_3_strings_together.value_posts')}
-                    </small>
-                </aside>
             </div>
         );
     }

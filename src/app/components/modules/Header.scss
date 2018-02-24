@@ -54,9 +54,10 @@
         &.button.primary {
             background-color: $primary-button-background-color;
             color: $primary-button-text-color;
+            text-transform: none;
 
             &:hover {
-                background-color: smart-scale($primary-button-background-color);
+                background-color: smart-scale($primary-button-background-color, 10%);
                 color: smart-scale($primary-button-text-color);
             }
         }
@@ -77,9 +78,11 @@
     ul > li.delim {
         color: $medium-gray;
     }
+
     ul > li > a {
-        font-size: 1.1rem;
+        font-size: 0.80rem;
     }
+
     ul > li > span {
         font-size: 1.1rem;
         line-height: 1.5rem;
@@ -87,6 +90,7 @@
         display: flex;
         text-transform: lowercase;
     }
+
     @media screen and (max-width: 39.9375em) {
         .shrink {
             padding: 0 1rem;
@@ -123,6 +127,7 @@ ul > li.Header__top-logo > a {
     li:first-child {
         margin: 0 0 0 0;
     }
+
     li > a {
         color: $dark-gray;
         background-color: $white;
@@ -196,7 +201,7 @@ ul > li.Header__top-logo > a {
     }
 
     .icon-svg {
-        fill: $color-teal;
+        fill: $primary-brand-color;
         @include themify($themes) {
             fill: themed('colorAccent');
         }

@@ -1,40 +1,7 @@
 $themes: (
-    original: (
-        colorAccent: $color-blue,
-        colorAccentHover: $color-blue-original-light,
-        colorAccentReverse: $color-blue-original-light,
-        colorWhite: $color-white,
-        backgroundColor: $color-background-off-white,
-        backgroundColorOpaque: $color-background-off-white,
-        backgroundTransparent: transparent,
-        moduleBackgroundColor: $color-white,
-        menuBackgroundColor: $color-background-dark,
-        moduleMediumBackgroundColor: $color-white,
-        navBackgroundColor: $color-white,
-        highlightBackgroundColor: #f3faf0,
-        tableRowEvenBackgroundColor: #f4f4f4,
-        border: 1px solid $color-border-light,
-        borderLight: 1px solid $color-border-light-lightest,
-        borderDark: 1px solid $color-text-gray,
-        borderAccent: 1px solid $color-blue,
-        borderTransparent: transparent,
-        iconColorSecondary: #cacaca,
-        textColorPrimary: $color-text-dark,
-        textColorSecondary: $color-text-gray,
-        textColorAccent: $color-text-blue,
-        textColorAccentHover: $color-blue-original-dark,
-        textColorError: $color-text-red,
-        contentBorderAccent: $color-transparent,
-        buttonBackground: $color-blue-original-dark,
-        buttonBackgroundHover: $color-blue-original-light,
-        buttonText: $color-text-white,
-        buttonTextShadow: 0 1px 0 rgba(0, 0, 0, 0.20),
-        buttonTextHover: $color-text-white,
-        buttonBoxShadow: $color-transparent,
-    ),
     light: (
-        colorAccent: $color-teal,
-        colorAccentHover: $color-teal-dark,
+        colorAccent: $primary-brand-color,
+        colorAccentHover: $primary-brand-color-dark,
         colorAccentReverse: $color-blue-black,
         colorWhite: $color-white,
         backgroundColor: $color-background-off-white,
@@ -49,57 +16,23 @@ $themes: (
         border: 1px solid $color-border-light,
         borderLight: 1px solid $color-border-light-lightest,
         borderDark: 1px solid $color-text-gray,
-        borderAccent: 1px solid $color-teal,
+        borderAccent: 1px solid $primary-brand-color,
         borderTransparent: transparent,
         iconColorSecondary: #cacaca,
         textColorPrimary: $color-text-dark,
         textColorSecondary: $color-text-gray,
         textColorAccent: $color-text-teal,
-        textColorAccentHover: $color-teal,
+        textColorAccentHover: $primary-brand-color,
         textColorError: $color-text-red,
-        contentBorderAccent: $color-teal,
+        contentBorderAccent: $primary-brand-color,
         buttonBackground: $color-blue-black,
-        buttonBackgroundHover: $color-teal,
+        buttonBackgroundHover: $primary-brand-color,
         buttonText: $color-text-white,
         buttonTextShadow: 0 1px 0 rgba(0, 0, 0, 0.20),
         buttonTextHover: $color-white,
-        buttonBoxShadow: $color-teal,
+        buttonBoxShadow: $primary-brand-color,
         buttonBoxShadowHover: $color-blue-black,
-    ),
-    dark: (
-        colorAccent: $color-teal,
-        colorAccentHover: $color-teal,
-        colorAccentReverse: $color-white,
-        colorWhite: $color-white,
-        backgroundColor: $color-background-dark,
-        backgroundColorOpaque: $color-blue-dark,
-        moduleBackgroundColor: $color-background-dark,
-        backgroundTransparent: transparent,
-        menuBackgroundColor: $color-blue-dark,
-        moduleMediumBackgroundColor: $color-background-dark,
-        navBackgroundColor: $color-background-dark,
-        highlightBackgroundColor: $color-blue-black-darkest,
-        tableRowEvenBackgroundColor: #212C33,
-        border: 1px solid $color-border-dark,
-        borderLight: 1px solid $color-border-dark-lightest,
-        borderDark: 1px solid $color-text-gray-light,
-        borderAccent: 1px solid $color-teal,
-        borderTransparent: transparent,
-        iconColorSecondary: $color-text-gray-light,
-        textColorPrimary: $color-text-white,
-        textColorSecondary: $color-text-gray-light,
-        textColorAccent: $color-teal,
-        textColorAccentHover: $color-teal-light,
-        textColorError: $color-text-red,
-        contentBorderAccent: $color-teal,
-        buttonBackground: $color-white,
-        buttonBackgroundHover: $color-teal,
-        buttonText: $color-blue-dark,
-        buttonTextShadow: 0 1px 0 rgba(0, 0, 0, 0),
-        buttonTextHover: $color-white,
-        buttonBoxShadow: $color-teal,
-        buttonBoxShadowHover: $color-white,
-    ),
+    )
 );
 
 /*
@@ -123,19 +56,9 @@ $themes: (
     @return map-get($theme-map, $key);
 }
 
-.theme-original {
-    background-color: $white;
-    color: $color-text-dark;
-}
-
 .theme-light {
     background-color: $white;
     color: $color-text-dark;
-}
-
-.theme-dark {
-    background-color: $color-background-dark;
-    color: $color-text-white;
 }
 
 // Utility classes to be used with @extend
@@ -144,24 +67,25 @@ $themes: (
     text-decoration: none;
 
     &--primary {
-        color: $primary-color;
+        color: $primary-link-color;
+
         &:visited, &:active {
-            color: $primary-color;
+            color: $primary-link-color;
         }
 
         &:hover, &:focus {
-            color: $primary-color;
+            color: $primary-link-hover-color;
         }
     }
 
     &--secondary {
-        color: $secondary-color;
+        color: $secondary-link-color;
         &:visited, &:active {
-            color: $secondary-color;
+            color: $secondary-link-color;
         }
 
         &:hover, &:focus {
-            color: $secondary-color;
+            color: $secondary-link-hover-color;
         }
     }
 
@@ -217,7 +141,7 @@ $themes: (
         background-color: $color-blue-black;
         color: $color-white;
         &:hover, &:focus {
-            background-color: $color-teal;
+            background-color: $primary-brand-color;
             color: $color-white;
             text-shadow: 0 1px 0 rgba(0, 0, 0, 0.20);
         }

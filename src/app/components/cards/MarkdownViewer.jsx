@@ -45,10 +45,10 @@ class MarkdownViewer extends Component {
 
     shouldComponentUpdate(np, ns) {
         return np.text !== this.props.text ||
-        np.large !== this.props.large ||
-        // np.formId !== this.props.formId ||
-        np.canEdit !== this.props.canEdit ||
-        ns.allowNoImage !== this.state.allowNoImage
+            np.large !== this.props.large ||
+            // np.formId !== this.props.formId ||
+            np.canEdit !== this.props.canEdit ||
+            ns.allowNoImage !== this.state.allowNoImage
     }
 
     onAllowNoImage = () => {
@@ -79,7 +79,7 @@ class MarkdownViewer extends Component {
         let renderedText = html ? text : remarkable.render(text)
 
         // Embed videos, link mentions and hashtags, etc...
-        if(renderedText) renderedText = HtmlReady(renderedText, {hideImages}).html
+        if (renderedText) renderedText = HtmlReady(renderedText, {hideImages}).html
 
         // Complete removal of javascript and other dangerous tags..
         // The must remain as close as possible to dangerouslySetInnerHTML
@@ -87,13 +87,17 @@ class MarkdownViewer extends Component {
         if (this.props.allowDangerousHTML === true) {
             console.log('WARN\tMarkdownViewer rendering unsanitized content')
         } else {
-            cleanText = sanitize(renderedText, sanitizeConfig({large, highQualityPost, noImage: noImage && allowNoImage}))
+            cleanText = sanitize(renderedText, sanitizeConfig({
+                large,
+                highQualityPost,
+                noImage: noImage && allowNoImage
+            }))
         }
 
-        if(/<\s*script/ig.test(cleanText)) {
+        if (/<\s*script/ig.test(cleanText)) {
             // Not meant to be complete checking, just a secondary trap and red flag (code can change)
             console.error('Refusing to render script tag in post text', cleanText)
-            return <div />
+            return <div/>
         }
 
         const noImageActive = cleanText.indexOf(noImageText) !== -1
@@ -103,54 +107,54 @@ class MarkdownViewer extends Component {
         const sections = []
 
         // HtmlReady inserts ~~~ embed:${id} type ~~~
-        for(let section of cleanText.split('~~~ embed:')) {
+        for (let section of cleanText.split('~~~ embed:')) {
             const match = section.match(/^([A-Za-z0-9\_\-]+) (youtube|vimeo) ~~~/)
-            if(match && match.length >= 3) {
+            if (match && match.length >= 3) {
                 const id = match[1]
                 const type = match[2]
                 const w = large ? 640 : 480,
-                      h = large ? 360 : 270
-                if(type === 'youtube') {
+                    h = large ? 360 : 270
+                if (type === 'youtube') {
                     sections.push(
-                      <YoutubePreview
-                          key={idx++}
-                          width={w}
-                          height={h}
-                          youTubeId={id}
-                          frameBorder="0"
-                          allowFullScreen="true" />
-                    )
-                } else if(type === 'vimeo') {
-                    const url = `https://player.vimeo.com/video/${id}`
-                    sections.push(
-                      <div className="videoWrapper">
-                        <iframe
+                        <YoutubePreview
                             key={idx++}
-                            src={url}
                             width={w}
                             height={h}
+                            youTubeId={id}
                             frameBorder="0"
-                            webkitallowfullscreen
-                            mozallowfullscreen
-                            allowFullScreen />
-                      </div>
+                            allowFullScreen="true"/>
+                    )
+                } else if (type === 'vimeo') {
+                    const url = `https://player.vimeo.com/video/${id}`
+                    sections.push(
+                        <div className="videoWrapper">
+                            <iframe
+                                key={idx++}
+                                src={url}
+                                width={w}
+                                height={h}
+                                frameBorder="0"
+                                webkitallowfullscreen
+                                mozallowfullscreen
+                                allowFullScreen/>
+                        </div>
                     )
                 } else {
                     console.error('MarkdownViewer unknown embed type', type);
                 }
                 section = section.substring(`${id} ${type} ~~~`.length)
-                if(section === '') continue
+                if (section === '') continue
             }
-            sections.push(<div key={idx++} dangerouslySetInnerHTML={{__html: section}} />)
+            sections.push(<div key={idx++} dangerouslySetInnerHTML={{__html: section}}/>)
         }
 
         const cn = 'Markdown' + (this.props.className ? ` ${this.props.className}` : '') + (html ? ' html' : '') + (large ? '' : ' MarkdownViewer--small')
         return (<div className={"MarkdownViewer " + cn}>
-          {sections}
-          {noImageActive && allowNoImage &&
+            {sections}
+            {noImageActive && allowNoImage &&
             <div onClick={this.onAllowNoImage} className="MarkdownViewer__negative_group">
-              {tt('markdownviewer_jsx.images_were_hidden_due_to_low_ratings')}
-              <button style={{marginBottom: 0}} className="button hollow tiny float-right">{tt('g.show')}</button>
+                {tt('markdownviewer_jsx.images_were_hidden_due_to_low_ratings')}
+                <button style={{marginBottom: 0}} className="button hollow tiny float-right">{tt('g.show')}</button>
             </div>
             }
         </div>)

@@ -6,10 +6,10 @@ import {connect} from 'react-redux'
 class UserListRow extends React.Component {
     render() {
         const {user, loggedIn} = this.props
-        return(
+        return (
             <tr>
                 {loggedIn && <td width="250">
-                    <Follow following={user} />
+                    <Follow following={user}/>
                 </td>}
                 <td>
                     <Link to={'/@' + user}><strong>{user}</strong></Link>
