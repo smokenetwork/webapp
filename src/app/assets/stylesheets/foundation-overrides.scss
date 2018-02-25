@@ -113,3 +113,16 @@ tbody tr:nth-child(even) {
         min-width: 100px;
     }
 }
+
+.button {
+    text-transform: none;
+
+    &.primary {
+        color: $white;
+        background-color: $primary-color;
+        &:hover {
+            color: smart-scale($white);
+            background-color: smart-scale($primary-color, 10%);
+        }
+    }
+}

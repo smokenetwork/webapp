@@ -9,12 +9,6 @@ import tt from 'counterpart';
 import {APP_NAME} from '../../client_config';
 import SvgImage from "../elements/SvgImage";
 
-function sortOrderToLink(so, topic, account) {
-    if (so === 'home') return '/@' + account + '/feed';
-    if (topic) return `/${so}/${topic}`;
-    return `/${so}`;
-}
-
 class Header extends React.Component {
     static propTypes = {
         location: React.PropTypes.object.isRequired,
@@ -170,16 +164,11 @@ class Header extends React.Component {
                             <ul className="menu">
                                 <li className="Header__top-logo">
                                     <Link to={logoLink}>
-                                        <span className="logo-new logo-new--mobile">
-                                            <SvgImage name="smoke" width="148px" height="38px"></SvgImage>
-                                        </span>
-                                        <span className="logo-new logo-new--desktop">
-                                            <SvgImage name="smoke" width="148px" height="38px"></SvgImage>
-                                        </span>
+                                        <SvgImage name="smoke" width="148px" height="38px"></SvgImage>
+                                        <image href=""></image>
                                     </Link>
                                 </li>
-
-                                <HorizontalMenu className="align-right" items={menuItems}/>
+                                <HorizontalMenu className="align-right" items={menuItems} {...this.props} />
                             </ul>
                         </div>
                     </div>

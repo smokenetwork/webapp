@@ -241,9 +241,10 @@
     "intro_paragraph": "Your voice is worth something. Join the community that pays you to post and curate high quality content."
   },
   "main_menu": {
-    "explore": "explore",
-    "wallet": "wallet",
-    "activity": "activity"
+    "explore": "Explore",
+    "wallet": "Wallet",
+    "profile": "Profile",
+    "activity": "Activity"
   },
   "reply_editor": {
     "shorten_title": "Shorten title",
