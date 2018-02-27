@@ -3,17 +3,14 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import constants from '../../redux/constants';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
-import PostsList from '../cards/PostsList';
+import PostsGrid from '../cards/PostsGrid';
 import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {Link} from 'react-router';
 import MarkNotificationRead from '../elements/MarkNotificationRead';
 import tt from 'counterpart';
 import Immutable from 'immutable';
 import Callout from '../elements/Callout';
-import SidebarLinks from '../elements/SidebarLinks';
-import SidebarNewUsers from '../elements/SidebarNewUsers';
 import Topics from './Topics';
-import ArticleLayoutSelector from '../modules/ArticleLayoutSelector';
 
 class PostsIndex extends React.Component {
 
@@ -150,10 +147,9 @@ class PostsIndex extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <hr className="articles__hr"/>
                     {markNotificationRead}
                     {(!fetching && (posts && !posts.size)) ? <Callout>{emptyText}</Callout> :
-                        <PostsList
+                        <PostsGrid
                             ref="list"
                             posts={posts ? posts : Immutable.List()}
                             loading={fetching}

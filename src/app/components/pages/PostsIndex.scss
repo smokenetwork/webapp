@@ -27,48 +27,14 @@
 }
 
 .articles {
+    width: 100%;
     font-family: helvetica, sans-serif;
     padding: 1em;
-    transition: all 0.2s ease-out;
     border: transparent;
-    margin: auto;
     background-color: transparent;
 
     h2 {
         font-family: sans-serif;
-    }
-
-    &:hover {
-        @include MQ(L) {
-            @include themify($themes) {
-            }
-        }
-    }
-
-    &__hr {
-        margin-bottom: 20px;
-        margin-top: 0px;
-        @include themify($themes) {
-            border-bottom: themed('border');
-        }
-        @include MQ(M) {
-            display: none;
-        }
-    }
-
-    &__layout-selector {
-        display: none;
-        cursor: pointer;
-        @include MQ(M) {
-            display: inline-block;
-            padding-left: 14px;
-        }
-    }
-    &__icon--layout {
-        width: 24px;
-        height: 24px;
-        position: relative;
-        top: 5px;
     }
 
     &__summary {
