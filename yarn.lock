@@ -2,6 +2,27 @@
 # yarn lockfile v1
 
 
+"@sendgrid/client@^6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-6.2.1.tgz#f1732f8fbda197c6d11507de6f33efbc1f2cdb31"
+  dependencies:
+    "@sendgrid/helpers" "^6.2.1"
+    "@types/request" "^2.0.3"
+    request "^2.81.0"
+
+"@sendgrid/helpers@^6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-6.2.1.tgz#cb7938d8621cc0214076957ec4f4a2b133fa276f"
+  dependencies:
+    chalk "^2.0.1"
+
+"@sendgrid/mail@^6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-6.2.1.tgz#dd8bee0849c6febc5f2534737f2c3a57a875db60"
+  dependencies:
+    "@sendgrid/client" "^6.2.1"
+    "@sendgrid/helpers" "^6.2.1"
+
 "@steem/crypto-session@git+https://github.com/steemit/crypto-session.git#83a90b319ce5bc6a70362d52a15a815de7e729bb":
   version "1.0.3"
   resolved "git+https://github.com/steemit/crypto-session.git#83a90b319ce5bc6a70362d52a15a815de7e729bb"
@@ -10,9 +31,36 @@
     libsodium "^0.4.8"
     libsodium-wrappers "^0.4.8"
 
+"@types/caseless@*":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@types/caseless/-/caseless-0.12.1.tgz#9794c69c8385d0192acc471a540d1f8e0d16218a"
+
+"@types/form-data@*":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/form-data/-/form-data-2.2.1.tgz#ee2b3b8eaa11c0938289953606b745b738c54b1e"
+  dependencies:
+    "@types/node" "*"
+
 "@types/geojson@^1.0.0":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.5.tgz#ef9f12277233399c7f32086818a56a84c8952f8f"
+
+"@types/node@*":
+  version "9.4.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
+
+"@types/request@^2.0.3":
+  version "2.47.0"
+  resolved "https://registry.yarnpkg.com/@types/request/-/request-2.47.0.tgz#76a666cee4cb85dcffea6cd4645227926d9e114e"
+  dependencies:
+    "@types/caseless" "*"
+    "@types/form-data" "*"
+    "@types/node" "*"
+    "@types/tough-cookie" "*"
+
+"@types/tough-cookie@*":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-2.3.2.tgz#e0d481d8bb282ad8a8c9e100ceb72c995fb5e709"
 
 abab@^1.0.3:
   version "1.0.4"
@@ -58,10 +106,6 @@ acorn@^4.0.3, acorn@^4.0.4:
 acorn@^5.0.0, acorn@^5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.1.2.tgz#911cb53e036807cf0fa778dc5d370fbd864246d7"
-
-addressparser@~1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/addressparser/-/addressparser-1.0.1.tgz#47afbe1a2a9262191db6838e4fd1d39b40821746"
 
 ajv-keywords@^2.0.0, ajv-keywords@^2.1.0:
   version "2.1.0"
@@ -119,7 +163,7 @@ ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
-ansi-styles@^3.1.0:
+ansi-styles@^3.1.0, ansi-styles@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.0.tgz#c159b8d5be0f9e5a6f346dab94f16ce022161b88"
   dependencies:
@@ -286,64 +330,6 @@ async-foreach@^0.1.3:
 async-limiter@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
-
-async.ensureasync@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.ensureasync/-/async.ensureasync-0.5.2.tgz#c3c7e4a4e9b31d96875d56b8504598446e1e305d"
-  dependencies:
-    async.util.ensureasync "0.5.2"
-
-async.queue@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.queue/-/async.queue-0.5.2.tgz#8d5d90812e1481066bc0904e8cc1712b17c3bd7c"
-  dependencies:
-    async.util.queue "0.5.2"
-
-async.util.arrayeach@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.arrayeach/-/async.util.arrayeach-0.5.2.tgz#58c4e98028d55d69bfb05aeb3af44e0a555a829c"
-
-async.util.ensureasync@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.ensureasync/-/async.util.ensureasync-0.5.2.tgz#10907f2cbd067a061f99ae6d22e08ced30db0d68"
-  dependencies:
-    async.util.restparam "0.5.2"
-    async.util.setimmediate "0.5.2"
-
-async.util.isarray@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.isarray/-/async.util.isarray-0.5.2.tgz#e62dac8f2636f65875dcf7521c2d24d0dfb2bbdf"
-
-async.util.map@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.map/-/async.util.map-0.5.2.tgz#e588ef86e0b3ab5f027d97af4d6835d055ca69d6"
-
-async.util.noop@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.noop/-/async.util.noop-0.5.2.tgz#bdd62b97cb0aa3f60b586ad148468698975e58b9"
-
-async.util.onlyonce@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.onlyonce/-/async.util.onlyonce-0.5.2.tgz#b8e6fc004adc923164d79e32f2813ee465c24ff2"
-
-async.util.queue@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.queue/-/async.util.queue-0.5.2.tgz#57f65abe1a3cdf273d31abd28ab95425f8222ee5"
-  dependencies:
-    async.util.arrayeach "0.5.2"
-    async.util.isarray "0.5.2"
-    async.util.map "0.5.2"
-    async.util.noop "0.5.2"
-    async.util.onlyonce "0.5.2"
-    async.util.setimmediate "0.5.2"
-
-async.util.restparam@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.restparam/-/async.util.restparam-0.5.2.tgz#03efebf3c0277b97220e525aba750f5e04fc80cd"
-
-async.util.setimmediate@0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/async.util.setimmediate/-/async.util.setimmediate-0.5.2.tgz#2812ebabf2a58027758d4bc7793d1ccfaf10255f"
 
 async@^1.4.0:
   version "1.5.2"
@@ -1288,10 +1274,6 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bottleneck@^1.12.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/bottleneck/-/bottleneck-1.16.0.tgz#d6ce13808527afc80b69092f15606655e5b21f1a"
-
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
@@ -1536,6 +1518,14 @@ chalk@^2.0.0, chalk@^2.1.0:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
+
+chalk@^2.0.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.3.1.tgz#523fe2678aec7b04e8041909292fe8b17059b796"
+  dependencies:
+    ansi-styles "^3.2.0"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.2.0"
 
 cheerio@^0.22.0:
   version "0.22.0"
@@ -2491,7 +2481,7 @@ encodeurl@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.1.tgz#79e3d58655346909fe6f0f45a5de68103b294d20"
 
-encoding@^0.1.11, encoding@^0.1.12, encoding@~0.1.12:
+encoding@^0.1.11:
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.12.tgz#538b66f3ee62cd1ab51ec323829d1f9480c74beb"
   dependencies:
@@ -3657,6 +3647,10 @@ has-flag@^1.0.0:
 has-flag@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-2.0.0.tgz#e8207af1cc7b30d446cc70b734b5e8be18f88d51"
+
+has-flag@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
 
 has-gulplog@^0.1.0:
   version "0.1.0"
@@ -4837,10 +4831,6 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
-lodash.chunk@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/lodash.chunk/-/lodash.chunk-4.2.0.tgz#66e5ce1f76ed27b4303d8c6512e8d1216e8106bc"
-
 lodash.clonedeep@^4.3.2:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
@@ -5059,15 +5049,6 @@ macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
 
-mailparser@^0.6.1:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/mailparser/-/mailparser-0.6.2.tgz#03c486039bdf4df6cd3b6adcaaac4107dfdbc068"
-  dependencies:
-    encoding "^0.1.12"
-    mime "^1.3.4"
-    mimelib "^0.3.0"
-    uue "^3.1.0"
-
 make-dir@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-1.0.0.tgz#97a011751e91dd87cfadef58832ebb04936de978"
@@ -5210,13 +5191,6 @@ mime@1.3.x, mime@^1.3.4:
 mime@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
-
-mimelib@^0.3.0:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/mimelib/-/mimelib-0.3.1.tgz#787add2415d827acb3af6ec4bca1ea9596418853"
-  dependencies:
-    addressparser "~1.0.1"
-    encoding "~0.1.12"
 
 mimic-fn@^1.0.0:
   version "1.1.0"
@@ -5506,10 +5480,6 @@ node-uuid@~1.4.0, node-uuid@~1.4.7:
 node-watch@^0.5.5:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/node-watch/-/node-watch-0.5.5.tgz#34865ba8bc6861ab086acdcc3403e40ed55c3274"
-
-nodemailer@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.4.2.tgz#f215fb88e8a1052f9f93083909e116d2b79fc8de"
 
 "nopt@2 || 3", nopt@~3.0.1:
   version "3.0.6"
@@ -6900,7 +6870,7 @@ replace-ext@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-0.0.1.tgz#29bbd92078a739f0bcce2b4ee41e837953522924"
 
-request@*, request@2, request@^2.79.0:
+request@*, request@2, request@^2.79.0, request@^2.81.0:
   version "2.83.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
@@ -7196,22 +7166,6 @@ send@0.16.1:
     on-finished "~2.3.0"
     range-parser "~1.2.0"
     statuses "~1.3.1"
-
-sendgrid-rest@^2.3.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/sendgrid-rest/-/sendgrid-rest-2.4.0.tgz#88e11a86375ec0e14b5faf1b4a0a191639ce90ef"
-
-sendgrid@^4.0.1:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/sendgrid/-/sendgrid-4.10.0.tgz#fd64ae3b3f3a94e14aa0ee587db2a01333b07f53"
-  dependencies:
-    async.ensureasync "^0.5.2"
-    async.queue "^0.5.2"
-    bottleneck "^1.12.0"
-    debug "^2.2.0"
-    lodash.chunk "^4.2.0"
-    mailparser "^0.6.1"
-    sendgrid-rest "^2.3.0"
 
 sentence-case@^1.1.1:
   version "1.1.3"
@@ -7646,6 +7600,12 @@ supports-color@^4.0.0, supports-color@^4.2.1, supports-color@^4.4.0:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.4.0.tgz#883f7ddabc165142b2a61427f3352ded195d1a3e"
   dependencies:
     has-flag "^2.0.0"
+
+supports-color@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.2.0.tgz#b0d5333b1184dd3666cbe5aa0b45c5ac7ac17a4a"
+  dependencies:
+    has-flag "^3.0.0"
 
 svg-inline-loader@^0.8.0:
   version "0.8.0"
@@ -8092,12 +8052,6 @@ util@0.10.3, "util@>=0.10.3 <1", util@^0.10.3:
 utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
-
-uue@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uue/-/uue-3.1.0.tgz#5d67d37030e66efebbb4b8aac46daf9b55befbf6"
-  dependencies:
-    extend "~3.0.0"
 
 uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
   version "3.1.0"
