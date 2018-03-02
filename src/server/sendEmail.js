@@ -1,5 +1,5 @@
-const sgMail = require('@sendgrid/mail');
 import config from 'config';
+import sgMail from '@sendgrid/mail';
 
 sgMail.setApiKey(config.get('sendgrid.key'));
 
