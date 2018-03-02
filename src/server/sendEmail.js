@@ -9,8 +9,8 @@ export default function sendEmail(template, to, params /*, from = null */) {
     //     return;
     // }
 
-    const email_text = `Enter the link below to confirm your email: http://51.15.217.173/confirm_email/${params.confirmation_code}`;
-    const email_html = `Enter the link below to confirm your email: <a href="http://51.15.217.173/confirm_email/${params.confirmation_code}">${params.confirmation_code}</a>`;
+    const email_text = `Enter the link below to confirm your email: ${config.get('site_domain')}/confirm_email/${params.confirmation_code}`;
+    const email_html = `Enter the link below to confirm your email: <a href="${config.get('site_domain')}/confirm_email/${params.confirmation_code}">${params.confirmation_code}</a>`;
     const msg = {
         to: `${to}`,
         from: config.get('sendgrid.from'),
