@@ -304,9 +304,15 @@
 .user {
     display: flex;
     align-items: center;
+    width: 100%;
+
     &__col {
         line-height: 1;
     }
+    &__col--right {
+        flex-grow: 1;
+    }
+
     &__link {
         @extend .link;
         &:hover {
@@ -317,7 +323,9 @@
                 }
             }
         }
+
     }
+
     &__profile-img {
         width: 40px !important;
         height: 40px !important;
@@ -329,6 +337,7 @@
             margin-right: 10px;
         }
     }
+
     &__name {
         display: inline;
         font-weight: bold;
@@ -346,6 +355,12 @@
         @extend .link--secondary;
         font-weight: normal;
         @include font-size(14px);
+    }
+
+    .Voting {
+        float: right;
+        font-size: 0.875rem;
+        line-height: 1.5;
     }
 }
 

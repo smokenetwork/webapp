@@ -79,20 +79,9 @@ class PostGridItem extends React.Component {
                                                 className="updated"/>
                             </span>
                         </Link>
+                        <Voting post={post} showList={false}/>
                     </div>
                 </div>
-            </div>
-        );
-
-        const contentFooter = (
-            <div className="articles__content-footer">
-                <Voting post={post} showList={false}/>
-                <VotesAndComments post={post} commentsLink={commentsLink}/>
-                <span className="PostGridItem__time_author_category">
-                    {!isArchived && <Reblog author={postContent.author}
-                                            permlink={postContent.permlink}
-                                            parent_author={postContent.parent_author}/>}
-                </span>
             </div>
         );
 
@@ -117,7 +106,18 @@ class PostGridItem extends React.Component {
                     }
 
                     <div className="articles__content-block--text">
-                        {contentTitle}
+                        <span className="articles__content-title">
+                            {contentTitle}
+                        </span>
+
+                        <span className="articles__content-stats">
+                            <span className="PostGridItem__time_author_category">
+                                {!isArchived && <Reblog author={postContent.author}
+                                                        permlink={postContent.permlink}
+                                                        parent_author={postContent.parent_author}/>}
+                            </span>
+                            <VotesAndComments post={post} commentsLink={commentsLink}/>
+                        </span>
                     </div>
                 </div>
             </div>

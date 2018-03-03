@@ -1,8 +1,10 @@
 .Voting {
     white-space: nowrap !important;
+
     span {
         white-space: nowrap !important;
     }
+
     .dropdown-pane {
         @include themify($themes) {
             border: themed('borderDark');
@@ -190,11 +192,7 @@
 }
 
 .Voting__inner {
-    @include themify($themes) {
-        border-right: themed('borderLight');
-    }
     padding-right: .8rem;
-    margin-right: .6rem;
     .DropdownMenu .Icon.dropdown-arrow {
         margin-right: -0.5rem;
         position: relative;

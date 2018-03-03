@@ -112,14 +112,13 @@
         font-weight: bold;
         @include hoverUnderline;
     }
-    padding-left: 1rem;
+
     @include themify($themes) {
         border-left: themed('borderLight');
     }
 
     .Reblog__button {
-        margin-right: 1rem;
-        padding-right: 1rem;
+        padding-right: 1.2rem;
         border-right: transparent;
     }
 }
@@ -202,6 +201,10 @@
 
 .articles__content-block--img {
     margin: 0;
+}
+
+.articles__content-stats {
+    font-size: 0.85rem;
 }
 
 .articles__content {
