@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {markNotificationRead} from 'app/utils/ServerApiClient';
+import {markNotificationRead} from '../../utils/ServerApiClient';
 
 class MarkNotificationRead extends React.Component {
 
@@ -16,7 +16,7 @@ class MarkNotificationRead extends React.Component {
 
     componentDidMount() {
         const {account, fields, update} = this.props;
-        const fields_array = fields.replace(/\s/g,'').split(',');
+        const fields_array = fields.replace(/\s/g, '').split(',');
         markNotificationRead(account, fields_array).then(nc => update(nc));
     }
 
@@ -27,5 +27,7 @@ class MarkNotificationRead extends React.Component {
 }
 
 export default connect(null, dispatch => ({
-    update: (payload) => { dispatch({type: 'UPDATE_NOTIFICOUNTERS', payload})},
+    update: (payload) => {
+        dispatch({type: 'UPDATE_NOTIFICOUNTERS', payload})
+    },
 }))(MarkNotificationRead);

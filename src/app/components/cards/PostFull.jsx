@@ -1,29 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import Icon from 'app/components/elements/Icon';
-import { connect } from 'react-redux';
-import user from 'app/redux/User';
-import transaction from 'app/redux/Transaction'
-import Voting from 'app/components/elements/Voting';
-import Reblog from 'app/components/elements/Reblog';
-import MarkdownViewer from 'app/components/cards/MarkdownViewer';
-import ReplyEditor from 'app/components/elements/ReplyEditor';
-import {immutableAccessor} from 'app/utils/Accessors';
-import extractContent from 'app/utils/ExtractContent';
-import TagList from 'app/components/elements/TagList';
-import Author from 'app/components/elements/Author';
-import {repLog10, parsePayoutAmount} from 'app/utils/ParsersAndFormatters';
-import DMCAList from 'app/utils/DMCAList'
-import PageViewsCounter from 'app/components/elements/PageViewsCounter';
-import ShareMenu from 'app/components/elements/ShareMenu';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import Userpic from 'app/components/elements/Userpic';
-import { APP_DOMAIN, APP_NAME } from 'app/client_config';
+import {Link} from 'react-router';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import Icon from '../elements/Icon';
+import {connect} from 'react-redux';
+import user from '../../redux/User';
+import transaction from '../../redux/Transaction'
+import Voting from '../elements/Voting';
+import Reblog from '../elements/Reblog';
+import MarkdownViewer from './MarkdownViewer';
+import ReplyEditor from '../elements/ReplyEditor';
+import {immutableAccessor} from '../../utils/Accessors';
+import extractContent from '../../utils/ExtractContent';
+import TagList from '../elements/TagList';
+import Author from '../elements/Author';
+import {parsePayoutAmount, repLog10} from '../../utils/ParsersAndFormatters';
+import DMCAList from '../../utils/DMCAList'
+import PageViewsCounter from '../elements/PageViewsCounter';
+import ShareMenu from '../elements/ShareMenu';
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
+import Userpic from '../elements/Userpic';
+import {APP_DOMAIN, APP_NAME} from '../../client_config';
 import tt from 'counterpart';
-import userIllegalContent from 'app/utils/userIllegalContent';
-import ImageUserBlockList from 'app/utils/ImageUserBlockList';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
+import userIllegalContent from '../../utils/userIllegalContent';
+import ImageUserBlockList from '../../utils/ImageUserBlockList';
+import LoadingIndicator from '../elements/LoadingIndicator';
 
 // function loadFbSdk(d, s, id) {
 //     return new Promise(resolve => {
@@ -48,23 +48,23 @@ import LoadingIndicator from 'app/components/elements/LoadingIndicator';
 
 function TimeAuthorCategory({content, authorRepLog10, showTags}) {
     return (
-      <span className="PostFull__time_author_category vcard">
-        <Icon name="clock" className="space-right" />
-        <TimeAgoWrapper date={content.created} className="updated" />
-        {} {tt('g.by')} <Author author={content.author} authorRepLog10={authorRepLog10} />
-        {showTags && <span> {tt('g.in')} <TagList post={content} single /></span>}
+        <span className="PostFull__time_author_category vcard">
+        <Icon name="clock" className="space-right"/>
+        <TimeAgoWrapper date={content.created} className="updated"/>
+            {} {tt('g.by')} <Author author={content.author} authorRepLog10={authorRepLog10}/>
+            {showTags && <span> {tt('g.in')} <TagList post={content} single/></span>}
       </span>
     );
 }
 
 function TimeAuthorCategoryLarge({content, authorRepLog10}) {
     return (
-      <span className="PostFull__time_author_category_large vcard">
-        <TimeAgoWrapper date={content.created} className="updated float-right" />
-        <Userpic account={content.author} />
+        <span className="PostFull__time_author_category_large vcard">
+        <TimeAgoWrapper date={content.created} className="updated float-right"/>
+        <Userpic account={content.author}/>
         <div className="right-side">
-          <Author author={content.author} authorRepLog10={authorRepLog10} />
-          <span> {tt('g.in')} <TagList post={content} single /></span>
+          <Author author={content.author} authorRepLog10={authorRepLog10}/>
+          <span> {tt('g.in')} <TagList post={content} single/></span>
         </div>
       </span>
     );
@@ -189,8 +189,10 @@ class PostFull extends React.Component {
     };
 
     render() {
-        const {props: {username, post}, state: {PostFullReplyEditor, PostFullEditEditor, formId, showReply, showEdit},
-            onShowReply, onShowEdit, onDeletePost} = this
+        const {
+            props: {username, post}, state: {PostFullReplyEditor, PostFullEditEditor, formId, showReply, showEdit},
+            onShowReply, onShowEdit, onDeletePost
+        } = this
         const post_content = this.props.cont.get(this.props.post);
         if (!post_content) return null;
         const p = extractContent(immutableAccessor, post_content);
@@ -202,13 +204,13 @@ class PostFull extends React.Component {
         if (content.category) link = `/${content.category}${link}`;
 
         const {category, title, body} = content;
-        if (process.env.BROWSER && title) document.title = title + ' — '+ APP_NAME;
+        if (process.env.BROWSER && title) document.title = title + ' — ' + APP_NAME;
 
         let content_body = content.body;
         const url = `/${category}/@${author}/${permlink}`
         const bDMCAStop = DMCAList.includes(url);
         const bIllegalContentUser = userIllegalContent.includes(content.author)
-        if(bDMCAStop) {
+        if (bDMCAStop) {
             content_body = tt('postfull_jsx.this_post_is_not_available_due_to_a_copyright_claim')
         }
         // detect illegal users
@@ -231,27 +233,45 @@ class PostFull extends React.Component {
         };
 
         const share_menu = [
-            {link: '#', onClick: this.fbShare, value: 'Facebook', title: tt('postfull_jsx.share_on_facebook'), icon: 'facebook'},
-            {link: '#', onClick: this.twitterShare, value: 'Twitter', title: tt('postfull_jsx.share_on_twitter'), icon: 'twitter'},
-            {link: '#', onClick: this.linkedInShare, value: 'LinkedIn', title: tt('postfull_jsx.share_on_linkedin'), icon: 'linkedin'},
+            {
+                link: '#',
+                onClick: this.fbShare,
+                value: 'Facebook',
+                title: tt('postfull_jsx.share_on_facebook'),
+                icon: 'facebook'
+            },
+            {
+                link: '#',
+                onClick: this.twitterShare,
+                value: 'Twitter',
+                title: tt('postfull_jsx.share_on_twitter'),
+                icon: 'twitter'
+            },
+            {
+                link: '#',
+                onClick: this.linkedInShare,
+                value: 'LinkedIn',
+                title: tt('postfull_jsx.share_on_linkedin'),
+                icon: 'linkedin'
+            },
         ];
 
         const Editor = this.state.showReply ? PostFullReplyEditor : PostFullEditEditor;
         let renderedEditor = null;
         if (showReply || showEdit) {
             renderedEditor = (<div key="editor">
-              <Editor
-                  {...replyParams}
-                  type={this.state.showReply ? 'submit_comment' : 'edit'}
-                  successCallback={() => {
+                <Editor
+                    {...replyParams}
+                    type={this.state.showReply ? 'submit_comment' : 'edit'}
+                    successCallback={() => {
                         this.setState({showReply: false, showEdit: false});
                         saveOnShow(formId, null)
                     }}
-                  onCancel={() => {
+                    onCancel={() => {
                         this.setState({showReply: false, showEdit: false});
                         saveOnShow(formId, null)
                     }}
-                  jsonMetadata={jsonMetadata}
+                    jsonMetadata={jsonMetadata}
                 />
             </div>)
         }
@@ -261,33 +281,33 @@ class PostFull extends React.Component {
         const full_power = post_content.get('percent_steem_dollars') === 0;
 
         let post_header = (<h1 className="entry-title">
-          {content.title}
-          {full_power && <span title={tt('g.powered_up_100')}><Icon name="steempower" /></span>}
+            {content.title}
+            {full_power && <span title={tt('g.powered_up_100')}><Icon name="steempower"/></span>}
         </h1>);
-        if(content.depth > 0) {
+        if (content.depth > 0) {
             const parent_link = `/${content.category}/@${content.parent_author}/${content.parent_permlink}`;
             let direct_parent_link;
-            if(content.depth > 1) {
+            if (content.depth > 1) {
                 direct_parent_link = (<li>
-                  <Link to={parent_link}>
-                    {tt('postfull_jsx.view_the_direct_parent')}
-                  </Link>
+                    <Link to={parent_link}>
+                        {tt('postfull_jsx.view_the_direct_parent')}
+                    </Link>
                 </li>)
             }
             post_header = (<div className="callout">
-              <h3 className="entry-title">{tt('g.re')}: {content.root_title}</h3>
-              <h5>{tt('postfull_jsx.you_are_viewing_a_single_comments_thread_from')}:</h5>
-              <p>
-                {content.root_title}
-              </p>
-              <ul>
-                <li>
-                  <Link to={content.url}>
-                    {tt('postfull_jsx.view_the_full_context')}
-                  </Link>
-                </li>
-                {direct_parent_link}
-              </ul>
+                <h3 className="entry-title">{tt('g.re')}: {content.root_title}</h3>
+                <h5>{tt('postfull_jsx.you_are_viewing_a_single_comments_thread_from')}:</h5>
+                <p>
+                    {content.root_title}
+                </p>
+                <ul>
+                    <li>
+                        <Link to={content.url}>
+                            {tt('postfull_jsx.view_the_full_context')}
+                        </Link>
+                    </li>
+                    {direct_parent_link}
+                </ul>
             </div>)
         }
 
@@ -303,8 +323,8 @@ class PostFull extends React.Component {
         let contentBody
 
 
-        if(bShowLoading) {
-            contentBody = <LoadingIndicator type="circle-strong" />
+        if (bShowLoading) {
+            contentBody = <LoadingIndicator type="circle-strong"/>
         } else {
             contentBody = <MarkdownViewer
                 formId={formId + '-viewer'} text={content_body} jsonMetadata={jsonMetadata}
@@ -314,55 +334,58 @@ class PostFull extends React.Component {
         }
 
         return (
-          <article className="PostFull hentry" itemScope itemType="http://schema.org/blogPost">
-            {showEdit ?
+            <article className="PostFull hentry" itemScope itemType="http://schema.org/blogPost">
+                {showEdit ?
                     renderedEditor :
                     <span>
-                      <div className="float-right"><Voting post={post} flag /></div>
+                      <div className="float-right"><Voting post={post} flag/></div>
                       <div className="PostFull__header">
                         {post_header}
-                        <TimeAuthorCategoryLarge content={content} authorRepLog10={authorRepLog10} />
+                          <TimeAuthorCategoryLarge content={content} authorRepLog10={authorRepLog10}/>
                       </div>
                       <div className="PostFull__body entry-content">
-                          { contentBody }
+                          {contentBody}
                       </div>
                     </span>
                 }
 
-            {showPromote && <button className="Promote__button float-right button hollow tiny" onClick={this.showPromotePost}>{tt('g.promote')}</button>}
-            <TagList post={content} horizontal />
-            <div className="PostFull__footer row">
-              <div className="column">
-                <TimeAuthorCategory content={content} authorRepLog10={authorRepLog10} />
-                <Voting post={post} />
-              </div>
-              <div className="RightShare__Menu small-11 medium-5 large-5 columns text-right">
-                {!readonly && <Reblog author={author} permlink={permlink} />}
-                <span className="PostFull__reply">
+                {showPromote && <button className="Promote__button float-right button hollow tiny"
+                                        onClick={this.showPromotePost}>{tt('g.promote')}</button>}
+                <TagList post={content} horizontal/>
+                <div className="PostFull__footer row">
+                    <div className="column">
+                        <TimeAuthorCategory content={content} authorRepLog10={authorRepLog10}/>
+                        <Voting post={post}/>
+                    </div>
+                    <div className="RightShare__Menu small-11 medium-5 large-5 columns text-right">
+                        {!readonly && <Reblog author={author} permlink={permlink}/>}
+                        <span className="PostFull__reply">
                   {showReplyOption && <a onClick={onShowReply}>{tt('g.reply')}</a>}
-                  {' '}{!readonly && showEditOption && !showEdit && <a onClick={onShowEdit}>{tt('g.edit')}</a>}
-                  {' '}{!readonly && showDeleteOption && !showReply && <a onClick={onDeletePost}>{tt('g.delete')}</a>}
+                            {' '}{!readonly && showEditOption && !showEdit &&
+                        <a onClick={onShowEdit}>{tt('g.edit')}</a>}
+                            {' '}{!readonly && showDeleteOption && !showReply &&
+                        <a onClick={onDeletePost}>{tt('g.delete')}</a>}
                 </span>
-                <span className="PostFull__responses">
+                        <span className="PostFull__responses">
                   <Link to={link} title={tt('g.responses', {count: content.children})}>
-                    <Icon name="chatboxes" className="space-right" />{content.children}
+                    <Icon name="chatboxes" className="space-right"/>{content.children}
                   </Link>
                 </span>
-                <span className="PostFull__views">
-                  <PageViewsCounter hidden={false} sinceDate={isPreViewCount ? 'Dec 2016' : null} />
+                        <span className="PostFull__views">
+                  <PageViewsCounter hidden={false} sinceDate={isPreViewCount ? 'Dec 2016' : null}/>
                 </span>
-                <ShareMenu menu={share_menu} />
-                <button className="explore-post" title={tt('g.share_this_post')} onClick={this.showExplorePost}>
-                  <Icon name="link" className="chain-right" />
-                </button>
-              </div>
-            </div>
-            <div className="row">
-              <div className="column large-8 medium-10 small-12">
-                {showReply && renderedEditor}
-              </div>
-            </div>
-          </article>
+                        <ShareMenu menu={share_menu}/>
+                        <button className="explore-post" title={tt('g.share_this_post')} onClick={this.showExplorePost}>
+                            <Icon name="link" className="chain-right"/>
+                        </button>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="column large-8 medium-10 small-12">
+                        {showReply && renderedEditor}
+                    </div>
+                </div>
+            </article>
         )
     }
 }
@@ -376,9 +399,15 @@ export default connect(
 
     // mapDispatchToProps
     dispatch => ({
-        dispatchSubmit: (data) => { dispatch(user.actions.usernamePasswordLogin({...data})) },
-        clearError: () => { dispatch(user.actions.loginError({error: null})) },
-        unlock: () => { dispatch(user.actions.showLogin()) },
+        dispatchSubmit: (data) => {
+            dispatch(user.actions.usernamePasswordLogin({...data}))
+        },
+        clearError: () => {
+            dispatch(user.actions.loginError({error: null}))
+        },
+        unlock: () => {
+            dispatch(user.actions.showLogin())
+        },
         deletePost: (author, permlink) => {
             dispatch(transaction.actions.broadcastOperation({
                 type: 'delete_comment',

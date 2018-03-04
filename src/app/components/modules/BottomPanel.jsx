@@ -24,7 +24,7 @@ export default class BottomPanel extends React.Component {
         const {children, visible, hide} = this.props;
         return <div className="BottomPanel">
             <div className={visible ? 'visible ' : ''}>
-                <CloseButton onClick={hide} />
+                <CloseButton onClick={hide}/>
                 {children}
             </div>
         </div>;

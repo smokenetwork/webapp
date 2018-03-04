@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 import tt from 'counterpart';
 
 export default class LpHeader extends React.Component {

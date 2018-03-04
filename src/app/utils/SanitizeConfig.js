@@ -1,4 +1,4 @@
-import { getPhishingWarningMessage } from 'shared/HtmlReady'; // the only allowable title attribute for a div
+import {getPhishingWarningMessage} from '../../shared/HtmlReady'; // the only allowable title attribute for a div
 
 const iframeWhitelist = [
     {
@@ -125,7 +125,7 @@ export default ({large = true, highQualityPost = true, noImage = false, sanitize
             href = href.trim()
             const attys = {href}
             // If it's not a (relative or absolute) steemit URL...
-            if (!href.match(/^(\/(?!\/)|https:\/\/steemit.com)/)) {
+            if (!href.match(/^(\/(?!\/)|https:\/\/smoke.io)/)) {
                 // attys.target = '_blank' // pending iframe impl https://mathiasbynens.github.io/rel-noopener/
                 attys.rel = highQualityPost ? 'noopener' : 'nofollow noopener'
             }

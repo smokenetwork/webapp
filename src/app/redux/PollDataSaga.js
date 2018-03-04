@@ -1,7 +1,6 @@
-import { call, put, select } from 'redux-saga/effects';
-import GlobalReducer from './GlobalReducer';
-import {getNotifications, webPushRegister} from 'app/utils/ServerApiClient';
-import registerServiceWorker from 'app/utils/RegisterServiceWorker';
+import {call, put, select} from 'redux-saga/effects';
+import {getNotifications, webPushRegister} from '../utils/ServerApiClient';
+import registerServiceWorker from '../utils/RegisterServiceWorker';
 import {api} from 'steem';
 
 const wait = ms => (

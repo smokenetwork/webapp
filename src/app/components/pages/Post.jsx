@@ -1,18 +1,16 @@
 import React from 'react';
 // import ReactMarkdown from 'react-markdown';
-import Comment from 'app/components/cards/Comment';
-import PostFull from 'app/components/cards/PostFull';
+import Comment, {sortComments} from '../cards/Comment';
+import PostFull from '../cards/PostFull';
 import {connect} from 'react-redux';
-
-import {sortComments} from 'app/components/cards/Comment';
 // import { Link } from 'react-router';
-import FoundationDropdownMenu from 'app/components/elements/FoundationDropdownMenu';
+import FoundationDropdownMenu from '../elements/FoundationDropdownMenu';
 import {Set} from 'immutable'
 import tt from 'counterpart';
-import { localizedCurrency } from 'app/components/elements/LocalizedCurrency';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import { INVEST_TOKEN_UPPERCASE } from 'app/client_config';
+import {localizedCurrency} from '../elements/LocalizedCurrency';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import {serverApiRecordEvent} from '../../utils/ServerApiClient';
+import {INVEST_TOKEN_UPPERCASE} from '../../client_config';
 
 class Post extends React.Component {
 
@@ -24,6 +22,7 @@ class Post extends React.Component {
         signup_bonus: React.PropTypes.string,
         current_user: React.PropTypes.object,
     };
+
     constructor() {
         super();
         this.state = {
@@ -71,16 +70,18 @@ class Post extends React.Component {
 
         if (!dis) return null;
 
-        if(!showAnyway) {
+        if (!showAnyway) {
             const {gray} = dis.get('stats').toJS()
-            if(gray) {
+            if (gray) {
                 return (
                     <div className="Post">
                         <div className="row">
                             <div className="column">
                                 <div className="PostFull">
                                     <p onClick={this.showAnywayClick}>{tt('promote_post_jsx.this_post_was_hidden_due_to_low_ratings')}.{' '}
-                                    <button style={{marginBottom: 0}} className="button hollow tiny float-right" onClick={this.showAnywayClick}>{tt('g.show')}</button></p>
+                                        <button style={{marginBottom: 0}} className="button hollow tiny float-right"
+                                                onClick={this.showAnywayClick}>{tt('g.show')}</button>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -92,10 +93,10 @@ class Post extends React.Component {
         let replies = dis.get('replies').toJS();
 
         let sort_order = 'trending';
-        if( this.props.location && this.props.location.query.sort )
-           sort_order = this.props.location.query.sort;
+        if (this.props.location && this.props.location.query.sort)
+            sort_order = this.props.location.query.sort;
 
-        sortComments( content, replies, sort_order );
+        sortComments(content, replies, sort_order);
 
         // Don't render too many comments on server-side
         const commentLimit = 100;
@@ -128,14 +129,14 @@ class Post extends React.Component {
             </div>);
 
 
-        let sort_orders = [ 'trending', 'votes', 'new'];
-        let sort_labels = [ tt('main_menu.trending'), tt('g.votes'), tt('g.age') ];
+        let sort_orders = ['trending', 'votes', 'new'];
+        let sort_labels = [tt('main_menu.trending'), tt('g.votes'), tt('g.age')];
         let sort_menu = [];
         let sort_label;
 
         let selflink = `/${dis.get('category')}/@${post}`;
-        for( let o = 0; o < sort_orders.length; ++o ){
-            if(sort_orders[o] == sort_order) sort_label = sort_labels[o];
+        for (let o = 0; o < sort_orders.length; ++o) {
+            if (sort_orders[o] == sort_order) sort_label = sort_labels[o];
             sort_menu.push({
                 value: sort_orders[o],
                 label: sort_labels[o],
@@ -143,7 +144,7 @@ class Post extends React.Component {
             });
         }
         const emptyPost = dis.get('created') === '1970-01-01T00:00:00' && dis.get('body') === ''
-        if(emptyPost)
+        if (emptyPost)
             return <center>
                 <div className="NotFound float-center">
                     <div>
@@ -166,16 +167,20 @@ class Post extends React.Component {
             <div className="Post">
                 <div className="row">
                     <div className="column">
-                        <PostFull post={post} cont={content} />
+                        <PostFull post={post} cont={content}/>
                     </div>
                 </div>
                 {!current_user && <div className="row">
                     <div className="column">
                         <div className="Post__promo">
                             {tt('g.next_7_strings_single_block.authors_get_paid_when_people_like_you_upvote_their_post')}.
-                            <br />{tt('g.next_7_strings_single_block.if_you_enjoyed_what_you_read_earn_amount', {amount: '$'+localizedCurrency(signup_bonus.substring(1)), INVEST_TOKEN_UPPERCASE})}
-                            <br />
-                            <button type="button" className="button e-btn" onClick={showSignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
+                            <br/>{tt('g.next_7_strings_single_block.if_you_enjoyed_what_you_read_earn_amount', {
+                            amount: '$' + localizedCurrency(signup_bonus.substring(1)),
+                            INVEST_TOKEN_UPPERCASE
+                        })}
+                            <br/>
+                            <button type="button" className="button e-btn"
+                                    onClick={showSignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
                         </div>
                     </div>
                 </div>}
@@ -183,10 +188,11 @@ class Post extends React.Component {
                     <div className="column large-12">
                         <div className="Post_comments__content">
                             {positiveComments.length ?
-                            (<div className="Post__comments_sort_order float-right">
-                                {tt('post_jsx.sort_order')}: &nbsp;
-                                <FoundationDropdownMenu menu={sort_menu} label={sort_label} dropdownPosition="bottom" dropdownAlignment="right" />
-                            </div>) : null}
+                                (<div className="Post__comments_sort_order float-right">
+                                    {tt('post_jsx.sort_order')}: &nbsp;
+                                    <FoundationDropdownMenu menu={sort_menu} label={sort_label}
+                                                            dropdownPosition="bottom" dropdownAlignment="right"/>
+                                </div>) : null}
                             {positiveComments}
                             {negativeGroup}
                         </div>
@@ -200,17 +206,17 @@ class Post extends React.Component {
 const emptySet = Set()
 
 export default connect(state => {
-    const current_user = state.user.get('current')
-    let ignoring
-    if(current_user) {
-        const key = ['follow', 'getFollowingAsync', current_user.get('username'), 'ignore_result']
-        ignoring = state.global.getIn(key, emptySet)
+        const current_user = state.user.get('current')
+        let ignoring
+        if (current_user) {
+            const key = ['follow', 'getFollowingAsync', current_user.get('username'), 'ignore_result']
+            ignoring = state.global.getIn(key, emptySet)
+        }
+        return {
+            content: state.global.get('content'),
+            signup_bonus: state.offchain.get('signup_bonus'),
+            current_user,
+            ignoring,
+        }
     }
-    return {
-        content: state.global.get('content'),
-        signup_bonus: state.offchain.get('signup_bonus'),
-        current_user,
-        ignoring,
-    }
-}
 )(Post);

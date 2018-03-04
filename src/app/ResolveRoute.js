@@ -12,8 +12,7 @@ export const routeRegex = {
     UserNameJson: /^.*(?=(\.json))/,
 };
 
-export default function resolveRoute(path)
-{
+export default function resolveRoute(path) {
     if (path === '/') {
         return {page: 'PostsIndex', params: ['trending']};
     }
@@ -71,7 +70,7 @@ export default function resolveRoute(path)
     if (path === '/~witnesses') {
         return {page: 'Witnesses'};
     }
-    if (path === '/submit.html') {
+    if (path === '/post') {
         return {page: 'SubmitPost'};
     }
     let match = path.match(routeRegex.PostsIndex);

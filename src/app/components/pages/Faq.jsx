@@ -1,5 +1,5 @@
 import React from 'react';
-import HelpContent from 'app/components/elements/HelpContent';
+import HelpContent from '../elements/HelpContent';
 
 class Faq extends React.Component {
     render() {

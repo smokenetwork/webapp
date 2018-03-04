@@ -1,5 +1,5 @@
 import React from 'react'
-import linksRe from 'app/utils/Links'
+import linksRe from './Links'
 
 export default class Iframe extends React.Component {
 

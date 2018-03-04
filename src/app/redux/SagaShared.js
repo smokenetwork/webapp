@@ -1,10 +1,9 @@
 import {fromJS} from 'immutable'
 import {call, put, select} from 'redux-saga/effects';
-import g from 'app/redux/GlobalReducer'
+import g from './GlobalReducer'
 import {takeEvery, takeLatest} from 'redux-saga';
-import tt from 'counterpart';
 import {api} from 'steem';
-import {setUserPreferences} from 'app/utils/ServerApiClient';
+import {setUserPreferences} from '../utils/ServerApiClient';
 
 const wait = ms => (
     new Promise(resolve => {

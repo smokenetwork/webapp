@@ -9,4 +9,5 @@ vendor/*
 tmp/*
 .vagrant
 lib
+.env
 setenv.sh

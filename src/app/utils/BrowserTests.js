@@ -1,5 +1,5 @@
 import assert from 'assert'
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient'
+import {serverApiRecordEvent} from './ServerApiClient'
 import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc'
 import {config} from 'steem';
 

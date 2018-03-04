@@ -2,11 +2,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {renderToString} from 'react-dom/server'
-import g from 'app/redux/GlobalReducer'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import Icon from 'app/components/elements/Icon'
+import g from '../../redux/GlobalReducer'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import Icon from './Icon'
 import tt from 'counterpart';
-import { APP_NAME, APP_ICON } from 'app/client_config';
+import {APP_ICON, APP_NAME} from '../../client_config';
 import {key_utils} from 'steem/lib/auth/ecc';
 
 
@@ -17,30 +17,34 @@ class SuggestPassword extends React.Component {
     static propTypes = {
         print: bool,
     }
+
     componentWillMount() {
         const {suggestedPassword, createSuggestedPassword} = this.props
-        if(!suggestedPassword)
+        if (!suggestedPassword)
             createSuggestedPassword()
     }
+
     shouldComponentUpdate = shouldComponentUpdate(this, 'SuggestPassword')
+
     componentDidUpdate() {
         const {print} = this.props
-        if(print && !this.printed) {
+        if (print && !this.printed) {
             this.printed = true
             window.print()
         }
     }
+
     render() {
         const {suggestedPassword} = this.props
         const render = print =>
             <span className="SuggestPassword">
-                <Icon name={APP_ICON} size="2x" /> {APP_NAME}
-                <hr />
+                <Icon name={APP_ICON} size="2x"/> {APP_NAME}
+                <hr/>
                 <div>
                     <h5>{print ? tt('suggestpassword_jsx.APP_NAME_password_backup', {APP_NAME}) : tt('suggestpassword_jsx.APP_NAME_password_backup_required', {APP_NAME})}</h5>
                     {steemitCannotRecoverPasswords}
                 </div>
-                <br />
+                <br/>
                 <div>
                     {print && <div>
                         <label>{tt('g.username')}</label>
@@ -50,12 +54,12 @@ class SuggestPassword extends React.Component {
                     </div>}
                     {!print && <div>{tt('suggestpassword_jsx.after_printing_write_down_your_user_name')}.</div>}
                 </div>
-                <br />
+                <br/>
                 <div>
                     {!print && <a onClick={() => openPP(render(true))}>
-                        <Icon name="printer" size="3x" />&nbsp;{tt('g.print')}&nbsp;&nbsp;
-                        <br />
-                        <br />
+                        <Icon name="printer" size="3x"/>&nbsp;{tt('g.print')}&nbsp;&nbsp;
+                        <br/>
+                        <br/>
                     </a>}
                     <label>{tt('g.password')}</label>
                     <div className="overflow-ellipsis">
@@ -65,12 +69,14 @@ class SuggestPassword extends React.Component {
             </span>
         return render()
     }
-                // <p>
-                //     <label>Password (again)</label>
-                //     {print && <br />}
-                //     {suggestedPassword && <QRCode text={suggestedPassword} />}
-                // </p>
+
+    // <p>
+    //     <label>Password (again)</label>
+    //     {print && <br />}
+    //     {suggestedPassword && <QRCode text={suggestedPassword} />}
+    // </p>
 }
+
 function openPP(el) {
     const yourDOCTYPE = "<!DOCTYPE html>"
     const printPreview = window.open('about:blank', 'print_preview', "resizable=yes,scrollbars=yes,status=yes")
@@ -85,6 +91,7 @@ function openPP(el) {
     )
     printDocument.close()
 }
+
 export default connect(
     // mapStateToProps
     (state, ownProps) => {

@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import transaction from 'app/redux/Transaction';
-import {Set, Map} from 'immutable'
+import LoadingIndicator from './LoadingIndicator';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import transaction from '../../redux/Transaction';
+import {Map, Set} from 'immutable'
 import tt from 'counterpart';
-import user from 'app/redux/User';
+import user from '../../redux/User';
 
 const {string, bool, any} = PropTypes;
 
@@ -41,40 +41,50 @@ export default class Follow extends React.Component {
     initEvents(props) {
         const {updateFollow, follower, following} = props;
         const upd = type => {
-            if(this.state.busy) return;
+            if (this.state.busy) return;
             this.setState({busy: true});
-            const done = () => {this.setState({busy: false})};
+            const done = () => {
+                this.setState({busy: false})
+            };
             updateFollow(follower, following, type, done)
         };
-        this.follow = () => {upd('blog')};
-        this.unfollow = () => {upd()};
-        this.ignore = () => {upd('ignore')};
-        this.unignore = () => {upd()};
+        this.follow = () => {
+            upd('blog')
+        };
+        this.unfollow = () => {
+            upd()
+        };
+        this.ignore = () => {
+            upd('ignore')
+        };
+        this.unignore = () => {
+            upd()
+        };
     }
 
     followLoggedOut(e) {
         // close author preview if present
         const author_preview = document.querySelector('.dropdown-pane.is-open');
-        if(author_preview) author_preview.remove();
+        if (author_preview) author_preview.remove();
         // resume authenticate modal
         this.props.showLogin(e);
     }
 
     render() {
         const {loading} = this.props;
-        if(loading) return <span><LoadingIndicator /> {tt('g.loading')}&hellip;</span>;
-        if(loading !== false) {
+        if (loading) return <span><LoadingIndicator/> {tt('g.loading')}&hellip;</span>;
+        if (loading !== false) {
             // must know what the user is already following before any update can happen
             return <span></span>
         }
 
         const {follower, following} = this.props; // html
         // Show follow preview for new users
-        if(!follower || !following) return <span>
+        if (!follower || !following) return <span>
              <label className="button slim hollow secondary" onClick={this.followLoggedOut}>{tt('g.follow')}</label>
         </span>;
         // Can't follow or ignore self
-        if(follower === following) return <span></span>
+        if (follower === following) return <span></span>
 
         const {followingWhat} = this.props; // redux
         const {showFollow, showMute, fat, children} = this.props; // html
@@ -85,16 +95,16 @@ export default class Follow extends React.Component {
         const cnInactive = cnActive + ' hollow secondary ' + cnBusy;
         return <span>
             {showFollow && followingWhat !== 'blog' &&
-                <label className={cnInactive} onClick={this.follow}>{tt('g.follow')}</label>}
+            <label className={cnInactive} onClick={this.follow}>{tt('g.follow')}</label>}
 
             {showFollow && followingWhat === 'blog' &&
-                <label className={cnInactive} onClick={this.unfollow}>{tt('g.unfollow')}</label>}
+            <label className={cnInactive} onClick={this.unfollow}>{tt('g.unfollow')}</label>}
 
             {showMute && followingWhat !== 'ignore' &&
-                <label className={cnInactive} onClick={this.ignore}>{tt('g.mute')}</label>}
+            <label className={cnInactive} onClick={this.ignore}>{tt('g.mute')}</label>}
 
             {showMute && followingWhat === 'ignore' &&
-                <label className={cnInactive} onClick={this.unignore}>{tt('g.unmute')}</label>}
+            <label className={cnInactive} onClick={this.unignore}>{tt('g.unmute')}</label>}
 
             {children && <span>&nbsp;&nbsp;{children}</span>}
         </span>
@@ -107,7 +117,7 @@ const emptySet = Set();
 module.exports = connect(
     (state, ownProps) => {
         let {follower} = ownProps;
-        if(!follower) {
+        if (!follower) {
             const current_user = state.user.get('current');
             follower = current_user ? current_user.get('username') : null
         }
@@ -121,8 +131,8 @@ module.exports = connect(
 
         const followingWhat =
             f.get('blog_result', emptySet).contains(following) ? 'blog' :
-            f.get('ignore_result', emptySet).contains(following) ? 'ignore' :
-            null;
+                f.get('ignore_result', emptySet).contains(following) ? 'ignore' :
+                    null;
 
         return {
             follower,

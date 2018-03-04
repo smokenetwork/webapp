@@ -1,21 +1,20 @@
 
-
 .mini-header, .mini-header.theme-light, .mini-header.theme-dark {
-	.logo-new {
-	  	transition: 0.2s ease-in-out;
-	  	width: 120px;
-	   	height: auto;
-	   	opacity: 1;
-	   	fill: $color-teal;
-	   	@include MQ(M) {
-	  		width: 144px;
-	   		height: auto;	   		
-	   	}
-	}
-	.icon-svg {
-	    fill: $color-teal;
-	}
-	.logo-new:hover .icon-svg {
-   		fill: $color-blue-black;
-	}
+    .logo-new {
+        transition: 0.2s ease-in-out;
+        width: 120px;
+        height: auto;
+        opacity: 1;
+        fill: $primary-brand-color;
+        @include MQ(M) {
+            width: 144px;
+            height: auto;
+        }
+    }
+    .icon-svg {
+        fill: $primary-brand-color;
+    }
+    .logo-new:hover .icon-svg {
+        fill: $color-blue-black;
+    }
 }

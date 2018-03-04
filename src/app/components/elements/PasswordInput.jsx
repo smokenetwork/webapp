@@ -90,18 +90,22 @@ export default class PasswordInput extends React.Component {
         return (
             <div className="PasswordInput">
                 <div><label>{passwordLabel}
-                    <input type="password" name="oldPassword" autoComplete="off" onChange={this.oldPasswordChange} value={oldPassword.value} disabled={disabled} />
-                    </label><div className="error">{oldPassword.error}</div>
+                    <input type="password" name="oldPassword" autoComplete="off" onChange={this.oldPasswordChange}
+                           value={oldPassword.value} disabled={disabled}/>
+                </label>
+                    <div className="error">{oldPassword.error}</div>
                 </div>
                 {inputNewPassword && <div>
                     <label>{tt('g.new_password')}
-                        <input type="password" name="oldPassword" autoComplete="off" onChange={this.newPasswordChange} value={newPassword.value} disabled={disabled} />
+                        <input type="password" name="oldPassword" autoComplete="off" onChange={this.newPasswordChange}
+                               value={newPassword.value} disabled={disabled}/>
                     </label>
                     <div className="error">{newPassword.error}</div>
                 </div>}
                 {inputNewPassword && inputConfirmPassword && <div>
                     <label>{tt('g.confirm_password')}
-                        <input type="password" name="confirmPassword" autoComplete="off" onChange={this.confirmPasswordChange} value={confirmPassword.value} disabled={disabled} />
+                        <input type="password" name="confirmPassword" autoComplete="off"
+                               onChange={this.confirmPasswordChange} value={confirmPassword.value} disabled={disabled}/>
                     </label>
                     <div className="error">{confirmPassword.error}</div>
                 </div>}

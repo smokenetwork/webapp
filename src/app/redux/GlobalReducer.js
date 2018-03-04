@@ -1,8 +1,8 @@
-import {Map, Set, List, fromJS, Iterable} from 'immutable';
+import {fromJS, Iterable, List, Map, Set} from 'immutable';
 import createModule from 'redux-modules';
-import {emptyContent} from 'app/redux/EmptyState';
+import {emptyContent} from './EmptyState';
 import constants from './constants';
-import {contentStats} from 'app/utils/StateFunctions'
+import {contentStats} from '../utils/StateFunctions'
 
 const emptyContentMap = Map(emptyContent)
 

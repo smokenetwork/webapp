@@ -1,5 +1,6 @@
-import {roundDown, roundUp} from "./MarketUtils";
-import { LIQUID_TICKER, DEBT_TICKER } from 'app/client_config'
+import {roundDown, roundUp} from './MarketUtils';
+import {DEBT_TICKER, LIQUID_TICKER} from '../client_config'
+
 const precision = 1000;
 
 class Order {

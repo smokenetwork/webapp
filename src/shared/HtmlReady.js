@@ -1,8 +1,8 @@
 import xmldom from 'xmldom'
 import tt from 'counterpart'
-import linksRe, { any as linksAny } from 'app/utils/Links'
-import {validate_account_name} from 'app/utils/ChainValidation'
-import proxifyImageUrl from 'app/utils/ProxifyUrl'
+import linksRe, { any as linksAny } from '../app/utils/Links'
+import {validate_account_name} from '../app/utils/ChainValidation'
+import proxifyImageUrl from '../app/utils/ProxifyUrl'
 
 export const getPhishingWarningMessage = () => tt('g.phishy_message');
 
@@ -189,7 +189,7 @@ function img(state, child) {
     }
 }
 
-// For all img elements with non-local URLs, prepend the proxy URL (e.g. `https://img0.steemit.com/0x0/`)
+// For all img elements with non-local URLs, prepend the proxy URL (e.g. `https://img0.smoke.io/0x0/`)
 function proxifyImages(doc) {
     if (!doc) return;
     [...doc.getElementsByTagName('img')].forEach(node => {
@@ -311,7 +311,7 @@ function embedVimeoNode(child, links, /*images*/) {try{
 
 function ipfsPrefix(url) {
     if($STM_Config.ipfs_prefix) {
-        // Convert //ipfs/xxx  or /ipfs/xxx  into  https://steemit.com/ipfs/xxxxx
+        // Convert //ipfs/xxx  or /ipfs/xxx  into  https://smoke.io/ipfs/xxxxx
         if(/^\/?\/ipfs\//.test(url)) {
             const slash = url.charAt(1) === '/' ? 1 : 0
             url = url.substring(slash + '/ipfs/'.length) // start with only 1 /

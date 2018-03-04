@@ -1,4 +1,4 @@
-import Post from 'app/components/pages/Post';
+import Post from './Post';
 
 module.exports = {
     path: '/(:category/)@:username/:slug',

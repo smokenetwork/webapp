@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import DropdownMenu from 'app/components/elements/DropdownMenu';
+import {Link} from 'react-router';
+import DropdownMenu from './DropdownMenu';
 
 export default ({post, horizontal, single}) => {
     let sort_order = 'trending';
@@ -12,16 +12,16 @@ export default ({post, horizontal, single}) => {
     let tags = []
 
     try {
-        if(typeof json == 'object') {
+        if (typeof json == 'object') {
             tags = json.tags || []
         } else {
             tags = json && JSON.parse(json).tags || [];
         }
-        if(typeof tags == 'string') tags = tags.split(' ');
-        if(!Array.isArray(tags)) {
+        if (typeof tags == 'string') tags = tags.split(' ');
+        if (!Array.isArray(tags)) {
             tags = [];
         }
-    } catch(e) {
+    } catch (e) {
         tags = []
     }
 
@@ -29,15 +29,17 @@ export default ({post, horizontal, single}) => {
     tags.unshift(post.category)
 
     // Uniqueness filter.
-    tags = tags.filter( (value, index, self) => value && (self.indexOf(value) === index) )
+    tags = tags.filter((value, index, self) => value && (self.indexOf(value) === index))
 
     if (horizontal) { // show it as a dropdown in Preview
-        const list = tags.map( (tag, idx) => <Link to={`/${sort_order}/${tag}`} key={idx}> {tag} </Link>)
+        const list = tags.map((tag, idx) => <Link to={`/${sort_order}/${tag}`} key={idx}> {tag} </Link>)
         return <div className="TagList__horizontal">{list}</div>;
     }
-    if(tags.length == 1) {
+    if (tags.length == 1) {
         return <Link to={`/${sort_order}/${tags[0]}`}>{tags[0]}</Link>
     }
-    const list = tags.map(tag => {return {value: tag, link: `/${sort_order}/${tag}`}});
-    return <DropdownMenu selected={' '+tags[0]} className="TagList" items={list} el="div" />;
+    const list = tags.map(tag => {
+        return {value: tag, link: `/${sort_order}/${tag}`}
+    });
+    return <DropdownMenu selected={' ' + tags[0]} className="TagList" items={list} el="div"/>;
 }

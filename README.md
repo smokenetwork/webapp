@@ -2,18 +2,18 @@
 # Condenser
 
 
-Condenser is the react.js web interface to the world's first and best blockchain-based social media platform, steemit.com.  It uses [STEEM](https://github.com/steemit/steem), a blockchain powered by Graphene 2.0 technology to store JSON-based content for a plethora of web applications.   
+Condenser is the react.js web interface to the world's first and best blockchain-based social media platform, smoke.io.  It uses [STEEM](https://github.com/steemit/steem), a blockchain powered by Graphene 2.0 technology to store JSON-based content for a plethora of web applications.   
 
-## Why would I want to use Condenser (steemit.com front-end)?
+## Why would I want to use Condenser (smoke.io front-end)?
 * Learning how to build blockchain-based web applications using STEEM as a content storage mechanism in react.js
-* Reviewing the inner workings of the steemit.com social media platform
-* Assisting with software development for steemit.com
+* Reviewing the inner workings of the smoke.io social media platform
+* Assisting with software development for smoke.io
 
 ## Installation
 
 #### Docker
 
-We highly recommend using docker to run condenser. This is how we run the live steemit.com site and it is the most supported (and fastest) method of both building and running condenser. We will always have the latest version of condenser (master branch) available on dockerhub. Configuration settings can be set using environment variables (see configuration section below for more information). If you need to install docker, you can get it at https://get.docker.com
+We highly recommend using docker to run condenser. This is how we run the live smoke.io site and it is the most supported (and fastest) method of both building and running condenser. We will always have the latest version of condenser (master branch) available on dockerhub. Configuration settings can be set using environment variables (see configuration section below for more information). If you need to install docker, you can get it at https://get.docker.com
 
 To bring up a running container it's as simple as this:
 
@@ -80,7 +80,7 @@ yarn run start
 
 It will take quite a bit longer to start in this mode (~60s) as it needs to build and start the webpack-dev-server.
 
-By default you will be connected to steemit.com's public steem node at `wss://steemd.steeemit.com`. This is actually on the real blockchain and you would use your regular account name and credentials to login - there is not an official separate testnet at this time. If you intend to run a full-fledged site relying on your own, we recommend looking into running a copy of `steemd` locally instead [https://github.com/steemit/steem](https://github.com/steemit/steem).
+By default you will be connected to smoke.io's public steem node at `wss://steemd.steeemit.com`. This is actually on the real blockchain and you would use your regular account name and credentials to login - there is not an official separate testnet at this time. If you intend to run a full-fledged site relying on your own, we recommend looking into running a copy of `steemd` locally instead [https://github.com/steemit/steem](https://github.com/steemit/steem).
 
 #### Configuration
 
@@ -89,8 +89,8 @@ The intention is to configure condenser using environment variables. You can see
 Environment variables using an example like this:
 
 ```bash
-export SDC_CLIENT_STEEMD_URL="wss://steemd.steemit.com"
-export SDC_SERVER_STEEMD_URL="wss://steemd.steemit.com"
+export SDC_CLIENT_STEEMD_URL="wss://steemd.smoke.io"
+export SDC_SERVER_STEEMD_URL="wss://steemd.smoke.io"
 ```
 Keep in mind environment variables only exist in your active session, so if you wish to save them for later use you can put them all in a file and `source` them in.
 
@@ -221,6 +221,6 @@ We adhere to BEM methodology with exception for Foundation classes, here is an e
 
 To report a non-critical issue, please file an issue on this GitHub project.
 
-If you find a security issue please report details to: security@steemit.com
+If you find a security issue please report details to: security@smoke.io
 
 We will evaluate the risk and make a patch available before filing the issue.

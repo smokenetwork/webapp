@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import Link from 'app/components/elements/Link'
-import g from 'app/redux/GlobalReducer'
-import links from 'app/utils/Links'
+import Link from '../elements/Link'
+import g from '../../redux/GlobalReducer'
+import links from '../../utils/Links'
 import tt from 'counterpart';
 
 /** @deprecated */
@@ -21,6 +21,7 @@ class CardView extends React.Component {
     static defaultProps = {
         canEdit: false
     }
+
     constructor() {
         super()
         this.onCloseImage = (e) => {
@@ -34,30 +35,32 @@ class CardView extends React.Component {
             clearMetaElement(formId, 'description')
         }
     }
+
     render() {
         const {metaLinkData, canEdit} = this.props
-        if(!metaLinkData) return <span />
+        if (!metaLinkData) return <span/>
         const {link, image, description, alt} = metaLinkData
         // http://postimg.org/image/kbefrpbe9/
-        if(!image && !description) return <span />
+        if (!image && !description) return <span/>
         // youTubeImages have their own preview
         const youTubeImage = links.youTube.test(link)
         return (<span className="Card">
           {image && !youTubeImage && <div>
-            {canEdit && <div>(<a onClick={this.onCloseImage}>{tt('g.remove')}</a>)<br /></div>}
-            <Link href={link}>
-              <img src={image} alt={alt} />
-            </Link>
-            </div>}
-          {description && <div>
-            {canEdit && <span>(<a onClick={this.onCloseDescription}>{tt('g.remove')}</a>)</span>}
-            <Link href={link}>
-              <blockquote>{description}</blockquote>
-            </Link>
+              {canEdit && <div>(<a onClick={this.onCloseImage}>{tt('g.remove')}</a>)<br/></div>}
+              <Link href={link}>
+                  <img src={image} alt={alt}/>
+              </Link>
+          </div>}
+            {description && <div>
+                {canEdit && <span>(<a onClick={this.onCloseDescription}>{tt('g.remove')}</a>)</span>}
+                <Link href={link}>
+                    <blockquote>{description}</blockquote>
+                </Link>
             </div>}
         </span>)
     }
 }
+
 export default connect(
     (state, ownProps) => {
         // const {text} = ownProps

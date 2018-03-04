@@ -1,6 +1,6 @@
-import React from "react";
-import MarkdownViewer from 'app/components/cards/MarkdownViewer';
-import Icon from 'app/components/elements/Icon';
+import React from 'react';
+import MarkdownViewer from '../cards/MarkdownViewer';
+import Icon from './Icon';
 import {renderToString} from 'react-dom/server';
 
 if (!process.env.BROWSER) {
@@ -8,6 +8,7 @@ if (!process.env.BROWSER) {
     // please note we don't need to define require.context for client side rendering because it's defined by webpack
     const path = require('path');
     const fs = require('fs');
+
     function getFolderContents(folder, recursive) {
         return fs.readdirSync(folder).reduce(function (list, file) {
             var name = path.resolve(folder, file);
@@ -15,6 +16,7 @@ if (!process.env.BROWSER) {
             return list.concat((isDir && recursive) ? getFolderContents(name, recursive) : [name]);
         }, []);
     }
+
     function requireContext(folder, recursive, pattern) {
         var normalizedFolder = path.resolve(path.dirname(module.filename), folder);
         var folderContents = cache[folder] = cache[folder] ? cache[folder] : getFolderContents(normalizedFolder, recursive)
@@ -32,6 +34,7 @@ if (!process.env.BROWSER) {
         returnContext.keys = keys;
         return returnContext;
     }
+
     require.context = requireContext;
 }
 
@@ -43,8 +46,11 @@ function split_into_sections(str) {
     if (sections.length === 1) return sections[0];
     if (sections[0].length < 4) sections.splice(0, 1);
     sections = sections.reduce((result, n) => {
-        let last = result.length > 0 ? result[result.length-1] : null;
-        if (!last || last.length === 2) { last = [n]; result.push(last); }
+        let last = result.length > 0 ? result[result.length - 1] : null;
+        if (!last || last.length === 2) {
+            last = [n];
+            result.push(last);
+        }
         else last.push(n);
         return result;
     }, []);
@@ -109,8 +115,8 @@ export default class HelpContent extends React.Component {
         }
         value = this.setVars(value);
         value = value.replace(/<Icon name="([A-Za-z0-9\_\-]+)" \/>/gi, (match, name) => {
-            return renderToString(<Icon name={name} />);
+            return renderToString(<Icon name={name}/>);
         });
-        return <MarkdownViewer className="HelpContent" text={value} allowDangerousHTML />;
+        return <MarkdownViewer className="HelpContent" text={value} allowDangerousHTML/>;
     }
 }

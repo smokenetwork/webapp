@@ -77,6 +77,6 @@ export default class Icon extends React.Component {
             classes += ' ' + className;
         }
 
-        return <span className={classes} style={style} dangerouslySetInnerHTML={{__html: icons_map[name]}} />;
+        return <span className={classes} style={style} dangerouslySetInnerHTML={{__html: icons_map[name]}}/>;
     }
 }

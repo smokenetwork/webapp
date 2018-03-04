@@ -1,16 +1,18 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import {connect} from 'react-redux'
-import TransferHistoryRow from 'app/components/cards/TransferHistoryRow';
-import {numberWithCommas, vestsToSp, assetFloat} from 'app/utils/StateFunctions'
+import TransferHistoryRow from '../cards/TransferHistoryRow';
+import {assetFloat, numberWithCommas, vestsToSp} from '../../utils/StateFunctions'
 import tt from 'counterpart';
-import { VESTING_TOKEN, LIQUID_TICKER, VEST_TICKER, DEBT_TICKER, DEBT_TOKEN_SHORT } from 'app/client_config';
+import {DEBT_TICKER, DEBT_TOKEN_SHORT, LIQUID_TICKER, VEST_TICKER, VESTING_TOKEN} from '../../client_config';
 
 class AuthorRewards extends React.Component {
     constructor() {
         super()
         this.state = {historyIndex: 0}
-        this.onShowDeposit = () => {this.setState({showDeposit: !this.state.showDeposit})}
+        this.onShowDeposit = () => {
+            this.setState({showDeposit: !this.state.showDeposit})
+        }
         this.onShowDepositSteem = () => {
             this.setState({showDeposit: !this.state.showDeposit, depositType: LIQUID_TICKER})
         }
@@ -41,8 +43,8 @@ class AuthorRewards extends React.Component {
         let rewards24SBD = 0, rewardsWeekSBD = 0, totalRewardsSBD = 0;
         const today = new Date();
         const oneDay = 86400 * 1000;
-        const yesterday = new Date(today.getTime() - oneDay ).getTime();
-        const lastWeek = new Date(today.getTime() - 7 * oneDay ).getTime();
+        const yesterday = new Date(today.getTime() - oneDay).getTime();
+        const lastWeek = new Date(today.getTime() - 7 * oneDay).getTime();
 
         let firstDate, finalDate;
         let author_log = account.transfer_history.map((item, index) => {
@@ -53,25 +55,25 @@ class AuthorRewards extends React.Component {
                 }
                 firstDate = new Date(item[1].timestamp).getTime();
 
-                const vest  = assetFloat(item[1].op[1].vesting_payout, VEST_TICKER);
+                const vest = assetFloat(item[1].op[1].vesting_payout, VEST_TICKER);
                 const steem = assetFloat(item[1].op[1].steem_payout, LIQUID_TICKER);
-                const sbd   = assetFloat(item[1].op[1].sbd_payout, DEBT_TICKER);
+                const sbd = assetFloat(item[1].op[1].sbd_payout, DEBT_TICKER);
 
                 if (new Date(item[1].timestamp).getTime() > lastWeek) {
                     if (new Date(item[1].timestamp).getTime() > yesterday) {
                         rewards24Vests += vest;
                         rewards24Steem += steem;
-                        rewards24SBD   += sbd;
+                        rewards24SBD += sbd;
                     }
                     rewardsWeekVests += vest;
                     rewardsWeekSteem += steem;
-                    rewardsWeekSBD   += sbd;
+                    rewardsWeekSBD += sbd;
                 }
                 totalRewardsVests += vest;
                 totalRewardsSteem += steem;
-                totalRewardsSBD   += sbd;
+                totalRewardsSBD += sbd;
 
-                return <TransferHistoryRow key={index} op={item} context={account.name} />
+                return <TransferHistoryRow key={index} op={item} context={account.name}/>
             }
             return null;
         }).filter(el => !!el);
@@ -81,7 +83,7 @@ class AuthorRewards extends React.Component {
         const daysOfCuration = (firstDate - finalDate) / oneDay || 1;
         const averageCurationVests = !daysOfCuration ? 0 : totalRewardsVests / daysOfCuration;
         const averageCurationSteem = !daysOfCuration ? 0 : totalRewardsSteem / daysOfCuration;
-        const averageCurationSBD   = !daysOfCuration ? 0 : totalRewardsSBD   / daysOfCuration;
+        const averageCurationSBD = !daysOfCuration ? 0 : totalRewardsSBD / daysOfCuration;
         const hasFullWeek = daysOfCuration >= 7;
         const limitedIndex = Math.min(historyIndex, curationLength - 10);
         author_log = author_log.reverse().filter(() => {
@@ -89,21 +91,25 @@ class AuthorRewards extends React.Component {
             return currentIndex >= limitedIndex && currentIndex < limitedIndex + 10;
         });
 
-         const navButtons = (
-             <nav>
-               <ul className="pager">
-                 <li>
-                     <div className={"button tiny hollow float-left " + (historyIndex === 0 ? " disabled" : "")} onClick={this._setHistoryPage.bind(this, false)} aria-label="Previous">
-                         <span aria-hidden="true">&larr; {tt('g.newer')}</span>
-                     </div>
-                 </li>
-                 <li>
-                     <div className={"button tiny hollow float-right " + (historyIndex >= (curationLength - 10) ? " disabled" : "")} onClick={historyIndex >= (curationLength - 10) ? null : this._setHistoryPage.bind(this, true)} aria-label="Next">
-                         <span aria-hidden="true">{tt('g.older')} &rarr;</span>
-                     </div>
-                 </li>
-               </ul>
-             </nav>
+        const navButtons = (
+            <nav>
+                <ul className="pager">
+                    <li>
+                        <div className={"button tiny hollow float-left " + (historyIndex === 0 ? " disabled" : "")}
+                             onClick={this._setHistoryPage.bind(this, false)} aria-label="Previous">
+                            <span aria-hidden="true">&larr; {tt('g.newer')}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div
+                            className={"button tiny hollow float-right " + (historyIndex >= (curationLength - 10) ? " disabled" : "")}
+                            onClick={historyIndex >= (curationLength - 10) ? null : this._setHistoryPage.bind(this, true)}
+                            aria-label="Next">
+                            <span aria-hidden="true">{tt('g.older')} &rarr;</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         );
         return (<div className="UserWallet">
             <div className="row">
@@ -117,16 +123,16 @@ class AuthorRewards extends React.Component {
                 </div>
                 <div className="column small-12 medium-4">
                     {numberWithCommas(vestsToSp(this.props.state, rewardsWeekVests + " " + VEST_TICKER)) + " " + VESTING_TOKEN}
-                    <br />
+                    <br/>
                     {rewardsWeekSteem.toFixed(3) + " " + LIQUID_TICKER}
-                    <br />
+                    <br/>
                     {rewardsWeekSBD.toFixed(3) + " " + DEBT_TOKEN_SHORT}
                 </div>
             </div>
 
             <div className="row">
                 <div className="column small-12">
-                    <hr />
+                    <hr/>
                 </div>
             </div>
 
@@ -139,7 +145,7 @@ class AuthorRewards extends React.Component {
                         <tbody>
                         {author_log}
                         </tbody>
-                     </table>
+                    </table>
                     {navButtons}
                 </div>
             </div>

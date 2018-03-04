@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import { imageProxy } from 'app/utils/ProxifyUrl';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
+import {imageProxy} from '../../utils/ProxifyUrl';
 
 export const SIZE_SMALL = 'small';
 export const SIZE_MED = 'medium';
@@ -22,11 +22,11 @@ class Userpic extends Component {
     render() {
         const {account, json_metadata, size} = this.props
         const hideIfDefault = this.props.hideIfDefault || false
-        const avSize = (size && sizeList.indexOf(size) > -1)? '/' + size : '';
+        const avSize = (size && sizeList.indexOf(size) > -1) ? '/' + size : '';
 
 
         // try to extract image url from users metaData
-        if(hideIfDefault) {
+        if (hideIfDefault) {
             try {
                 const md = JSON.parse(json_metadata);
                 if (!/^(https?:)\/\//.test(md.profile.profile_image)) {
@@ -37,9 +37,9 @@ class Userpic extends Component {
             }
         }
 
-        const style = {backgroundImage: 'url(' + imageProxy() + `u/${account}/avatar${avSize})` };
+        const style = {backgroundImage: 'url(' + imageProxy() + `u/${account}/avatar${avSize})`};
 
-        return (<div className="Userpic" style={style} />)
+        return (<div className="Userpic" style={style}/>)
     }
 }
 

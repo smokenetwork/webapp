@@ -1,5 +1,5 @@
 import React from 'react';
-import ChangePassword from 'app/components/elements/ChangePassword';
+import ChangePassword from '../elements/ChangePassword';
 import tt from 'counterpart';
 
 class ChangePasswordPage extends React.Component {
@@ -17,7 +17,7 @@ class ChangePasswordPage extends React.Component {
             <div className="ChangePasswordPage row">
                 <div className="column large-7 small-10">
                     <h2>{tt('g.change_password')}</h2>
-                    <ChangePassword />
+                    <ChangePassword/>
                 </div>
             </div>
         );

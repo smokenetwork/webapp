@@ -2,17 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CloseButton from 'react-foundation-components/lib/global/close-button';
 import Reveal from 'react-foundation-components/lib/global/reveal';
-import LoginForm from 'app/components/modules/LoginForm';
-import ConfirmTransactionForm from 'app/components/modules/ConfirmTransactionForm';
-import Transfer from 'app/components/modules/Transfer';
-import SignUp from 'app/components/modules/SignUp';
-import user from 'app/redux/User';
-import Powerdown from 'app/components/modules/Powerdown';
-import tr from 'app/redux/Transaction';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
+import LoginForm from './LoginForm';
+import ConfirmTransactionForm from './ConfirmTransactionForm';
+import Transfer from './Transfer';
+import SignUp from './SignUp';
+import user from '../../redux/User';
+import Powerdown from './Powerdown';
+import tr from '../../redux/Transaction';
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import {NotificationStack} from 'react-notification';
-import {OrderedSet} from 'immutable';
-import TermsAgree from 'app/components/modules/TermsAgree';
+import TermsAgree from './TermsAgree';
 
 class Modals extends React.Component {
     static propTypes = {
@@ -53,26 +52,26 @@ class Modals extends React.Component {
         return (
             <div>
                 {show_login_modal && <Reveal onHide={hideLogin} show={show_login_modal}>
-                    <LoginForm onCancel={hideLogin} />
+                    <LoginForm onCancel={hideLogin}/>
                 </Reveal>}
                 {show_confirm_modal && <Reveal onHide={hideConfirm} show={show_confirm_modal}>
-                    <CloseButton onClick={hideConfirm} />
-                    <ConfirmTransactionForm onCancel={hideConfirm} />
+                    <CloseButton onClick={hideConfirm}/>
+                    <ConfirmTransactionForm onCancel={hideConfirm}/>
                 </Reveal>}
                 {show_transfer_modal && <Reveal onHide={hideTransfer} show={show_transfer_modal}>
-                    <CloseButton onClick={hideTransfer} />
-                    <Transfer />
+                    <CloseButton onClick={hideTransfer}/>
+                    <Transfer/>
                 </Reveal>}
                 {show_powerdown_modal && <Reveal onHide={hidePowerdown} show={show_powerdown_modal}>
-                    <CloseButton onClick={hidePowerdown} />
-                    <Powerdown />
+                    <CloseButton onClick={hidePowerdown}/>
+                    <Powerdown/>
                 </Reveal>}
                 {show_signup_modal && <Reveal onHide={hideSignUp} show={show_signup_modal}>
-                    <CloseButton onClick={hideSignUp} />
-                    <SignUp />
+                    <CloseButton onClick={hideSignUp}/>
+                    <SignUp/>
                 </Reveal>}
                 {show_terms_modal && <Reveal show={show_terms_modal}>
-                    <TermsAgree onCancel={hideLogin} />
+                    <TermsAgree onCancel={hideLogin}/>
                 </Reveal>}
                 <NotificationStack
                     style={false}

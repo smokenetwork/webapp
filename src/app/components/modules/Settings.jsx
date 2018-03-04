@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import user from 'app/redux/User';
+import user from '../../redux/User';
 import tt from 'counterpart';
-import transaction from 'app/redux/Transaction'
-import o2j from 'shared/clash/object2json'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
-import reactForm from 'app/utils/ReactForm'
-import UserList from 'app/components/elements/UserList';
+import transaction from '../../redux/Transaction'
+import o2j from '../../../shared/clash/object2json'
+import LoadingIndicator from '../elements/LoadingIndicator'
+import reactForm from '../../utils/ReactForm'
+import UserList from '../elements/UserList';
 
 
 class Settings extends React.Component {
@@ -55,7 +55,7 @@ class Settings extends React.Component {
     handleSubmit = ({updateInitialValues}) => {
         let {metaData} = this.props
         if (!metaData) metaData = {}
-        if(!metaData.profile) metaData.profile = {}
+        if (!metaData.profile) metaData.profile = {}
         delete metaData.user_image; // old field... cleanup
 
         const {profile_image, cover_image, name, about, location, website} = this.state
@@ -69,12 +69,12 @@ class Settings extends React.Component {
         metaData.profile.website = website.value
 
         // Remove empty keys
-        if(!metaData.profile.profile_image) delete metaData.profile.profile_image;
-        if(!metaData.profile.cover_image) delete metaData.profile.cover_image;
-        if(!metaData.profile.name) delete metaData.profile.name;
-        if(!metaData.profile.about) delete metaData.profile.about;
-        if(!metaData.profile.location) delete metaData.profile.location;
-        if(!metaData.profile.website) delete metaData.profile.website;
+        if (!metaData.profile.profile_image) delete metaData.profile.profile_image;
+        if (!metaData.profile.cover_image) delete metaData.profile.cover_image;
+        if (!metaData.profile.name) delete metaData.profile.name;
+        if (!metaData.profile.about) delete metaData.profile.about;
+        if (!metaData.profile.location) delete metaData.profile.location;
+        if (!metaData.profile.website) delete metaData.profile.website;
 
         const {account, updateAccount} = this.props
         this.setState({loading: true})
@@ -143,83 +143,84 @@ class Settings extends React.Component {
                     </label>
                 </div>
             </div>
-            <br />
+            <br/>
             <div className="row">
                 <form onSubmit={this.handleSubmitForm} className="small-12 medium-6 large-4 columns">
                     <h4>{tt('settings_jsx.public_profile_settings')}</h4>
                     <label>
                         {tt('settings_jsx.profile_image_url')}
-                        <input type="url" {...profile_image.props} autoComplete="off" />
+                        <input type="url" {...profile_image.props} autoComplete="off"/>
                     </label>
                     <div className="error">{profile_image.blur && profile_image.touched && profile_image.error}</div>
 
                     <label>
                         {tt('settings_jsx.cover_image_url')}
-                        <input type="url" {...cover_image.props} autoComplete="off" />
+                        <input type="url" {...cover_image.props} autoComplete="off"/>
                     </label>
                     <div className="error">{cover_image.blur && cover_image.touched && cover_image.error}</div>
 
                     <label>
                         {tt('settings_jsx.profile_name')}
-                        <input type="text" {...name.props} maxLength="20" autoComplete="off" />
+                        <input type="text" {...name.props} maxLength="20" autoComplete="off"/>
                     </label>
                     <div className="error">{name.touched && name.error}</div>
 
                     <label>
                         {tt('settings_jsx.profile_about')}
-                        <input type="text" {...about.props} maxLength="160" autoComplete="off" />
+                        <input type="text" {...about.props} maxLength="160" autoComplete="off"/>
                     </label>
                     <div className="error">{about.touched && about.error}</div>
 
                     <label>
                         {tt('settings_jsx.profile_location')}
-                        <input type="text" {...location.props} maxLength="30" autoComplete="off" />
+                        <input type="text" {...location.props} maxLength="30" autoComplete="off"/>
                     </label>
                     <div className="error">{location.touched && location.error}</div>
 
                     <label>
                         {tt('settings_jsx.profile_website')}
-                        <input type="url" {...website.props} maxLength="100" autoComplete="off" />
+                        <input type="url" {...website.props} maxLength="100" autoComplete="off"/>
                     </label>
                     <div className="error">{website.blur && website.touched && website.error}</div>
 
-                    <br />
-                    {state.loading && <span><LoadingIndicator type="circle" /><br /></span>}
-                    {!state.loading && <input type="submit" className="button" value={tt('settings_jsx.update')} disabled={disabled} />}
+                    <br/>
+                    {state.loading && <span><LoadingIndicator type="circle"/><br/></span>}
+                    {!state.loading &&
+                    <input type="submit" className="button" value={tt('settings_jsx.update')} disabled={disabled}/>}
                     {' '}{
-                            state.errorMessage
-                                ? <small className="error">{state.errorMessage}</small>
-                                : state.successMessage
-                                ? <small className="success uppercase">{state.successMessage}</small>
-                                : null
-                        }
+                    state.errorMessage
+                        ? <small className="error">{state.errorMessage}</small>
+                        : state.successMessage
+                        ? <small className="success uppercase">{state.successMessage}</small>
+                        : null
+                }
                 </form>
             </div>
 
             {isOwnAccount &&
-                <div className="row">
-                    <div className="small-12 medium-6 large-4 columns">
-                        <br /><br />
-                        <h4>{tt('settings_jsx.private_post_display_settings')}</h4>
-                        <div>
-                            {tt('settings_jsx.not_safe_for_work_nsfw_content')}
-                        </div>
-                        <select value={user_preferences.nsfwPref} onChange={this.onNsfwPrefChange}>
-                            <option value="hide">{tt('settings_jsx.always_hide')}</option>
-                            <option value="warn">{tt('settings_jsx.always_warn')}</option>
-                            <option value="show">{tt('settings_jsx.always_show')}</option>
-                        </select>
-                        <br />
-                        <div>&nbsp;</div>
+            <div className="row">
+                <div className="small-12 medium-6 large-4 columns">
+                    <br/><br/>
+                    <h4>{tt('settings_jsx.private_post_display_settings')}</h4>
+                    <div>
+                        {tt('settings_jsx.not_safe_for_work_nsfw_content')}
                     </div>
-                </div>}
+                    <select value={user_preferences.nsfwPref} onChange={this.onNsfwPrefChange}>
+                        <option value="hide">{tt('settings_jsx.always_hide')}</option>
+                        <option value="warn">{tt('settings_jsx.always_warn')}</option>
+                        <option value="show">{tt('settings_jsx.always_show')}</option>
+                    </select>
+                    <br/>
+                    <div>&nbsp;</div>
+                </div>
+            </div>}
             {ignores && ignores.size > 0 &&
-                <div className="row">
-                    <div className="small-12 medium-6 large-4 columns">
-                        <br /><br />
-                        <UserList title={tt('settings_jsx.muted_users')} account={account} users={ignores} />
-                    </div>
-                </div>}
+            <div className="row">
+                <div className="small-12 medium-6 large-4 columns">
+                    <br/><br/>
+                    <UserList title={tt('settings_jsx.muted_users')} account={account} users={ignores}/>
+                </div>
+            </div>}
         </div>
     }
 }

@@ -3,30 +3,29 @@
 // https://github.com/eslint/eslint/issues/4442
 import Iso from 'iso';
 import React from 'react';
-import { render } from 'react-dom';
-import { renderToString } from 'react-dom/server';
-import { Router, RouterContext, match, applyRouterMiddleware } from 'react-router';
-import { Provider } from 'react-redux';
-import RootRoute from 'app/RootRoute';
-import {createStore, applyMiddleware, compose} from 'redux';
-import { browserHistory } from 'react-router';
-import { useScroll } from 'react-router-scroll';
+import {render} from 'react-dom';
+import {renderToString} from 'react-dom/server';
+import {applyRouterMiddleware, browserHistory, match, Router, RouterContext} from 'react-router';
+import {Provider} from 'react-redux';
+import RootRoute from '../app/RootRoute';
+import {applyMiddleware, compose, createStore} from 'redux';
+import {useScroll} from 'react-router-scroll';
 import createSagaMiddleware from 'redux-saga';
-import { syncHistoryWithStore } from 'react-router-redux';
-import rootReducer from 'app/redux/RootReducer';
-import {fetchDataWatches} from 'app/redux/FetchDataSaga';
-import {marketWatches} from 'app/redux/MarketSaga';
-import {sharedWatches} from 'app/redux/SagaShared';
-import {userWatches} from 'app/redux/UserSaga';
-import {authWatches} from 'app/redux/AuthSaga';
-import {transactionWatches} from 'app/redux/TransactionSaga';
-import PollDataSaga from 'app/redux/PollDataSaga';
-import {component as NotFound} from 'app/components/pages/NotFound';
-import extractMeta from 'app/utils/ExtractMeta';
-import Translator from 'app/Translator';
-import {notificationsArrayToMap} from 'app/utils/Notifications';
-import {routeRegex} from "app/ResolveRoute";
-import {contentStats} from 'app/utils/StateFunctions'
+import {syncHistoryWithStore} from 'react-router-redux';
+import rootReducer from '../app/redux/RootReducer';
+import {fetchDataWatches} from '../app/redux/FetchDataSaga';
+import {marketWatches} from '../app/redux/MarketSaga';
+import {sharedWatches} from '../app/redux/SagaShared';
+import {userWatches} from '../app/redux/UserSaga';
+import {authWatches} from '../app/redux/AuthSaga';
+import {transactionWatches} from '../app/redux/TransactionSaga';
+import PollDataSaga from '../app/redux/PollDataSaga';
+import {component as NotFound} from '../app/components/pages/NotFound';
+import extractMeta from '../app/utils/ExtractMeta';
+import Translator from '../app/Translator';
+import {notificationsArrayToMap} from '../app/utils/Notifications';
+import {routeRegex} from '../app/ResolveRoute';
+import {contentStats} from '../app/utils/StateFunctions'
 
 import {api} from 'steem';
 
@@ -89,7 +88,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
         const history = syncHistoryWithStore(browserHistory, store);
 
         const scroll = useScroll();
-        
+
         if (process.env.NODE_ENV === 'production') {
             console.log('%c%s', 'color: red; background: yellow; font-size: 24px;', 'WARNING!');
             console.log('%c%s', 'color: black; font-size: 16px;', 'This is a developer console, you must read and understand anything you paste or type here or you could compromise your account and your private keys.');

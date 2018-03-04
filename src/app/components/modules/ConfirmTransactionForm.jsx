@@ -1,7 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux'
-import transaction from 'app/redux/Transaction'
-import {findParent} from 'app/utils/DomUtils';
+import transaction from '../../redux/Transaction'
+import {findParent} from '../../utils/DomUtils';
 import tt from 'counterpart';
 
 class ConfirmTransactionForm extends Component {
@@ -17,24 +17,28 @@ class ConfirmTransactionForm extends Component {
         confirmErrorCallback: PropTypes.func,
         okClick: PropTypes.func,
     };
+
     constructor() {
         super()
         this.state = {checkboxChecked: false}
     }
+
     componentDidMount() {
         document.body.addEventListener('click', this.closeOnOutsideClick);
     }
+
     componentWillUnmount() {
         document.body.removeEventListener('click', this.closeOnOutsideClick);
     }
-    closeOnOutsideClick = (e) =>  {
+
+    closeOnOutsideClick = (e) => {
         const inside_dialog = findParent(e.target, 'ConfirmTransactionForm');
         if (!inside_dialog) this.onCancel();
     }
     onCancel = () => {
         const {confirmErrorCallback, onCancel} = this.props;
-        if(confirmErrorCallback) confirmErrorCallback();
-        if(onCancel) onCancel()
+        if (confirmErrorCallback) confirmErrorCallback();
+        if (onCancel) onCancel()
     }
     okClick = () => {
         const {okClick, confirmBroadcastOperation} = this.props
@@ -44,34 +48,37 @@ class ConfirmTransactionForm extends Component {
         const checkboxChecked = e.target.checked
         this.setState({checkboxChecked})
     }
+
     render() {
         const {onCancel, okClick, onCheckbox} = this
         const {confirm, confirmBroadcastOperation, warning, checkbox} = this.props
         const {checkboxChecked} = this.state
         const conf = typeof confirm === 'function' ? confirm() : confirm
         return (
-           <div className="ConfirmTransactionForm">
-               <h4>{typeName(confirmBroadcastOperation)}</h4>
-               <hr />
-               <div>{conf}</div>
-               {warning ? <div style={{paddingTop: 10, fontWeight: 'bold'}} className="error">{warning}</div> : null}
-               {checkbox ?
+            <div className="ConfirmTransactionForm">
+                <h4>{typeName(confirmBroadcastOperation)}</h4>
+                <hr/>
+                <div>{conf}</div>
+                {warning ? <div style={{paddingTop: 10, fontWeight: 'bold'}} className="error">{warning}</div> : null}
+                {checkbox ?
                     <div>
                         <label htmlFor="checkbox">
-                            <input id="checkbox" type="checkbox" checked={checkboxChecked} onChange={this.onCheckbox} />
+                            <input id="checkbox" type="checkbox" checked={checkboxChecked} onChange={this.onCheckbox}/>
                             {checkbox}
                         </label>
                     </div> : null}
-               <br />
-               <button className="button" onClick={okClick} disabled={!(checkbox === undefined || checkboxChecked)}>{tt('g.ok')}</button>
-               <button type="button hollow" className="button hollow" onClick={onCancel}>{tt('g.cancel')}</button>
-           </div>
-       )
+                <br/>
+                <button className="button" onClick={okClick}
+                        disabled={!(checkbox === undefined || checkboxChecked)}>{tt('g.ok')}</button>
+                <button type="button hollow" className="button hollow" onClick={onCancel}>{tt('g.cancel')}</button>
+            </div>
+        )
     }
 }
+
 const typeName = confirmBroadcastOperation => {
     const title = confirmBroadcastOperation.getIn(['operation', '__config', 'title'])
-    if(title) return title
+    if (title) return title
     const type = confirmBroadcastOperation.get('type')
     return tt('g.confirm') + ' ' + (type.split('_').map(n => n.charAt(0).toUpperCase() + n.substring(1))).join(' ')
 }

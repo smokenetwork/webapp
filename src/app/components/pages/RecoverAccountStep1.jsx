@@ -1,11 +1,10 @@
 import React from 'react';
-import SvgImage from 'app/components/elements/SvgImage';
-import LoadingIndicator from 'app/components/elements/LoadingIndicator';
-import PasswordInput from 'app/components/elements/PasswordInput';
-import constants from 'app/redux/constants';
+import SvgImage from '../elements/SvgImage';
+import LoadingIndicator from '../elements/LoadingIndicator';
+import PasswordInput from '../elements/PasswordInput';
+import constants from '../../redux/constants';
 import tt from 'counterpart';
-import { FormattedHTMLMessage } from 'app/Translator';
-import { APP_DOMAIN, APP_NAME, SUPPORT_EMAIL } from 'app/client_config';
+import {APP_DOMAIN, APP_NAME, SUPPORT_EMAIL} from '../../client_config';
 import {PrivateKey} from 'steem/lib/auth/ecc';
 import {api} from 'steem';
 
@@ -15,7 +14,7 @@ function passwordToOwnerPubKey(account_name, password) {
     let pub_key;
     try {
         pub_key = PrivateKey.fromWif(password);
-    } catch(e) {
+    } catch (e) {
         pub_key = PrivateKey.fromSeed(account_name + 'owner' + password);
     }
     return pub_key.toPublicKey().toString();
@@ -23,8 +22,7 @@ function passwordToOwnerPubKey(account_name, password) {
 
 class RecoverAccountStep1 extends React.Component {
 
-    static propTypes = {
-    };
+    static propTypes = {};
 
     constructor(props) {
         super(props);
@@ -63,13 +61,13 @@ class RecoverAccountStep1 extends React.Component {
         if (!name) return;
         api.getAccountsAsync([name]).then(res => {
             this.setState({name_error: !res || res.length === 0 ? tt('recoveraccountstep1_jsx.account_name_is_not_found') : ''});
-            if(res.length) {
+            if (res.length) {
                 const [account] = res
                 // if your last owner key update is prior to July 14th then the old key will not be able to recover
                 const ownerUpdate = /Z$/.test(account.last_owner_update) ? account.last_owner_update : account.last_owner_update + 'Z'
                 const ownerUpdateTime = new Date(ownerUpdate).getTime()
                 const THIRTY_DAYS_AGO = new Date(Date.now() - (30 * 24 * 60 * 60 * 1000)).getTime()
-                if(ownerUpdateTime < Math.max(THIRTY_DAYS_AGO, constants.JULY_14_HACK))
+                if (ownerUpdateTime < Math.max(THIRTY_DAYS_AGO, constants.JULY_14_HACK))
                     this.setState({name_error: tt('recoveraccountstep1_jsx.unable_to_recover_account_not_change_ownership_recently')})
             }
         })
@@ -172,30 +170,33 @@ class RecoverAccountStep1 extends React.Component {
                             <div className={name_error ? 'error' : ''}>
                                 <label>
                                     {tt('g.account_name')}
-                                    <input type="text" name="name" autoComplete="off" onChange={this.onNameChange} value={name} />
+                                    <input type="text" name="name" autoComplete="off" onChange={this.onNameChange}
+                                           value={name}/>
                                 </label>
                                 <p className="error">{name_error}</p>
                             </div>
-                            <PasswordInput passwordLabel={tt('g.recent_password')} onChange={this.onPasswordsChange} />
-                            <br />
+                            <PasswordInput passwordLabel={tt('g.recent_password')} onChange={this.onPasswordsChange}/>
+                            <br/>
                             <div className="error">{error}</div>
-                            {progress_status ? <span><LoadingIndicator type="circle" inline /> {progress_status}</span>
-                        : <input disabled={!valid} type="submit" className={submit_btn_class} value= {tt('recoveraccountstep1_jsx.begin_recovery')} />}
+                            {progress_status ? <span><LoadingIndicator type="circle" inline/> {progress_status}</span>
+                                : <input disabled={!valid} type="submit" className={submit_btn_class}
+                                         value={tt('recoveraccountstep1_jsx.begin_recovery')}/>}
                         </form>
                     </div>
                 </div>}
 
                 {show_social_login && show_social_login !== 'email' &&
                 <form action="/initiate_account_recovery" method="post">
-                    <input type="hidden" name="csrf" value={$STM_csrf} />
-                    <input type="hidden" name="account_name" value={name} />
-                    <input type="hidden" name="owner_key" value={owner_key} />
+                    <input type="hidden" name="csrf" value={$STM_csrf}/>
+                    <input type="hidden" name="account_name" value={name}/>
+                    <input type="hidden" name="owner_key" value={owner_key}/>
                     <div className="row">
                         <div className="column large-4">
-                            {show_social_login === 'both' ? <p>{tt('recoveraccountstep1_jsx.login_with_facebook_or_reddit_media_to_verify_identity')}.</p>
-                        : <p>{tt('recoveraccountstep1_jsx.login_with_social_media_to_verify_identity', {
-                            provider: show_social_login.charAt(0).toUpperCase() + show_social_login.slice(1)
-                        })}.</p>}
+                            {show_social_login === 'both' ?
+                                <p>{tt('recoveraccountstep1_jsx.login_with_facebook_or_reddit_media_to_verify_identity')}.</p>
+                                : <p>{tt('recoveraccountstep1_jsx.login_with_social_media_to_verify_identity', {
+                                    provider: show_social_login.charAt(0).toUpperCase() + show_social_login.slice(1)
+                                })}.</p>}
                         </div>
                     </div>
                     <div className="row">
@@ -203,10 +204,10 @@ class RecoverAccountStep1 extends React.Component {
                     </div>
                     {(show_social_login === 'both' || show_social_login === 'facebook') && <div className="row">
                         <div className="column large-4 shrink">
-                            <SvgImage name="facebook" width="64px" height="64px" />
+                            <SvgImage name="facebook" width="64px" height="64px"/>
                         </div>
                         <div className="column large-8">
-                            <input type="submit" name="provider" value="facebook" className="button SignUp--fb-button" />
+                            <input type="submit" name="provider" value="facebook" className="button SignUp--fb-button"/>
                         </div>
                     </div>}
                     <div className="row">
@@ -214,10 +215,11 @@ class RecoverAccountStep1 extends React.Component {
                     </div>
                     {(show_social_login === 'both' || show_social_login === 'reddit') && <div className="row">
                         <div className="column large-4 shrink">
-                            <SvgImage name="reddit" width="64px" height="64px" />
+                            <SvgImage name="reddit" width="64px" height="64px"/>
                         </div>
                         <div className="column large-8">
-                            <input type="submit" name="provider" value="reddit" className="button SignUp--reddit-button" />
+                            <input type="submit" name="provider" value="reddit"
+                                   className="button SignUp--reddit-button"/>
                         </div>
                     </div>}
                     <div className="row">
@@ -226,25 +228,26 @@ class RecoverAccountStep1 extends React.Component {
                 </form>
                 }
                 {show_social_login && show_social_login === 'email' &&
-                    <div className="row">
-                        <div className="column large-4">
-                            {
-                                email_submitted
-                                    ? tt('recoveraccountstep1_jsx.thanks_for_submitting_request_for_account_recovery', {APP_NAME})
-                                    : <form onSubmit={this.onSubmitEmail} noValidate>
+                <div className="row">
+                    <div className="column large-4">
+                        {
+                            email_submitted
+                                ? tt('recoveraccountstep1_jsx.thanks_for_submitting_request_for_account_recovery', {APP_NAME})
+                                : <form onSubmit={this.onSubmitEmail} noValidate>
                                     <p>{tt('recoveraccountstep1_jsx.enter_email_toverify_identity')}</p>
                                     <div className={email_error ? 'column large-4 shrink error' : 'column large-4 shrink'}>
                                         <label>{tt('g.email')}
-                                            <input type="text" name="email" autoComplete="off" onChange={this.onEmailChange} value={email} />
+                                            <input type="text" name="email" autoComplete="off" onChange={this.onEmailChange}
+                                                   value={email}/>
                                         </label>
                                         <p className="error">{email_error}</p>
                                         <input type="submit" disabled={email_error || !email} className="button hollow"
-                                               value={tt('recoveraccountstep1_jsx.continue_with_email')} />
+                                               value={tt('recoveraccountstep1_jsx.continue_with_email')}/>
                                     </div>
                                 </form>
-                            }
-                        </div>
+                        }
                     </div>
+                </div>
                 }
             </div>
         );

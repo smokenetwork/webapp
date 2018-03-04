@@ -1,8 +1,7 @@
-import React, {PropTypes, Component} from 'react'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import g from 'app/redux/GlobalReducer'
+import React, {Component, PropTypes} from 'react'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 import {connect} from 'react-redux';
-import ChangePassword from 'app/components/elements/ChangePassword'
+import ChangePassword from './ChangePassword'
 
 class PasswordReset extends Component {
     static propTypes = {
@@ -23,7 +22,7 @@ class PasswordReset extends Component {
 
         return (<div className="row">
             <div className="column large-6 small-12">
-                 <ChangePassword username={accountName} />
+                <ChangePassword username={accountName}/>
             </div>
         </div>)
     }
@@ -38,6 +37,5 @@ export default connect(
         const isMyAccount = username === accountName
         return {...ownProps, isMyAccount, accountName}
     },
-    dispatch => ({
-    })
+    dispatch => ({})
 )(PasswordReset)

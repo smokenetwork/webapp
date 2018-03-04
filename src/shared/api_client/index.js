@@ -1,4 +1,4 @@
-import ChainConfig from "./ChainConfig"
+import ChainConfig from './ChainConfig'
 
 module.exports = {
     ChainConfig

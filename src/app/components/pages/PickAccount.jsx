@@ -3,12 +3,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Progress from 'react-foundation-components/lib/global/progress-bar';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 import classNames from 'classnames';
 import {api} from 'steem';
-import user from 'app/redux/User';
-import {validate_account_name} from 'app/utils/ChainValidation';
-import runTests from 'app/utils/BrowserTests';
+import user from '../../redux/User';
+import {validate_account_name} from '../../utils/ChainValidation';
+import runTests from '../../utils/BrowserTests';
 
 class PickAccount extends React.Component {
 
@@ -118,8 +118,9 @@ class PickAccount extends React.Component {
                     <div className="callout alert">
                         <h4>Browser Out of Date</h4>
                         <p>We will be unable to create your Steem account with this browser.</p>
-                        <p>The latest versions of <a href="https://www.google.com/chrome/">Chrome</a> and <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>
-                            are well-tested and known to work well with steemit.com.</p>
+                        <p>The latest versions of <a href="https://www.google.com/chrome/">Chrome</a> and <a
+                            href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>
+                            are well-tested and known to work well with smoke.io.</p>
                     </div>
                 </div>
             </div>;
@@ -129,7 +130,8 @@ class PickAccount extends React.Component {
             return <div className="row">
                 <div className="column">
                     <div className="callout alert">
-                        <p>You need to <a href="#" onClick={logout}>Logout</a> before you can create an additional account.</p>
+                        <p>You need to <a href="#" onClick={logout}>Logout</a> before you can create an additional
+                            account.</p>
                         <p>Please note that Steemit can only register one account per verified user.</p>
                     </div>
                 </div>
@@ -139,10 +141,12 @@ class PickAccount extends React.Component {
         if (account_status === 'waiting') {
             return <div className="row">
                 <div className="column">
-                    <br />
+                    <br/>
                     <div className="callout alert">
-                        <p>Your sign up request is being processed and you will receive an email from us when it is ready.</p>
-                        <p>Signup requests can take up to 7 days to be processed, but usually complete in a day or two.</p>
+                        <p>Your sign up request is being processed and you will receive an email from us when it is
+                            ready.</p>
+                        <p>Signup requests can take up to 7 days to be processed, but usually complete in a day or
+                            two.</p>
                     </div>
                 </div>
             </div>;
@@ -151,7 +155,7 @@ class PickAccount extends React.Component {
         if (account_status === 'approved') {
             return <div className="row">
                 <div className="column">
-                    <br />
+                    <br/>
                     <div className="callout success">
                         <p>Congratulations! Your sign up request has been approved.</p>
                         <p><Link to="/create_account">Let's get your account created!</Link></p>
@@ -168,7 +172,7 @@ class PickAccount extends React.Component {
         //                 <p>Our records indicate that you already have steem account: <strong>{existingUserAccount}</strong></p>
         //                 <p>In order to prevent abuse Steemit can only register one account per verified user.</p>
         //                 <p>You can either <a href="/login.html">login</a> to your existing account
-        //                     or <a href="mailto:support@steemit.com">send us email</a> if you need a new account.</p>
+        //                     or <a href="mailto:support@smoke.io">send us email</a> if you need a new account.</p>
         //             </div>
         //         </div>
         //     </div>;
@@ -196,23 +200,26 @@ class PickAccount extends React.Component {
             <div>
                 <div className="CreateAccount row">
                     <div className="column" style={{maxWidth: '36rem', margin: '0 auto'}}>
-                        <br />
-                        <Progress tabIndex="0" value={10} max={100} />
-                        <br />
+                        <br/>
+                        <Progress tabIndex="0" value={10} max={100}/>
+                        <br/>
                         <h4 className="CreateAccount__title">Welcome to Steemit</h4>
                         <div>
-                             <p>Your account name is how you will be known on steemit.com.<br />
-                                 {/*Your account name <strong>can never be changed</strong>, so please choose carefully.*/}</p>
+                            <p>Your account name is how you will be known on smoke.io.<br/>
+                                {/*Your account name <strong>can never be changed</strong>, so please choose carefully.*/}
+                            </p>
                         </div>
                         <form onSubmit={this.onSubmit} autoComplete="off" noValidate method="post">
                             <div className={name_error ? 'error' : ''}>
                                 <label>ACCOUNT NAME</label>
-                                <input type="text" name="name" autoComplete="off" onChange={this.onNameChange} value={name} placeholder={"Name..."} />
+                                <input type="text" name="name" autoComplete="off" onChange={this.onNameChange}
+                                       value={name} placeholder={"Name..."}/>
                                 <p>{name_error}</p>
                             </div>
-                            <input disabled={submit_btn_disabled} type="submit" className={submit_btn_class} value="Continue" />
+                            <input disabled={submit_btn_disabled} type="submit" className={submit_btn_class}
+                                   value="Continue"/>
                         </form>
-                        <br />
+                        <br/>
                         <p className="secondary">Got an account? <Link to="/login.html">Login</Link></p>
                     </div>
                 </div>
@@ -232,7 +239,11 @@ module.exports = {
             }
         },
         dispatch => ({
-            loginUser: (username, password) => dispatch(user.actions.usernamePasswordLogin({username, password, saveLogin: true})),
+            loginUser: (username, password) => dispatch(user.actions.usernamePasswordLogin({
+                username,
+                password,
+                saveLogin: true
+            })),
             logout: e => {
                 if (e) e.preventDefault();
                 dispatch(user.actions.logout())

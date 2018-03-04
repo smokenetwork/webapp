@@ -1,10 +1,9 @@
 /* eslint react/prop-types: 0 */
-import React, {PropTypes, Component} from 'react'
-import {Map, List} from 'immutable'
+import React, {Component, PropTypes} from 'react'
+import {List, Map} from 'immutable'
 import {connect} from 'react-redux'
-import user from 'app/redux/User'
-import g from 'app/redux/GlobalReducer'
-import ShowKey from 'app/components/elements/ShowKey'
+import g from '../../redux/GlobalReducer'
+import ShowKey from './ShowKey'
 import tt from 'counterpart';
 
 class Keys extends Component {
@@ -13,10 +12,12 @@ class Keys extends Component {
         account: PropTypes.object.isRequired, // immutable Map
         authType: PropTypes.oneOf(['posting', 'active', 'owner', 'memo']),
     }
+
     constructor() {
         super()
         this.state = {}
     }
+
     shouldComponentUpdate(nextProps, nextState) {
         return this.props.auth !== nextProps.auth ||
             this.props.authType !== nextProps.authType ||
@@ -24,10 +25,12 @@ class Keys extends Component {
             this.props.account !== nextProps.account ||
             this.state !== nextState
     }
+
     showChangePassword = (pubkey) => {
         const {account, authType} = this.props
         this.props.showChangePassword(account.get('name'), authType, pubkey)
     }
+
     render() {
         const {
             props: {account, authType, privateKeys, onKey},
@@ -65,9 +68,10 @@ class Keys extends Component {
                     <div className="column small-12">
                         <span className={rowClass}>
                             <ShowKey pubkey={pubkey}
-                                privateKey={privateKeys.get(authType + '_private')}
-                                cmpProps={{className: rowClass}} authType={authType} accountName={account.get('name')}
-                                onKey={onKey}>
+                                     privateKey={privateKeys.get(authType + '_private')}
+                                     cmpProps={{className: rowClass}} authType={authType}
+                                     accountName={account.get('name')}
+                                     onKey={onKey}>
                                 {/*<span onClick={() => this.showChangePassword(pubkey)}>&nbsp;{edit}</span>*/}
                             </ShowKey>
                         </span>
@@ -102,7 +106,7 @@ export default connect(
         if (current)
             privateKeys = current.get('private_keys') // not bound to one account
 
-        if(!privateKeys)
+        if (!privateKeys)
             privateKeys = emptyMap
 
         const auth = state.user.getIn(['authority', accountName])

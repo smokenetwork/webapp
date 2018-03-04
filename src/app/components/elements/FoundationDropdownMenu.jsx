@@ -1,7 +1,7 @@
 import React from 'react';
-import Icon from 'app/components/elements/Icon';
-import { LinkWithDropdown } from 'react-foundation-components/lib/global/dropdown';
-import VerticalMenu from 'app/components/elements/VerticalMenu';
+import Icon from './Icon';
+import {LinkWithDropdown} from 'react-foundation-components/lib/global/dropdown';
+import VerticalMenu from './VerticalMenu';
 
 const FoundationDropdownMenu = ({menu, icon, label, dropdownPosition, dropdownAlignment, className, onClick}) => {
     return <LinkWithDropdown
@@ -10,13 +10,13 @@ const FoundationDropdownMenu = ({menu, icon, label, dropdownPosition, dropdownAl
         dropdownPosition={dropdownPosition}
         dropdownAlignment={dropdownAlignment}
         dropdownContent={
-                                <VerticalMenu items={menu} />
-                              }
+            <VerticalMenu items={menu}/>
+        }
         onClick={onClick}
     >
         <span className="FoundationDropdownMenu__label">
-            {icon && <Icon name="share" className="space-right" />}{label}
-            <Icon name="dropdown-arrow" />
+            {icon && <Icon name="share" className="space-right"/>}{label}
+            <Icon name="dropdown-arrow"/>
         </span>
     </LinkWithDropdown>;
 }

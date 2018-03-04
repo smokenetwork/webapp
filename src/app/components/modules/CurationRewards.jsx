@@ -1,17 +1,18 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import {connect} from 'react-redux'
-import TransferHistoryRow from 'app/components/cards/TransferHistoryRow';
-import {numberWithCommas, vestsToSp, assetFloat} from 'app/utils/StateFunctions'
+import TransferHistoryRow from '../cards/TransferHistoryRow';
+import {assetFloat, numberWithCommas, vestsToSp} from '../../utils/StateFunctions'
 import tt from 'counterpart';
-import { APP_NAME, DEBT_TOKEN, DEBT_TOKEN_SHORT, LIQUID_TOKEN, CURRENCY_SIGN,
-VESTING_TOKEN, LIQUID_TICKER, VEST_TICKER } from 'app/client_config';
+import {LIQUID_TICKER, VEST_TICKER, VESTING_TOKEN} from '../../client_config';
 
 class CurationRewards extends React.Component {
     constructor() {
         super()
         this.state = {historyIndex: 0}
-        this.onShowDeposit = () => {this.setState({showDeposit: !this.state.showDeposit})}
+        this.onShowDeposit = () => {
+            this.setState({showDeposit: !this.state.showDeposit})
+        }
         this.onShowDepositSteem = () => {
             this.setState({showDeposit: !this.state.showDeposit, depositType: LIQUID_TICKER})
         }
@@ -40,8 +41,8 @@ class CurationRewards extends React.Component {
         let rewards24 = 0, rewardsWeek = 0, totalRewards = 0;
         let today = new Date();
         let oneDay = 86400 * 1000;
-        let yesterday = new Date(today.getTime() - oneDay ).getTime();
-        let lastWeek = new Date(today.getTime() - 7 * oneDay ).getTime();
+        let yesterday = new Date(today.getTime() - oneDay).getTime();
+        let lastWeek = new Date(today.getTime() - 7 * oneDay).getTime();
 
         let firstDate, finalDate;
         let curation_log = account.transfer_history.map((item, index) => {
@@ -59,7 +60,7 @@ class CurationRewards extends React.Component {
                     rewardsWeek += vest;
                 }
                 totalRewards += vest;
-                return <TransferHistoryRow key={index} op={item} context={account.name} />
+                return <TransferHistoryRow key={index} op={item} context={account.name}/>
             }
             return null;
         }).filter(el => !!el);
@@ -74,24 +75,26 @@ class CurationRewards extends React.Component {
             return currentIndex >= limitedIndex && currentIndex < limitedIndex + 10;
         });
 
-         const navButtons = (
-             <nav>
-               <ul className="pager">
-                 <li>
-                     <div className={"button tiny hollow float-left " + (historyIndex === 0 ? " disabled" : "")} onClick={this._setHistoryPage.bind(this, false)} aria-label="Previous">
-                         <span aria-hidden="true">&larr; {tt('g.newer')}</span>
-                     </div>
-                 </li>
-                 <li>
-                     <div className={"button tiny hollow float-right " + (historyIndex >= (curationLength - 10) ? " disabled" : "")} onClick={historyIndex >= (curationLength - 10) ? null : this._setHistoryPage.bind(this, true)} aria-label="Next">
-                         <span aria-hidden="true">{tt('g.older')} &rarr;</span>
-                     </div>
-                 </li>
-               </ul>
-             </nav>
+        const navButtons = (
+            <nav>
+                <ul className="pager">
+                    <li>
+                        <div className={"button tiny hollow float-left " + (historyIndex === 0 ? " disabled" : "")}
+                             onClick={this._setHistoryPage.bind(this, false)} aria-label="Previous">
+                            <span aria-hidden="true">&larr; {tt('g.newer')}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div
+                            className={"button tiny hollow float-right " + (historyIndex >= (curationLength - 10) ? " disabled" : "")}
+                            onClick={historyIndex >= (curationLength - 10) ? null : this._setHistoryPage.bind(this, true)}
+                            aria-label="Next">
+                            <span aria-hidden="true">{tt('g.older')} &rarr;</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         );
-
-
 
 
         return (<div className="UserWallet">
@@ -110,7 +113,7 @@ class CurationRewards extends React.Component {
             </div>
             <div className="row">
                 <div className="column small-12">
-                    <hr />
+                    <hr/>
                 </div>
             </div>
 
@@ -123,7 +126,7 @@ class CurationRewards extends React.Component {
                         <tbody>
                         {curation_log}
                         </tbody>
-                     </table>
+                    </table>
                     {navButtons}
                 </div>
             </div>

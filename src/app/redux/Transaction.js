@@ -83,7 +83,7 @@ export default createModule({
                     } else {
                         if (error.message) {
                             // Depends on FC_ASSERT formatting
-                            // https://github.com/steemit/steemit.com/issues/222
+                            // https://github.com/steemit/smoke.io/issues/222
                             const err_lines = error.message.split('\n');
                             if (err_lines.length > 2) {
                                 errorKey = err_lines[1];

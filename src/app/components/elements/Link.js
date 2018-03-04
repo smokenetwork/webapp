@@ -1,13 +1,14 @@
 import React from 'react';
-import links from 'app/utils/Links'
+import links from '../../utils/Links'
 import {browserHistory} from 'react-router'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 
 export default class Link extends React.Component {
     static propTypes = {
         // HTML properties
         href: React.PropTypes.string,
     }
+
     constructor(props) {
         super()
         const {href} = props
@@ -18,9 +19,10 @@ export default class Link extends React.Component {
             browserHistory.push(this.props.href)
         }
     }
+
     render() {
         const {props: {href, children}, onLocalClick} = this
-        if(this.localLink) return <a onClick={onLocalClick}>{children}</a>
+        if (this.localLink) return <a onClick={onLocalClick}>{children}</a>
         return <a target="_blank" rel="noopener" href={href}>{children}</a>
     }
 }

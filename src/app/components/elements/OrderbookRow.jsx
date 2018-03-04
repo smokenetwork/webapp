@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default class OrderRow extends React.Component {
 
@@ -73,10 +73,10 @@ export default class OrderRow extends React.Component {
                 onClick={this.props.onClick.bind(this, order.price)}
                 className={this.state.animate ? "animate" : ""}
             >
-              {bid ? totalTD : price}
-              {bid ? sbd : steem}
-              {bid ? steem : sbd}
-              {bid ? price : totalTD}
+                {bid ? totalTD : price}
+                {bid ? sbd : steem}
+                {bid ? steem : sbd}
+                {bid ? price : totalTD}
             </tr>
         )
     }

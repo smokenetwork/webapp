@@ -9,11 +9,11 @@ $global-lineheight: 1.6 !default;
 /// Colors used for buttons, callouts, links, etc. There must always be a color called `primary`.
 /// @type Map
 $foundation-palette: (
-        primary: #1A5099,
-        secondary: #777,
-        success: #3adb76,
-        warning: #ffae00,
-        alert: #ec5840,
+    primary: #5db536,
+    secondary: #171F24,
+    success: #18ce0f,
+    warning: #ffae00,
+    alert: #ff0264,
 ) !default;
 
 /// Color used for light gray UI items.
@@ -34,11 +34,11 @@ $light-blue: #4ba2f2 !default;
 
 /// Color used for black ui items.
 /// @type Color
-$black: #333333 !default;
+$black: #444 !default;
 
 /// Color used for white ui items.
 /// @type Color
-$white: #fefefe !default;
+$white: #fff !default;
 
 /// Background color of the body.
 /// @type Color
@@ -50,7 +50,7 @@ $body-font-color: $black !default;
 
 /// Font stack of the body.
 /// @type List
-$body-font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$body-font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif !default;
 
 /// Global value used for all elements that have a border radius.
 /// @type Number

@@ -1,6 +1,6 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
-import ReplyEditor from 'app/components/elements/ReplyEditor'
+import {browserHistory} from 'react-router';
+import ReplyEditor from '../elements/ReplyEditor'
 
 const formId = 'submitStory';
 // const richTextEditor = process.env.BROWSER ? require('react-rte-image').default : null;
@@ -19,17 +19,18 @@ class SubmitPost extends React.Component {
             browserHistory.push('/created')//'/category/' + category)
         }
     }
+
     render() {
         const {success} = this
         return (
             <div className="SubmitPost">
-               <SubmitReplyEditor type="submit_story" successCallback={success} />
+                <SubmitReplyEditor type="submit_story" successCallback={success}/>
             </div>
         );
     }
 }
 
 module.exports = {
-    path: 'submit.html',
+    path: 'post',
     component: SubmitPost // connect(state => ({ global: state.global }))(SubmitPost)
 };

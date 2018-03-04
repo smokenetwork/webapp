@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router';
-import Follow from 'app/components/elements/Follow';
+import {Link} from 'react-router';
+import Follow from '../elements/Follow';
+import {connect} from 'react-redux'
 
 class UserListRow extends React.Component {
     render() {
         const {user, loggedIn} = this.props
-        return(
+        return (
             <tr>
                 {loggedIn && <td width="250">
-                    <Follow following={user} />
+                    <Follow following={user}/>
                 </td>}
                 <td>
                     <Link to={'/@' + user}><strong>{user}</strong></Link>
@@ -18,7 +19,6 @@ class UserListRow extends React.Component {
     }
 }
 
-import {connect} from 'react-redux'
 export default connect(
     (state, ownProps) => {
         const loggedIn = state.user.hasIn(['current', 'username'])

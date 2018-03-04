@@ -1,6 +1,6 @@
 import React from 'react';
-import {recordPageView} from 'app/utils/ServerApiClient';
-import Icon from 'app/components/elements/Icon';
+import {recordPageView} from '../../utils/ServerApiClient';
+import Icon from './Icon';
 import tt from 'counterpart';
 
 export default class PageViewsCounter extends React.Component {
@@ -42,7 +42,7 @@ export default class PageViewsCounter extends React.Component {
         if (this.props.hidden || !views) return null;
         const suffix = this.props.sinceDate ? tt('g.since') + this.props.sinceDate : '';
         return <span className="PageViewsCounter" title={tt('g.views', {count: views}) + suffix}>
-            <Icon name="eye" /> {views.toLocaleString()}
+            <Icon name="eye"/> {views.toLocaleString()}
         </span>;
     }
 }

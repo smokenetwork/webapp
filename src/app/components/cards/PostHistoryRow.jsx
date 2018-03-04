@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper';
-import Icon from 'app/components/elements/Icon';
+import {Link} from 'react-router';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import Icon from '../elements/Icon';
 import tt from 'counterpart';
 
 export default class PostHistoryRow extends React.Component {
 
     render() {
-        let op      = this.props.op;
-        console.log( "op: ", op );
+        let op = this.props.op;
+        console.log("op: ", op);
         let context = this.props.context; /// account perspective
 
         let parent_author = op[1].op[1].parent_author;
@@ -21,23 +21,24 @@ export default class PostHistoryRow extends React.Component {
         if (parent_author && parent_author != context)
             in_reply_to = <span>{tt('g.in_reply_to') + ' '}<Link to={parent_link}>@{parent_author}</Link></span>;
         else if (parent_author == context)
-            in_reply_to = <span><Link to={author_link}>@{author}</Link> {tt('g.replied_to', {account: parent_author})}</span>;
+            in_reply_to =
+                <span><Link to={author_link}>@{author}</Link> {tt('g.replied_to', {account: parent_author})}</span>;
 
         //    const content_markdown = op[1].op[1].body;
         //    const body = (<MarkdownViewer formId={} text={content_markdown} jsonMetadata={} />)
         let post_link = '/' + op[1].op[1].parent_permlink + author_link + '/' + permlink;
 
-        return( <div>
+        return (<div>
 
             <div className="row">
-                <div className="column small-12" >
+                <div className="column small-12">
                     <h4><Link to={post_link}>{op[1].op[1].title}</Link></h4>
                 </div>
             </div>
             <div className="row">
-                <div className="column small-12" >
-                    <Icon name="clock" className="space-right" />
-                    <TimeAgoWrapper date={op[1].timestamp} /> {in_reply_to}
+                <div className="column small-12">
+                    <Icon name="clock" className="space-right"/>
+                    <TimeAgoWrapper date={op[1].timestamp}/> {in_reply_to}
                 </div>
             </div>
         </div>);

@@ -1,25 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import AppPropTypes from 'app/utils/AppPropTypes';
-import Header from 'app/components/modules/Header';
-import LpFooter from 'app/components/modules/lp/LpFooter';
-import user from 'app/redux/User';
-import g from 'app/redux/GlobalReducer';
-import TopRightMenu from 'app/components/modules/TopRightMenu';
-import { browserHistory } from 'react-router';
+import AppPropTypes from '../utils/AppPropTypes';
+import Header from './modules/Header';
+import LpFooter from './modules/lp/LpFooter';
+import user from '../redux/User';
+import g from '../redux/GlobalReducer';
+import TopRightMenu from './modules/TopRightMenu';
+import {browserHistory} from 'react-router';
 import classNames from 'classnames';
-import SidePanel from 'app/components/modules/SidePanel';
+import SidePanel from './modules/SidePanel';
 import CloseButton from 'react-foundation-components/lib/global/close-button';
-import Dialogs from 'app/components/modules/Dialogs';
-import Modals from 'app/components/modules/Modals';
-import Icon from 'app/components/elements/Icon';
-import MiniHeader from 'app/components/modules/MiniHeader';
+import Dialogs from './modules/Dialogs';
+import Modals from './modules/Modals';
+import Icon from './elements/Icon';
+import MiniHeader from './modules/MiniHeader';
 import tt from 'counterpart';
-import PageViewsCounter from 'app/components/elements/PageViewsCounter';
-import {serverApiRecordEvent} from 'app/utils/ServerApiClient';
-import { APP_NAME, VESTING_TOKEN, LIQUID_TOKEN } from 'app/client_config';
+import PageViewsCounter from './elements/PageViewsCounter';
+import {serverApiRecordEvent} from '../utils/ServerApiClient';
+import {LIQUID_TOKEN} from '../client_config';
 import {key_utils} from 'steem/lib/auth/ecc';
-import resolveRoute from 'app/ResolveRoute';
+import resolveRoute from '../ResolveRoute';
 
 const pageRequiresEntropy = (path) => {
     const {page} = resolveRoute(path);
@@ -109,7 +109,7 @@ class App extends React.Component {
     };
 
     onEntropyEvent(e) {
-        if(e.type === 'mousemove')
+        if (e.type === 'mousemove')
             key_utils.addEntropy(e.pageX, e.pageY, e.screenX, e.screenY)
         else
             console.log('onEntropyEvent Unknown', e.type, e)
@@ -124,8 +124,10 @@ class App extends React.Component {
     }
 
     render() {
-        const {location, params, children, flash, new_visitor,
-            depositSteem, signup_bonus, username, nightmodeEnabled} = this.props;
+        const {
+            location, params, children, flash, new_visitor,
+            depositSteem, signup_bonus, username, nightmodeEnabled
+        } = this.props;
         const lp = false; //location.pathname === '/';
         const miniHeader = location.pathname === '/create_account' || location.pathname === '/pick_account';
         const headerHidden = miniHeader && location.search === '?whistle_signup'
@@ -139,7 +141,7 @@ class App extends React.Component {
             callout = <div className="App__announcement row">
                 <div className="column">
                     <div className={classNames('callout', {alert}, {warning}, {success})}>
-                        <CloseButton onClick={() => this.setState({showCallout: false})} />
+                        <CloseButton onClick={() => this.setState({showCallout: false})}/>
                         <p>{alert || warning || success}</p>
                     </div>
                 </div>
@@ -149,10 +151,10 @@ class App extends React.Component {
             callout = <div className="App__announcement row">
                 <div className="column">
                     <div className={classNames('callout success', {alert}, {warning}, {success})}>
-                        <CloseButton onClick={() => this.setState({showCallout: false})} />
+                        <CloseButton onClick={() => this.setState({showCallout: false})}/>
                         <ul>
                             <li>
-                                /*<a href="https://steemit.com/steemit/@steemitblog/steemit-com-is-now-open-source">
+                                /*<a href="https://smoke.io/steemit/@steemitblog/steemit-com-is-now-open-source">
                                    ...STORY TEXT...
                                 </a>*/
                             </li>
@@ -165,7 +167,7 @@ class App extends React.Component {
             callout = <div className="App__announcement row">
                 <div className="column">
                     <div className={classNames('callout warning', {alert}, {warning}, {success})}>
-                        <CloseButton onClick={() => this.setState({showCallout: false})} />
+                        <CloseButton onClick={() => this.setState({showCallout: false})}/>
                         <p>{tt('g.read_only_mode')}</p>
                     </div>
                 </div>
@@ -177,129 +179,54 @@ class App extends React.Component {
             welcome_screen = (
                 <div className="welcomeWrapper">
                     <div className="welcomeBanner">
-                        <CloseButton onClick={() => this.setState({showBanner: false})} />
+                        <CloseButton onClick={() => this.setState({showBanner: false})}/>
                         <div className="text-center">
                             <h2>{tt('navigation.intro_tagline')}</h2>
                             <h4>{tt('navigation.intro_paragraph')}</h4>
-                            <br />
-                            <a className="button button--primary" href="/pick_account"> <b>{tt('navigation.sign_up')}</b> </a>
-                            {/* JSX Comment  &nbsp; &nbsp; &nbsp;
-                            <a className="button hollow uppercase" href="https://steem.io" target="_blank" rel="noopener noreferrer" onClick={this.learnMore}> <b>{tt('navigation.learn_more')}</b> </a> */}
+                            <br/>
+                            <a className="button button--primary" href="/pick_account">
+                                <b>{tt('navigation.sign_up')}</b> </a>
                         </div>
                     </div>
                 </div>
             );
         }
 
-        const themeClass = nightmodeEnabled ? ' theme-dark' : ' theme-light';
-
-        return <div className={'App' + themeClass + (lp ? ' LP' : '') + (ip ? ' index-page' : '') + (miniHeader ? ' mini-header' : '')}
-                    ref="App_root"
-                >
+        return <div
+            className={'App theme-light' + (lp ? ' LP' : '') + (ip ? ' index-page' : '') + (miniHeader ? ' mini-header' : '')}
+            ref="App_root"
+        >
             <SidePanel ref="side_panel" alignment="right">
-                <TopRightMenu vertical navigate={this.navigate} />
+                <TopRightMenu vertical navigate={this.navigate}/>
                 <ul className="vertical menu">
                     <li>
-                        <a href="/welcome" onClick={this.navigate}>
-                            {tt('navigation.welcome')}
+                        <a href="/created" onClick={this.navigate}>
+                            {tt('main_menu.explore')}
                         </a>
                     </li>
                     <li>
-                        <a href="/faq.html" onClick={this.navigate}>
-                            {tt('navigation.faq')}
+                        <a href="/@test/transfers" onClick={this.navigate}>
+                            {tt('main_menu.wallet')}
                         </a>
                     </li>
                     <li>
-                        <a href="/tags" onClick={this.navigate}>
-                            {tt('navigation.explore')}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/market" onClick={this.navigate}>
-                            {tt('navigation.currency_market')}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/recover_account_step_1" onClick={this.navigate}>
-                            {tt('navigation.stolen_account_recovery')}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/change_password" onClick={this.navigate}>
-                            {tt('navigation.change_account_password')}
-                        </a>
-                    </li>
-                    <li className="last">
-                        <a href="/~witnesses" onClick={this.navigate}>
-                            {tt('navigation.vote_for_witnesses')}
-                        </a>
-                    </li>
-                </ul>
-                <ul className="vertical menu">
-                    <li>
-                        <a onClick={() => depositSteem(username)}>
-                            {tt('navigation.buy_LIQUID_TOKEN', {LIQUID_TOKEN})}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://thesteemitshop.com/" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.shop')}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://steemit.chat/home" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.chat')}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://steemtools.com/" onClick={this.navigate} target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.app_center')}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                    <li className="last">
-                        <a href="https://steemit.github.io/steemit-docs/" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.api_docs')}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                </ul>
-                <ul className="vertical menu">
-                    <li>
-                        <a href="https://steem.io/steem-bluepaper.pdf" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.bluepaper')}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://steem.io/SteemWhitePaper.pdf" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.whitepaper')}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://steem.io" onClick={this.navigate}>
-                            {tt('navigation.about')}&nbsp;<Icon name="extlink" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/privacy.html" onClick={this.navigate} rel="nofollow">
-                            {tt('navigation.privacy_policy')}
-                        </a>
-                    </li>
-                    <li className="last">
-                        <a href="/tos.html" onClick={this.navigate} rel="nofollow">
-                            {tt('navigation.terms_of_service')}
+                        <a href="/profile" onClick={this.navigate}>
+                            {tt('main_menu.profile')}
                         </a>
                     </li>
                 </ul>
             </SidePanel>
-            {miniHeader ? headerHidden ? null : <MiniHeader /> : <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open} />}
+            {miniHeader ? headerHidden ? null : <MiniHeader/> :
+                <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
             <div className="App__content">
                 {welcome_screen}
                 {callout}
                 {children}
-                {lp ? <LpFooter /> : null}
+                {lp ? <LpFooter/> : null}
             </div>
-            <Dialogs />
-            <Modals />
-            <PageViewsCounter />
+            <Dialogs/>
+            <Modals/>
+            <PageViewsCounter/>
         </div>
     }
 }
@@ -311,7 +238,7 @@ App.propTypes = {
     signup_bonus: React.PropTypes.string,
     loginUser: React.PropTypes.func.isRequired,
     depositSteem: React.PropTypes.func.isRequired,
-    username:  React.PropTypes.string,
+    username: React.PropTypes.string,
 };
 
 export default connect(
@@ -321,9 +248,9 @@ export default connect(
             flash: state.offchain.get('flash'),
             signup_bonus: state.offchain.get('signup_bonus'),
             new_visitor: !state.user.get('current') &&
-                !state.offchain.get('user') &&
-                !state.offchain.get('account') &&
-                state.offchain.get('new_visit'),
+            !state.offchain.get('user') &&
+            !state.offchain.get('account') &&
+            state.offchain.get('new_visit'),
             username: state.user.getIn(['current', 'username']) || state.offchain.get('account') || '',
             nightmodeEnabled: state.app.getIn(['user_preferences', 'nightmode']),
         };

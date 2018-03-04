@@ -27,12 +27,12 @@ import flash from 'koa-flash';
 import minimist from 'minimist';
 import Grant from 'grant-koa';
 import config from 'config';
-import { routeRegex } from 'app/ResolveRoute';
+import {routeRegex} from '../app/ResolveRoute';
 import secureRandom from 'secure-random';
-import userIllegalContent from 'app/utils/userIllegalContent';
+import userIllegalContent from '../app/utils/userIllegalContent';
 import koaLocale from 'koa-locale';
 
-if(cluster.isMaster)
+if (cluster.isMaster)
     console.log('application server starting, please wait.');
 
 const grant = new Grant(config.grant);
@@ -42,7 +42,7 @@ const app = new Koa();
 app.name = 'Steemit app';
 const env = process.env.NODE_ENV || 'development';
 // cache of a thousand days
-const cacheOpts = { maxAge: 86400000, gzip: true };
+const cacheOpts = {maxAge: 86400000, gzip: true};
 
 // set number of processes equal to number of cores
 // (unless passed in as an env var)
@@ -61,14 +61,14 @@ session(app, {
 csrf(app);
 
 app.use(mount(grant));
-app.use(flash({ key: 'flash' }));
+app.use(flash({key: 'flash'}));
 koaLocale(app);
 
 function convertEntriesToArrays(obj) {
     return Object.keys(obj).reduce((result, key) => {
-            result[key] = obj[key].split(/\s+/);
-    return result;
-}, {});
+        result[key] = obj[key].split(/\s+/);
+        return result;
+    }, {});
 }
 
 const service_worker_js_content = fs
@@ -94,7 +94,7 @@ app.use(function* (next) {
     if (
         this.method === 'GET' &&
         (routeRegex.UserProfile1.test(this.url) ||
-        routeRegex.PostNoCategory.test(this.url) || routeRegex.Post.test(this.url)
+            routeRegex.PostNoCategory.test(this.url) || routeRegex.Post.test(this.url)
         )
     ) {
         const p = this.originalUrl.toLowerCase();
@@ -133,10 +133,10 @@ app.use(function* (next) {
     // remember ch, cn, r url params in the session and remove them from url
     if (this.method === 'GET' && /\?[^\w]*(ch=|cn=|r=)/.test(this.url)) {
         let redir = this.url.replace(/((ch|cn|r)=[^&]+)/gi, r => {
-                const p = r.split('=');
-        if (p.length === 2) this.session[p[0]] = p[1];
-        return '';
-    });
+            const p = r.split('=');
+            if (p.length === 2) this.session[p[0]] = p[1];
+            return '';
+        });
         redir = redir.replace(/&&&?/, '');
         redir = redir.replace(/\?&?$/, '');
         console.log(`server redirect ${this.url} -> ${redir}`);
@@ -171,7 +171,7 @@ app.use(
 );
 
 app.use(
-    mount('/robots.txt', function*() {
+    mount('/robots.txt', function* () {
         this.set('Cache-Control', 'public, max-age=86400000');
         this.type = 'text/plain';
         this.body = 'User-agent: *\nAllow: /';
@@ -179,7 +179,7 @@ app.use(
 );
 
 app.use(
-    mount('/service-worker.js', function*() {
+    mount('/service-worker.js', function* () {
         this.set('Cache-Control', 'public, max-age=7200000');
         this.type = 'application/javascript';
         // TODO: use APP_URL from client_config.js
@@ -193,7 +193,7 @@ app.use(
 
 // set user's uid - used to identify users in logs and some other places
 // FIXME SECURITY PRIVACY cycle this uid after a period of time
-app.use(function*(next) {
+app.use(function* (next) {
     const last_visit = this.session.last_visit;
     this.session.last_visit = new Date().getTime() / 1000 | 0;
     const from_link = this.request.headers.referer;
@@ -264,9 +264,9 @@ if (env === 'development') {
     const proxyhost = 'http://0.0.0.0:' + webpack_dev_port;
     console.log('proxying to webpack dev server at ' + proxyhost);
     const proxy = require('koa-proxy')({
-            host: proxyhost,
-            map: filePath => 'assets/' + filePath
-});
+        host: proxyhost,
+        map: filePath => 'assets/' + filePath
+    });
     app.use(mount('/assets', proxy));
 } else {
     app.use(
@@ -279,7 +279,7 @@ if (env === 'development') {
 
 if (env !== 'test') {
     const appRender = require('./app_render');
-    app.use(function*() {
+    app.use(function* () {
         yield appRender(this);
         // if (app_router.dbStatus.ok) recordWebEvent(this, 'page_load');
         const bot = this.state.isBot;
@@ -294,9 +294,9 @@ if (env !== 'test') {
 
     const port = process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
-    if(env === 'production') {
-        if(cluster.isMaster) {
-            for(var i = 0; i < numProcesses; i++) {
+    if (env === 'production') {
+        if (cluster.isMaster) {
+            for (var i = 0; i < numProcesses; i++) {
                 cluster.fork();
             }
             // if a worker dies replace it so application keeps running
@@ -321,7 +321,7 @@ if (env !== 'test') {
 
 // set PERFORMANCE_TRACING to the number of seconds desired for
 // logging hardware stats to the console
-if(process.env.PERFORMANCE_TRACING)
-    setInterval(hardwareStats, (1000*process.env.PERFORMANCE_TRACING));
+if (process.env.PERFORMANCE_TRACING)
+    setInterval(hardwareStats, (1000 * process.env.PERFORMANCE_TRACING));
 
 module.exports = app;

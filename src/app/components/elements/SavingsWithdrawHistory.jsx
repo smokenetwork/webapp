@@ -1,11 +1,12 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate'
-import LoadingIndicator from 'app/components/elements/LoadingIndicator'
-import TimeAgoWrapper from 'app/components/elements/TimeAgoWrapper'
-import transaction from 'app/redux/Transaction'
-import Memo from 'app/components/elements/Memo'
+import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
+import LoadingIndicator from './LoadingIndicator'
+import TimeAgoWrapper from './TimeAgoWrapper'
+import transaction from '../../redux/Transaction'
+import Memo from './Memo'
 import tt from 'counterpart'
+import {connect} from 'react-redux'
 
 class SavingsWithdrawHistory extends React.Component {
 
@@ -26,7 +27,7 @@ class SavingsWithdrawHistory extends React.Component {
     loadHistory(force = true, props = this.props) {
         const {savings_withdraws} = props
         const {loadHistory, username} = props
-        if((force || !savings_withdraws) && username)
+        if ((force || !savings_withdraws) && username)
             loadHistory(username)
     }
 
@@ -52,23 +53,26 @@ class SavingsWithdrawHistory extends React.Component {
 
     render() {
         const {savings_withdraws} = this.props
-        if(!savings_withdraws || !savings_withdraws.count()) return null
+        if (!savings_withdraws || !savings_withdraws.count()) return null
         this.initActions()
         let idx = 0
         const rows = savings_withdraws.map(withdraw => {
             const {complete, amount, to, from, memo, request_id} = withdraw.toJS()
-            const dest = to === from ? tt('savingswithdrawhistory_jsx.to', {to}) : tt('savingswithdrawhistory_jsx.from_to', {from, to})
+            const dest = to === from ? tt('savingswithdrawhistory_jsx.to', {to}) : tt('savingswithdrawhistory_jsx.from_to', {
+                from,
+                to
+            })
             const loading = this.state['loading_' + request_id]
             return <tr key={idx++}>
-                <td><TimeAgoWrapper date={complete} /></td>
+                <td><TimeAgoWrapper date={complete}/></td>
                 <td>
                     {tt('savingswithdrawhistory_jsx.withdraw', {amount})} {dest}
                     &nbsp;
                     {/* A cancel link puts the action very close to the info stating what is being canceled */}
                     {!loading && <span>(<a onClick={this['cancel_' + request_id]}>{tt('g.cancel')}</a>)</span>}
-                    {loading && <span><LoadingIndicator type="circle" /></span>}
+                    {loading && <span><LoadingIndicator type="circle"/></span>}
                 </td>
-                <td><Memo text={memo} /></td>
+                <td><Memo text={memo}/></td>
             </tr>
         })
         return <div className="SavingsWithdrawHistory">
@@ -85,8 +89,6 @@ class SavingsWithdrawHistory extends React.Component {
         </div>
     }
 }
-
-import {connect} from 'react-redux'
 
 export default connect(
     (state, ownProps) => {

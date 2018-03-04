@@ -1,13 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import g from 'app/redux/GlobalReducer'
-import reactForm from 'app/utils/ReactForm'
+import g from '../../redux/GlobalReducer'
 import Slider from 'react-rangeslider';
-import transaction from 'app/redux/Transaction';
-import user from 'app/redux/User';
+import transaction from '../../redux/Transaction';
+import user from '../../redux/User';
 import tt from 'counterpart'
-import {VEST_TICKER, LIQUID_TICKER, VESTING_TOKEN} from 'app/client_config'
-import {numberWithCommas, spToVestsf, vestsToSpf, vestsToSp, assetFloat} from 'app/utils/StateFunctions'
+import {LIQUID_TICKER, VEST_TICKER, VESTING_TOKEN} from '../../client_config'
+import {assetFloat, numberWithCommas, spToVestsf, vestsToSp, vestsToSpf} from '../../utils/StateFunctions'
 
 class Powerdown extends React.Component {
 
@@ -118,18 +117,19 @@ class Powerdown extends React.Component {
                     onChange={sliderChange}
                 />
                 <p className="powerdown-amount">
-                    {tt('powerdown_jsx.amount')}<br />
+                    {tt('powerdown_jsx.amount')}<br/>
                     <input
                         value={manual_entry ? manual_entry : formatSp(new_withdraw)}
                         onChange={inputChange}
-                        autoCorrect={false} />
+                        autoCorrect={false}/>
                     {LIQUID_TICKER}
                 </p>
                 <ul className="powerdown-notes">{notes}</ul>
-                <button type="submit" className="button" onClick={powerDown} disabled={broadcasting}>{tt('powerdown_jsx.power_down')}</button>
+                <button type="submit" className="button" onClick={powerDown}
+                        disabled={broadcasting}>{tt('powerdown_jsx.power_down')}</button>
             </div>
         )
-     }
+    }
 }
 
 export default connect(

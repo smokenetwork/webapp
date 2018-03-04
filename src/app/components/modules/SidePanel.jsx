@@ -32,7 +32,7 @@ export default class SidePanel extends React.Component {
         const {children, alignment} = this.props;
         return <div className="SidePanel">
             <div className={(visible ? 'visible ' : '') + alignment}>
-                <CloseButton onClick={this.hide} />
+                <CloseButton onClick={this.hide}/>
                 {children}
             </div>
         </div>;

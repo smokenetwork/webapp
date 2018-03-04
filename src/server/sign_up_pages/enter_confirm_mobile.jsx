@@ -1,17 +1,17 @@
-import koa_router from "koa-router";
-import koa_body from "koa-body";
-import React from "react";
-import { renderToString } from "react-dom/server";
-import models from "db/models";
-import ServerHTML from "server/server-html";
-// import twilioVerify from "server/utils/twilio";
-import teleSignVerify from "server/utils/teleSign";
-import CountryCode from "app/components/elements/CountryCode";
-import { getRemoteIp, checkCSRF } from "server/utils/misc";
-import MiniHeader from "app/components/modules/MiniHeader";
-import secureRandom from "secure-random";
-import config from "config";
-import Mixpanel from "mixpanel";
+import koa_router from 'koa-router';
+import koa_body from 'koa-body';
+import React from 'react';
+import {renderToString} from 'react-dom/server';
+import models from 'db/models';
+import ServerHTML from 'server/server-html';
+// import twilioVerify from 'server/utils/twilio';
+import teleSignVerify from 'server/utils/teleSign';
+import CountryCode from 'app/components/elements/CountryCode';
+import {checkCSRF, getRemoteIp} from 'server/utils/misc';
+import MiniHeader from 'app/components/modules/MiniHeader';
+import secureRandom from 'secure-random';
+import config from 'config';
+import Mixpanel from 'mixpanel';
 import Progress from 'react-foundation-components/lib/global/progress-bar';
 
 const path = require('path');
@@ -136,7 +136,7 @@ export default function useEnterAndConfirmMobilePages(app) {
 
 
 				<p>We need to send you a quick text. </p>
-                   
+
 				<p>With each Steemit account comes a free initial
 				grant of Steem Power!  Phone verification helps
 				cut down on spam accounts.</p>
