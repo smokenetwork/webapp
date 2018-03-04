@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce';
 import {findParent} from '../../utils/DomUtils';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import {connect} from 'react-redux'
+import shortid from 'shortid'
 
 function topPosition(domElt) {
     if (!domElt) {
@@ -169,7 +170,7 @@ class PostsGrid extends React.Component {
 
         const {thumbSize} = this.state;
 
-        const postsInfo = [];
+        const filteredPosts = [];
 
         posts.forEach((item) => {
             const cont = content.get(item);
@@ -181,32 +182,52 @@ class PostsGrid extends React.Component {
             const hide = cont.getIn(['stats', 'hide']);
 
             if (!(ignore || hide) || showSpam) {
-                postsInfo.push({item, ignore});
+                filteredPosts.push({item, ignore});
             }
         });
 
-        const renderSummary = (items) => {
-            return items.map((item) => {
+        /**
+         * @param {Post[]} items
+         * @returns {string}
+         */
+        const renderItemsInGrid = (items) => {
+            const itemsPerRow = 3;
+            const rows = [...Array(Math.ceil(items.length / itemsPerRow))];
+            const itemRows = rows.map((row, i) => items.slice(i * itemsPerRow, (i * itemsPerRow) + itemsPerRow));
+
+            const gridContent = itemRows.map((row) => {
                 return (
-                    <div key={item.item} className={"columns large-4"}>
-                        <PostGridItem
-                            account={account}
-                            post={item.item}
-                            thumbSize={thumbSize}
-                            ignore={item.ignore}
-                            onClick={this.onPostClick}
-                        />
+                    <div className="row" key={shortid.generate()}>
+                        {row.map((item) => {
+                            return (
+                                <div className="columns large-4 small-12" key={item.item}>
+                                    <PostGridItem
+                                        account={account}
+                                        post={item.item}
+                                        thumbSize={thumbSize}
+                                        ignore={item.ignore}
+                                        onClick={this.onPostClick}
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
-                );
+                )
             });
+
+            return (
+                <div>
+                    {gridContent}
+                </div>
+            );
         };
 
         return (
             <div id="posts_list" className="PostsGrid">
                 <div className="PostsGrid__posts" itemScope itemType="http://schema.org/blogPosts">
-                    {renderSummary(postsInfo)}
+                    {renderItemsInGrid(filteredPosts)}
                 </div>
-                {loading && <center><LoadingIndicator style={{marginBottom: "2rem"}} type="circle"/></center>}
+                {loading && <LoadingIndicator style={{marginBottom: "2rem"}} type="circle"/>}
             </div>
         );
     }
@@ -215,8 +236,8 @@ class PostsGrid extends React.Component {
 export default connect(
     (state, props) => {
         const pathname = state.app.get('location').pathname;
-        const current = state.user.get('current')
-        const username = current ? current.get('username') : state.offchain.get('account')
+        const current = state.user.get('current');
+        const username = current ? current.get('username') : state.offchain.get('account');
         const content = state.global.get('content');
         const ignore_result = state.global.getIn(['follow', 'getFollowingAsync', username, 'ignore_result']);
         return {...props, username, content, ignore_result, pathname};

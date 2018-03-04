@@ -5,15 +5,11 @@ import Icon from './Icon';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 import tt from 'counterpart';
 
-class VotesAndComments extends React.Component {
-
+class Comments extends React.Component {
     static propTypes = {
         // HTML properties
         post: React.PropTypes.string.isRequired,
         commentsLink: React.PropTypes.string.isRequired,
-
-        // Redux connect properties
-        votes: React.PropTypes.number,
         comments: React.PropTypes.number,
     };
 
@@ -23,7 +19,7 @@ class VotesAndComments extends React.Component {
     }
 
     render() {
-        const {votes, comments, commentsLink} = this.props;
+        const {comments, commentsLink} = this.props;
         let comments_tooltip = tt('votesandcomments_jsx.no_responses_yet_click_to_respond');
         if (comments > 0) comments_tooltip = tt('votesandcomments_jsx.response_count_tooltip', {count: comments});
 
@@ -34,9 +30,6 @@ class VotesAndComments extends React.Component {
                         <Icon name={comments > 1 ? 'chatboxes' : 'chatbox'}/>&nbsp;{comments}
                      </Link>
                  </span>
-                <span className="VotesAndComments__votes" title={tt('votesandcomments_jsx.vote_count', {count: votes})}>
-                    <Icon size="1x" name="heart-o"/>&nbsp;{votes}
-                </span>
             </span>
         );
     }
@@ -48,8 +41,7 @@ export default connect(
         if (!post) return props;
         return {
             ...props,
-            votes: post.get('net_votes'),
             comments: post.get('children')
         };
     }
-)(VotesAndComments);
+)(Comments);

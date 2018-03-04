@@ -37,15 +37,14 @@
         font-family: sans-serif;
     }
 
-    &__summary {
-        margin: 0em 0 1em;
-        transition: 0.2s all ease-in-out;
+    &__content {
         border: transparent;
-        padding-bottom: 10px;
+
         @include themify($themes) {
             background-color: themed('moduleBackgroundColor');
             border-bottom: themed('border');
         }
+
         @include MQ(M) {
             margin: 0 0 40px;
             padding-bottom: 0;
@@ -53,23 +52,25 @@
                 border: themed('border');
             }
         }
+
         &:hover {
             @include MQ(M) {
             }
         }
     }
 
-    &__summary-header {
+    &__content-header {
         display: flex;
         align-items: center;
-        padding: 6px 0 8px;
+        padding: 8px;
         position: relative;
+
         @include MQ(M) {
-            padding: 10px 16px 5px;
             @include themify($themes) {
                 border-bottom: themed('border');
             }
         }
+
         &--footer {
             @include themify($themes) {
                 border-top: themed('border');
@@ -82,7 +83,8 @@
             }
         }
     }
-    &__summary-footer {
+
+    &__content-footer {
         display: flex;
         align-items: center;
         position: relative;
@@ -94,12 +96,14 @@
                 border-top: themed('border');
             }
         }
+
         a {
             @extend .link;
             @extend .link--primary;
             @include font-size(15px);
         }
     }
+
     &__header {
         padding-top: 5px;
         padding-bottom: 1em;
@@ -112,6 +116,7 @@
             padding-top: 0;
         }
     }
+
     &__header-col {
         &--right {
             order: 1;
@@ -170,24 +175,22 @@
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+
         a {
             font-weight: bold;
-            @include themify($themes) {
-                color: themed('textColorPrimary');
-            }
-            &:visited {
-                @include themify($themes) {
-                    color: themed('textColorSecondary');
-                }
+            color: $primary-link-color;
+            &:hover {
+                color: $primary-link-hover-color;
             }
         }
-        @include MQ(M) {
-            @include font-size(18px);
-        }
+
+        font-size: font-size(18px);
     }
+
     &__h3 {
         display: inline;
     }
+
     &__tag-selector {
         display: inline-block;
         select.Topics {
@@ -226,16 +229,13 @@
             color: themed('textColorPrimary');
         }
     }
-    // &__profile-img {
-    //   display: none;
-    //   width: 54px;
-    //   height: auto;
-    // }
+
     &__text-content {
         @include MQ(M) {
             padding: 0 1.2em;
         }
     }
+
     &__tags {
         @include themify($themes) {
             color: themed('textColorSecondary');
@@ -243,6 +243,7 @@
         @include font-size(14px);
         margin-bottom: 18px;
     }
+
     &__tag-link {
         @include font-size(14px);
         @include themify($themes) {
@@ -253,6 +254,7 @@
             @extend .link--secondary;
         }
     }
+
     &__flag {
         width: 24px;
         height: auto;
@@ -280,23 +282,20 @@
             }
         }
     }
-    &__content-block {
-        margin-bottom: 16px;
-        @include MQ(M) {
-            &--text {
-                margin-top: 1em;
-            }
+
+    &__content-block--img {
+        height: 250px;
+        overflow: hidden;
+        background-size: cover;
+        display: block;
+
+        &:hover {
+            opacity: 0.9;
         }
     }
 
-    &__content-block--img + &__content-block--text {
-        margin-top: 0;
-    }
-    &__resteem, &__content-block--text, &__metadata {
-        @include MQ(M) {
-            padding-left: 1.1em;
-            padding-right: 1.1em;
-        }
+    &__content-block--text {
+        padding: 10px;
     }
 }
 
@@ -305,9 +304,15 @@
 .user {
     display: flex;
     align-items: center;
+    width: 100%;
+
     &__col {
         line-height: 1;
     }
+    &__col--right {
+        flex-grow: 1;
+    }
+
     &__link {
         @extend .link;
         &:hover {
@@ -318,7 +323,9 @@
                 }
             }
         }
+
     }
+
     &__profile-img {
         width: 40px !important;
         height: 40px !important;
@@ -330,11 +337,12 @@
             margin-right: 10px;
         }
     }
+
     &__name {
         display: inline;
         font-weight: bold;
         padding-right: 4px;
-        margin: 0;
+        margin: 0 2px 0 10px;
         line-height: 1.2;
 
         a {
@@ -347,6 +355,12 @@
         @extend .link--secondary;
         font-weight: normal;
         @include font-size(14px);
+    }
+
+    .Voting {
+        float: right;
+        font-size: 0.875rem;
+        line-height: 1.5;
     }
 }
 

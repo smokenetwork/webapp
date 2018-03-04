@@ -14,7 +14,7 @@ import AuthorRewards from '../modules/AuthorRewards';
 import UserList from '../elements/UserList';
 import Follow from '../elements/Follow';
 import LoadingIndicator from '../elements/LoadingIndicator';
-import PostsList from '../cards/PostsList';
+import PostsGrid from '../cards/PostsGrid';
 import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {repLog10} from '../../utils/ParsersAndFormatters.js';
 import Tooltip from '../elements/Tooltip';
@@ -33,11 +33,11 @@ import proxifyImageUrl from '../../utils/ProxifyUrl';
 
 export default class UserProfile extends React.Component {
     constructor() {
-        super()
-        this.state = {}
+        super();
+        this.state = {};
         this.onPrint = () => {
             window.print()
-        }
+        };
         this.loadMore = this.loadMore.bind(this);
     }
 
@@ -73,12 +73,12 @@ export default class UserProfile extends React.Component {
     }
 
     componentWillUnmount() {
-        this.props.clearTransferDefaults()
-        this.props.clearPowerdownDefaults()
+        this.props.clearTransferDefaults();
+        this.props.clearPowerdownDefaults();
     }
 
     loadMore(last_post, category) {
-        const {accountname} = this.props.routeParams
+        const {accountname} = this.props.routeParams;
         if (!last_post) return;
 
         let order;
@@ -99,7 +99,9 @@ export default class UserProfile extends React.Component {
                 console.log('unhandled category:', category);
         }
 
-        if (isFetchingOrRecentlyUpdated(this.props.global_status, order, category)) return;
+        if (isFetchingOrRecentlyUpdated(this.props.global_status, order, category)) {
+            return;
+        }
         const [author, permlink] = last_post.split('/');
         this.props.requestData({author, permlink, order, category, accountname});
     }
@@ -125,15 +127,15 @@ export default class UserProfile extends React.Component {
         const status = global_status ? global_status.getIn([section, 'by_author']) : null;
         const fetching = (status && status.fetching) || this.props.loading;
 
-        let account
+        let account;
         let accountImm = this.props.accounts.get(accountname);
         if (accountImm) {
             account = accountImm.toJS();
         } else if (fetching) {
-            return <center><LoadingIndicator type="circle"/></center>;
+            return <LoadingIndicator type="circle"/>;
         } else {
             return <div>
-                <center>{tt('user_profile.unknown_account')}</center>
+                {tt('user_profile.unknown_account')}
             </div>
         }
         const followers = follow && follow.getIn(['getFollowersAsync', accountname]);
@@ -170,40 +172,42 @@ export default class UserProfile extends React.Component {
 
         let rewardsClass = "", walletClass = "";
         if (section === 'transfers') {
-            walletClass = 'active'
-            tab_content = <div>
-                <UserWallet
-                    account={accountImm}
-                    showTransfer={this.props.showTransfer}
-                    showPowerdown={this.props.showPowerdown}
-                    current_user={current_user}
-                    withdrawVesting={this.props.withdrawVesting}/>
-                {isMyAccount && <div><MarkNotificationRead fields="send,receive" account={account.name}/></div>}
-            </div>;
+            walletClass = 'active';
+            tab_content = (
+                <div>
+                    <UserWallet
+                        account={accountImm}
+                        showTransfer={this.props.showTransfer}
+                        showPowerdown={this.props.showPowerdown}
+                        current_user={current_user}
+                        withdrawVesting={this.props.withdrawVesting}/>
+                    {isMyAccount && <div><MarkNotificationRead fields="send,receive" account={account.name}/></div>}
+                </div>
+            );
         }
         else if (section === 'curation-rewards') {
             rewardsClass = "active";
-            tab_content = <CurationRewards
+            tab_content = (<CurationRewards
                 account={account}
                 current_user={current_user}
-            />
+            />)
         }
         else if (section === 'author-rewards') {
             rewardsClass = "active";
-            tab_content = <AuthorRewards
+            tab_content = (<AuthorRewards
                 account={account}
                 current_user={current_user}
-            />
+            />)
         }
         else if (section === 'followers') {
             if (followers && followers.has('blog_result')) {
-                tab_content = <div>
+                tab_content = (<div>
                     <UserList
                         title={tt('user_profile.followers')}
                         account={account}
                         users={followers.get('blog_result')}/>
                     {isMyAccount && <MarkNotificationRead fields="follow" account={account.name}/>}
-                </div>
+                </div>)
             }
         }
         else if (section === 'followed') {
@@ -226,7 +230,7 @@ export default class UserProfile extends React.Component {
                         <Callout>{tt('user_profile.user_hasnt_made_any_posts_yet', {name: accountname})}</Callout>;
                 } else {
                     tab_content = (
-                        <PostsList
+                        <PostsGrid
                             posts={posts}
                             loading={fetching}
                             category="comments"
@@ -237,7 +241,7 @@ export default class UserProfile extends React.Component {
                 }
             }
             else {
-                tab_content = (<center><LoadingIndicator type="circle"/></center>);
+                tab_content = (<LoadingIndicator type="circle"/>);
             }
         } else if (!section || section === 'blog') {
             if (account.blog) {
@@ -255,7 +259,7 @@ export default class UserProfile extends React.Component {
                     tab_content = <Callout>{emptyText}</Callout>;
                 } else {
                     tab_content = (
-                        <PostsList
+                        <PostsGrid
                             account={account.name}
                             posts={posts}
                             loading={fetching}
@@ -266,7 +270,7 @@ export default class UserProfile extends React.Component {
                     );
                 }
             } else {
-                tab_content = (<center><LoadingIndicator type="circle"/></center>);
+                tab_content = (<LoadingIndicator type="circle"/>);
             }
         }
         else if ((section === 'recent-replies')) {
@@ -278,7 +282,7 @@ export default class UserProfile extends React.Component {
                 } else {
                     tab_content = (
                         <div>
-                            <PostsList
+                            <PostsGrid
                                 posts={posts}
                                 loading={fetching}
                                 category="recent_replies"
@@ -290,7 +294,7 @@ export default class UserProfile extends React.Component {
                     );
                 }
             } else {
-                tab_content = (<center><LoadingIndicator type="circle"/></center>);
+                tab_content = (<LoadingIndicator type="circle"/>);
             }
         }
         else if (section === 'permissions' && isMyAccount) {

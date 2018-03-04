@@ -1,8 +1,10 @@
 .Voting {
     white-space: nowrap !important;
+
     span {
         white-space: nowrap !important;
     }
+
     .dropdown-pane {
         @include themify($themes) {
             border: themed('borderDark');
@@ -62,33 +64,34 @@
     > a {
         padding-right: 0.5rem;
     }
+
     path {
-        @include themify($themes) {
-            fill: themed('textColorAccent');
-        }
+        fill: $primary-link-color;
     }
+
     circle {
-        @include themify($themes) {
-            stroke: themed('textColorAccent');
-        }
-    }
-    // exclude small devices
-    @media screen and (min-width: 39.9375em) {
-        .Icon:hover {
-            animation: pulse 2s infinite;
-        }
+        stroke: $primary-link-color;
     }
 }
 
-.Voting__button-up > a:hover, a.confirm_weight:hover {
+.Voting__button-up > a:hover {
     path {
-        fill: #fff;
+        fill: $primary-link-hover-color;
     }
+
     circle {
-        @include themify($themes) {
-            fill: themed('colorAccent');
-            stroke: themed('colorAccent');
-        }
+        fill: $primary-link-hover-color;
+        stroke: $primary-link-hover-color;
+    }
+    svg {
+        background-size: contain;
+        border-radius: 50%;
+    }
+}
+
+a.confirm_weight:hover {
+    circle {
+        fill: $primary-link-hover-color;
     }
     svg {
         background-size: contain;
@@ -99,20 +102,16 @@
 .Voting__button-up.votingUp {
     padding-right: 0.5rem;
     svg {
-        border: 1px solid $primary-brand-color;
         border-radius: 50%;
         border-right-color: transparent;
         border-top-color: transparent;
-        animation: loading 500ms infinite linear;
     }
 }
 
 .Voting__button-down.votingDown svg {
-    border: 1px solid $color-red;
     border-radius: 50%;
     border-right-color: transparent;
     border-top-color: transparent;
-    animation: loading 500ms infinite linear;
 }
 
 .Voting__button-down {
@@ -129,31 +128,16 @@
     }
 }
 
-.Voting__button--upvoted {
-    .Icon:hover {
-        animation: none !important;
-    }
-    path {
-        fill: #fff !important;
-    }
+.Voting__button--upvoted circle,
+.Voting__button--upvoted path {
+    fill: $primary-link-hover-color;
+    stroke: $primary-link-hover-color;
 }
 
-.Voting__button--upvoted circle {
-    @include themify($themes) {
-        fill: themed('colorAccent');
-        stroke: themed('colorAccent');
-    }
-}
-
+.Voting__button--upvoted a:hover circle,
 .Voting__button--upvoted a:hover path {
-    fill: #fff !important;
-}
-
-.Voting__button--upvoted a:hover circle {
-    @include themify($themes) {
-        fill: themed('colorAccentHover');
-        stroke: themed('colorAccentHover');
-    }
+    fill: $primary-link-color;
+    stroke: $primary-link-color;
 }
 
 .Voting__button--downvoted path {
@@ -190,11 +174,7 @@
 }
 
 .Voting__inner {
-    @include themify($themes) {
-        border-right: themed('borderLight');
-    }
     padding-right: .8rem;
-    margin-right: .6rem;
     .DropdownMenu .Icon.dropdown-arrow {
         margin-right: -0.5rem;
         position: relative;
@@ -246,9 +226,7 @@
     width: 350px;
     min-width: 320px;
     overflow: hidden;
-    .Icon:hover {
-        animation: none !important;
-    }
+
     .weight-display {
         width: 3rem;
         float: left;
