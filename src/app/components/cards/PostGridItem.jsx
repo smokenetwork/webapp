@@ -7,7 +7,7 @@ import Reblog from '../elements/Reblog';
 import Voting from '../elements/Voting';
 import {immutableAccessor} from '../../utils/Accessors';
 import extractContent from '../../utils/ExtractContent';
-import VotesAndComments from '../elements/VotesAndComments';
+import Comments from '../elements/Comments';
 import Author from '../elements/Author';
 import tt from 'counterpart';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
@@ -79,7 +79,6 @@ class PostGridItem extends React.Component {
                                                 className="updated"/>
                             </span>
                         </Link>
-                        <Voting post={post} showList={false}/>
                     </div>
                 </div>
             </div>
@@ -116,7 +115,8 @@ class PostGridItem extends React.Component {
                                                         permlink={postContent.permlink}
                                                         parent_author={postContent.parent_author}/>}
                             </span>
-                            <VotesAndComments post={post} commentsLink={commentsLink}/>
+                            <Comments post={post} commentsLink={commentsLink}/>
+                            <Voting post={post} showList={false}/>
                         </span>
                     </div>
                 </div>
