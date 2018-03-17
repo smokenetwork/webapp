@@ -7,7 +7,7 @@ import Reblog from '../elements/Reblog';
 import Voting from '../elements/Voting';
 import {immutableAccessor} from '../../utils/Accessors';
 import extractContent from '../../utils/ExtractContent';
-import VotesAndComments from '../elements/VotesAndComments';
+import Comments from '../elements/Comments';
 import Author from '../elements/Author';
 import tt from 'counterpart';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
@@ -84,18 +84,6 @@ class PostGridItem extends React.Component {
             </div>
         );
 
-        const contentFooter = (
-            <div className="articles__content-footer">
-                <Voting post={post} showList={false}/>
-                <VotesAndComments post={post} commentsLink={commentsLink}/>
-                <span className="PostGridItem__time_author_category">
-                    {!isArchived && <Reblog author={postContent.author}
-                                            permlink={postContent.permlink}
-                                            parent_author={postContent.parent_author}/>}
-                </span>
-            </div>
-        );
-
         let thumbnailImage;
         if (postContent.image_link) {
             thumbnailImage = proxifyImageUrl(postContent.image_link, '640x480').replace(/ /g, '%20');
@@ -117,7 +105,19 @@ class PostGridItem extends React.Component {
                     }
 
                     <div className="articles__content-block--text">
-                        {contentTitle}
+                        <span className="articles__content-title">
+                            {contentTitle}
+                        </span>
+
+                        <span className="articles__content-stats">
+                            <span className="PostGridItem__time_author_category">
+                                {!isArchived && <Reblog author={postContent.author}
+                                                        permlink={postContent.permlink}
+                                                        parent_author={postContent.parent_author}/>}
+                            </span>
+                            <Comments post={post} commentsLink={commentsLink}/>
+                            <Voting post={post} showList={false}/>
+                        </span>
                     </div>
                 </div>
             </div>

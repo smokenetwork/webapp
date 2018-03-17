@@ -49,7 +49,9 @@ const icons = [
     'home',
     'reply',
     '100',
-    'pencil2'
+    'pencil2',
+    'heart',
+    'heart-o',
 ];
 const icons_map = {};
 for (const i of icons) icons_map[i] = require(`assets/icons/${i}.svg`);
