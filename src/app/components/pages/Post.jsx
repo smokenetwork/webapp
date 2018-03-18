@@ -1,16 +1,14 @@
-import React from 'react';
-// import ReactMarkdown from 'react-markdown';
-import Comment, {sortComments} from '../cards/Comment';
-import PostFull from '../cards/PostFull';
-import {connect} from 'react-redux';
-// import { Link } from 'react-router';
-import FoundationDropdownMenu from '../elements/FoundationDropdownMenu';
-import {Set} from 'immutable'
 import tt from 'counterpart';
-import {localizedCurrency} from '../elements/LocalizedCurrency';
+import { Set } from 'immutable'
+import React from 'react';
+import { connect } from 'react-redux';
+import { INVEST_TOKEN_UPPERCASE } from '../../client_config';
+import { serverApiRecordEvent } from '../../utils/ServerApiClient';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
-import {serverApiRecordEvent} from '../../utils/ServerApiClient';
-import {INVEST_TOKEN_UPPERCASE} from '../../client_config';
+import Comment, { sortComments } from '../cards/Comment';
+import PostFull from '../cards/PostFull';
+import FoundationDropdownMenu from '../elements/FoundationDropdownMenu';
+import { localizedCurrency } from '../elements/LocalizedCurrency';
 
 class Post extends React.Component {
 
@@ -130,7 +128,7 @@ class Post extends React.Component {
 
 
         let sort_orders = ['trending', 'votes', 'new'];
-        let sort_labels = [tt('main_menu.trending'), tt('g.votes'), tt('g.age')];
+        let sort_labels = [tt('g.trending'), tt('g.votes'), tt('g.age')];
         let sort_menu = [];
         let sort_label;
 
@@ -190,7 +188,7 @@ class Post extends React.Component {
                             {positiveComments.length ?
                                 (<div className="Post__comments_sort_order float-right">
                                     {tt('post_jsx.sort_order')}: &nbsp;
-                                    <FoundationDropdownMenu menu={sort_menu} label={sort_label}
+                                    <FoundationDropdownMenu menu={sort_menu} label={sort_label} className="Post__comments_sort_order_dropdown"
                                                             dropdownPosition="bottom" dropdownAlignment="right"/>
                                 </div>) : null}
                             {positiveComments}
