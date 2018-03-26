@@ -42,6 +42,7 @@
     .menu-icon {
         margin: 0.2rem 0;
     }
+
     svg > path {
         @include themify($themes) {
             fill: themed('textColorPrimary');
@@ -51,6 +52,10 @@
     a {
         @extend .link;
     }
+}
+
+.Header__logo svg {
+    fill: none;
 }
 
 .Header__top {

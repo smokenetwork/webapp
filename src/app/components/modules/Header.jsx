@@ -164,8 +164,7 @@ class Header extends React.Component {
                             <ul className="menu">
                                 <li className="Header__top-logo">
                                     <Link to={logoLink}>
-                                        <SvgImage name="smoke" width="148px" height="38px"></SvgImage>
-                                        <image href=""></image>
+                                        <SvgImage name="smoke" width="148px" height="38px" className="Header__logo"></SvgImage>
                                     </Link>
                                 </li>
                                 <HorizontalMenu className="align-right" items={menuItems} {...this.props} />

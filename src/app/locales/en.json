@@ -105,6 +105,7 @@
     "all_tags": "All tags",
     "transfer": "Transfer ",
     "trending_topics": "Trending Topics",
+    "trending": "Trending",
     "type": "Type",
     "unfollow": "Unfollow",
     "unmute": "Unmute",
@@ -244,7 +245,8 @@
     "explore": "Explore",
     "wallet": "Wallet",
     "profile": "Profile",
-    "activity": "Activity"
+    "activity": "Activity",
+    "trending": "Trending"
   },
   "reply_editor": {
     "shorten_title": "Shorten title",
@@ -490,7 +492,7 @@
     "to_save_your_preferences": "to save your preferences"
   },
   "posts_index": {
-    "empty_feed_1": "Looks like you haven't followed anything yet",
+    "empty_feed_1": "Looks like you haven't followed anyone yet",
     "empty_feed_2": "If you recently added new users to follow, your personalized feed will populate once new content is available",
     "empty_feed_3": "Explore Trending Articles",
     "empty_feed_4": "Read The Quick Start Guide",

@@ -1,8 +1,6 @@
 .PostFull {
     padding-bottom: 1rem;
     padding-top: 2rem;
-    margin: 0 auto;
-    max-width: 50rem;
     @include themify($themes) {
         border-bottom: themed('border');
     }
@@ -53,11 +51,6 @@
     }
 }
 
-.PostFull__header, .PostFull__body {
-    max-width: 40rem;
-    margin: 0 auto;
-}
-
 .PostFull__header {
     padding-bottom: 1em;
     margin-bottom: 8px;
@@ -95,8 +88,8 @@
 }
 
 .PostFull__body {
-    padding: 1rem 0 2rem 0;
     clear: left;
+
     a {
         @extend .link;
         @extend .link--accent;

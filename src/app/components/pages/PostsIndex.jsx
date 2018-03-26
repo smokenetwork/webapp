@@ -81,9 +81,6 @@ class PostsIndex extends React.Component {
                 emptyText = <div>
                     {tt('posts_index.empty_feed_1')}.<br/><br/>
                     {tt('posts_index.empty_feed_2')}.<br/><br/>
-                    <Link to="/trending">{tt('posts_index.empty_feed_3')}</Link><br/>
-                    <Link to="/welcome">{tt('posts_index.empty_feed_4')}</Link><br/>
-                    <Link to="/faq.html">{tt('posts_index.empty_feed_5')}</Link><br/>
                 </div>;
                 markNotificationRead = <MarkNotificationRead fields="feed" account={account_name}/>
             } else {

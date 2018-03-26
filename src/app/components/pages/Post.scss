@@ -4,6 +4,7 @@
         color: themed('textColorSecondary');
     }
     font-size: 94%;
+    text-transform: lowercase;
     svg polygon {
         fill: $dark-gray;
         @include themify($themes) {
@@ -35,4 +36,8 @@
     max-width: 50rem;
     margin: 0 auto 3.5rem;
     font-size: 92%;
+}
+
+.Post__comments_sort_order_dropdown {
+    text-transform: lowercase;
 }
