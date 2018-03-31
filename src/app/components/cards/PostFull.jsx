@@ -349,8 +349,6 @@ class PostFull extends React.Component {
                     </span>
                 }
 
-                {showPromote && <button className="Promote__button float-right button hollow tiny"
-                                        onClick={this.showPromotePost}>{tt('g.promote')}</button>}
                 <TagList post={content} horizontal/>
                 <div className="PostFull__footer row">
                     <div className="column">
