@@ -138,11 +138,6 @@ class PostsIndex extends React.Component {
                         <div className="articles__header-col">
                             <h1 className="articles__h1">{page_title}</h1>
                         </div>
-                        <div className="articles__header-col articles__header-col--right">
-                            <div className="articles__tag-selector">
-                                <Topics order={topics_order} current={category} compact/>
-                            </div>
-                        </div>
                     </div>
                     {markNotificationRead}
                     {(!fetching && (posts && !posts.size)) ? <Callout>{emptyText}</Callout> :

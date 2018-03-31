@@ -35,16 +35,6 @@ class Topics extends React.Component {
         const cn = 'Topics' + (className ? ` ${className}` : '');
         const currentValue = `/${order}/${current}`;
 
-        if (compact) {
-            return <select className={cn} onChange={(e) => browserHistory.push(e.target.value)} value={currentValue}>
-                <option key={'*'} value={'/' + order}>{tt('g.all_tags')}</option>
-                {categories.map(cat => {
-                    const link = order ? `/${order}/${cat}` : `/${cat}`;
-                    return <option key={cat} value={link}>{cat}</option>
-                })}
-            </select>;
-        }
-
         categories = categories.map(cat => {
             const link = order ? `/${order}/${cat}` : `/hot/${cat}`;
             return (<li className="c-sidebar__list-item" key={cat}>
