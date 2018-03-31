@@ -19,7 +19,7 @@
     "webpush": "./node_modules/babel-cli/bin/babel-node.js ./scripts/webpush_notify.js",
     "checktranslations": "node scripts/check_translations.js"
   },
-  "author": "Steemit, Inc.",
+  "author": "Smoke, Inc.",
   "license": "MIT",
   "dependencies": {
     "@sendgrid/mail": "^6.2.1",
@@ -70,7 +70,6 @@
     "koa-conditional-get": "^1.0.3",
     "koa-csrf": "^2.5.0",
     "koa-etag": "^2.0.0",
-    "koa-favicon": "^1.2.0",
     "koa-flash": "^1.0.0",
     "koa-helmet": "^1.0.0",
     "koa-isbot": "^0.1.1",

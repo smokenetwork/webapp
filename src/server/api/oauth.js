@@ -127,7 +127,7 @@ function* handleFacebookCallback() {
         //     return;
         // }
         // if (!u.verified) {
-        //     throw new Error('Not verified Facebook account. Please verify your Facebook account and try again to sign up to Steemit.');
+        //     throw new Error('Not verified Facebook account. Please verify your Facebook account and try again to sign up to Smoke.');
         // }
 
         if (user) {
@@ -162,7 +162,7 @@ function retrieveRedditUserData(access_token) {
             .get('https://oauth.reddit.com/api/v1/me.json?raw_json=1')
             .headers({
                 Authorization: `bearer ${access_token}`,
-                'User-Agent': 'Steembot/1.0 (+http://smoke.io)',
+                'User-Agent': 'Smokebot/1.0 (+http://smoke.io)',
                 Accept: 'application/json',
                 'Content-type': 'application/json'
             })

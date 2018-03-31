@@ -132,7 +132,7 @@ export default function useGeneralApi(app) {
             //     order: 'id DESC'
             // });
             // if (existing_created_account) {
-            //     throw new Error("Only one Steem account per user is allowed in order to prevent abuse");
+            //     throw new Error("Only one Smoke account per user is allowed in order to prevent abuse");
             // }
 
             const remote_ip = getRemoteIp(this.req);
@@ -144,7 +144,7 @@ export default function useGeneralApi(app) {
                 const minutes = (Date.now() - same_ip_account.created_at) / 60000;
                 if (minutes < 10) {
                     console.log(`api /accounts: IP rate limit for user ${this.session.uid} #${user_id}, IP ${remote_ip}`);
-                    throw new Error('Only one Steem account allowed per IP address every 10 minutes');
+                    throw new Error('Only one Smoke account allowed per IP address every 10 minutes');
                 }
             }
 

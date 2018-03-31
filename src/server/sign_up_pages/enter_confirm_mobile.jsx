@@ -137,8 +137,8 @@ export default function useEnterAndConfirmMobilePages(app) {
 
 				<p>We need to send you a quick text. </p>
 
-				<p>With each Steemit account comes a free initial
-				grant of Steem Power!  Phone verification helps
+				<p>With each Smoke account comes a free initial
+				grant of Smoke Power!  Phone verification helps
 				cut down on spam accounts.</p>
 
 				<p><em>Your phone number will not be used for any

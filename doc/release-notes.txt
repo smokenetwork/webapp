@@ -8,7 +8,7 @@ New features
  - show order ops in wallet #1144
  - switch to invisible recaptcha #1244
  - votes icon refresh #1110
- - add busy to external links #1117 
+ - add busy to external links #1117
  - simplified/refreshed post hero #1207
  - add post json routes #1122
  - markdown headings in sans #1184
@@ -59,7 +59,7 @@ Bug fixes
  - fetch more followers in batch #1097
  - fall back to rshares sort for comments #1099
  - adjust author heading #1101
- - move the "Steemit Chat" link higher in the main menu #1102
+ - move the "Smoke Chat" link higher in the main menu #1102
  - adjust graying and post collapsing rules #1124
  - move witness proxy to bottom of page #1104
  - restore page title when closing modal with ESC #1123
@@ -323,7 +323,7 @@ New features and improvements
 - New confirmation dialog for resteeming action #572
 - New Profile display user join steem date #582
 - New hyperlink on post timestamp for content
-- Inclusive of Steemit API docs sub menu
+- Inclusive of Smoke API docs sub menu
 - Youtube preview improvements #588
 
 Bug fixes

@@ -126,7 +126,7 @@ class App extends React.Component {
     render() {
         const {
             location, params, children, flash, new_visitor,
-            depositSteem, signup_bonus, username, nightmodeEnabled
+            depositSmoke, signup_bonus, username, nightmodeEnabled
         } = this.props;
         const lp = false; //location.pathname === '/';
         const miniHeader = location.pathname === '/create_account' || location.pathname === '/pick_account';
@@ -237,7 +237,7 @@ App.propTypes = {
     location: React.PropTypes.object,
     signup_bonus: React.PropTypes.string,
     loginUser: React.PropTypes.func.isRequired,
-    depositSteem: React.PropTypes.func.isRequired,
+    depositSmoke: React.PropTypes.func.isRequired,
     username: React.PropTypes.string,
 };
 
@@ -258,7 +258,7 @@ export default connect(
     dispatch => ({
         loginUser: () =>
             dispatch(user.actions.usernamePasswordLogin()),
-        depositSteem: (username) => {
+        depositSmoke: (username) => {
             const new_window = window.open();
             new_window.opener = null;
             new_window.location = 'https://blocktrades.us/?input_coin_type=btc&output_coin_type=steem&receive_address=' + username;

@@ -6,7 +6,7 @@ import g from '../../redux/GlobalReducer'
 import {List, Map} from 'immutable'
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import QrReader from '../elements/QrReader'
-import ConvertToSteem from '../elements/ConvertToSteem'
+import ConvertToSmoke from '../elements/ConvertToSmoke'
 import SuggestPassword from '../elements/SuggestPassword'
 import ChangePassword from '../elements/ChangePassword'
 import CheckLoginOwner from '../elements/CheckLoginOwner'
@@ -46,10 +46,10 @@ class Dialogs extends React.Component {
                     <QrReader onClose={this['hide_' + k]} {...v.get('params').toJS()} />
                 </Reveal>
             </span> :
-                k === 'convertToSteem' ? <span key={idx++}>
+                k === 'convertToSmoke' ? <span key={idx++}>
                 <Reveal onHide={this['hide_' + k]} show revealStyle={{width: '450px'}}>
                     <CloseButton onClick={this['hide_' + k]}/>
-                    <ConvertToSteem onClose={this['hide_' + k]}/>
+                    <ConvertToSmoke onClose={this['hide_' + k]}/>
                 </Reveal>
             </span> :
                     k === 'suggestPassword' ? <span key={idx++}>

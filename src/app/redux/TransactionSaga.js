@@ -433,7 +433,7 @@ function* createPermlink(title, author, parent_author, parent_permlink) {
         permlink = `re-${parent_author}-${parent_permlink}-${timeStr}`
     }
     if(permlink.length > 255) {
-        // STEEMIT_MAX_PERMLINK_LENGTH
+        // SMOKE_MAX_PERMLINK_LENGTH
         permlink = permlink.substring(permlink.length - 255, permlink.length)
     }
     // only letters numbers and dashes shall survive

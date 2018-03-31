@@ -86,7 +86,7 @@ export function translateError(string) {
             return tt('g.account_name_should_have_only_letters_digits_or_dashes')
         case 'vote currently exists, user must be indicate a desire to reject witness':
             return tt('g.vote_currently_exists_user_must_be_indicate_a_to_reject_witness')
-        case 'Only one Steem account allowed per IP address every 10 minutes':
+        case 'Only one Smoke account allowed per IP address every 10 minutes':
             return tt('g.only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes')
         case 'Cannot increase reward of post within the last minute before payout':
             return tt('g.cannot_increase_reward_of_post_within_the_last_minute_before_payout')

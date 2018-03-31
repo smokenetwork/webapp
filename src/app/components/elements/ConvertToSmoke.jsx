@@ -10,7 +10,7 @@ import {cleanReduxInput} from '../../utils/ReduxForms'
 import tt from 'counterpart';
 import {DEBT_TICKER, DEBT_TOKEN, LIQUID_TOKEN} from '../../client_config';
 
-class ConvertToSteem extends React.Component {
+class ConvertToSmoke extends React.Component {
     constructor() {
         super()
         this.state = {}
@@ -20,7 +20,7 @@ class ConvertToSteem extends React.Component {
         ReactDOM.findDOMNode(this.refs.amt).focus()
     }
 
-    shouldComponentUpdate = shouldComponentUpdate(this, 'ConvertToSteem')
+    shouldComponentUpdate = shouldComponentUpdate(this, 'ConvertToSmoke')
     dispatchSubmit = () => {
         const {convert, owner, onClose} = this.props
         const {amount} = this.props.fields
@@ -88,7 +88,7 @@ class ConvertToSteem extends React.Component {
 }
 
 export default reduxForm(
-    {form: 'convertToSteem', fields: ['amount']},
+    {form: 'convertToSmoke', fields: ['amount']},
     // mapStateToProps
     (state, ownProps) => {
         const current = state.user.get('current')
@@ -139,4 +139,4 @@ export default reduxForm(
             }))
         },
     })
-)(ConvertToSteem)
+)(ConvertToSmoke)

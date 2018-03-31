@@ -65,7 +65,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
     } catch (e) {
         console.error('Routing error:', e.toString(), location);
         return {
-            title: 'Routing error - Steemit',
+            title: 'Routing error - Smoke',
             statusCode: 500,
             body: renderToString(ErrorPage ? <ErrorPage /> : <span>Routing error</span>)
         };
@@ -73,7 +73,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
     if (error || !renderProps) {
         // debug('error')('Router error', error);
         return {
-            title: 'Page Not Found - Steemit',
+            title: 'Page Not Found - Smoke',
             statusCode: 404,
             body: renderToString(<NotFound />)
         };
@@ -120,7 +120,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
 
         if (Object.getOwnPropertyNames(onchain.accounts).length === 0 && (url.match(routeRegex.UserProfile1) || url.match(routeRegex.UserProfile3))) { // protect for invalid account
             return {
-                title: 'User Not Found - Steemit',
+                title: 'User Not Found - Smoke',
                 statusCode: 404,
                 body: renderToString(<NotFound />)
             };
@@ -143,7 +143,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
                 onchain.content[url.substr(2, url.length - 1)] = content;
             } else { // protect on invalid user pages (i.e /user/transferss)
                 return {
-                    title: 'Page Not Found - Steemit',
+                    title: 'Page Not Found - Smoke',
                     statusCode: 404,
                     body: renderToString(<NotFound />)
                 };
@@ -180,7 +180,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
         if (location.match(routeRegex.UserProfile1)) {
             console.error('User/not found: ', location);
             return {
-                title: 'Page Not Found - Steemit',
+                title: 'Page Not Found - Smoke',
                 statusCode: 404,
                 body: renderToString(<NotFound />)
             };
@@ -190,7 +190,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
             const stack_trace = e.stack || '[no stack]';
             console.error('State/store error: ', msg, stack_trace);
             return {
-                title: 'Server error - Steemit',
+                title: 'Server error - Smoke',
                 statusCode: 500,
                 body: renderToString(<ErrorPage />)
             };
@@ -215,8 +215,8 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
     }
 
     return {
-        title: 'Steemit',
-        titleBase: 'Steemit - ',
+        title: 'Smoke',
+        titleBase: 'Smoke - ',
         meta,
         statusCode: status,
         body: Iso.render(app, server_store.getState())

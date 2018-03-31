@@ -9,7 +9,7 @@ class ServerError extends Component {
                 <div style={{width: '300px', position: 'relative', left: '400px', top: '-400px', textAlign: 'left'}}>
                     <h4>Sorry.</h4>
                     <p>Looks like something went wrong on our end.</p>
-                    <p>Head back to <a href="/">Steemit</a> homepage.</p>
+                    <p>Head back to <a href="/">Smoke</a> homepage.</p>
                 </div>
             </div>
         );

@@ -14,12 +14,12 @@ class Order {
         this.date = order.created;
     }
 
-    getSteemAmount() {
+    getSmokeAmount() {
         return this.steem / precision;
     }
 
-    getStringSteem() {
-        return this.getSteemAmount().toFixed(3);
+    getStringSmoke() {
+        return this.getSmokeAmount().toFixed(3);
     }
 
     getPrice() {
@@ -50,7 +50,7 @@ class Order {
     equals(order) {
         return (
             this.getStringSBD() === order.getStringSBD() &&
-            this.getStringSteem() === order.getStringSteem() &&
+            this.getStringSmoke() === order.getStringSmoke() &&
             this.getStringPrice() === order.getStringPrice()
         );
     }
@@ -80,12 +80,12 @@ class TradeHistory {
         this.stringPrice = this.price.toFixed(6);
     }
 
-    getSteemAmount() {
+    getSmokeAmount() {
         return this.steem;
     }
 
-    getStringSteem() {
-        return this.getSteemAmount().toFixed(3);
+    getStringSmoke() {
+        return this.getSmokeAmount().toFixed(3);
     }
 
     getSBDAmount() {
@@ -107,7 +107,7 @@ class TradeHistory {
     equals(order) {
         return (
             this.getStringSBD() === order.getStringSBD() &&
-            this.getStringSteem() === order.getStringSteem() &&
+            this.getStringSmoke() === order.getStringSmoke() &&
             this.getStringPrice() === order.getStringPrice()
         );
     }

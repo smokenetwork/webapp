@@ -49,7 +49,7 @@ export function* fetchMarket(location_change_action) {
             yield put(MarketReducer.actions.receiveTicker(state3));
         } catch (error) {
             console.error('~~ Saga fetchMarket error ~~>', error);
-            yield put({type: 'global/STEEM_API_ERROR', error: error.message});
+            yield put({type: 'global/SMOKE_API_ERROR', error: error.message});
         }
 
         yield call(wait, 3000);
@@ -65,7 +65,7 @@ export function* fetchOpenOrders(set_user_action) {
         yield call(getAccount, username, true);
     } catch (error) {
         console.error('~~ Saga fetchOpenOrders error ~~>', error);
-        yield put({type: 'global/STEEM_API_ERROR', error: error.message});
+        yield put({type: 'global/SMOKE_API_ERROR', error: error.message});
     }
 }
 
