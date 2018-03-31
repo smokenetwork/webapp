@@ -72,8 +72,8 @@ export default createModule({
                         }
                         break;
                     case 'withdraw_vesting':
-                        if(/Account registered by another account requires 10x account creation fee worth of Steem Power/.test(errorStr))
-                            errorKey = 'Account requires 10x the account creation fee in Steem Power (approximately 300 SP) before it can power down.'
+                        if(/Account registered by another account requires 10x account creation fee worth of Smoke Power/.test(errorStr))
+                            errorKey = 'Account requires 10x the account creation fee in Smoke Power (approximately 300 SP) before it can power down.'
                         break;
                     default:
                         break;
@@ -97,8 +97,8 @@ export default createModule({
                         if (errorStr.length > 200) errorStr = errorStr.substring(0, 200);
                         // Catch for unknown key better error handling
                         if (/unknown key: /.test(errorKey)) {
-                            errorKey = "Steem account doesn't exist.";
-                            errorStr = "Transaction failed: Steem account doesn't exist.";
+                            errorKey = "Smoke account doesn't exist.";
+                            errorStr = "Transaction failed: Smoke account doesn't exist.";
                         }
                         // Catch for invalid active authority
                         if (/Missing Active Authority /.test(errorKey)) {

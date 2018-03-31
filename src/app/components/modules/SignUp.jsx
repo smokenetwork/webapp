@@ -23,7 +23,7 @@ class SignUp extends React.Component {
         if (this.props.serverBusy || $STM_Config.disable_signups) {
             return <div className="row">
                 <div className="column callout" style={{margin: '20px', padding: '40px'}}>
-                    <p>Membership to Steemit.com is now under invitation only because of unexpectedly high sign up rate.
+                    <p>Membership to Smoke.io is now under invitation only because of unexpectedly high sign up rate.
                         Submit your email to get on the waiting list.</p>
                     <AddToWaitingList/>
                 </div>
@@ -34,7 +34,7 @@ class SignUp extends React.Component {
             <div className="row">
                 <div className="column">
                     <h3>Sign Up</h3>
-                    <p>Steemit funds each account with over {this.props.signup_bonus} worth of Steem Power; to prevent
+                    <p>Smoke funds each account with over {this.props.signup_bonus} worth of Smoke Power; to prevent
                         abuse, we
                         require new users to login via social media.<br/>
                         Your personal information will be kept <a href="/privacy.html" target="_blank">private</a>.
@@ -74,7 +74,7 @@ class SignUp extends React.Component {
             <div className="row">
                 <div className="column">
                     <br/>
-                    <p className="secondary">By verifying your account you agree to the Steemit <a href="/tos.html"
+                    <p className="secondary">By verifying your account you agree to the Smoke <a href="/tos.html"
                                                                                                    target="_blank">terms
                         and conditions</a>.</p>
                 </div>

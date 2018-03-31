@@ -65,7 +65,7 @@ export default class OrderRow extends React.Component {
 
         const totalTD = <td>{total.toFixed(3)}</td>;
         const sbd = <td>{order.getStringSBD()}</td>;
-        const steem = <td>{order.getStringSteem()}</td>;
+        const steem = <td>{order.getStringSmoke()}</td>;
         const price = <td><strong>{order.getStringPrice()}</strong></td>;
 
         return (

@@ -23,18 +23,18 @@ class TransferHistoryRow extends React.Component {
         if (type === 'transfer_to_vesting') {
             if (data.from === context) {
                 if (data.to === "") {
-                    description_start += tt('g.transfer') + data.amount.split(' ')[0] + tt('g.to') + "STEEM POWER";
+                    description_start += tt('g.transfer') + data.amount.split(' ')[0] + tt('g.to') + "SMOKE POWER";
                 }
                 else {
-                    description_start += tt('g.transfer') + data.amount.split(' ')[0] + " STEEM POWER" + tt('g.to');
+                    description_start += tt('g.transfer') + data.amount.split(' ')[0] + " SMOKE POWER" + tt('g.to');
                     other_account = data.to;
                 }
             }
             else if (data.to === context) {
-                description_start += tt('g.receive') + data.amount.split(' ')[0] + " STEEM POWER" + tt('g.from');
+                description_start += tt('g.receive') + data.amount.split(' ')[0] + " SMOKE POWER" + tt('g.from');
                 other_account = data.from;
             } else {
-                description_start += tt('g.transfer') + data.amount.split(' ')[0] + " STEEM POWER" + tt('g.from') + data.from + tt('g.to');
+                description_start += tt('g.transfer') + data.amount.split(' ')[0] + " SMOKE POWER" + tt('g.from') + data.from + tt('g.to');
                 other_account = data.to;
             }
         }
@@ -65,14 +65,14 @@ class TransferHistoryRow extends React.Component {
             if (data.vesting_shares === '0.000000 VESTS')
                 description_start += tt('transferhistoryrow_jsx.stop_power_down');
             else
-                description_start += tt('transferhistoryrow_jsx.start_power_down_of') + ' ' + powerdown_vests + " STEEM";
+                description_start += tt('transferhistoryrow_jsx.start_power_down_of') + ' ' + powerdown_vests + " SMOKE";
         } else if (type === 'curation_reward') {
-            description_start += `${curation_reward} STEEM POWER` + tt('g.for');
+            description_start += `${curation_reward} SMOKE POWER` + tt('g.for');
             other_account = data.comment_author + "/" + data.comment_permlink;
         } else if (type === 'author_reward') {
             let steem_payout = "";
-            if (data.steem_payout !== '0.000 STEEM') steem_payout = ", " + data.steem_payout;
-            description_start += `${data.sbd_payout}${steem_payout}, ${tt('g.and')} ${author_reward} STEEM POWER ${tt('g.for')} ${data.author}/${data.permlink}`;
+            if (data.steem_payout !== '0.000 SMOKE') steem_payout = ", " + data.steem_payout;
+            description_start += `${data.sbd_payout}${steem_payout}, ${tt('g.and')} ${author_reward} SMOKE POWER ${tt('g.for')} ${data.author}/${data.permlink}`;
             // other_account = ``;
             description_end = '';
         } else if (type === 'claim_reward_balance') {
@@ -80,7 +80,7 @@ class TransferHistoryRow extends React.Component {
             let rewards = [];
             if (parseFloat(data.reward_steem.split(' ')[0]) > 0) rewards.push(data.reward_steem);
             if (parseFloat(data.reward_sbd.split(' ')[0]) > 0) rewards.push(data.reward_sbd);
-            if (parseFloat(data.reward_vests.split(' ')[0]) > 0) rewards.push(`${reward_vests} STEEM POWER`);
+            if (parseFloat(data.reward_vests.split(' ')[0]) > 0) rewards.push(`${reward_vests} SMOKE POWER`);
 
             let rewards_str;
             switch (rewards.length) {
@@ -111,8 +111,8 @@ class TransferHistoryRow extends React.Component {
             }
         } else if (type === 'comment_benefactor_reward') {
             let steem_payout = "";
-            if (data.steem_payout !== '0.000 STEEM') steem_payout = ", " + data.steem_payout;
-            description_start += `${benefactor_reward} STEEM POWER for ${data.author}/${data.permlink}`;
+            if (data.steem_payout !== '0.000 SMOKE') steem_payout = ", " + data.steem_payout;
+            description_start += `${benefactor_reward} SMOKE POWER for ${data.author}/${data.permlink}`;
             description_end = '';
         } else {
             description_start += JSON.stringify({type, ...data}, null, 2);

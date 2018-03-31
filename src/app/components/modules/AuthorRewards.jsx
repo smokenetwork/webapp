@@ -13,7 +13,7 @@ class AuthorRewards extends React.Component {
         this.onShowDeposit = () => {
             this.setState({showDeposit: !this.state.showDeposit})
         }
-        this.onShowDepositSteem = () => {
+        this.onShowDepositSmoke = () => {
             this.setState({showDeposit: !this.state.showDeposit, depositType: LIQUID_TICKER})
         }
         this.onShowDepositPower = () => {
@@ -39,7 +39,7 @@ class AuthorRewards extends React.Component {
 
         /// transfer log
         let rewards24Vests = 0, rewardsWeekVests = 0, totalRewardsVests = 0;
-        let rewards24Steem = 0, rewardsWeekSteem = 0, totalRewardsSteem = 0;
+        let rewards24Smoke = 0, rewardsWeekSmoke = 0, totalRewardsSmoke = 0;
         let rewards24SBD = 0, rewardsWeekSBD = 0, totalRewardsSBD = 0;
         const today = new Date();
         const oneDay = 86400 * 1000;
@@ -62,15 +62,15 @@ class AuthorRewards extends React.Component {
                 if (new Date(item[1].timestamp).getTime() > lastWeek) {
                     if (new Date(item[1].timestamp).getTime() > yesterday) {
                         rewards24Vests += vest;
-                        rewards24Steem += steem;
+                        rewards24Smoke += steem;
                         rewards24SBD += sbd;
                     }
                     rewardsWeekVests += vest;
-                    rewardsWeekSteem += steem;
+                    rewardsWeekSmoke += steem;
                     rewardsWeekSBD += sbd;
                 }
                 totalRewardsVests += vest;
-                totalRewardsSteem += steem;
+                totalRewardsSmoke += steem;
                 totalRewardsSBD += sbd;
 
                 return <TransferHistoryRow key={index} op={item} context={account.name}/>
@@ -82,7 +82,7 @@ class AuthorRewards extends React.Component {
         const curationLength = author_log.length;
         const daysOfCuration = (firstDate - finalDate) / oneDay || 1;
         const averageCurationVests = !daysOfCuration ? 0 : totalRewardsVests / daysOfCuration;
-        const averageCurationSteem = !daysOfCuration ? 0 : totalRewardsSteem / daysOfCuration;
+        const averageCurationSmoke = !daysOfCuration ? 0 : totalRewardsSmoke / daysOfCuration;
         const averageCurationSBD = !daysOfCuration ? 0 : totalRewardsSBD / daysOfCuration;
         const hasFullWeek = daysOfCuration >= 7;
         const limitedIndex = Math.min(historyIndex, curationLength - 10);
@@ -124,7 +124,7 @@ class AuthorRewards extends React.Component {
                 <div className="column small-12 medium-4">
                     {numberWithCommas(vestsToSp(this.props.state, rewardsWeekVests + " " + VEST_TICKER)) + " " + VESTING_TOKEN}
                     <br/>
-                    {rewardsWeekSteem.toFixed(3) + " " + LIQUID_TICKER}
+                    {rewardsWeekSmoke.toFixed(3) + " " + LIQUID_TICKER}
                     <br/>
                     {rewardsWeekSBD.toFixed(3) + " " + DEBT_TOKEN_SHORT}
                 </div>

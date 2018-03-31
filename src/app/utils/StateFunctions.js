@@ -37,7 +37,7 @@ export function spToVests(state, vesting_shares) {
     return spToVestsf(state, vesting_shares).toFixed(6)
 }
 
-export function vestingSteem(account, gprops) {
+export function vestingSmoke(account, gprops) {
     const vests = parseFloat(account.vesting_shares.split( ' ' )[0]);
     const total_vests = parseFloat(gprops.total_vesting_shares.split( ' ' )[0]);
     const total_vest_steem = parseFloat(gprops.total_vesting_fund_steem.split( ' ' )[0]);
@@ -45,8 +45,8 @@ export function vestingSteem(account, gprops) {
     return vesting_steemf;
 }
 
-// How much STEEM this account has delegated out (minus received).
-export function delegatedSteem(account, gprops) {
+// How much SMOKE this account has delegated out (minus received).
+export function delegatedSmoke(account, gprops) {
     const delegated_vests = parseFloat(account.delegated_vesting_shares.split( ' ' )[0]);
     const received_vests = parseFloat(account.received_vesting_shares.split( ' ' )[0]);
     const vests = delegated_vests - received_vests;

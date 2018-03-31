@@ -162,7 +162,7 @@
     "account_name_should_have_only_letters_digits_or_dashes": "Имя аккаунта должно должно состоять только из букв, цифр или дефисов.",
     "cannot_increase_reward_of_post_within_the_last_minute_before_payout": "Не удается увеличить вознаграждение за пост в последнюю минуту перед выплатой",
     "vote_currently_exists_user_must_be_indicate_a_to_reject_witness": "голос уже существует, пользователь должен обозначить желание убрать делегата",
-    "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "Только один Steem аккаунт разрешен с одного IP адреса каждые десять минут",
+    "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "Только один Smoke аккаунт разрешен с одного IP адреса каждые десять минут",
     "resteem_this_post": "Поделиться этим постом",
     "reblog": "Поделиться",
     "write_your_story": "Написать свою историю",
@@ -183,8 +183,8 @@
     "please_email_questions_to": "Пожалуйста, шлите ваши вопросы на электронную почту",
     "next_7_strings_single_block": {
       "authors_get_paid_when_people_like_you_upvote_their_post": "Авторы получают вознаграждение, когда пользователи голосуют за их посты",
-      "if_you_enjoyed_what_you_read_earn_amount": "Если Вам понравилось то, что Вы здесь прочитали, создайте свой аккаунт сегодня и начните зарабатывать БЕСПЛАТНЫЕ STEEM-ы!",
-      "free_steem": "БЕСПЛАТНЫЕ STEEM!",
+      "if_you_enjoyed_what_you_read_earn_amount": "Если Вам понравилось то, что Вы здесь прочитали, создайте свой аккаунт сегодня и начните зарабатывать БЕСПЛАТНЫЕ SMOKE-ы!",
+      "free_steem": "БЕСПЛАТНЫЕ SMOKE!",
       "sign_up_earn_steem": "Зарегистрируйтесь сейчас, чтобы заработать "
     },
     "next_3_strings_together": {
@@ -234,12 +234,12 @@
     "learn_more": "Документация",
     "welcome": "Добро пожаловать",
     "faq": "ЧаВО",
-    "shop": "Магазин Steemit",
-    "chat": "Чат Steemit",
-    "app_center": "Центр приложений Steemit",
-    "api_docs": "API-документация Steemit",
-    "bluepaper": "Синяя бумага Steem",
-    "whitepaper": "Белая книга Steem",
+    "shop": "Магазин Smoke",
+    "chat": "Чат Smoke",
+    "app_center": "Центр приложений Smoke",
+    "api_docs": "API-документация Smoke",
+    "bluepaper": "Синяя бумага Smoke",
+    "whitepaper": "Белая книга Smoke",
     "intro_tagline": "Здесь говорят деньги.",
     "intro_paragraph": "Ваше мнение имеет цену. Присоединяйтесь к сообществу, которое платит за контент и за работу по отбору самого лучшего контента."
   },
@@ -329,7 +329,7 @@
     "login_with_social_media_to_verify_identity": "Пожалуйста, войдите используя %(provider)s для подтверждения вашей личности",
     "enter_email_toverify_identity": "Нам нужно подтвердить вашу личность. Пожалуйста, укажите вашу электронную почту ниже для начала проверки.",
     "continue_with_email": "Продолжить с электронной почтой",
-    "thanks_for_submitting_request_for_account_recovery": "<p>Благодарим Вас за отправку запроса на восстановление аккаунта используя основанную на блокчейне мультифакторную аутентификацию %(APP_NAME)s’a.</p> <p>Мы ответим Вам как можно быстрее, однако, пожалуйста, ожидайте что может быть некоторая задержка из-за большого объема писем.</p> <p>Пожалуйста, будьте готовы подтвердить свою личность.</p><p>С уважением,</p> <p>Ned Scott</p> <p>CEO Steemit</p>",
+    "thanks_for_submitting_request_for_account_recovery": "<p>Благодарим Вас за отправку запроса на восстановление аккаунта используя основанную на блокчейне мультифакторную аутентификацию %(APP_NAME)s’a.</p> <p>Мы ответим Вам как можно быстрее, однако, пожалуйста, ожидайте что может быть некоторая задержка из-за большого объема писем.</p> <p>Пожалуйста, будьте готовы подтвердить свою личность.</p><p>С уважением,</p> <p>Ned Scott</p> <p>CEO Smoke</p>",
     "recovering_account": "Восстанавливаем аккаунт",
     "recover_account": "Восстановить аккаунт",
     "checking_account_owner": "Проверяем владельца аккаунта",
@@ -478,7 +478,7 @@
     "estimated_value": "Сметная стоимость основана на среднем значении %(LIQUID_TOKEN)s в долларах США.",
     "non_transferable": "%(VESTING_TOKEN)s - не ликвидные токены, требуется три месяца (13 еженедальных выплат) чтобы сконвертировать их в ликвидные токены %(LIQUID_TOKEN)s.",
     "converted_VESTING_TOKEN_can_be_sent_to_yourself_but_can_not_transfer_again": "Конвертированные %(VESTING_TOKEN)s токены могут быть отправлены себе или кому-либо еще, но не могут быть переданы вновь без конвертации в %(LIQUID_TOKEN)s.",
-    "part_of_your_steem_power_is_currently_delegated": "Часть STEEM POWER вам делегирована, это увеличивает ваше влияние на платформе. Количество делегированных токенов со временем может изменяться."
+    "part_of_your_steem_power_is_currently_delegated": "Часть SMOKE POWER вам делегирована, это увеличивает ваше влияние на платформе. Количество делегированных токенов со временем может изменяться."
   },
   "promote_post_jsx": {
     "promote_post": "Продвинуть пост",
@@ -496,8 +496,8 @@
     "images_were_hidden_due_to_low_ratings": "Изображения были скрыты из-за низкого рейтинга."
   },
   "postsummary_jsx": {
-    "resteemed": "Поделиться",
-    "resteemed_by": "Репостнуто",
+    "resmoked": "Поделиться",
+    "resmoked_by": "Репостнуто",
     "reveal_it": "посмотреть пост",
     "adjust_your": "откорректируйте свои",
     "display_preferences": "настройки отображения",
@@ -565,14 +565,14 @@
     "you_account_has_been_successfully_created": "Ваш аккаунт был успешно создан!",
     "you_account_has_been_successfully_recovered": "Ваш аккаунт был успешно восстановлен!",
     "password_update_succes": "Пароль для %(accountName)s был успешно обновлен",
-    "password_info": "Этот пароль или закрытый ключ был введен неправильно. Вероятно, есть ошибка почерка или ввода данных. Подсказка: пароль или закрытый ключ, сгенерированный Steemit, никогда не будет содержать символы 0 (ноль), O (прописная o), I (прописная i) и l (нижний регистр L).",
+    "password_info": "Этот пароль или закрытый ключ был введен неправильно. Вероятно, есть ошибка почерка или ввода данных. Подсказка: пароль или закрытый ключ, сгенерированный Smoke, никогда не будет содержать символы 0 (ноль), O (прописная o), I (прописная i) и l (нижний регистр L).",
     "enter_your_username": "Введи свое имя пользователя",
     "password_or_wif": "Пароль или WIF",
     "this_operation_requires_your_key_or_master_password": "Для осуществления данной операции нужен ваш %(authType)s ключ или Основной пароль.",
     "keep_me_logged_in": "Оставить меня залогиненным",
     "amazing_community": "удивительное сообщество",
     "to_comment_and_reward_others": " комментировать и вознаграждать других.",
-    "sign_up_get_steem": "Sign up. Get STEEM",
+    "sign_up_get_steem": "Sign up. Get SMOKE",
     "signup_button": "Зарегистрируйтесь",
     "signup_button_emphasis": " сейчас!",
     "returning_users": "Вернувшиеся пользователи: ",
@@ -647,7 +647,7 @@
     "transfers_are_temporary_disabled": "Переводы временно преостановлены.",
     "history": "ИСТОРИЯ",
     "redeem_rewards": "Получить вознаграждение",
-    "buy_steem_or_steem_power": "Купить STEEM или STEEM POWER"
+    "buy_steem_or_steem_power": "Купить SMOKE или SMOKE POWER"
   },
   "powerdown_jsx": {
     "power_down": "Уменьшить силу голоса (power down)",

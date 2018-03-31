@@ -17,7 +17,7 @@ class About extends React.Component {
                         <a href="https://steem.io/">{tt('about_jsx.learn_more_at_app_url', {APP_URL})}</a>.
                     </p>
                     <h2>{tt('about_jsx.resources')}</h2>
-                    <h3><a href="https://steem.io/SteemWhitePaper.pdf"
+                    <h3><a href="https://steem.io/SmokeWhitePaper.pdf"
                            onClick={this.navigate}>{tt('navigation.APP_NAME_whitepaper', {APP_NAME})}</a>
                         <small>[PDF]</small>
                     </h3>

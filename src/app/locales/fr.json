@@ -160,9 +160,9 @@
     "account_name_should_have_only_letters_digits_or_dashes": "L'identifiant ne peut comporter que des lettres, des chiffres ou des traits d'union.",
     "cannot_increase_reward_of_post_within_the_last_minute_before_payout": "Les gains d'un article ne peuvent être accrus durant la dernière minute avant rétribution.",
     "vote_currently_exists_user_must_be_indicate_a_to_reject_witness": "un vote existe actuellement; l'utilisateur doit indiquer une raison pour rejeter le témoin",
-    "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "Un seul compte Steem est permis par adresse IP toutes les 10 minutes",
-    "resteem_this_post": "Resteemer cet article",
-    "reblog": "Resteem",
+    "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "Un seul compte Smoke est permis par adresse IP toutes les 10 minutes",
+    "resteem_this_post": "Resmokeer cet article",
+    "reblog": "Resmoke",
     "write_your_story": "Ecris ton histoire",
     "remember_voting_and_posting_key": "Se souvenir de la clé de publication et de vote",
     "auto_login_question_mark": "Identification automatique",
@@ -181,8 +181,8 @@
     "please_email_questions_to": "Veuillez s'il-vous-plaît envoyer vos questions par email à",
     "next_7_strings_single_block": {
       "authors_get_paid_when_people_like_you_upvote_their_post": "Les auteurs sont payés lorsque des personnes comme vous votent pour leur contenu",
-      "if_you_enjoyed_what_you_read_earn_amount": "Si vous avez apprécié ce que vous avez lu ici, créez votre compte dès à présent et commencer par gagner immédiatement du STEEM",
-      "free_steem": "STEEM GRATUIT!",
+      "if_you_enjoyed_what_you_read_earn_amount": "Si vous avez apprécié ce que vous avez lu ici, créez votre compte dès à présent et commencer par gagner immédiatement du SMOKE",
+      "free_steem": "SMOKE GRATUIT!",
       "sign_up_earn_steem": "S'enregistrer pour gagner"
     },
     "next_3_strings_together": {
@@ -206,8 +206,8 @@
       "other": "%(count)s réponses"
     },
     "post_key_warning": {
-        "confirm": "You are about to publish a STEEM private key or master password. You will probably lose control of the associated account and all its funds.",
-        "warning": "Legitimate users, including employees of Steemit Inc., will never ask you for a private key or master password.",
+        "confirm": "You are about to publish a SMOKE private key or master password. You will probably lose control of the associated account and all its funds.",
+        "warning": "Legitimate users, including employees of Smoke Inc., will never ask you for a private key or master password.",
         "checkbox": "I understand"
     }
   },
@@ -228,12 +228,12 @@
     "learn_more": "En savoir plus",
     "welcome": "Bienvenue",
     "faq": "FAQ",
-    "shop": "The Steemit Shop",
-    "chat": "Salons de discussion Steemit",
-    "app_center": "Centre d'applications Steemit",
-    "api_docs": "Documentation API sur Steemit",
-    "whitepaper": "Livre blanc sur le Steem",
-    "bluepaper": "Steem Bluepaper",
+    "shop": "The Smoke Shop",
+    "chat": "Salons de discussion Smoke",
+    "app_center": "Centre d'applications Smoke",
+    "api_docs": "Documentation API sur Smoke",
+    "whitepaper": "Livre blanc sur le Smoke",
+    "bluepaper": "Smoke Bluepaper",
     "intro_tagline": "Présentations sur la monnaie",
     "intro_paragraph": "Votre voix vaut quelque chose. Rejoignez la communauté qui vous rémunère pour vos articles et participez à la curation du contenu de qualité."
   },
@@ -318,7 +318,7 @@
     "unable_to_recover_account_not_change_ownership_recently": "Nous sommes incapables de récupérer ce compte, car il n'a pas changé de propriétaire récemment.",
     "password_not_used_in_last_days": "Ce mot de passe n'a pas été utilisé durant les derniers 30 jours.",
     "request_already_submitted_contact_support": "Votre requête a déjà été soumise et nous nous en occupons. Veuillez s'il-vous-plaît contacter %(SUPPORT_EMAIL)s pour obtenir le statut de votre requête.",
-    "recover_account_intro": "Il est possible que la clé propriétaire d'un Steemien soit compromise. Le processus de récupération de comptes dérobés est autorisé pour l'utilisateur de droit pendant 30 jours à partir du moment où le voleur a modifié la clé propriétaire. La récupération de comptes dérobés ne peut être utilisée sur %(APP_URL)s que si le propriétaire du compte a ajouté '%(APP_NAME)s'comme mandataire de confiance et accepté les conditions d'utilisation de %(APP_NAME)s.",
+    "recover_account_intro": "Il est possible que la clé propriétaire d'un Smokeien soit compromise. Le processus de récupération de comptes dérobés est autorisé pour l'utilisateur de droit pendant 30 jours à partir du moment où le voleur a modifié la clé propriétaire. La récupération de comptes dérobés ne peut être utilisée sur %(APP_URL)s que si le propriétaire du compte a ajouté '%(APP_NAME)s'comme mandataire de confiance et accepté les conditions d'utilisation de %(APP_NAME)s.",
     "login_with_facebook_or_reddit_media_to_verify_identity": "Veuillez vous identifier via Facebook ou Reddit pour vérifier votre identité.",
     "login_with_social_media_to_verify_identity": "Veuillez vous identifier via %(provider)safin de vérifier votre identité",
     "enter_email_toverify_identity": "Nous devons vérifier votre identité. Veuillez s'il-vous-plaît entrer votre adresse email ci-dessous pour démarrer le processus.",
@@ -458,7 +458,7 @@
     "estimated_value": "La valeur estimée est basée sur la valeur moyenne de %(LIQUID_TOKEN)s en dollars américains.",
     "non_transferable": "%(VESTING_TOKEN)s est non transférable et demande 3 mois (13 paiements) pour être convertis en %(LIQUID_TOKEN)s. ",
     "converted_VESTING_TOKEN_can_be_sent_to_yourself_but_can_not_transfer_again": "Les %(VESTING_TOKEN)s convertis peuvent être envoyés soit à vous, soit à quelqu'un d'autre, mais ne peuvent pas être transférés à nouveau sans être convertis en %(LIQUID_TOKEN)s.",
-    "part_of_your_steem_power_is_currently_delegated": "Une partie de votre influence, ou STEEM POWER, est actuellement déléguée. La délégation est un don pour augmenter l'influence ou pour encourager les nouveaux utilisateurs à effectuer des actions sur Steemit. Le montant délégué peut varier."
+    "part_of_your_steem_power_is_currently_delegated": "Une partie de votre influence, ou SMOKE POWER, est actuellement déléguée. La délégation est un don pour augmenter l'influence ou pour encourager les nouveaux utilisateurs à effectuer des actions sur Smoke. Le montant délégué peut varier."
   },
   "promote_post_jsx": {
     "promote_post": "Promouvoir un article",
@@ -468,7 +468,7 @@
   },
   "about_jsx": {
     "about_app": "A propos de %(APP_NAME)s",
-    "about_app_details": "%(APP_NAME)s est une plateforme de réseau social où les utilisateurs sont payés pour créer et effecter la curation du contenu. Elle influence un système de points digitaux, appelé Steem, qui ont une valeur réelle en fonction des prix du marché et des liquidités disponibles.",
+    "about_app_details": "%(APP_NAME)s est une plateforme de réseau social où les utilisateurs sont payés pour créer et effecter la curation du contenu. Elle influence un système de points digitaux, appelé Smoke, qui ont une valeur réelle en fonction des prix du marché et des liquidités disponibles.",
     "learn_more_at_app_url": "Plus d'informations à %(APP_URL)s",
     "resources": "Ressources"
   },
@@ -476,8 +476,8 @@
     "images_were_hidden_due_to_low_ratings": "Les images sont masqués en raison d'une faible évaluation."
   },
   "postsummary_jsx": {
-    "resteemed": "Resteemé",
-    "resteemed_by": "Resteemé par",
+    "resmoked": "Resmokeé",
+    "resmoked_by": "Resmokeé par",
     "reveal_it": "Révélez-le",
     "adjust_your": "Ajustez vos",
     "display_preferences": "préférences visuelles",
@@ -545,16 +545,16 @@
     "you_account_has_been_successfully_created": "Votre compte a été créé avec succès!",
     "you_account_has_been_successfully_recovered": "Votre compte a été récupéré avec succès!",
     "password_update_succes": "Le mot de passe pour%(accountName)sa été mis à jour avec succès.",
-    "password_info": "Ce mot de passe ou clé privée est incorrect. Il y a probablement une erreur d'écriture ou d'entrée des données. Indication : un mot de passe ou une clé privée générée par Steemit ne contiendra jamais aucun 0 (zéro), O (o majuscule), I (i majuscule) ou l (l minuscule).",
+    "password_info": "Ce mot de passe ou clé privée est incorrect. Il y a probablement une erreur d'écriture ou d'entrée des données. Indication : un mot de passe ou une clé privée générée par Smoke ne contiendra jamais aucun 0 (zéro), O (o majuscule), I (i majuscule) ou l (l minuscule).",
     "enter_your_username": "Entrez votre nom d'utilisateur",
     "password_or_wif": "Mot de passe ou WIF",
     "this_operation_requires_your_key_or_master_password": "Cette opération nécessite votre clé %(authType)s ou votre mot de passe principal.",
     "keep_me_logged_in": "Gardez-moi connecté",
     "amazing_community": "communauté extraordinaire",
     "to_comment_and_reward_others": " pour commenter et récompenser les autres.",
-    "sign_up_get_steem": "Sign up. Get STEEM",
+    "sign_up_get_steem": "Sign up. Get SMOKE",
     "signup_button": "Sign up now to earn ",
-    "signup_button_emphasis": "FREE STEEM!",
+    "signup_button_emphasis": "FREE SMOKE!",
     "returning_users": "Utilisateurs de retour :",
     "join_our": "Rejoignez notre"
   },
@@ -627,7 +627,7 @@
     "transfers_are_temporary_disabled": "Les transferts sont temporairement désactivés.",
     "history": "HISTORIQUE",
     "redeem_rewards": "Réclamer les gains (transférer vers le solde)",
-    "buy_steem_or_steem_power": "Acheter du STEEM ou du STEEM POWER"
+    "buy_steem_or_steem_power": "Acheter du SMOKE ou du SMOKE POWER"
   },
   "powerdown_jsx": {
     "power_down": "Diminuer son influence",

@@ -3,7 +3,7 @@ import React from 'react';
 const SidebarNewUsers = () => (
     <div className="c-sidebar__module">
         <div className="c-sidebar__header">
-            <h3 className="c-sidebar__h3">New to Steemit?</h3>
+            <h3 className="c-sidebar__h3">New to Smoke?</h3>
         </div>
         <div className="c-sidebar__content">
             <ul className="c-sidebar__list">

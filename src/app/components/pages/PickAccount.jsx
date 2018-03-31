@@ -117,7 +117,7 @@ class PickAccount extends React.Component {
                 <div className="column">
                     <div className="callout alert">
                         <h4>Browser Out of Date</h4>
-                        <p>We will be unable to create your Steem account with this browser.</p>
+                        <p>We will be unable to create your Smoke account with this browser.</p>
                         <p>The latest versions of <a href="https://www.google.com/chrome/">Chrome</a> and <a
                             href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>
                             are well-tested and known to work well with smoke.io.</p>
@@ -132,7 +132,7 @@ class PickAccount extends React.Component {
                     <div className="callout alert">
                         <p>You need to <a href="#" onClick={logout}>Logout</a> before you can create an additional
                             account.</p>
-                        <p>Please note that Steemit can only register one account per verified user.</p>
+                        <p>Please note that Smoke can only register one account per verified user.</p>
                     </div>
                 </div>
             </div>;
@@ -170,7 +170,7 @@ class PickAccount extends React.Component {
         //         <div className="column">
         //             <div className="callout alert">
         //                 <p>Our records indicate that you already have steem account: <strong>{existingUserAccount}</strong></p>
-        //                 <p>In order to prevent abuse Steemit can only register one account per verified user.</p>
+        //                 <p>In order to prevent abuse Smoke can only register one account per verified user.</p>
         //                 <p>You can either <a href="/login.html">login</a> to your existing account
         //                     or <a href="mailto:support@smoke.io">send us email</a> if you need a new account.</p>
         //             </div>
@@ -203,7 +203,7 @@ class PickAccount extends React.Component {
                         <br/>
                         <Progress tabIndex="0" value={10} max={100}/>
                         <br/>
-                        <h4 className="CreateAccount__title">Welcome to Steemit</h4>
+                        <h4 className="CreateAccount__title">Welcome to Smoke</h4>
                         <div>
                             <p>Your account name is how you will be known on smoke.io.<br/>
                                 {/*Your account name <strong>can never be changed</strong>, so please choose carefully.*/}

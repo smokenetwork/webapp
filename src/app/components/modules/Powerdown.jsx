@@ -16,7 +16,7 @@ class Powerdown extends React.Component {
         if (props.to_withdraw - props.withdrawn > 0) {
             new_withdraw = props.to_withdraw - props.withdrawn
         } else {
-            // Set the default withrawal amount to (available - 5 STEEM)
+            // Set the default withrawal amount to (available - 5 SMOKE)
             // This should be removed post hf20
             new_withdraw = Math.max(0, props.available_shares - spToVestsf(props.state, 5.001))
         }

@@ -34,7 +34,7 @@ export default function reducer(state = defaultState, action) {
     if (action.type === '@@router/LOCATION_CHANGE') {
         return state.set('location', {pathname: action.payload.pathname});
     }
-    if (action.type === 'STEEM_API_ERROR') {
+    if (action.type === 'SMOKE_API_ERROR') {
         return state.set('error', action.error).set('loading', false);
     }
     let res = state;

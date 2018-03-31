@@ -43,8 +43,8 @@ class Market extends React.Component {
     componentWillReceiveProps(np) {
         if (!this.props.ticker && np.ticker) {
             const {lowest_ask, highest_bid} = np.ticker;
-            if (this.refs.buySteem_price) this.refs.buySteem_price.value = parseFloat(lowest_ask).toFixed(6);
-            if (this.refs.sellSteem_price) this.refs.sellSteem_price.value = parseFloat(highest_bid).toFixed(6);
+            if (this.refs.buySmoke_price) this.refs.buySmoke_price.value = parseFloat(lowest_ask).toFixed(6);
+            if (this.refs.sellSmoke_price) this.refs.sellSmoke_price.value = parseFloat(highest_bid).toFixed(6);
         }
     }
 
@@ -80,12 +80,12 @@ class Market extends React.Component {
         return tc || bc || oc;
     }
 
-    buySteem = (e) => {
+    buySmoke = (e) => {
         e.preventDefault()
         const {placeOrder, user} = this.props
         if (!user) return
-        const amount_to_sell = parseFloat(ReactDOM.findDOMNode(this.refs.buySteem_total).value)
-        const min_to_receive = parseFloat(ReactDOM.findDOMNode(this.refs.buySteem_amount).value)
+        const amount_to_sell = parseFloat(ReactDOM.findDOMNode(this.refs.buySmoke_total).value)
+        const min_to_receive = parseFloat(ReactDOM.findDOMNode(this.refs.buySmoke_amount).value)
         const price = (amount_to_sell / min_to_receive).toFixed(6)
         const {lowest_ask} = this.props.ticker;
         placeOrder(user, `${amount_to_sell} ${DEBT_TICKER}`, `${min_to_receive} ${LIQUID_TICKER}`, `${CURRENCY_SIGN}${price}/${LIQUID_TICKER}`, !!this.state.buy_price_warning, lowest_ask, (msg) => {
@@ -93,12 +93,12 @@ class Market extends React.Component {
             this.props.reload(user)
         })
     }
-    sellSteem = (e) => {
+    sellSmoke = (e) => {
         e.preventDefault()
         const {placeOrder, user} = this.props
         if (!user) return
-        const min_to_receive = parseFloat(ReactDOM.findDOMNode(this.refs.sellSteem_total).value)
-        const amount_to_sell = parseFloat(ReactDOM.findDOMNode(this.refs.sellSteem_amount).value)
+        const min_to_receive = parseFloat(ReactDOM.findDOMNode(this.refs.sellSmoke_total).value)
+        const amount_to_sell = parseFloat(ReactDOM.findDOMNode(this.refs.sellSmoke_amount).value)
         const price = (min_to_receive / amount_to_sell).toFixed(6)
         const {highest_bid} = this.props.ticker;
         placeOrder(user, `${amount_to_sell} ${LIQUID_TICKER}`, `${min_to_receive} ${DEBT_TICKER}`, `${CURRENCY_SIGN}${price}/${LIQUID_TICKER}`, !!this.state.sell_price_warning, highest_bid, (msg) => {
@@ -119,17 +119,17 @@ class Market extends React.Component {
     setFormPrice = (price) => {
         const p = parseFloat(price)
 
-        this.refs.sellSteem_price.value = p.toFixed(6)
-        this.refs.buySteem_price.value = p.toFixed(6)
+        this.refs.sellSmoke_price.value = p.toFixed(6)
+        this.refs.buySmoke_price.value = p.toFixed(6)
 
-        const samount = parseFloat(this.refs.sellSteem_amount.value)
-        if (samount >= 0) this.refs.sellSteem_total.value = roundDown(p * samount, 3)
+        const samount = parseFloat(this.refs.sellSmoke_amount.value)
+        if (samount >= 0) this.refs.sellSmoke_total.value = roundDown(p * samount, 3)
 
-        const bamount = parseFloat(this.refs.buySteem_amount.value)
-        if (bamount >= 0) this.refs.buySteem_total.value = roundUp(p * bamount, 3)
+        const bamount = parseFloat(this.refs.buySmoke_amount.value)
+        if (bamount >= 0) this.refs.buySmoke_total.value = roundUp(p * bamount, 3)
 
-        this.validateBuySteem()
-        this.validateSellSteem()
+        this.validateBuySmoke()
+        this.validateSellSmoke()
     }
 
     percentDiff = (marketPrice, userPrice) => {
@@ -137,19 +137,19 @@ class Market extends React.Component {
         return 100 * (userPrice - marketPrice) / (marketPrice)
     }
 
-    validateBuySteem = () => {
-        const amount = parseFloat(this.refs.buySteem_amount.value)
-        const price = parseFloat(this.refs.buySteem_price.value)
-        const total = parseFloat(this.refs.buySteem_total.value)
+    validateBuySmoke = () => {
+        const amount = parseFloat(this.refs.buySmoke_amount.value)
+        const price = parseFloat(this.refs.buySmoke_price.value)
+        const total = parseFloat(this.refs.buySmoke_total.value)
         const valid = (amount > 0 && price > 0 && total > 0)
         const {lowest_ask} = this.props.ticker;
         this.setState({buy_disabled: !valid, buy_price_warning: valid && this.percentDiff(lowest_ask, price) > 15});
     }
 
-    validateSellSteem = () => {
-        const amount = parseFloat(this.refs.sellSteem_amount.value)
-        const price = parseFloat(this.refs.sellSteem_price.value)
-        const total = parseFloat(this.refs.sellSteem_total.value)
+    validateSellSmoke = () => {
+        const amount = parseFloat(this.refs.sellSmoke_amount.value)
+        const price = parseFloat(this.refs.sellSmoke_price.value)
+        const total = parseFloat(this.refs.sellSmoke_total.value)
         const valid = (amount > 0 && price > 0 && total > 0)
         const {highest_bid} = this.props.ticker;
         this.setState({sell_disabled: !valid, sell_price_warning: valid && this.percentDiff(highest_bid, price) < -15});
@@ -157,8 +157,8 @@ class Market extends React.Component {
 
     render() {
         const {
-            sellSteem, buySteem, cancelOrderClick, setFormPrice,
-            validateBuySteem, validateSellSteem
+            sellSmoke, buySmoke, cancelOrderClick, setFormPrice,
+            validateBuySmoke, validateSellSmoke
         } = this
         const {
             buy_disabled, sell_disabled,
@@ -338,7 +338,7 @@ class Market extends React.Component {
                 <div className="row">
                     <div className="small-12 medium-6 columns">
                         <h4 className="buy-color uppercase">{tt('navigation.buy_LIQUID_TOKEN', {LIQUID_TOKEN})}</h4>
-                        <form className="Market__orderform" onSubmit={buySteem}>
+                        <form className="Market__orderform" onSubmit={buySmoke}>
 
                             <div className="row">
                                 <div className="column small-3 large-2">
@@ -349,11 +349,11 @@ class Market extends React.Component {
                                         <input
                                             className={'input-group-field' + (buy_price_warning ? ' price_warning' : '')}
                                             type="text"
-                                            ref="buySteem_price" placeholder="0.0" onChange={e => {
-                                            const amount = parseFloat(this.refs.buySteem_amount.value)
-                                            const price = parseFloat(this.refs.buySteem_price.value)
-                                            if (amount >= 0 && price >= 0) this.refs.buySteem_total.value = roundUp(price * amount, 3)
-                                            validateBuySteem()
+                                            ref="buySmoke_price" placeholder="0.0" onChange={e => {
+                                            const amount = parseFloat(this.refs.buySmoke_amount.value)
+                                            const price = parseFloat(this.refs.buySmoke_price.value)
+                                            if (amount >= 0 && price >= 0) this.refs.buySmoke_total.value = roundUp(price * amount, 3)
+                                            validateBuySmoke()
                                         }}/>
                                         <span
                                             className="input-group-label uppercase">{`${DEBT_TOKEN_SHORT}/${LIQUID_TOKEN}`}</span>
@@ -367,12 +367,12 @@ class Market extends React.Component {
                                 </div>
                                 <div className="column small-9 large-8">
                                     <div className="input-group">
-                                        <input className="input-group-field" type="text" ref="buySteem_amount"
+                                        <input className="input-group-field" type="text" ref="buySmoke_amount"
                                                placeholder="0.0" onChange={e => {
-                                            const price = parseFloat(this.refs.buySteem_price.value)
-                                            const amount = parseFloat(this.refs.buySteem_amount.value)
-                                            if (price >= 0 && amount >= 0) this.refs.buySteem_total.value = roundUp(price * amount, 3)
-                                            validateBuySteem()
+                                            const price = parseFloat(this.refs.buySmoke_price.value)
+                                            const amount = parseFloat(this.refs.buySmoke_amount.value)
+                                            if (price >= 0 && amount >= 0) this.refs.buySmoke_total.value = roundUp(price * amount, 3)
+                                            validateBuySmoke()
                                         }}/>
                                         <span className="input-group-label uppercase"> {LIQUID_TOKEN}</span>
                                     </div>
@@ -385,12 +385,12 @@ class Market extends React.Component {
                                 </div>
                                 <div className="column small-9 large-8">
                                     <div className="input-group">
-                                        <input className="input-group-field" type="text" ref="buySteem_total"
+                                        <input className="input-group-field" type="text" ref="buySmoke_total"
                                                placeholder="0.0" onChange={e => {
-                                            const price = parseFloat(this.refs.buySteem_price.value)
-                                            const total = parseFloat(this.refs.buySteem_total.value)
-                                            if (total >= 0 && price >= 0) this.refs.buySteem_amount.value = roundUp(total / price, 3)
-                                            validateBuySteem()
+                                            const price = parseFloat(this.refs.buySmoke_price.value)
+                                            const total = parseFloat(this.refs.buySmoke_total.value)
+                                            if (total >= 0 && price >= 0) this.refs.buySmoke_amount.value = roundUp(total / price, 3)
+                                            validateBuySmoke()
                                         }}/>
                                         <span
                                             className="input-group-label">{`${DEBT_TOKEN_SHORT} (${CURRENCY_SIGN})`}</span>
@@ -410,11 +410,11 @@ class Market extends React.Component {
                                         <small>
                                             <a href="#" onClick={e => {
                                                 e.preventDefault();
-                                                const price = parseFloat(this.refs.buySteem_price.value)
+                                                const price = parseFloat(this.refs.buySmoke_price.value)
                                                 const total = account.sbd_balance.split(' ')[0]
-                                                this.refs.buySteem_total.value = total
-                                                if (price >= 0) this.refs.buySteem_amount.value = roundDown(parseFloat(total) / price, 3).toFixed(3)
-                                                validateBuySteem()
+                                                this.refs.buySmoke_total.value = total
+                                                if (price >= 0) this.refs.buySmoke_amount.value = roundDown(parseFloat(total) / price, 3).toFixed(3)
+                                                validateBuySmoke()
                                             }}>{tt('market_jsx.available')}:</a> {account.sbd_balance.replace('SBD', DEBT_TOKEN_SHORT)}
                                         </small>
                                     </div>}
@@ -423,11 +423,11 @@ class Market extends React.Component {
                                         <small>
                                             <a href="#" onClick={e => {
                                                 e.preventDefault();
-                                                const amount = parseFloat(this.refs.buySteem_amount.value)
+                                                const amount = parseFloat(this.refs.buySmoke_amount.value)
                                                 const price = parseFloat(ticker.lowest_ask)
-                                                this.refs.buySteem_price.value = ticker.lowest_ask
-                                                if (amount >= 0) this.refs.buySteem_total.value = roundUp(amount * price, 3).toFixed(3)
-                                                validateBuySteem()
+                                                this.refs.buySmoke_price.value = ticker.lowest_ask
+                                                if (amount >= 0) this.refs.buySmoke_total.value = roundUp(amount * price, 3).toFixed(3)
+                                                validateBuySmoke()
                                             }}>{tt('market_jsx.lowest_ask')}:</a> {ticker.lowest_ask.toFixed(6)}
                                         </small>
                                     </div>
@@ -441,7 +441,7 @@ class Market extends React.Component {
                     <div className="small-12 medium-6 columns">
                         <h4 className="sell-color uppercase">{tt('navigation.sell_LIQUID_TOKEN', {LIQUID_TOKEN})}</h4>
 
-                        <form className="Market__orderform" onSubmit={sellSteem}>
+                        <form className="Market__orderform" onSubmit={sellSmoke}>
                             <div className="row">
                                 <div className="column small-3 large-2">
                                     <label>{tt('g.price')}</label>
@@ -451,11 +451,11 @@ class Market extends React.Component {
                                         <input
                                             className={'input-group-field' + (sell_price_warning ? ' price_warning' : '')}
                                             type="text"
-                                            ref="sellSteem_price" placeholder="0.0" onChange={e => {
-                                            const amount = parseFloat(this.refs.sellSteem_amount.value)
-                                            const price = parseFloat(this.refs.sellSteem_price.value)
-                                            if (amount >= 0 && price >= 0) this.refs.sellSteem_total.value = roundDown(price * amount, 3)
-                                            validateSellSteem()
+                                            ref="sellSmoke_price" placeholder="0.0" onChange={e => {
+                                            const amount = parseFloat(this.refs.sellSmoke_amount.value)
+                                            const price = parseFloat(this.refs.sellSmoke_price.value)
+                                            if (amount >= 0 && price >= 0) this.refs.sellSmoke_total.value = roundDown(price * amount, 3)
+                                            validateSellSmoke()
                                         }}/>
                                         <span
                                             className="input-group-label uppercase">{`${DEBT_TOKEN_SHORT}/${LIQUID_TOKEN}`}</span>
@@ -469,12 +469,12 @@ class Market extends React.Component {
                                 </div>
                                 <div className="column small-9 large-8">
                                     <div className="input-group">
-                                        <input className="input-group-field" type="text" ref="sellSteem_amount"
+                                        <input className="input-group-field" type="text" ref="sellSmoke_amount"
                                                placeholder="0.0" onChange={e => {
-                                            const price = parseFloat(this.refs.sellSteem_price.value)
-                                            const amount = parseFloat(this.refs.sellSteem_amount.value)
-                                            if (price >= 0 && amount >= 0) this.refs.sellSteem_total.value = roundDown(price * amount, 3)
-                                            validateSellSteem()
+                                            const price = parseFloat(this.refs.sellSmoke_price.value)
+                                            const amount = parseFloat(this.refs.sellSmoke_amount.value)
+                                            if (price >= 0 && amount >= 0) this.refs.sellSmoke_total.value = roundDown(price * amount, 3)
+                                            validateSellSmoke()
                                         }}/>
                                         <span className="input-group-label uppercase">{LIQUID_TOKEN}</span>
                                     </div>
@@ -487,12 +487,12 @@ class Market extends React.Component {
                                 </div>
                                 <div className="column small-9 large-8">
                                     <div className="input-group">
-                                        <input className="input-group-field" type="text" ref="sellSteem_total"
+                                        <input className="input-group-field" type="text" ref="sellSmoke_total"
                                                placeholder="0.0" onChange={e => {
-                                            const price = parseFloat(this.refs.sellSteem_price.value)
-                                            const total = parseFloat(this.refs.sellSteem_total.value)
-                                            if (price >= 0 && total >= 0) this.refs.sellSteem_amount.value = roundUp(total / price, 3)
-                                            validateSellSteem()
+                                            const price = parseFloat(this.refs.sellSmoke_price.value)
+                                            const total = parseFloat(this.refs.sellSmoke_total.value)
+                                            if (price >= 0 && total >= 0) this.refs.sellSmoke_amount.value = roundUp(total / price, 3)
+                                            validateSellSmoke()
                                         }}/>
                                         <span
                                             className="input-group-label">{`${DEBT_TOKEN_SHORT} (${CURRENCY_SIGN})`}</span>
@@ -510,22 +510,22 @@ class Market extends React.Component {
                                     <div>
                                         <small><a href="#" onClick={e => {
                                             e.preventDefault()
-                                            const price = parseFloat(this.refs.sellSteem_price.value)
+                                            const price = parseFloat(this.refs.sellSmoke_price.value)
                                             const amount = account.balance.split(' ')[0]
-                                            this.refs.sellSteem_amount.value = amount
-                                            if (price >= 0) this.refs.sellSteem_total.value = roundDown(price * parseFloat(amount), 3)
-                                            validateSellSteem()
+                                            this.refs.sellSmoke_amount.value = amount
+                                            if (price >= 0) this.refs.sellSmoke_total.value = roundDown(price * parseFloat(amount), 3)
+                                            validateSellSmoke()
                                         }}>{tt('market_jsx.available')}:</a> {account.balance.replace(LIQUID_TICKER, LIQUID_TOKEN_UPPERCASE)}
                                         </small>
                                     </div>}
                                     <div>
                                         <small><a href="#" onClick={e => {
                                             e.preventDefault()
-                                            const amount = parseFloat(this.refs.sellSteem_amount.value)
+                                            const amount = parseFloat(this.refs.sellSmoke_amount.value)
                                             const price = ticker.highest_bid
-                                            this.refs.sellSteem_price.value = price
-                                            if (amount >= 0) this.refs.sellSteem_total.value = roundDown(parseFloat(price) * amount, 3)
-                                            validateSellSteem()
+                                            this.refs.sellSmoke_price.value = price
+                                            if (amount >= 0) this.refs.sellSmoke_total.value = roundDown(parseFloat(price) * amount, 3)
+                                            validateSellSmoke()
                                         }}>{tt('market_jsx.highest_bid')}:</a> {ticker.highest_bid.toFixed(6)}</small>
                                     </div>
                                 </div>
@@ -621,7 +621,7 @@ module.exports = {
                 }))
             },
             placeOrder: (owner, amount_to_sell, min_to_receive, effectivePrice, priceWarning, marketPrice, successCallback, fill_or_kill = false, expiration = DEFAULT_EXPIRE) => {
-                // create_order jsc 12345 "1.000 SBD" "100.000 STEEM" true 1467122240 false
+                // create_order jsc 12345 "1.000 SBD" "100.000 SMOKE" true 1467122240 false
 
                 // Padd amounts to 3 decimal places
                 amount_to_sell = amount_to_sell.replace(amount_to_sell.split(' ')[0],

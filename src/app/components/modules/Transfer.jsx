@@ -54,7 +54,7 @@ class TransferForm extends Component {
             const {currentAccount} = props;
             const isWithdraw = transferType && transferType === 'Savings Withdraw';
             const balanceValue =
-                !asset || asset === 'STEEM' ?
+                !asset || asset === 'SMOKE' ?
                     isWithdraw ? currentAccount.get('savings_balance') : currentAccount.get('balance') :
                     asset === 'SBD' ?
                         isWithdraw ? currentAccount.get('savings_sbd_balance') : currentAccount.get('sbd_balance') :
@@ -106,7 +106,7 @@ class TransferForm extends Component {
         const {asset} = this.state;
         const isWithdraw = transferType && transferType === 'Savings Withdraw';
         return !asset ||
-        asset.value === 'STEEM' ?
+        asset.value === 'SMOKE' ?
             isWithdraw ? currentAccount.get('savings_balance') : currentAccount.get('balance') :
             asset.value === 'SBD' ?
                 isWithdraw ? currentAccount.get('savings_sbd_balance') : currentAccount.get('sbd_balance') :
@@ -115,7 +115,7 @@ class TransferForm extends Component {
 
     assetBalanceClick = e => {
         e.preventDefault();
-        // Convert '9.999 STEEM' to 9.999
+        // Convert '9.999 SMOKE' to 9.999
         this.state.amount.props.onChange(this.balanceValue().split(' ')[0])
     };
 
@@ -220,8 +220,7 @@ class TransferForm extends Component {
                                             backgroundColor: "transparent",
                                             border: "none"
                                         }}>
-                                    <option value="STEEM">STEEM</option>
-                                    <option value="SBD">SBD</option>
+                                    <option value="SMOKE">SMOKE</option>
                                 </select>
                             </span>}
                         </div>
@@ -315,7 +314,7 @@ export default connect(
                 }
                 dispatch(user.actions.hideTransfer())
             };
-            const asset2 = toVesting ? 'STEEM' : asset;
+            const asset2 = toVesting ? 'SMOKE' : asset;
             const operation = {
                 from: username,
                 to, amount: parseFloat(amount, 10).toFixed(3) + ' ' + asset2,

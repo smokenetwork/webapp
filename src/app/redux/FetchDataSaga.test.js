@@ -32,17 +32,17 @@ describe('sagas', () => {
     //     ).to.be.eql(expectedPutResult);
     // });
     //
-    // it('should try to fetch state and submit STEEM_API_ERROR if failed', () => {
+    // it('should try to fetch state and submit SMOKE_API_ERROR if failed', () => {
     //     const generator = fetchState(action);
     //     expect(generator.next().value).to.be.ok();
     //     const result = generator.throw({message: 'test error'}).value;
-    //     const expectedPutResult = put({type: 'global/STEEM_API_ERROR', error: 'test error'});
+    //     const expectedPutResult = put({type: 'global/SMOKE_API_ERROR', error: 'test error'});
     //     expect(
     //         result
     //     ).to.be.eql(expectedPutResult);
     // });
     //
-    // it('should try to fetch state and submit STEEM_API_ERROR if failed', () => {
+    // it('should try to fetch state and submit SMOKE_API_ERROR if failed', () => {
     //     const pop_action = {payload: {...action.payload, action: 'POP'}};
     //     const generator = fetchState(pop_action);
     //     const result = generator.next().value;

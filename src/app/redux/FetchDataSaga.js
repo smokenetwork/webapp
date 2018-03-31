@@ -51,7 +51,7 @@ export function* fetchState(location_change_action) {
         yield put(GlobalReducer.actions.receiveState(state));
     } catch (error) {
         console.error('~~ Saga fetchState error ~~>', url, error);
-        yield put({type: 'global/STEEM_API_ERROR', error: error.message});
+        yield put({type: 'global/SMOKE_API_ERROR', error: error.message});
     }
     yield put({type: 'FETCH_DATA_END'});
 }
@@ -193,7 +193,7 @@ export function* fetchData(action) {
         yield put(GlobalReducer.actions.receiveData({data, order, category, author, permlink, accountname}));
     } catch (error) {
         console.error('~~ Saga fetchData error ~~>', call_name, args, error);
-        yield put({type: 'global/STEEM_API_ERROR', error: error.message});
+        yield put({type: 'global/SMOKE_API_ERROR', error: error.message});
     }
     yield put({type: 'FETCH_DATA_END'});
 }

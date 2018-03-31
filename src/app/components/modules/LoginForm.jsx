@@ -16,7 +16,7 @@ import {connect} from 'react-redux'
 class LoginForm extends Component {
 
     static propTypes = {
-        //Steemit
+        //Smoke
         login_error: PropTypes.string,
         onCancel: PropTypes.func,
     };
@@ -266,7 +266,7 @@ function urlAccountName() {
 }
 
 function checkPasswordChecksum(password) {
-    // A Steemit generated password is a WIF prefixed with a P ..
+    // A Smoke generated password is a WIF prefixed with a P ..
     // It is possible to login directly with a WIF
     const wif = /^P/.test(password) ? password.substring(1) : password
 

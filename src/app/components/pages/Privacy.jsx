@@ -5,14 +5,14 @@ class Privacy extends React.Component {
         return (
             <div className="Privacy row">
                 <div className="column large-12">
-                    <h1>Steemit, Inc Privacy Policy</h1>
+                    <h1>Smoke, Inc Privacy Policy</h1>
                     <div>
                         <h2>Effective April 1, 2016</h2>
                         <p>
                             <span className="section">1</span>
-                            We want you to understand how and why Steemit, Inc (“Steemit,” “we” or “us”) collects, uses,
+                            We want you to understand how and why Smoke, Inc (“Smoke,” “we” or “us”) collects, uses,
                             and shares information about you when
-                            you access and use Steemit’s websites, mobile apps, widgets, and other online products and
+                            you access and use Smoke’s websites, mobile apps, widgets, and other online products and
                             services (collectively, the "Services")
                             or when you otherwise interact with us.
                         </p>
@@ -41,7 +41,7 @@ class Privacy extends React.Component {
                         <h4>Transactional Information</h4>
                         <p>
                             <span className="section">4</span>
-                            If you purchase products or services from us (e.g., Steem Power), we will collect certain
+                            If you purchase products or services from us (e.g., Smoke Power), we will collect certain
                             information from you, including your name,
                             address, email address, and information about the product or service you are purchasing.
                             Payments are processed by third-party
@@ -127,9 +127,9 @@ class Privacy extends React.Component {
                             We use information about you to:
                             <ul>
                                 <li>Provide, maintain, and improve the Services;</li>
-                                <li>Help protect the safety of Steemit and our users, which includes blocking suspected
+                                <li>Help protect the safety of Smoke and our users, which includes blocking suspected
                                     spammers, addressing abuse, and
-                                    enforcing the Steemit user agreement and the Terms of Service;
+                                    enforcing the Smoke user agreement and the Terms of Service;
                                 </li>
                                 <li>Send you technical notices, updates, security alerts, invoices and other support and
                                     administrative messages;
@@ -165,7 +165,7 @@ class Privacy extends React.Component {
                                 </li>
                                 <li>When other users view your profile, they will be able to see information about your
                                     activities on the Services, such as your
-                                    username, prior posts and comments, Steem Power, and how long you have been a member
+                                    username, prior posts and comments, Smoke Power, and how long you have been a member
                                     of the Services.
                                 </li>
                             </ul>
@@ -206,10 +206,10 @@ class Privacy extends React.Component {
                                     harm to a person;
                                 </li>
                                 <li>We may share information if we believe your actions are inconsistent with our user
-                                    agreements, or other Steemit policies, or
+                                    agreements, or other Smoke policies, or
                                     to protect the rights, property, and safety of ourselves and others;
                                 </li>
-                                <li>We may share information between and among Steemit, and its current and future
+                                <li>We may share information between and among Smoke, and its current and future
                                     parents, affiliates, subsidiaries, and other
                                     companies under common control and ownership; and
                                 </li>
@@ -243,11 +243,11 @@ class Privacy extends React.Component {
                             <span className="section">17</span>
                             Our ad partners and network may use cookies and use related technologies to collect
                             information when ads are delivered to you on our
-                            Services, but Steemit does not link to or provide your actual Steemit account details to
+                            Services, but Smoke does not link to or provide your actual Smoke account details to
                             these advertising partners. This means that
-                            Steemit does not share your individual account browsing habits with advertisers. Steemit
+                            Smoke does not share your individual account browsing habits with advertisers. Smoke
                             cannot see advertisers’ cookies and
-                            advertisers will not see Steemit cookies.
+                            advertisers will not see Smoke cookies.
                         </p>
                     </div>
                     <div>
@@ -281,7 +281,7 @@ class Privacy extends React.Component {
                         <h2>Children under 13</h2>
                         <p>
                             <span className="section">21</span>
-                            Although we welcome users from all walks of life, Steemit is not intended or directed at
+                            Although we welcome users from all walks of life, Smoke is not intended or directed at
                             individuals under the age of 13. Therefore,
                             individuals under the age of 13 may not create an account or otherwise access or use the
                             Services.
@@ -291,7 +291,7 @@ class Privacy extends React.Component {
                         <h2>Your Choices</h2>
                         <p>
                             <span className="section">22</span>
-                            As a Steemit user, you have choices about how to protect and limit the collection, use, and
+                            As a Smoke user, you have choices about how to protect and limit the collection, use, and
                             disclosure of, information about you.
                             This includes:
                         </p>
@@ -318,7 +318,7 @@ class Privacy extends React.Component {
                             visible to others, unless you delete such content. We may also retain certain information
                             about you as required by law or for
                             legitimate business purposes after you delete your account. Any information that has been
-                            published to the Steem blockchain will
+                            published to the Smoke blockchain will
                             also remain indefinitely.
                         </p>
                     </div>
@@ -356,7 +356,7 @@ class Privacy extends React.Component {
                             accepted standard on how to respond to web browsers’ DNT signals. When you have DNT enabled,
                             we may still use information collected
                             for analytics and measurement purposes or to otherwise provide our Services (e.g.,
-                            Steemit.com buttons), but we will not load any
+                            Smoke.io buttons), but we will not load any
                             third-party trackers. You may, however, opt out of having information about you collected
                             and used for behavioral advertising
                             purposes, as described above.
@@ -396,7 +396,7 @@ class Privacy extends React.Component {
                     <div>
                         <p>
                             <span className="section">31</span>
-                            Steemit complies with the U.S.-E.U. and U.S.-Swiss Safe Harbor Privacy Principles of notice,
+                            Smoke complies with the U.S.-E.U. and U.S.-Swiss Safe Harbor Privacy Principles of notice,
                             choice, onward transfer, security, data
                             integrity, access, and enforcement. Despite an adverse judgment by the European Court of
                             Justice on October 6, 2015, the U.S.
