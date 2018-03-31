@@ -51,7 +51,7 @@ const XMLSerializer = new xmldom.XMLSerializer()
  *    - convert naked URLs to images/links
  *    - convert embeddable URLs to <iframe>s
  *    - basic sanitization?
- *  2. Smoke.com Rendering - add in proprietary Smoke.com functions/links
+ *  2. Smoke.io Rendering - add in proprietary Smoke.io functions/links
  *    - convert <iframe>s to custom objects
  *    - linkify #tags and @mentions
  *    - proxify images

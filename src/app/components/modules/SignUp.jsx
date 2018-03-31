@@ -23,7 +23,7 @@ class SignUp extends React.Component {
         if (this.props.serverBusy || $STM_Config.disable_signups) {
             return <div className="row">
                 <div className="column callout" style={{margin: '20px', padding: '40px'}}>
-                    <p>Membership to Smoke.com is now under invitation only because of unexpectedly high sign up rate.
+                    <p>Membership to Smoke.io is now under invitation only because of unexpectedly high sign up rate.
                         Submit your email to get on the waiting list.</p>
                     <AddToWaitingList/>
                 </div>

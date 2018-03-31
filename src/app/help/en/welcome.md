@@ -52,7 +52,7 @@ Below that is a list of recommended users to follow, a collection of other resou
 <a class="anchor" name="No_Cost_to_Participate"></a>
 ### No Cost to Participate
 
-It is free to post, comment, or upvote all content on Smoke.com. You might even get paid for it!
+It is free to post, comment, or upvote all content on Smoke.io. You might even get paid for it!
 
 <a href="/welcome#Table_of_Contents">^</a>
 <a class="anchor" name="Upvotes"></a>

@@ -1,6 +1,6 @@
 # Please Read
 
-Please read these instructions before submitting issues to the Smoke.com GitHub repository. The issue tracker is for bugs and specific implementation discussion **only**. It should not be used for other purposes, as described below.
+Please read these instructions before submitting issues to the Smoke.io GitHub repository. The issue tracker is for bugs and specific implementation discussion **only**. It should not be used for other purposes, as described below.
 
 ## Bug Reports
 
@@ -12,7 +12,7 @@ If you are having trouble using the website but it is not an error with the webs
 
 ## Enhancement Suggestions
 
-Do **not** use the issue tracker to suggest enhancements or improvements to the platform. The best place for these discussions is on Smoke.com. If there is a well vetted idea that has the support of the community that you feel should be considered by the development team, please email it to [sneak@smoke.io](mailto:sneak@smoke.io) for review.
+Do **not** use the issue tracker to suggest enhancements or improvements to the platform. The best place for these discussions is on Smoke.io. If there is a well vetted idea that has the support of the community that you feel should be considered by the development team, please email it to [sneak@smoke.io](mailto:sneak@smoke.io) for review.
 
 ## Implementation Discussion
 
@@ -26,9 +26,9 @@ This is not the place to make suggestions for product improvement (please see th
 
 Please do a keyword search to see if there is already an existing issue before opening a new one.
 
-## Smoke.com vs. Smoke Blockchain
+## Smoke.io vs. Smoke Blockchain
 
-This issue tracker is only intended to track issues for the Smoke.com website. If the issue is with the Smoke blockchain, please open an issue in the [Smoke Repository](https://github.com/steemit/steem).
+This issue tracker is only intended to track issues for the Smoke.io website. If the issue is with the Smoke blockchain, please open an issue in the [Smoke Repository](https://github.com/steemit/steem).
 
 ## Pull Requests
 

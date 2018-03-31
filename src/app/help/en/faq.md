@@ -5,7 +5,7 @@
 
 <a class="anchor" name="Table_of_Contents_General"></a>
 ### General
-- <a href="/faq.html#What_is_Smoke_com">What is Smoke.com?</a>
+- <a href="/faq.html#What_is_Smoke_com">What is Smoke.io?</a>
 - <a href="/faq.html#How_does_Smoke_work">How does Smoke work?</a>
 - <a href="/faq.html#How_does_Smoke_differ_from_other_social_media_websites">How does Smoke differ from other social media websites?</a>
 - <a href="/faq.html#Does_it_cost_anything_to_post__comment__or_vote">Does it cost anything to post, comment, or vote?</a>
@@ -21,7 +21,7 @@
 - <a href="/faq.html#How_long_does_the_account_approval_process_take">How long does the account approval process take?</a>
 - <a href="/faq.html#Why_do_I_need_to_provide_my_email_and_phone_number">Why do I need to provide my email and phone number?</a>
 - <a href="/faq.html#Can_I_create_a_Smoke_account_without_an_email_and_phone_number">Can I create a Smoke account without an email and phone number?</a>
-- <a href="/faq.html#What_are_other_ways_to_create_an_account_on_the_blockchain_besides_using_Smoke_com">What are other ways to create an account on the blockchain besides using Smoke.com?</a>
+- <a href="/faq.html#What_are_other_ways_to_create_an_account_on_the_blockchain_besides_using_Smoke_com">What are other ways to create an account on the blockchain besides using Smoke.io?</a>
 - <a href="/faq.html#It_is_not_letting_me_create_an_account_with_my_phone_number__What_should_I_do">It is not letting me create an account with my phone number. What should I do?</a>
 - <a href="/faq.html#What_happens_if_my_email_or_phone_number_changes">What happens if my email or phone number changes?</a>
 - <a href="/faq.html#Am_I_allowed_to_create_more_than_one_account">Am I allowed to create more than one account</a>
@@ -181,8 +181,8 @@
 
 <a class="anchor" name="Table_of_Contents_Developers"></a>
 ### Developers
-- <a href="/faq.html#Are_the_Smoke_blockchain_and_Smoke_com_code_open_source">Are the Smoke blockchain and Smoke.com code open-source?</a>
-- <a href="/faq.html#Is_there_a_Github_page_for_Smoke_com">Is there a Github page for Smoke.com?</a>
+- <a href="/faq.html#Are_the_Smoke_blockchain_and_Smoke_com_code_open_source">Are the Smoke blockchain and Smoke.io code open-source?</a>
+- <a href="/faq.html#Is_there_a_Github_page_for_Smoke_com">Is there a Github page for Smoke.io?</a>
 - <a href="/faq.html#Is_there_a_Github_page_for_the_Smoke_blockchain">Is there a Github page for the Smoke blockchain?</a>
 - <a href="/faq.html#What_is_available_for_developers_interested_in_Smoke_and_Smoke">What is available for developers interested in Smoke and Smoke?</a>
 - <a href="/faq.html#How_do_I_use_cli_wallet">How do I use cli_wallet?</a>
@@ -208,7 +208,7 @@
 # General
 
 <a class="anchor" name="What_is_Smoke_com"></a>
-## What is Smoke.com?
+## What is Smoke.io?
 
 Smoke is a social network and content rewards platform that makes the crowd the beneficiaries of the attention economy. It does this be rewarding users with SMOKE.
 
@@ -230,7 +230,7 @@ Most social media sites extract value from their userbase for the benefit of sha
 <a class="anchor" name="Does_it_cost_anything_to_post__comment__or_vote"></a>
 ## Does it cost anything to post, comment, or vote?
 
-No. It is free to post, comment, and vote on content on Smoke.com. You might even get paid for it!
+No. It is free to post, comment, and vote on content on Smoke.io. You might even get paid for it!
 
 <a href="/faq.html#Table_of_Contents_General">^</a>
 <a class="anchor" name="Can_I_earn_digital_tokens_on_Smoke_How"></a>
@@ -274,7 +274,7 @@ It is best to have realistic expectations, without focusing on rewards when you 
 <a class="anchor" name="How_do_I_create_an_account"></a>
 ## How do I create an account?
 
-Click on the "Sign Up" link at the top of Smoke.com to get started.
+Click on the "Sign Up" link at the top of Smoke.io to get started.
 
 You will be asked to verify your email address and phone number. After your email address and phone number have been verified, you will be added to the waiting list. You will be notified via email once your account is approved.
 
@@ -298,17 +298,17 @@ If your account has not been approved after one week, please ask for help in the
 <a class="anchor" name="Why_do_I_need_to_provide_my_email_and_phone_number"></a>
 ## Why do I need to provide my email and phone number?
 
-To create an account on the blockchain, it costs SMOKE tokens. When you create an account through Smoke.com, Smoke Inc. is supplying the tokens to pay the account creation fee. In order to prevent users from abusing the paid-for signup and creating multiple accounts, we need to be able to verify that each user is only signing up for one account.
+To create an account on the blockchain, it costs SMOKE tokens. When you create an account through Smoke.io, Smoke Inc. is supplying the tokens to pay the account creation fee. In order to prevent users from abusing the paid-for signup and creating multiple accounts, we need to be able to verify that each user is only signing up for one account.
 
 <a href="/faq.html#Table_of_Contents_Accounts">^</a>
 <a class="anchor" name="Can_I_create_a_Smoke_account_without_an_email_and_phone_number"></a>
 ## Can I create a Smoke account without an email and phone number?
 
-The only way to have an account created via Smoke.com is to supply your email and phone number. Because Smoke is an open and permissionless network, there are other ways to create a Smoke account. Any Smoke blockchain account can be used on Smoke.com
+The only way to have an account created via Smoke.io is to supply your email and phone number. Because Smoke is an open and permissionless network, there are other ways to create a Smoke account. Any Smoke blockchain account can be used on Smoke.io
 
 <a href="/faq.html#Table_of_Contents_Accounts">^</a>
 <a class="anchor" name="What_are_other_ways_to_create_an_account_on_the_blockchain_besides_using_Smoke_com"></a>
-## What are other ways to create an account on the blockchain besides using Smoke.com?
+## What are other ways to create an account on the blockchain besides using Smoke.io?
 
 If you are willing to pay your own signup fee, then there are other ways to create a new account on the blockchain.
 
@@ -332,7 +332,7 @@ Currently there is no way to change the email or phone number that is linked to 
 <a class="anchor" name="Am_I_allowed_to_create_more_than_one_account"></a>
 ## Am I allowed to create more than one account?
 
-Each user is allowed only one paid-for account created via Smoke.com, however users are allowed to create multiple accounts on the blockchain. Creating additional accounts on the blockchain requires users to pay their own account creation fee for any additional accounts.
+Each user is allowed only one paid-for account created via Smoke.io, however users are allowed to create multiple accounts on the blockchain. Creating additional accounts on the blockchain requires users to pay their own account creation fee for any additional accounts.
 
 <a href="/faq.html#Table_of_Contents_Accounts">^</a>
 <a class="anchor" name="Can_I_delete_or_deactivate_my_account"></a>
@@ -346,7 +346,7 @@ Accounts can not be deactivated or deleted. The account along with all of its ac
 <a class="anchor" name="Is_there_an_Etiquette_Guide_for_Smoke"></a>
 ## Is there an Etiquette Guide for Smoke?
 
-There are no official rules for participating on Smoke.com, but one of the users @thecryptofiend has created an <a href="https://smoke.io/steemit/@thecryptofiend/the-complete-steemit-etiquette-guide-revision-2-0">Etiquette Guide</a> for the community. While it is not required to follow the suggestions in the guide, they are standards that many users in the community choose to follow.
+There are no official rules for participating on Smoke.io, but one of the users @thecryptofiend has created an <a href="https://smoke.io/steemit/@thecryptofiend/the-complete-steemit-etiquette-guide-revision-2-0">Etiquette Guide</a> for the community. While it is not required to follow the suggestions in the guide, they are standards that many users in the community choose to follow.
 
 <a href="/faq.html#Table_of_Contents_Community">^</a>
 <a class="anchor" name="Am_I_required_to_verify_my_identity"></a>
@@ -386,7 +386,7 @@ These are various ways to sort Smoke posts.
 <a class="anchor" name="What_information_is_available_in_my_account_menu"></a>
 ## What information is available in my account menu?
 
-You can get to your account menu by clicking on the avatar icon in the top-right corner of a Smoke.com page. 
+You can get to your account menu by clicking on the avatar icon in the top-right corner of a Smoke.io page. 
 
 **Feed** - Here is where you go to see the most recent posts from the people you follow.
 
@@ -448,7 +448,7 @@ When there is new activity in your feed, you receive a reply from another user, 
 
 Smoke also allows you to subscribe to receive additional notifications when users mention you in a comment or post.
 
-Currently, there are no options to receive notifications for votes directly on Smoke.com. But, there is a third-party application https://steemstats.com/, developed by @jesta, which has an option to set up additional notifications on your computer.
+Currently, there are no options to receive notifications for votes directly on Smoke.io. But, there is a third-party application https://steemstats.com/, developed by @jesta, which has an option to set up additional notifications on your computer.
 
 <a href="/faq.html#Table_of_Contents_Site_Navigation">^</a>
 <a class="anchor" name="What_is_shown_in_my_profile"></a>
@@ -498,7 +498,7 @@ Yes. This can be seen under the Settings page.
 <a class="anchor" name="Can_I_see_which_users_have_muted_me"></a>
 ## Can I see which users have muted me?
 
-No. This information is not presented on Smoke.com.
+No. This information is not presented on Smoke.io.
 
 <a href="/faq.html#Table_of_Contents_Site_Navigation">^</a>
 <a class="anchor" name="Can_I_see_the_list_of_users_I_am_following__and_who_is_following_me"></a>
@@ -564,7 +564,7 @@ You can also read <a href="https://smoke.io/steemitguide/@algimantas/detailed-gu
 <a class="anchor" name="Is_there_a_way_I_can_make_my_images_smaller"></a>
 ## Is there a way I can make my images smaller?
 
-Yes, but the picture must be resized before it is uploaded into the Smoke.com editor. This can be done in your favorite photo editing software, or online by uploading to a third-party website that features editing such as imgur.com.
+Yes, but the picture must be resized before it is uploaded into the Smoke.io editor. This can be done in your favorite photo editing software, or online by uploading to a third-party website that features editing such as imgur.com.
 
 <a href="/faq.html#Table_of_Contents_Posting">^</a>
 <a class="anchor" name="What_are_tags"></a>
@@ -650,7 +650,7 @@ Language-specific groups include:
 <a class="anchor" name="Can_I_delete_something_I_posted"></a>
 ## Can I delete something I posted?
 
-The blockchain will always contain the full edit history of posts and comments, so it can never be completely deleted. If you would like to update a post so that users cannot see the content via Smoke.com, you can edit the post and replace it with blank content for as long as the post is active. After seven days, the post can no longer be edited.
+The blockchain will always contain the full edit history of posts and comments, so it can never be completely deleted. If you would like to update a post so that users cannot see the content via Smoke.io, you can edit the post and replace it with blank content for as long as the post is active. After seven days, the post can no longer be edited.
 
 <a href="/faq.html#Table_of_Contents_Posting">^</a>
 <a class="anchor" name="What_does__Promoting__a_post_do"></a>
@@ -762,7 +762,7 @@ Posts and comments remain active for 7 days. When the period is over, you are ab
 
 Users have the option to delegate SMOKE Power to other users. When a user is delegated SMOKE Power, their content votes and curation rewards are calculated as if it were their own SMOKE Power. Users are not able to power down or cash out delegated SMOKE Power, as it still belongs to the original owner.
 
-Most users will have a small amount of SMOKE Power delegated to them by the Smoke account after creating an account via Smoke.com.
+Most users will have a small amount of SMOKE Power delegated to them by the Smoke account after creating an account via Smoke.io.
 
 Delegated SMOKE Power shows up in a user's wallet below their actual SMOKE Power balance in parentheses.
 
@@ -781,13 +781,13 @@ With SMOKE tokens in your wallet, click "Power Up" to turn them into SMOKE Power
 If you don’t already have SMOKE or Smoke Dollars in your wallet, you can purchase them using bitcoin (BTC), ether (ETH), or BitShares (BTS) tokens. You may purchase BTC on various exchanges, such as Coinbase.com or Localbitcoins.com. 
 
 To buy:
-- Click "Buy Smoke" from the main menu in the top right corner of Smoke.com, or from your wallet.
+- Click "Buy Smoke" from the main menu in the top right corner of Smoke.io, or from your wallet.
 - Select the currency to deposit, and enter the amount of that currency you wish to use.
 - Enter your Smoke account name (without the @) for "Your receive address".
 - Click the "Get Deposit Address" button.
 - Send the currency to the provided address.
 
-SMOKE purchases made via Smoke.com are facilitated by <a href="https://blocktrades.us">BlockTrades</a>.
+SMOKE purchases made via Smoke.io are facilitated by <a href="https://blocktrades.us">BlockTrades</a>.
 
 bitcoin can also be exchanged for SMOKE on external markets such as <a href="https://poloniex.com">Poloniex</a>, <a href="https://bittrex.com">Bittrex</a>, <a href="https://shapeshift.io">ShapeShift.io</a>, and <a href="https://changelly.com">Changelly</a>.
 
@@ -866,7 +866,7 @@ A VEST is a unit of measurement for SMOKE Power. A MVEST is one million VESTS. T
 <a class="anchor" name="Can_I_sell_goods_and_services_on_Smoke"></a>
 ## Can I sell goods and services on Smoke?
 
-Other than making a post and making sales manually, there is no interface for selling items directly on Smoke.com. You can list goods on the third-party website <a href="https://www.peerhub.com">PeerHub.com</a>. Through PeerHub, you can accept payment in Smoke Dollars or SMOKE, and you have the option to advertise your items through Smoke posts.
+Other than making a post and making sales manually, there is no interface for selling items directly on Smoke.io. You can list goods on the third-party website <a href="https://www.peerhub.com">PeerHub.com</a>. Through PeerHub, you can accept payment in Smoke Dollars or SMOKE, and you have the option to advertise your items through Smoke posts.
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="How_can_I_withdraw_my_SMOKE_or_SBD_coins"></a>
@@ -1304,7 +1304,7 @@ If you made your account through Smoke and it is compromised, immediately visit 
 
 If your password has been changed without your consent, then the account designated as your recovery account can generate a new owner key for the account. The account recovery must be completed within 30 days of the password being changed, and you must supply a recent owner key that was valid within the last 30 days.
 
-Smoke Inc. owns the default recovery account (@steem) for all users who sign up using Smoke.com. Smoke can identify users by their original email, Facebook, or Reddit logins that were used to signup via Smoke.com.
+Smoke Inc. owns the default recovery account (@steem) for all users who sign up using Smoke.io. Smoke can identify users by their original email, Facebook, or Reddit logins that were used to signup via Smoke.io.
 
 If you don't have the master password or owner key that was valid the past 30 days, or are unable to prove that you are the original owner of the account, then your account will be unrecoverable.
 
@@ -1318,15 +1318,15 @@ If you find a security issue please report the details to security@smoke.io.
 # Developers
 
 <a class="anchor" name="Are_the_Smoke_blockchain_and_Smoke_com_code_open_source"></a>
-## Are the Smoke blockchain and Smoke.com code open-source?
+## Are the Smoke blockchain and Smoke.io code open-source?
 
-Yes. Both the Smoke blockchain and Smoke.com are open-source projects.
+Yes. Both the Smoke blockchain and Smoke.io are open-source projects.
 
-Developers should however avoid the use of the term "Smoke" in their own products, and instead refer to the Smoke Blockchain or Smoke Platform. Smoke refers to Smoke.com, which is owned by Smoke, Inc.
+Developers should however avoid the use of the term "Smoke" in their own products, and instead refer to the Smoke Blockchain or Smoke Platform. Smoke refers to Smoke.io, which is owned by Smoke, Inc.
 
 <a href="/faq.html#Table_of_Contents_Developers">^</a>
 <a class="anchor" name="Is_there_a_Github_page_for_Smoke_com"></a>
-## Is there a Github page for Smoke.com?
+## Is there a Github page for Smoke.io?
 
 https://github.com/steemit/condenser
 
@@ -1410,7 +1410,7 @@ https://steem.io/SmokeWhitePaper.pdf
 
 If you post your question in the <a href="https://steemit.chat/channel/help">#help</a> channel on <a href="https://steemit.chat/home">steemit.chat</a>, the users there may be able to help.
 
-You can also create a post on Smoke.com with the tag #help, and someone in the community may be able to answer it.
+You can also create a post on Smoke.io with the tag #help, and someone in the community may be able to answer it.
 
 <a href="/faq.html#Table_of_Contents_Miscellaneous">^</a>
 <a class="anchor" name="Disclaimer"></a>

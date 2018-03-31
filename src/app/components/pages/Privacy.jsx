@@ -356,7 +356,7 @@ class Privacy extends React.Component {
                             accepted standard on how to respond to web browsers’ DNT signals. When you have DNT enabled,
                             we may still use information collected
                             for analytics and measurement purposes or to otherwise provide our Services (e.g.,
-                            Smoke.com buttons), but we will not load any
+                            Smoke.io buttons), but we will not load any
                             third-party trackers. You may, however, opt out of having information about you collected
                             and used for behavioral advertising
                             purposes, as described above.

@@ -181,7 +181,7 @@ class CreateAccount extends React.Component {
                 <div className="column">
                     <br/>
                     <div className="callout alert">
-                        <p>Membership to Smoke.com is now under invitation only because of unexpectedly high sign up
+                        <p>Membership to Smoke.io is now under invitation only because of unexpectedly high sign up
                             rate.</p>
                     </div>
                 </div>
