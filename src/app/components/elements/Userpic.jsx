@@ -23,21 +23,24 @@ class Userpic extends Component {
         const {account, json_metadata, size} = this.props
         const hideIfDefault = this.props.hideIfDefault || false
         const avSize = (size && sizeList.indexOf(size) > -1) ? '/' + size : '';
-
+        let profileImageUrl = `u/${account}/avatar${avSize}`;
 
         // try to extract image url from users metaData
         if (hideIfDefault) {
             try {
                 const md = JSON.parse(json_metadata);
-                if (!/^(https?:)\/\//.test(md.profile.profile_image)) {
-                    return null;
+                if (md.profile.profile_image) {
+                    if (/^(https?:)\/\//.test(md.profile.profile_image)) {
+                        // hack to get profile images to display. This doesn't work if there is no metadata
+                        profileImageUrl = `0x0/${md.profile.profile_image}`;
+                    }
                 }
             } catch (e) {
                 return null;
             }
         }
 
-        const style = {backgroundImage: 'url(' + imageProxy() + `u/${account}/avatar${avSize})`};
+        const style = {backgroundImage: `url(${imageProxy()}${profileImageUrl})`};
 
         return (<div className="Userpic" style={style}/>)
     }
