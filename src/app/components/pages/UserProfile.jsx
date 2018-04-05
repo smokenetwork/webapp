@@ -250,8 +250,8 @@ export default class UserProfile extends React.Component {
                         {tt('user_profile.looks_like_you_havent_posted_anything_yet')}<br/><br/>
                         <Link to="/post">{tt('user_profile.create_a_post')}</Link><br/>
                         <Link to="/trending">{tt('user_profile.explore_trending_articles')}</Link><br/>
-                        <Link to="/welcome">{tt('user_profile.read_the_quick_start_guide')}</Link><br/>
-                        <Link to="/faq.html">{tt('user_profile.browse_the_faq')}</Link><br/>
+                        {/*<Link to="/welcome">{tt('user_profile.read_the_quick_start_guide')}</Link><br/>*/}
+                        {/*<Link to="/faq.html">{tt('user_profile.browse_the_faq')}</Link><br/>*/}
                     </div> :
                     tt('user_profile.user_hasnt_started_bloggin_yet', {name: accountname});
 
