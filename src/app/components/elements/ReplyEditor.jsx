@@ -92,7 +92,7 @@ class ReplyEditor extends React.Component {
                 rte_value: rte ? stateFromHtml(this.props.richTextEditor, raw) : null
             })
             this.setAutoVote()
-            this.setState({payoutType: this.props.isStory ? (localStorage.getItem('defaultPayoutType') || '50%') : '50%'})
+            this.setState({payoutType: this.props.isStory ? (localStorage.getItem('defaultPayoutType') || '100%') : '100%'})
         }
     }
 
@@ -453,7 +453,7 @@ class ReplyEditor extends React.Component {
                                 <select value={this.state.payoutType} onChange={this.onPayoutTypeChange}
                                         style={{color: this.state.payoutType == '0%' ? 'orange' : ''}}>
                                     <option value="100%">{tt('reply_editor.power_up_100')}</option>
-                                    <option value="50%">{tt('reply_editor.default_50_50')}</option>
+                                    {/*<option value="50%">{tt('reply_editor.default_50_50')}</option>*/}
                                     <option value="0%">{tt('reply_editor.decline_payout')}</option>
                                 </select>
 
@@ -565,7 +565,7 @@ export default (formId) => connect(
         },
         reply: ({
                     category, title, body, author, permlink, parent_author, parent_permlink, isHtml, isStory,
-                    type, originalPost, autoVote = false, payoutType = '50%',
+                    type, originalPost, autoVote = false, payoutType = '100%',
                     state, jsonMetadata,
                     successCallback, errorCallback, startLoadingIndicator
                 }) => {

@@ -39,8 +39,9 @@ class AuthorRewards extends React.Component {
 
         /// transfer log
         let rewards24Vests = 0, rewardsWeekVests = 0, totalRewardsVests = 0;
-        let rewards24Smoke = 0, rewardsWeekSmoke = 0, totalRewardsSmoke = 0;
-        let rewards24SBD = 0, rewardsWeekSBD = 0, totalRewardsSBD = 0;
+        // let rewards24Smoke = 0, rewardsWeekSmoke = 0, totalRewardsSmoke = 0;
+        // let rewards24SBD = 0, rewardsWeekSBD = 0, totalRewardsSBD = 0;
+
         const today = new Date();
         const oneDay = 86400 * 1000;
         const yesterday = new Date(today.getTime() - oneDay).getTime();
@@ -56,22 +57,22 @@ class AuthorRewards extends React.Component {
                 firstDate = new Date(item[1].timestamp).getTime();
 
                 const vest = assetFloat(item[1].op[1].vesting_payout, VEST_TICKER);
-                const steem = assetFloat(item[1].op[1].steem_payout, LIQUID_TICKER);
-                const sbd = assetFloat(item[1].op[1].sbd_payout, DEBT_TICKER);
+                // const steem = assetFloat(item[1].op[1].steem_payout, LIQUID_TICKER);
+                // const sbd = assetFloat(item[1].op[1].sbd_payout, DEBT_TICKER);
 
                 if (new Date(item[1].timestamp).getTime() > lastWeek) {
                     if (new Date(item[1].timestamp).getTime() > yesterday) {
                         rewards24Vests += vest;
-                        rewards24Smoke += steem;
-                        rewards24SBD += sbd;
+                        // rewards24Smoke += steem;
+                        // rewards24SBD += sbd;
                     }
                     rewardsWeekVests += vest;
-                    rewardsWeekSmoke += steem;
-                    rewardsWeekSBD += sbd;
+                    // rewardsWeekSmoke += steem;
+                    // rewardsWeekSBD += sbd;
                 }
                 totalRewardsVests += vest;
-                totalRewardsSmoke += steem;
-                totalRewardsSBD += sbd;
+                // totalRewardsSmoke += steem;
+                // totalRewardsSBD += sbd;
 
                 return <TransferHistoryRow key={index} op={item} context={account.name}/>
             }
@@ -80,11 +81,11 @@ class AuthorRewards extends React.Component {
 
         let currentIndex = -1;
         const curationLength = author_log.length;
-        const daysOfCuration = (firstDate - finalDate) / oneDay || 1;
-        const averageCurationVests = !daysOfCuration ? 0 : totalRewardsVests / daysOfCuration;
-        const averageCurationSmoke = !daysOfCuration ? 0 : totalRewardsSmoke / daysOfCuration;
-        const averageCurationSBD = !daysOfCuration ? 0 : totalRewardsSBD / daysOfCuration;
-        const hasFullWeek = daysOfCuration >= 7;
+        // const daysOfCuration = (firstDate - finalDate) / oneDay || 1;
+        // const averageCurationVests = !daysOfCuration ? 0 : totalRewardsVests / daysOfCuration;
+        // const averageCurationSmoke = !daysOfCuration ? 0 : totalRewardsSmoke / daysOfCuration;
+        // const averageCurationSBD = !daysOfCuration ? 0 : totalRewardsSBD / daysOfCuration;
+        // const hasFullWeek = daysOfCuration >= 7;
         const limitedIndex = Math.min(historyIndex, curationLength - 10);
         author_log = author_log.reverse().filter(() => {
             currentIndex++;
@@ -123,10 +124,10 @@ class AuthorRewards extends React.Component {
                 </div>
                 <div className="column small-12 medium-4">
                     {numberWithCommas(vestsToSp(this.props.state, rewardsWeekVests + " " + VEST_TICKER)) + " " + VESTING_TOKEN}
-                    <br/>
-                    {rewardsWeekSmoke.toFixed(3) + " " + LIQUID_TICKER}
-                    <br/>
-                    {rewardsWeekSBD.toFixed(3) + " " + DEBT_TOKEN_SHORT}
+                    {/*<br/>*/}
+                    {/*{rewardsWeekSmoke.toFixed(3) + " " + LIQUID_TICKER}*/}
+                    {/*<br/>*/}
+                    {/*{rewardsWeekSBD.toFixed(3) + " " + DEBT_TOKEN_SHORT}*/}
                 </div>
             </div>
 
