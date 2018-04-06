@@ -230,11 +230,8 @@ class LoginForm extends Component {
                 </div>
                 <div className="sign-up">
                     <hr/>
-                    <p>{tt('loginform_jsx.join_our')}
-                        <em>{tt('loginform_jsx.amazing_community')}</em>{tt('loginform_jsx.to_comment_and_reward_others')}
-                    </p>
-                    <button type="button" className="button hollow"
-                            onClick={this.SignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
+                    <p>{tt('loginform_jsx.join_our')} <em>{tt('loginform_jsx.amazing_community')}</em>{tt('loginform_jsx.to_comment_and_reward_others')}</p>
+                    <button type="button" className="button hollow" onClick={this.SignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
                 </div>
             </form>
         );
