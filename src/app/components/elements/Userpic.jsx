@@ -1,13 +1,11 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { imageProxy } from '../../utils/ProxifyUrl';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
-import {imageProxy} from '../../utils/ProxifyUrl';
 
 export const SIZE_SMALL = 'small';
 export const SIZE_MED = 'medium';
 export const SIZE_LARGE = 'large';
-
-const sizeList = [SIZE_SMALL, SIZE_MED, SIZE_LARGE]
 
 export const avatarSize = {
     small: SIZE_SMALL,
@@ -17,53 +15,37 @@ export const avatarSize = {
 
 class Userpic extends Component {
 
-    shouldComponentUpdate = shouldComponentUpdate(this, 'Userpic')
+    shouldComponentUpdate = shouldComponentUpdate(this, 'Userpic');
 
     render() {
-        const {account, json_metadata, size} = this.props
-        const hideIfDefault = this.props.hideIfDefault || false
-        const avSize = (size && sizeList.indexOf(size) > -1) ? '/' + size : '';
-
-        const profileImageDefault = `images/smoke_user.png`;
-
-        //let profileImageUrl = `u/${account}/avatar${avSize}`;
-        let profileImageUrl = profileImageDefault;
-
-        let style = {backgroundImage: `url(/${profileImageUrl})`};
-
+        const { json_metadata,account } = this.props;
+        let profileImageUrl = `/images/smoke_user.png`;
         // try to extract image url from users metaData
-        if (hideIfDefault) {
+        if (json_metadata !== '') {
             try {
-                const md = JSON.parse(json_metadata);
-                if (md.profile.profile_image) {
-                    if (/^(https?:)\/\//.test(md.profile.profile_image)) {
+                const metadata = JSON.parse(json_metadata);
+                if (metadata.profile.profile_image) {
+                    if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
                         // hack to get profile images to display. This doesn't work if there is no metadata
-                        profileImageUrl = `0x0/${md.profile.profile_image}`;
-
-                        style = {backgroundImage: `url(${imageProxy()}${profileImageUrl})`};
+                        profileImageUrl = `${imageProxy()}0x0/${metadata.profile.profile_image}`;
                     }
                 }
-            } catch (e) {
+            } catch (error) {
                 return null;
             }
         }
 
-        // let style = {backgroundImage: `url(${imageProxy()}${profileImageUrl})`};
-        // if (profileImageUrl === profileImageDefault) {
-        //     style = {backgroundImage: `url(${profileImageUrl})`};
-        // }
-
-        return (<div className="Userpic" style={style}/>)
+        return (<div className="Userpic" style={{ backgroundImage: `url(${profileImageUrl})` }}/>)
     }
 }
 
 Userpic.propTypes = {
     account: PropTypes.string.isRequired
-}
+};
 
 export default connect(
     (state, ownProps) => {
-        const {account, hideIfDefault} = ownProps
+        const {account, hideIfDefault} = ownProps;
         return {
             account,
             json_metadata: state.global.getIn(['accounts', account, 'json_metadata']),
