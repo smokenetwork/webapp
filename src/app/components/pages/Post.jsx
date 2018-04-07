@@ -152,10 +152,10 @@ class Post extends React.Component {
                         </p>
                         <ul className="NotFound__menu">
                             <li><a href="/created">new posts</a></li>
-                            <li><a href="/hot">hot posts</a></li>
+                            {/*<li><a href="/hot">hot posts</a></li>*/}
                             <li><a href="/trending">trending posts</a></li>
-                            <li><a href="/promoted">promoted posts</a></li>
-                            <li><a href="/active">active posts</a></li>
+                            {/*<li><a href="/promoted">promoted posts</a></li>*/}
+                            {/*<li><a href="/active">active posts</a></li>*/}
                         </ul>
                     </div>
                 </div>
