@@ -47,7 +47,7 @@
     "reportOnly": false,
     "setAllHeaders": true
   },
-  "img_proxy_prefix": "https://steemitdevimages.com/",
+  "img_proxy_prefix": "https://testnet.smoke.io/smokeimageproxy/",
   "ipfs_prefix": false,
   "mixpanel": false,
   "newrelic": false,
