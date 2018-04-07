@@ -47,35 +47,35 @@ class ExplorePost extends Component {
 
     render() {
         const link = this.props.permlink;
-        const steemd = 'https://steemd.com' + link;
-        const steemdb = 'https://steemdb.com' + link;
-        const busy = 'https://busy.org' + link;
-        const steemit = 'https://smoke.io' + link;
-        const phist = 'https://phist.steemdata.com/history?identifier=smoke.io' + link;
+        // const steemd = 'https://steemd.com' + link;
+        // const steemdb = 'https://steemdb.com' + link;
+        // const busy = 'https://busy.org' + link;
+        const link_smoke = 'https://smoke.io' + link;
+        // const phist = 'https://phist.steemdata.com/history?identifier=smoke.io' + link;
         let text = this.state.copied == true ? tt('explorepost_jsx.copied') : tt('explorepost_jsx.copy');
         return (
             <span className="ExplorePost">
                 <h4>{tt('g.share_this_post')}</h4>
                 <hr/>
                 <div className="input-group">
-                    <input className="input-group-field share-box" type="text" value={steemit}
+                    <input className="input-group-field share-box" type="text" value={link_smoke}
                            onChange={(e) => e.preventDefault()}/>
-                    <CopyToClipboard text={steemit} onCopy={this.onCopy}
+                    <CopyToClipboard text={link_smoke} onCopy={this.onCopy}
                                      className="ExplorePost__copy-button input-group-label">
                       <span>{text}</span>
                     </CopyToClipboard>
                 </div>
-                <h5>{tt('explorepost_jsx.alternative_sources')}</h5>
-                <ul>
-                    <li><a href={steemd} onClick={this.Smoked} target="_blank"
-                           rel="noopener noreferrer">steemd.com <Icon name="extlink"/></a></li>
-                    <li><a href={steemdb} onClick={this.Smokedb} target="_blank"
-                           rel="noopener noreferrer">steemdb.com <Icon name="extlink"/></a></li>
-                    <li><a href={busy} onClick={this.Busy} target="_blank" rel="noopener noreferrer">busy.org <Icon
-                        name="extlink"/></a></li>
-                    <li><a href={phist} onClick={this.Phist} target="_blank"
-                           rel="noopener noreferrer">phist.steemdata.com <Icon name="extlink"/></a></li>
-                </ul>
+                {/*<h5>{tt('explorepost_jsx.alternative_sources')}</h5>*/}
+                {/*<ul>*/}
+                    {/*<li><a href={steemd} onClick={this.Smoked} target="_blank"*/}
+                           {/*rel="noopener noreferrer">steemd.com <Icon name="extlink"/></a></li>*/}
+                    {/*<li><a href={steemdb} onClick={this.Smokedb} target="_blank"*/}
+                           {/*rel="noopener noreferrer">steemdb.com <Icon name="extlink"/></a></li>*/}
+                    {/*<li><a href={busy} onClick={this.Busy} target="_blank" rel="noopener noreferrer">busy.org <Icon*/}
+                        {/*name="extlink"/></a></li>*/}
+                    {/*<li><a href={phist} onClick={this.Phist} target="_blank"*/}
+                           {/*rel="noopener noreferrer">phist.steemdata.com <Icon name="extlink"/></a></li>*/}
+                {/*</ul>*/}
             </span>
         )
     }
