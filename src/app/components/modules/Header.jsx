@@ -1,13 +1,13 @@
+import tt from 'counterpart';
 import React from 'react';
-import {Link} from 'react-router';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { APP_NAME } from '../../client_config';
 import resolveRoute from '../../ResolveRoute';
+import normalizeProfile from '../../utils/NormalizeProfile';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import HorizontalMenu from '../elements/HorizontalMenu';
-import normalizeProfile from '../../utils/NormalizeProfile';
-import tt from 'counterpart';
-import {APP_NAME} from '../../client_config';
-import SvgImage from "../elements/SvgImage";
+import SvgImage from '../elements/SvgImage';
 
 class Header extends React.Component {
     static propTypes = {
@@ -149,12 +149,16 @@ class Header extends React.Component {
                 link: '/created',
                 icon: 'home',
             },
-            {
+        ];
+
+        // if we have a user profile, display the wallet link
+        if (current_account_name) {
+            menuItems.push({
                 value: tt('main_menu.wallet'),
                 link: `@${current_account_name}/transfers`,
                 icon: 'wallet',
-            },
-        ];
+            });
+        }
 
         return (
             <header className="Header noPrint">

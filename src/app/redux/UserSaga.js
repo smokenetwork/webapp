@@ -284,7 +284,8 @@ function* usernamePasswordLogin2({payload: {username, password, saveLogin,
     }
 
     if (afterLoginRedirectToWelcome) {
-        browserHistory.push('/welcome');
+        // redirecting to the user's homepage
+        browserHistory.push('/created');
     }
 }
 

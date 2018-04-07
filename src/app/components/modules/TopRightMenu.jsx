@@ -23,14 +23,19 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
     const mcl = vertical ? '' : ' sub-menu';
     const lcn = vertical ? '' : 'show-for-medium';
     const nav = navigate || defaultNavigate;
-    const submitStory = $STM_Config.read_only_mode ? null :
+    const submitStory = $STM_Config.read_only_mode ? null : (
         <li className={lcn + ' submit-story' + (vertical ? ' last' : '')}>
             <a href="/post" className="button primary" onClick={nav}>{tt('g.submit_a_story')}</a>
-        </li>;
+        </li>);
     const accountLink = `/@${username}`;
     if (loggedIn) {
         return (
             <ul className={mcn + mcl}>
+                <li>
+                    <a onClick={logout}>
+                        {tt('g.logout')}
+                    </a>
+                </li>
                 {submitStory}
                 {!vertical && <li className={'Header__userpic '}>
                     <a href={accountLink} title={username}>
