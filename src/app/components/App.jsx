@@ -192,6 +192,14 @@ class App extends React.Component {
             );
         }
 
+        let stickybar = <div className="expanded row" style={{ marginTop: "-12px"}}>
+            <div className="column" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                <div className="callout success" style={{textAlign: "center", fontSize: "0.90rem", marginTop: "0px", marginBottom: "0px"}}>
+                    <b>PLEASE READ</b>: This is the SMOKE TESTNET blockchain. TESTNET SMOKE has NO VALUE!
+                </div>
+            </div>
+        </div>;
+
         return <div
             className={'App theme-light' + (lp ? ' LP' : '') + (ip ? ' index-page' : '') + (miniHeader ? ' mini-header' : '')}
             ref="App_root"
@@ -219,6 +227,7 @@ class App extends React.Component {
             {miniHeader ? headerHidden ? null : <MiniHeader/> :
                 <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
             <div className="App__content">
+                {stickybar}
                 {welcome_screen}
                 {callout}
                 {children}
