@@ -1,8 +1,8 @@
-import {fromJS, Iterable, List, Map, Set} from 'immutable';
+import { fromJS, Iterable, List, Map, Set } from 'immutable';
 import createModule from 'redux-modules';
-import {emptyContent} from './EmptyState';
+import { contentStats } from '../utils/StateFunctions'
 import constants from './constants';
-import {contentStats} from '../utils/StateFunctions'
+import { emptyContent } from './EmptyState';
 
 const emptyContentMap = Map(emptyContent)
 
@@ -296,6 +296,14 @@ export default createModule({
             action: 'HIDE_DIALOG',
             reducer: (state, {payload: {name}}) =>
                 state.update('active_dialogs', d => d.delete(name))
+        },
+        {
+            action: 'RECEIVE_ACCOUNTS',
+            reducer: (state, {payload: {accounts = []}}) => {
+                return state.update('accounts', data => {
+                    return data.merge(accounts);
+                });
+            }
         },
 
     ]

@@ -1,10 +1,11 @@
-import {takeEvery, takeLatest} from 'redux-saga';
-import {call, fork, put, select} from 'redux-saga/effects';
-import {fetchFollowCount, loadFollows} from './FollowSaga';
-import {getContent} from './SagaShared';
-import GlobalReducer from './GlobalReducer';
+import { takeEvery, takeLatest } from 'redux-saga';
+import { call, fork, put, select } from 'redux-saga/effects';
+import { api } from 'steem';
+import { postHelper } from '../../utils/PostHelperFactory';
 import constants from './constants';
-import {api} from 'steem';
+import { fetchFollowCount, loadFollows } from './FollowSaga';
+import GlobalReducer from './GlobalReducer';
+import { getContent } from './SagaShared';
 
 export const fetchDataWatches = [watchLocationChange, watchDataRequests, watchFetchJsonRequests, watchFetchState, watchGetContent];
 
@@ -191,6 +192,16 @@ export function* fetchData(action) {
     try {
         const data = yield call([api, api[call_name]], ...args);
         yield put(GlobalReducer.actions.receiveData({data, order, category, author, permlink, accountname}));
+
+        if (order === 'by_feed') {
+            // if we are getting data from the feed, we need to manually grab accounts too
+            const postAccountNames = postHelper.getAccountsFromContent(data);
+            if (postAccountNames.length > 0) {
+                const postAccounts = yield api.getAccountsAsync(postAccountNames);
+                yield put(GlobalReducer.actions.receiveAccounts({accounts: postAccounts}))
+            }
+        }
+
     } catch (error) {
         console.error('~~ Saga fetchData error ~~>', call_name, args, error);
         yield put({type: 'global/SMOKE_API_ERROR', error: error.message});
