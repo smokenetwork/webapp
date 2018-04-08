@@ -138,41 +138,41 @@ class PostFull extends React.Component {
     }
 
     fbShare(e) {
-        const href = this.share_params.url;
+        // const href = this.share_params.url;
         e.preventDefault();
-        // loadFbSdk(document, 'script', 'facebook-jssdk').then(fb => {
-        window.FB.ui({
-            method: 'share',
-            href
-        }, (response) => {
-            if (response && !response.error_message)
-                serverApiRecordEvent('FbShare', this.share_params.link);
-        });
+        // // loadFbSdk(document, 'script', 'facebook-jssdk').then(fb => {
+        // window.FB.ui({
+        //     method: 'share',
+        //     href
+        // }, (response) => {
+        //     if (response && !response.error_message)
+        //         serverApiRecordEvent('FbShare', this.share_params.link);
         // });
+        // // });
     }
 
     twitterShare(e) {
-        serverApiRecordEvent('TwitterShare', this.share_params.link);
+        // serverApiRecordEvent('TwitterShare', this.share_params.link);
         e.preventDefault();
-        const winWidth = 640;
-        const winHeight = 320;
-        const winTop = (screen.height / 2) - (winWidth / 2);
-        const winLeft = (screen.width / 2) - (winHeight / 2);
-        const s = this.share_params;
-        const q = 'text=' + encodeURIComponent(s.title) + '&url=' + encodeURIComponent(s.url);
-        window.open('http://twitter.com/share?' + q, 'Share', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+        // const winWidth = 640;
+        // const winHeight = 320;
+        // const winTop = (screen.height / 2) - (winWidth / 2);
+        // const winLeft = (screen.width / 2) - (winHeight / 2);
+        // const s = this.share_params;
+        // const q = 'text=' + encodeURIComponent(s.title) + '&url=' + encodeURIComponent(s.url);
+        // window.open('http://twitter.com/share?' + q, 'Share', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
     }
 
     linkedInShare(e) {
-        serverApiRecordEvent('LinkedInShare', this.share_params.link);
+        // serverApiRecordEvent('LinkedInShare', this.share_params.link);
         e.preventDefault();
-        const winWidth = 720;
-        const winHeight = 480;
-        const winTop = (screen.height / 2) - (winWidth / 2);
-        const winLeft = (screen.width / 2) - (winHeight / 2);
-        const s = this.share_params;
-        const q = 'title=' + encodeURIComponent(s.title) + '&url=' + encodeURIComponent(s.url) + '&source=Smoke&mini=true';
-        window.open('https://www.linkedin.com/shareArticle?' + q, 'Share', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+        // const winWidth = 720;
+        // const winHeight = 480;
+        // const winTop = (screen.height / 2) - (winWidth / 2);
+        // const winLeft = (screen.width / 2) - (winHeight / 2);
+        // const s = this.share_params;
+        // const q = 'title=' + encodeURIComponent(s.title) + '&url=' + encodeURIComponent(s.url) + '&source=Smoke&mini=true';
+        // window.open('https://www.linkedin.com/shareArticle?' + q, 'Share', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
     }
 
     showPromotePost = () => {
