@@ -81,25 +81,9 @@ export default ({large = true, highQualityPost = true, noImage = false, sanitize
             sanitizeErrors.push('Invalid iframe URL: ' + srcAtty)
             return {tagName: 'div', text: `(Unsupported ${srcAtty})`}
         },
-        img: (tagName, attribs) => {
-            if(noImage) return {tagName: 'div', text: noImageText}
-            //See https://github.com/punkave/sanitize-html/issues/117
-            let {src, alt} = attribs
-            if(!/^(https?:)?\/\//i.test(src)) {
-                console.log('Blocked, image tag src does not appear to be a url', tagName, attribs)
-                sanitizeErrors.push('An image in this post did not save properly.')
-                return {tagName: 'img', attribs: {src: 'brokenimg.jpg'}}
-            }
-
-            // replace http:// with // to force https when needed
-            src = src.replace(/^http:\/\//i, '//')
-            let atts = {src}
-            if(alt && alt !== '') atts.alt = alt
-            return {tagName, attribs: atts}
-        },
         div: (tagName, attribs) => {
             const attys = {}
-            const classWhitelist = ['pull-right', 'pull-left', 'text-justify', 'text-rtl', 'text-center', 'text-right', 'videoWrapper', 'phishy']
+            const classWhitelist = ['pull-right', 'pull-left', 'text-justify', 'text-rtl', 'text-center', 'text-right', 'videoWrapper', 'phishy', 'post__default-img']
             const validClass = classWhitelist.find(e => attribs.class == e)
             if(validClass)
                 attys.class = validClass

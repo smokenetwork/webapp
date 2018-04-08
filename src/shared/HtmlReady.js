@@ -1,7 +1,8 @@
-import xmldom from 'xmldom'
 import tt from 'counterpart'
+import xmldom from 'xmldom'
+import { DEFAULT_POST_IMAGE_LARGE } from '../app/components/cards/PostConstants';
+import { validate_account_name } from '../app/utils/ChainValidation'
 import linksRe, { any as linksAny } from '../app/utils/Links'
-import {validate_account_name} from '../app/utils/ChainValidation'
 import proxifyImageUrl from '../app/utils/ProxifyUrl'
 
 export const getPhishingWarningMessage = () => tt('g.phishy_message');
@@ -192,11 +193,19 @@ function img(state, child) {
 // For all img elements with non-local URLs, prepend the proxy URL (e.g. `https://img0.smoke.io/0x0/`)
 function proxifyImages(doc) {
     if (!doc) return;
-    [...doc.getElementsByTagName('img')].forEach(node => {
-        const url = node.getAttribute('src')
-        if(! linksRe.local.test(url))
-            node.setAttribute('src', proxifyImageUrl(url, true))
-    })
+    const images = [...doc.getElementsByTagName('img')];
+    if (images.length > 0) {
+        images.forEach(node => {
+            const url = node.getAttribute('src')
+            if (!linksRe.local.test(url)) {
+                node.setAttribute('src', proxifyImageUrl(url, true))
+            }
+        });
+    } else {
+        // add a default image (this is a terrible place to do this :(
+        const defaultImage = DOMParser.parseFromString(`<div class="post__default-img"><img src="${DEFAULT_POST_IMAGE_LARGE}"></div>`);
+        doc.insertBefore(defaultImage, doc.firstChild);
+    }
 }
 
 function linkifyNode(child, state) {try{
