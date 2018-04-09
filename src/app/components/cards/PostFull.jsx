@@ -308,6 +308,7 @@ class PostFull extends React.Component {
                 formId={formId + '-viewer'} text={content_body} jsonMetadata={jsonMetadata}
                 large highQualityPost={high_quality_post} noImage={content.stats.gray}
                 hideImages={hideImages}
+                showDefaultImage={true}
             />
         }
 

@@ -27,8 +27,8 @@ class MarkdownViewer extends Component {
         highQualityPost: React.PropTypes.bool,
         noImage: React.PropTypes.bool,
         allowDangerousHTML: React.PropTypes.bool,
-        hideImages: React.PropTypes.bool, // whether to replace images with just a span containing the src url
-                                          // used for the ImageUserBlockList
+        hideImages: React.PropTypes.bool,
+        showDefaultImage: React.PropTypes.bool,
     }
 
     static defaultProps = {
@@ -36,6 +36,7 @@ class MarkdownViewer extends Component {
         large: false,
         allowDangerousHTML: false,
         hideImages: false,
+        showDefaultImage: false,
     }
 
     constructor() {
@@ -56,7 +57,7 @@ class MarkdownViewer extends Component {
     }
 
     render() {
-        const {noImage, hideImages} = this.props
+        const {noImage, hideImages, showDefaultImage} = this.props
         const {allowNoImage} = this.state
         let {text} = this.props
         if (!text) text = '' // text can be empty, still view the link meta data
@@ -79,7 +80,7 @@ class MarkdownViewer extends Component {
         let renderedText = html ? text : remarkable.render(text)
 
         // Embed videos, link mentions and hashtags, etc...
-        if (renderedText) renderedText = HtmlReady(renderedText, {hideImages}).html
+        if (renderedText) renderedText = HtmlReady(renderedText, {hideImages, showDefaultImage}).html
 
         // Complete removal of javascript and other dangerous tags..
         // The must remain as close as possible to dangerouslySetInnerHTML

@@ -77,7 +77,7 @@ const XMLSerializer = new xmldom.XMLSerializer()
     If hideImages and mutate is set to true all images will be replaced
     by <pre> elements containing just the image url.
 */
-export default function (html, {mutate = true, hideImages = false} = {}) {
+export default function (html, {mutate = true, hideImages = false, showDefaultImage = false} = {}) {
     const state = {mutate}
     state.hashtags = new Set()
     state.usertags = new Set()
@@ -96,7 +96,7 @@ export default function (html, {mutate = true, hideImages = false} = {}) {
                     image.parentNode.replaceChild(pre, image)
                 }
             } else {
-                proxifyImages(doc)
+                proxifyImages(doc, showDefaultImage)
             }
         }
         // console.log('state', state)
@@ -191,7 +191,7 @@ function img(state, child) {
 }
 
 // For all img elements with non-local URLs, prepend the proxy URL (e.g. `https://img0.smoke.io/0x0/`)
-function proxifyImages(doc) {
+function proxifyImages(doc, showDefaultImage = false) {
     if (!doc) return;
     const images = [...doc.getElementsByTagName('img')];
     if (images.length > 0) {
@@ -201,7 +201,7 @@ function proxifyImages(doc) {
                 node.setAttribute('src', proxifyImageUrl(url, true))
             }
         });
-    } else {
+    } else if (showDefaultImage) {
         // add a default image (this is a terrible place to do this :(
         const defaultImage = DOMParser.parseFromString(`<div class="post__default-img"><img src="${DEFAULT_POST_IMAGE_LARGE}"></div>`);
         doc.insertBefore(defaultImage, doc.firstChild);
