@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import AppPropTypes from '../utils/AppPropTypes';
 import Header from './modules/Header';
@@ -200,43 +201,47 @@ class App extends React.Component {
             </div>
         </div>;
 
-        return <div
-            className={'App theme-light' + (lp ? ' LP' : '') + (ip ? ' index-page' : '') + (miniHeader ? ' mini-header' : '')}
-            ref="App_root"
-        >
+        let sidebar = (
             <SidePanel ref="side_panel" alignment="right">
                 <TopRightMenu vertical navigate={this.navigate}/>
                 <ul className="vertical menu">
                     <li>
-                        <a href="/created" onClick={this.navigate}>
+                        <Link to="/created" onClick={this.navigate}>
                             {tt('main_menu.explore')}
-                        </a>
+                        </Link>
                     </li>
-                    <li>
-                        <a href="/@test/transfers" onClick={this.navigate}>
+
+                    { username && <li>
+                        <Link to={`/@${username}/transfers`} onClick={this.navigate}>
                             {tt('main_menu.wallet')}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile" onClick={this.navigate}>
+                        </Link>
+                    </li> }
+
+                    { username && <li>
+                        <Link to={`/@${username}`} onClick={this.navigate}>
                             {tt('main_menu.profile')}
-                        </a>
-                    </li>
+                        </Link>
+                    </li> }
                 </ul>
-            </SidePanel>
-            {miniHeader ? headerHidden ? null : <MiniHeader/> :
-                <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
-            <div className="App__content">
-                {stickybar}
-                {welcome_screen}
-                {callout}
-                {children}
-                {lp ? <LpFooter/> : null}
+            </SidePanel>);
+
+        return (
+            <div className={'App theme-light' + (lp ? ' LP' : '') + (ip ? ' index-page' : '') + (miniHeader ? ' mini-header' : '')} ref="App_root">
+                {sidebar}
+                {miniHeader ? headerHidden ? null : <MiniHeader/> :
+                    <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
+                <div className="App__content">
+                    {stickybar}
+                    {welcome_screen}
+                    {callout}
+                    {children}
+                    {lp ? <LpFooter/> : null}
+                </div>
+                <Dialogs/>
+                <Modals/>
+                <PageViewsCounter/>
             </div>
-            <Dialogs/>
-            <Modals/>
-            <PageViewsCounter/>
-        </div>
+        );
     }
 }
 
