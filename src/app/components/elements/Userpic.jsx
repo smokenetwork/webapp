@@ -21,21 +21,24 @@ class Userpic extends Component {
 
     render() {
         const { json_metadata, account } = this.props;
+
+        if ( (typeof(account) === "undefined") || (account === null) || (account === '') ) {
+            return null;
+        }
+
         let profileImageUrl = `/images/smoke_user.png`;
+
         // try to extract image url from users metaData
-        if (json_metadata !== '') {
-            try {
-                const metadata = JSON.parse(json_metadata);
-                if (metadata.profile.profile_image) {
-                    if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
-                        // hack to get profile images to display. This doesn't work if there is no metadata
-                        profileImageUrl = `${imageProxy()}0x0/${metadata.profile.profile_image}`;
-                    }
+        try {
+            const metadata = JSON.parse(json_metadata);
+
+            if (metadata.profile.profile_image) {
+                if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
+                    // hack to get profile images to display. This doesn't work if there is no metadata
+                    profileImageUrl = `${imageProxy()}64/${metadata.profile.profile_image}`;
                 }
-            } catch (error) {
-                return null;
             }
-        } else {
+        } catch (error) {
             // just use the convention
             profileImageUrl = `${PROFILE_IMAGE_URL_PREFIX}/${account}`;
         }
