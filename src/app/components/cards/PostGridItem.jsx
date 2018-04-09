@@ -1,17 +1,18 @@
-import React from 'react';
-import {Link} from 'react-router';
-import TimeAgoWrapper from '../elements/TimeAgoWrapper';
-import {connect} from 'react-redux';
-import user from '../../redux/User';
-import Reblog from '../elements/Reblog';
-import Voting from '../elements/Voting';
-import {immutableAccessor} from '../../utils/Accessors';
-import extractContent from '../../utils/ExtractContent';
-import Comments from '../elements/Comments';
-import Author from '../elements/Author';
 import tt from 'counterpart';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import user from '../../redux/User';
+import { immutableAccessor } from '../../utils/Accessors';
+import extractContent from '../../utils/ExtractContent';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
-import Userpic, {avatarSize} from '../elements/Userpic';
+import Author from '../elements/Author';
+import Comments from '../elements/Comments';
+import Reblog from '../elements/Reblog';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import Userpic, { avatarSize } from '../elements/Userpic';
+import Voting from '../elements/Voting';
+import { DEFAULT_POST_IMAGE_SMALL } from './PostConstants';
 
 class PostGridItem extends React.Component {
     static propTypes = {
@@ -87,6 +88,8 @@ class PostGridItem extends React.Component {
         let thumbnailImage;
         if (postContent.image_link) {
             thumbnailImage = proxifyImageUrl(postContent.image_link, '640x480').replace(/ /g, '%20');
+        } else {
+            thumbnailImage = DEFAULT_POST_IMAGE_SMALL;
         }
 
         return (

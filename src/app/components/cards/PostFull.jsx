@@ -17,34 +17,12 @@ import {parsePayoutAmount, repLog10} from '../../utils/ParsersAndFormatters';
 import DMCAList from '../../utils/DMCAList'
 import PageViewsCounter from '../elements/PageViewsCounter';
 import ShareMenu from '../elements/ShareMenu';
-import {serverApiRecordEvent} from '../../utils/ServerApiClient';
 import Userpic from '../elements/Userpic';
 import {APP_DOMAIN, APP_NAME} from '../../client_config';
 import tt from 'counterpart';
 import userIllegalContent from '../../utils/userIllegalContent';
 import ImageUserBlockList from '../../utils/ImageUserBlockList';
 import LoadingIndicator from '../elements/LoadingIndicator';
-
-// function loadFbSdk(d, s, id) {
-//     return new Promise(resolve => {
-//         window.fbAsyncInit = function () {
-//             window.FB.init({
-//                 appId: $STM_Config.fb_app,
-//                 xfbml: false,
-//                 version: 'v2.6',
-//                 status: true
-//             });
-//             resolve(window.FB);
-//         };
-//
-//         var js, fjs = d.getElementsByTagName(s)[0];
-//         if (d.getElementById(id)) {return;}
-//         js = d.createElement(s);
-//         js.id = id;
-//         js.src = "//connect.facebook.net/en_US/sdk.js";
-//         fjs.parentNode.insertBefore(js, fjs);
-//     });
-// }
 
 function TimeAuthorCategory({content, authorRepLog10, showTags}) {
     return (
@@ -330,6 +308,7 @@ class PostFull extends React.Component {
                 formId={formId + '-viewer'} text={content_body} jsonMetadata={jsonMetadata}
                 large highQualityPost={high_quality_post} noImage={content.stats.gray}
                 hideImages={hideImages}
+                showDefaultImage={true}
             />
         }
 
