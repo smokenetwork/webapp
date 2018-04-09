@@ -191,15 +191,6 @@ export function* fetchData(action) {
     yield put({type: 'FETCH_DATA_BEGIN'});
     try {
         const data = yield call([api, api[call_name]], ...args);
-
-        if (order === 'by_feed' || order === 'trending') {
-            // if we are getting data from the feed, we need to manually grab accounts too
-            const postAccountNames = postHelper.getAccountsFromContent(data);
-            if (postAccountNames.length > 0) {
-                const postAccounts = yield api.getAccountsAsync(postAccountNames);
-                yield put(GlobalReducer.actions.receiveAccounts({accounts: postAccounts}))
-            }
-        }
         yield put(GlobalReducer.actions.receiveData({data, order, category, author, permlink, accountname}));
 
     } catch (error) {

@@ -150,23 +150,6 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
             }
         }
 
-        // Disable temporary to deploy then fix later.
-        /**
-         * If we are on the feed page we don't receive the account data we need to display the user avatars. It's so fucking stupid, but that's how their api was built.
-         * So we get all the posts, grab the authors, then query to get the author data. THIS IS A MASSIVE HACK, but it saves us having to make a lot of changes on the proxy image
-         * service
-         */
-        if (url.match(routeRegex.PostsIndex)) {
-            if (onchain.content) {
-                if (!onchain.accounts) {
-                    onchain.accounts = {};
-                }
-                const postAuthors = postHelper.getAccountsFromContent(onchain.content);
-                const accounts = await api.getAccountsAsync([...postAuthors]) || [];
-                postHelper.addAccountsToState(accounts, onchain);
-            }
-        }
-
         // Calculate signup bonus
         const fee = parseFloat($STM_Config.registrar_fee.split(' ')[0]),
               {base, quote} = onchain.feed_price,
