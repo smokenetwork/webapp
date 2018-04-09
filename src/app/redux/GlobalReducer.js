@@ -300,11 +300,16 @@ export default createModule({
         {
             action: 'RECEIVE_ACCOUNTS',
             reducer: (state, {payload: {accounts = []}}) => {
-                return state.update('accounts', data => {
-                    return data.merge(accounts);
+                return state.updateIn(['accounts'], Map(), list => {
+                    return list.withMutations(existingAccounts => {
+                        accounts.forEach(account => {
+                            if (!existingAccounts.includes(account)) {
+                                existingAccounts.set(account.name, fromJS(account));
+                            }
+                        });
+                    });
                 });
             }
         },
-
     ]
 });
