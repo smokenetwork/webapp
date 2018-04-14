@@ -213,8 +213,7 @@ class UserWallet extends React.Component {
         }
 
         return (<div className="UserWallet">
-            {/*Hide claimbox temporary*/}
-            {/*{claimbox}*/}
+            {claimbox}
             <div className="UserWallet__balance row">
                 <div className="column small-12 medium-8">
                     SMOKE
