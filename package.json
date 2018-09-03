@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/steemit/smoke.io.git"
   },
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "smoke.io is the koa web server & middleware and react.js in-browser code for the world's first blockchain content + social media monetization platform!",
   "main": "index.js",
   "scripts": {
@@ -183,7 +183,7 @@
     "fsevents": "*"
   },
   "engines": {
-    "node": ">=7.0.0",
+    "node": ">=8.0.0",
     "npm": ">=5.4.2"
   }
 }

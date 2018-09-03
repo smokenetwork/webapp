@@ -1,6 +1,8 @@
-.DS_Store
-.idea
-condenser.iml
+# settings/config
+.env
+setenv.sh
+
+# build
 coverage
 node_modules
 *.log
@@ -9,5 +11,12 @@ vendor/*
 tmp/*
 .vagrant
 lib
-.env
-setenv.sh
+
+# project/ide
+.idea
+condenser.iml
+
+
+# Ignore Mac DS_Store files
+.DS_Store
+**/.DS_Store
