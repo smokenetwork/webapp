@@ -34,9 +34,8 @@ class SignUp extends React.Component {
             <div className="row">
                 <div className="column">
                     <h3>Sign Up</h3>
-                    <p>Smoke funds each account with over {this.props.signup_bonus} worth of Smoke Power; to prevent
-                        abuse, we
-                        require new users to login via social media.<br/>
+                    <p>Smoke funds each new account an intial fund as Smoke Power; to prevent
+                        abuse, we require new users to login via social media.<br/>
                         Your personal information will be kept <a href="/privacy.html" target="_blank">private</a>.
                     </p>
                 </div>
@@ -86,7 +85,6 @@ class SignUp extends React.Component {
 export default connect(
     state => {
         return {
-            signup_bonus: state.offchain.get('signup_bonus'),
             serverBusy: state.offchain.get('serverBusy')
         };
     }
