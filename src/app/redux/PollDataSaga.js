@@ -26,18 +26,18 @@ function* pollData() {
                     webpush_params = {error};
                 }
             }
-            const nc = yield call(getNotifications, username, webpush_params);
-            yield put({type: 'UPDATE_NOTIFICOUNTERS', payload: nc});
+            // const nc = yield call(getNotifications, username, webpush_params);
+            // yield put({type: 'UPDATE_NOTIFICOUNTERS', payload: nc});
         }
 
-        try {
-            const data = yield call([api, api.getDynamicGlobalPropertiesAsync]);
-            // console.log('-- pollData.pollData -->', data);
-            // const data = yield call([api, api.getDiscussionsByCreatedAsync], {limit: 10});
-            // yield put(GlobalReducer.actions.receiveRecentPosts({data}));
-        } catch (error) {
-            console.error('~~ pollData saga error ~~>', error);
-        }
+        // try {
+        //     const data = yield call([api, api.getDynamicGlobalPropertiesAsync]);
+        //     // console.log('-- pollData.pollData -->', data);
+        //     // const data = yield call([api, api.getDiscussionsByCreatedAsync], {limit: 10});
+        //     // yield put(GlobalReducer.actions.receiveRecentPosts({data}));
+        // } catch (error) {
+        //     console.error('~~ pollData saga error ~~>', error);
+        // }
     }
 }
 

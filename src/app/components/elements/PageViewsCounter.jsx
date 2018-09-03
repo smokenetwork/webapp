@@ -21,7 +21,7 @@ export default class PageViewsCounter extends React.Component {
 
     pageView() {
         let ref = document.referrer || '';
-        recordPageView(window.location.pathname, ref).then(views => this.setState({views}));
+        // recordPageView(window.location.pathname, ref).then(views => this.setState({views}));
         this.last_page = window.location.pathname;
     }
 

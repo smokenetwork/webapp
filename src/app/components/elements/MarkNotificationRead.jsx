@@ -17,7 +17,7 @@ class MarkNotificationRead extends React.Component {
     componentDidMount() {
         const {account, fields, update} = this.props;
         const fields_array = fields.replace(/\s/g, '').split(',');
-        markNotificationRead(account, fields_array).then(nc => update(nc));
+        // markNotificationRead(account, fields_array).then(nc => update(nc));
     }
 
     render() {

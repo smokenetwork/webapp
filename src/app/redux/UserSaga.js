@@ -276,7 +276,7 @@ function* usernamePasswordLogin2({payload: {username, password, saveLogin,
             }
             sign('posting', private_keys.get('posting_private'))
             // sign('active', private_keys.get('active_private'))
-            serverApiLogin(username, signatures);
+            // serverApiLogin(username, signatures);
         }
     } catch(error) {
         // Does not need to be fatal
