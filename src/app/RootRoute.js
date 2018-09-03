@@ -90,10 +90,6 @@ export default {
             //require.ensure([], (require) => {
             cb(null, [require('./components/pages/UserProfile')]);
             //});
-        } else if (route.page === 'Market') {
-            require.ensure([], (require) => {
-                cb(null, [require('./components/pages/Market')]);
-            });
         } else if (route.page === 'Post') {
             //require.ensure([], (require) => {
             cb(null, [require('./components/pages/PostPage')]);

@@ -6,12 +6,10 @@ import g from '../../redux/GlobalReducer'
 import {List, Map} from 'immutable'
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import QrReader from '../elements/QrReader'
-import ConvertToSmoke from '../elements/ConvertToSmoke'
 import SuggestPassword from '../elements/SuggestPassword'
 import ChangePassword from '../elements/ChangePassword'
 import CheckLoginOwner from '../elements/CheckLoginOwner'
 import QrKeyView from '../elements/QrKeyView'
-import PromotePost from './PromotePost';
 import ExplorePost from './ExplorePost';
 
 class Dialogs extends React.Component {
@@ -46,43 +44,32 @@ class Dialogs extends React.Component {
                     <QrReader onClose={this['hide_' + k]} {...v.get('params').toJS()} />
                 </Reveal>
             </span> :
-                k === 'convertToSmoke' ? <span key={idx++}>
-                <Reveal onHide={this['hide_' + k]} show revealStyle={{width: '450px'}}>
-                    <CloseButton onClick={this['hide_' + k]}/>
-                    <ConvertToSmoke onClose={this['hide_' + k]}/>
-                </Reveal>
-            </span> :
-                    k === 'suggestPassword' ? <span key={idx++}>
+                k === 'suggestPassword' ? <span key={idx++}>
                 <Reveal onHide={this['hide_' + k]} show size="medium">
                     <CloseButton onClick={this['hide_' + k]}/>
                     <SuggestPassword onClose={this['hide_' + k]}/>
                 </Reveal>
             </span> :
-                        k === 'changePassword' ? <span key={idx++}>
+                k === 'changePassword' ? <span key={idx++}>
                 <Reveal onHide={this['hide_' + k]} show>
                     <CloseButton onClick={this['hide_' + k]}/>
                     <ChangePassword onClose={this['hide_' + k]} {...v.get('params').toJS()} />
                 </Reveal>
             </span> :
-                            k === 'promotePost' ? <span key={idx++}>
-                <Reveal onHide={this['hide_' + k]} show>
-                    <CloseButton onClick={this['hide_' + k]}/>
-                    <PromotePost onClose={this['hide_' + k]} {...v.get('params').toJS()} />
-                </Reveal>
-            </span> :
-                                k === 'explorePost' ? <span key={idx++}>
+                k === 'explorePost' ? <span key={idx++}>
                 <Reveal onHide={this['hide_' + k]} show>
                     <CloseButton onClick={this['hide_' + k]}/>
                     <ExplorePost onClick={this['hide_' + k]} {...v.get('params').toJS()} />
                 </Reveal>
             </span> :
-                                    k === 'qr_key' ? <span key={idx++}>
+                k === 'qr_key' ? <span key={idx++}>
                 <Reveal onHide={this['hide_' + k]} show>
                     <CloseButton onClick={this['hide_' + k]}/>
                     <QrKeyView onClose={this['hide_' + k]} {...v.get('params').toJS()} />
                 </Reveal>
             </span> :
-                                        null
+                null
+
             return cmp ? r.push(cmp) : r
         }, List())
         return <div>

@@ -288,34 +288,9 @@
     "share_on_twitter": "Поделиться в Twitter",
     "share_on_linkedin": "Поделиться в Linkedin",
     "recent_password": "Недавний пароль",
-    "in_week_convert_DEBT_TOKEN_to_LIQUID_TOKEN": "В 3,5 дня перевести %(amount)s %(DEBT_TOKEN)s в %(LIQUID_TOKEN)s",
     "view_the_full_context": "Показать полный контекст",
     "view_the_direct_parent": "Просмотр прямого родителя",
     "you_are_viewing_a_single_comments_thread_from": "Вы читаете одну нить комментариев от"
-  },
-  "market_jsx": {
-    "action": "Действие",
-    "date_created": "Дата создания",
-    "last_price": "Последняя цена",
-    "24h_volume": "Объем за 24 часа",
-    "spread": "Спред",
-    "total": "Итого",
-    "available": "Доступно",
-    "lowest_ask": "Лучшая цена продажи",
-    "highest_bid": "Лучшая цена покупки",
-    "buy_orders": "Заказы на покупку",
-    "sell_orders": "Заказы на продажу",
-    "trade_history": "История сделок",
-    "open_orders": "Открытые сделки",
-    "sell_amount_for_atleast": "Продать %(amount_to_sell)s за %(min_to_receive)s по цене (%(effectivePrice)s)",
-    "buy_atleast_amount_for": "Купить по крайней мере %(min_to_receive)s за %(amount_to_sell)s (%(effectivePrice)s)",
-    "price_warning_above": "Эта цена намного выше текущей рыночной цены %(marketPrice)s, вы уверены?",
-    "price_warning_below": "Эта цена намного выше текущей рыночной цены %(marketPrice)s, вы уверены?",
-    "order_cancel_confirm": "Отменить заказ %(order_id)s от %(user)s?",
-    "order_cancelled": "Заказ %(order_id)s отменен.",
-    "higher": "Дороже",
-    "lower": "Дешевле",
-    "total_DEBT_TOKEN_SHORT_CURRENCY_SIGN": "Сумма %(DEBT_TOKEN_SHORT)s (%(CURRENCY_SIGN)s)"
   },
   "recoveraccountstep1_jsx": {
     "begin_recovery": "Начать восстановление",
@@ -466,12 +441,6 @@
     "APP_NAME_password_backup_required": "%(APP_NAME)s резервное копирование пароля (обязательно!)",
     "after_printing_write_down_your_user_name": "После печати запишите ваше имя пользователя"
   },
-  "converttosteem_jsx": {
-    "your_existing_DEBT_TOKEN_are_liquid_and_transferable": "Ваши %(DEBT_TOKEN)s токены ликвидны. Вы можете конвертировать %(DEBT_TOKEN)s на этом сайте (%(link)s) или вывести на биржу/обменник.",
-    "this_is_a_price_feed_conversion": "Конвертация на сайте выполняется три с половиной дня - это требуется, чтобы исключить манипуляции с ценами.",
-    "convert_to_LIQUID_TOKEN": "Ковертировать в %(LIQUID_TOKEN)s",
-    "DEBT_TOKEN_will_be_unavailable": "Эта операция будет проходить 3-5 дней от настоящего момента и ее нельзя отменить. Эти %(DEBT_TOKEN)s мгновенно станут недоступны"
-  },
   "tips_js": {
     "liquid_token": "Ликвидные цифровые токены, которые могут переданы куда угодно в любой момент.<br/>%(LIQUID_TOKEN)s может быть конвертирован в %(VESTING_TOKEN)s, этот процесс называется \"увеличение Силы Голоса\".",
     "influence_token": "Токены дают вам возможность влиять на вознаграждения за контент, а также возможность зарабатывать на курации контента.",
@@ -479,12 +448,6 @@
     "non_transferable": "%(VESTING_TOKEN)s - не ликвидные токены, требуется три месяца (13 еженедальных выплат) чтобы сконвертировать их в ликвидные токены %(LIQUID_TOKEN)s.",
     "converted_VESTING_TOKEN_can_be_sent_to_yourself_but_can_not_transfer_again": "Конвертированные %(VESTING_TOKEN)s токены могут быть отправлены себе или кому-либо еще, но не могут быть переданы вновь без конвертации в %(LIQUID_TOKEN)s.",
     "part_of_your_steem_power_is_currently_delegated": "Часть SMOKE POWER вам делегирована, это увеличивает ваше влияние на платформе. Количество делегированных токенов со временем может изменяться."
-  },
-  "promote_post_jsx": {
-    "promote_post": "Продвинуть пост",
-    "spend_your_DEBT_TOKEN_to_advertise_this_post": "Используйте ваши %(DEBT_TOKEN)s чтобы прорекламировать этот пост в секции продвигаемого контента",
-    "you_successfully_promoted_this_post": "Операция продвижения успешно завершена",
-    "this_post_was_hidden_due_to_low_ratings": "Этот пост был скрыт из-за низкого рейтинга"
   },
   "about_jsx": {
     "about_app": "О %(APP_NAME)s",

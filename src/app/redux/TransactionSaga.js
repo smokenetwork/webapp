@@ -8,7 +8,6 @@ import user from './User'
 import tr from './Transaction'
 import tt from 'counterpart'
 import getSlug from 'speakingurl'
-import {DEBT_TICKER} from '../client_config'
 import {serverApiRecordEvent} from '../utils/ServerApiClient'
 import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
 import {api, auth, broadcast, memo} from 'steem';
@@ -383,8 +382,7 @@ function* preBroadcast_comment({operation, username}) {
     // comment_options must come directly after comment
     if(comment_options) {
         const {
-            max_accepted_payout = ["1000000.000", DEBT_TICKER].join(" "),
-            percent_steem_dollars = 10000, // 10000 === 100%
+            max_accepted_payout = ["1000000.000", LIQUID_TICKER].join(" "),
             allow_votes = true,
             allow_curation_rewards = true,
         } = comment_options
@@ -393,7 +391,6 @@ function* preBroadcast_comment({operation, username}) {
                 author,
                 permlink,
                 max_accepted_payout,
-                percent_steem_dollars,
                 allow_votes,
                 allow_curation_rewards,
                 extensions: comment_options.extensions ? comment_options.extensions : []

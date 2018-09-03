@@ -15,7 +15,7 @@ import Tooltip from '../elements/Tooltip'
 import {FormattedHTMLMessage} from '../../Translator';
 import tt from 'counterpart';
 import {List} from 'immutable'
-import {DEBT_TOKENS, LIQUID_TICKER, LIQUID_TOKEN, VESTING_TOKEN} from '../../client_config';
+import { LIQUID_TOKEN, VESTING_TOKEN} from '../../client_config';
 import transaction from '../../redux/Transaction';
 
 // const assetPrecision = 1000;

@@ -59,7 +59,6 @@ class PostFull extends React.Component {
         username: React.PropTypes.string,
         unlock: React.PropTypes.func.isRequired,
         deletePost: React.PropTypes.func.isRequired,
-        showPromotePost: React.PropTypes.func.isRequired,
         showExplorePost: React.PropTypes.func.isRequired,
     };
 
@@ -152,14 +151,6 @@ class PostFull extends React.Component {
         // const q = 'title=' + encodeURIComponent(s.title) + '&url=' + encodeURIComponent(s.url) + '&source=Smoke&mini=true';
         // window.open('https://www.linkedin.com/shareArticle?' + q, 'Share', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
     }
-
-    showPromotePost = () => {
-        const post_content = this.props.cont.get(this.props.post);
-        if (!post_content) return
-        const author = post_content.get('author')
-        const permlink = post_content.get('permlink')
-        this.props.showPromotePost(author, permlink)
-    };
 
     showExplorePost = () => {
         const permlink = this.share_params.link;
@@ -391,9 +382,6 @@ export default connect(
                 operation: {author, permlink},
                 confirm: tt('g.are_you_sure')
             }));
-        },
-        showPromotePost: (author, permlink) => {
-            dispatch({type: 'global/SHOW_DIALOG', payload: {name: 'promotePost', params: {author, permlink}}});
         },
         showExplorePost: (permlink) => {
             dispatch({type: 'global/SHOW_DIALOG', payload: {name: 'explorePost', params: {permlink}}});
