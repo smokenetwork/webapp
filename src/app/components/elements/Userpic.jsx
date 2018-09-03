@@ -35,7 +35,7 @@ class Userpic extends Component {
             if (metadata.profile.profile_image) {
                 if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
                     // hack to get profile images to display. This doesn't work if there is no metadata
-                    profileImageUrl = `${imageProxy()}64/${metadata.profile.profile_image}`;
+                    profileImageUrl = `${imageProxy()}64x64/${metadata.profile.profile_image}`;
                 }
             }
         } catch (error) {
