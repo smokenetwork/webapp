@@ -117,7 +117,6 @@ class UserWallet extends React.Component {
 
         const balance_steem = parseFloat(account.get('balance').split(' ')[0]);
         const divesting = parseFloat(account.get('vesting_withdraw_rate').split(' ')[0]) > 0.000000;
-        // const sbd_balance = parseFloat(account.get('sbd_balance'))
 
         /// transfer log
         let idx = 0
@@ -131,18 +130,13 @@ class UserWallet extends React.Component {
                     return null;
                 }
 
-                if (data.sbd_payout === '0.000 SBD' && data.vesting_payout === '0.000000 VESTS')
+                if (data.vesting_payout === '0.000000 VESTS')
                     return null
                 return <TransferHistoryRow key={idx++} op={item.toJS()} context={account.get('name')}/>;
             }).filter(el => !!el).reverse();
 
         let steem_menu = [
             {value: tt('g.transfer'), link: '#', onClick: showTransfer.bind(this, 'SMOKE', 'Transfer to Account')},
-            // {
-            //     value: tt('userwallet_jsx.transfer_to_savings'),
-            //     link: '#',
-            //     onClick: showTransfer.bind(this, 'SMOKE', 'Transfer to Savings')
-            // },
             {
                 value: tt('userwallet_jsx.power_up'),
                 link: '#',
@@ -173,16 +167,13 @@ class UserWallet extends React.Component {
 
         // const isWithdrawScheduled = new Date(account.get('next_vesting_withdrawal') + 'Z').getTime() > Date.now()
         const steem_balance_str = numberWithCommas(balance_steem.toFixed(3));
-        // const steem_orders_balance_str = numberWithCommas(steemOrders.toFixed(3));
         const power_balance_str = numberWithCommas(vesting_steem.toFixed(3));
         const received_power_balance_str = (delegated_steem < 0 ? '+' : '') + numberWithCommas((-delegated_steem).toFixed(3));
         const reward_steem = parseFloat(account.get('reward_steem_balance').split(' ')[0]) > 0 ? account.get('reward_steem_balance') : null;
-        const reward_sbd = parseFloat(account.get('reward_sbd_balance').split(' ')[0]) > 0 ? account.get('reward_sbd_balance') : null;
         const reward_sp = parseFloat(account.get('reward_vesting_steem').split(' ')[0]) > 0 ? account.get('reward_vesting_steem').replace('SMOKE', 'SP') : null;
 
         let rewards = [];
         if (reward_steem) rewards.push(reward_steem);
-        if (reward_sbd) rewards.push(reward_sbd);
         if (reward_sp) rewards.push(reward_sp);
 
         let rewards_str;
@@ -281,22 +272,9 @@ class UserWallet extends React.Component {
 export default connect(
     // mapStateToProps
     (state, ownProps) => {
-        let price_per_steem = undefined
-        // const feed_price = state.global.get('feed_price')
-        // if (feed_price && feed_price.has('base') && feed_price.has('quote')) {
-        //     const {base, quote} = feed_price.toJS()
-        //     if (/ SBD$/.test(base) && / SMOKE$/.test(quote))
-        //         price_per_steem = parseFloat(base.split(' ')[0])
-        // }
-        const savings_withdraws = state.user.get('savings_withdraws')
         const gprops = state.global.get('props');
-        const sbd_interest = gprops.get('sbd_interest_rate')
         return {
             ...ownProps,
-            open_orders: state.market.get('open_orders'),
-            price_per_steem,
-            savings_withdraws,
-            sbd_interest,
             gprops
         }
     },
@@ -311,7 +289,6 @@ export default connect(
             const operation = {
                 account: username,
                 reward_steem: account.get('reward_steem_balance'),
-                reward_sbd: account.get('reward_sbd_balance'),
                 reward_vests: account.get('reward_vesting_balance')
             };
 

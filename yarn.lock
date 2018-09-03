@@ -8257,7 +8257,7 @@ stdout-stream@^1.4.0:
 
 "steem@github:smokenetwork/smoke-js#dev":
   version "0.1.0"
-  resolved "https://codeload.github.com/smokenetwork/smoke-js/tar.gz/0b582753c5240d2ca20fb224c6a12565219b010e"
+  resolved "https://codeload.github.com/smokenetwork/smoke-js/tar.gz/ae8ee25a69b491cd88224d4b5b03e52d5464037c"
   dependencies:
     bigi "^1.4.2"
     bluebird "^3.4.6"
