@@ -127,7 +127,7 @@ class App extends React.Component {
     render() {
         const {
             location, params, children, flash, new_visitor,
-            depositSmoke, , username, nightmodeEnabled
+            depositSmoke, username, nightmodeEnabled
         } = this.props;
         const lp = false; //location.pathname === '/';
         const miniHeader = location.pathname === '/create_account' || location.pathname === '/pick_account';
