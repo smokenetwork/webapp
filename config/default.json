@@ -96,8 +96,8 @@
     "auth_token": false
   },
   "upload_image": false,
-  "steemd_connection_client": "wss://steemd.smoke.io",
-  "steemd_connection_server": "wss://steemd.smoke.io",
-  "chain_id": "0000000000000000000000000000000000000000000000000000000000000000",
-  "address_prefix": "STM"
+  "steemd_connection_client": "https://testnet.smoke.io/wss",
+  "steemd_connection_server": "https://testnet.smoke.io/wss",
+  "chain_id": "a66e00caa50e6817bbe24e927bf48c5d4ba1b33f36bdbb5fa262a04012c4e3ee",
+  "address_prefix": "SMK"
 }
