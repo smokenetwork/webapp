@@ -14,6 +14,7 @@ import {api, auth, broadcast, memo} from 'steem';
 import base58 from 'bs58'
 import secureRandom from 'secure-random'
 import diff_match_patch from 'diff-match-patch'
+import {LIQUID_TICKER} from '../client_config'
 
 export const transactionWatches = [
     watchForBroadcast,
