@@ -129,7 +129,7 @@
     "shortid": "^2.2.8",
     "speakingurl": "^9.0.0",
     "sqlite3": "^3.1.8",
-    "steem": "github:steemit/steem-js#72a36c835a74f446da47e36feea5d5f1f4dde55b",
+    "steem": "github:smokenetwork/smoke-js#dev",
     "store": "^1.3.20",
     "style-loader": "^0.18.2",
     "svg-inline-loader": "^0.8.0",
