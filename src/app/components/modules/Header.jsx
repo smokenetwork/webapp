@@ -144,11 +144,7 @@ class Header extends React.Component {
         const logoLink = current_account_name ? `/@${current_account_name}/feed` : '/created';
 
         const menuItems = [
-            {
-                value: tt('main_menu.explore'),
-                link: '/created',
-                icon: 'home',
-            },
+            
         ];
 
         // if we have a user profile, display the wallet link
