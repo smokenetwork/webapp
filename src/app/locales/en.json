@@ -28,6 +28,7 @@
     "edit": "Edit",
     "email": "Email",
     "explore": "Explore",
+    "block_explore": "Block Explorer",
     "feed": "Feed",
     "follow": "Follow",
     "for": " for ",
@@ -217,7 +218,7 @@
   },
   "navigation": {
     "about": "About",
-    "explore": "Explore",
+    "explore": "Popular Tags",
     "APP_NAME_whitepaper": "%(APP_NAME)s Whitepaper",
     "buy_LIQUID_TOKEN": "Buy %(LIQUID_TOKEN)s",
     "sell_LIQUID_TOKEN": "Sell %(LIQUID_TOKEN)s",
@@ -239,10 +240,12 @@
     "bluepaper": "Smoke Bluepaper",
     "whitepaper": "Smoke Whitepaper",
     "intro_tagline": "Smoke, Get Paid. Repeat.",
-    "intro_paragraph": "Join the first cannabis community that pays you to post and curate content you love."
+    "intro_paragraph": "Join the first cannabis community that pays you to post and curate content you love.",
+    "latest": "Latest Posts",
+    "trending": "Trending Posts"
   },
   "main_menu": {
-    "explore": "Explore",
+    "explore": "Block Explorer",
     "wallet": "Wallet",
     "profile": "Profile",
     "activity": "Activity",
