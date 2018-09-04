@@ -221,14 +221,17 @@ class App extends React.Component {
                             {tt('navigation.explore')}
                         </a>
                     </li>
-                    <li>
-                        <a href="/~witnesses" onClick={this.navigate}>
-                            {tt('navigation.vote_for_witnesses')}
-                        </a>
-                    </li>
+                  </ul>
+                  <ul className="vertical menu">
+
                     <li>
                         <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
                             {tt('main_menu.explore')}&nbsp;<Icon name="extlink"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/~witnesses" onClick={this.navigate}>
+                            {tt('navigation.vote_for_witnesses')}
                         </a>
                     </li>
                     <li>
@@ -236,7 +239,24 @@ class App extends React.Component {
                             {tt('navigation.change_account_password')}
                         </a>
                     </li>
-                    <li className="last">
+                    </ul>
+                    <ul className="vertical menu">
+                    <li>
+                        <a href="https://smoke.network/Smoke-Whitepaper-2.0.pdf" target="_blank" rel="noopener noreferrer">
+                            {tt('navigation.whitepaper')}&nbsp;<Icon name="extlink"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/privacy.html" onClick={this.navigate}>
+                            {tt('navigation.privacy_policy')}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tos.html" onClick={this.navigate}>
+                            {tt('navigation.terms_of_service')}
+                        </a>
+                    </li>
+                    <li>
                         <a href="https://smoke.network" target="_blank" rel="noopener noreferrer">
                             {tt('navigation.learn_more')}&nbsp;<Icon name="extlink"/>
                         </a>
