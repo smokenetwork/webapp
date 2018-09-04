@@ -43,7 +43,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
                     </a>
                     <div className="TopRightMenu__notificounter"><NotifiCounter fields="total"/></div>
                 </li>}
-                {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger show-for-small-only">
+                {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
                     <a href="#" onClick={toggleOffCanvasMenu}>
                         <span className="hamburger"/>
                     </a>
