@@ -153,8 +153,7 @@ class ChangePassword extends React.Component {
                     </div>
                     <br/>
                     <label>
-                        <div className="float-right"><a
-                            href="/recover_account_step_1">{tt('g.recover_password')}</a></div>
+                        
                         {tt('g.current_password')}
                         <br/>
                         <input {...cleanReduxInput(password)} type="password" disabled={loading}/>
