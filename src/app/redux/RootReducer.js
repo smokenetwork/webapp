@@ -4,7 +4,6 @@ import {routerReducer} from 'react-router-redux';
 import appReducer from './AppReducer';
 //import discussionReducer from './DiscussionReducer';
 import globalReducerModule from './GlobalReducer';
-import marketReducerModule from './MarketReducer';
 import user from './User';
 // import auth from './AuthSaga';
 import transaction from './Transaction';
@@ -48,7 +47,6 @@ function initReducer(reducer, type) {
 
 export default combineReducers({
     global: initReducer(globalReducerModule.reducer, 'global'),
-    market: initReducer(marketReducerModule.reducer),
     offchain: initReducer(offchain),
     user: initReducer(user.reducer),
     // auth: initReducer(auth.reducer),

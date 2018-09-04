@@ -1,5 +1,5 @@
 {
-  "database_url": "mysql://root:password@127.0.0.1/steemit_dev",
+  "database_url": "mysql://root:123456@127.0.0.1/smoke",
   "disable_signups": false,
   "facebook_app_id": false,
   "grant": {
@@ -33,7 +33,7 @@
   "helmet": {
     "directives": {
       "childSrc": "'self' www.youtube.com staticxx.facebook.com w.soundcloud.com player.vimeo.com",
-      "connectSrc": "'self' smoke.io wss://steemd.smoke.io api.blocktrades.us",
+      "connectSrc": "'self' smoke.io testnet.smoke.io https://testnet.smoke.io wss://testnet.smoke.io",
       "defaultSrc": "'self' www.youtube.com staticxx.facebook.com player.vimeo.com",
       "fontSrc": "data: fonts.gstatic.com",
       "frameAncestors": "'none'",
