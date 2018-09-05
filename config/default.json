@@ -60,8 +60,8 @@
     "site_key": false
   },
   "registrar": {
-    "account": "-",
-    "fee": "4.2 SMOKE",
+    "account": "smoke",
+    "fee": "4.200 SMOKE",
     "delegation": "0.000000 VESTS",
     "signing_key": "5J..."
   },
