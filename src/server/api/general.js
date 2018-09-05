@@ -475,23 +475,24 @@ function* createAccount({
     // '0.000000 VESTS'
     const operations = [
         [
-            'account_create_with_delegation',
+            'account_create',
             {
-                fee, creator, new_account_name, json_metadata, delegation,
+                fee, creator, new_account_name,
                 owner: {weight_threshold: 1, account_auths: [], key_auths: [[owner, 1]]},
                 active: {weight_threshold: 1, account_auths: [], key_auths: [[active, 1]]},
                 posting: {weight_threshold: 1, account_auths: [], key_auths: [[posting, 1]]},
                 memo_key: memo,
-            }
-        ],
-        [
-            'transfer_to_vesting',
-            {
-                from: creator,
-                to: new_account_name,
-                amount: '4.200 SMOKE'
+                json_metadata,
             }
         ]
+        // [
+        //     'transfer_to_vesting',
+        //     {
+        //         from: creator,
+        //         to: new_account_name,
+        //         amount: '4.200 SMOKE'
+        //     }
+        // ]
     ];
 
     yield broadcast.sendAsync({

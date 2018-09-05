@@ -66,11 +66,7 @@ function* confirmEmailHandler() {
         { replacements: { email: eid.email }, type: models.sequelize.QueryTypes.SELECT }
     );
     if (number_of_created_accounts && number_of_created_accounts[0].result > 0) {
-        console.log(
-            "-- /confirm_email email has already been used -->",
-            this.session.uid,
-            eid.email
-        );
+        console.log("-- /confirm_email email has already been used -->", this.session.uid, eid.email);
         this.flash = {error: 'This email has already been used'};
         this.redirect('/pick_account');
         return;
@@ -89,19 +85,17 @@ function* confirmEmailHandler() {
     if (mixpanel)
         mixpanel.track("SignupStepConfirmEmail", { distinct_id: this.session.uid });
 
+    const eid_phone = yield models.Identity.findOne({
+        where: { user_id: eid.user_id, provider: "phone", verified: true}
+    });
 
-    // disable mobile verifying temporary
-    // const eid_phone = yield models.Identity.findOne({
-    //     where: { user_id: eid.user_id, provider: "phone", verified: true}
-    // });
-
-    // if (eid_phone) {
+    if (eid_phone) {
         // this.flash = { success: "Thanks for confirming your email!" };
         this.redirect("/approval?confirm_email=true");
-    // } else {
-    //     this.flash = { success: "Thanks for confirming your email. Your phone needs to be confirmed before proceeding." };
-    //     this.redirect("/enter_mobile");
-    // }
+    } else {
+        this.flash = { success: "Thanks for confirming your email. Your phone needs to be confirmed before proceeding." };
+        this.redirect("/enter_mobile");
+    }
 
     // check if the phone is confirmed then redirect to create account - this is useful when we invite users and send them the link
     // const mid = yield models.Identity.findOne({
@@ -357,8 +351,7 @@ export default function useEnterAndConfirmEmailPages(app) {
         }
 
         // redirect to phone verification
-        // this.redirect("/enter_mobile");
-        this.redirect("/approval");
+        this.redirect("/enter_mobile");
     });
 
     router.get("/confirm_email/:code", confirmEmailHandler);
