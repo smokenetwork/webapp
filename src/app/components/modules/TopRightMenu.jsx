@@ -57,7 +57,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
                 <li className={lcn} style={{paddingTop: 0, paddingBottom: 0}}>
                     <LoadingIndicator type="circle" inline/>
                 </li>
-                {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger show-for-small-only">
+                {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
                     <a href="#" onClick={toggleOffCanvasMenu}>
                         <span className="hamburger"/>
                     </a>
@@ -70,7 +70,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
             <li className={lcn}><a href="/pick_account">{tt('g.sign_up')}</a></li>
             <li className={lcn}><a href="/login.html" onClick={showLogin}>{tt('g.login')}</a></li>
             {submitStory}
-            {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger show-for-small-only">
+            {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
                 <a href="#" onClick={toggleOffCanvasMenu}>
                     <span className="hamburger"/>
                 </a>
