@@ -4,8 +4,7 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import models from 'db/models';
 import ServerHTML from 'server/server-html';
-// import twilioVerify from 'server/utils/twilio';
-import teleSignVerify from 'server/utils/teleSign';
+import twilioVerify from 'server/utils/twilio';
 import CountryCode from 'app/components/elements/CountryCode';
 import {checkCSRF, getRemoteIp} from 'server/utils/misc';
 import MiniHeader from 'app/components/modules/MiniHeader';
@@ -29,14 +28,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const assets = Object.assign({}, require(assets_file), { script: [] });
-
-// function mousePosition(e) {
-//     // log x/y cords
-//     console.log("hereI am man", e);
-//     if(e.type === 'mouseenter') {
-//         console.log(e.screenX, e.screenY);
-//     }
-// }
 
 function* confirmMobileHandler(e) {
     if (!checkCSRF(this, this.request.body.csrf)) return;
@@ -210,24 +201,9 @@ recovery should your account ever be compromised.</em></p>
 
         let phone = digits(parseInt(country) + localPhone);
 
-        // const blocked_prefixes = yield models.List.findAll({
-        //     attributes: ["id", "value"],
-        //     where: { kk: "block-phone-prefix" }
-        // });
-        // for (const bp of blocked_prefixes) {
-        //     if (phone.match(new RegExp("^" + bp.value))) {
-        //         this.flash = {
-        //             error: "Unfortunately, we don't yet have support to send SMS to your carrier, please try again later."
-        //         };
-        //         this.redirect("/enter_mobile");
-        //         return;
-        //     }
-        // }
-
         const confirmation_code = parseInt(
-            secureRandom.randomBuffer(8).toString("hex"),
-            16
-        )
+                secureRandom.randomBuffer(8).toString("hex"),
+                16 )
             .toString(10)
             .substring(0, 5); // 4 digit code
 
@@ -258,33 +234,18 @@ recovery should your account ever be compromised.</em></p>
             }
         }
 
-        // const twilioResult = yield twilioVerify(phone);
-        // console.log('-- /submit_mobile twilioResult -->', twilioResult);
-        //
-        // if (twilioResult === 'block') {
-        //     mid.update({score: 111111});
-        //     this.flash = { error: 'Unable to verify your phone number. Please try a different phone number.' };
-        //     this.redirect(enterMobileUrl);
-        //     return;
-        // }
+        const twilioResult = yield twilioVerify(phone, confirmation_code);
+        console.log('-- /submit_mobile twilioResult -->', twilioResult);
 
-        const verifyResult = yield teleSignVerify({
-            mobile: phone,
-            confirmation_code,
-            ip: getRemoteIp(this.req),
-            ignore_score: true //twilioResult === 'pass'
-        });
-
-        if (verifyResult.error) {
-            this.flash = { error: verifyResult.error };
+        if ((twilioResult === 'block') || (twilioResult == 'error')) {
+            mid.update({score: 111111});
+            this.flash = { error: 'Unable to verify your phone number. Please try a different phone number.' };
             this.redirect(enterMobileUrl);
             return;
         }
 
-        phone = verifyResult.phone;
-
         if (mid) {
-            yield mid.update({confirmation_code, phone, score: verifyResult.score});
+            yield mid.update({confirmation_code, phone});
         } else {
             mid = yield models.Identity.create({
                 provider: "phone",
@@ -292,18 +253,11 @@ recovery should your account ever be compromised.</em></p>
                 uid: this.session.uid,
                 phone,
                 verified: false,
-                confirmation_code,
-                score: verifyResult.score
+                confirmation_code
             });
         }
 
-        console.log(
-            '-- /submit_mobile -->',
-            this.session.uid,
-            this.session.user,
-            phone,
-            mid.id
-        );
+        console.log('-- /submit_mobile -->', this.session.uid, this.session.user, phone, mid.id);
 
         const body = renderToString(
             <div className="App CreateAccount">

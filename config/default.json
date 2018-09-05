@@ -61,8 +61,8 @@
   },
   "registrar": {
     "account": "-",
-    "fee": "0.5 SMOKE",
-    "delegation": "150250.000000 VESTS",
+    "fee": "4.2 SMOKE",
+    "delegation": "0.000000 VESTS",
     "signing_key": "5J..."
   },
   "requestAccountRecovery": {
@@ -93,7 +93,8 @@
   },
   "twilio": {
     "account_sid": false,
-    "auth_token": false
+    "auth_token": false,
+    "from_mobile": false
   },
   "upload_image": false,
   "steemd_connection_client": "https://testnet.smoke.io/wss",
