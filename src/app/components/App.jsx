@@ -224,11 +224,6 @@ class App extends React.Component {
                   </ul>
                   <ul className="vertical menu">
                     <li>
-                        <a href="/claim.html" onClick={this.navigate}>
-                            {tt('navigation.claim')}
-                        </a>
-                    </li>
-                    <li>
                         <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
                             {tt('main_menu.explore')}&nbsp;<Icon name="extlink"/>
                         </a>
