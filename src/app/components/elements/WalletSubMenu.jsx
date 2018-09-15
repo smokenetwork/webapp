@@ -3,7 +3,6 @@ import {Link} from 'react-router';
 import NotifiCounter from './NotifiCounter';
 import tt from 'counterpart';
 
-
 export default ({account_name}) => {
     return <ul className="WalletSubMenu menu">
         <li>
