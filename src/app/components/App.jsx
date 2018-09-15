@@ -223,7 +223,6 @@ class App extends React.Component {
                     </li>
                   </ul>
                   <ul className="vertical menu">
-
                     <li>
                         <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
                             {tt('main_menu.explore')}&nbsp;<Icon name="extlink"/>

@@ -30,6 +30,10 @@ export default {
             //require.ensure([], (require) => {
             cb(null, [require('./components/pages/Privacy')]);
             //});
+        } else if (route.page === 'Claim') {
+            //require.ensure([], (require) => {
+            cb(null, [require('./components/pages/Claim')]);
+            //});
         } else if (route.page === 'Support') {
             //require.ensure([], (require) => {
             cb(null, [require('./components/pages/Support')]);
