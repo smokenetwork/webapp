@@ -175,6 +175,12 @@ export default class UserProfile extends React.Component {
             walletClass = 'active';
             tab_content = (
                 <div>
+                    <div className="row">
+                        <div className="column">
+                            <WalletSubMenu account_name={account.name}/>
+                        </div>
+                    </div>
+                    <br/>
                     <UserWallet
                         account={accountImm}
                         showTransfer={this.props.showTransfer}
