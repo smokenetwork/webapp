@@ -195,9 +195,11 @@ class App extends React.Component {
 
         let stickybar = <div className="expanded row" style={{ marginTop: "-12px"}}>
             <div className="column" style={{paddingLeft: "0px", paddingRight: "0px"}}>
-                <div className="callout success" style={{textAlign: "center", fontSize: "0.90rem", marginTop: "0px", marginBottom: "0px"}}>
-                    <b>PLEASE READ</b>: This is the SMOKE TESTNET blockchain. TESTNET SMOKE has NO VALUE!
-                </div>
+                <a href="/claim.html" onClick={this.navigate}>  
+                    <div className="callout success" style={{textAlign: "center", fontSize: "0.90rem", marginTop: "0px", marginBottom: "0px"}}>
+                        <b>Welcome to Smoke.io</b>: If you aquired SMOKE during the pre-sale, ICO or airdrop click this banner.
+                    </div>
+                </a>
             </div>
         </div>;
 
