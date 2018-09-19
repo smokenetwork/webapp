@@ -151,11 +151,18 @@ class Header extends React.Component {
 
         // if we have a user profile, display the wallet link
         if (current_account_name) {
-            menuItems.push({
+            menuItems.push(
+            {
+                value: tt('main_menu.explore'),
+                link: '/trending',
+                icon: 'home',
+            },
+            {
                 value: tt('main_menu.wallet'),
                 link: `/@${current_account_name}/transfers`,
                 icon: 'wallet',
             });
+            
         }
 
         return (
