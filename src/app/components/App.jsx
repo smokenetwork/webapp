@@ -263,6 +263,11 @@ class App extends React.Component {
                         </a>
                     </li>
                     <li>
+                        <a href="https://docs.smoke.io" target="_blank" rel="noopener noreferrer">
+                            {tt('navigation.documentation')}&nbsp;<Icon name="extlink"/>
+                        </a>
+                    </li>
+                    <li>
                         <a href="https://smoke.network" target="_blank" rel="noopener noreferrer">
                             {tt('navigation.learn_more')}&nbsp;<Icon name="extlink"/>
                         </a>
