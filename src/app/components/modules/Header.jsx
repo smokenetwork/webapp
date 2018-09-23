@@ -145,7 +145,7 @@ class Header extends React.Component {
 
         const menuItems = [
             {
-                value: tt('main_menu.explore'),
+                value: tt('main_menu.trending'),
                 link: '/created',
                 icon: 'home',
             },
