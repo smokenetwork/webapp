@@ -7,7 +7,7 @@ export const SIZE_SMALL = 'small';
 export const SIZE_MED = 'medium';
 export const SIZE_LARGE = 'large';
 // TODO this should be configurable
-export const PROFILE_IMAGE_URL_PREFIX = 'https://testnet.smoke.io/profileimage';
+export const PROFILE_IMAGE_URL_PREFIX = 'https://smoke.io/profileimage';
 
 export const avatarSize = {
     small: SIZE_SMALL,

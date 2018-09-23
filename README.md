@@ -89,8 +89,8 @@ The intention is to configure condenser using environment variables. You can see
 Environment variables using an example like this:
 
 ```bash
-export SDC_CLIENT_STEEMD_URL="https://testnet.smoke.io/wss"
-export SDC_SERVER_STEEMD_URL="https://testnet.smoke.io/wss"
+export SDC_CLIENT_STEEMD_URL="https://rpc.smoke.io"
+export SDC_SERVER_STEEMD_URL="https://rpc.smoke.io"
 ```
 Keep in mind environment variables only exist in your active session, so if you wish to save them for later use you can put them all in a file and `source` them in.
 
