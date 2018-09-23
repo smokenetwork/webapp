@@ -195,9 +195,11 @@ class App extends React.Component {
 
         let stickybar = <div className="expanded row" style={{ marginTop: "-12px"}}>
             <div className="column" style={{paddingLeft: "0px", paddingRight: "0px"}}>
-                <div className="callout success" style={{textAlign: "center", fontSize: "0.90rem", marginTop: "0px", marginBottom: "0px"}}>
-                    <b>PLEASE READ</b>: This is the SMOKE TESTNET blockchain. TESTNET SMOKE has NO VALUE!
-                </div>
+                <a href="/claim.html" onClick={this.navigate}>  
+                    <div className="callout success" style={{textAlign: "center", fontSize: "0.90rem", marginTop: "0px", marginBottom: "0px"}}>
+                        <b>Welcome to Smoke.io</b>: If you aquired SMOKE during the pre-sale, ICO or airdrop click this banner.
+                    </div>
+                </a>
             </div>
         </div>;
 
@@ -223,6 +225,11 @@ class App extends React.Component {
                     </li>
                   </ul>
                   <ul className="vertical menu">
+                    <li>
+                        <a href="/claim.html" onClick={this.navigate}>
+                            {tt('navigation.claim')}
+                        </a>
+                    </li>
                     <li>
                         <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
                             {tt('main_menu.explore')}&nbsp;<Icon name="extlink"/>
@@ -253,6 +260,11 @@ class App extends React.Component {
                     <li>
                         <a href="/tos.html" onClick={this.navigate}>
                             {tt('navigation.terms_of_service')}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://docs.smoke.io" target="_blank" rel="noopener noreferrer">
+                            {tt('navigation.documentation')}&nbsp;<Icon name="extlink"/>
                         </a>
                     </li>
                     <li>
