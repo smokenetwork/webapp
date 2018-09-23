@@ -99,6 +99,6 @@
   "upload_image": false,
   "steemd_connection_client": "https://rpc.smoke.io",
   "steemd_connection_server": "https://rpc.smoke.io",
-  "chain_id": "a66e00caa50e6817bbe24e927bf48c5d4ba1b33f36bdbb5fa262a04012c4e3ee",
+  "chain_id": "1ce08345e61cd3bf91673a47fc507e7ed01550dab841fd9cdb0ab66ef576aaf0",
   "address_prefix": "SMK"
 }
