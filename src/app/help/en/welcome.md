@@ -120,7 +120,7 @@ If you want to share someone else's post with all of your followers, click on th
 <a class="anchor" name="Digital_Currencies"></a>
 ### Digital Currencies
 
-SMOKE, Smoke Power and Smoke Dollars are the three forms of digital currency used by the Smoke Blockchain.
+SMOKE, Smoke Power are the three forms of digital currency used by the Smoke Blockchain.
 
 More information on the three types of tokens can be found in the [Smoke FAQ](https://smoke.io/faq.html).
 

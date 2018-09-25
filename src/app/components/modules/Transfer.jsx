@@ -52,20 +52,15 @@ class TransferForm extends Component {
         const {transferType} = props.initialValues;
         const insufficientFunds = (asset, amount) => {
             const {currentAccount} = props;
-            const isWithdraw = transferType && transferType === 'Savings Withdraw';
             const balanceValue =
-                !asset || asset === 'SMOKE' ?
-                    isWithdraw ? currentAccount.get('savings_balance') : currentAccount.get('balance') :
-                    asset === 'SBD' ?
-                        isWithdraw ? currentAccount.get('savings_sbd_balance') : currentAccount.get('sbd_balance') :
-                        null;
+                !asset || asset === 'SMOKE' ? currentAccount.get('balance') : null;
             if (!balanceValue) return false;
             const balance = balanceValue.split(' ')[0];
             return parseFloat(amount) > parseFloat(balance)
         };
         const {toVesting} = props;
         const fields = toVesting ? ['to', 'amount'] : ['to', 'amount', 'asset'];
-        if (!toVesting && transferType !== 'Transfer to Savings' && transferType !== 'Savings Withdraw')
+        if (!toVesting)
             fields.push('memo');
         reactForm({
             name: 'transfer',
@@ -104,13 +99,8 @@ class TransferForm extends Component {
         const {transferType} = this.props.initialValues;
         const {currentAccount} = this.props;
         const {asset} = this.state;
-        const isWithdraw = transferType && transferType === 'Savings Withdraw';
         return !asset ||
-        asset.value === 'SMOKE' ?
-            isWithdraw ? currentAccount.get('savings_balance') : currentAccount.get('balance') :
-            asset.value === 'SBD' ?
-                isWithdraw ? currentAccount.get('savings_sbd_balance') : currentAccount.get('sbd_balance') :
-                null
+        asset.value === 'SMOKE' ? currentAccount.get('balance') : null
     }
 
     assetBalanceClick = e => {
@@ -127,8 +117,6 @@ class TransferForm extends Component {
     render() {
         const transferTips = {
             'Transfer to Account': tt('transfer_jsx.move_funds_to_another_account', {APP_NAME}),
-            'Transfer to Savings': tt('transfer_jsx.protect_funds_by_requiring_a_3_day_withdraw_waiting_period'),
-            'Savings Withdraw': tt('transfer_jsx.withdraw_funds_after_the_required_3_day_waiting_period'),
         };
         const powerTip3 = tt('tips_js.converted_VESTING_TOKEN_can_be_sent_to_yourself_but_can_not_transfer_again', {
             LIQUID_TOKEN,
@@ -286,7 +274,7 @@ export default connect(
         if (!toVesting && !initialValues.transferType)
             initialValues.transferType = 'Transfer to Account';
 
-        let transferToSelf = toVesting || /Transfer to Savings|Savings Withdraw/.test(initialValues.transferType);
+        let transferToSelf = toVesting;
         if (transferToSelf && !initialValues.to)
             initialValues.to = currentUser.get('username');
 
@@ -302,16 +290,13 @@ export default connect(
                              to, amount, asset, memo, transferType,
                              toVesting, currentUser, errorCallback
                          }) => {
-            if (!toVesting && !/Transfer to Account|Transfer to Savings|Savings Withdraw/.test(transferType))
+            if (!toVesting && !/Transfer to Account/.test(transferType))
                 throw new Error(`Invalid transfer params: toVesting ${toVesting}, transferType ${transferType}`);
 
             const username = currentUser.get('username');
             const successCallback = () => {
                 // refresh transfer history
                 dispatch({type: 'global/GET_STATE', payload: {url: `@${username}/transfers`}});
-                if (/Savings Withdraw/.test(transferType)) {
-                    dispatch({type: 'user/LOAD_SAVINGS_WITHDRAW', payload: {}})
-                }
                 dispatch(user.actions.hideTransfer())
             };
             const asset2 = toVesting ? 'SMOKE' : asset;
@@ -321,14 +306,9 @@ export default connect(
                 memo: toVesting ? undefined : (memo ? memo : '')
             }
 
-            if (transferType === 'Savings Withdraw')
-                operation.request_id = Math.floor((Date.now() / 1000) % 4294967295);
-
             dispatch(transaction.actions.broadcastOperation({
                 type: toVesting ? 'transfer_to_vesting' : (
-                    transferType === 'Transfer to Account' ? 'transfer' :
-                        transferType === 'Savings Withdraw' ? 'transfer_from_savings' :
-                            null
+                    transferType === 'Transfer to Account' ? 'transfer' : null
                 ),
                 operation,
                 successCallback,

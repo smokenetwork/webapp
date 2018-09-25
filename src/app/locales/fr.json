@@ -455,19 +455,9 @@
     "empty_feed_5": "Parcourir la FAQ"
   },
   "transferhistoryrow_jsx": {
-    "to_savings": "vers l'épargne",
-    "from_savings": "depuis l'épargne",
-    "cancel_transfer_from_savings": "Annuler le transfert vers l'épargne",
     "stop_power_down": "Arrêter la récupération de l'influence, ou le power down",
     "start_power_down_of": "Démarrer la récupération de l'influence, ou le power down",
     "receive_interest_of": "Recevoir les intérêts de"
-  },
-  "savingswithdrawhistory_jsx": {
-    "cancel_this_withdraw_request": "Voulez-vous annuler cette demande de retrait ?",
-    "pending_savings_withdrawals": "RETRAITS D'EPARGNE EN SUSPENS",
-    "withdraw": "Retirer %(amount)s",
-    "to": "vers %(to)s",
-    "from_to": "de %(from)s vers %(to)s"
   },
   "explorepost_jsx": {
     "copied": "Copié!",
@@ -583,7 +573,6 @@
     "withdraw_LIQUID_TOKEN": "Retirer %(LIQUID_TOKEN)s",
     "withdraw_DEBT_TOKENS": "Retirer %(DEBT_TOKENS)s",
     "tokens_worth_about_1_of_LIQUID_TICKER": "Des jetons d'environ 1.00$ de %(LIQUID_TICKER)s, actuellement donnant lieu à %(sbdInterest)s %% d'APR.",
-    "savings": "EPARGNE",
     "estimated_account_value": "Valeur estimée du compte",
     "next_power_down_is_scheduled_to_happen": "Le prochain retrait d'influence, ou power down, est prévu dans ",
     "transfers_are_temporary_disabled": "Les transferts sont temporairement désactivés.",

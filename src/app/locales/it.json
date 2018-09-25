@@ -455,19 +455,9 @@
     "empty_feed_5": "Leggi le FAQ"
   },
   "transferhistoryrow_jsx": {
-    "to_savings": "ai risparmi",
-    "from_savings": "dai risparmi",
-    "cancel_transfer_from_savings": "Cancella il trasferimento dai risparmi",
     "stop_power_down": "Interrompi il Power Down",
     "start_power_down_of": "Avvia il Power Down di",
     "receive_interest_of": "Ricevi l'interesse di"
-  },
-  "savingswithdrawhistory_jsx": {
-    "cancel_this_withdraw_request": "Cancellare questa richiesta di prelevamento?",
-    "pending_savings_withdrawals": "PRELIEVI DEI RISPARMI IN SOSPESO",
-    "withdraw": "Ritira %(amount)s",
-    "to": "a %(to)s",
-    "from_to": "da %(from)s a %(to)s"
   },
   "explorepost_jsx": {
     "copied": "Copiato!",
@@ -583,7 +573,6 @@
     "withdraw_LIQUID_TOKEN": "Preleva %(LIQUID_TOKEN)s",
     "withdraw_DEBT_TOKENS": "Preleva %(DEBT_TOKENS)s",
     "tokens_worth_about_1_of_LIQUID_TICKER": "I token valgono circa $1.00 di %(LIQUID_TICKER)s, attualmente percepiscono %(sbdInterest)s%% ISC.",
-    "savings": "RISPARMI",
     "estimated_account_value": "Valore stimato dell'account",
     "next_power_down_is_scheduled_to_happen": "Il prossimo power downo è programmato per avvenire",
     "transfers_are_temporary_disabled": "I trasferimenti sono temporaneamente disabilitati.",

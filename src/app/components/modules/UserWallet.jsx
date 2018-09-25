@@ -3,7 +3,6 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import g from '../../redux/GlobalReducer'
-import SavingsWithdrawHistory from '../elements/SavingsWithdrawHistory';
 import TransferHistoryRow from '../cards/TransferHistoryRow';
 import TransactionError from '../elements/TransactionError';
 import TimeAgoWrapper from '../elements/TimeAgoWrapper';
@@ -87,8 +86,6 @@ class UserWallet extends React.Component {
             });
         };
 
-        const savings_balance = account.get('savings_balance');
-        // const savings_sbd_balance = account.get('savings_sbd_balance');
         const powerDown = (cancel, e) => {
             e.preventDefault()
             const name = account.get('name');
@@ -248,8 +245,6 @@ class UserWallet extends React.Component {
                     <hr/>
                 </div>
             </div>
-
-            {isMyAccount && <SavingsWithdrawHistory/>}
 
             <div className="row">
                 <div className="column small-12">

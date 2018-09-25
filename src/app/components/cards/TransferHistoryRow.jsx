@@ -38,10 +38,8 @@ class TransferHistoryRow extends React.Component {
                 other_account = data.to;
             }
         // }
-        // else if (/^transfer$|^transfer_from_savings$/.test(type)) {
-        //     const fromWhere =
-        //             type === 'transfer_from_savings' ? tt('transferhistoryrow_jsx.from_savings') :
-        //                 ''
+        // else if (/^transfer$/.test(type)) {
+        //     const fromWhere = ''
         //
         //     if (data.from === context) {
         //         description_start += tt('g.transfer') + `${fromWhere} ${data.amount}` + tt('g.to');
@@ -57,8 +55,6 @@ class TransferHistoryRow extends React.Component {
         //     }
         //     if (data.request_id != null)
         //         description_end += ` (${tt('g.request')} ${data.request_id})`
-        // } else if (type === 'cancel_transfer_from_savings') {
-        //     description_start += `${tt('transferhistoryrow_jsx.cancel_transfer_from_savings')} (${tt('g.request')} ${data.request_id})`;
         // } else if (type === 'withdraw_vesting') {
         //     if (data.vesting_shares === '0.000000 VESTS')
         //         description_start += tt('transferhistoryrow_jsx.stop_power_down');
