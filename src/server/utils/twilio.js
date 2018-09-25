@@ -6,9 +6,11 @@ const authToken = config.get('twilio.auth_token');
 
 const from_mobile = config.get('twilio.from_mobile');
 
-const client = require('twilio')(accountSid, authToken);
+let client;
 
 export default function verify(phone, confirmation_code) {
+    if (!client) client = require('twilio')(accountSid, authToken);
+
     return client.messages
         .create({
             body: `${confirmation_code} is your Smoke confirmation code`,
