@@ -116,7 +116,7 @@ class UserWallet extends React.Component {
         const divesting = parseFloat(account.get('vesting_withdraw_rate').split(' ')[0]) > 0.000000;
 
         /// transfer log
-        let idx = 0
+        let idx = 0;
         const transfer_log = account.get('transfer_history')
             .map(item => {
                 const data = item.getIn([1, 'op', 1]);
@@ -139,7 +139,8 @@ class UserWallet extends React.Component {
                 link: '#',
                 onClick: showTransfer.bind(this, 'VESTS', 'Transfer to Account')
             },
-        ]
+        ];
+
         let power_menu = [
             {value: tt('userwallet_jsx.power_down'), link: '#', onClick: powerDown.bind(this, false)}
         ]
