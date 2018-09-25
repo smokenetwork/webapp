@@ -38,10 +38,8 @@ class TransferHistoryRow extends React.Component {
                 other_account = data.to;
             }
         // }
-        // else if (/^transfer$|^transfer_to_savings$|^transfer_from_savings$/.test(type)) {
-        //     // transfer_to_savings
+        // else if (/^transfer$|^transfer_from_savings$/.test(type)) {
         //     const fromWhere =
-        //         type === 'transfer_to_savings' ? tt('transferhistoryrow_jsx.to_savings') :
         //             type === 'transfer_from_savings' ? tt('transferhistoryrow_jsx.from_savings') :
         //                 ''
         //

@@ -576,7 +576,6 @@
   "userwallet_jsx": {
     "conversion_complete_tip": "Se completará el",
     "in_conversion": "%(amount)s en conversión",
-    "transfer_to_savings": "Transferir a ahorros",
     "power_up": "Power up",
     "power_down": "Power down",
     "market": "Mercado",

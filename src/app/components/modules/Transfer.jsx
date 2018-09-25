@@ -327,9 +327,8 @@ export default connect(
             dispatch(transaction.actions.broadcastOperation({
                 type: toVesting ? 'transfer_to_vesting' : (
                     transferType === 'Transfer to Account' ? 'transfer' :
-                        transferType === 'Transfer to Savings' ? 'transfer_to_savings' :
-                            transferType === 'Savings Withdraw' ? 'transfer_from_savings' :
-                                null
+                        transferType === 'Savings Withdraw' ? 'transfer_from_savings' :
+                            null
                 ),
                 operation,
                 successCallback,

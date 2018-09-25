@@ -596,7 +596,6 @@
   "userwallet_jsx": {
     "conversion_complete_tip": "Завершается",
     "in_conversion": "%(amount)s на конвертации",
-    "transfer_to_savings": "Отправить в сейф",
     "power_up": "Усилить силу голоса",
     "power_down": "Уменьшить силу голоса",
     "market": "Биржа",
