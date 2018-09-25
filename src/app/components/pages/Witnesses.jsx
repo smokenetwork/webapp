@@ -12,6 +12,22 @@ import tt from 'counterpart';
 const Long = ByteBuffer.Long
 const {string, func, object} = PropTypes
 
+const DISABLED_SIGNING_KEY = 'SMK1111111111111111111111111111111114T1Anm';
+
+function _blockGap(head_block, last_block) {
+    if (!last_block || last_block < 1) return 'forever';
+    const secs = (head_block - last_block) * 3;
+    if (secs < 120) return 'recently';
+    const mins = Math.floor(secs / 60);
+    if (mins < 120) return mins + ' mins ago';
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 48) return hrs + ' hrs ago';
+    const days = Math.floor(hrs / 24);
+    if (days < 14) return days + ' days ago';
+    const weeks = Math.floor(days / 7);
+    if (weeks < 104) return weeks + ' weeks ago';
+}
+
 class Witnesses extends React.Component {
     static propTypes = {
         // HTML properties
@@ -35,6 +51,7 @@ class Witnesses extends React.Component {
         this.onWitnessChange = e => {
             const customUsername = e.target.value;
             this.setState({customUsername});
+            this.forceUpdate();
         }
         this.accountWitnessProxy = (e) => {
             e.preventDefault();
@@ -59,9 +76,9 @@ class Witnesses extends React.Component {
 
     render() {
         const {
-            props: {witness_votes, current_proxy}, state: {customUsername, proxy}, accountWitnessVote,
+            props: {witness_votes, current_proxy, head_block}, state: {customUsername, proxy}, accountWitnessVote,
             accountWitnessProxy, onWitnessChange
-        } = this
+        } = this;
         const sorted_witnesses = this.props.witnesses
             .sort((a, b) => Long.fromString(String(b.get('votes'))).subtract(Long.fromString(String(a.get('votes'))).toString()));
         const up = <Icon name="chevron-up-circle"/>;
@@ -70,6 +87,9 @@ class Witnesses extends React.Component {
         const witnesses = sorted_witnesses.map(item => {
             const owner = item.get('owner')
             const thread = item.get('url')
+            const signingKey = item.get('signing_key');
+            const isDisabled = signingKey == DISABLED_SIGNING_KEY;
+            const lastBlock = item.get('last_confirmed_block_num');
             const myVote = witness_votes ? witness_votes.has(owner) : null
             const classUp = 'Voting__button Voting__button-up' +
                 (myVote === true ? ' Voting__button--upvoted' : '');
@@ -82,6 +102,11 @@ class Witnesses extends React.Component {
                     witness_thread = <Link to={thread}>{tt('witnesses_jsx.witness_thread')}</Link>
                 }
             }
+
+            const ownerStyle = isDisabled
+                ? { textDecoration: 'line-through', color: '#AAA' }
+                : {};
+
             return (
                 <tr key={owner}>
                     <td width="75">
@@ -90,10 +115,18 @@ class Witnesses extends React.Component {
                         <span className={classUp}>
                                 <a href="#" onClick={accountWitnessVote.bind(this, owner, !myVote)}
                                    title={tt('g.vote')}>{up}</a>
-                            </span>
+                        </span>
                     </td>
                     <td>
-                        <Link to={'/@' + owner}>{owner}</Link>
+                        <Link to={'/@' + owner} style={ownerStyle}>
+                            {owner}
+                        </Link>
+                        {isDisabled && (
+                            <small style={{ color: '#AAA' }}>
+                                {' '} disabled {' '}
+                                {_blockGap(head_block, lastBlock)})
+                            </small>
+                        )}
                     </td>
                     <td>
                         {witness_thread}
@@ -109,9 +142,9 @@ class Witnesses extends React.Component {
                 return !sorted_witnesses.has(item)
             }).map(item => {
                 return (
-                    <div className="row" key={item}>
+                    <div className="row Witnesses__Voting" key={item}>
                         <div className="column small-12">
-                              <span>{/*className="Voting"*/}
+                              <span>
                                   <span
                                       className="Voting__button Voting__button-up space-right Voting__button--upvoted">
                                       <a href="#" onClick={accountWitnessVote.bind(this, item, false)}
@@ -234,6 +267,7 @@ module.exports = {
             const witness_votes = current_account && current_account.get('witness_votes').toSet();
             const current_proxy = current_account && current_account.get('proxy');
             return {
+                head_block: state.global.getIn(['props', 'head_block_number']),
                 witnesses: state.global.get('witnesses'),
                 username,
                 witness_votes,
