@@ -38,7 +38,6 @@
 - <a href="/faq.html#What_information_is_available_in_my_account_menu">What information is available in my account menu?</a>
 - <a href="/faq.html#How_do_I_see_my_recent_rewards">How do I see my recent rewards?</a>
 - <a href="/faq.html#What_information_is_shown_in_my_wallet">What information is shown in my wallet?</a>
-- <a href="/faq.html#How_do_I_transfer_my_SMOKE_or_Smoke_Dollars_into_savings">How do I transfer my SMOKE or Smoke Dollars into savings?</a>
 - <a href="/faq.html#How_do_I_send_money_to_another_user">How do I send money to another user?</a>
 - <a href="/faq.html#Will_I_receive_notifications_when_there_is_activity_with_my_account">Will I receive notifications when there is activity with my account?</a>
 - <a href="/faq.html#What_is_shown_in_my_profile">What is shown in my profile?</a>
@@ -87,7 +86,7 @@
 - <a href="/faq.html#Will_the_reward_pool_pay_out_more_or_less_depending_on_who_votes">Will the reward pool pay out more or less depending on who votes?</a>
 - <a href="/faq.html#Why_do_the_earnings_for_my_post_go_up_or_down">Why do the earnings for my post go up or down?</a>
 - <a href="/faq.html#When_can_I_claim_my_rewards">When can I claim my rewards?</a>
-- <a href="/faq.html#What_is_the_difference_between_SMOKE__SMOKE_Power__and_Smoke_Dollars">What is the difference between SMOKE, SMOKE Power, and Smoke Dollars?</a>
+- <a href="/faq.html#What_is_the_difference_between_SMOKE__SMOKE_Power__and_Smoke_Dollars">What is the difference between SMOKE, SMOKE Power?</a>
 - <a href="/faq.html#What_is_delegated_SMOKE_Power">What is delegated SMOKE Power?</a>
 - <a href="/faq.html#What_determines_the_price_of_SMOKE">What determines the price of SMOKE?</a>
 - <a href="/faq.html#How_do_I_get_more_SMOKE_Power">How do I get more SMOKE Power?</a>
@@ -96,7 +95,6 @@
 - <a href="/faq.html#What_do_the_dollar_amounts_for_pending_payouts_represent">What do the dollar amounts for pending payouts represent?</a>
 - <a href="/faq.html#Will_1_Smoke_Dollar_always_be_worth__1_00_USD">Will 1 Smoke Dollar always be worth $1.00 USD?</a>
 - <a href="/faq.html#How_do_Smoke_Dollar_to_SMOKE_conversions_work">How do Smoke Dollar to SMOKE conversions work?</a>
-- <a href="/faq.html#Is_there_a_way_for_me_to_convert_my_Smoke_Dollars_to_SMOKE_without_waiting_3_5_days">Is there a way for me to convert my Smoke Dollars to SMOKE without waiting 3.5 days?</a>
 - <a href="/faq.html#What_can_I_do_with_my_SMOKE_tokens">What can I do with my SMOKE tokens?</a>
 - <a href="/faq.html#What_can_I_do_with_my_SBD_tokens">What can I do with my SBD tokens?</a>
 - <a href="/faq.html#What_is_a_MVEST">What is a MVEST?</a>
@@ -396,7 +394,7 @@ You can get to your account menu by clicking on the avatar icon in the top-right
 
 **Replies** - Here is where you go to see all replies other users have made to your posts and comments.
 
-**Wallet** - Here is where you go to see your wallet balances, make transfers, exchange SMOKE or Smoke Dollars, and Power Up.
+**Wallet** - Here is where you go to see your wallet balances, make transfers SMOKE and Power Up.
 
 **Change Password** - Here is where you go to change your password.
 
@@ -420,13 +418,8 @@ You can also view the same information for other users by visiting their profile
 <a class="anchor" name="What_information_is_shown_in_my_wallet"></a>
 ## What information is shown in my wallet?
 
-Your wallet shows how many SMOKE and Smoke Dollar tokens you have in your account. It shows how much SMOKE Power it has, and how much SP is delegated. It also shows how many of your SMOKE and Smoke Dollar tokens are being held in the savings account, which is a balance that is subject to 3 day withdraw waiting period. The wallet page shows any the progress of any Smoke Dollar to SMOKE conversions as well as the status of a power down. It also shows an estimated value of all the tokens in your account, based on the recent market prices of SMOKE and SBD.
+Your wallet shows how many SMOKE tokens you have in your account. It shows how much SMOKE Power it has, and how much SP is delegated. The wallet page shows any the progress of the status of a power down.
 
-<a href="/faq.html#Table_of_Contents_Site_Navigation">^</a>
-<a class="anchor" name="How_do_I_transfer_my_SMOKE_or_Smoke_Dollars_into_savings"></a>
-## How do I transfer my SMOKE or Smoke Dollars into savings?
-
-Your savings balance is SMOKE and SBD tokens that are subject to 3 day withdraw waiting period. This is an extra security measure in case your account credentials are compromised. To transfer SMOKE or SBD tokens into savings, click on the drop-down arrow next to SMOKE or SMOKE DOLLARS in your wallet, and select "Transfer to Savings".
 
 <a href="/faq.html#Table_of_Contents_Site_Navigation">^</a>
 <a class="anchor" name="How_do_I_send_money_to_another_user"></a>
@@ -434,8 +427,8 @@ Your savings balance is SMOKE and SBD tokens that are subject to 3 day withdraw 
 
 - From your wallet page, click the SMOKE or Smoke Dollar balances with the down arrow next to them.
 - In the drop-down menu, click 'Transfer'. 
-- Type the username of the account you want to send the SMOKE or Smoke Dollars to. Double and triple check spelling.
-- Enter the amount of SMOKE or Smoke Dollars to send.
+- Type the username of the account you want to send the SMOKE to. Double and triple check spelling.
+- Enter the amount of SMOKE to send.
 - Enter a memo to go along with the transaction (optional).
 - Click Submit.
 - You will be prompted for your password. You will need to enter your master password or active key.
@@ -523,8 +516,6 @@ Smoke is an open platform meant to host and welcome any legal content. Users can
 <a href="/faq.html#Table_of_Contents_Posting">^</a>
 <a class="anchor" name="What_are_the_different_choices_for_post_rewards__50__50___Power_Up_100___Decline_Payout"></a>
 ## What are the different choices for post rewards (50%/50%, Power Up 100%, Decline Payout)?
-
-- **50%/50%** - This rewards in half SMOKE Power, and half liquid SMOKE / Smoke Dollars. The ratio of liquid SMOKE to Smoke Dollars rewarded is based on network conditions at the time of payout. This is the default payout option.
 
 - **Power Up 100%** - This option rewards the post in 100% SMOKE Power.
 
@@ -653,22 +644,6 @@ Language-specific groups include:
 The blockchain will always contain the full edit history of posts and comments, so it can never be completely deleted. If you would like to update a post so that users cannot see the content via Smoke.io, you can edit the post and replace it with blank content for as long as the post is active. After seven days, the post can no longer be edited.
 
 <a href="/faq.html#Table_of_Contents_Posting">^</a>
-<a class="anchor" name="What_does__Promoting__a_post_do"></a>
-## What does "Promoting" a post do?
-
-When you make a post, there is the option to promote it with Smoke Dollars. It will then show up in the “Promoted” tab. The order that it appears in the list depends on how much the post was promoted for. Posts with a higher promoted amount will be higher than posts with less.
-
-Smoke Dollars spent to promote a post are paid to the account @null, which nobody owns or controls. Once a user transfers SBD to @null, the Smoke blockchain removes them from the currency supply. Details can be found in this <a href="https://smoke.io/steemit/@steemitblog/introducing-promoted-content">official post</a>.
-
-You can promote your own posts, or posts that you like from other users.
-
-<a href="/faq.html#Table_of_Contents_Posting">^</a>
-<a class="anchor" name="How_do_I_promote_a_post"></a>
-## How do I promote a post?
-
-At the bottom of each post is a button to "Promote". After clicking the button, type the number of Smoke Dollars that you want to spend and click “PROMOTE”. The operation will require your master password or active key.
-
-<a href="/faq.html#Table_of_Contents_Posting">^</a>
 # Comments
 
 <a class="anchor" name="Can_I_earn_digital_tokens_for_commenting"></a>
@@ -748,13 +723,12 @@ Posts and comments remain active for 7 days. When the period is over, you are ab
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="What_is_the_difference_between_SMOKE__SMOKE_Power__and_Smoke_Dollars"></a>
-## What is the difference between SMOKE, SMOKE Power, and Smoke Dollars?
+## What is the difference between SMOKE, SMOKE Power?
 
-**SMOKE** - SMOKE is the base liquid currency token in the platform. SMOKE can be powered up into SMOKE Power, traded for Smoke Dollars, and transferred to other accounts. It is a cryptocurrency token, similar to bitcoin.
+**SMOKE** - SMOKE is the base liquid currency token in the platform. SMOKE can be powered up into SMOKE Power, and transferred to other accounts. It is a cryptocurrency token, similar to bitcoin.
 
 **SMOKE Power** - SMOKE Power (abbreviated SP) is a measurement of how much influence a user has in the Smoke network. The more SMOKE Power a user holds, the more they can influence the value of posts and comments. SMOKE Power is less liquid. If a user wishes to “Power Down” SP, they will receive equal distributions of the SMOKE weekly, over a 13 week period.
 
-**Smoke Dollars** - Smoke Dollars (commonly abbreviated SBD) are liquid stable-value currency tokens designed to be pegged to $1 USD. Smoke Dollars can be traded with SMOKE, and transferred to other accounts for commerce or exchange.  Smoke Dollars may also be converted into SMOKE in a process that takes 3.5 days. Smoke Dollars can be used to buy things in marketplaces, such as PeerHub.com.
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="What_is_delegated_SMOKE_Power"></a>
@@ -776,9 +750,9 @@ The price of SMOKE is based on the supply and demand of the token, determined by
 <a class="anchor" name="How_do_I_get_more_SMOKE_Power"></a>
 ## How do I get more SMOKE Power?
 
-With SMOKE tokens in your wallet, click "Power Up" to turn them into SMOKE Power. If you have Smoke Dollars, you can convert them to SMOKE from your wallet, and then power up the SMOKE.
+With SMOKE tokens in your wallet, click "Power Up" to turn them into SMOKE Power.
 
-If you don’t already have SMOKE or Smoke Dollars in your wallet, you can purchase them using bitcoin (BTC), ether (ETH), or BitShares (BTS) tokens. You may purchase BTC on various exchanges, such as Coinbase.com or Localbitcoins.com. 
+If you don’t already have SMOKE in your wallet, you can purchase them using bitcoin (BTC), ether (ETH), or BitShares (BTS) tokens. You may purchase BTC on various exchanges, such as Coinbase.com or Localbitcoins.com. 
 
 To buy:
 - Click "Buy Smoke" from the main menu in the top right corner of Smoke.io, or from your wallet.
@@ -813,29 +787,7 @@ If you paid using bitcoin, the third party website <a href="https://bitcoinfees.
 
 The dollar amounts next to posts and comments are estimates of the potential payout that will occur when the payout period ends, based on the current voting activity and price of SMOKE. These potential payout amounts may fluctuate up or down until the payout period ends.
 
-Payouts occur as a combination of SMOKE Power and Smoke Dollars. Sometimes the blockchain may substitute SMOKE in place of the Smoke Dollars based on market conditions.
-
-The blockchain estimates the dollar value of SMOKE and SMOKE Power based on the 3.5 day average price of SMOKE reported by the witnesses. The blockchain assumes Smoke Dollars are worth approximately one USD.
-
-<a href="/faq.html#Table_of_Contents_Economics">^</a>
-<a class="anchor" name="Will_1_Smoke_Dollar_always_be_worth__1_00_USD"></a>
-## Will 1 Smoke Dollar always be worth $1.00 USD?
-
-The market value of a Smoke Dollar is dictated by the supply and demand of the token. Therefore it is possible for 1 SBD to be worth more or less than 1 USD depending on market conditions. However, the network's SBD conversion feature serves as a mechanism to hold Smoke Dollars within a small margin of the value of USD.
-
-<a href="/faq.html#Table_of_Contents_Economics">^</a>
-<a class="anchor" name="How_do_Smoke_Dollar_to_SMOKE_conversions_work"></a>
-## How do Smoke Dollar to SMOKE conversions work?
-
-If you convert Smoke Dollars to SMOKE on the Wallet page, the blockchain will process the transaction over a period of 3.5 days. At the end of the 3.5 days, the SBD will be gone and replaced by approximately $1 USD worth of SMOKE tokens. The "approximately 1 USD worth of SMOKE tokens" is based on the median SMOKE price over the 3.5 days, using the price feeds from the Smoke witnesses. Depending on price fluctuations during the 3.5 days it is possible to end up with more or less than $1 USD worth of SMOKE per SBD at the end of the conversion.
-
-<a href="/faq.html#Table_of_Contents_Economics">^</a>
-<a class="anchor" name="Is_there_a_way_for_me_to_convert_my_Smoke_Dollars_to_SMOKE_without_waiting_3_5_days"></a>
-## Is there a way for me to convert my Smoke Dollars to SMOKE without waiting 3.5 days?
-
-You can exchange them. Visit the internal Market, found in the main menu. There you can exchange your SBD for SMOKE in real-time at whatever the current market price is.
-
-Depending on market conditions, users may get more SMOKE for their SBD by trading them for SMOKE on the internal market, rather than using the conversion.
+Payouts occur as SMOKE Power.
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="What_can_I_do_with_my_SMOKE_tokens"></a>
@@ -866,7 +818,7 @@ A VEST is a unit of measurement for SMOKE Power. A MVEST is one million VESTS. T
 <a class="anchor" name="Can_I_sell_goods_and_services_on_Smoke"></a>
 ## Can I sell goods and services on Smoke?
 
-Other than making a post and making sales manually, there is no interface for selling items directly on Smoke.io. You can list goods on the third-party website <a href="https://www.peerhub.com">PeerHub.com</a>. Through PeerHub, you can accept payment in Smoke Dollars or SMOKE, and you have the option to advertise your items through Smoke posts.
+Other than making a post and making sales manually, there is no interface for selling items directly on Smoke.io.
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="How_can_I_withdraw_my_SMOKE_or_SBD_coins"></a>
@@ -878,17 +830,6 @@ There are several guides that have been posted by users in the community for usi
 
 It is recommended that you withdraw a small amount first, to verify it works before withdrawing a larger amount.
 
-#### Sell Smoke Dollars via Poloniex
-https://smoke.io/steemit/@ash/steemit-how-to-sell-steem-dollars-via-poloniex-newbie-friendly
-
-#### Withdraw Smoke Dollars to a Bitcoin address
-https://smoke.io/steem-help/@piedpiper/how-to-withdraw-your-steem-dollars-in-less-that-a-minute
-
-#### Convert Smoke Dollars to a country’s currency and withdraw to a bank account
-https://smoke.io/tutorial/@beanz/how-to-get-my-usdteemit-money-into-my-bank-account
-
-#### Convert SMOKE to many other cryptocurrencies via ShapeShift
-https://smoke.io/steemit/@shapeshiftio/official-announcement-shapeshift-has-added-steem-to-the-exchange
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="Will_I_get_a_1099_from_Smoke"></a>
@@ -1272,7 +1213,7 @@ The password has to be long and random for maximum account security.
 
 **Posting key** - The posting key allows accounts to post, comment, edit, vote, resteem, and follow or mute other accounts. Most users should be logging into Smoke every day with the posting key. You are more likely to have your password or key compromised the more you use it so a limited posting key exists to restrict the damage that a compromised account key would cause.
 
-**Active key** - The active key is meant for more sensitive tasks such as transferring funds, power up/down transactions, converting Smoke Dollars, voting for witnesses, updating profile details and avatar, and placing a market order. 
+**Active key** - The active key is meant for more sensitive tasks such as transferring funds, power up/down transactions, voting for witnesses, updating profile details and avatar, and placing a market order. 
 
 **Memo key** - Currently the memo key is not used.
 
@@ -1288,9 +1229,9 @@ It is strongly recommended that you store an offline copy of your password somew
 
 <a href="/faq.html#Table_of_Contents_Security">^</a>
 <a class="anchor" name="Are_my_SMOKE_and_Smoke_Dollar_tokens_insured_in_the_event_of_a_hack_or_if_someone_takes_over_my_account"></a>
-## Are my SMOKE and Smoke Dollar tokens insured in the event of a hack or if someone takes over my account?
+## Are my SMOKE tokens insured in the event of a hack or if someone takes over my account?
 
-No, liquid tokens can not be taken back if stolen or sent to the wrong account. If your tokens are in SMOKE Power, it is impossible for a hacker to take out more than 1/13 per week. If your tokens are in savings, there is a three-day wait period for them to become transferable.
+No, liquid tokens can not be taken back if stolen or sent to the wrong account. If your tokens are in SMOKE Power, it is impossible for a hacker to take out more than 1/13 per week.
 
 <a href="/faq.html#Table_of_Contents_Security">^</a>
 <a class="anchor" name="What_should_I_do_if_I_discover_that_someone_hacked_my_account"></a>

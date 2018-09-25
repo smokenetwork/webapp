@@ -455,19 +455,9 @@
     "empty_feed_5": "Explorar la FAQ"
   },
   "transferhistoryrow_jsx": {
-    "to_savings": "a ahorros",
-    "from_savings": "desde ahorros",
-    "cancel_transfer_from_savings": "Cancela transferencia desde ahorros",
     "stop_power_down": "Para power down",
     "start_power_down_of": "Comenzar power down",
     "receive_interest_of": "Recibir interés de"
-  },
-  "savingswithdrawhistory_jsx": {
-    "cancel_this_withdraw_request": "¿Cancelar la petición de retirada?",
-    "pending_savings_withdrawals": "AHORROS PENDIENTES DE RETIRADA",
-    "withdraw": "Retirar %(amount)s",
-    "to": "a %(to)s",
-    "from_to": "de %(from)s a %(to)s"
   },
   "explorepost_jsx": {
     "copied": "¡Copiado!",
@@ -576,7 +566,6 @@
   "userwallet_jsx": {
     "conversion_complete_tip": "Se completará el",
     "in_conversion": "%(amount)s en conversión",
-    "transfer_to_savings": "Transferir a ahorros",
     "power_up": "Power up",
     "power_down": "Power down",
     "market": "Mercado",
@@ -584,7 +573,6 @@
     "withdraw_LIQUID_TOKEN": "Retirar %(LIQUID_TOKEN)s",
     "withdraw_DEBT_TOKENS": "Retirar %(DEBT_TOKENS)s",
     "tokens_worth_about_1_of_LIQUID_TICKER": "Los tokens valen alrededor de $1.00 de %(LIQUID_TICKER)s, ahora mismo recolectando %(sbdInterest)s%% APR.",
-    "savings": "AHORROS",
     "estimated_account_value": "Valor de cuenta aproximado",
     "next_power_down_is_scheduled_to_happen": "El siguiente power down ocurrirá en ",
     "transfers_are_temporary_disabled": "Las transferencias están temporalmente inhabilitadas.",

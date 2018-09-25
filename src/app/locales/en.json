@@ -467,19 +467,9 @@
     "empty_feed_5": "Browse The FAQ"
   },
   "transferhistoryrow_jsx": {
-    "to_savings": "to savings",
-    "from_savings": "from savings",
-    "cancel_transfer_from_savings": "Cancel transfer from savings",
     "stop_power_down": "Stop power down",
     "start_power_down_of": "Start power down of",
     "receive_interest_of": "Receive interest of"
-  },
-  "savingswithdrawhistory_jsx": {
-    "cancel_this_withdraw_request": "Cancel this withdraw request?",
-    "pending_savings_withdrawals": "PENDING SAVINGS WITHDRAWS",
-    "withdraw": "Withdraw %(amount)s",
-    "to": "to %(to)s",
-    "from_to": "from %(from)s to %(to)s"
   },
   "explorepost_jsx": {
     "copied": "Copied!",
@@ -588,7 +578,6 @@
   "userwallet_jsx": {
     "conversion_complete_tip": "Will complete on",
     "in_conversion": "%(amount)s in conversion",
-    "transfer_to_savings": "Transfer to Savings",
     "power_up": "Power Up",
     "power_down": "Power Down",
     "market": "Market",
