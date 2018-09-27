@@ -37,7 +37,7 @@ class Approval extends React.Component {
         }
         return (
             <div className="row">
-                <div className="column" style={{maxWidth: '36rem', margin: '0 auto'}}>
+                <div className="column" style={{maxWidth: '36rem', margin: '2rem auto'}}>
                     <div>
                         {body}
                     </div>
