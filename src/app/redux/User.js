@@ -10,6 +10,7 @@ const defaultState = fromJS({
     show_powerdown_modal: false,
     show_promote_post_modal: false,
     show_signup_modal: false,
+    show_eligible_modal: false,
     pub_keys_used: null,
     locale: DEFAULT_LANGUAGE,
 });
@@ -49,6 +50,8 @@ export default createModule({
                 return state.merge({show_terms_modal: true, loginBroadcastOperation: operation, termsDefault})
             }
         },
+        { action: 'SHOW_ELIGIBLE', reducer: state => state.set('show_eligible_modal', true) },
+        { action: 'HIDE_ELIGIBLE', reducer: state => state.set('show_eligible_modal', false) },
         { action: 'HIDE_LOGIN', reducer: state =>
             state.merge({show_login_modal: false, loginBroadcastOperation: undefined, loginDefault: undefined}) },
         { action: 'SAVE_LOGIN_CONFIRM', reducer: (state, {payload}) => state.set('saveLoginConfirm', payload) },

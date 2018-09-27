@@ -12,6 +12,7 @@ import tr from '../../redux/Transaction';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import {NotificationStack} from 'react-notification';
 import TermsAgree from './TermsAgree';
+import EligibleDialog from './EligibleDialog';
 
 class Modals extends React.Component {
     static propTypes = {
@@ -28,6 +29,7 @@ class Modals extends React.Component {
         hidePowerdown: React.PropTypes.func.isRequired,
         notifications: React.PropTypes.object,
         show_terms_modal: React.PropTypes.bool,
+        show_eligible_modal: React.PropTypes.bool,
         removeNotification: React.PropTypes.func,
     };
 
@@ -39,7 +41,7 @@ class Modals extends React.Component {
     render() {
         const {
             show_login_modal, show_confirm_modal, show_transfer_modal, show_powerdown_modal, show_signup_modal,
-            hideLogin, hideTransfer, hidePowerdown, hideConfirm, hideSignUp, show_terms_modal,
+            hideLogin, hideTransfer, hidePowerdown, hideConfirm, hideSignUp, show_terms_modal, show_eligible_modal,
             notifications, removeNotification
         } = this.props;
 
@@ -72,6 +74,9 @@ class Modals extends React.Component {
                 {show_terms_modal && <Reveal show={show_terms_modal}>
                     <TermsAgree onCancel={hideLogin}/>
                 </Reveal>}
+                {show_eligible_modal && <Reveal show={show_eligible_modal}>
+                    <EligibleDialog />
+                </Reveal>}
                 <NotificationStack
                     style={false}
                     notifications={notifications_array}
@@ -84,6 +89,13 @@ class Modals extends React.Component {
 
 export default connect(
     state => {
+        let show_eligible_modal = false;
+        if (process.env.BROWSER && (window.location.pathname !== '/tos.html') && (window.location.pathname !== '/privacy.html')) {
+            if (localStorage.getItem("user/show_eligible_modal") === null) {
+                show_eligible_modal = true;
+            }
+        }
+
         return {
             show_login_modal: state.user.get('show_login_modal'),
             show_confirm_modal: state.transaction.get('show_confirm_modal'),
@@ -92,7 +104,8 @@ export default connect(
             show_promote_post_modal: state.user.get('show_promote_post_modal'),
             show_signup_modal: state.user.get('show_signup_modal'),
             notifications: state.app.get('notifications'),
-            show_terms_modal: state.user.get('show_terms_modal')
+            show_terms_modal: state.user.get('show_terms_modal'),
+            show_eligible_modal: show_eligible_modal
         }
     },
     dispatch => ({

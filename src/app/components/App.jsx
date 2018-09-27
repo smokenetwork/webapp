@@ -54,6 +54,16 @@ class App extends React.Component {
         if (pageRequiresEntropy(this.props.location.pathname)) {
             this._addEntropyCollector();
         }
+
+        // console.log(this.props.location.pathname);
+        // if (process.env.BROWSER && (this.props.location.pathname !== '/tos.html') && (this.props.location.pathname !== '/privacy.html')) {
+        //     if (localStorage.getItem("user/show_eligible_modal") === null) {
+        //         this.props.showEligible();
+        //     }
+        // }
+        // if (this.props.show_eligible_modal) {
+        //     this.props.showEligible();
+        // }
     }
 
     componentWillReceiveProps(np) {
@@ -195,7 +205,7 @@ class App extends React.Component {
 
         let stickybar = <div className="expanded row" style={{ marginTop: "-12px"}}>
             <div className="column" style={{paddingLeft: "0px", paddingRight: "0px"}}>
-                <a href="/claim.html" onClick={this.navigate}>  
+                <a href="/claim.html" onClick={this.navigate}>
                     <div className="callout success" style={{textAlign: "center", fontSize: "0.90rem", marginTop: "0px", marginBottom: "0px"}}>
                         <b>Welcome to Smoke.io</b>: If you aquired SMOKE during the pre-sale, ICO or airdrop click this banner.
                     </div>
@@ -333,10 +343,11 @@ export default connect(
         loginUser: () =>
             dispatch(user.actions.usernamePasswordLogin()),
         depositSmoke: (username) => {
-            const new_window = window.open();
-            new_window.opener = null;
-            new_window.location = 'https://blocktrades.us/?input_coin_type=btc&output_coin_type=steem&receive_address=' + username;
+            // const new_window = window.open();
+            // new_window.opener = null;
+            // new_window.location = 'https://blocktrades.us/?input_coin_type=btc&output_coin_type=steem&receive_address=' + username;
             //dispatch(g.actions.showDialog({name: 'blocktrades_deposit', params: {outputCoinType: 'VESTS'}}));
         },
+        showEligible: () => dispatch(user.actions.showEligible()),
     })
 )(App);
