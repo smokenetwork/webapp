@@ -281,24 +281,23 @@ export default class UserProfile extends React.Component {
             if (account.recent_replies) {
                 let posts = accountImm.get('recent_replies');
                 if (!fetching && (posts && !posts.size)) {
-                    tab_content =
-                        <Callout>{tt('user_profile.user_hasnt_had_any_replies_yet', {name: accountname}) + '.'}</Callout>;
+                    tab_content = <Callout>{tt('user_profile.user_hasnt_had_any_replies_yet', {name: accountname}) + '.'}</Callout>;
                 } else {
                     tab_content = (
                         <div>
-                            <PostsGrid
+                            <PostsList
                                 posts={posts}
                                 loading={fetching}
                                 category="recent_replies"
                                 loadMore={this.loadMore}
                                 showSpam={false}
                             />
-                            {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name}/>}
+                            {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name} />}
                         </div>
                     );
                 }
             } else {
-                tab_content = (<LoadingIndicator type="circle"/>);
+                tab_content = (<center><LoadingIndicator type="circle" /></center>);
             }
         }
         else if (section === 'permissions' && isMyAccount) {
