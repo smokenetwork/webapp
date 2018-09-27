@@ -54,16 +54,6 @@ class App extends React.Component {
         if (pageRequiresEntropy(this.props.location.pathname)) {
             this._addEntropyCollector();
         }
-
-        // console.log(this.props.location.pathname);
-        // if (process.env.BROWSER && (this.props.location.pathname !== '/tos.html') && (this.props.location.pathname !== '/privacy.html')) {
-        //     if (localStorage.getItem("user/show_eligible_modal") === null) {
-        //         this.props.showEligible();
-        //     }
-        // }
-        // if (this.props.show_eligible_modal) {
-        //     this.props.showEligible();
-        // }
     }
 
     componentWillReceiveProps(np) {
