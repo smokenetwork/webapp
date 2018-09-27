@@ -48,6 +48,7 @@ async function appRender(ctx) {
             login_challenge = secureRandom.randomBuffer(16).toString('hex');
             ctx.session.login_challenge = login_challenge;
         }
+
         const offchain = {
             csrf: ctx.csrf,
             flash: ctx.flash,
