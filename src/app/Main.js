@@ -27,7 +27,7 @@ try {
 }
 
 function runApp(initial_state) {
-    console.log('Initial state', initial_state);
+    // console.log('Initial state', initial_state);
     const konami = {
         code: 'xyzzy',
         enabled: false

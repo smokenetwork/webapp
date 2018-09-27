@@ -12,15 +12,15 @@ const request_base = {
 };
 
 export function serverApiLogin(account, signatures) {
-    // if (!process.env.BROWSER || window.$STM_ServerBusy) return;
-    // const request = Object.assign({}, request_base, {body: JSON.stringify({account, signatures, csrf: $STM_csrf})});
-    // fetch('/api/v1/login_account', request);
+    if (!process.env.BROWSER || window.$STM_ServerBusy) return;
+    const request = Object.assign({}, request_base, {body: JSON.stringify({account, signatures, csrf: $STM_csrf})});
+    fetch('/api/v1/login_account', request);
 }
 
 export function serverApiLogout() {
-    // if (!process.env.BROWSER || window.$STM_ServerBusy) return;
-    // const request = Object.assign({}, request_base, {body: JSON.stringify({csrf: $STM_csrf})});
-    // fetch('/api/v1/logout_account', request);
+    if (!process.env.BROWSER || window.$STM_ServerBusy) return;
+    const request = Object.assign({}, request_base, {body: JSON.stringify({csrf: $STM_csrf})});
+    fetch('/api/v1/logout_account', request);
 }
 
 let last_call;
