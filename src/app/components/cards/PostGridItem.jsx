@@ -74,12 +74,13 @@ class PostGridItem extends React.Component {
                                     follow={false}
                                     mute={false}/>
                         </span>
-                        <Link className="timestamp__link" to={titleLinkUrl}>
-                            <span className="timestamp__time">
-                                <TimeAgoWrapper date={postContent.created}
-                                                className="updated"/>
-                            </span>
-                        </Link>
+                        <span style={{display: 'block', margin: '0 2px 0 10px'}}>
+                            <Link className="timestamp__link" to={titleLinkUrl}>
+                                <span className="timestamp__time">
+                                    <TimeAgoWrapper date={postContent.created} className="updated"/>
+                                </span>
+                            </Link>
+                        </span>
                     </div>
                 </div>
             </div>
