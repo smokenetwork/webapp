@@ -249,8 +249,6 @@ class PostSummary extends React.Component {
 
         return (
             <div className="articles__summary">
-                {reblogged_by}
-                {summary_header}
                 <div className={'articles__content hentry' + (thumb ? ' with-image ' : ' ') + commentClasses.join(' ')} itemScope itemType ="http://schema.org/blogPost">
                   { thumb
                         ? <div className="articles__content-block articles__content-block--img">
@@ -261,6 +259,9 @@ class PostSummary extends React.Component {
                         : null
                     }
                     <div className="articles__content-block articles__content-block--text">
+                        {reblogged_by}
+                        {summary_header}
+
                         {content_title}
                         {content_body}
                         {this.props.blogmode ? null : summary_footer}

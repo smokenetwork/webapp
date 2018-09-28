@@ -2,9 +2,11 @@
 // cards
 @import "./cards/Comment";
 @import "./cards/MarkdownViewer";
+@import "./cards/PostSummary";
+@import "./cards/PostFull";
 @import "./cards/PostGridItem";
 @import "./cards/PostsGrid";
-@import "./cards/PostFull";
+@import "./cards/PostsList";
 // elements
 @import "./elements/Icon";
 @import "./elements/LoadingIndicator";
