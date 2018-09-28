@@ -14,6 +14,7 @@ import AuthorRewards from '../modules/AuthorRewards';
 import UserList from '../elements/UserList';
 import Follow from '../elements/Follow';
 import LoadingIndicator from '../elements/LoadingIndicator';
+import PostsList from '../cards/PostsList';
 import PostsGrid from '../cards/PostsGrid';
 import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {repLog10} from '../../utils/ParsersAndFormatters.js';
@@ -229,14 +230,13 @@ export default class UserProfile extends React.Component {
             tab_content = <Settings routeParams={this.props.routeParams}/>
         }
         else if (section === 'comments' && account.post_history) {
-            if (account.comments) {
-                let posts = accountImm.get('posts') || accountImm.get('comments');
+            if( account.comments ) {
+                let posts = accountImm.get('comments');
                 if (!fetching && (posts && !posts.size)) {
-                    tab_content =
-                        <Callout>{tt('user_profile.user_hasnt_made_any_posts_yet', {name: accountname})}</Callout>;
+                    tab_content = <Callout>{tt('user_profile.user_hasnt_made_any_posts_yet', {name: accountname})}</Callout>;
                 } else {
                     tab_content = (
-                        <PostsGrid
+                        <PostsList
                             posts={posts}
                             loading={fetching}
                             category="comments"
@@ -245,10 +245,10 @@ export default class UserProfile extends React.Component {
                         />
                     );
                 }
+            } else {
+                tab_content = (<center><LoadingIndicator type="circle" /></center>);
             }
-            else {
-                tab_content = (<LoadingIndicator type="circle"/>);
-            }
+
         } else if (!section || section === 'blog') {
             if (account.blog) {
                 let posts = accountImm.get('blog');
@@ -281,24 +281,23 @@ export default class UserProfile extends React.Component {
             if (account.recent_replies) {
                 let posts = accountImm.get('recent_replies');
                 if (!fetching && (posts && !posts.size)) {
-                    tab_content =
-                        <Callout>{tt('user_profile.user_hasnt_had_any_replies_yet', {name: accountname}) + '.'}</Callout>;
+                    tab_content = <Callout>{tt('user_profile.user_hasnt_had_any_replies_yet', {name: accountname}) + '.'}</Callout>;
                 } else {
                     tab_content = (
                         <div>
-                            <PostsGrid
+                            <PostsList
                                 posts={posts}
                                 loading={fetching}
                                 category="recent_replies"
                                 loadMore={this.loadMore}
                                 showSpam={false}
                             />
-                            {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name}/>}
+                            {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name} />}
                         </div>
                     );
                 }
             } else {
-                tab_content = (<LoadingIndicator type="circle"/>);
+                tab_content = (<center><LoadingIndicator type="circle" /></center>);
             }
         }
         else if (section === 'permissions' && isMyAccount) {
