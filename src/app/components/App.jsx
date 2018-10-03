@@ -206,52 +206,68 @@ class App extends React.Component {
         let sidebar = (
             <SidePanel ref="side_panel" alignment="right">
                 <TopRightMenu vertical navigate={this.navigate}/>
+                <ul className="vertical menu">
 
+                    { username && <li>
+                        <Link to={`/@${username}`} onClick={this.navigate}>
+                            <Icon name="mascot"/>  { tt('main_menu.profile')}
+                        </Link>
+                    </li> }
+
+                    { username && <li>
+                        <Link to={`/@${username}/transfers`} onClick={this.navigate}>
+                            <Icon name="wallet"/>  { tt('main_menu.wallet')}
+                        </Link>
+                    </li> }
+
+
+                </ul>
                 <ul className="vertical menu">
                     <li>
                         <a href="/created" onClick={this.navigate}>
-                            {tt('navigation.latest')}
+                            <Icon name="lighter"/> {tt('navigation.latest')}
                         </a>
                     </li>
                     <li>
                         <a href="/trending" onClick={this.navigate}>
-                            {tt('navigation.trending')}
+                            <Icon name="trending"/>  { tt('navigation.trending')}
                         </a>
                     </li>
                     <li>
                         <a href="/tags" onClick={this.navigate}>
-                            {tt('navigation.explore')}
+                            <Icon name="tagspop"/> {tt('navigation.explore')}
                         </a>
                     </li>
                   </ul>
                   <ul className="vertical menu">
                     <li>
-                        <a href="/claim.html" onClick={this.navigate}>
-                            {tt('navigation.claim')}
+                        <a href="https://docs.smoke.io" target="_blank" rel="noopener noreferrer">
+                            <Icon name="more"/> {tt('navigation.documentation')}&nbsp;<Icon name="extlink"/>
                         </a>
                     </li>
                     <li>
                         <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
-                            {tt('main_menu.explore')}&nbsp;<Icon name="extlink"/>
+                            <Icon name="blockchain"/> {tt('main_menu.explore')}&nbsp;<Icon name="extlink"/>
                         </a>
                     </li>
+                  </ul>
+                  <ul className="vertical menu">
                     <li>
                         <a href="/~witnesses" onClick={this.navigate}>
-                            {tt('navigation.vote_for_witnesses')}
+                            <Icon name="vote"/> {tt('navigation.vote_for_witnesses')}
                         </a>
                     </li>
+                  </ul>
+                  <ul className="vertical menu">
+                    <h6 className="exchange"> {tt('navigation.exchange')}</h6>
                     <li>
-                        <a href="/change_password" onClick={this.navigate}>
-                            {tt('navigation.change_account_password')}
+                        <a href="https://market.rudex.org/#/market/RUDEX.SMOKE_BTS" target="_blank" rel="noopener noreferrer">
+                            <Icon name="rudex"/> {tt('navigation.rudex')} &nbsp;<Icon name="extlink"/>
                         </a>
                     </li>
-                    </ul>
-                    <ul className="vertical menu">
-                    <li>
-                        <a href="https://smoke.network/Smoke-Whitepaper-2.0.pdf" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.whitepaper')}&nbsp;<Icon name="extlink"/>
-                        </a>
-                    </li>
+                  </ul>
+                  <ul className="vertical menu">
+
                     <li>
                         <a href="/privacy.html" onClick={this.navigate}>
                             {tt('navigation.privacy_policy')}
@@ -262,28 +278,14 @@ class App extends React.Component {
                             {tt('navigation.terms_of_service')}
                         </a>
                     </li>
-                    <li>
-                        <a href="https://docs.smoke.io" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.documentation')}&nbsp;<Icon name="extlink"/>
-                        </a>
-                    </li>
+
                     <li>
                         <a href="https://smoke.network" target="_blank" rel="noopener noreferrer">
-                            {tt('navigation.learn_more')}&nbsp;<Icon name="extlink"/>
+                            {tt('navigation.about')}&nbsp;<Icon name="extlink"/>
                         </a>
                     </li>
 
-                    { username && <li>
-                        <Link to={`/@${username}/transfers`} onClick={this.navigate}>
-                            {tt('main_menu.wallet')}
-                        </Link>
-                    </li> }
 
-                    { username && <li>
-                        <Link to={`/@${username}`} onClick={this.navigate}>
-                            {tt('main_menu.profile')}
-                        </Link>
-                    </li> }
                 </ul>
             </SidePanel>);
 
