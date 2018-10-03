@@ -181,7 +181,7 @@ class Voting extends React.Component {
         const payout_limit_hit = payout >= max_payout;
         // Show pending payout amount for declined payment posts
         if (max_payout === 0) payout = pending_payout;
-        const up = <Icon name={votingUpActive ? 'rolling' : 'heart'}/>;
+        const up = <Icon name={votingUpActive ? 'rolling' : 'flame'}/>;
         const classUp = 'Voting__button Voting__button-up' + (myVote > 0 ? ' Voting__button--upvoted' : '') + (votingUpActive ? ' votingUp' : '');
 
         // There is an "active cashout" if: (a) there is a pending payout, OR (b) there is a valid cashout_time AND it's NOT a comment with 0 votes.
