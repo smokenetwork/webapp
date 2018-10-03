@@ -9,7 +9,7 @@
 .Reblog__button-active {
     path {
         @include themify($themes) {
-            fill: themed('colorAccent');
+            fill: black;
         }
     }
 }
@@ -27,3 +27,4 @@
         }
     }
 }
+

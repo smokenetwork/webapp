@@ -54,6 +54,17 @@ const icons = [
     'heart-o',
     'rolling',
     'smoke',
+    'lighter',
+    'flame',
+    'tagspop',
+    'more',
+    'mascot',
+    'blockchain',
+    'password',
+    'vote',
+    'rudex',
+    'resmoke',
+    'trending'
 ];
 const icons_map = {};
 for (const i of icons) icons_map[i] = require(`assets/icons/${i}.svg`);

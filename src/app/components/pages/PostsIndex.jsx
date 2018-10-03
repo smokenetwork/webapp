@@ -134,11 +134,6 @@ class PostsIndex extends React.Component {
         return (
             <div className={'PostsIndex row' + (fetching ? ' fetching' : '') + layoutClass}>
                 <article className="articles">
-                    <div className="articles__header">
-                        <div className="articles__header-col">
-                            <h1 className="articles__h1">{page_title}</h1>
-                        </div>
-                    </div>
                     {markNotificationRead}
                     {(!fetching && (posts && !posts.size)) ? <Callout>{emptyText}</Callout> :
                         <PostsGrid
