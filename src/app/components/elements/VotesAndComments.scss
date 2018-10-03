@@ -1,9 +1,7 @@
 .VotesAndComments {
     path {
         transition: 0.2s all ease-in-out;
-        @include themify($themes) {
-            fill: themed('iconColorSecondary');
-        }
+
     }
     circle {
         stroke: none;
@@ -23,6 +21,7 @@
 
 .VotesAndComments__comments {
     padding: 0 1rem 0 0;
+    float: right;
 }
 
 /* Small only */
