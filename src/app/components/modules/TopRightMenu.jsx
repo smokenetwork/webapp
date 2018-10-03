@@ -32,7 +32,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
         return (
             <ul className={mcn + mcl}>
                 <li>
-                    <a onClick={logout}>
+                    <a onClick={logout} className="button warning">
                         {tt('g.logout')}
                     </a>
                 </li>
