@@ -35,7 +35,7 @@ class VotesAndComments extends React.Component {
                      </Link>
                  </span>
                 <span className="VotesAndComments__votes" title={tt('votesandcomments_jsx.vote_count', {count: votes})}>
-                    <Icon size="1x" name="heart-o"/>&nbsp;{votes}
+                    <Icon size="1x" name="flame"/>&nbsp;{votes}
                 </span>
             </span>
         );
