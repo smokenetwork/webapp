@@ -82,6 +82,11 @@ class PostGridItem extends React.Component {
                             </Link>
                         </span>
                     </div>
+                    <span className="PostGridItem__time_author_category">
+                        {!isArchived && <Reblog author={postContent.author}
+                                                permlink={postContent.permlink}
+                                                parent_author={postContent.parent_author}/>}
+                    </span>
                 </div>
             </div>
         );
@@ -114,13 +119,10 @@ class PostGridItem extends React.Component {
                         </span>
 
                         <span className="articles__content-stats">
-                            <span className="PostGridItem__time_author_category">
-                                {!isArchived && <Reblog author={postContent.author}
-                                                        permlink={postContent.permlink}
-                                                        parent_author={postContent.parent_author}/>}
-                            </span>
-                            <Comments post={post} commentsLink={commentsLink}/>
                             <Voting post={post} showList={false}/>
+
+                            <Comments post={post} commentsLink={commentsLink}/>
+
                         </span>
                     </div>
                 </div>
