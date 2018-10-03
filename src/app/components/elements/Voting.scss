@@ -76,7 +76,7 @@
 
 .Voting__button-up > a:hover {
     path {
-        fill: $primary-link-hover-color;
+        fill: #ff9800;
     }
 
     circle {
@@ -130,13 +130,13 @@ a.confirm_weight:hover {
 
 .Voting__button--upvoted circle,
 .Voting__button--upvoted path {
-    fill: $primary-link-hover-color;
+    fill: #F3705A;
     stroke: none;
 }
 
 .Voting__button--upvoted a:hover circle,
 .Voting__button--upvoted a:hover path {
-    fill: $primary-link-color;
+    fill: #ff9800;
     stroke: none;
 }
 
