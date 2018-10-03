@@ -9,6 +9,7 @@ import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import HorizontalMenu from '../elements/HorizontalMenu';
 import SvgImage from '../elements/SvgImage';
 
+
 class Header extends React.Component {
     static propTypes = {
         location: React.PropTypes.object.isRequired,
@@ -146,7 +147,7 @@ class Header extends React.Component {
         const logoLink = current_account_name ? `/@${current_account_name}/feed` : '/created';
 
         const menuItems = [
-            
+
         ];
 
         // if we have a user profile, display the wallet link
@@ -155,14 +156,14 @@ class Header extends React.Component {
             {
                 value: tt('main_menu.trending'),
                 link: '/trending',
-                icon: 'home',
+                icon: 'trending',
             },
             {
                 value: tt('main_menu.wallet'),
                 link: `/@${current_account_name}/transfers`,
                 icon: 'wallet',
             });
-            
+
         }
 
         return (
@@ -176,7 +177,7 @@ class Header extends React.Component {
                                         <SvgImage name="smoke" width="148px" height="38px" className="Header__logo"></SvgImage>
                                     </Link>
                                 </li>
-                                <HorizontalMenu className="align-right" items={menuItems} {...this.props} />
+                                <HorizontalMenu className="align-right sub-menu" items={menuItems} {...this.props} />
                             </ul>
                         </div>
                     </div>
