@@ -422,13 +422,13 @@ export default class UserProfile extends React.Component {
 
                 <div className="UserProfile__banner row expanded">
 
-                    <div className="column" style={cover_image_style}>
+                    <div className="column">
+                      <div className="profile_div">
                         <div style={{position: "relative"}}>
                             <div className="UserProfile__buttons hide-for-small-only">
                                 <Follow follower={username} following={accountname}/>
                             </div>
                         </div>
-
                         <h1>
                             <Userpic account={account.name} hideIfDefault/>
                             {name || account.name}{' '}
@@ -460,6 +460,7 @@ export default class UserProfile extends React.Component {
                         <div className="UserProfile__buttons_mobile show-for-small-only">
                             <Follow follower={username} following={accountname} what="blog"/>
                         </div>
+                      </div>
                     </div>
                 </div>
                 <div className="UserProfile__top-nav row expanded noPrint">
