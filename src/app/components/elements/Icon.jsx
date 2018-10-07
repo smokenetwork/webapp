@@ -64,7 +64,8 @@ const icons = [
     'vote',
     'rudex',
     'resmoke',
-    'trending'
+    'trending',
+    'match'
 ];
 const icons_map = {};
 for (const i of icons) icons_map[i] = require(`assets/icons/${i}.svg`);
