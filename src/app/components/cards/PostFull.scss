@@ -1,6 +1,8 @@
 .PostFull {
     padding-bottom: 1rem;
-    padding-top: 2rem;
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
     @include themify($themes) {
         border-bottom: themed('border');
     }
@@ -52,15 +54,14 @@
 }
 
 .PostFull__header {
-    padding-bottom: 1em;
-    margin-bottom: 8px;
+    padding-bottom: 25px;
     @include themify($themes) {
         border-bottom: themed('border');
     }
     > h1 {
         overflow: hidden;
         font-family: $body-font-family;
-        font-size: 240%;
+        font-size: 200%;
         font-weight: 800;
         line-height: 1.1;
         .Icon {
@@ -72,6 +73,7 @@
         @extend .link;
         @extend .link--secondary;
         font-weight: 600;
+        color:#666666;
 
     }
     .PostFull__time_author_category {
@@ -100,6 +102,9 @@
     clear: right;
     line-height: 2rem;
     font-size: 94%;
+    a {
+      color:#666666 !important;
+    }
     svg {
         @include themify($themes) {
             fill: themed('textColorSecondary');

@@ -32,7 +32,7 @@ $alert-color: $color-red;
 
 // creating a new set of variables not associated with the theme. These are the variables that can be changed to alter the style.
 $primary-link-color: $secondary-color;
-$primary-link-hover-color: $primary-color;
+$primary-link-hover-color: $color-text-gray;
 
 $secondary-link-color: $primary-color;
 $secondary-link-hover-color: $secondary-color;

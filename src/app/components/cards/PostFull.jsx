@@ -13,6 +13,7 @@ import {immutableAccessor} from '../../utils/Accessors';
 import extractContent from '../../utils/ExtractContent';
 import TagList from '../elements/TagList';
 import Author from '../elements/Author';
+import AuthorFeatured from '../elements/AuthorFeatured';
 import {parsePayoutAmount, repLog10} from '../../utils/ParsersAndFormatters';
 import DMCAList from '../../utils/DMCAList'
 import PageViewsCounter from '../elements/PageViewsCounter';
@@ -24,11 +25,12 @@ import userIllegalContent from '../../utils/userIllegalContent';
 import ImageUserBlockList from '../../utils/ImageUserBlockList';
 import LoadingIndicator from '../elements/LoadingIndicator';
 
+
 function TimeAuthorCategory({content, authorRepLog10, showTags}) {
     return (
         <span className="PostFull__time_author_category vcard">
-        <Icon name="clock" className="space-right"/>
-        <TimeAgoWrapper date={content.created} className="updated"/>
+
+
             {} {tt('g.by')} <Author author={content.author} authorRepLog10={authorRepLog10}/>
             {showTags && <span> {tt('g.in')} <TagList post={content} single/></span>}
       </span>
@@ -37,14 +39,13 @@ function TimeAuthorCategory({content, authorRepLog10, showTags}) {
 
 function TimeAuthorCategoryLarge({content, authorRepLog10}) {
     return (
-        <span className="PostFull__time_author_category_large vcard">
-        <TimeAgoWrapper date={content.created} className="updated float-right"/>
-        <Userpic account={content.author}/>
-        <div className="right-side">
-          <Author author={content.author} authorRepLog10={authorRepLog10}/>
-          <span> {tt('g.in')} <TagList post={content} single/></span>
+        <div className="PostFull__time_author_category_large vcard">
+          <Userpic account={content.author}/>
+          <div className="right-side">
+            <AuthorFeatured author={content.author} authorRepLog10={authorRepLog10}/>
+
+          </div>
         </div>
-      </span>
     );
 }
 
@@ -201,28 +202,7 @@ class PostFull extends React.Component {
             desc: p.desc
         };
 
-        const share_menu = [
-            {
-                link: '#',
-                onClick: this.fbShare,
-                value: 'Facebook',
-                title: tt('postfull_jsx.share_on_facebook'),
-                icon: 'facebook'
-            },
-            {
-                link: '#',
-                onClick: this.twitterShare,
-                value: 'Twitter',
-                title: tt('postfull_jsx.share_on_twitter'),
-                icon: 'twitter'
-            },
-            {
-                link: '#',
-                onClick: this.linkedInShare,
-                value: 'LinkedIn',
-                title: tt('postfull_jsx.share_on_linkedin'),
-                icon: 'linkedin'
-            },
+       const share_menu = [
         ];
 
         const Editor = this.state.showReply ? PostFullReplyEditor : PostFullEditEditor;
@@ -303,26 +283,40 @@ class PostFull extends React.Component {
             />
         }
 
+
+
         return (
             <article className="PostFull hentry" itemScope itemType="http://schema.org/blogPost">
                 {showEdit ?
                     renderedEditor :
-                    <span>
-                      <div className="float-right"><Voting post={post} flag/></div>
+                    <div>
+
                       <div className="PostFull__header">
-                        {post_header}
+
                           <TimeAuthorCategoryLarge content={content} authorRepLog10={authorRepLog10}/>
+                          {post_header}
+                          <Voting post={post} flag/>
+
+                          <div className="float-right PostFull__time_author_category">
+
+                            {" " + tt('g.in')} <TagList post={content} single/>
+                          </div>
+
+                          <TimeAgoWrapper date={content.created} className="PostFull__time_author_category float-right"/>
                       </div>
                       <div className="PostFull__body entry-content">
+                        
                           {contentBody}
+
                       </div>
-                    </span>
+
+                    </div>
                 }
 
                 <TagList post={content} horizontal/>
                 <div className="PostFull__footer row">
+
                     <div className="column">
-                        <TimeAuthorCategory content={content} authorRepLog10={authorRepLog10}/>
                         <Voting post={post}/>
                     </div>
                     <div className="RightShare__Menu small-11 medium-5 large-5 columns text-right">
@@ -333,7 +327,7 @@ class PostFull extends React.Component {
                         <a onClick={onShowEdit}>{tt('g.edit')}</a>}
                             {' '}{!readonly && showDeleteOption && !showReply &&
                         <a onClick={onDeletePost}>{tt('g.delete')}</a>}
-                </span>
+                        </span>
                         <span className="PostFull__responses">
                   <Link to={link} title={tt('g.responses', {count: content.children})}>
                     <Icon name="chatboxes" className="space-right"/>{content.children}
@@ -348,6 +342,14 @@ class PostFull extends React.Component {
                         </button>
                     </div>
                 </div>
+                  <hr />
+                  <div className="PostFull__time_author_category_large vcard">
+                    <Userpic account={content.author}/>
+                    <div className="right-side">
+                      <AuthorFeatured author={content.author} authorRepLog10={authorRepLog10}/>
+
+                    </div>
+                  </div>
                 <div className="row">
                     <div className="column large-8 medium-10 small-12">
                         {showReply && renderedEditor}

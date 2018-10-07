@@ -74,7 +74,7 @@ export default class Reblog extends React.Component {
         const state = this.state.active ? 'active' : 'inactive'
         const loading = this.state.loading ? ' loading' : ''
         return <span className={'Reblog__button Reblog__button-' + state + loading}>
-            <a href="#" onClick={this.reblog} title={tt('g.reblog')}><Icon name="resmoke"/></a>
+            <a href="#" onClick={this.reblog} title={tt('g.reblog')}><Icon name="match"/></a>
         </span>
     }
 }

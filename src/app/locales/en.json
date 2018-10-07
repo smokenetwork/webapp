@@ -111,8 +111,8 @@
     "unfollow": "Unfollow",
     "unmute": "Unmute",
     "unknown": "Unknown",
-    "upvote": "Upvote",
-    "upvote_post": "Upvote post",
+    "upvote": "Upsmoke This Post",
+    "upvote_post": "Upsmoke Post",
     "username": "Username",
     "version": "Version",
     "vote": "Vote",
@@ -167,7 +167,7 @@
     "vote_currently_exists_user_must_be_indicate_a_to_reject_witness": "vote currently exists, user must be indicate a desire to reject witness",
     "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "Only one Smoke account allowed per IP address every 10 minutes",
     "resteem_this_post": "Resmoke This Post",
-    "reblog": "Resmoke",
+    "reblog": "Resmoke To Your Feed",
     "write_your_story": "Write your story",
     "remember_voting_and_posting_key": "Remember voting & posting key",
     "auto_login_question_mark": "Auto login?",
@@ -185,7 +185,7 @@
     "APP_NAME_support": "%(APP_NAME)s Support",
     "please_email_questions_to": "Please email your questions to",
     "next_7_strings_single_block": {
-      "authors_get_paid_when_people_like_you_upvote_their_post": "Authors get paid when people like you upvote their post",
+      "authors_get_paid_when_people_like_you_upvote_their_post": "Authors get paid when people like you upsmoke their post",
       "if_you_enjoyed_what_you_read_earn_amount": "If you enjoyed what you read here, create your account today and start earning FREE SMOKE!",
       "free_steem": "FREE SMOKE!",
       "sign_up_earn_steem": "Sign up now to earn "
@@ -212,7 +212,7 @@
     },
     "post_key_warning": {
         "confirm": "You are about to publish a SMOKE private key or master password. You will probably lose control of the associated account and all its funds.",
-        "warning": "Legitimate users, including employees of Smoke Inc., will never ask you for a private key or master password.",
+        "warning": "Legitimate users, including employees of Smoke Holdings IBC., will never ask you for a private key or master password.",
         "checkbox": "I understand"
     }
   },
@@ -271,7 +271,7 @@
     "power_up_100": "Power Up 100%%",
     "default_50_50": "Default (50%% / 50%%)",
     "decline_payout": "Decline Payout",
-    "check_this_to_auto_upvote_your_post": "Check this to auto-upvote your post",
+    "check_this_to_auto_upvote_your_post": "Check this to auto-upsmoke your post",
     "markdown_styling_guide": "Markdown Styling Guide",
     "or_by": "or by",
     "title": "Title",
@@ -377,8 +377,8 @@
     "past_payouts_curators": " - Curators %(value)s SMOKE",
     "we_will_reset_curation_rewards_for_this_post": "will reset your curation rewards for this post",
     "removing_your_vote": "Removing your vote",
-    "changing_to_an_upvote": "Changing to an Up-Vote",
-    "changing_to_a_downvote": "Changing to a Down-Vote",
+    "changing_to_an_upvote": "Changing to an Up-Smoke",
+    "changing_to_a_downvote": "Changing to a Down-Smoke",
     "confirm_flag": "Confirm Flag",
     "and_more": "and %(count)s more",
     "votes_plural": {
@@ -521,7 +521,7 @@
     "to_comment_and_reward_others": " to comment and reward others.",
     "signup_button": "Sign up now to earn ",
     "signup_button_emphasis": "FREE SMOKE!",
-    "sign_up_get_steem": "Sign up. Get SMOKE",
+    "sign_up_get_steem": "Smoke, Get Paid. Repeat.",
     "returning_users": "Returning Users: ",
     "join_our": "Join our"
   },

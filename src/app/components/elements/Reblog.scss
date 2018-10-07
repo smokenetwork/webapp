@@ -9,7 +9,7 @@
 .Reblog__button-active {
     path {
         @include themify($themes) {
-            fill: black;
+            fill: #F95428;
         }
     }
 }

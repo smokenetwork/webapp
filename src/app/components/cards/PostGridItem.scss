@@ -201,13 +201,29 @@
 
 .articles__content-block--img {
     margin: 0;
+    background-position: center;
+    max-height: 200px;
 }
 
 .articles__content-stats {
     font-size: 0.85rem;
 }
 
+.articles__content-block--text {
+  margin-bottom:5px;
+}
+
+.articles__content-block--text hr {
+  margin:8px;
+}
+
 .articles__content {
     //box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
     border-radius: 10px
+}
+
+.articles__h2 a {
+
+    font-size: 0.92em;
+    text-transform: capitalize;
 }
