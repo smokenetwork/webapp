@@ -1,13 +1,14 @@
-$menu-width: 250px;
+$menu-width: 220px;
 
 .SidePanel {
     display: block;
+    font-size: 90%;
 
     .exchange {
       font-size: 0.9em;
       margin-left: 10px;
     }
-    
+
     .menu > li.last {
         border-bottom: 1px solid $color-border-dark;
         color: $color-text-gray-light;
@@ -26,6 +27,7 @@ $menu-width: 250px;
                 border-top: 1px solid $color-blue-black;
                 color: $color-white;
                 border-bottom: 1px solid $color-blue-black-darkest;
+                line-height: 1.1rem;
             }
             > a:hover, &:focus {
                 background-color: $color-blue-black;
@@ -38,6 +40,7 @@ $menu-width: 250px;
             path {
                 fill: $color-text-gray-light;
             }
+
         }
         ul:nth-of-type(n+3) {
             margin-top: 2rem;
@@ -73,7 +76,7 @@ $menu-width: 250px;
     }
     .Icon.extlink {
         position: relative;
-        top: 3px;
+        top: -5px;
         left: 2px;
     }
 }
