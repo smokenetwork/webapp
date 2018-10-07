@@ -115,6 +115,7 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
         if (url.indexOf('/author-rewards') !== -1) url = url.replace(/\/author-rewards$/, '/transfers');
 
         onchain = await api.getStateAsync(url);
+        onchain.post_reward_fund = await api.getRewardFundAsync("post");
 
         if (Object.getOwnPropertyNames(onchain.accounts).length === 0 && (url.match(routeRegex.UserProfile1) || url.match(routeRegex.UserProfile3))) { // protect for invalid account
             return {

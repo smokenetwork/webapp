@@ -145,11 +145,12 @@ a.confirm_weight:hover {
 }
 
 .Voting .DropdownMenu ul {
-    width: 240px;
+    width: auto;
 
     li > a {
         padding: 0 0.5rem;
         line-height: 1.25;
+        font-weight: normal;
     }
 
     li > span {

@@ -128,6 +128,11 @@ class Voting extends React.Component {
     render() {
         const {active_votes, showList, voting, flag, net_vesting_shares, is_comment, post_obj} = this.props;
         const {username} = this.props;
+
+        const {account} = this.props;
+        const gprops = this.props.gprops.toJS();
+        const post_reward_fund = this.props.post_reward_fund.toJS();
+
         const {votingUp, votingDown, showWeight, weight, myVote} = this.state;
         // console.log('-- Voting.render -->', myVote, votingUp, votingDown);
         if (flag && !username) return null
@@ -220,11 +225,19 @@ class Voting extends React.Component {
             const avotes = active_votes.toJS();
             avotes.sort((a, b) => Math.abs(parseInt(a.rshares)) > Math.abs(parseInt(b.rshares)) ? -1 : 1)
             let voters = [];
+
+            const reward_balance = parseFloat(post_reward_fund.reward_balance.split( ' ' )[0]);
+            const recent_claims = post_reward_fund.recent_claims;
+
             for (let v = 0; v < avotes.length && voters.length < MAX_VOTES_DISPLAY; ++v) {
-                const {percent, voter} = avotes[v]
+                const {percent, voter, rshares} = avotes[v]
                 const sign = Math.sign(percent)
                 if (sign === 0) continue
-                voters.push({value: (sign > 0 ? '+ ' : '- ') + voter, link: '/@' + voter})
+                const value_voter = rshares * (reward_balance/recent_claims);
+
+                const vote_value = (sign > 0 ? '+ ' : '- ') + voter + ' (' + (percent/100) + '%, ' + value_voter.toFixed(2) + ' SMOKE)';
+
+                voters.push({value: vote_value, link: '/@' + voter})
             }
             if (total_votes > voters.length) {
                 voters.push({
@@ -284,6 +297,10 @@ export default connect(
         const net_vesting_shares = vesting_shares - delegated_vesting_shares + received_vesting_shares;
         const voting = state.global.get(`transaction_vote_active_${author}_${permlink}`)
 
+        const gprops = state.global.get('props');
+        const post_reward_fund = state.global.get('post_reward_fund');
+        const account = username ? state.global.getIn(['accounts', username]).toJS() : null;
+
         return {
             post: ownProps.post,
             flag: ownProps.flag,
@@ -291,7 +308,10 @@ export default connect(
             author, permlink, username, active_votes, net_vesting_shares, is_comment,
             post_obj: post,
             loggedin: username != null,
-            voting
+            voting,
+            gprops,
+            post_reward_fund,
+            account,
         }
     },
 
