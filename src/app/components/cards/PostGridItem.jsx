@@ -117,7 +117,7 @@ class PostGridItem extends React.Component {
                         <span className="articles__content-title">
                             {contentTitle}
                         </span>
-
+                        <hr />
                         <span className="articles__content-stats">
                             <Voting post={post} showList={false}/>
 
