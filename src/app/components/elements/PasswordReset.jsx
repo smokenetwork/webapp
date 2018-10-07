@@ -21,7 +21,7 @@ class PasswordReset extends Component {
         const {accountName} = this.props
 
         return (<div className="row">
-            <div className="column large-6 small-12">
+            <div className="column large-12 small-12">
                 <ChangePassword username={accountName}/>
             </div>
         </div>)
