@@ -64,7 +64,7 @@ export default function extractMeta(chain_data, rp) {
         const account = chain_data.accounts[rp.accountname];
         let {name, about, profile_image} = normalizeProfile(account);
         if (name == null) name = account.name;
-        if (about == null) about = "Join thousands on steemit who share, post and earn rewards.";
+        if (about == null) about = "Join thousands on smoke.io who share, post and earn rewards.";
         if (profile_image == null) profile_image = 'https://smoke.io/images/steemit-twshare-2.png';
         // Set profile tags
         const title = `@${account.name}`;
