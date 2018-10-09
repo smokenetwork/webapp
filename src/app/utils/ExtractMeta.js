@@ -76,7 +76,7 @@ export default function extractMeta(chain_data, rp) {
 
         // Twitter card data
         metas.push({name: 'twitter:card', content: 'summary'});
-        metas.push({name: 'twitter:site', content: '@steemit'});
+        metas.push({name: 'twitter:site', content: '@smoke_io'});
         metas.push({name: 'twitter:title', content: title});
         metas.push({name: 'twitter:description', content: desc});
         metas.push({name: 'twitter:image', content: image});
