@@ -453,7 +453,6 @@ class ReplyEditor extends React.Component {
                                 <select value={this.state.payoutType} onChange={this.onPayoutTypeChange}
                                         style={{color: this.state.payoutType == '0%' ? 'orange' : ''}}>
                                     <option value="100%">{tt('reply_editor.power_up_100')}</option>
-                                    {/*<option value="50%">{tt('reply_editor.default_50_50')}</option>*/}
                                     <option value="0%">{tt('reply_editor.decline_payout')}</option>
                                 </select>
 
@@ -660,15 +659,10 @@ export default (formId) => connect(
                 switch (payoutType) {
                     case '0%': // decline payout
                         __config.comment_options = {
-                            max_accepted_payout: '0.000 SBD',
+                            max_accepted_payout: '0.000 SMOKE',
                         }
                         break;
-                    case '100%': // 100% steem power payout
-                        __config.comment_options = {
-                            percent_steem_dollars: 0, // 10000 === 100% (of 50%)
-                        }
-                        break;
-                    default: // 50% steem power, 50% sd+steem
+                    default: // 100% steem power payout
                 }
             }
 
