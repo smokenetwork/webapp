@@ -240,7 +240,7 @@ You can earn digital tokens on Smoke by:
 
 **Voting and curating** - If you discover a post and upvote it before it becomes popular, you can earn a curation reward. The reward amount will depend on the amount of SMOKE Power you have.
 
-**Purchasing** - Users can purchase SMOKE or Smoke Dollar tokens directly through the Smoke wallet using bitcoin, Ether, or BitShares tokens. They are also available from other markets and exchanges including BlockTrades, Poloniex, Bittrex, Shapeshift.io, and Changelly. SMOKE tokens that are powered up to SMOKE Power earn a small amount of interest for holding.
+**Purchasing** - Users can purchase SMOKE or Smoke Dollar tokens directly through the Smoke wallet using bitcoin, Ether, or BitShares tokens. They are also available from other markets and exchanges including Bitshares and RuDEX. SMOKE tokens that are powered up to SMOKE Power earn a small amount of interest for holding.
 
 <a href="/faq.html#Table_of_Contents_General">^</a>
 <a class="anchor" name="Where_do_the_tokens_come_from"></a>
@@ -752,18 +752,8 @@ The price of SMOKE is based on the supply and demand of the token, determined by
 
 With SMOKE tokens in your wallet, click "Power Up" to turn them into SMOKE Power.
 
-If you don’t already have SMOKE in your wallet, you can purchase them using bitcoin (BTC), ether (ETH), or BitShares (BTS) tokens. You may purchase BTC on various exchanges, such as Coinbase.com or Localbitcoins.com. 
+If you don’t already have SMOKE in your wallet, you can purchase them using bitcoin (BTC), ether (ETH), or BitShares (BTS) tokens. You may purchase BTC on exchanges such as Bitshares or RuDEX. 
 
-To buy:
-- Click "Buy Smoke" from the main menu in the top right corner of Smoke.io, or from your wallet.
-- Select the currency to deposit, and enter the amount of that currency you wish to use.
-- Enter your Smoke account name (without the @) for "Your receive address".
-- Click the "Get Deposit Address" button.
-- Send the currency to the provided address.
-
-SMOKE purchases made via Smoke.io are facilitated by <a href="https://blocktrades.us">BlockTrades</a>.
-
-bitcoin can also be exchanged for SMOKE on external markets such as <a href="https://poloniex.com">Poloniex</a>, <a href="https://bittrex.com">Bittrex</a>, <a href="https://shapeshift.io">ShapeShift.io</a>, and <a href="https://changelly.com">Changelly</a>.
 
 <a href="/faq.html#Table_of_Contents_Economics">^</a>
 <a class="anchor" name="How_long_does_it_take_SMOKE_or_SMOKE_Power_that_I_purchased_to_show_up_in_my_account"></a>
@@ -1339,11 +1329,11 @@ https://twitter.com/steemit
 <a class="anchor" name="What_is_the_Smoke_Whitepaper_and_what_is_its_purpose"></a>
 ## What is the Smoke Whitepaper and what is its purpose?
 
-The Smoke Whitepaper was written to describe the mechanics of the token system that makes decentralized content incentives and distribution possible in a way that can improve web technologies across the board. It is also applicable to Smoke, the first website to plug into the Smoke blockchain. Users who have read the Smoke Whitepaper will better understand how their interactions with Smoke are interactions with Smoke, the decentralized network.
+The Smoke Whitepaper was written to describe the mechanics of the token system that makes decentralized content incentives and distribution possible in a way that can improve web technologies across the board. It is also applicable to smoke.io, the first website to plug into the Smoke blockchain. Users who have read the Smoke Whitepaper will better understand how their interactions with smoke.io are interactions with Smoke blockchain, the decentralized network.
 
 It is worth noting that the Whitepaper hasn’t been updated almost since Smoke came into existence. Many changes have been made since then, so much of the Whitepaper is now out of date. It is in the process of being rewritten.
 
-https://steem.io/SmokeWhitePaper.pdf
+https://smoke.network/Smoke-Whitepaper-2.0.pdf
 
 <a href="/faq.html#Table_of_Contents_Miscellaneous">^</a>
 <a class="anchor" name="Where_can_I_ask_for_help_if_my_question_was_not_answered_here"></a>
@@ -1360,7 +1350,7 @@ You can also create a post on Smoke.io with the tag #help, and someone in the co
 <a class="anchor" name="Third_Party_References_and_User_Links"></a>
 ## Third Party References and User Links
 
-BlockTrades, Poloniex, Bittrex, Changelly, Shapeshift.io, Coinbase, Localbitcoins, SmokeDB, PeerHub, Smoke.chat, SmokeTools, AnonSmoke, SmokeConnect, Streemian, SmokeStats, Pixabay, Smokecleaners, Pexels, Postimage, Markdown Cheatsheet, @cheetah, Bitcointalk, bitcoinfees, blockchain.info, and steemd are third party applications/services, and are not owned or maintained by Smoke, Inc. Their listing here, as well as any other third party applications or websites that are listed, does not constitute and endorsement or recommendation on behalf of Smoke, Inc.
+Bitshares, RuDEX.. are third party applications/services, and are not owned or maintained by Smoke, Inc. Their listing here, as well as any other third party applications or websites that are listed, does not constitute and endorsement or recommendation on behalf of Smoke, Inc.
 
 All links to user posts were created by our users and do not necessarily represent the views of Smoke, Inc. or its management. Their listing here does not constitute and endorsement or recommendation on behalf of Smoke, Inc.
 

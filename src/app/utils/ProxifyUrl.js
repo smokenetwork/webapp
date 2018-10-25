@@ -9,7 +9,7 @@
  * @type {RegExp}
  */
 const rProxyDomain = /^http(s)?:\/\/steemit(dev|stage)?images.com\//g;
-const rProxyDomainsDimensions = /http(s)?:\/\/steemit(dev|stage)?images.com\/([0-9]+x[0-9]+)\//g;
+const rProxyDomainsDimensions = /http(s)?:\/\/smoke.io\/smokeimageproxy\/([0-9]+x[0-9]+)\//g;
 const NATURAL_SIZE = '0x0/';
 
 export const imageProxy = () => $STM_Config.img_proxy_prefix;

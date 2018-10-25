@@ -14,7 +14,7 @@ function addSiteMeta(metas) {
     metas.push({property: 'og:image', content: 'https://smoke.io/images/smoke.png'});
     metas.push({property: 'fb:app_id', content: $STM_Config.fb_app});
     metas.push({name: 'twitter:card', content: 'summary'});
-    metas.push({name: 'twitter:site', content: '@steemit'});
+    metas.push({name: 'twitter:site', content: '@smoke_io'});
     metas.push({name: 'twitter:title', content: '#Smoke'});
     metas.push({name: 'twitter:description', site_desc: siteDescription});
     metas.push({name: 'twitter:image', content: 'https://smoke.io/images/smoke.png'});
@@ -53,7 +53,7 @@ export default function extractMeta(chain_data, rp) {
 
             // Twitter card data
             metas.push({name: 'twitter:card', content: image ? 'summary_large_image' : 'summary'});
-            metas.push({name: 'twitter:site', content: '@steemit'});
+            metas.push({name: 'twitter:site', content: '@smoke_io'});
             metas.push({name: 'twitter:title', content: title});
             metas.push({name: 'twitter:description', content: desc});
             metas.push({name: 'twitter:image', content: image || 'https://smoke.io/images/steemit-twshare-2.png'});
@@ -64,7 +64,7 @@ export default function extractMeta(chain_data, rp) {
         const account = chain_data.accounts[rp.accountname];
         let {name, about, profile_image} = normalizeProfile(account);
         if (name == null) name = account.name;
-        if (about == null) about = "Join thousands on steemit who share, post and earn rewards.";
+        if (about == null) about = "Join thousands on smoke.io who share, post and earn rewards.";
         if (profile_image == null) profile_image = 'https://smoke.io/images/steemit-twshare-2.png';
         // Set profile tags
         const title = `@${account.name}`;
@@ -76,7 +76,7 @@ export default function extractMeta(chain_data, rp) {
 
         // Twitter card data
         metas.push({name: 'twitter:card', content: 'summary'});
-        metas.push({name: 'twitter:site', content: '@steemit'});
+        metas.push({name: 'twitter:site', content: '@smoke_io'});
         metas.push({name: 'twitter:title', content: title});
         metas.push({name: 'twitter:description', content: desc});
         metas.push({name: 'twitter:image', content: image});

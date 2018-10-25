@@ -108,7 +108,7 @@ export default ({large = true, highQualityPost = true, noImage = false, sanitize
             if(!href) href = '#'
             href = href.trim()
             const attys = {href}
-            // If it's not a (relative or absolute) steemit URL...
+            // If it's not a (relative or absolute) smoke.io URL...
             if (!href.match(/^(\/(?!\/)|https:\/\/smoke.io)/)) {
                 // attys.target = '_blank' // pending iframe impl https://mathiasbynens.github.io/rel-noopener/
                 attys.rel = highQualityPost ? 'noopener' : 'nofollow noopener'
