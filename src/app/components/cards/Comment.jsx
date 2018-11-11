@@ -15,6 +15,8 @@ import {parsePayoutAmount} from '../../utils/ParsersAndFormatters';
 import {Long} from 'bytebuffer';
 import ImageUserBlockList from '../../utils/ImageUserBlockList';
 
+import {immutableAccessor} from '../../utils/Accessors';
+import extractContent from '../../utils/ExtractContent';
 // returns true if the comment has a 'hide' flag AND has no descendants w/ positive payout
 function hideSubtree(cont, c) {
     return cont.getIn([c, 'stats', 'hide']) && !hasPositivePayout(cont, c)
@@ -238,6 +240,9 @@ class CommentImpl extends React.Component {
         }
         const {allowDelete, authorRepLog10, gray} = comment.stats
         const {author, json_metadata} = comment
+	if (json_metadata.app != 'steemit/0.1'){
+		return (<div></div>);
+	}
         const {
             username, depth, anchor_link,
             showNegativeComments, ignore_list, noImage

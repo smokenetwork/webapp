@@ -169,7 +169,10 @@ class PostFull extends React.Component {
         const content = post_content.toJS();
         const {author, permlink, parent_author, parent_permlink} = content
         const jsonMetadata = this.state.showReply ? null : p.json_metadata
-        // let author_link = '/@' + content.author;
+        if ((jsonMetadata).app != 'steemit/0.1'){
+	return(<div></div>);
+	}
+	// let author_link = '/@' + content.author;
         let link = `/@${content.author}/${content.permlink}`;
         if (content.category) link = `/${content.category}${link}`;
 
