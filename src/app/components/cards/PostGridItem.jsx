@@ -39,7 +39,7 @@ class PostGridItem extends React.Component {
         const postContent = extractContent(immutableAccessor, content);
         const isArchived = content.get('cashout_time') === '1969-12-31T23:59:59';
 	if ((postContent.json_metadata).app != "steemit/0.1"){
-	return(<div></div>);
+	return null; //(<div style={{display: 'none'}} ></div>);
 	}
         let titleLinkUrl;
         let titleText = postContent.title;

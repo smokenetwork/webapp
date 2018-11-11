@@ -6,6 +6,8 @@ import {findParent} from '../../utils/DomUtils';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import {connect} from 'react-redux'
 import shortid from 'shortid'
+import extractContent from '../../utils/ExtractContent';
+import {immutableAccessor} from '../../utils/Accessors';
 
 function topPosition(domElt) {
     if (!domElt) {
@@ -178,11 +180,14 @@ class PostsGrid extends React.Component {
                 console.error('PostsGrid --> Missing content key', item);
                 return;
             }
+            const p = extractContent(immutableAccessor, cont);
+
             const ignore = ignore_result && ignore_result.has(cont.get('author'));
             const hide = cont.getIn(['stats', 'hide']);
-
+	    if (p.json_metadata.app == 'steemit/0.1'){
             if (!(ignore || hide) || showSpam) {
                 filteredPosts.push({item, ignore});
+            }
             }
         });
 
@@ -214,12 +219,14 @@ class PostsGrid extends React.Component {
                     </div>
                 )
             });
-
+	    console.log(gridContent.length);
+	    //if (gridContent.length>8){
             return (
                 <div>
                     {gridContent}
                 </div>
             );
+	    //}
         };
 
         return (
