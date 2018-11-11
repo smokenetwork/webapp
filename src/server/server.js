@@ -33,7 +33,7 @@ import userIllegalContent from '../app/utils/userIllegalContent';
 import koaLocale from 'koa-locale';
 
 if (cluster.isMaster)
-    console.log('application server starting, please wait.');
+  console.log('application server starting, please wait.');
 
 const grant = new Grant(config.grant);
 // import uploadImage from 'server/upload-image' //medium-editor
@@ -54,9 +54,9 @@ app.keys = [config.get('session_key')];
 
 const crypto_key = config.get('server_session_secret');
 session(app, {
-    maxAge: 1000 * 3600 * 24 * 60,
-    crypto_key,
-    key: config.get('session_cookie_key')
+  maxAge: 1000 * 3600 * 24 * 60,
+  crypto_key,
+  key: config.get('session_cookie_key')
 });
 csrf(app);
 
@@ -65,149 +65,149 @@ app.use(flash({key: 'flash'}));
 koaLocale(app);
 
 function convertEntriesToArrays(obj) {
-    return Object.keys(obj).reduce((result, key) => {
-        result[key] = obj[key].split(/\s+/);
-        return result;
-    }, {});
+  return Object.keys(obj).reduce((result, key) => {
+    result[key] = obj[key].split(/\s+/);
+    return result;
+  }, {});
 }
 
 const service_worker_js_content = fs
-    .readFileSync(path.join(__dirname, './service-worker.js'))
-    .toString();
+  .readFileSync(path.join(__dirname, './service-worker.js'))
+  .toString();
 
 // some redirects and health status
 app.use(function* (next) {
 
-    if (this.method === 'GET' && this.url === '/.well-known/healthcheck.json') {
-        this.status = 200;
-        this.body = {status: 'ok'};
-        return;
-    }
+  if (this.method === 'GET' && this.url === '/.well-known/healthcheck.json') {
+    this.status = 200;
+    this.body = {status: 'ok'};
+    return;
+  }
 
-    // redirect to home page/feed if known account
-    if (this.method === 'GET' && this.url === '/' && this.session.a) {
-        this.status = 302;
-        this.redirect(`/@${this.session.a}/feed`);
-        return;
-    }
-    // normalize user name url from cased params
-    if (
-        this.method === 'GET' &&
-        (routeRegex.UserProfile1.test(this.url) ||
-            routeRegex.PostNoCategory.test(this.url) || routeRegex.Post.test(this.url)
-        )
-    ) {
-        const p = this.originalUrl.toLowerCase();
-        let userCheck = "";
-        if (routeRegex.Post.test(this.url)) {
-            userCheck = p.split("/")[2].slice(1);
-        } else {
-            userCheck = p.split("/")[1].slice(1);
-        }
-        if (userIllegalContent.includes(userCheck)) {
-            console.log('Illegal content user found blocked', userCheck);
-            this.status = 451;
-            return;
-        }
-        if (p !== this.originalUrl) {
-            this.status = 301;
-            this.redirect(p);
-            return;
-        }
-    }
-    // normalize top category filtering from cased params
-    if (this.method === 'GET' && routeRegex.CategoryFilters.test(this.url)) {
-        const p = this.originalUrl.toLowerCase();
-        if (p !== this.originalUrl) {
-            this.status = 301;
-            this.redirect(p);
-            return;
-        }
-    }
-    // // do not enter unless session uid & verified phone
-    // if (this.url === '/create_account' && !this.session.uid) {
-    //     this.status = 302;
-    //     this.redirect('/enter_email');
-    //     return;
-    // }
-    // remember ch, cn, r url params in the session and remove them from url
-    if (this.method === 'GET' && /\?[^\w]*(ch=|cn=|r=)/.test(this.url)) {
-        let redir = this.url.replace(/((ch|cn|r)=[^&]+)/gi, r => {
-            const p = r.split('=');
-            if (p.length === 2) this.session[p[0]] = p[1];
-            return '';
-        });
-        redir = redir.replace(/&&&?/, '');
-        redir = redir.replace(/\?&?$/, '');
-        console.log(`server redirect ${this.url} -> ${redir}`);
-        this.status = 302;
-        this.redirect(redir);
+  // redirect to home page/feed if known account
+  if (this.method === 'GET' && this.url === '/' && this.session.a) {
+    this.status = 302;
+    this.redirect(`/@${this.session.a}/feed`);
+    return;
+  }
+  // normalize user name url from cased params
+  if (
+    this.method === 'GET' &&
+    (routeRegex.UserProfile1.test(this.url) ||
+      routeRegex.PostNoCategory.test(this.url) || routeRegex.Post.test(this.url)
+    )
+  ) {
+    const p = this.originalUrl.toLowerCase();
+    let userCheck = "";
+    if (routeRegex.Post.test(this.url)) {
+      userCheck = p.split("/")[2].slice(1);
     } else {
-        yield next;
+      userCheck = p.split("/")[1].slice(1);
     }
+    if (userIllegalContent.includes(userCheck)) {
+      console.log('Illegal content user found blocked', userCheck);
+      this.status = 451;
+      return;
+    }
+    if (p !== this.originalUrl) {
+      this.status = 301;
+      this.redirect(p);
+      return;
+    }
+  }
+  // normalize top category filtering from cased params
+  if (this.method === 'GET' && routeRegex.CategoryFilters.test(this.url)) {
+    const p = this.originalUrl.toLowerCase();
+    if (p !== this.originalUrl) {
+      this.status = 301;
+      this.redirect(p);
+      return;
+    }
+  }
+  // // do not enter unless session uid & verified phone
+  // if (this.url === '/create_account' && !this.session.uid) {
+  //     this.status = 302;
+  //     this.redirect('/enter_email');
+  //     return;
+  // }
+  // remember ch, cn, r url params in the session and remove them from url
+  if (this.method === 'GET' && /\?[^\w]*(ch=|cn=|r=)/.test(this.url)) {
+    let redir = this.url.replace(/((ch|cn|r)=[^&]+)/gi, r => {
+      const p = r.split('=');
+      if (p.length === 2) this.session[p[0]] = p[1];
+      return '';
+    });
+    redir = redir.replace(/&&&?/, '');
+    redir = redir.replace(/\?&?$/, '');
+    console.log(`server redirect ${this.url} -> ${redir}`);
+    this.status = 302;
+    this.redirect(redir);
+  } else {
+    yield next;
+  }
 });
 
 // load production middleware
 if (env === 'production') {
-    app.use(require('koa-conditional-get')());
-    app.use(require('koa-etag')());
-    app.use(require('koa-compressor')());
+  app.use(require('koa-conditional-get')());
+  app.use(require('koa-etag')());
+  app.use(require('koa-compressor')());
 }
 
 // Logging
 if (env === 'production') {
-    app.use(prod_logger());
+  app.use(prod_logger());
 } else {
-    app.use(koa_logger());
+  app.use(koa_logger());
 }
 
 app.use(helmet());
 
 app.use(
-    mount(
-        '/static',
-        staticCache(path.join(__dirname, '../app/assets/static'), cacheOpts)
-    )
+  mount(
+    '/static',
+    staticCache(path.join(__dirname, '../app/assets/static'), cacheOpts)
+  )
 );
 
 app.use(
-    mount('/robots.txt', function* () {
-        this.set('Cache-Control', 'public, max-age=86400000');
-        this.type = 'text/plain';
-        this.body = 'User-agent: *\nAllow: /\nDisallow: /@smoke/*';
-    })
+  mount('/robots.txt', function* () {
+    this.set('Cache-Control', 'public, max-age=86400000');
+    this.type = 'text/plain';
+    this.body = 'User-agent: *\nAllow: /\nDisallow: /@smoke/*';
+  })
 );
 
 app.use(
-    mount('/service-worker.js', function* () {
-        this.set('Cache-Control', 'public, max-age=7200000');
-        this.type = 'application/javascript';
-        // TODO: use APP_URL from client_config.js
-        // actually use a config value for it
-        this.body = service_worker_js_content.replace(
-            /\{DEFAULT_URL\}/i,
-            'https://' + this.request.header.host
-        );
-    })
+  mount('/service-worker.js', function* () {
+    this.set('Cache-Control', 'public, max-age=7200000');
+    this.type = 'application/javascript';
+    // TODO: use APP_URL from client_config.js
+    // actually use a config value for it
+    this.body = service_worker_js_content.replace(
+      /\{DEFAULT_URL\}/i,
+      'https://' + this.request.header.host
+    );
+  })
 );
 
 // set user's uid - used to identify users in logs and some other places
 // FIXME SECURITY PRIVACY cycle this uid after a period of time
 app.use(function* (next) {
-    const last_visit = this.session.last_visit;
-    this.session.last_visit = new Date().getTime() / 1000 | 0;
-    const from_link = this.request.headers.referer;
-    if (!this.session.uid) {
-        this.session.uid = secureRandom.randomBuffer(13).toString('hex');
-        this.session.new_visit = true;
-        if (from_link) this.session.r = from_link;
-    } else {
-        this.session.new_visit = this.session.last_visit - last_visit > 1800;
-        if (!this.session.r && from_link) {
-            this.session.r = from_link;
-        }
+  const last_visit = this.session.last_visit;
+  this.session.last_visit = new Date().getTime() / 1000 | 0;
+  const from_link = this.request.headers.referer;
+  if (!this.session.uid) {
+    this.session.uid = secureRandom.randomBuffer(13).toString('hex');
+    this.session.new_visit = true;
+    if (from_link) this.session.r = from_link;
+  } else {
+    this.session.new_visit = this.session.last_visit - last_visit > 1800;
+    if (!this.session.r && from_link) {
+      this.session.r = from_link;
     }
-    yield next;
+  }
+  yield next;
 });
 
 useRedirects(app);
@@ -225,103 +225,103 @@ useNotificationsApi(app);
 // our config uses strings, this splits them to lists on whitespace.
 
 if (env === 'production') {
-    const helmetConfig = {
-        directives: convertEntriesToArrays(config.get('helmet.directives')),
-        reportOnly: config.get('helmet.reportOnly'),
-        setAllHeaders: config.get('helmet.setAllHeaders')
-    };
-    helmetConfig.directives.reportUri = helmetConfig.directives.reportUri[0];
-    if (helmetConfig.directives.reportUri === '-') {
-        delete helmetConfig.directives.reportUri;
-    }
-    app.use(helmet.contentSecurityPolicy(helmetConfig));
+  const helmetConfig = {
+    directives: convertEntriesToArrays(config.get('helmet.directives')),
+    reportOnly: config.get('helmet.reportOnly'),
+    setAllHeaders: config.get('helmet.setAllHeaders')
+  };
+  helmetConfig.directives.reportUri = helmetConfig.directives.reportUri[0];
+  if (helmetConfig.directives.reportUri === '-') {
+    delete helmetConfig.directives.reportUri;
+  }
+  app.use(helmet.contentSecurityPolicy(helmetConfig));
 }
 
 app.use(
-    favicon(path.join(__dirname, '../app/assets/images/favicons/favicon.ico'))
+  favicon(path.join(__dirname, '../app/assets/images/favicons/favicon.ico'))
 );
 app.use(isBot());
 app.use(
-    mount(
-        '/favicons',
-        staticCache(
-            path.join(__dirname, '../app/assets/images/favicons'),
-            cacheOpts
-        )
+  mount(
+    '/favicons',
+    staticCache(
+      path.join(__dirname, '../app/assets/images/favicons'),
+      cacheOpts
     )
+  )
 );
 app.use(
-    mount(
-        '/images',
-        staticCache(path.join(__dirname, '../app/assets/images'), cacheOpts)
-    )
+  mount(
+    '/images',
+    staticCache(path.join(__dirname, '../app/assets/images'), cacheOpts)
+  )
 );
 // Proxy asset folder to webpack development server in development mode
 if (env === 'development') {
-    const webpack_dev_port = process.env.PORT
-        ? parseInt(process.env.PORT) + 1
-        : 8081;
-    const proxyhost = 'http://0.0.0.0:' + webpack_dev_port;
-    console.log('proxying to webpack dev server at ' + proxyhost);
-    const proxy = require('koa-proxy')({
-        host: proxyhost,
-        map: filePath => 'assets/' + filePath
-    });
-    app.use(mount('/assets', proxy));
+  const webpack_dev_port = process.env.PORT
+    ? parseInt(process.env.PORT) + 1
+    : 8081;
+  const proxyhost = 'http://0.0.0.0:' + webpack_dev_port;
+  console.log('proxying to webpack dev server at ' + proxyhost);
+  const proxy = require('koa-proxy')({
+    host: proxyhost,
+    map: filePath => 'assets/' + filePath
+  });
+  app.use(mount('/assets', proxy));
 } else {
-    app.use(
-        mount(
-            '/assets',
-            staticCache(path.join(__dirname, '../../dist'), cacheOpts)
-        )
-    );
+  app.use(
+    mount(
+      '/assets',
+      staticCache(path.join(__dirname, '../../dist'), cacheOpts)
+    )
+  );
 }
 
 if (env !== 'test') {
-    const appRender = require('./app_render');
-    app.use(function* () {
-        yield appRender(this);
-        // if (app_router.dbStatus.ok) recordWebEvent(this, 'page_load');
-        const bot = this.state.isBot;
-        if (bot) {
-            console.log(
-                `  --> ${this.method} ${this.originalUrl} ${this.status} (BOT '${bot}')`
-            );
-        }
-    });
+  const appRender = require('./app_render');
+  app.use(function* () {
+    yield appRender(this);
+    // if (app_router.dbStatus.ok) recordWebEvent(this, 'page_load');
+    const bot = this.state.isBot;
+    if (bot) {
+      console.log(
+        `  --> ${this.method} ${this.originalUrl} ${this.status} (BOT '${bot}')`
+      );
+    }
+  });
 
-    const argv = minimist(process.argv.slice(2));
+  const argv = minimist(process.argv.slice(2));
 
-    const port = process.env.PORT ? parseInt(process.env.PORT) : 8080;
+  const port = process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
-    if (env === 'production') {
-        if (cluster.isMaster) {
-            for (var i = 0; i < numProcesses; i++) {
-                cluster.fork();
-            }
-            // if a worker dies replace it so application keeps running
-            cluster.on('exit', function (worker) {
-                console.log('error: worker %d died, starting a new one', worker.id);
-                cluster.fork();
-            });
-        }
-        else {
-            app.listen(port);
-            if (process.send) process.send('online');
-            console.log(`Worker process started for port ${port}`);
-        }
+  if (env === 'production') {
+    if (cluster.isMaster) {
+      for (var i = 0; i < numProcesses; i++) {
+        cluster.fork();
+      }
+      // if a worker dies replace it so application keeps running
+      cluster.on('exit', function (worker) {
+        console.log('error: worker %d died, starting a new one', worker.id);
+        cluster.fork();
+      });
     }
     else {
-        // spawn a single thread if not running in production mode
-        app.listen(port);
-        if (process.send) process.send('online');
-        console.log(`Application started on port ${port}`);
+      app.listen(port);
+      if (process.send) process.send('online');
+      console.log(`Worker process started for port ${port}`);
     }
+  }
+  else {
+    // spawn a single thread if not running in production mode
+    app.listen(port);
+    if (process.send) process.send('online');
+    console.log(`Application started on port ${port}`);
+  }
 }
 
 // set PERFORMANCE_TRACING to the number of seconds desired for
 // logging hardware stats to the console
 if (process.env.PERFORMANCE_TRACING)
-    setInterval(hardwareStats, (1000 * process.env.PERFORMANCE_TRACING));
+  setInterval(hardwareStats, (1000 * process.env.PERFORMANCE_TRACING));
 
 module.exports = app;

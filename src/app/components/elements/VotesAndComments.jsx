@@ -7,28 +7,28 @@ import tt from 'counterpart';
 
 class VotesAndComments extends React.Component {
 
-    static propTypes = {
-        // HTML properties
-        post: React.PropTypes.string.isRequired,
-        commentsLink: React.PropTypes.string.isRequired,
+  static propTypes = {
+    // HTML properties
+    post: React.PropTypes.string.isRequired,
+    commentsLink: React.PropTypes.string.isRequired,
 
-        // Redux connect properties
-        votes: React.PropTypes.number,
-        comments: React.PropTypes.number,
-    };
+    // Redux connect properties
+    votes: React.PropTypes.number,
+    comments: React.PropTypes.number,
+  };
 
-    constructor(props) {
-        super(props);
-        this.shouldComponentUpdate = shouldComponentUpdate(this, 'VotesAndComments');
-    }
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = shouldComponentUpdate(this, 'VotesAndComments');
+  }
 
-    render() {
-        const {votes, comments, commentsLink} = this.props;
-        let comments_tooltip = tt('votesandcomments_jsx.no_responses_yet_click_to_respond');
-        if (comments > 0) comments_tooltip = tt('votesandcomments_jsx.response_count_tooltip', {count: comments});
+  render() {
+    const {votes, comments, commentsLink} = this.props;
+    let comments_tooltip = tt('votesandcomments_jsx.no_responses_yet_click_to_respond');
+    if (comments > 0) comments_tooltip = tt('votesandcomments_jsx.response_count_tooltip', {count: comments});
 
-        return (
-            <span className="VotesAndComments">
+    return (
+      <span className="VotesAndComments">
                 <span className={'VotesAndComments__comments' + (comments === 0 ? ' no-comments' : '')}>
                      <Link to={commentsLink} title={comments_tooltip}>
                         <Icon name={comments > 1 ? 'chatboxes' : 'chatbox'}/>&nbsp;{comments}
@@ -38,18 +38,18 @@ class VotesAndComments extends React.Component {
                     <Icon size="1x" name="flame"/>&nbsp;{votes}
                 </span>
             </span>
-        );
-    }
+    );
+  }
 }
 
 export default connect(
-    (state, props) => {
-        const post = state.global.getIn(['content', props.post]);
-        if (!post) return props;
-        return {
-            ...props,
-            votes: post.get('net_votes'),
-            comments: post.get('children')
-        };
-    }
+  (state, props) => {
+    const post = state.global.getIn(['content', props.post]);
+    if (!post) return props;
+    return {
+      ...props,
+      votes: post.get('net_votes'),
+      comments: post.get('children')
+    };
+  }
 )(VotesAndComments);
