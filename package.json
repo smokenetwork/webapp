@@ -148,6 +148,7 @@
     "whatwg-fetch": "^0.11.1",
     "xmldom": "^0.1.22"
   },
+  "config": { "unsafe-perm": true },
   "devDependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "chai": "^3.5.0",
