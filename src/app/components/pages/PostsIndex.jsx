@@ -76,9 +76,7 @@ class PostsIndex extends React.Component {
             order = 'by_feed';
             topics_order = 'trending';
             posts = this.props.accounts.getIn([account_name, 'feed']);
-            for (var post in posts){
-            console.log(posts[post].json_metadata.app);
-            }
+            
             const isMyAccount = this.props.username === account_name;
             if (isMyAccount) {
                 emptyText = <div>
@@ -91,9 +89,6 @@ class PostsIndex extends React.Component {
             }
         } else {
             posts = this.getPosts(order, category);
-		for (var post in posts){
-            console.log(posts[post].json_metadata.app);
-            }
             if (posts && posts.size === 0) {
                 emptyText = <div>{'No ' + topics_order + (category ? ' #' + category : '') + ' posts found'}</div>;
             }
