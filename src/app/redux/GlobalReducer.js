@@ -68,7 +68,10 @@ export default createModule({
                     updatedState = updatedState.updateIn(['content', parent_key, 'replies'], List(), r => r.insert(0, key))
                     const children = updatedState.getIn(['content', parent_key, 'replies'], List()).size;
                     updatedState = updatedState.updateIn(['content', parent_key, 'children'], 0, r => children)
-                    // console.log('updatedState parent', updatedState.toJS())
+                    //const children_content = updatedState.getIn(['content', parent_key, 'replies'], List());
+                    //updatedState = updatedState.updateIn(['content', parent_key, 'children'], 0, r => children_content)
+                   
+		    // console.log('updatedState parent', updatedState.toJS())
                 }
                 return updatedState
             }
@@ -100,7 +103,10 @@ export default createModule({
                     l => (l.findIndex(i => i === key) === -1 ? l.push(key) : l))
                 const children = updatedState.getIn(['content', parent_key, 'replies'], List()).size;
                 updatedState = updatedState.updateIn(['content', parent_key, 'children'], 0, r => children)
-                return updatedState;
+                //const children_content = updatedState.getIn(['content', parent_key, 'replies'], List());
+                //updatedState = updatedState.updateIn(['content', parent_key, 'children'], 0, r => children_content)
+                    
+		return updatedState;
             }
         },
         { // works...

@@ -167,9 +167,17 @@ class PostFull extends React.Component {
         if (!post_content) return null;
         const p = extractContent(immutableAccessor, post_content);
         const content = post_content.toJS();
-        const {author, permlink, parent_author, parent_permlink} = content
+	
+	for (var r in content.replies){
+		var rep = this.props.cont.get(content.replies[r])
+		if (extractContent(immutableAccessor, rep).json_metadata.app != 'steemit/0.1'){
+			content.children--;
+		}
+	}
+	const {author, permlink, parent_author, parent_permlink} = content
         const jsonMetadata = this.state.showReply ? null : p.json_metadata
-        if ((jsonMetadata).app != 'steemit/0.1'){
+        
+	if ((p.json_metadata).app != 'steemit/0.1'){
 	return(<div></div>);
 	}
 	// let author_link = '/@' + content.author;
