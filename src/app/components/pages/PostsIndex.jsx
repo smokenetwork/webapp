@@ -76,6 +76,7 @@ class PostsIndex extends React.Component {
             order = 'by_feed';
             topics_order = 'trending';
             posts = this.props.accounts.getIn([account_name, 'feed']);
+            
             const isMyAccount = this.props.username === account_name;
             if (isMyAccount) {
                 emptyText = <div>
