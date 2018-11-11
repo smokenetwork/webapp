@@ -248,11 +248,11 @@ class App extends React.Component {
             </a>
           </li>
         </ul>
-	<ul className="vertical menu">
+        <ul className="vertical menu">
           <h6 className="thirdpartyapps"> {tt('navigation.thirdpartyapps')}</h6>
           <li>
             <a href="https://tradeitforweed.io" target="_blank" rel="noopener noreferrer">
-              {tt('navigation.tradeitforweed')} 
+              {tt('navigation.tradeitforweed')}
             </a>
           </li>
         </ul>
