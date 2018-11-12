@@ -184,7 +184,7 @@ class PostsGrid extends React.Component {
 
             const ignore = ignore_result && ignore_result.has(cont.get('author'));
             const hide = cont.getIn(['stats', 'hide']);
-	    if (p.json_metadata.app == 'steemit/0.1'){
+        if (p.json_metadata.app == 'steemit/0.1' || p.json_metadata.app == 'smoke/0.1'){
             if (!(ignore || hide) || showSpam) {
                 filteredPosts.push({item, ignore});
             }

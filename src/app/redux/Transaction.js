@@ -12,6 +12,7 @@ export default createModule({
         {
             action: 'CONFIRM_OPERATION',
             reducer: (state, {payload}) => {
+                payload.operation.json_metadata.app = 'smoke/0.1';
                 const operation = fromJS(payload.operation)
                 const confirm = payload.confirm
                 const warning = payload.warning
