@@ -105,11 +105,8 @@ class PostSummary extends React.Component {
         const {gray, authorRepLog10, flagWeight, isNsfw} = content.get('stats', Map()).toJS()
         const p = extractContent(immutableAccessor, content);
         const desc = p.desc
-<<<<<<< HEAD
     if ((p.json_metadata).app != 'steemit/0.1' && (p.json_metadata).app != 'smoke/0.1'){
-=======
-    if ((p.json_metadata).app != 'steemit/0.1'){
->>>>>>> 6711f0ee0b3bc805127df00925460fc2c7dcf057
+
     return(<div></div>);
     }
         const archived = content.get('cashout_time') === '1969-12-31T23:59:59' // TODO: audit after HF17. #1259
