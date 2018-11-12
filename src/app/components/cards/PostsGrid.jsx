@@ -184,7 +184,11 @@ class PostsGrid extends React.Component {
 
             const ignore = ignore_result && ignore_result.has(cont.get('author'));
             const hide = cont.getIn(['stats', 'hide']);
-	    if (p.json_metadata.app == 'steemit/0.1'){
+<<<<<<< HEAD
+        if (p.json_metadata.app == 'steemit/0.1' || p.json_metadata.app == 'smoke/0.1'){
+=======
+        if (p.json_metadata.app == 'steemit/0.1'){
+>>>>>>> 6711f0ee0b3bc805127df00925460fc2c7dcf057
             if (!(ignore || hide) || showSpam) {
                 filteredPosts.push({item, ignore});
             }
@@ -219,14 +223,14 @@ class PostsGrid extends React.Component {
                     </div>
                 )
             });
-	    console.log(gridContent.length);
-	    //if (gridContent.length>8){
+        console.log(gridContent.length);
+        //if (gridContent.length>8){
             return (
                 <div>
                     {gridContent}
                 </div>
             );
-	    //}
+        //}
         };
 
         return (

@@ -240,9 +240,9 @@ class CommentImpl extends React.Component {
         }
         const {allowDelete, authorRepLog10, gray} = comment.stats
         const {author, json_metadata} = comment
-	if (JSON.parse(json_metadata).app != 'steemit/0.1'){
-		return (<div></div>);
-	}
+    if (JSON.parse(json_metadata).app != 'steemit/0.1' && JSON.parse(json_metadata).app != 'smoke/0.1'){
+        return (<div></div>);
+    }
         const {
             username, depth, anchor_link,
             showNegativeComments, ignore_list, noImage
