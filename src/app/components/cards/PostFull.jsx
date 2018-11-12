@@ -170,7 +170,7 @@ class PostFull extends React.Component {
 
     for (var r in content.replies) {
       var rep = this.props.cont.get(content.replies[r])
-      if (extractContent(immutableAccessor, rep).json_metadata.app !== 'steemit/0.1') {
+        if (extractContent(immutableAccessor, rep).json_metadata.app != 'steemit/0.1' && extractContent(immutableAccessor, rep).json_metadata.app != 'smoke/0.1'){
         content.children--;
       }
     }
