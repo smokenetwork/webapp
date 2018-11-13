@@ -27,33 +27,33 @@ tt.registerTranslations('it', require('./locales/counterpart/it'));
 tt.registerTranslations('it', require('./locales/it.json'));
 
 if (process.env.NODE_ENV === 'production') {
-  tt.setFallbackLocale('en');
+    tt.setFallbackLocale('en');
 }
 
 class Translator extends React.Component {
-  render() {
-    const language = this.props.locale;
-    tt.setLocale(language);
-    return <IntlProvider
-      // to ensure dynamic language change, "key" property with same "locale" info must be added
-      // see: https://github.com/yahoo/react-intl/wiki/Components#multiple-intl-contexts
-      key={language}
-      locale={language}
-      defaultLocale={DEFAULT_LANGUAGE}
-    >
-      {this.props.children}
-    </IntlProvider>
-  }
+    render() {
+        const language = this.props.locale;
+        tt.setLocale(language);
+        return <IntlProvider
+            // to ensure dynamic language change, "key" property with same "locale" info must be added
+            // see: https://github.com/yahoo/react-intl/wiki/Components#multiple-intl-contexts
+            key={language}
+            locale={language}
+            defaultLocale={DEFAULT_LANGUAGE}
+        >
+            {this.props.children}
+        </IntlProvider>
+    }
 }
 
 export default connect(
-  (state, ownProps) => {
-    const locale = state.app.getIn(['user_preferences', 'locale']);
-    return {...ownProps, locale};
-  }
+    (state, ownProps) => {
+        const locale = state.app.getIn(['user_preferences', 'locale']);
+        return {...ownProps, locale};
+    }
 )(Translator);
 
 export const FormattedHTMLMessage = ({id, params, className}) => (
-  <div className={'FormattedHTMLMessage' + (className ? ` ${className}` : '')}
-       dangerouslySetInnerHTML={{__html: tt(id, params)}}></div>
+    <div className={'FormattedHTMLMessage' + (className ? ` ${className}` : '')}
+         dangerouslySetInnerHTML={{__html: tt(id, params)}}></div>
 );

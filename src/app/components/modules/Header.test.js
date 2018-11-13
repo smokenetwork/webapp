@@ -5,7 +5,7 @@ import {shallow} from 'enzyme';
 import {_Header_} from './Header';
 
 describe('Header', () => {
-  it('contains class .header', () => {
-    expect(shallow(<_Header_/>).is('.Header')).to.equal(true);
-  });
+    it('contains class .header', () => {
+        expect(shallow(<_Header_/>).is('.Header')).to.equal(true);
+    });
 });

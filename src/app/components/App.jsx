@@ -248,14 +248,7 @@ class App extends React.Component {
             </a>
           </li>
         </ul>
-        <ul className="vertical menu">
-          <h6 className="thirdpartyapps"> {tt('navigation.thirdpartyapps')}</h6>
-          <li>
-            <a href="https://tradeitforweed.io" target="_blank" rel="noopener noreferrer">
-              {tt('navigation.tradeitforweed')}
-            </a>
-          </li>
-        </ul>
+
         <ul className="vertical menu">
           <li><a href="/privacy.html" onClick={this.navigate}>{tt('navigation.privacy_policy')}</a></li>
           <li><a href="/tos.html" onClick={this.navigate}>{tt('navigation.terms_of_service')}</a></li>

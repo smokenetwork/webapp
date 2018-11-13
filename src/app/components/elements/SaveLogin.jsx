@@ -5,27 +5,27 @@ import tt from 'counterpart';
 const {bool, func} = PropTypes
 
 class SaveLogin extends Component {
-  static propTypes = {
-    saveLoginConfirm: bool,
-    yes: func,
-    no: func,
-  }
+    static propTypes = {
+        saveLoginConfirm: bool,
+        yes: func,
+        no: func,
+    }
 
-  render() {
-    const {props: {saveLoginConfirm, no, yes}} = this
-    if (!saveLoginConfirm) return <span></span>
-    setTimeout(() => {
-      no()
-    }, 7.5 * 1000)
-    return (
-      <span style={{backgroundColor: 'white'}}>
+    render() {
+        const {props: {saveLoginConfirm, no, yes}} = this
+        if (!saveLoginConfirm) return <span></span>
+        setTimeout(() => {
+            no()
+        }, 7.5 * 1000)
+        return (
+            <span style={{backgroundColor: 'white'}}>
                 <Tooltip t={tt('g.remember_voting_and_posting_key')}>
                     {tt('g.auto_login_question_mark')} <a onClick={yes} className="uppercase">{tt('g.yes')}</a> / <a
-                  onClick={no} className="uppercase">{tt('g.no')}</a>
+                    onClick={no} className="uppercase">{tt('g.no')}</a>
                 </Tooltip>
             </span>
-    )
-  }
+        )
+    }
 }
 
 // export default connect(

@@ -6,5 +6,5 @@ import PostHelper from './PostHelper';
 const postHelper = new PostHelper();
 
 export {
-  postHelper,
+    postHelper,
 };

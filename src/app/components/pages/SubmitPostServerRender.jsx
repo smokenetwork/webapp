@@ -2,16 +2,16 @@ import React from 'react';
 import tt from 'counterpart';
 
 class SubmitPostServerRender extends React.Component {
-  render() {
-    return (
-      <div className="text-center">
-        {tt('g.loading')}...
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="text-center">
+                {tt('g.loading')}...
+            </div>
+        );
+    }
 }
 
 module.exports = {
-  path: 'post',
-  component: SubmitPostServerRender
+    path: 'post',
+    component: SubmitPostServerRender
 };

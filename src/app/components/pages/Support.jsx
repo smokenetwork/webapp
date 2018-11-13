@@ -3,21 +3,21 @@ import tt from 'counterpart';
 import {APP_NAME} from '../../client_config';
 
 class Support extends React.Component {
-  render() {
-    return (
-      <div className="row">
-        <div>
-          <h2>{tt('g.APP_NAME_support', {APP_NAME})}</h2>
-          <p>
-            {tt('g.please_email_questions_to')} <a href="mailto:contact@smoke.io">contact@smoke.io</a>.
-          </p>
-        </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="row">
+                <div>
+                    <h2>{tt('g.APP_NAME_support', {APP_NAME})}</h2>
+                    <p>
+                        {tt('g.please_email_questions_to')} <a href="mailto:contact@smoke.io">contact@smoke.io</a>.
+                    </p>
+                </div>
+            </div>
+        );
+    }
 }
 
 module.exports = {
-  path: 'support.html',
-  component: Support
+    path: 'support.html',
+    component: Support
 };
