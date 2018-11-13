@@ -1,7 +1,7 @@
 import tt from 'counterpart';
 import BadActorList from './BadActorList';
 import VerifiedExchangeList from './VerifiedExchangeList';
-import {PrivateKey} from 'steem/lib/auth/ecc';
+import {PrivateKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
 
 export function validate_account_name(value, memo) {
     let i, label, len, length, ref, suffix;

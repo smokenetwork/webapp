@@ -4,12 +4,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import LoadingIndicator from '../elements/LoadingIndicator';
 import user from '../../redux/User';
-import {PrivateKey} from 'steem/lib/auth/ecc';
+import {PrivateKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
 import {validate_account_name} from '../../utils/ChainValidation';
 import runTests from '../../utils/BrowserTests';
 import GeneratedPasswordInput from '../elements/GeneratedPasswordInput';
 import {saveCords} from '../../utils/ServerApiClient';
-import {api} from 'steem';
+import {api} from '@smokenetwork/smoke-js';
 import {Link} from 'react-router';
 
 class CreateAccount extends React.Component {

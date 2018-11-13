@@ -7,8 +7,8 @@ import {getAccount} from './SagaShared'
 import {browserHistory} from 'react-router'
 import {serverApiLogin, serverApiLogout, serverApiRecordEvent} from '../utils/ServerApiClient';
 import {loadFollows} from './FollowSaga'
-import {hash, PrivateKey, Signature} from 'steem/lib/auth/ecc';
-import {api} from 'steem';
+import {hash, PrivateKey, Signature} from '@smokenetwork/smoke-js/lib/auth/ecc';
+import {api} from '@smokenetwork/smoke-js';
 import {translate} from '../Translator';
 import DMCAUserList from '../utils/DMCAUserList';
 

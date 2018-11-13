@@ -6,8 +6,8 @@ import {validate_account_name} from '../../utils/ChainValidation'
 import {cleanReduxInput} from '../../utils/ReduxForms'
 import tt from 'counterpart';
 import {APP_NAME} from '../../client_config';
-import {key_utils, PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
-import {api} from 'steem';
+import {key_utils, PrivateKey, PublicKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
+import {api} from '@smokenetwork/smoke-js';
 import {reduxForm} from 'redux-form' // @deprecated, instead use: app/utils/ReactForm.js
 
 const {string, oneOf} = React.PropTypes
@@ -153,7 +153,7 @@ class ChangePassword extends React.Component {
                     </div>
                     <br/>
                     <label>
-                        
+
                         {tt('g.current_password')}
                         <br/>
                         <input {...cleanReduxInput(password)} type="password" disabled={loading}/>

@@ -7,7 +7,7 @@ import Iso from 'iso';
 import universalRender from '../shared/UniversalRender';
 import ConsoleExports from './utils/ConsoleExports';
 import {serverApiRecordEvent} from './utils/ServerApiClient';
-import * as steem from 'steem';
+import * as steem from '@smokenetwork/smoke-js';
 
 window.onerror = error => {
     if (window.$STM_csrf) serverApiRecordEvent('client_error', error);

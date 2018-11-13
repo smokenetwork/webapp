@@ -1,4 +1,4 @@
-import * as steem from 'steem'
+import * as steem from '@smokenetwork/smoke-js'
 
 steem.config.set('address_prefix', 'STM')
 

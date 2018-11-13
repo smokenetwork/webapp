@@ -3,7 +3,7 @@ import LoadingIndicator from './LoadingIndicator'
 import {reduxForm} from 'redux-form' // @deprecated, instead use: app/utils/ReactForm.js
 import {cleanReduxInput} from '../../utils/ReduxForms'
 import tt from 'counterpart';
-import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
+import {PrivateKey, PublicKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
 
 class KeyEdit extends Component {
     static propTypes = {

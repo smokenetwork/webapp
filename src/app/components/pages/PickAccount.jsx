@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Progress from 'react-foundation-components/lib/global/progress-bar';
 import {Link} from 'react-router';
 import classNames from 'classnames';
-import {api} from 'steem';
+import {api} from '@smokenetwork/smoke-js';
 import user from '../../redux/User';
 import {validate_account_name} from '../../utils/ChainValidation';
 import runTests from '../../utils/BrowserTests';

@@ -1,6 +1,6 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, fork, put, select } from 'redux-saga/effects';
-import { api } from 'steem';
+import { api } from '@smokenetwork/smoke-js';
 import { postHelper } from '../../utils/PostHelperFactory';
 import constants from './constants';
 import { fetchFollowCount, loadFollows } from './FollowSaga';

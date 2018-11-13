@@ -2,7 +2,7 @@ import {fromJS} from 'immutable'
 import {call, put, select} from 'redux-saga/effects';
 import g from './GlobalReducer'
 import {takeEvery, takeLatest} from 'redux-saga';
-import {api} from 'steem';
+import {api} from '@smokenetwork/smoke-js';
 import {setUserPreferences} from '../utils/ServerApiClient';
 
 const wait = ms => (

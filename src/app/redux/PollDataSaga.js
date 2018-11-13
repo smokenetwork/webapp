@@ -1,7 +1,7 @@
 import {call, put, select} from 'redux-saga/effects';
 import {getNotifications, webPushRegister} from '../utils/ServerApiClient';
 import registerServiceWorker from '../utils/RegisterServiceWorker';
-import {api} from 'steem';
+import {api} from '@smokenetwork/smoke-js';
 
 const wait = ms => (
     new Promise(resolve => {

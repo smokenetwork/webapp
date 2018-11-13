@@ -4,8 +4,8 @@ import GeneratedPasswordInput from '../elements/GeneratedPasswordInput';
 import LoadingIndicator from '../elements/LoadingIndicator';
 import tt from 'counterpart';
 import Callout from '../elements/Callout';
-import {PrivateKey} from 'steem/lib/auth/ecc';
-import {api} from 'steem';
+import {PrivateKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
+import {api} from '@smokenetwork/smoke-js';
 
 function passwordToOwnerPubKey(account_name, password) {
     let pub_key;

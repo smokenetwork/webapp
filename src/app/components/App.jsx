@@ -19,7 +19,7 @@ import tt from 'counterpart';
 import PageViewsCounter from './elements/PageViewsCounter';
 import {serverApiRecordEvent} from '../utils/ServerApiClient';
 import {LIQUID_TOKEN} from '../client_config';
-import {key_utils} from 'steem/lib/auth/ecc';
+import {key_utils} from '@smokenetwork/smoke-js/lib/auth/ecc';
 import resolveRoute from '../ResolveRoute';
 
 const pageRequiresEntropy = (path) => {

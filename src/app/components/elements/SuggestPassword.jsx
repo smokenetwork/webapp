@@ -7,7 +7,7 @@ import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 import Icon from './Icon'
 import tt from 'counterpart';
 import {APP_ICON, APP_NAME} from '../../client_config';
-import {key_utils} from 'steem/lib/auth/ecc';
+import {key_utils} from '@smokenetwork/smoke-js/lib/auth/ecc';
 
 
 const {bool} = React.PropTypes

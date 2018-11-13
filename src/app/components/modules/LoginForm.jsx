@@ -10,7 +10,7 @@ import reactForm from '../../utils/ReactForm'
 import {serverApiRecordEvent} from '../../utils/ServerApiClient';
 import tt from 'counterpart';
 import {APP_URL} from '../../client_config';
-import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
+import {PrivateKey, PublicKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
 import {connect} from 'react-redux'
 
 class LoginForm extends Component {

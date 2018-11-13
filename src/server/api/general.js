@@ -9,8 +9,8 @@ import {checkCSRF, emailRegex, getRemoteIp, rateLimitReq} from 'server/utils/mis
 import coBody from 'co-body';
 import Mixpanel from 'mixpanel';
 import Tarantool from 'db/tarantool';
-import {hash, PublicKey, Signature} from 'steem/lib/auth/ecc';
-import {api, broadcast} from 'steem';
+import {hash, PublicKey, Signature} from '@smokenetwork/smoke-js/lib/auth/ecc';
+import {api, broadcast} from '@smokenetwork/smoke-js';
 
 const mixpanel = config.get('mixpanel') ? Mixpanel.init(config.get('mixpanel')) : null;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import tt from 'counterpart';
 import {APP_NAME} from '../../client_config';
-import {key_utils} from 'steem/lib/auth/ecc';
+import {key_utils} from '@smokenetwork/smoke-js/lib/auth/ecc';
 
 function allChecked(confirmCheckboxes) {
     return confirmCheckboxes.box1 && confirmCheckboxes.box2;

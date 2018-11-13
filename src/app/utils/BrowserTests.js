@@ -1,7 +1,7 @@
 import assert from 'assert'
 import {serverApiRecordEvent} from './ServerApiClient'
-import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc'
-import {config} from 'steem';
+import {PrivateKey, PublicKey} from '@smokenetwork/smoke-js/lib/auth/ecc'
+import {config} from '@smokenetwork/smoke-js';
 
 export const browserTests = {}
 

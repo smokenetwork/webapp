@@ -9,8 +9,8 @@ import tr from './Transaction'
 import tt from 'counterpart'
 import getSlug from 'speakingurl'
 import {serverApiRecordEvent} from '../utils/ServerApiClient'
-import {PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
-import {api, auth, broadcast, memo} from 'steem';
+import {PrivateKey, PublicKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
+import {api, auth, broadcast, memo} from '@smokenetwork/smoke-js';
 import base58 from 'bs58'
 import secureRandom from 'secure-random'
 import diff_match_patch from 'diff-match-patch'

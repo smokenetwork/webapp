@@ -39,7 +39,7 @@ export default {
             'react',
             'react-dom',
             'react-router',
-            'steem',
+            '@smokenetwork/smoke-js',
             'bytebuffer',
             'immutable',
             'autolinker',

@@ -1,5 +1,5 @@
 import {notificationsArrayToMap, NTYPES} from './Notifications';
-import {api} from 'steem';
+import {api} from '@smokenetwork/smoke-js';
 
 const request_base = {
     method: 'post',

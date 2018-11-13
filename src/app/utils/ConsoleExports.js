@@ -1,4 +1,4 @@
-import {Aes, key_utils, PrivateKey, PublicKey} from 'steem/lib/auth/ecc';
+import {Aes, key_utils, PrivateKey, PublicKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
 
 module.exports = {
 

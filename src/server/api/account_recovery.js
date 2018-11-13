@@ -3,7 +3,7 @@ import koa_body from 'koa-body';
 import models, {esc, escAttrs} from 'db/models';
 import config from 'config';
 import {checkCSRF, getRemoteIp, rateLimitReq} from 'server/utils/misc';
-import {broadcast} from 'steem';
+import {broadcast} from '@smokenetwork/smoke-js';
 
 export default function useAccountRecoveryApi(app) {
     const router = koa_router();
