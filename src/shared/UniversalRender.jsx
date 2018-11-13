@@ -125,6 +125,32 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
             };
         }
 
+        {
+          // https://github.com/smokenetwork/webapp/issues/40
+          try {
+            let deleted = [];
+
+            for (const key in onchain.content) {
+              const jsonMetadata = JSON.parse(onchain.content[key].json_metadata);
+
+              // steemit/0.1 or smoke/* only
+              if (!jsonMetadata.app.match(/^(smoke\/|steemit\/0.1)/)) {
+                delete onchain.content[key];
+                deleted.push(key);
+              }
+            }
+
+            // continue to delete accounts.xxx.blog
+            for (const acc in onchain.accounts) {
+              onchain.accounts[acc]["blog"] = onchain.accounts[acc]["blog"].filter((e) => { return !deleted.includes(e) });
+            }
+          } catch (error) {
+            // do nothing
+          }
+
+          console.log(JSON.stringify(onchain));
+        }
+
         // If we are not loading a post, truncate state data to bring response size down.
         if (!url.match(routeRegex.Post)) {
             for (var key in onchain.content) {

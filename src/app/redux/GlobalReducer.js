@@ -160,6 +160,23 @@ export default createModule({
             reducer: (state, {payload: {data, order, category, author, accountname, /*permlink*/}}) => {
                 // console.log('-- RECEIVE_DATA reducer -->', order, category, author, permlink, data);
                 // console.log('-- RECEIVE_DATA state -->', state.toJS());
+
+                {
+                  // https://github.com/smokenetwork/webapp/issues/40
+                  try {
+                    data = data.filter((e) => {
+                      // steemit/0.1 or smoke/* only
+                      if (JSON.parse(e.json_metadata).app.match(/^(smoke\/|steemit\/0.1)/)) {
+                        return true;
+                      }
+
+                      return false;
+                    });
+                  } catch (error) {
+                    // do nothing
+                  }
+                }
+
                 let new_state;
                 if (order === 'by_author' || order === 'by_feed' || order === 'by_comments' || order === 'by_replies') {
                     // category is either "blog", "feed", "comments", or "recent_replies" (respectively) -- and all posts are keyed under current profile
