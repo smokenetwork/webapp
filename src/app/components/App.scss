@@ -35,8 +35,8 @@
 
 .welcomeBanner {
     padding: 4em 0 4em;
-    background-color: $color-blue-black;
-    color: $color-white;
+
+    color: black;
     // background-image: url(../images/lp-bottom.jpg);
     // background-repeat: repeat-x;
     // background-position:bottom;
@@ -83,11 +83,11 @@
         font-family: helvetica, sans-serif;
     }
     h4 {
-        color: $color-white;
+        color: #5d5d5d;
         font-weight: 500;
         margin-bottom: 1rem;
         width: 84%;
-        max-width: 440px;
+        max-width: 580px;
         margin: 0 auto;
         font-family: helvetica, sans-serif;
         @include font-size(18px);
@@ -95,15 +95,13 @@
     .button {
 
         min-width: 240px;
-
         text-decoration: none;
         font-weight: bold;
         transition: 0.2s all ease-in-out;
         text-transform: capitalize;
-        border-radius: 0;
         font-size: 18px;
-        background-color: $color-white;
-        color: $color-blue-black;
+        background-color: #00c700;
+        color: white;
         border: none;
         padding: 16px 22px;
         @include font-size(22px);
