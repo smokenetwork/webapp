@@ -144,7 +144,7 @@ class Header extends React.Component {
 
         if (process.env.BROWSER && (route.page !== 'Post' && route.page !== 'PostNoCategory')) document.title = page_title + ' — ' + APP_NAME;
 
-        const logoLink = current_account_name ? `/@${current_account_name}/feed` : '/created';
+        const logoLink = current_account_name ? `/@${current_account_name}/feed` : '/';
 
         const menuItems = [
 
