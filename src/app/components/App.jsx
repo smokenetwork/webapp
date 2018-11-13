@@ -133,6 +133,7 @@ class App extends React.Component {
     const miniHeader = location.pathname === '/create_account' || location.pathname === '/pick_account';
     const headerHidden = miniHeader && location.search === '?whistle_signup'
     const params_keys = Object.keys(params);
+    const home = location.pathname === '/';
     const ip = location.pathname === '/' || (params_keys.length === 2 && params_keys[0] === 'order' && params_keys[1] === 'category');
     const alert = this.props.error || flash.get('alert') || flash.get('error');
     const warning = flash.get('warning');
@@ -177,11 +178,10 @@ class App extends React.Component {
     }
 
     let welcome_screen = null;
-    if (ip && new_visitor && this.state.showBanner) {
+    if (home && ip && this.state.showBanner) {
       welcome_screen = (
         <div className="welcomeWrapper">
           <div className="welcomeBanner">
-            <CloseButton onClick={() => this.setState({showBanner: false})}/>
             <div className="text-center">
               <h2>{tt('navigation.intro_tagline')}</h2>
               <h4>{tt('navigation.intro_paragraph')}</h4>
@@ -248,7 +248,14 @@ class App extends React.Component {
             </a>
           </li>
         </ul>
-
+        <ul className="vertical menu">
+          <h6 className="thirdpartyapps"> {tt('navigation.thirdpartyapps')}</h6>
+          <li>
+            <a href="https://tradeitforweed.io" target="_blank" rel="noopener noreferrer">
+              <Icon name="tifw"/>{tt('navigation.tradeitforweed')}  &nbsp;<Icon name="extlink"/>
+            </a>
+          </li>
+        </ul>
         <ul className="vertical menu">
           <li><a href="/privacy.html" onClick={this.navigate}>{tt('navigation.privacy_policy')}</a></li>
           <li><a href="/tos.html" onClick={this.navigate}>{tt('navigation.terms_of_service')}</a></li>
