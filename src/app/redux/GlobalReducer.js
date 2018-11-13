@@ -3,7 +3,7 @@ import createModule from 'redux-modules';
 import { contentStats } from '../utils/StateFunctions'
 import constants from './constants';
 import { emptyContent } from './EmptyState';
-
+import {filterState, filterData} from '../../utils/ContentFilter';
 const emptyContentMap = Map(emptyContent)
 
 export default createModule({
@@ -23,6 +23,7 @@ export default createModule({
         {
             action: 'RECEIVE_STATE',
             reducer: (state, action) => {
+                action.payload = filterState(action.payload);
                 let payload = fromJS(action.payload)
                 if(payload.has('content')) {
                     const content = payload.get('content').withMutations(c => {
@@ -161,21 +162,8 @@ export default createModule({
                 // console.log('-- RECEIVE_DATA reducer -->', order, category, author, permlink, data);
                 // console.log('-- RECEIVE_DATA state -->', state.toJS());
 
-                {
-                  // https://github.com/smokenetwork/webapp/issues/40
-                  try {
-                    data = data.filter((e) => {
-                      // steemit/0.1 or smoke/* only
-                      if (JSON.parse(e.json_metadata).app.match(/^(smoke\/|steemit\/0.1)/)) {
-                        return true;
-                      }
-
-                      return false;
-                    });
-                  } catch (error) {
-                    // do nothing
-                  }
-                }
+                // https://github.com/smokenetwork/webapp/issues/40
+                data = filterData(data);
 
                 let new_state;
                 if (order === 'by_author' || order === 'by_feed' || order === 'by_comments' || order === 'by_replies') {

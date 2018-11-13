@@ -27,7 +27,7 @@ import {routeRegex} from '../app/ResolveRoute';
 import {contentStats} from '../app/utils/StateFunctions'
 import { postHelper } from '../utils/PostHelperFactory'
 import {api} from 'steem';
-
+import {filterState} from '../utils/ContentFilter';
 const sagaMiddleware = createSagaMiddleware(
     ...userWatches, // keep first to remove keys early when a page change happens
     ...fetchDataWatches,
@@ -125,31 +125,8 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
             };
         }
 
-        {
-          // https://github.com/smokenetwork/webapp/issues/40
-          try {
-            let deleted = [];
-
-            for (const key in onchain.content) {
-              const jsonMetadata = JSON.parse(onchain.content[key].json_metadata);
-
-              // steemit/0.1 or smoke/* only
-              if (!jsonMetadata.app.match(/^(smoke\/|steemit\/0.1)/)) {
-                delete onchain.content[key];
-                deleted.push(key);
-              }
-            }
-
-            // continue to delete accounts.xxx.blog
-            for (const acc in onchain.accounts) {
-              onchain.accounts[acc]["blog"] = onchain.accounts[acc]["blog"].filter((e) => { return !deleted.includes(e) });
-            }
-          } catch (error) {
-            // do nothing
-          }
-
-          console.log(JSON.stringify(onchain));
-        }
+        // https://github.com/smokenetwork/webapp/issues/40
+        onchain = filterState(onchain);
 
         // If we are not loading a post, truncate state data to bring response size down.
         if (!url.match(routeRegex.Post)) {
@@ -163,7 +140,8 @@ async function universalRender({ location, initial_state, offchain, ErrorPage, t
 
         if (!url.match(routeRegex.PostsIndex) && !url.match(routeRegex.UserProfile1) && !url.match(routeRegex.UserProfile2) && url.match(routeRegex.PostNoCategory)) {
             const params = url.substr(2, url.length - 1).split("/");
-            const content = await api.getContentAsync(params[0], params[1]);
+            let content = await api.getContentAsync(params[0], params[1]);
+            // content = filterContent(content);
             if (content.author && content.permlink) { // valid short post url
                 onchain.content[url.substr(2, url.length - 1)] = content;
             } else { // protect on invalid user pages (i.e /user/transferss)
