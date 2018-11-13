@@ -182,7 +182,6 @@ class App extends React.Component {
       welcome_screen = (
         <div className="welcomeWrapper">
           <div className="welcomeBanner">
-            <CloseButton onClick={() => this.setState({showBanner: false})}/>
             <div className="text-center">
               <h2>{tt('navigation.intro_tagline')}</h2>
               <h4>{tt('navigation.intro_paragraph')}</h4>
