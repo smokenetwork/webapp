@@ -133,6 +133,7 @@ class App extends React.Component {
     const miniHeader = location.pathname === '/create_account' || location.pathname === '/pick_account';
     const headerHidden = miniHeader && location.search === '?whistle_signup'
     const params_keys = Object.keys(params);
+    const home = location.pathname === '/';
     const ip = location.pathname === '/' || (params_keys.length === 2 && params_keys[0] === 'order' && params_keys[1] === 'category');
     const alert = this.props.error || flash.get('alert') || flash.get('error');
     const warning = flash.get('warning');
@@ -177,7 +178,7 @@ class App extends React.Component {
     }
 
     let welcome_screen = null;
-    if (ip && new_visitor && this.state.showBanner) {
+    if (home && ip && this.state.showBanner) {
       welcome_screen = (
         <div className="welcomeWrapper">
           <div className="welcomeBanner">
