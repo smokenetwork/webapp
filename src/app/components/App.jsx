@@ -252,7 +252,7 @@ class App extends React.Component {
           <h6 className="thirdpartyapps"> {tt('navigation.thirdpartyapps')}</h6>
           <li>
             <a href="https://tradeitforweed.io" target="_blank" rel="noopener noreferrer">
-              {tt('navigation.tradeitforweed')}
+              <Icon name="tifw"/>{tt('navigation.tradeitforweed')}  &nbsp;<Icon name="extlink"/>
             </a>
           </li>
         </ul>
