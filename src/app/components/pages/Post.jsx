@@ -65,7 +65,24 @@ class Post extends React.Component {
         }
         const dis = content.get(post);
 
-        if (!dis) return null;
+        if (!dis) {
+          return (
+            <center>
+              <div className="NotFound float-center">
+                <div>
+                  <h4 className="NotFound__header">Sorry! This page doesnt exist.</h4>
+                  <p>Not to worry. You can head back to <a style={{fontWeight: 800}} href="/">our homepage</a>,
+                    or check out some great posts.
+                  </p>
+                  <ul className="NotFound__menu">
+                    <li><a href="/created">new posts</a></li>
+                    <li><a href="/trending">trending posts</a></li>
+                  </ul>
+                </div>
+              </div>
+            </center>
+          );
+        }
 
         if (!showAnyway) {
             const {gray} = dis.get('stats').toJS()

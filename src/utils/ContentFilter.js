@@ -13,6 +13,12 @@ export const filterState = (state) => {
       }
     }
 
+    for (const key in state.content) {
+      state.content[key]["replies"] = state.content[key]["replies"].filter((e) => {
+        return !deleted.includes(e);
+      });
+    }
+
     // continue to delete accounts.xxx.blog and comments
     for (const acc in state.accounts) {
       if (state.accounts[acc]["blog"]) {
