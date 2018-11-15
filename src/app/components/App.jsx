@@ -219,17 +219,17 @@ class App extends React.Component {
         <ul className="vertical menu">
           <li>
             <a href="https://docs.smoke.io/#/claim" target="_blank" rel="noopener noreferrer">
-              <Icon name="smoke"/> Claim SMOKE <Icon name="extlink"/>
+              <Icon name="smoke"/> Claim SMOKE 
             </a>
           </li>
           <li>
             <a href="https://docs.smoke.io" target="_blank" rel="noopener noreferrer">
-              <Icon name="more"/> {tt('navigation.documentation')}&nbsp;<Icon name="extlink"/>
+              <Icon name="more"/> {tt('navigation.documentation')}
             </a>
           </li>
           <li>
             <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
-              <Icon name="blockchain"/> {tt('main_menu.explore')}&nbsp;<Icon name="extlink"/>
+              <Icon name="blockchain"/> {tt('main_menu.explore')}
             </a>
           </li>
         </ul>
@@ -244,7 +244,7 @@ class App extends React.Component {
           <h6 className="exchange"> {tt('navigation.exchange')}</h6>
           <li>
             <a href="https://market.rudex.org/#/market/RUDEX.SMOKE_BTS" target="_blank" rel="noopener noreferrer">
-              <Icon name="rudex"/> {tt('navigation.rudex')} &nbsp;<Icon name="extlink"/>
+              <Icon name="rudex"/> {tt('navigation.rudex')}
             </a>
           </li>
         </ul>
@@ -252,7 +252,7 @@ class App extends React.Component {
           <h6 className="thirdpartyapps"> {tt('navigation.thirdpartyapps')}</h6>
           <li>
             <a href="https://tradeitforweed.io" target="_blank" rel="noopener noreferrer">
-              <Icon name="tifw"/>{tt('navigation.tradeitforweed')}  &nbsp;<Icon name="extlink"/>
+              <Icon name="tifw"/>{tt('navigation.tradeitforweed')}
             </a>
           </li>
         </ul>
