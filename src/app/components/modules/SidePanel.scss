@@ -18,7 +18,10 @@ $menu-width: 220px;
     }
 
     .content-end {
-          justify-content: flex-end !important;
+      justify-content: flex-end !important;
+      font-size: 0.9em;
+      line-height: 1rem;
+      padding: 0rem 0.5rem 0.5rem;
     }
 
     .menu > li.last {
@@ -56,7 +59,7 @@ $menu-width: 220px;
             }
             > a:hover, &:focus {
                 background-color: white;
-
+            }
         }
         ul:nth-of-type(n+3) {
             margin-top: 1.1rem;

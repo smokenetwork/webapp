@@ -219,7 +219,7 @@ class App extends React.Component {
         <ul className="vertical menu">
           <li>
             <a href="https://docs.smoke.io/#/claim" target="_blank" rel="noopener noreferrer">
-              <Icon name="smoke"/> Claim SMOKE 
+              <Icon name="smoke"/> Claim SMOKE
             </a>
           </li>
           <li>
@@ -261,7 +261,7 @@ class App extends React.Component {
           <li><a className="content-end" href="/tos.html" onClick={this.navigate}>{tt('navigation.terms_of_service')}</a></li>
           <li>
             <a className="content-end" href="https://smoke.network" target="_blank" rel="noopener noreferrer">
-              {tt('navigation.about')}&nbsp;<Icon name="extlink"/>
+              {tt('navigation.about')}
             </a>
           </li>
         </ul>
