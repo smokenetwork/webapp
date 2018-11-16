@@ -28,7 +28,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
     const nav = navigate || defaultNavigate;
     const submitStory = $STM_Config.read_only_mode ? null : (
         <li className={lcn + ' submit-story' + (vertical ? ' last' : '')}>
-            <a href="/post" className="button primary" onClick={nav}><Icon name="pencil"/>{tt('g.submit_a_story')}</a>
+            <a href="/post" onClick={nav}><Icon name="pencil"/>{tt('g.submit_a_story')}</a>
         </li>);
     const logoutbutton = (
         <li className={hcl}>
