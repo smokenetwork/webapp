@@ -2,51 +2,67 @@ $menu-width: 220px;
 
 .SidePanel {
     display: block;
-    font-size: 90%;
+    font-size: 75%;
 
     .exchange {
       font-size: 0.9em;
-      margin-left: 10px;
+      position: relative;
+      margin-left: auto;
+      left: -25px;
     }
     .thirdpartyapps {
       font-size: 0.9em;
-      margin-left: 10px;
+      position: relative;
+      margin-left: auto;
+      left: -25px;
     }
+
+    .content-end {
+      justify-content: flex-end !important;
+      font-size: 0.9em;
+      line-height: 1rem;
+      padding: 0rem 0.5rem 0.5rem;
+    }
+
     .menu > li.last {
-        border-bottom: 1px solid $color-border-dark;
         color: $color-text-gray-light;
     }
 
     > div {
-        background-color: $color-blue-black-darkest;
-        color: $color-white;
+        background-color: #fdfdfd;
+        color: #080808;
         padding-top: 3rem;
         .close-button {
-            color: $color-white;
+            color: #7d8387;
         }
         .menu > li {
             > a {
                 transition: 0.2s all ease-in-out;
-                border-top: 1px solid $color-blue-black;
-                color: $color-white;
-                border-bottom: 1px solid $color-blue-black-darkest;
+                color: #52585c;
                 line-height: 1.1rem;
-            }
-            > a:hover, &:focus {
-                background-color: $color-blue-black;
-                border-bottom: 1px solid $primary-brand-color;
 
-                path {
-                    fill: $primary-brand-color;
+                > span {
+                  display: inline-block;
+                  margin-right: 20px;
+                  border: 1px solid;
+                  border-radius: 50%;
+                  padding: 8px;
+                  padding-top: 10px;
+                  padding-left: 11px;
+                  margin-top: -12px;
+                  width: 45px !important;
+                  height: 45px !important;
+                  -webkit-box-shadow: rgba(0,0,0,0.25) 0px 0 5px;
+                  -moz-box-shadow: rgba(0,0,0,0.25) 0 0 5px;
+                  box-shadow: rgba(0,0,0,0.25) 0 0 5px;
                 }
             }
-            path {
-                fill: $color-text-gray-light;
+            > a:hover, &:focus {
+                background-color: white;
             }
-
         }
         ul:nth-of-type(n+3) {
-            margin-top: 2rem;
+            margin-top: 1.1rem;
         }
 
         position: fixed;
@@ -67,14 +83,14 @@ $menu-width: 220px;
         }
 
         &.right {
-            right: -$menu-width;
-            visibility: hidden;
+            right: -240px;
             overflow-y: auto;
         }
 
         &.visible.right {
-            transform: translate3d(-$menu-width, 0, 0);
+            transform: translate3d(-240px, 0, 0);
             visibility: visible;
+            border: solid 1px #eeeeee;
         }
     }
     .Icon.extlink {
@@ -88,10 +104,10 @@ $menu-width: 220px;
 @media screen and (max-width: 39.9375em) {
     .SidePanel {
         div ul:nth-of-type(n+2) {
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
         > div > .menu > li > a {
-            padding: 0.3rem 1rem;
+            padding: 0.5rem 1rem;
         }
     }
 }

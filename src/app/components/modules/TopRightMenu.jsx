@@ -28,12 +28,12 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
     const nav = navigate || defaultNavigate;
     const submitStory = $STM_Config.read_only_mode ? null : (
         <li className={lcn + ' submit-story' + (vertical ? ' last' : '')}>
-            <a href="/post" className="button primary" onClick={nav}>{tt('g.submit_a_story')}</a>
+            <a href="/post" className="button primary" onClick={nav}><Icon name="pencil"/>{tt('g.submit_a_story')}</a>
         </li>);
     const logoutbutton = (
         <li className={hcl}>
             <a onClick={logout}>
-                {tt('g.logout')}
+                <Icon name="exit"/>{tt('g.logout')}
             </a>
         </li>);
     const accountLink = `/@${username}`;
@@ -73,8 +73,8 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
     }
     return (
         <ul className={mcn + mcl}>
-            <li className={lcn}><a href="/pick_account">{tt('g.sign_up')}</a></li>
-            <li className={lcn}><a href="/login.html" onClick={showLogin}>{tt('g.login')}</a></li>
+            <li className={lcn}><a href="/pick_account"><Icon name="smoke"/>{tt('g.sign_up')}</a></li>
+            <li className={lcn}><a href="/login.html" onClick={showLogin}><Icon name="mascot"/>{tt('g.login')}</a></li>
             {submitStory}
             {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
                 <a href="#" onClick={toggleOffCanvasMenu}>
