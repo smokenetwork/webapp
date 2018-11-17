@@ -23,21 +23,21 @@ export const imageProxy = () => $STM_Config.img_proxy_prefix;
  * @returns string
  */
 export default (url, dimensions = false) => {
-    const proxyList = url.match(rProxyDomainsDimensions);
-    let respUrl = url;
-    if (proxyList) {
-        const lastProxy = proxyList[proxyList.length - 1];
-        respUrl = url.substring(url.lastIndexOf(lastProxy) + lastProxy.length);
+  const proxyList = url.match(rProxyDomainsDimensions);
+  let respUrl = url;
+  if (proxyList) {
+    const lastProxy = proxyList[proxyList.length - 1];
+    respUrl = url.substring(url.lastIndexOf(lastProxy) + lastProxy.length);
+  }
+  if (dimensions && $STM_Config && $STM_Config.img_proxy_prefix) {
+    let dims = dimensions + '/';
+    if (typeof dimensions !== 'string') {
+      dims = (proxyList) ? proxyList.shift().match(/([0-9]+x[0-9]+)\//g)[0] : NATURAL_SIZE;
     }
-    if (dimensions && $STM_Config && $STM_Config.img_proxy_prefix) {
-        let dims = dimensions + '/';
-        if (typeof dimensions !== 'string') {
-            dims = (proxyList) ? proxyList.shift().match(/([0-9]+x[0-9]+)\//g)[0] : NATURAL_SIZE;
-        }
-        if (NATURAL_SIZE !== dims || !rProxyDomain.test(respUrl)) {
-            return $STM_Config.img_proxy_prefix + dims + respUrl;
-        }
+    if (NATURAL_SIZE !== dims || !rProxyDomain.test(respUrl)) {
+      return $STM_Config.img_proxy_prefix + dims + respUrl;
     }
-    return respUrl;
+  }
+  return respUrl;
 }
 

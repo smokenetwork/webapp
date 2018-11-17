@@ -37,44 +37,44 @@ win() {
  */
 
 class ExperimentWrapper extends React.Component {
-    static propTypes = {
-        name: PropTypes.string.isRequired,
-        uid: PropTypes.string.isRequired,
-        children: PropTypes.any.isRequired
-    };
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    uid: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired
+  };
 
-    constructor(props) {
-        super(props);
-        experimentDebugger.enable();
-    }
+  constructor(props) {
+    super(props);
+    experimentDebugger.enable();
+  }
 
-    render() {
-        const uid = this.props.uid;
-        return (
-            <Experiment name={this.props.name} userIdentifier={uid}>
-                {this.props.children}
-            </Experiment>
-        );
-    }
+  render() {
+    const uid = this.props.uid;
+    return (
+      <Experiment name={this.props.name} userIdentifier={uid}>
+        {this.props.children}
+      </Experiment>
+    );
+  }
 }
 
 emitter.addPlayListener((experimentName, variantName) => {
-    // console.log("Displaying experiment ‘" + experimentName + "’ variant ‘" + variantName + "’");
-    serverApiRecordEvent('Ex:' + experimentName, 'Show:' + variantName, 10);
+  // console.log("Displaying experiment ‘" + experimentName + "’ variant ‘" + variantName + "’");
+  serverApiRecordEvent('Ex:' + experimentName, 'Show:' + variantName, 10);
 });
 
 emitter.addWinListener((experimentName, variantName) => {
-    // console.log("Variant ‘" + variantName + "’ of experiment ‘" + experimentName + "’  was clicked");
-    serverApiRecordEvent('Ex: ' + experimentName, 'Win:' + variantName, 10);
+  // console.log("Variant ‘" + variantName + "’ of experiment ‘" + experimentName + "’  was clicked");
+  serverApiRecordEvent('Ex: ' + experimentName, 'Win:' + variantName, 10);
 });
 
 
 ExperimentWrapper = connect(
-    state => {
-        return {
-            uid: state.offchain.get('uid')
-        }
+  state => {
+    return {
+      uid: state.offchain.get('uid')
     }
+  }
 )(ExperimentWrapper);
 
 ExperimentWrapper.win = (name) => emitter.emitWin(name);

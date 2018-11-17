@@ -3,25 +3,25 @@ import LoginForm from '../modules/LoginForm';
 import tt from 'counterpart';
 
 class Login extends React.Component {
-    render() {
-        if (!process.env.BROWSER) { // don't render this page on the server
-            return <div className="row">
-                <div className="column">
-                    {tt('g.loading')}..
-                </div>
-            </div>;
-        }
-        return (
-            <div className="Login row">
-                <div className="column">
-                    <LoginForm afterLoginRedirectToWelcome={true} />
-                </div>
-            </div>
-        );
+  render() {
+    if (!process.env.BROWSER) { // don't render this page on the server
+      return <div className="row">
+        <div className="column">
+          {tt('g.loading')}..
+        </div>
+      </div>;
     }
+    return (
+      <div className="Login row">
+        <div className="column">
+          <LoginForm afterLoginRedirectToWelcome={true}/>
+        </div>
+      </div>
+    );
+  }
 }
 
 module.exports = {
-    path: 'login.html',
-    component: Login
+  path: 'login.html',
+  component: Login
 };

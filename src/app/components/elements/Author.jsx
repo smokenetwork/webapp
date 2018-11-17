@@ -15,129 +15,129 @@ const {string, bool, number} = React.PropTypes;
 const closers = [];
 
 const fnCloseAll = () => {
-    var close;
-    while (close = closers.shift()) {
-        close();
-    }
+  var close;
+  while (close = closers.shift()) {
+    close();
+  }
 }
 
 class Author extends React.Component {
-    static propTypes = {
-        author: string.isRequired,
-        follow: bool,
-        mute: bool,
-        authorRepLog10: number,
-    };
-    static defaultProps = {
-        follow: true,
-        mute: true
-    };
+  static propTypes = {
+    author: string.isRequired,
+    follow: bool,
+    mute: bool,
+    authorRepLog10: number,
+  };
+  static defaultProps = {
+    follow: true,
+    mute: true
+  };
 
-    constructor(...args) {
-        super(...args);
-        this.state = {show: false};
-        this.toggle = this.toggle.bind(this);
-        this.close = this.close.bind(this);
+  constructor(...args) {
+    super(...args);
+    this.state = {show: false};
+    this.toggle = this.toggle.bind(this);
+    this.close = this.close.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.authorProfileLink) {
+      return;
     }
-
-    componentDidMount() {
-        if (!this.authorProfileLink) {
-            return;
-        }
-        const node = ReactDOM.findDOMNode(this.authorProfileLink);
-        if (node.addEventListener) {
-            node.addEventListener('click', this.toggle, false);
-        } else {
-            node.attachEvent('click', this.toggle, false);
-        }
+    const node = ReactDOM.findDOMNode(this.authorProfileLink);
+    if (node.addEventListener) {
+      node.addEventListener('click', this.toggle, false);
+    } else {
+      node.attachEvent('click', this.toggle, false);
     }
+  }
 
-    componentWillUnmount() {
-        if (!this.authorProfileLink) {
-            return;
-        }
-        const node = ReactDOM.findDOMNode(this.authorProfileLink);
-        if (node.removeEventListener) {
-            node.removeEventListener('click', this.toggle);
-        } else {
-            node.detachEvent('click', this.toggle);
-        }
+  componentWillUnmount() {
+    if (!this.authorProfileLink) {
+      return;
     }
-
-    toggle = (e) => {
-        if (!(e.metaKey || e.ctrlKey)) {
-            e.preventDefault();
-            e.stopPropagation();
-            const show = !this.state.show;
-            fnCloseAll();
-            if (show) {
-                this.setState({show})
-                closers.push(this.close)
-            }
-        }
+    const node = ReactDOM.findDOMNode(this.authorProfileLink);
+    if (node.removeEventListener) {
+      node.removeEventListener('click', this.toggle);
+    } else {
+      node.detachEvent('click', this.toggle);
     }
+  }
 
-    close = () => {
-        this.setState({
-            show: false
-        });
+  toggle = (e) => {
+    if (!(e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      e.stopPropagation();
+      const show = !this.state.show;
+      fnCloseAll();
+      if (show) {
+        this.setState({show})
+        closers.push(this.close)
+      }
     }
+  }
 
-    shouldComponentUpdate = shouldComponentUpdate(this, 'Author');
+  close = () => {
+    this.setState({
+      show: false
+    });
+  }
 
-    render() {
-        const {author, follow, mute, authorRepLog10} = this.props; // html
-        const {username} = this.props; // redux
-        const {name, about} = this.props.account ? normalizeProfile(this.props.account.toJS()) : {};
+  shouldComponentUpdate = shouldComponentUpdate(this, 'Author');
 
-        if (!(follow || mute) || username === author) {
-            return (
-                <span className="author" itemProp="author" itemScope itemType="http://schema.org/Person">
+  render() {
+    const {author, follow, mute, authorRepLog10} = this.props; // html
+    const {username} = this.props; // redux
+    const {name, about} = this.props.account ? normalizeProfile(this.props.account.toJS()) : {};
+
+    if (!(follow || mute) || username === author) {
+      return (
+        <span className="author" itemProp="author" itemScope itemType="http://schema.org/Person">
                     <strong><Link to={'/@' + author}>{author}</Link></strong> <Reputation value={authorRepLog10}/>
                 </span>
-            );
-        }
+      );
+    }
 
-        return (
-            <span className="Author">
+    return (
+      <span className="Author">
                 <span itemProp="author" itemScope itemType="http://schema.org/Person">
                     <strong><Link className="ptc" ref={(link) => {
-                        this.authorProfileLink = link
+                      this.authorProfileLink = link
                     }} to={'/@' + author}>{author}<Icon name="dropdown-arrow"/></Link></strong>
                     <Reputation value={authorRepLog10}/>
                 </span>
                 <Overlay
-                    show={this.state.show}
-                    onHide={this.close}
-                    placement="bottom"
-                    container={this}
-                    target={() => findDOMNode(this.target)}
-                    rootClose
+                  show={this.state.show}
+                  onHide={this.close}
+                  placement="bottom"
+                  container={this}
+                  target={() => findDOMNode(this.target)}
+                  rootClose
                 >
                     <AuthorDropdown
-                        author={author}
-                        follow={follow}
-                        mute={mute}
-                        authorRepLog10={authorRepLog10}
-                        name={name}
-                        about={about}
-                        username={username}
+                      author={author}
+                      follow={follow}
+                      mute={mute}
+                      authorRepLog10={authorRepLog10}
+                      name={name}
+                      about={about}
+                      username={username}
                     />
                 </Overlay>
             </span>
-        );
-    }
+    );
+  }
 }
 
 export default connect(
-    (state, ownProps) => {
-        const {author, follow, mute, authorRepLog10} = ownProps;
-        const username = state.user.getIn(['current', 'username']);
-        const account = state.global.getIn(['accounts', author]);
-        return {
-            author, follow, mute, authorRepLog10,
-            username,
-            account,
-        }
-    },
+  (state, ownProps) => {
+    const {author, follow, mute, authorRepLog10} = ownProps;
+    const username = state.user.getIn(['current', 'username']);
+    const account = state.global.getIn(['accounts', author]);
+    return {
+      author, follow, mute, authorRepLog10,
+      username,
+      account,
+    }
+  },
 )(Author)

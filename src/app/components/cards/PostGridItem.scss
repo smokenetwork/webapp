@@ -1,229 +1,229 @@
 .PostsGrid__posts {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .PostGridItem {
-    // padding: 0 0 0.5rem;
-    margin: 0 0 1.25vw;
-    clear: left;
-    @include clearfix;
+  // padding: 0 0 0.5rem;
+  margin: 0 0 1.25vw;
+  clear: left;
+  @include clearfix;
 }
 
 .PostGridItem__image {
-    cursor: pointer;
-    float: left;
-    width: 130px;
-    height: 4.5rem;
-    background-color: #EEE;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 50% 20%;
-    border: 1px solid #EEE;
+  cursor: pointer;
+  float: left;
+  width: 130px;
+  height: 4.5rem;
+  background-color: #EEE;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  border: 1px solid #EEE;
 }
 
 .PostGridItem__image-mobile {
-    display: block;
-    background: #F8F8F8;
+  display: block;
+  background: #F8F8F8;
 
-    img {
-        margin: 0 auto;
-        display: block;
-        max-width: 100%;
-        max-height: 80vw;
-        background: white;
-        transform: translate3d(0, 0, 0);
-    }
+  img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    max-height: 80vw;
+    background: white;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .PostGridItem.with-image .PostGridItem__reblogged_by,
 .PostGridItem.with-image .PostGridItem__content {
-    margin-left: 8.25rem;
+  margin-left: 8.25rem;
 }
 
 .PostGridItem__header {
-    > h3 {
-        font: 600 100% "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
-        margin: 0;
-        overflow: hidden;
-        > a {
-            color: #333;
-        }
-        > a:visited {
-            color: #777;
-        }
-        .Icon {
-            margin: 0 0.25rem;
-            svg {
-                width: 0.85rem;
-                height: 0.85rem;
-                vertical-align: 5%;
-            }
-        }
+  > h3 {
+    font: 600 100% "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    margin: 0;
+    overflow: hidden;
+    > a {
+      color: #333;
     }
-    .nsfw-flag {
-        margin-right: 0.25rem;
+    > a:visited {
+      color: #777;
     }
+    .Icon {
+      margin: 0 0.25rem;
+      svg {
+        width: 0.85rem;
+        height: 0.85rem;
+        vertical-align: 5%;
+      }
+    }
+  }
+  .nsfw-flag {
+    margin-right: 0.25rem;
+  }
 }
 
 .PostGridItem__body {
-    width: auto;
-    padding: 0.3rem 0.1rem 0.15rem;
-    font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
-    @include themify($themes) {
-        color: themed('textColorPrimary');
-    }
-    overflow: hidden;
-    line-height: 1.4;
-    text-overflow: ellipsis;
+  width: auto;
+  padding: 0.3rem 0.1rem 0.15rem;
+  font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
+  @include themify($themes) {
+    color: themed('textColorPrimary');
+  }
+  overflow: hidden;
+  line-height: 1.4;
+  text-overflow: ellipsis;
 
-    a {
-        display: inline;
-        @include themify($themes) {
-            color: themed('textColorPrimary');
-        }
+  a {
+    display: inline;
+    @include themify($themes) {
+      color: themed('textColorPrimary');
     }
+  }
 }
 
 .layout-list .PostGridItem__body {
-    @include MQ(M) {
-        white-space: nowrap;
-    }
+  @include MQ(M) {
+    white-space: nowrap;
+  }
 }
 
 .PostGridItem__footer {
+  color: $dark-gray;
+  font-weight: 400;
+  path {
+    fill: $dark-gray;
+  }
+  a {
     color: $dark-gray;
-    font-weight: 400;
-    path {
-        fill: $dark-gray;
-    }
-    a {
-        color: $dark-gray;
-    }
-    .Icon {
-        position: relative;
-        top: -1px;
-    }
+  }
+  .Icon {
+    position: relative;
+    top: -1px;
+  }
 }
 
 .PostGridItem__time_author_category {
+  color: $dark-gray;
+  a {
     color: $dark-gray;
-    a {
-        color: $dark-gray;
-        font-weight: bold;
-        @include hoverUnderline;
-    }
+    font-weight: bold;
+    @include hoverUnderline;
+  }
 
-    @include themify($themes) {
-        border-left: themed('borderLight');
-    }
+  @include themify($themes) {
+    border-left: themed('borderLight');
+  }
 
-    .Reblog__button {
-        padding-right: 1.2rem;
-        border-right: transparent;
-    }
+  .Reblog__button {
+    padding-right: 1.2rem;
+    border-right: transparent;
+  }
 }
 
 .PostGridItem__time_author_category_small a {
-    color: $dark-gray;
+  color: $dark-gray;
 }
 
 @media screen and (min-width: 39.9375em) {
-    .PostGridItem.with-image .PostGridItem__reblogged_by .Icon.reblog {
-        margin-left: -22px;
-    }
+  .PostGridItem.with-image .PostGridItem__reblogged_by .Icon.reblog {
+    margin-left: -22px;
+  }
 }
 
 .PostGridItem__reblogged_by {
-    .Icon path {
-        fill: #cacaca;
-    }
-    color: $dark-gray;
-    font-size: 90%;
-    margin-top: -0.5rem;
-    a {
-        color: inherit;
-        font-weight: bold;
-        @include hoverUnderline;
-    }
+  .Icon path {
+    fill: #cacaca;
+  }
+  color: $dark-gray;
+  font-size: 90%;
+  margin-top: -0.5rem;
+  a {
+    color: inherit;
+    font-weight: bold;
+    @include hoverUnderline;
+  }
 }
 
 /* Small only */
 @media screen and (max-width: 39.9375em) {
-    .PostGridItem {
-        margin-bottom: 0;
-        border: none;
-    }
+  .PostGridItem {
+    margin-bottom: 0;
+    border: none;
+  }
 
-    .PostGridItem__image {
-        float: none;
-        margin-top: 0.5rem;
-        display: block;
-        width: 100%;
-        height: 40vw;
-    }
+  .PostGridItem__image {
+    float: none;
+    margin-top: 0.5rem;
+    display: block;
+    width: 100%;
+    height: 40vw;
+  }
 
-    .PostGridItem__body {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        word-break: break-word;
-        hyphens: auto;
-        white-space: normal;
-        text-overflow: initial;
-        padding-bottom: 0.3rem;
-        a {
-            display: block;
-        }
+  .PostGridItem__body {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    white-space: normal;
+    text-overflow: initial;
+    padding-bottom: 0.3rem;
+    a {
+      display: block;
     }
+  }
 
-    .PostGridItem.with-image .PostGridItem__reblogged_by,
-    .PostGridItem.with-image .PostGridItem__content {
-        margin-left: 0;
-    }
+  .PostGridItem.with-image .PostGridItem__reblogged_by,
+  .PostGridItem.with-image .PostGridItem__content {
+    margin-left: 0;
+  }
 
-    .PostGridItem__footer .Voting, .PostGridItem__footer .Voting__inner {
-        border-right: none;
-    }
+  .PostGridItem__footer .Voting, .PostGridItem__footer .Voting__inner {
+    border-right: none;
+  }
 
-    .PostGridItem__time_author_category {
-        margin-left: 0;
-        border-left: 1px solid $color-border-light;
-        .Reblog__button {
-            margin-right: 1rem;
-            padding-right: 1rem;
-            border-right: none;
-        }
+  .PostGridItem__time_author_category {
+    margin-left: 0;
+    border-left: 1px solid $color-border-light;
+    .Reblog__button {
+      margin-right: 1rem;
+      padding-right: 1rem;
+      border-right: none;
     }
+  }
 
-    .articles__content {
-        margin-bottom: 20px;
-    }
+  .articles__content {
+    margin-bottom: 20px;
+  }
 }
 
 .articles__content-block--img {
-    margin: 0;
-    background-position: center;
-    max-height: 200px;
+  margin: 0;
+  background-position: center;
+  max-height: 200px;
 }
 
 .articles__content-stats {
-    font-size: 0.85rem;
+  font-size: 0.85rem;
 }
 
 .articles__content-block--text {
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
 .articles__content-block--text hr {
-  margin:8px;
+  margin: 8px;
 }
 
 .articles__content {
-    //box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 10px
+  //box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px
 }
 
 .articles__h2 a {
 
-    font-size: 0.92em;
-    text-transform: capitalize;
+  font-size: 0.92em;
+  text-transform: capitalize;
 }

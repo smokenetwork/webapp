@@ -1,113 +1,113 @@
 $menu-width: 220px;
 
 .SidePanel {
-    display: block;
-    font-size: 75%;
+  display: block;
+  font-size: 75%;
 
-    .exchange {
-      font-size: 0.9em;
-      position: relative;
-      margin-left: auto;
-      left: -25px;
+  .exchange {
+    font-size: 0.9em;
+    position: relative;
+    margin-left: auto;
+    left: -25px;
+  }
+  .thirdpartyapps {
+    font-size: 0.9em;
+    position: relative;
+    margin-left: auto;
+    left: -25px;
+  }
+
+  .content-end {
+    justify-content: flex-end !important;
+    font-size: 0.9em;
+    line-height: 1rem;
+    padding: 0rem 0.5rem 0.5rem;
+  }
+
+  .menu > li.last {
+    color: $color-text-gray-light;
+  }
+
+  > div {
+    background-color: #fdfdfd;
+    color: #080808;
+    padding-top: 3rem;
+    .close-button {
+      color: #7d8387;
     }
-    .thirdpartyapps {
-      font-size: 0.9em;
-      position: relative;
-      margin-left: auto;
-      left: -25px;
+    .menu > li {
+      > a {
+        transition: 0.2s all ease-in-out;
+        color: #52585c;
+        line-height: 1.1rem;
+
+        > span {
+          display: inline-block;
+          margin-right: 20px;
+          border: 1px solid;
+          border-radius: 50%;
+          padding: 8px;
+          padding-top: 10px;
+          padding-left: 11px;
+          margin-top: -12px;
+          width: 45px !important;
+          height: 45px !important;
+          -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 0 5px;
+          -moz-box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
+        }
+      }
+      > a:hover, &:focus {
+        background-color: white;
+      }
+    }
+    ul:nth-of-type(n+3) {
+      margin-top: 1.1rem;
     }
 
-    .content-end {
-      justify-content: flex-end !important;
-      font-size: 0.9em;
-      line-height: 1rem;
-      padding: 0rem 0.5rem 0.5rem;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: $menu-width;
+    height: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: visibility 250ms, transform ease 250ms;
+
+    &.left {
+      left: -$menu-width;
     }
 
-    .menu > li.last {
-        color: $color-text-gray-light;
+    &.visible.left {
+      transform: translate3d($menu-width, 0, 0);
     }
 
-    > div {
-        background-color: #fdfdfd;
-        color: #080808;
-        padding-top: 3rem;
-        .close-button {
-            color: #7d8387;
-        }
-        .menu > li {
-            > a {
-                transition: 0.2s all ease-in-out;
-                color: #52585c;
-                line-height: 1.1rem;
-
-                > span {
-                  display: inline-block;
-                  margin-right: 20px;
-                  border: 1px solid;
-                  border-radius: 50%;
-                  padding: 8px;
-                  padding-top: 10px;
-                  padding-left: 11px;
-                  margin-top: -12px;
-                  width: 45px !important;
-                  height: 45px !important;
-                  -webkit-box-shadow: rgba(0,0,0,0.25) 0px 0 5px;
-                  -moz-box-shadow: rgba(0,0,0,0.25) 0 0 5px;
-                  box-shadow: rgba(0,0,0,0.25) 0 0 5px;
-                }
-            }
-            > a:hover, &:focus {
-                background-color: white;
-            }
-        }
-        ul:nth-of-type(n+3) {
-            margin-top: 1.1rem;
-        }
-
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        width: $menu-width;
-        height: 100%;
-        min-height: 100vh;
-        box-sizing: border-box;
-        transition: visibility 250ms, transform ease 250ms;
-
-        &.left {
-            left: -$menu-width;
-        }
-
-        &.visible.left {
-            transform: translate3d($menu-width, 0, 0);
-        }
-
-        &.right {
-            right: -240px;
-            overflow-y: auto;
-        }
-
-        &.visible.right {
-            transform: translate3d(-240px, 0, 0);
-            visibility: visible;
-            border: solid 1px #eeeeee;
-        }
+    &.right {
+      right: -240px;
+      overflow-y: auto;
     }
-    .Icon.extlink {
-        position: relative;
-        top: -5px;
-        left: 2px;
+
+    &.visible.right {
+      transform: translate3d(-240px, 0, 0);
+      visibility: visible;
+      border: solid 1px #eeeeee;
     }
+  }
+  .Icon.extlink {
+    position: relative;
+    top: -5px;
+    left: 2px;
+  }
 }
 
 /* Small only */
 @media screen and (max-width: 39.9375em) {
-    .SidePanel {
-        div ul:nth-of-type(n+2) {
-            margin-top: 1rem;
-        }
-        > div > .menu > li > a {
-            padding: 0.5rem 1rem;
-        }
+  .SidePanel {
+    div ul:nth-of-type(n+2) {
+      margin-top: 1rem;
     }
+    > div > .menu > li > a {
+      padding: 0.5rem 1rem;
+    }
+  }
 }

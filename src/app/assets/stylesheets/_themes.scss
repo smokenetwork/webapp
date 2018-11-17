@@ -1,179 +1,179 @@
 $themes: (
-    light: (
-        colorAccent: $primary-brand-color,
-        colorAccentHover: $primary-brand-color-dark,
-        colorAccentReverse: $color-blue-black,
-        colorWhite: $color-white,
-        backgroundColor: $color-background-off-white,
-        backgroundColorOpaque: $color-background-off-white,
-        backgroundTransparent: transparent,
-        moduleBackgroundColor: $color-white,
-        menuBackgroundColor: $color-background-dark,
-        moduleMediumBackgroundColor: $color-transparent,
-        navBackgroundColor: $color-white,
-        highlightBackgroundColor: #f3faf0,
-        tableRowEvenBackgroundColor: #f4f4f4,
-        border: 1px solid $color-border-light,
-        borderLight: 1px solid $color-border-light-lightest,
-        borderDark: 1px solid $color-text-gray,
-        borderAccent: 1px solid $primary-brand-color,
-        borderTransparent: transparent,
-        iconColorSecondary: #cacaca,
-        textColorPrimary: $color-text-dark,
-        textColorSecondary: $color-text-gray,
-        textColorAccent: $color-text-teal,
-        textColorAccentHover: $primary-brand-color,
-        textColorError: $color-text-red,
-        contentBorderAccent: $primary-brand-color,
-        buttonBackground: $color-blue-black,
-        buttonBackgroundHover: $primary-brand-color,
-        buttonText: $color-text-white,
-        buttonTextShadow: 0 1px 0 rgba(0, 0, 0, 0.20),
-        buttonTextHover: $color-white,
-        buttonBoxShadow: $primary-brand-color,
-        buttonBoxShadowHover: $color-blue-black,
-    )
+  light: (
+    colorAccent: $primary-brand-color,
+    colorAccentHover: $primary-brand-color-dark,
+    colorAccentReverse: $color-blue-black,
+    colorWhite: $color-white,
+    backgroundColor: $color-background-off-white,
+    backgroundColorOpaque: $color-background-off-white,
+    backgroundTransparent: transparent,
+    moduleBackgroundColor: $color-white,
+    menuBackgroundColor: $color-background-dark,
+    moduleMediumBackgroundColor: $color-transparent,
+    navBackgroundColor: $color-white,
+    highlightBackgroundColor: #f3faf0,
+    tableRowEvenBackgroundColor: #f4f4f4,
+    border: 1px solid $color-border-light,
+    borderLight: 1px solid $color-border-light-lightest,
+    borderDark: 1px solid $color-text-gray,
+    borderAccent: 1px solid $primary-brand-color,
+    borderTransparent: transparent,
+    iconColorSecondary: #cacaca,
+    textColorPrimary: $color-text-dark,
+    textColorSecondary: $color-text-gray,
+    textColorAccent: $color-text-teal,
+    textColorAccentHover: $primary-brand-color,
+    textColorError: $color-text-red,
+    contentBorderAccent: $primary-brand-color,
+    buttonBackground: $color-blue-black,
+    buttonBackgroundHover: $primary-brand-color,
+    buttonText: $color-text-white,
+    buttonTextShadow: 0 1px 0 rgba(0, 0, 0, 0.20),
+    buttonTextHover: $color-white,
+    buttonBoxShadow: $primary-brand-color,
+    buttonBoxShadowHover: $color-blue-black,
+  )
 );
 
 /*
  * Implementation of themes
  */
 @mixin themify($themes) {
-    @each $theme, $map in $themes {
-        .theme-#{$theme} & {
-            $theme-map: () !global;
-            @each $key, $submap in $map {
-                $value: map-get(map-get($themes, $theme), '#{$key}');
-                $theme-map: map-merge($theme-map, ($key: $value)) !global;
-            }
-            @content;
-            $theme-map: null !global;
-        }
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
     }
+  }
 }
 
 @function themed($key) {
-    @return map-get($theme-map, $key);
+  @return map-get($theme-map, $key);
 }
 
 .theme-light {
-    background-color: $white;
-    color: $color-text-dark;
+  background-color: $white;
+  color: $color-text-dark;
 }
 
 // Utility classes to be used with @extend
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
 
-    &--primary {
-        color: $primary-link-color;
+  &--primary {
+    color: $primary-link-color;
 
-        &:visited, &:active {
-            color: $primary-link-color;
-        }
-
-        &:hover, &:focus {
-            color: $primary-link-hover-color;
-        }
+    &:visited, &:active {
+      color: $primary-link-color;
     }
 
-    &--secondary {
-        color: $secondary-link-color;
-        &:visited, &:active {
-            color: $secondary-link-color;
-        }
+    &:hover, &:focus {
+      color: $primary-link-hover-color;
+    }
+  }
 
-        &:hover, &:focus {
-            color: $secondary-link-hover-color;
-        }
+  &--secondary {
+    color: $secondary-link-color;
+    &:visited, &:active {
+      color: $secondary-link-color;
     }
 
-    &--accent {
-        color: $success-color;
-        &:visited, &:active {
-            color: $success-color;
-        }
-
-        &:hover, &:focus {
-            color: $success-color;
-        }
+    &:hover, &:focus {
+      color: $secondary-link-hover-color;
     }
+  }
+
+  &--accent {
+    color: $success-color;
+    &:visited, &:active {
+      color: $success-color;
+    }
+
+    &:hover, &:focus {
+      color: $success-color;
+    }
+  }
 }
 
 .e-btn-hollow {
-    background-color: transparent;
-    transition: 0.2s all ease-in-out;
+  background-color: transparent;
+  transition: 0.2s all ease-in-out;
 
 }
 
 .e-btn {
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s all ease-in-out;
-    text-transform: capitalize;
-    border-radius: 0;
-    text-decoration: none;
-    text-transform: capitalize;
-    @include font-size(18px);
-    background-color: $secondary-color;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s all ease-in-out;
+  text-transform: capitalize;
+  border-radius: 0;
+  text-decoration: none;
+  text-transform: capitalize;
+  @include font-size(18px);
+  background-color: $secondary-color;
+  color: $color-text-white;
+
+  &:hover, &:focus {
+    background-color: smart-scale($secondary-color);
     color: $color-text-white;
+  }
 
-    &:hover, &:focus {
-        background-color: smart-scale($secondary-color);
-        color: $color-text-white;
-    }
-
-    &:visited, &:active {
-        color: $color-text-white;
-    }
+  &:visited, &:active {
+    color: $color-text-white;
+  }
 }
 
 .button.disabled, .button[disabled] {
-    opacity: 0.25;
-    cursor: not-allowed;
+  opacity: 0.25;
+  cursor: not-allowed;
 }
 
 // This button class doesn't applying theming (just straight styles). To be used when there are no theming classes available (e.g. in modals and static server pages in signup)
 
 .e-btn {
-    &--black {
+  &--black {
+    background-color: $color-blue-black;
+    color: $color-white;
+    &:hover, &:focus {
+      background-color: $primary-brand-color;
+      color: $color-white;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.20);
+    }
+    &:visited, &:active {
+      background-color: $color-blue-black;
+      color: $color-white;
+    }
+    &.disabled, &[disabled] {
+      opacity: 0.25;
+      cursor: not-allowed;
+      &:hover, &:focus {
         background-color: $color-blue-black;
         color: $color-white;
-        &:hover, &:focus {
-            background-color: $primary-brand-color;
-            color: $color-white;
-            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.20);
-        }
-        &:visited, &:active {
-            background-color: $color-blue-black;
-            color: $color-white;
-        }
-        &.disabled, &[disabled] {
-            opacity: 0.25;
-            cursor: not-allowed;
-            &:hover, &:focus {
-                background-color: $color-blue-black;
-                color: $color-white;
-            }
-        }
-        &.hollow {
-            background-color: transparent;
-            color: $color-text-gray;
-            font-weight: normal;
-            transition: 0.2s all ease-in-out;
-            border: transparent;
-            &:hover, &:focus {
-                background-color: transparent;
-                color: $color-blue-dark;
-                font-weight: normal;
-                text-shadow: 0 1px 0 rgba(0, 0, 0, 0.0);
-            }
-            &:visited, &:active {
-                background-color: transparent;
-                color: $color-text-gray;
-                font-weight: normal;
-            }
-        }
+      }
     }
+    &.hollow {
+      background-color: transparent;
+      color: $color-text-gray;
+      font-weight: normal;
+      transition: 0.2s all ease-in-out;
+      border: transparent;
+      &:hover, &:focus {
+        background-color: transparent;
+        color: $color-blue-dark;
+        font-weight: normal;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.0);
+      }
+      &:visited, &:active {
+        background-color: transparent;
+        color: $color-text-gray;
+        font-weight: normal;
+      }
+    }
+  }
 }

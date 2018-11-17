@@ -1,34 +1,34 @@
 .VotesAndComments {
-    path {
-        transition: 0.2s all ease-in-out;
+  path {
+    transition: 0.2s all ease-in-out;
 
-    }
-    circle {
-        stroke: none;
-    }
-    a {
-        font-weight: normal;
-    }
-    white-space: nowrap;
+  }
+  circle {
+    stroke: none;
+  }
+  a {
+    font-weight: normal;
+  }
+  white-space: nowrap;
 }
 
 .VotesAndComments__votes {
-    padding-right: 1rem;
-    @include themify($themes) {
-        border-right: themed('borderLight');
-    }
+  padding-right: 1rem;
+  @include themify($themes) {
+    border-right: themed('borderLight');
+  }
 }
 
 .VotesAndComments__comments {
-    padding: 0 1rem 0 0;
-    float: right;
+  padding: 0 1rem 0 0;
+  float: right;
 }
 
 /* Small only */
 @media screen and (max-width: 39.9375em) {
-    .VotesAndComments {
-        display: block;
-        width: auto;
-        float: right;
-    }
+  .VotesAndComments {
+    display: block;
+    width: auto;
+    float: right;
+  }
 }

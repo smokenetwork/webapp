@@ -14,8 +14,12 @@ ul.PostsList__summaries {
     min-height: 80px;
     .PostSummary__footer {
       margin-top: 0.2rem;
-      .Reblog__button {display: none;}
-      .Voting__button {display: none;}
+      .Reblog__button {
+        display: none;
+      }
+      .Voting__button {
+        display: none;
+      }
     }
     .PostSummary__time_author_category_small {
       margin-bottom: 0.2rem;
@@ -23,14 +27,14 @@ ul.PostsList__summaries {
   }
 
   .nsfw-flag {
-     color: $color-red;
-     border: 1px solid $color-red;
-     font-size: 75%;
-     border-radius: 3px;
-     font-weight: normal;
-     font-family: Arial;
-     margin: 0 0.1rem;
-     padding: 2px 5px;
+    color: $color-red;
+    border: 1px solid $color-red;
+    font-size: 75%;
+    border-radius: 3px;
+    font-weight: normal;
+    font-family: Arial;
+    margin: 0 0.1rem;
+    padding: 2px 5px;
   }
 }
 
@@ -95,7 +99,7 @@ ul.PostsList__summaries {
   padding: 0.3rem 0.1rem 0.15rem;
   font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
   @include themify($themes) {
-    color: themed('textColorPrimary');  
+    color: themed('textColorPrimary');
   }
   overflow: hidden;
   line-height: 1.4;
@@ -104,8 +108,8 @@ ul.PostsList__summaries {
   a {
     display: inline;
     @include themify($themes) {
-      color: themed('textColorPrimary');  
-    }    
+      color: themed('textColorPrimary');
+    }
   }
 }
 
@@ -139,8 +143,8 @@ ul.PostsList__summaries {
   }
   padding-left: 1rem;
   @include themify($themes) {
-    border-left: themed('borderLight'); 
-  } 
+    border-left: themed('borderLight');
+  }
 
   .Reblog__button {
     margin-right: 1rem;
@@ -198,7 +202,7 @@ ul.PostsList__summaries {
     text-overflow: initial;
     padding-bottom: 0.3rem;
     a {
-        display: block;
+      display: block;
     }
   }
   .PostSummary.with-image .PostSummary__reblogged_by,
@@ -212,24 +216,24 @@ ul.PostsList__summaries {
     margin-left: 0;
     border-left: 1px solid $color-border-light;
     .Reblog__button {
-        margin-right: 1rem;
-        padding-right: 1rem;
-        border-right: none;
+      margin-right: 1rem;
+      padding-right: 1rem;
+      border-right: none;
     }
   }
 }
 
 .articles__summary {
-    .nsfw-flag {
-     color: $color-red;
-     border: 1px solid $color-red;
-     font-size: 75%;
-     border-radius: 3px;
-     font-weight: normal;
-     font-family: Arial;
-     margin: 0 0.1rem;
-     padding: 2px 5px;
-     margin-right: 5px;
+  .nsfw-flag {
+    color: $color-red;
+    border: 1px solid $color-red;
+    font-size: 75%;
+    border-radius: 3px;
+    font-weight: normal;
+    font-family: Arial;
+    margin: 0 0.1rem;
+    padding: 2px 5px;
+    margin-right: 5px;
   }
 }
 

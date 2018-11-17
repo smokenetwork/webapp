@@ -1,246 +1,246 @@
 .PostFull {
-    padding-bottom: 1rem;
-    max-width: 740px;
-    margin-left: auto;
-    margin-right: auto;
+  padding-bottom: 1rem;
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  @include themify($themes) {
+    border-bottom: themed('border');
+  }
+  .button.hollow {
     @include themify($themes) {
-        border-bottom: themed('border');
+      border: themed('borderAccent');
+      color: themed('textColorAccent');
     }
-    .button.hollow {
-        @include themify($themes) {
-            border: themed('borderAccent');
-            color: themed('textColorAccent');
-        }
-    }
+  }
 
-    .ReplyEditor {
-        margin-top: 1rem;
-    }
+  .ReplyEditor {
+    margin-top: 1rem;
+  }
 }
 
 .PostFull__time_author_category {
-    font-weight: 400;
-    @include themify($themes) {
-        border-right: themed('border');
-        color: themed('textColorSecondary');
-    }
+  font-weight: 400;
+  @include themify($themes) {
+    border-right: themed('border');
+    color: themed('textColorSecondary');
+  }
 
-    padding-right: .6rem;
-    margin-right: .6rem;
-    > span {
-        white-space: nowrap;
-    }
+  padding-right: .6rem;
+  margin-right: .6rem;
+  > span {
+    white-space: nowrap;
+  }
 }
 
 .PostFull__time_author_category_large {
-    margin: 1.75rem 0 1.2rem 0;
+  margin: 1.75rem 0 1.2rem 0;
 
-    @include themify($themes) {
-        color: themed('textColorSecondary');
-    }
+  @include themify($themes) {
+    color: themed('textColorSecondary');
+  }
 
-    strong, a {
-        color: #999
-    }
-    font-size: 120%;
-    display: block;
-    > .Userpic {
-        margin-top: -4px;
-        float: left;
-    }
-    > .right-side {
-        margin-left: 60px;
-    }
+  strong, a {
+    color: #999
+  }
+  font-size: 120%;
+  display: block;
+  > .Userpic {
+    margin-top: -4px;
+    float: left;
+  }
+  > .right-side {
+    margin-left: 60px;
+  }
 }
 
 .PostFull__header {
-    padding-bottom: 25px;
-    @include themify($themes) {
-        border-bottom: themed('border');
+  padding-bottom: 25px;
+  @include themify($themes) {
+    border-bottom: themed('border');
+  }
+  > h1 {
+    overflow: hidden;
+    font-family: $body-font-family;
+    font-size: 200%;
+    font-weight: 800;
+    line-height: 1.1;
+    .Icon {
+      margin: 0 0 0 0.5rem;
+      vertical-align: -30%;
     }
-    > h1 {
-        overflow: hidden;
-        font-family: $body-font-family;
-        font-size: 200%;
-        font-weight: 800;
-        line-height: 1.1;
-        .Icon {
-            margin: 0 0 0 0.5rem;
-            vertical-align: -30%;
-        }
-    }
-    a {
-        @extend .link;
-        @extend .link--secondary;
-        font-weight: 600;
-        color:#666666;
+  }
+  a {
+    @extend .link;
+    @extend .link--secondary;
+    font-weight: 600;
+    color: #666666;
 
-    }
-    .PostFull__time_author_category {
-        border-right: none;
-        .Icon.clock {
-            top: 5px;
-            svg {
-                @include themify($themes) {
-                    fill: themed('textColorSecondary');
-                }
-            }
+  }
+  .PostFull__time_author_category {
+    border-right: none;
+    .Icon.clock {
+      top: 5px;
+      svg {
+        @include themify($themes) {
+          fill: themed('textColorSecondary');
         }
+      }
     }
+  }
 }
 
 .PostFull__body {
-    clear: left;
+  clear: left;
 
-    a {
-        @extend .link;
-        @extend .link--accent;
-    }
+  a {
+    @extend .link;
+    @extend .link--accent;
+  }
 }
 
 .PostFull__footer {
-    clear: right;
-    line-height: 2rem;
+  clear: right;
+  line-height: 2rem;
+  font-size: 94%;
+  a {
+    color: #666666 !important;
+  }
+  svg {
+    @include themify($themes) {
+      fill: themed('textColorSecondary');
+    }
+  }
+  a, .FoundationDropdownMenu__label {
     font-size: 94%;
-    a {
-      color:#666666 !important;
+    font-weight: 600;
+    @extend .link;
+    @extend .link--secondary;
+  }
+  .Voting {
+    //padding-right: 1rem;
+    //margin-right: 1rem;
+  }
+  .VerticalMenu > li > a {
+    @include themify($themes) {
+      fill: themed('textColorSecondary');
     }
-    svg {
-        @include themify($themes) {
-            fill: themed('textColorSecondary');
-        }
-    }
-    a, .FoundationDropdownMenu__label {
-        font-size: 94%;
-        font-weight: 600;
-        @extend .link;
-        @extend .link--secondary;
-    }
-    .Voting {
-        //padding-right: 1rem;
-        //margin-right: 1rem;
-    }
-    .VerticalMenu > li > a {
-        @include themify($themes) {
-            fill: themed('textColorSecondary');
-        }
-    }
-    span {
-        white-space: normal;
-    }
+  }
+  span {
+    white-space: normal;
+  }
 
-    .Reblog__button {
-        padding-right: .4rem;
-        margin-right: .4rem;
-        @include themify($themes) {
-            border-right: themed('border');
-        }
+  .Reblog__button {
+    padding-right: .4rem;
+    margin-right: .4rem;
+    @include themify($themes) {
+      border-right: themed('border');
     }
+  }
 }
 
 .PostFull__responses {
-    padding-right: .4rem;
+  padding-right: .4rem;
 }
 
 .PostFull__views {
-    padding-right: .4rem;
-    margin-right: .4rem;
-    font-size: 94%;
-    font-weight: 600;
-    @include themify($themes) {
-        border-right: themed('border');
-        fill: themed('textColorSecondary');
-    }
+  padding-right: .4rem;
+  margin-right: .4rem;
+  font-size: 94%;
+  font-weight: 600;
+  @include themify($themes) {
+    border-right: themed('border');
+    fill: themed('textColorSecondary');
+  }
 }
 
 .PostFull__reply {
-    padding-right: .4rem;
-    margin-right: .4rem;
-    @include themify($themes) {
-        border-right: themed('border');
-    }
-    a {
-        margin: 0 0.15rem;
-    }
+  padding-right: .4rem;
+  margin-right: .4rem;
+  @include themify($themes) {
+    border-right: themed('border');
+  }
+  a {
+    margin: 0 0.15rem;
+  }
 }
 
 .PostFull__lifetime {
-    @include themify($themes) {
-        fill: themed('textColorSecondary');
-    }
-    font-size: 80%;
+  @include themify($themes) {
+    fill: themed('textColorSecondary');
+  }
+  font-size: 80%;
 }
 
 .Author__dropdown {
-    padding: 1rem;
-    > a {
-        @include hoverUnderline;
-    }
+  padding: 1rem;
+  > a {
+    @include hoverUnderline;
+  }
 }
 
 .explore-post {
-    margin-right: 0px !important;
-    cursor: pointer;
-    &:hover {
-        svg {
-            fill: $primary-brand-color;
-        }
+  margin-right: 0px !important;
+  cursor: pointer;
+  &:hover {
+    svg {
+      fill: $primary-brand-color;
     }
+  }
 }
 
 input.share-box {
-    width: 75% !important;
-    display: inline;
+  width: 75% !important;
+  display: inline;
 }
 
 .ExplorePost {
-    span.extlink {
-        vertical-align: text-bottom;
-    }
-    h5 {
-        margin-top: 1em;
-    }
-    .ExplorePost__copy-button {
-        cursor: pointer;
-    }
+  span.extlink {
+    vertical-align: text-bottom;
+  }
+  h5 {
+    margin-top: 1em;
+  }
+  .ExplorePost__copy-button {
+    cursor: pointer;
+  }
 }
 
 .chain-right {
-    -webkit-transform: rotate(120deg);
-    -moz-transform: rotate(120deg);
-    -ms-transform: rotate(120deg);
-    -o-transform: rotate(120deg);
-    transform: rotate(120deg);
+  -webkit-transform: rotate(120deg);
+  -moz-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  -o-transform: rotate(120deg);
+  transform: rotate(120deg);
 }
 
 .post__default-img img {
-    width: 100%;
+  width: 100%;
 }
 
 /* Small only */
 @media screen and (max-width: 39.9375em) {
-    .Post {
-        width: 100%;
-        overflow: hidden;
-    }
-    .PostFull__footer > .column {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 100%;
-        flex: 0 0 100%;
-    }
-    .PostFull__footer > .RightShare__Menu {
-        text-align: left;
-    }
-    input.share-box {
-        height: 2.8em;
-        font-size: .8em;
-    }
+  .Post {
+    width: 100%;
+    overflow: hidden;
+  }
+  .PostFull__footer > .column {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+  .PostFull__footer > .RightShare__Menu {
+    text-align: left;
+  }
+  input.share-box {
+    height: 2.8em;
+    font-size: .8em;
+  }
 }
 
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-    input.share-box {
-        height: 2.8em;
-        font-size: .8em;
-    }
+  input.share-box {
+    height: 2.8em;
+    font-size: .8em;
+  }
 }

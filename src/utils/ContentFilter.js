@@ -62,24 +62,24 @@ export const filterState = (state) => {
 };
 
 export const filterData = (data) => {
-    // https://github.com/smokenetwork/webapp/issues/40
-    try {
-      data = data.filter((e) => {
-        // steemit/0.1 or smoke/* only
-        if (JSON.parse(e.json_metadata).app.match(/^(smoke\/|steemit\/0.1)/)) {
-          return true;
-        }
+  // https://github.com/smokenetwork/webapp/issues/40
+  try {
+    data = data.filter((e) => {
+      // steemit/0.1 or smoke/* only
+      if (JSON.parse(e.json_metadata).app.match(/^(smoke\/|steemit\/0.1)/)) {
+        return true;
+      }
 
-        return false;
-      });
+      return false;
+    });
 
-      // console.log(JSON.stringify(data));
-    } catch (error) {
-      // do nothing
-    }
+    // console.log(JSON.stringify(data));
+  } catch (error) {
+    // do nothing
+  }
 
-    // console.log(`filterData: ${JSON.stringify(data)}`);
-    return data;
+  // console.log(`filterData: ${JSON.stringify(data)}`);
+  return data;
 };
 
 // export const filterContent = (content) => {
