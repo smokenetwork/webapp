@@ -40,7 +40,7 @@
       "imgSrc": "* data:",
       "objectSrc": "'none'",
       "pluginTypes": "application/pdf",
-      "scriptSrc": "'self' www.google-analytics.com connect.facebook.net assets.mantisadnetwork.com mantodea.mantisadnetwork.com",
+      "scriptSrc": "'self' www.google-analytics.com connect.facebook.net assets.mantisadnetwork.com mantodea.mantisadnetwork.com 'sha256-9MdCJGZqoXb6/d816rvLgJt14oUMkZptgCfncCZfl5k='",
       "styleSrc": "'self' 'unsafe-inline' fonts.googleapis.com",
       "reportUri": "/api/v1/csp_violation"
     },
