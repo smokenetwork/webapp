@@ -54,21 +54,19 @@ class App extends React.Component {
     if (pageRequiresEntropy(this.props.location.pathname)) {
       this._addEntropyCollector();
     }
+
+    try {
+      // mantisadnetwork
+      const script = document.createElement("script");
+      script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
+      script.async = true;
+      window.mantis = window.mantis || [];
+      window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
+      document.body.appendChild(script);
+    } catch (e) {
+      console.error(e);
+    }
   }
-  
-   componentDidMount () {
-    const script = document.createElement("script");
-
-    script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
-    script.async = true;
-
-    window.mantis = window.mantis || [];
-    window.mantis.push(['display', 'load', {
-    	  property: '5bb205c3047fcb0117e326bf'
-      }]);
-
-    document.body.appendChild(script);
-   }
 
   componentWillReceiveProps(np) {
     /* Add listener if the next page requires entropy and the current page didn't */
@@ -207,7 +205,7 @@ class App extends React.Component {
         </div>
       );
     }
-    
+
     let ad1 = <div  style={{ marginTop: "-12px"}}>
       <div className="column ad1">
         <p className="ad-text">ADVERTISEMENT</p>
