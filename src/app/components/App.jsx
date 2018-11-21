@@ -42,6 +42,12 @@ class App extends React.Component {
     this.listenerActive = null;
     this.onEntropyEvent = this.onEntropyEvent.bind(this);
     // this.shouldComponentUpdate = shouldComponentUpdate(this, 'App')
+
+    if (process.env.BROWSER) {
+      browserHistory.listen((location, action) => {
+        console.log("on route change");
+      });
+    }
   }
 
   componentWillMount() {
