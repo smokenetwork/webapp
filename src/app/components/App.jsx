@@ -45,7 +45,12 @@ class App extends React.Component {
 
     if (process.env.BROWSER) {
       browserHistory.listen((location, action) => {
-        console.log("on route change");
+        // refresh mantisadnetwork
+        try {
+          window.mantis.push(['display', 'refresh', 'smokeio']);
+        } catch (e) {
+          console.error(e);
+        }
       });
     }
   }
