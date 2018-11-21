@@ -220,7 +220,7 @@ class App extends React.Component {
     let ad1 = <div  style={{ marginTop: "-12px"}}>
       <div className="column ad1">
         <p className="ad-text">ADVERTISEMENT</p>
-        <div data-mantis-zone="smokeio"></div>
+        <div data-mantis-zone="smokeio" data-mantis-refresh="true"></div>
       </div>
     </div>;
 
