@@ -11,9 +11,9 @@
   }
 
   // /* Small only */
-  // @media screen and (max-width: 39.9375em) {
-  //     margin-top: 2.25rem;
-  // }
+  @media screen and (max-width: 39.9375em) {
+       margin-top: 2.25rem;
+   }
   // /* Medium only */
   // @media screen and (min-width: 40em) and (max-width: 63.9375em) {
   //     margin-top: 3rem;
@@ -41,6 +41,16 @@
   // background-repeat: repeat-x;
   // background-position:bottom;
   //background-attachment:fixed;
+}
+
+.ad1 {
+    text-align: center;
+}
+
+.ad-text {
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 0;
 }
 
 .RightMenu {
