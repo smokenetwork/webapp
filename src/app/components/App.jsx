@@ -55,6 +55,20 @@ class App extends React.Component {
       this._addEntropyCollector();
     }
   }
+  
+   componentDidMount () {
+    const script = document.createElement("script");
+
+    script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
+    script.async = true;
+
+    window.mantis = window.mantis || [];
+    window.mantis.push(['display', 'load', {
+    	  property: '5bb205c3047fcb0117e326bf'
+      }]);
+
+    document.body.appendChild(script);
+   }
 
   componentWillReceiveProps(np) {
     /* Add listener if the next page requires entropy and the current page didn't */
@@ -193,6 +207,13 @@ class App extends React.Component {
         </div>
       );
     }
+    
+    let ad1 = <div  style={{ marginTop: "-12px"}}>
+      <div className="column ad1">
+        <p className="ad-text">ADVERTISEMENT</p>
+        <div data-mantis-zone="smokeio"></div>
+      </div>
+    </div>;
 
     let sidebar = (
       <SidePanel ref="side_panel" alignment="right">
@@ -277,6 +298,7 @@ class App extends React.Component {
         {miniHeader ? headerHidden ? null : <MiniHeader/> :
           <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
         <div className="App__content">
+          {ad1}
           {welcome_screen}
           {callout}
           {children}
