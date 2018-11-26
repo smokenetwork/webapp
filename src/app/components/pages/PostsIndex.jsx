@@ -11,6 +11,7 @@ import tt from 'counterpart';
 import Immutable from 'immutable';
 import Callout from '../elements/Callout';
 import Topics from './Topics';
+import TagTabs from '../modules/TagTabs';
 
 class PostsIndex extends React.Component {
 
@@ -133,6 +134,7 @@ class PostsIndex extends React.Component {
 
     return (
       <div className={'PostsIndex row' + (fetching ? ' fetching' : '') + layoutClass}>
+        <TagTabs/>
         <article className="articles">
           {markNotificationRead}
           {(!fetching && (posts && !posts.size)) ? <Callout>{emptyText}</Callout> :
