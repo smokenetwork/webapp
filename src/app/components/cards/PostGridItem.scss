@@ -207,6 +207,10 @@
 
 .articles__content-stats {
   font-size: 0.85rem;
+  
+  .Voting__button-up {
+    display: none;
+  }
 }
 
 .articles__content-block--text {
