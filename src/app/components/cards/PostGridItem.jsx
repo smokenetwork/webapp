@@ -82,11 +82,7 @@ class PostGridItem extends React.Component {
                             </Link>
                         </span>
           </div>
-          <span className="PostGridItem__time_author_category">
-                        {!isArchived && <Reblog author={postContent.author}
-                                                permlink={postContent.permlink}
-                                                parent_author={postContent.parent_author}/>}
-                    </span>
+          
         </div>
       </div>
     );
