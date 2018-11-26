@@ -112,11 +112,11 @@ $themes: (
   font-weight: bold;
   transition: 0.2s all ease-in-out;
   text-transform: capitalize;
-  border-radius: 0;
+  border-radius: 5px;
   text-decoration: none;
   text-transform: capitalize;
   @include font-size(18px);
-  background-color: $secondary-color;
+  background-color: $primary-brand-color;
   color: $color-text-white;
 
   &:hover, &:focus {
@@ -138,7 +138,7 @@ $themes: (
 
 .e-btn {
   &--black {
-    background-color: $color-blue-black;
+    background-color: $primary-brand-color;
     color: $color-white;
     &:hover, &:focus {
       background-color: $primary-brand-color;
