@@ -5,12 +5,12 @@ class Privacy extends React.Component {
     return (
       <div className="Privacy row">
         <div className="column large-12">
-          <h1>Smoke, Inc Privacy Policy</h1>
+          <h1>Smoke, Privacy Policy</h1>
           <div>
-            <h2>Effective April 1, 2016</h2>
+            <h2>Effective September 28, 2018</h2>
             <p>
               <span className="section">1</span>
-              We want you to understand how and why Smoke, Inc (“Smoke,” “we” or “us”) collects, uses,
+              We want you to understand how and why Smoke.io, (“Smoke,” “we” or “us”) collects, uses,
               and shares information about you when
               you access and use Smoke’s websites, mobile apps, widgets, and other online products and
               services (collectively, the "Services")
@@ -278,12 +278,12 @@ class Privacy extends React.Component {
             </p>
           </div>
           <div>
-            <h2>Children under 13</h2>
+            <h2>Users under 21</h2>
             <p>
               <span className="section">21</span>
               Although we welcome users from all walks of life, Smoke is not intended or directed at
-              individuals under the age of 13. Therefore,
-              individuals under the age of 13 may not create an account or otherwise access or use the
+              individuals under the age of 21. Therefore,
+              individuals under the age of 21 may not create an account or otherwise access or use the
               Services.
             </p>
           </div>
@@ -386,10 +386,10 @@ class Privacy extends React.Component {
             <h2>International Data Transfers</h2>
             <p>
               <span className="section">30</span>
-              We are based in the United States and the information we collect is governed by U.S. law. By
+              We are based in Belize and the information we collect is governed by Belize law. By
               accessing or using the Services or
               otherwise providing information to us, you consent to the processing, transfer and storage
-              of information in and to the U.S. and
+              of information in and to Belize and
               other countries, where you may not have the same rights as you do under local law.
             </p>
           </div>
@@ -418,7 +418,7 @@ class Privacy extends React.Component {
               revising the date at the top of the policy.
               If we make a change to this policy that, in our sole discretion, is material, we will
               provide you with additional notice (such as
-              adding a statement to steemouncements, the front page of the Services or sending you a
+              adding a statement to @smokenetwork announcements, the front page of the Services or sending you a
               notification). We encourage you to review the
               Privacy Policy whenever you access or use our Services or otherwise interact with us to stay
               informed about our information
@@ -432,7 +432,7 @@ class Privacy extends React.Component {
             <p>
               <span className="section">33</span>
               If you have any questions about this Privacy Policy, please email <a
-              href="mailto:contact@smoke.io">contact@smoke.io</a>.
+              href="mailto:hello@smoke.network">hello@smoke.network</a>.
             </p>
           </div>
         </div>
