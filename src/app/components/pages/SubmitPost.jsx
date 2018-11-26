@@ -24,12 +24,6 @@ class SubmitPost extends React.Component {
     const {success} = this
     return (
       <div className="SubmitPost">
-        <div className="row">
-          <p>Please remember to read our community <a href="https://docs.smoke.io/#/contentguidelines"
-                                                      target="_blank"><u>content guidelines</u></a> before posting
-            content. Copying and pasting content from other sites without crediting the author is a form of plagiarism
-            which will be penalized by the community. To earn more Smoke create original content. </p>
-        </div>
         <SubmitReplyEditor type="submit_story" successCallback={success}/>
       </div>
     );
