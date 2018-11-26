@@ -213,7 +213,6 @@ class App extends React.Component {
         <ul className="vertical menu">
           <li><a href="/created" onClick={this.navigate}><Icon name="lighter"/> {tt('navigation.latest')}</a></li>
           <li><a href="/trending" onClick={this.navigate}><Icon name="trending"/> {tt('navigation.trending')}</a></li>
-          <li><a href="/tags" onClick={this.navigate}><Icon name="tagspop"/> {tt('navigation.explore')}</a></li>
         </ul>
 
         <ul className="vertical menu">
