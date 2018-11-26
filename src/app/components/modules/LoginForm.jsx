@@ -206,6 +206,8 @@ class LoginForm extends Component {
           {error && <div className="error">{error}&nbsp;</div>}
           {error && password_info && <div className="warning">{password_info}&nbsp;</div>}
         </div>
+        <br />
+        <p><i>Use your private keys. (Posting or Active)</i></p>
         {loginBroadcastOperation && <div>
           <div
             className="info">{tt('loginform_jsx.this_operation_requires_your_key_or_master_password', {authType})}</div>
@@ -242,7 +244,7 @@ class LoginForm extends Component {
       <div className="LoginForm row">
         <div className="column">
           {message}
-          <h3>{tt('loginform_jsx.returning_users')}<span className="OpAction">{title}</span></h3>
+          <h3><span className="OpAction">{title}</span></h3>
           {form}
         </div>
       </div>
