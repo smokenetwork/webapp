@@ -1,77 +1,77 @@
 
-  .tagboxes {
-    border: 1px solid #eee;
-    background-size: cover;
-    color: white;
-    background-blend-mode: overlay;
-    border-radius: 5px;
-    font-weight: 900;
-    text-align: center;
-  }
+.tagboxes {
+  border: 1px solid #eee;
+  background-size: cover;
+  color: white;
+  background-blend-mode: overlay;
+  border-radius: 5px;
+  font-weight: 900;
+  text-align: center;
+}
 
-  .you {
-    background-image: url(../../assets/images/for-you-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.you {
+  background-image: url(../../assets/images/for-you-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .cannabis {
-    background-image: url(../../assets/images/life-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.life {
+  background-image: url(../../assets/images/life-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .growing {
-    background-image: url(../../assets/images/grow-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.grow {
+  background-image: url(../../assets/images/grow-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .edibles {
-    background-image: url(../../assets/images/edibles-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.edibles {
+  background-image: url(../../assets/images/edibles-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .strains {
-    background-image: url(../../assets/images/nugporn-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.nugporn {
+  background-image: url(../../assets/images/nugporn-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .art {
-    background-image: url(../../assets/images/art-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.art {
+  background-image: url(../../assets/images/art-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .news {
-    background-image: url(../../assets/images/news-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.news {
+  background-image: url(../../assets/images/news-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .cbd {
-    background-image: url(../../assets/images/cbd-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.cbd {
+  background-image: url(../../assets/images/cbd-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .health {
-    background-image: url(../../assets/images/health-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.health {
+  background-image: url(../../assets/images/health-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .legalize {
-    background-image: url(../../assets/images/legalize-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.legalize {
+  background-image: url(../../assets/images/legalize-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .nsfw {
-    background-image: url(../../assets/images/nsfw-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.nsfw {
+  background-image: url(../../assets/images/nsfw-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .contest {
-    background-image: url(../../assets/images/contest-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.contest {
+  background-image: url(../../assets/images/contest-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
-  .dabs {
-    background-image: url(../../assets/images/dabs-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
-  }
+.dabs {
+  background-image: url(../../assets/images/dabs-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
 
 .tag-wrap {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 0px 10px 0px 10px;
-    max-width: 100vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0px 10px 0px 10px;
+  max-width: 100vw;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 // /* Large and above */
@@ -81,7 +81,6 @@
   }
 }
 
-
 .image {
   height: 6em;
   width: 9em;
@@ -89,8 +88,6 @@
   display: inline-block;
   line-height: 9em;
 }
-
-
 
 .image-container {
   vertical-align: middle;
