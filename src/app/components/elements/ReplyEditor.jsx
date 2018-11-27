@@ -437,7 +437,9 @@ class ReplyEditor extends React.Component {
                                 <div
                                   className="error">{(category.touched || category.value) && category.error}&nbsp;</div>
                             </span>}
+                           <i>{tt('reply_editor.tag_note')}</i>
             </div>
+            <br />
             <div className={vframe_section_shrink_class}>
               {postError && <div className="error">{postError}</div>}
             </div>
