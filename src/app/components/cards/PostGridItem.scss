@@ -223,7 +223,12 @@
 
 .articles__content {
   //box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 10px
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+}
+
+.articles__content:hover {
+transform: scale(1.03);
 }
 
 .articles__h2 a {
