@@ -81,7 +81,7 @@ class PostsIndex extends React.Component {
         emptyText = <div>
           {tt('posts_index.empty_feed_1')}.<br/><br/>
           <i>{tt('posts_index.empty_feed_2')}.</i><br/><br/>
-          <a href="/trending" onClick={this.navigate} className="button">{tt('posts_index.empty_feed_3')}</a>
+          <a href="/trending" className="button">{tt('posts_index.empty_feed_3')}</a>
         </div>;
         markNotificationRead = <MarkNotificationRead fields="feed" account={account_name}/>
       } else {
