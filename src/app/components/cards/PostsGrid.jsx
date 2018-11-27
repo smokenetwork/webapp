@@ -200,7 +200,7 @@ class PostsGrid extends React.Component {
           <div className="row" key={shortid.generate()}>
             {row.map((item) => {
               return (
-                <div className="columns large-4 medium-6 small-12" key={item.item}>
+                <div className="columns large-4 medium-4 small-12" key={item.item}>
                   <PostGridItem
                     account={account}
                     post={item.item}
