@@ -214,7 +214,8 @@
         "confirm": "You are about to publish a SMOKE private key or master password. You will probably lose control of the associated account and all its funds.",
         "warning": "Legitimate users, including employees of Smoke Holdings IBC., will never ask you for a private key or master password.",
         "checkbox": "I understand"
-    }
+    },
+    "for_you": "FOR YOU"
   },
   "navigation": {
     "about": "About",
