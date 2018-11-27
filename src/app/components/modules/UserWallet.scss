@@ -11,6 +11,7 @@
     @include themify($themes) {
       background-color: themed('tableRowEvenBackgroundColor');
       color: themed('textColorPrimary');
+      border-radius:5px;
     }
   }
 }
