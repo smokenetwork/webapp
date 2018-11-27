@@ -197,18 +197,6 @@ class App extends React.Component {
     let sidebar = (
       <SidePanel ref="side_panel" alignment="right">
         <TopRightMenu vertical navigate={this.navigate}/>
-        <ul className="vertical menu">
-          {username && <li>
-            <Link to={`/@${username}`} onClick={this.navigate}>
-              <Icon name="mascot"/> {tt('main_menu.profile')}
-            </Link>
-          </li>}
-          {username && <li>
-            <Link to={`/@${username}/transfers`} onClick={this.navigate}>
-              <Icon name="wallet"/> {tt('main_menu.wallet')}
-            </Link>
-          </li>}
-        </ul>
 
         <ul className="vertical menu">
           <li><a href="/created" onClick={this.navigate}><Icon name="lighter"/> {tt('navigation.latest')}</a></li>
