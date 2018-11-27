@@ -211,7 +211,8 @@
         "confirm": "You are about to publish a SMOKE private key or master password. You will probably lose control of the associated account and all its funds.",
         "warning": "Legitimate users, including employees of Smoke Inc., will never ask you for a private key or master password.",
         "checkbox": "I understand"
-    }
+    },
+    "for_you": "POUR VOUS"
   },
   "navigation": {
     "about": "A propos",
@@ -279,7 +280,8 @@
     "markdown_not_supported": "Le format Markdown n'est pas supporté ici",
     "content_guidelines": "N'oubliez pas de lire les consignes relatives au contenu de la communauté avant de publier du contenu. Copier et coller du contenu depuis d'autres sites sans que l'auteur en soit crédité est une forme de plagiat qui peut être sanctionné par la communauté. Pour gagner plus de fumée, créez un contenu original ou organisez du contenu d’autres contenus et gagnez des récompenses de curation.",
     "content_hint": "Les récompenses de conservation sur Fumée sont souvent supérieures à votre poids de vote.",
-    "hint": "ALLUSION: "
+    "hint": "ALLUSION: ",
+    "tag_note": "Remarque: pour gagner de la fumée, veillez à utiliser uniquement des balises pertinentes pour votre message."
   },
   "category_selector_jsx": {
     "tag_your_story": "Mots clés (jusqu'à 5 mots clés), le premier d'entre eux étant votre catégorie principale.",

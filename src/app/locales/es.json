@@ -211,7 +211,8 @@
         "confirm": "You are about to publish a SMOKE private key or master password. You will probably lose control of the associated account and all its funds.",
         "warning": "Legitimate users, including employees of Smoke Inc., will never ask you for a private key or master password.",
         "checkbox": "I understand"
-    }
+    },
+    "for_you": "PARA TI"
   },
   "navigation": {
     "about": "Sobre",
@@ -279,7 +280,8 @@
     "markdown_not_supported": "Markdown no soportado aquí",
     "content_guidelines": "Recuerde leer las pautas de contenido de nuestra comunidad antes de publicar contenido. Copiar y pegar contenido de otros sitios sin acreditar al autor es una forma de plagio que puede ser penalizada por la comunidad. Para ganar más Smoke, cree contenido original o seleccione el contenido de otros y gane premios de curación.",
     "content_hint": "Las recompensas de curación en el humo a menudo son más altas que su peso de votación.",
-    "hint": "INSINUACIÓN: "
+    "hint": "INSINUACIÓN: ",
+    "tag_note": "Nota: para ganar Smoke, asegúrate de usar solo etiquetas que sean relevantes para tu publicación."
   },
   "category_selector_jsx": {
     "tag_your_story": "Etiqueta (hasta 5 etiquetas), la primera etiqueta es tu principal categoría.",
