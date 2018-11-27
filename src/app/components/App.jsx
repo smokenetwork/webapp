@@ -181,7 +181,7 @@ class App extends React.Component {
     if (home && ip && this.state.showBanner) {
       welcome_screen = (
         <div className="welcomeWrapper">
-          <div className="welcomeBanner">
+          {username && <div className="welcomeBanner">
             <div className="text-center">
               <h2>{tt('navigation.intro_tagline')}</h2>
               <h4>{tt('navigation.intro_paragraph')}</h4>
@@ -189,7 +189,7 @@ class App extends React.Component {
               <a className="button button--primary" href="/pick_account">
                 <b>{tt('navigation.sign_up')}</b> </a>
             </div>
-          </div>
+          </div>}
         </div>
       );
     }
