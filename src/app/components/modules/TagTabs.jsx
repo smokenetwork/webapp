@@ -4,6 +4,7 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
 import {browserHistory} from 'react-router';
+import tt from 'counterpart';
 
 
 
@@ -37,7 +38,7 @@ class TagTabs extends Component {
       <div className="tag-wrap">
         <div className="">
           <div className="image-container">
-            <a href="/" onClick={this.navigate} className="image tagboxes you">FOR YOU</a>
+            <a href="/" onClick={this.navigate} className="image tagboxes you">{tt('g.for_you')}</a>
             <a href="../trending/life" onClick={this.navigate} className="image tagboxes cannabis">LIFE</a>
             <a href="../trending/grow" onClick={this.navigate} className="image tagboxes growing">GROW</a>
             <a href="../trending/edibles" onClick={this.navigate} className="image tagboxes edibles">EDIBLES</a>
