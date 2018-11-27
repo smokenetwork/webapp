@@ -348,7 +348,9 @@ class ReplyEditor extends React.Component {
       <div className="ReplyEditor row">
         <div className="row">
           <div className="column post-notify">
-            <p>Please remember to read our community <a href="https://docs.smoke.io/#/contentguidelines" target="_blank"><u>content guidelines</u></a> before posting content. Copying and pasting content from other sites without crediting the author is a form of plagiarism which may be penalized by the community. To earn more Smoke create original content or curate others content and gain curation rewards.<br/><br/><b>HINT:</b> Curation rewards on Smoke are often higher than your voting weight.
+            <p>{tt('reply_editor.content_guidelines')}
+            <br/><br/>
+            <b>{tt('reply_editor.hint')}</b> {tt('reply_editor.content_hint')}
             </p>
           </div>
         </div>
