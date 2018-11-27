@@ -3,42 +3,27 @@ import React, {Component} from 'react';
 import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
 import tt from 'counterpart';
+import ScrollMenu from '../elements/ScrollMenu';
 
 const default_fixed_tags = ['life', 'grow', 'edibles', 'nugporn', 'art', 'news', 'contest', 'cbd', 'health', 'dabs', 'legalize', 'nsfw'];
 
 class TagTabs extends Component {
   constructor(){
-    super()
-    // this.scroll = this.scroll.bind(this)
+    super();
   }
-
-  // componentDidMount() {
-  //   window.addEventListener('scroll', this.handleScroll);
-  // }
-  //
-  // componentWillUnmount() {
-  //   window.removeEventListener('scroll', this.handleScroll);
-  // }
-  //
-  //
-  // handleScroll = (direction) => {
-  //   let far = $( '.image-container' ).width()/2*direction;
-  //   let pos = $('.image-container').scrollLeft() + far;
-  //   $('.image-container').animate( { scrollLeft: pos }, 1000)
-  // };
 
   render() {
     const render_tags = default_fixed_tags.map((tag) =>
-      <Link key={`tag_${tag}`} to={`/trending/${tag}`} className={`image tagboxes ${tag}`}>{tag}</Link>
+      <div key={`tag_${tag}`} to={`/trending/${tag}`} className={`image tagboxes ${tag}`}>
+        <Link>{tag}</Link>
+      </div>
     );
 
     return (
-      <div className="tag-wrap">
-        <div className="image-container">
-          <Link to="/" className="image tagboxes you">{tt('g.for_you')}</Link>
-          {render_tags}
-        </div>
-      </div>
+      <ScrollMenu data={render_tags} dragging={true}
+                  wheel={false} alignCenter={false} hideArrows={true}
+                  menuClass="tag-wrap" wrapperClass="image-container"
+      />
     )
   }
 }
