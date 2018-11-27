@@ -148,22 +148,6 @@ class Header extends React.Component {
 
     const menuItems = [];
 
-    // if we have a user profile, display the wallet link
-    if (current_account_name) {
-      menuItems.push(
-        {
-          value: tt('main_menu.trending'),
-          link: '/trending',
-          icon: 'trending',
-        },
-        {
-          value: tt('main_menu.wallet'),
-          link: `/@${current_account_name}/transfers`,
-          icon: 'wallet',
-        });
-
-    }
-
     return (
       <header className="Header noPrint">
         <div className="Header__top header">
