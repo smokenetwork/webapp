@@ -152,11 +152,6 @@ class Header extends React.Component {
     if (current_account_name) {
       menuItems.push(
         {
-          value: tt('g.search'),
-          link: '/static/search.html',
-          icon: 'search',
-        },
-        {
           value: tt('main_menu.trending'),
           link: '/trending',
           icon: 'trending',
