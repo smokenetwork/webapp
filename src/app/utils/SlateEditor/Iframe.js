@@ -17,6 +17,12 @@ export default class Iframe extends React.Component {
     if (match && match.length >= 2) {
       return 'https://player.vimeo.com/video/' + match[1]
     }
+    
+    // Detect dtube
+    match = url.match(linksRe.dtubeId)
+    if (match && match.length >= 2) {
+      return 'https://emb.d.tube/#!/' + match[1] + '/' + match[2]
+    }
 
     console.log("unable to auto-detect embed url", url)
     return null
