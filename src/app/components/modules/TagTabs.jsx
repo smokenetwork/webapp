@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import tt from 'counterpart';
 import ScrollMenu from '../elements/ScrollMenu';
 
-const default_fixed_tags = ['life', 'grow', 'edibles', 'nugporn', 'art', 'news', 'contest', 'cbd', 'health', 'dabs', 'legalize', 'nsfw'];
+const default_fixed_tags = ['life', 'grow', 'edibles', 'nugporn', 'art', 'news', 'strains', 'contest', 'review', 'cbd', 'health', 'smoking', 'dabs', 'legalize','guide', 'nsfw', 'offtopic'];
 
 class TagTabs extends Component {
   constructor(){
