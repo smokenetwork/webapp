@@ -42,6 +42,17 @@ class App extends React.Component {
     this.listenerActive = null;
     this.onEntropyEvent = this.onEntropyEvent.bind(this);
     // this.shouldComponentUpdate = shouldComponentUpdate(this, 'App')
+
+    if (process.env.BROWSER) {
+      browserHistory.listen((location, action) => {
+        // refresh mantisadnetwork
+        try {
+          window.mantis.push(['display', 'refresh', 'smokeio']);
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    }
   }
 
   componentWillMount() {
@@ -53,6 +64,18 @@ class App extends React.Component {
     // setTimeout(() => this.setState({showCallout: false}), 15000);
     if (pageRequiresEntropy(this.props.location.pathname)) {
       this._addEntropyCollector();
+    }
+
+    try {
+      // mantisadnetwork
+      const script = document.createElement("script");
+      script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
+      script.async = true;
+      window.mantis = window.mantis || [];
+      window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
+      document.body.appendChild(script);
+    } catch (e) {
+      console.error(e);
     }
   }
 
@@ -194,6 +217,13 @@ class App extends React.Component {
       );
     }
 
+    let ad1 = <div  style={{ marginTop: "-12px"}}>
+      <div className="column ad1">
+        <p className="ad-text">ADVERTISEMENT</p>
+        <div data-mantis-zone="smokeio" data-mantis-refresh="true"></div>
+      </div>
+    </div>;
+
     let sidebar = (
       <SidePanel ref="side_panel" alignment="right">
         <TopRightMenu vertical navigate={this.navigate}/>
@@ -264,6 +294,7 @@ class App extends React.Component {
         {miniHeader ? headerHidden ? null : <MiniHeader/> :
           <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
         <div className="App__content">
+          {ad1}
           {welcome_screen}
           {callout}
           {children}

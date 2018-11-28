@@ -1,0 +1,112 @@
+.tag-wrap {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0px 10px 0px 10px;
+  max-width: 100vw;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+// /* Large and above */
+@media screen and (min-width: 890px) {
+  .tag-wrap {
+    max-width: 890px;
+  }
+}
+
+.image {
+  height: 6em;
+  width: 9em;
+  margin: 10px 4px 10px 4px;
+  display: inline-block;
+  line-height: 9em;
+}
+
+.image-container {
+  vertical-align: middle;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .tagboxes {
+    border: 1px solid #eee;
+    background-size: cover;
+    color: white;
+    background-blend-mode: overlay;
+    border-radius: 5px;
+    font-weight: 900;
+    text-align: center;
+
+    &:hover {
+      background-blend-mode: exclusion;
+      color: white;
+    }
+
+    &:focus {
+      background-blend-mode: unset;
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}
+
+
+.you {
+  background-image: url(../../assets/images/for-you-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.life {
+  background-image: url(../../assets/images/life-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.grow {
+  background-image: url(../../assets/images/grow-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.edibles {
+  background-image: url(../../assets/images/edibles-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.nugporn {
+  background-image: url(../../assets/images/nugporn-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.art {
+  background-image: url(../../assets/images/art-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.news {
+  background-image: url(../../assets/images/news-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.cbd {
+  background-image: url(../../assets/images/cbd-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.health {
+  background-image: url(../../assets/images/health-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.legalize {
+  background-image: url(../../assets/images/legalize-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.nsfw {
+  background-image: url(../../assets/images/nsfw-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.contest {
+  background-image: url(../../assets/images/contest-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+
+.dabs {
+  background-image: url(../../assets/images/dabs-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
