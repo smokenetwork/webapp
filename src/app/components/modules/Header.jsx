@@ -147,6 +147,16 @@ class Header extends React.Component {
     const logoLink = current_account_name ? `/@${current_account_name}/feed` : '/';
 
     const menuItems = [];
+    
+    // if we have a user profile, display the wallet link
+    if (current_account_name) {
+      menuItems.push(
+        {
+          value: tt('main_menu.trending'),
+          link: '/trending',
+          icon: 'trending',
+        });
+    }
 
     return (
       <header className="Header noPrint">
