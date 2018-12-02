@@ -286,6 +286,7 @@
   "category_selector_jsx": {
     "tag_your_story": "Mots clés (jusqu'à 5 mots clés), le premier d'entre eux étant votre catégorie principale.",
     "select_a_tag": "Sélectionner un mot clé",
+    "select_a_category": "Sélectionnez une catégorie principale",
     "maximum_tag_length_is_24_characters": "La longueur d'un mot clé est d'au maximum 24 caractères",
     "use_limited_amount_of_categories": "Veuillez s'il-vous-plaît n'utiliser que %(amount)s catégories",
     "use_only_lowercase_letters": "Veuillez n'utiliser que des lettres minuscules",

@@ -292,6 +292,7 @@
   "category_selector_jsx": {
     "tag_your_story": "Добавь теги (до 5 штук), первый тег станет основной категорией.",
     "select_a_tag": "Выбрать тег",
+    "select_a_category": "Выберите основную категорию",
     "maximum_tag_length_is_24_characters": "Максимальная длина категории 24 знака",
     "use_limited_amount_of_categories": "Пожалуйста, используйте только %(amount)s категории",
     "use_only_lowercase_letters": "Используйте только символы нижнего регистра",
