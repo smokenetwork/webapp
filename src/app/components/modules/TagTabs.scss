@@ -41,6 +41,12 @@
     border-radius: 5px;
     font-weight: 900;
     text-align: center;
+    
+    h2 {
+      font-size: initial;
+      line-height: 9 !important;
+      font-weight: 900;
+    }
 
     &:hover {
       background-blend-mode: exclusion;
