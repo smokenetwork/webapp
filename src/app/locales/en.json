@@ -168,7 +168,7 @@
     "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "Only one Smoke account allowed per IP address every 10 minutes",
     "resteem_this_post": "Resmoke This Post",
     "reblog": "Resmoke To Your Feed",
-    "write_your_story": "Write your story",
+    "write_your_story": "Create your best post",
     "remember_voting_and_posting_key": "Remember voting & posting key",
     "auto_login_question_mark": "Auto login?",
     "hide_private_key": "Hide private key",
@@ -285,7 +285,8 @@
     "content_guidelines3":" before posting content. Copying and pasting content from other sites without crediting the author is a form of plagiarism which may be penalized by the community. To earn more Smoke create original content or curate others content and gain curation rewards.",
     "content_hint": "Curation rewards on Smoke are often higher than your voting weight.",
     "hint": "HINT: ",
-    "tag_note": "Note: To avoid being flagged by the community, make sure you only use tags that are relevant to your post."
+    "tagbold": "NOTE: ",
+    "tag_note": "To avoid being flagged by the community, make sure you only select the category that is most relevant to your post. If there is no category that fits select 'offtopic.'"
   },
   "category_selector_jsx": {
     "tag_your_story": "Tag (up to 5 tags), the first tag is your main category.",

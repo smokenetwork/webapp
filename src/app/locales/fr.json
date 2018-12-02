@@ -165,7 +165,7 @@
     "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "Un seul compte Smoke est permis par adresse IP toutes les 10 minutes",
     "resteem_this_post": "Resmokeer cet article",
     "reblog": "Resmoke",
-    "write_your_story": "Ecris ton histoire",
+    "write_your_story": "Créez votre meilleur post",
     "remember_voting_and_posting_key": "Se souvenir de la clé de publication et de vote",
     "auto_login_question_mark": "Identification automatique",
     "hide_private_key": "Masquer la clé privée",
@@ -283,7 +283,8 @@
     "content_guidelines3":" avant de publier du contenu. Copier et coller du contenu depuis d'autres sites sans que l'auteur en soit crédité est une forme de plagiat qui peut être sanctionné par la communauté. Pour gagner plus de fumée, créez un contenu original ou organisez du contenu d’autres contenus et gagnez des récompenses de curation.",
     "content_hint": "Les récompenses de conservation sur Fumée sont souvent supérieures à votre poids de vote.",
     "hint": "ALLUSION: ",
-    "tag_note": "Remarque: pour éviter d'être signalé par la communauté, assurez-vous de n'utiliser que des balises pertinentes pour votre message."
+    "tagbold": "REMARQUE: ",
+    "tag_note": "Pour éviter d'être signalé par la communauté, veillez à ne sélectionner que la catégorie la plus pertinente pour votre message. S'il n'y a pas de catégorie qui correspond à sélectionner 'offtopic'"
   },
   "category_selector_jsx": {
     "tag_your_story": "Mots clés (jusqu'à 5 mots clés), le premier d'entre eux étant votre catégorie principale.",

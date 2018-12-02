@@ -165,7 +165,7 @@
     "only_one_APP_NAME_account_allowed_per_ip_address_every_10_minutes": "è possibile utilizzare un solo Smoke account per indirizzo IP ogni 10 minuti",
     "resteem_this_post": "Fai il re Smoke di questo post",
     "reblog": "Re Smoke",
-    "write_your_story": "Scrivi la tua storia",
+    "write_your_story": "Crea il tuo miglior post",
     "remember_voting_and_posting_key": "Ricorda la chiave di voto e di pubblicazione",
     "auto_login_question_mark": "Accesso automatico?",
     "hide_private_key": "Nascondi la chiave privata",
@@ -283,7 +283,8 @@
     "content_guidelines3":" della community prima di pubblicare contenuti. Copiare e incollare contenuti da altri siti senza accreditare l'autore è una forma di plagio che può essere penalizzata dalla comunità. Per guadagnare più Fumo creare contenuti originali o curare gli altri contenuti e ottenere premi di curation.",
     "content_hint": "CI premi della Curation su Smoke sono spesso superiori al tuo peso di voto.",
     "hint": "SUGGERIMENTO: ",
-    "tag_note": "Nota: per evitare di essere contrassegnato dalla community, assicurati di utilizzare solo tag pertinenti al tuo post."
+    "tagbold": "NOTA: ",
+    "tag_note": "Per evitare di essere contrassegnato dalla community, assicurati di selezionare solo la categoria più pertinente al tuo post. Se non ci sono categorie che si adattano selezionare 'offtopic'"
   },
   "category_selector_jsx": {
     "tag_your_story": "Tag (massimo 5). Il primo tag è la categoria principale. ",
