@@ -288,6 +288,7 @@
   "category_selector_jsx": {
     "tag_your_story": "Tag (up to 5 tags), the first tag is your main category.",
     "select_a_tag": "Select a tag",
+    "select_a_category": "Select a main category",
     "maximum_tag_length_is_24_characters": "Maximum tag length is 24 characters",
     "use_limited_amount_of_categories": "Please use only %(amount)s categories",
     "use_only_lowercase_letters": "Use only lowercase letters",
