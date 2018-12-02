@@ -102,5 +102,5 @@ export default connect((state, ownProps) => {
   // apply translations
   // they are used here because default prop can't acces intl property
   const placeholder = tt('category_selector_jsx.tag_your_story');
-  return {trending, placeholder, ...ownProps,}
+  return {trending, ...ownProps,}
 })(CategorySelector);
