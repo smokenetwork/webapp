@@ -348,7 +348,9 @@ class ReplyEditor extends React.Component {
       <div className="ReplyEditor row">
         <div className="row">
           <div className="column post-notify">
-            <p>{tt('reply_editor.content_guidelines')}
+            <p>{tt('reply_editor.content_guidelines1')}
+            <b><u><a href="https://docs.smoke.io/#/contentguidelines" target="_blank">{tt('reply_editor.content_guidelines2')}</a></u></b>
+            {tt('reply_editor.content_guidelines3')}
             <br/><br/>
             <b>{tt('reply_editor.hint')}</b> {tt('reply_editor.content_hint')}
             </p>
