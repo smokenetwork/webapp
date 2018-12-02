@@ -70,8 +70,6 @@ class CategorySelector extends React.Component {
         <option key={`${tag}`} value={`${tag}`}>{`${tag}`}</option>
     );
 
-    console.log(render_tags)
-
     const categorySelect = (
       <select {...cleanReduxInput(this.props)} onChange={this.categorySelectOnChange} ref="categoryRef"
               tabIndex={tabIndex} disabled={disabled}>
