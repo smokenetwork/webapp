@@ -53,11 +53,11 @@ class PostGridItem extends React.Component {
     }
 
     const contentTitle = (
-      <h2 className="articles__h2 entry-title">
+      <h3 className="articles__h2 entry-title">
         <Link to={titleLinkUrl}>
           {titleText}
         </Link>
-      </h2>
+      </h3>
     );
 
     const contentDetails = (
