@@ -64,9 +64,7 @@ class CategorySelector extends React.Component {
       <input type="text" {...cleanReduxInput(impProps)} ref="categoryRef" tabIndex={tabIndex}
              disabled={disabled}/>
 
-    const default_fixed_tags = ['life', 'grow', 'edibles', 'nugporn', 'art', 'news', 'strains', 'contest', 'review', 'cbd', 'health', 'smoking', 'dabs', 'legalize','guide', 'nsfw', 'offtopic'];
-
-    const render_tags = default_fixed_tags.map((tag) =>
+    const render_tags = $STM_Config.default_fixed_tags.map((tag) =>
         <option key={`${tag}`} value={`${tag}`}>{`${tag}`}</option>
     );
 

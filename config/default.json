@@ -100,5 +100,6 @@
   "steemd_connection_client": "https://rpc.smoke.io",
   "steemd_connection_server": "https://rpc.smoke.io",
   "chain_id": "1ce08345e61cd3bf91673a47fc507e7ed01550dab841fd9cdb0ab66ef576aaf0",
-  "address_prefix": "SMK"
+  "address_prefix": "SMK",
+  "default_fixed_tags": ["life", "grow", "edibles", "nugporn", "art", "news", "strains", "contest", "review", "cbd", "health", "smoking", "dabs", "legalize","guide", "nsfw", "offtopic"]
 }
