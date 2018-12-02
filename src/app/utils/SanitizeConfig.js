@@ -17,6 +17,30 @@ const iframeWhitelist = [
       return src.replace(/\?.+$/, ''); // strip query string (yt: autoplay=1,controls=0,showinfo=0, etc)
     }
   },
+    {
+    re: /^(https?:)?\/\/emb.d.tube\/#!\/.*\/.*/,
+    fn: (src) => {
+      return src.replace(/\?.+$/, ''); // strip query string (yt: autoplay=1,controls=0,showinfo=0, etc)
+    }
+  },
+  {
+    re: /^(https?:)?\/\/www.theweedtube.com\/*/,
+    fn: (src) => {
+      return src.replace(/\?.+$/, ''); // strip query string (yt: autoplay=1,controls=0,showinfo=0, etc)
+    }
+  },
+  {
+    re: /^(https?:)?\/\/player.twitch.tv\/.*/,
+    fn: (src) => {
+      return src.replace(/\?.+$/, ''); // strip query string (yt: autoplay=1,controls=0,showinfo=0, etc)
+    }
+  },
+  {
+    re: /^(https?:)?\/\/www.twitch.tv\/embed\/.*/,
+    fn: (src) => {
+      return src.replace(/\?.+$/, ''); // strip query string (yt: autoplay=1,controls=0,showinfo=0, etc)
+    }
+  },
   {
     re: /^https:\/\/w.soundcloud.com\/player\/.*/i,
     fn: (src) => {
