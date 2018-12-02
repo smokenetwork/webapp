@@ -30,7 +30,7 @@ export default {
   youTube: youTube(),
   youTubeId: /(?:(?:youtube.com\/watch\?v=)|(?:youtu.be\/)|(?:youtube.com\/embed\/))([A-Za-z0-9\_\-]+)/i,
   vimeoId: /(?:vimeo.com\/|player.vimeo.com\/video\/)([0-9]+)/,
-  dtubeId: /(?:d.tube\/#!\/v\/)(.*\/)(.*)/,
+  dtubeId: /(?:(?:(emb.d.tube\/#!\/)|(d.tube\/(#!\/)*v\/)))(\w+\/)([A-Za-z0-9_-]+)/,
   // simpleLink: new RegExp(`<a href="(.*)">(.*)<\/a>`, 'ig'),
   ipfsPrefix: /(https?:\/\/.*)?\/ipfs/i,
 }
