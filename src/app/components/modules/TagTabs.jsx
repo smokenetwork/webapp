@@ -15,7 +15,7 @@ class TagTabs extends Component {
   render() {
     const render_tags = default_fixed_tags.map((tag) =>
       <div key={`tag_${tag}`} className={`image tagboxes ${tag}`}>
-        <Link to={`/trending/${tag}`}>{tag}</Link>
+        <h2><Link to={`/trending/${tag}`}>{tag}</Link></h2>
       </div>
     );
 
