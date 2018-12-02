@@ -67,15 +67,15 @@ class CategorySelector extends React.Component {
     const categorySelect = (
       <select {...cleanReduxInput(this.props)} onChange={this.categorySelectOnChange} ref="categoryRef"
               tabIndex={tabIndex} disabled={disabled}>
-        <option value="">{tt('category_selector_jsx.select_a_tag')}...</option>
+        <option value="">{tt('category_selector_jsx.select_a_category')}...</option>
         {categoryOptions}
         <option value="new">{this.props.placeholder}</option>
       </select>
     )
     return (
       <span>
-            {createCategory ? categoryInput : categorySelect}
-          </span>
+         {categorySelect}
+      </span>
     )
   }
 }
