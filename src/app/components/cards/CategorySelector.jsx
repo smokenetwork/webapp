@@ -64,17 +64,24 @@ class CategorySelector extends React.Component {
       <input type="text" {...cleanReduxInput(impProps)} ref="categoryRef" tabIndex={tabIndex}
              disabled={disabled}/>
 
+    const default_fixed_tags = ['life', 'grow', 'edibles', 'nugporn', 'art', 'news', 'strains', 'contest', 'review', 'cbd', 'health', 'smoking', 'dabs', 'legalize','guide', 'nsfw', 'offtopic'];
+
+    const render_tags = default_fixed_tags.map((tag) =>
+        <option key={`${tag}`} value={`${tag}`}>{`${tag}`}</option>
+    );
+
+    console.log(render_tags)
+
     const categorySelect = (
       <select {...cleanReduxInput(this.props)} onChange={this.categorySelectOnChange} ref="categoryRef"
               tabIndex={tabIndex} disabled={disabled}>
         <option value="">{tt('category_selector_jsx.select_a_category')}...</option>
-        {categoryOptions}
-        <option value="new">{this.props.placeholder}</option>
+        {render_tags}
       </select>
     )
     return (
       <span>
-         {categorySelect}
+        {categorySelect}
       </span>
     )
   }
@@ -101,6 +108,6 @@ export default connect((state, ownProps) => {
   const trending = state.global.getIn(['tag_idx', 'trending'])
   // apply translations
   // they are used here because default prop can't acces intl property
-  const placeholder = tt('category_selector_jsx.tag_your_story');
+  const placeholder = tt('category_selector_jsx.select_a_category');
   return {trending, ...ownProps,}
 })(CategorySelector);
