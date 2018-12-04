@@ -37,19 +37,19 @@
     border: 1px solid #eee;
     background-size: cover;
     color: white;
-    background-blend-mode: overlay;
+    background-blend-mode: color;
     border-radius: 5px;
     font-weight: 900;
     text-align: center;
     
     h2 {
       font-size: initial;
-      line-height: 9 !important;
+      line-height: 8 !important;
       font-weight: 900;
     }
 
     &:hover {
-      background-blend-mode: exclusion;
+      background-blend-mode: normal;
       color: white;
     }
 
