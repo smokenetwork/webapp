@@ -297,7 +297,7 @@ class PostFull extends React.Component {
 
               <div className="float-right PostFull__time_author_category">
 
-                {" " + tt('g.in')} <TagList post={content} single/>
+                {" " + tt('g.in')} #<TagList post={content}/>
               </div>
 
               <TimeAgoWrapper date={content.created} className="PostFull__time_author_category float-right"/>
