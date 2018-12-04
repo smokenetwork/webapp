@@ -33,7 +33,7 @@
   "helmet": {
     "directives": {
       "childSrc": "'self' www.youtube.com staticxx.facebook.com w.soundcloud.com player.vimeo.com",
-      "connectSrc": "'self' smoke.io rpc.smoke.io https://rpc.smoke.io wss://rpc.smoke.io",
+      "connectSrc": "'self' smoke.io rpc.smoke.io https://rpc.smoke.io wss://rpc.smoke.io pubrpc.smoke.io",
       "defaultSrc": "'self' www.youtube.com staticxx.facebook.com player.vimeo.com",
       "fontSrc": "data: fonts.gstatic.com",
       "frameAncestors": "'none'",
@@ -97,7 +97,7 @@
     "from_mobile": false
   },
   "upload_image": false,
-  "steemd_connection_client": "https://rpc.smoke.io",
+  "steemd_connection_client": "https://pubrpc.smoke.io",
   "steemd_connection_server": "https://rpc.smoke.io",
   "chain_id": "1ce08345e61cd3bf91673a47fc507e7ed01550dab841fd9cdb0ab66ef576aaf0",
   "address_prefix": "SMK",
