@@ -69,6 +69,7 @@
     max-width: 740px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
   }
 
   > div.column {
@@ -123,17 +124,20 @@
   .UserProfile__bio {
 
     font-size: 95%;
-    max-width: 420px;
+    max-width: 520px;
     line-height: 1.4;
+    margin: auto;
   }
   .UserProfile__info {
     font-size: 90%;
+    font-weight: 900;
   }
 
   .UserProfile__stats {
     margin-bottom: 5px;
     padding-bottom: 5px;
     font-size: 90%;
+    font-weight: 900;
 
     a {
       @include hoverUnderline;
