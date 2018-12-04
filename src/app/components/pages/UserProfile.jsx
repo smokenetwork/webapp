@@ -420,9 +420,7 @@ export default class UserProfile extends React.Component {
 
     return (
       <div className="UserProfile">
-
         <div className="UserProfile__banner row expanded">
-
           <div className="column">
             <div className="profile_div">
               <div style={{position: "relative"}}>
@@ -438,24 +436,22 @@ export default class UserProfile extends React.Component {
                   <span className="UserProfile__rep">({rep})</span>
                 </Tooltip>
               </h1>
+              <div className="UserProfile__stats">
+              <span><Link
+                to={`/@${accountname}`}>{tt('user_profile.post_count', {count: account.post_count || 0})}</Link></span>
+                              <span>
+                                  <Link
+                                    to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
+                                {isMyAccount && <NotifiCounter fields="follow"/>}
+                              </span>
 
+                <span><Link
+                  to={`/@${accountname}/followed`}>{tt('user_profile.followed_count', {count: followingCount})}</Link></span>
+              </div>
               <div>
                 {about && <p className="UserProfile__bio">{about}</p>}
-                <div className="UserProfile__stats">
-                                <span>
-                                    <Link
-                                      to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
-                                  {isMyAccount && <NotifiCounter fields="follow"/>}
-                                </span>
-                  <span><Link
-                    to={`/@${accountname}`}>{tt('user_profile.post_count', {count: account.post_count || 0})}</Link></span>
-                  <span><Link
-                    to={`/@${accountname}/followed`}>{tt('user_profile.followed_count', {count: followingCount})}</Link></span>
-                </div>
                 <p className="UserProfile__info">
-                  {location && <span><Icon name="location"/> {location}</span>}
-                  {website && <span><Icon name="link"/> <a href={website}>{website_label}</a></span>}
-                  <Icon name="calendar"/> <DateJoinWrapper date={accountjoin}/>
+                  {website && <span><a href={website}>{website_label}</a></span>}
                 </p>
               </div>
               <div className="UserProfile__buttons_mobile show-for-small-only">
