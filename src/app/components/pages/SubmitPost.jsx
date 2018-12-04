@@ -2,6 +2,8 @@ import React from 'react';
 import {browserHistory} from 'react-router';
 import ReplyEditor from '../elements/ReplyEditor'
 
+import tt from 'counterpart'
+
 const formId = 'submitStory';
 // const richTextEditor = process.env.BROWSER ? require('react-rte-image').default : null;
 // const SubmitReplyEditor = ReplyEditor(formId, richTextEditor);
