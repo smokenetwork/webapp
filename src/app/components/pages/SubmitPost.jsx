@@ -24,6 +24,9 @@ class SubmitPost extends React.Component {
     const {success} = this
     return (
       <div>
+        <div className="SubmitPost">
+          <SubmitReplyEditor type="submit_story" successCallback={success}/>
+        </div>
         <div className="row">
           <div className="column post-notify">
             <p>{tt('reply_editor.content_guidelines1')}
@@ -34,9 +37,6 @@ class SubmitPost extends React.Component {
             </p>
             <p><b>{tt('reply_editor.tagbold')}</b>{tt('reply_editor.tag_note')}</p>
           </div>
-        </div>
-        <div className="SubmitPost">
-          <SubmitReplyEditor type="submit_story" successCallback={success}/>
         </div>
       </div>
     );
