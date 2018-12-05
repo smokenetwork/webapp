@@ -84,55 +84,57 @@ class Witnesses extends React.Component {
     const up = <Icon name="chevron-up-circle"/>;
     let witness_vote_count = 30
     let rank = 1
-    const witnesses = sorted_witnesses.map(item => {
-      const owner = item.get('owner')
-      const thread = item.get('url')
-      const signingKey = item.get('signing_key');
-      const isDisabled = signingKey == DISABLED_SIGNING_KEY;
-      const lastBlock = item.get('last_confirmed_block_num');
-      const myVote = witness_votes ? witness_votes.has(owner) : null
-      const classUp = 'Voting__button Voting__button-up' +
-        (myVote === true ? ' Voting__button--upvoted' : '');
-      let witness_thread = ""
-      if (thread) {
-        if (links.remote.test(thread)) {
-          witness_thread =
-            <a href={thread}>{tt('witnesses_jsx.witness_thread')}&nbsp;<Icon name="extlink"/></a>
-        } else {
-          witness_thread = <Link to={thread}>{tt('witnesses_jsx.witness_thread')}</Link>
+    const witnesses = sorted_witnesses
+      .filter(item => item.get('signing_key') !== DISABLED_SIGNING_KEY))
+      .map(item => {
+        const owner = item.get('owner')
+        const thread = item.get('url')
+        const signingKey = item.get('signing_key');
+        const isDisabled = signingKey == DISABLED_SIGNING_KEY;
+        const lastBlock = item.get('last_confirmed_block_num');
+        const myVote = witness_votes ? witness_votes.has(owner) : null
+        const classUp = 'Voting__button Voting__button-up' +
+          (myVote === true ? ' Voting__button--upvoted' : '');
+        let witness_thread = ""
+        if (thread) {
+          if (links.remote.test(thread)) {
+            witness_thread =
+              <a href={thread}>{tt('witnesses_jsx.witness_thread')}&nbsp;<Icon name="extlink"/></a>
+          } else {
+            witness_thread = <Link to={thread}>{tt('witnesses_jsx.witness_thread')}</Link>
+          }
         }
-      }
 
-      const ownerStyle = isDisabled
-        ? {textDecoration: 'line-through', color: '#AAA'}
-        : {};
+        const ownerStyle = isDisabled
+          ? {textDecoration: 'line-through', color: '#AAA'}
+          : {};
 
-      return (
-        <tr key={owner}>
-          <td width="75">
-            {(rank < 10) && '0'}{rank++}
-            &nbsp;&nbsp;
-            <span className={classUp}>
-                                <a href="#" onClick={accountWitnessVote.bind(this, owner, !myVote)}
-                                   title={tt('g.vote')}>{up}</a>
-                        </span>
-          </td>
-          <td>
-            <Link to={'/@' + owner} style={ownerStyle}>
-              {owner}
-            </Link>
-            {isDisabled && (
-              <small style={{color: '#AAA'}}>
-                {' '} disabled {' '}
-                {_blockGap(head_block, lastBlock)})
-              </small>
-            )}
-          </td>
-          <td>
-            {witness_thread}
-          </td>
-        </tr>
-      )
+        return (
+          <tr key={owner}>
+            <td width="75">
+              {(rank < 10) && '0'}{rank++}
+              &nbsp;&nbsp;
+              <span className={classUp}>
+                                  <a href="#" onClick={accountWitnessVote.bind(this, owner, !myVote)}
+                                     title={tt('g.vote')}>{up}</a>
+                          </span>
+            </td>
+            <td>
+              <Link to={'/@' + owner} style={ownerStyle}>
+                {owner}
+              </Link>
+              {isDisabled && (
+                <small style={{color: '#AAA'}}>
+                  {' '} disabled {' '}
+                  {_blockGap(head_block, lastBlock)})
+                </small>
+              )}
+            </td>
+            <td>
+              {witness_thread}
+            </td>
+          </tr>
+        )
     });
 
     let addl_witnesses = false;
