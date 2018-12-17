@@ -68,7 +68,8 @@ const icons = [
   'match',
   'tifw',
   'pencil',
-  'exit'
+  'exit',
+  'escodex'
 ];
 const icons_map = {};
 for (const i of icons) icons_map[i] = require(`assets/icons/${i}.svg`);
