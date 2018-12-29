@@ -295,7 +295,6 @@ class App extends React.Component {
           <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
         <div className="App__content">
           {ad1}
-          {welcome_screen}
           {callout}
           {children}
           {lp ? <LpFooter/> : null}
