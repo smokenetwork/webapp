@@ -166,12 +166,6 @@ class Settings extends React.Component {
           <div className="error">{about.touched && about.error}</div>
 
           <label>
-            {tt('settings_jsx.profile_location')}
-            <input type="text" {...location.props} maxLength="30" autoComplete="off"/>
-          </label>
-          <div className="error">{location.touched && location.error}</div>
-
-          <label>
             {tt('settings_jsx.profile_website')}
             <input type="url" {...website.props} maxLength="100" autoComplete="off"/>
           </label>
@@ -180,7 +174,9 @@ class Settings extends React.Component {
           <br/>
           {state.loading && <span><LoadingIndicator type="circle"/><br/></span>}
           {!state.loading &&
-          <input type="submit" className="button" value={tt('settings_jsx.update')} disabled={disabled}/>}
+            <div className="updateMobile">
+              <input type="submit" className="button" value={tt('settings_jsx.update')} disabled={disabled}/>
+            </div>}
           {' '}{
           state.errorMessage
             ? <small className="error">{state.errorMessage}</small>
@@ -191,23 +187,7 @@ class Settings extends React.Component {
         </form>
       </div>
 
-      {isOwnAccount &&
-      <div className="row">
-        <div className="small-12 medium-12 large-12 columns">
-          <br/><br/>
-          <h4>{tt('settings_jsx.private_post_display_settings')}</h4>
-          <div>
-            {tt('settings_jsx.not_safe_for_work_nsfw_content')}
-          </div>
-          <select value={user_preferences.nsfwPref} onChange={this.onNsfwPrefChange}>
-            <option value="hide">{tt('settings_jsx.always_hide')}</option>
-            <option value="warn">{tt('settings_jsx.always_warn')}</option>
-            <option value="show">{tt('settings_jsx.always_show')}</option>
-          </select>
-          <br/>
-          <div>&nbsp;</div>
-        </div>
-      </div>}
+
       {ignores && ignores.size > 0 &&
       <div className="row">
         <div className="small-12 medium-12 large-12 columns">
