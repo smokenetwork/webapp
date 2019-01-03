@@ -181,7 +181,7 @@ export default class UserProfile extends React.Component {
               <WalletSubMenu account_name={account.name}/>
             </div>
           </div>
-          <br/>
+          
           <UserWallet
             account={accountImm}
             showTransfer={this.props.showTransfer}
