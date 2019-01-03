@@ -68,9 +68,11 @@ class ConfirmTransactionForm extends Component {
             </label>
           </div> : null}
         <br/>
-        <button className="button" onClick={okClick}
-                disabled={!(checkbox === undefined || checkboxChecked)}>{tt('g.ok')}</button>
-        <button type="button hollow" className="button hollow" onClick={onCancel}>{tt('g.cancel')}</button>
+        <div className="confimrTxMobile">
+          <button className="button" onClick={okClick}
+                  disabled={!(checkbox === undefined || checkboxChecked)}>{tt('g.ok')}</button>
+          <button type="button hollow" className="button hollow" onClick={onCancel}>{tt('g.cancel')}</button>
+        </div>
       </div>
     )
   }

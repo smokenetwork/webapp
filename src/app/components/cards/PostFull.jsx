@@ -312,6 +312,7 @@ class PostFull extends React.Component {
         }
 
         <TagList post={content} horizontal/>
+        <hr />
         <div className="PostFull__footer row">
 
           <div className="column">
@@ -335,6 +336,24 @@ class PostFull extends React.Component {
                   <PageViewsCounter hidden={false} sinceDate={isPreViewCount ? 'Dec 2016' : null}/>
                 </span>
             <ShareMenu menu={share_menu}/>
+            <button className="explore-post" title={tt('g.share_this_post')} onClick={this.showExplorePost}>
+              <Icon name="link" className="chain-right"/>
+            </button>
+          </div>
+        </div>
+        <div className="PostFull__footerMobile">
+          <div className="">
+            <Voting post={post}/>
+          </div>
+          <div className="RightShare__Menu small-11 medium-5 large-5 columns text-right">
+            {!readonly && <Reblog author={author} permlink={permlink}/>}
+            <span className="PostFull__reply">
+                  {showReplyOption && <a onClick={onShowReply}><Icon name="chatbox" /></a>}
+              {' '}{!readonly && showEditOption && !showEdit &&
+            <a onClick={onShowEdit}><Icon name="edit" /></a>}
+              {' '}{!readonly && showDeleteOption && !showReply &&
+            <a onClick={onDeletePost}><Icon name="trash" /></a>}
+                        </span>
             <button className="explore-post" title={tt('g.share_this_post')} onClick={this.showExplorePost}>
               <Icon name="link" className="chain-right"/>
             </button>

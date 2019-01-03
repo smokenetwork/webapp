@@ -125,8 +125,10 @@ class Powerdown extends React.Component {
           {LIQUID_TICKER}
         </p>
         <ul className="powerdown-notes">{notes}</ul>
-        <button type="submit" className="button" onClick={powerDown}
+        <div className="walletButtonsMobile">
+          <button type="submit" className="button" onClick={powerDown}
                 disabled={broadcasting}>{tt('powerdown_jsx.power_down')}</button>
+        </div>
       </div>
     )
   }

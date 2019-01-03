@@ -6,6 +6,12 @@
 .UserWallet__balance {
   padding-bottom: 1rem;
   padding-top: 1rem;
+  text-align: center;
+
+  h6 {
+    text-align: center;
+    margin-top: 10px;
+  }
 
   &.UserWallet__balance.zebra {
     @include themify($themes) {
@@ -52,6 +58,16 @@
   }
 }
 
+.UserWallet__tbutton {
+  width: 49%;
+  margin-right: 1px;
+}
+
+.UserWallet__pbutton {
+  width: 99%;
+  margin-right: 1%;
+}
+
 .WalletSubMenu {
   > li > a {
     transition: 0.2s all ease-in-out;
@@ -72,10 +88,8 @@
     }
     font-weight: bold;
   }
-  @include themify($themes) {
-    border-bottom: themed('border');
-  }
 
+  justify-content: space-around;
   margin: 0.5rem 0 1rem;
 }
 
@@ -84,4 +98,28 @@
   .Wallet_dropdown {
     left: 10px !important;
   }
+
+  .walletButtonsMobile {
+    position: fixed;
+    background: #fdfcfc;
+    width: 100%;
+    bottom: 0;
+    z-index: 99;
+    left: 0;
+    border-top: solid 1px #eeecec;
+    padding: 7px;
+    height: 55px !important;
+
+    .button {
+      width: 48%;
+      margin: 2px !important;
+      font-size: inherit;
+    }
+  }
+
+  .UserWallet__tbutton {
+    margin-bottom: 0;
+  }
 }
+
+

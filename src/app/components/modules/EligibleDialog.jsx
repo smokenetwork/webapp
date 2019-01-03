@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux'
 import user from "../../redux/User";
+import SvgImage from '../elements/SvgImage';
+import tt from 'counterpart';
 
 class EligibleDialog extends Component {
 
@@ -20,14 +22,29 @@ class EligibleDialog extends Component {
 
   render() {
     return (
-      <div>
-        <h4>Are you eligible to visit smoke.io?</h4>
-        I am at least 21 years old or a valid medical marijuana patient and agree to the <Link to='/tos.html'>Terms of
-        Service</Link> and <Link to='/privacy.html'>Privacy Policy</Link>.
-        <hr/>
-        <button type="submit" className="button" onClick={this.readnContinue}>
-          Continue
-        </button>
+      <div className="EligibleWelcome">
+        <div className="text-center">
+          <SvgImage name="smoke" width="250px" className="Header__logo"></SvgImage>
+          <h2>{tt('navigation.intro_tagline')}</h2>
+          <br/>
+          <hr/>
+          <div className="EligibleButtons">
+            <a className="button button--primary EligibleButton" onClick={this.readnContinue} href="/pick_account">
+              <b>{tt('navigation.sign_up')}</b> </a>
+            <a className="button button--primary EligibleButton" onClick={this.readnContinue} href="/login.html">
+              <b>{tt('g.login')}</b> </a>
+          </div>
+          <br />
+          <div className="EligibleContinue">
+            <a type="submit" onClick={this.readnContinue}>
+              Continue without signing up...
+            </a>
+          </div>
+          <hr />
+          <h4>Are you eligible to visit smoke.io?</h4>
+          <p>By entering, I am at least 21 years old or a valid medical marijuana patient and agree to the <Link to='/tos.html'>Terms of
+          Service</Link> and <Link to='/privacy.html'>Privacy Policy</Link>.</p>
+        </div>
       </div>
     )
   }

@@ -1,20 +1,5 @@
 
 .Settings {
-  .button {
-    text-decoration: none;
-    border-radius: 0;
-    @include font-size(18px);
-    background-color: $secondary-color;
-    color: $color-text-white;
-
-    &:hover, &:focus {
-      background-color: smart-scale($secondary-color);
-      color: $color-text-white;
-    }
-    &:visited, &:active {
-      color: $color-text-white;
-    }
-  }
   .button.disabled, .button[disabled] {
     opacity: 0.25;
     cursor: not-allowed;
@@ -35,5 +20,25 @@
   }
   div.error {
     padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 39.9375em) {
+  .Settings {
+    .updateMobile {
+      position: fixed;
+      background: #fdfcfc;
+      width: 100%;
+      bottom: 0;
+      z-index: 99;
+      left: 0;
+      border-top: solid 1px #eeecec;
+      padding: 7px;
+      text-align: center;
+      height: 55px !important;
+      .button {
+            width: 50vw;
+      }
+    }
   }
 }

@@ -212,30 +212,52 @@ class LoginForm extends Component {
           <div
             className="info">{tt('loginform_jsx.this_operation_requires_your_key_or_master_password', {authType})}</div>
         </div>}
-        <div>
-          <label className="LoginForm__save-login" htmlFor="saveLogin">
+        <div className="desktoponly">
+          <div>
+            <label className="LoginForm__save-login" htmlFor="saveLogin">
 
-            <input id="saveLogin" type="checkbox" ref="pw" {...saveLogin.props}
-                   onChange={this.saveLoginToggle}
-                   disabled={submitting}/>&nbsp;{tt('loginform_jsx.keep_me_logged_in')}</label>
+              <input id="saveLogin" type="checkbox" ref="pw" {...saveLogin.props}
+                     onChange={this.saveLoginToggle}
+                     disabled={submitting}/>&nbsp;{tt('loginform_jsx.keep_me_logged_in')}</label>
+          </div>
+          <div className="login-modal-buttons">
+            <br/>
+            <button type="submit" disabled={submitting || disabled} className="button" onClick={this.SignIn}>
+              {submitLabel}
+            </button>
+            {this.props.onCancel &&
+            <button type="button float-right" disabled={submitting} className="button hollow"
+                    onClick={onCancel}>
+              {tt('g.cancel')}
+            </button>}
+          </div>
+          <div className="sign-up">
+            <hr/>
+            <p>{tt('loginform_jsx.join_our')}
+              <em>{tt('loginform_jsx.amazing_community')}</em>{tt('loginform_jsx.to_comment_and_reward_others')}</p>
+            <button type="button" className="button hollow"
+                    onClick={this.SignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
+          </div>
         </div>
-        <div className="login-modal-buttons">
-          <br/>
-          <button type="submit" disabled={submitting || disabled} className="button" onClick={this.SignIn}>
-            {submitLabel}
-          </button>
-          {this.props.onCancel &&
-          <button type="button float-right" disabled={submitting} className="button hollow"
-                  onClick={onCancel}>
-            {tt('g.cancel')}
-          </button>}
-        </div>
-        <div className="sign-up">
-          <hr/>
-          <p>{tt('loginform_jsx.join_our')}
-            <em>{tt('loginform_jsx.amazing_community')}</em>{tt('loginform_jsx.to_comment_and_reward_others')}</p>
-          <button type="button" className="button hollow"
-                  onClick={this.SignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
+        <div className="loginMobile">
+          <div className="login-modal-buttons-mobile">
+            <button type="submit" disabled={submitting || disabled} className="button" onClick={this.SignIn}>
+              {submitLabel}
+            </button>
+            {this.props.onCancel &&
+            <button type="button float-right" disabled={submitting} className="button hollow"
+                    onClick={onCancel}>
+              {tt('g.cancel')}
+            </button>}
+
+            <button type="button" className="button hollow"
+                    onClick={this.SignUp}>{tt('loginform_jsx.sign_up_get_steem')}</button>
+          </div>
+          <div className="sign-up">
+            <hr/>
+            <p>{tt('loginform_jsx.join_our')}
+              <em>{tt('loginform_jsx.amazing_community')}</em>{tt('loginform_jsx.to_comment_and_reward_others')}</p>
+          </div>
         </div>
       </form>
     );

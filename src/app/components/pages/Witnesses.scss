@@ -25,6 +25,35 @@
       background-color: $primary-brand-color;
     }
   }
+
+  table {
+    width:100vw;
+  }
+
+  td, th {
+
+    max-width: 30vw;
+    @media screen and (max-width: 40em) {
+      &:nth-child(3) {
+        display: none;
+      }
+    }
+  }
 }
 
-
+@media screen and (max-width: 40em) {
+  .input-group-vote {
+    position: fixed;
+    background: #fdfcfc;
+    width: 100%;
+    bottom: 0;
+    z-index: 99;
+    left: 0;
+    border-top: solid 1px #eeecec;
+    padding: 7px 0px 7px 14px;
+    text-align: center;
+    height: 55px !important;
+    margin-bottom: 0;
+    justify-content: center;
+  }
+}
