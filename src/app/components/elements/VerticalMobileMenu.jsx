@@ -32,11 +32,11 @@ export default class VerticalMobileMenu extends React.Component {
             {
               i.link
                 ? <div className="divpad"
-                     onClick={ () => {
+                     onClick={ (e) => {
                        if (i.onClick) {
                          i.onClick();
                        } else {
-                         this.closeMenu();
+                         this.closeMenu(e);
                        }
                     }}
                   >
