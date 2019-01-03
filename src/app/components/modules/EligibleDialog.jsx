@@ -24,22 +24,26 @@ class EligibleDialog extends Component {
     return (
       <div className="EligibleWelcome">
         <div className="text-center">
-          <SvgImage name="smoke" width="300px" className="Header__logo"></SvgImage>
+          <SvgImage name="smoke" width="250px" className="Header__logo"></SvgImage>
           <h2>{tt('navigation.intro_tagline')}</h2>
           <br/>
           <hr/>
-          <a className="button button--primary EligibleButton" onClick={this.readnContinue} href="/pick_account">
-            <b>{tt('navigation.sign_up')}</b> </a>
-          <a className="button button--primary EligibleButton" onClick={this.readnContinue} href="/login.html">
-            <b>{tt('g.login')}</b> </a>
+          <div className="EligibleButtons">
+            <a className="button button--primary EligibleButton" onClick={this.readnContinue} href="/pick_account">
+              <b>{tt('navigation.sign_up')}</b> </a>
+            <a className="button button--primary EligibleButton" onClick={this.readnContinue} href="/login.html">
+              <b>{tt('g.login')}</b> </a>
+          </div>
           <br />
-          Or <a type="submit" onClick={this.readnContinue}>
-              continue without signing up...
-          </a>
+          <div className="EligibleContinue">
+            <a type="submit" onClick={this.readnContinue}>
+              Continue without signing up...
+            </a>
+          </div>
           <hr />
           <h4>Are you eligible to visit smoke.io?</h4>
-          By entering, I am at least 21 years old or a valid medical marijuana patient and agree to the <Link to='/tos.html'>Terms of
-          Service</Link> and <Link to='/privacy.html'>Privacy Policy</Link>.
+          <p>By entering, I am at least 21 years old or a valid medical marijuana patient and agree to the <Link to='/tos.html'>Terms of
+          Service</Link> and <Link to='/privacy.html'>Privacy Policy</Link>.</p>
         </div>
       </div>
     )
