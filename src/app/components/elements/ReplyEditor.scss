@@ -2,6 +2,7 @@
   max-width: 54rem;
   margin-bottom: 0.5rem;
   padding-bottom: 2em;
+  margin-top: 20px;
   .vframe {
     display: block;
     .public-DraftEditor-content {
@@ -120,4 +121,31 @@
   border: #d6d6d6 1px solid;
   padding: 10px 10px 10px 10px;
   margin: 10px 30px 10px 30px;
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+    .submitMobile {
+      position: fixed;
+      background: #fdfcfc;
+      width: 100%;
+      bottom: 0;
+      z-index: 99;
+      left: 0;
+      border-top: solid 1px #eeecec;
+      padding: 7px;
+      height: 55px !important;
+      .button {
+        margin-bottom: 0;
+        width: 46vw;
+        font-size: unset;
+        margin-right: 0 !important;
+      }
+    }
+
+
+    .desktoponly {
+         display: none !important;
+    }
+
 }
