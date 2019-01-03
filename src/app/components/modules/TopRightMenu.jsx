@@ -44,7 +44,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
         {submitStory}
         <li className={lcn}><a href="/static/search.html"><Icon name="search"/>{tt('g.search')}</a></li>
         {logoutbutton}
-        {!vertical && <li className={'Header__userpic '}>
+        {!vertical && <li className={'Header__userpic ' + lcn}>
           <a href={accountLink} title={username}>
             <Userpic account={username}/>
           </a>
