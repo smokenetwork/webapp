@@ -346,6 +346,7 @@ class ReplyEditor extends React.Component {
 
     return (
       <div className="ReplyEditor row">
+
         <div className="column small-12">
           <div ref="draft"
                className="ReplyEditor__draft ReplyEditor__draft-hide">{tt('reply_editor.draft_saved')}</div>
@@ -429,12 +430,14 @@ class ReplyEditor extends React.Component {
                                 <div
                                   className="error">{(category.touched || category.value) && category.error}&nbsp;</div>
                             </span>}
+
             </div>
             <br />
             <div className={vframe_section_shrink_class}>
               {postError && <div className="error">{postError}</div>}
             </div>
-            <div className={vframe_section_shrink_class}>
+            <div className={vframe_section_shrink_class + " desktoponly"}>
+
               {!loading &&
               <button type="submit" className="button" disabled={disabled}
                       tabIndex={4}>{isEdit ? tt('reply_editor.update_post') : postLabel}</button>
@@ -447,7 +450,6 @@ class ReplyEditor extends React.Component {
               {!loading && !this.props.onCancel &&
               <button className="button hollow no-border" tabIndex={5} disabled={submitting}
                       onClick={onCancel}>{tt('g.clear')}</button>}
-
               {isStory && !isEdit && <div className="ReplyEditor__options float-right text-right">
 
                 {tt('g.rewards')} &nbsp;
@@ -463,6 +465,22 @@ class ReplyEditor extends React.Component {
                   <input type="checkbox" checked={autoVote.value} onChange={autoVoteOnChange}/>
                 </label>
               </div>}
+            </div>
+            <div>
+              <div className="submitMobile">
+                {!loading &&
+                <button type="submit" className="button" disabled={disabled}
+                        tabIndex={4}>{isEdit ? tt('reply_editor.update_post') : postLabel}</button>
+                }
+                {loading && <span><br/><LoadingIndicator type="circle"/></span>}
+                &nbsp; {!loading && this.props.onCancel &&
+              <button type="button" className="secondary hollow button no-border" tabIndex={5}
+                      onClick={onCancel}>{tt('g.cancel')}</button>
+              }
+                {!loading && !this.props.onCancel &&
+                <button className="button hollow no-border" tabIndex={5} disabled={submitting}
+                        onClick={onCancel}>{tt('g.clear')}</button>}
+              </div>
             </div>
             {!loading && !rte && body.value && <div className={'Preview ' + vframe_section_shrink_class}>
               {!isHtml && <div className="float-right">
