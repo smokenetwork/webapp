@@ -25,21 +25,31 @@ export default class VerticalMobileMenu extends React.Component {
     const {items, title, className, hideValue} = this.props;
     return <div className={'VerticalMobileMenu menu vertical' + (className ? ' ' + className : '')}>
       {title && <div className="tops"><div className="title float-left">{title}</div><div onClick={this.closeMenu} className="title float-right">X</div></div>}
-      {items.map(i => {
-        if (i.value === hideValue) return null
-        return <Link to={i.link} className="menuItems" key={i.value} >
-          {i.link ? <div className="divpad" onClick={this.closeMenu}>
-              <div className= "alignments">
-              {i.icon && <Icon name={i.icon}/>}{i.label ? i.label : i.value}
-              {i.addon}
-              </div>
-            </div> :
-            <span>
-                        {i.icon && <Icon name={i.icon}/>}{i.label ? i.label : i.value}
-                    </span>
-          }
-        </Link>
-      })}
+      {
+        items.map(i => {
+          if (i.value === hideValue) return null
+          return <Link to={i.link} className="menuItems" key={i.value} >
+            {
+              i.link
+                ? <div className="divpad"
+                     onClick={ () => {
+                       if (i.onClick) {
+                         i.onClick();
+                       } else {
+                         this.closeMenu();
+                       }
+                    }}
+                  >
+                    <div className="alignments">
+                      {i.icon && <Icon name={i.icon}/>}{i.label ? i.label : i.value}
+                      {i.addon}
+                    </div>
+                  </div>
+                : <span>{i.icon && <Icon name={i.icon}/>}{i.label ? i.label : i.value}</span>
+            }
+          </Link>
+        })
+      }
     </div>;
   }
 }

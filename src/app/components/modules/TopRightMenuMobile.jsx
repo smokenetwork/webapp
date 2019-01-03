@@ -48,38 +48,16 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
   const settings_link = `/@${username}/settings`;
   if (loggedIn) {
     const user_menu = [
-            {
-                link: accountLink,
-                icon: 'profile',
-                value: tt('main_menu.profile'),
-            },
-            {
-                link: feedLink,
-                icon: 'home',
-                value: tt('g.feed'),
-            },
-            { link: comments_link, icon: 'replies', value: tt('g.comments') },
-            {
-                link: replies_link,
-                icon: 'reply',
-                value: tt('g.replies'),
-            },
-            {
-                link: wallet_link,
-                icon: 'wallet',
-                value: tt('g.wallet'),
-            },
-
-            { link: settings_link, icon: 'cog', value: tt('g.settings') },
-            loggedIn
-                ? {
-                      link: '#',
-                      icon: 'enter',
-                      onClick: logout,
-                      value: tt('g.logout'),
-                  }
-                : { link: '#', onClick: showLogin, value: tt('g.login') },
-        ];
+      { link: accountLink, icon: 'profile', value: tt('main_menu.profile') },
+      { link: feedLink, icon: 'home', value: tt('g.feed') },
+      { link: comments_link, icon: 'replies', value: tt('g.comments')},
+      { link: replies_link, icon: 'reply', value: tt('g.replies') },
+      { link: wallet_link, icon: 'wallet', value: tt('g.wallet') },
+      { link: settings_link, icon: 'cog', value: tt('g.settings') },
+      loggedIn
+        ? { link: '###', icon: 'enter', onClick: logout, value: tt('g.logout') }
+        : { link: '###', onClick: showLogin, value: tt('g.login') },
+    ];
     return (
       <div className={mcn + mcl + mob}>
       <DropdownMobileMenu
