@@ -17,3 +17,36 @@
 .EligibleButton {
   margin: 10px;
 }
+
+@media screen and (max-width: 40em) {
+  .EligibleWelcome {
+    .EligibleButtons {
+      position: fixed;
+      background: #fdfcfc;
+      width: 100%;
+      bottom: 0;
+      z-index: 99;
+      left: 0;
+      border-top: solid 1px #eeecec;
+      padding: 7px;
+      height: 55px !important;
+
+      .button {
+        width: 48%;
+        margin: 2px !important;
+        font-size: inherit;
+      }
+    }
+
+    .EligibleContinue {
+      position: fixed;
+      bottom: 70px;
+      width: 100vw;
+      left: 0;
+    }
+
+    hr {
+      display: none;
+    }
+  }
+}
