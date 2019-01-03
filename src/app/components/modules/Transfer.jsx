@@ -238,11 +238,13 @@ class TransferForm extends Component {
             {loading && <span><LoadingIndicator type="circle"/><br/></span>}
             {!loading && <span>
                             {trxError && <div className="error">{trxError}</div>}
+            <div className="walletButtonsMobile">
               <button type="submit" disabled={submitting || !valid} className="button">
                                 {toVesting ? tt('g.power_up') : tt('g.submit')}
                             </button>
               {transferToSelf && <button className="button hollow no-border" disabled={submitting}
                                          onClick={this.onAdvanced}>{advanced ? tt('g.basic') : tt('g.advanced')}</button>}
+            </div>
                         </span>}
           </div>
         </div>
