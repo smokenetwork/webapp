@@ -7,6 +7,7 @@ import LpFooter from './modules/lp/LpFooter';
 import user from '../redux/User';
 import g from '../redux/GlobalReducer';
 import TopRightMenu from './modules/TopRightMenu';
+import TopRightMenuMobile from './modules/TopRightMenuMobile';
 import {browserHistory} from 'react-router';
 import classNames from 'classnames';
 import SidePanel from './modules/SidePanel';
@@ -223,6 +224,10 @@ class App extends React.Component {
       </div>
     </div>;
 
+    let mobileBar = <div className="mob-bar">
+      <TopRightMenuMobile vertical navigate={this.navigate}/>
+    </div>;
+
     let sidebar = (
       <SidePanel ref="side_panel" alignment="right">
         <TopRightMenu vertical navigate={this.navigate}/>
@@ -266,14 +271,6 @@ class App extends React.Component {
           </li>
         </ul>
         <ul className="vertical menu">
-          <h6 className="thirdpartyapps"> {tt('navigation.thirdpartyapps')}</h6>
-          <li>
-            <a href="https://tradeitforweed.io" target="_blank" rel="noopener noreferrer">
-              <Icon name="tifw"/>{tt('navigation.tradeitforweed')}
-            </a>
-          </li>
-        </ul>
-        <ul className="vertical menu">
           <li><a className="content-end" href="/privacy.html"
                  onClick={this.navigate}>{tt('navigation.privacy_policy')}</a></li>
           <li><a className="content-end" href="/tos.html"
@@ -295,6 +292,7 @@ class App extends React.Component {
           <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
         <div className="App__content">
           {ad1}
+          {mobileBar}
           {callout}
           {children}
           {lp ? <LpFooter/> : null}
