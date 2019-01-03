@@ -3,7 +3,6 @@
 }
 
 .UserProfile__tab_content {
-  margin-top: 1.5rem;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -167,6 +166,10 @@
 
 @media screen and (max-width: 39.9375em) {
 
+  div.UserProfile__top-nav {
+    display: none;
+  }
+
   div.UserProfile__top-nav .menu li > a {
     padding: 8px;
   }
@@ -202,6 +205,10 @@
     > div:last-of-type {
       text-align: left;
     }
+  }
+
+  .UserWallet__claimbox {
+    justify-content: center;
   }
 
   .UserReward__row {
