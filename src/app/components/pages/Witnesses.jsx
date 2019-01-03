@@ -173,8 +173,8 @@ class Witnesses extends React.Component {
           </div>
         </div>
         {current_proxy ? null :
-          <div className="row small-collapse">
-            <div className="column">
+          <div className="row">
+            <div className="">
               <table>
                 <thead>
                 <tr>
@@ -195,7 +195,7 @@ class Witnesses extends React.Component {
             <div className="column">
               <p>{tt('witnesses_jsx.if_you_want_to_vote_outside_of_top_enter_account_name')}.</p>
               <form>
-                <div className="input-group">
+                <div className="input-group input-group-vote">
                   <span className="input-group-label">@</span>
                   <input className="input-group-field" type="text"
                          style={{float: "left", width: "75%", maxWidth: "20rem"}}
