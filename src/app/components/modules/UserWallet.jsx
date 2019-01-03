@@ -205,33 +205,40 @@ class UserWallet extends React.Component {
       {claimbox}
       <div className="UserWallet__balance row">
         <div className="column small-12 medium-8">
-          SMOKE
+          <b>SMOKE</b>
           <FormattedHTMLMessage className="secondary" id="tips_js.liquid_token" params={{LIQUID_TOKEN, VESTING_TOKEN}}/>
         </div>
         <div className="column small-12 medium-4">
           {isMyAccount ?
-            <FoundationDropdownMenu className="Wallet_dropdown" dropdownPosition="bottom"
-                                    dropdownAlignment="right" label={steem_balance_str + ' SMOKE'}
-                                    menu={steem_menu}/>
-            : steem_balance_str + ' SMOKE'}
+          <div>
+              <h6><b>{steem_balance_str + ' SMOKE'}</b></h6>
+              <div className="walletButtonsMobile">
+                <a className="UserWallet__tbutton button" href="#" onClick={showTransfer.bind(this, 'SMOKE', 'Transfer to Account')}>{tt('g.transfer')}</a>
+                <a className="UserWallet__tbutton button float-right" href="#" onClick={showTransfer.bind(this, 'VESTS', 'Transfer to Account')}>{tt('userwallet_jsx.power_up')}</a>
+              </div>
+          </div>
+            : <h6><b>{steem_balance_str + ' SMOKE'}</b></h6>}
+
         </div>
+
+
       </div>
       <div className="UserWallet__balance row zebra">
         <div className="column small-12 medium-8">
-          SMOKE POWER
+          <b>SMOKE POWER</b>
           <FormattedHTMLMessage className="secondary" id="tips_js.influence_token"/>
           {delegated_steem != 0 ? <span
             className="secondary">{tt('tips_js.part_of_your_steem_power_is_currently_delegated')}</span> : null}
         </div>
         <div className="column small-12 medium-4">
           {isMyAccount ?
-            <FoundationDropdownMenu className="Wallet_dropdown" dropdownPosition="bottom"
-                                    dropdownAlignment="right" label={power_balance_str + ' SMOKE'}
-                                    menu={power_menu}/>
-            : power_balance_str + ' SMOKE'}
-          {delegated_steem != 0 ? <div style={{paddingRight: isMyAccount ? "0.85rem" : null}}><Tooltip
-            t="SMOKE POWER delegated to this account">({received_power_balance_str} SMOKE)</Tooltip>
-          </div> : null}
+            <div>
+              <h6><b>{power_balance_str + ' SMOKE'}</b></h6>
+              <div>
+                <a className="UserWallet__pbutton button secondary hollow" href="#" onClick={powerDown.bind(this, false)}>{tt('userwallet_jsx.power_down')}</a>
+              </div>
+            </div>
+            : <h6><b>{power_balance_str + ' SMOKE'}</b></h6>}
         </div>
       </div>
       {disabledWarning && <div className="row">
