@@ -3,7 +3,6 @@
   margin: 1rem auto;
   padding: 1em;
   background-color: $color-white;
-  border: 1px solid #eee;
   @include MQ(M) {
     padding: 2em;
   }
@@ -38,6 +37,8 @@
     @extend .e-btn;
     @extend .e-btn--black;
   }
+
+
 }
 
 .CreateAccount__rules {
@@ -73,3 +74,24 @@
   }
 }
 
+@media screen and (max-width: 39.9375em) {
+  .CreateAccount {
+    .button {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 97vw;
+      margin: 5px !important;
+    }
+  }
+
+  .CreateAccount .button {
+    background-color: #04c300;
+    color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 97vw;
+    margin: 5px !important;
+  }
+}
