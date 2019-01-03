@@ -149,3 +149,11 @@
     }
 
 }
+
+
+/* Bigger than small */
+@media screen and (min-width: 40em) {
+  .submitMobile {
+    display: none;
+  }
+}
