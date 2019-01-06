@@ -139,19 +139,19 @@
 }
 
 .PostFull__footerMobile {
-
   line-height: 2rem;
-    font-size: 170%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background: #fdfcfc;
-    display: flex;
-    z-index: 98;
-    width: 100%;
-    padding: 10px 22px 10px 13px;
-    border-top: 1px #eeecec solid;
-    height: 55px !important;
+  font-size: 170%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fdfcfc;
+  display: flex;
+  z-index: 98;
+  width: 100%;
+  padding: 5px 30px 5px 13px;
+  border-top: 1px #eeecec solid;
+  height: 45px !important;
+  
   a {
     color: #666666 !important;
   }
@@ -338,8 +338,8 @@ input.share-box {
 
   .PostFull__header {
     > h1 {
-      font-size: 180% !important;
-      margin-top: 25px;
+      font-size: 160% !important;
+      margin-top: 10px;
     }
 
     .PostFull__time_author_category_large {
