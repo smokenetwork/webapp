@@ -11,9 +11,10 @@
 
   .tops {
     width: 100%;
-    background: #45ac5b;
+    background: linear-gradient(to right, #4CAF50, #3ea76a);
     border-bottom: 0.1px solid #f9f9f9;
     padding: 10px 20px 0px 10px;
+    margin-bottom: -50px;
   }
 
   .float-left {
@@ -42,14 +43,13 @@
   }
 
   .divpad {
-    padding: 4vh;
     font-weight: 900;
     font-size: large;
   }
 
   .alignments {
-    width: 53%;
     margin: auto;
+    width: 136px;
   }
 
   .title {
@@ -64,6 +64,9 @@
     background:linear-gradient(to right, #4CAF50, #3ea76a);
     color: white !important;
     border-bottom: solid 0.5px #f5f5f5c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   > li > a {
@@ -90,4 +93,3 @@
     }
   }
 }
-
