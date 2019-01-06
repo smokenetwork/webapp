@@ -23,12 +23,12 @@
 
        .ad1 {
          position: fixed;
-          bottom: 0px;
+          bottom: -5px;
           z-index: 97;
           width: 100%;
           display: none;
           border-top: solid 1px #eeecec;
-          padding: 7px 7px 2px 7px;
+          padding:0;
           background: #fdfcfc;
        }
    }

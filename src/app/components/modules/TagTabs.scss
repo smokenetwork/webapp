@@ -3,12 +3,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0px 10px 0px 10px;
   max-width: 100vw;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-::-webkit-scrollbar {
-  display: none;
+@media screen and (min-width: 39.4rem) {
+  .tagboxes {
+    a {
+      padding: 0 !important;
+    }
+  }
 }
 
 // /* Large and above */
@@ -19,9 +26,9 @@
 }
 
 .image {
-  height: 6em;
-  width: 9em;
-  margin: 10px 4px 10px 4px;
+  height: 4.6em;
+  width: 6.5em;
+  margin: 5px 4px 5px 4px;
   display: inline-block;
   line-height: 9em;
 }
@@ -41,10 +48,10 @@
     border-radius: 5px;
     font-weight: 900;
     text-align: center;
-    
+
     h2 {
-      font-size: initial;
-      line-height: 8 !important;
+      font-size: 97%;
+      line-height: 6 !important;
       font-weight: 900;
     }
 
@@ -60,6 +67,7 @@
 
     a {
       color: white;
+      padding: 32px 16px 10px 16px;
     }
   }
 }
@@ -136,3 +144,8 @@
 .offtopic {
   background-image: url(../../assets/images/offtopic-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
 }
+
+.witness {
+  background-image: url(../../assets/images/witness-tag.jpg), linear-gradient(0deg, #292929, rgba(255, 255, 0, 0));
+}
+

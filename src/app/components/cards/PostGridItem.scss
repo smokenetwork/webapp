@@ -131,6 +131,10 @@
   .PostGridItem.with-image .PostGridItem__reblogged_by .Icon.reblog {
     margin-left: -22px;
   }
+
+  .articles__content:hover {
+  transform: scale(1.03);
+  }
 }
 
 .PostGridItem__reblogged_by {
@@ -207,7 +211,7 @@
 
 .articles__content-stats {
   font-size: 0.85rem;
-  
+
   .Voting__button-up {
     display: none;
   }
@@ -227,9 +231,7 @@
   transition: all .2s ease-in-out;
 }
 
-.articles__content:hover {
-transform: scale(1.03);
-}
+
 
 .articles__h2 a {
 

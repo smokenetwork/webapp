@@ -297,10 +297,42 @@ a.confirm_weight:hover {
 @media screen and (max-width: 39.9375em) {
   .Voting__button-up {
     .dropdown-pane {
-      margin-top: -36px;
-      position: absolute;
-      left: 1rem;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100vw;
+      border: none;
+      min-height: 44px;
     }
+  }
+
+  .Voting__adjust_weight {
+    padding: 0 !important;
+    width: 100vw;
+
+    .confirm_weight {
+      padding-left: 10px;
+    }
+
+    .weight-display {
+      font-size: 0.8rem;
+    }
+
+    .Voting__adjust_weight_close, {
+      position: inherit;
+      line-height: 1.6rem;
+      font-size: 2rem;
+      margin-left: 1rem;
+      float: right;
+    }
+  }
+
+  .rangeslider-horizontal {
+    width: 50vw !important;
+  }
+
+  .dropdown-pane {
+    border: 0 !important;
   }
 }
 

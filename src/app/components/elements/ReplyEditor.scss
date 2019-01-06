@@ -133,8 +133,8 @@
       z-index: 99;
       left: 0;
       border-top: solid 1px #eeecec;
-      padding: 7px;
-      height: 55px !important;
+      padding: 3px;
+      height: 45px !important;
       .button {
         margin-bottom: 0;
         width: 46vw;
@@ -149,7 +149,6 @@
     }
 
 }
-
 
 /* Bigger than small */
 @media screen and (min-width: 40em) {
