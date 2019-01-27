@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- COMMON TAGS -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Smoke API</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!-- Search Engine -->
+  <meta name="description" content="SMOKE API">
+
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+  <!-- CSS Files -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/now-ui-kit@1.0.1/assets/css/now-ui-kit.css" rel="stylesheet" />
+  <style>
+
+    img {
+          padding: 10px;
+    }
+
+    .navbar {
+      background: white;
+    }
+
+    .hero {
+      background-image: url(../images/exlight.png);
+      background-size: contain;
+      background-position-x: 60vw;
+      background-repeat: no-repeat;
+      margin-top: 68px;
+    }
+
+    .hero-block {
+      padding: 100px 10px 80px 10px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card-coins {
+      padding: 0;
+    }
+
+    .top-margin {
+      margin-top: 50px;
+    }
+
+    #blockoPayModal.modal .modal-content {
+      margin-top: 170px !important;
+    }
+
+    .flexbox {
+      display: flex;
+      align-items: center;
+
+
+      p {
+            width: 50%;
+      }
+
+
+    }
+
+    .feat-image {
+      width: 60%
+    }
+
+    .feat-box {
+      padding: 10px 5px 10px 0px;
+      max-width: 40%;
+    }
+
+    .coins-text {
+      text-transform: uppercase;
+      font-family: Noto Sans,sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 16px;
+
+    }
+
+    .coins {
+      font-family: Noto Sans,sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 26px;
+      color: #00c700;
+    }
+
+    .card-header {
+      background: white;
+    }
+
+    a {
+      color: black;
+          font-weight: 700;
+    }
+
+    a:hover, a:focus {
+      color:#18ce0f;
+    }
+
+    .title {
+          margin-top: 100px;
+    }
+
+    .extra-img {
+      width: 20%;
+    }
+
+    .extra-coins {
+      width: 80%; display: flex; justify-content: space-evenly; padding-top: 24px;
+    }
+
+    .extras {
+      width: 50%
+    }
+
+     /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      .extras {
+        display: none !important;
+      }
+
+      .extra-img {
+      width:35%;
+      }
+    }
+  </style>
+
+</head>
+<body class="sections-page " >
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light  navbar-absolute fixed-top">
+    <div class="container">
+      <div class="">
+          <a class="navbar-brand animsition-link" href="../"><img width="150px" src="../images/smoke.svg" alt="smoke logo"></a>
+      </div>
+      <div class="">
+
+        <ul class="nav  text-center">
+
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" title="Back to Smoke.io" data-placement="bottom" href="https://smoke.io">
+              <i class="fa fa-reply-all"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-block">
+      <h1>Smoke Coins</h1>
+      <p>Smoke coins are virtual goods<br/>you can use to gain influence<br />on rewards and gain stake<br />in the Smoke network.</p>
+      <a href="#coins" class="btn btn-success">GET COINS</a>
+    </div>
+  </div>
+  <div class="projects">
+    <div class="container" >
+        <div class="row top-margin">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+
+            <h2>Here's what you can do with Smoke Coins.</h2>
+            <p>Smoke is a utility coin that allows access to the network and is the backbone that runs the Smoke blockchain.</p>
+          </div>
+        </div>
+        <div class="row top-margin">
+          <div class="col-md-4 ml-auto mr-auto text-center">
+            <img style="width:100px" src="../images/mascot.svg"/>
+            <h4><b>Send Instantly</b></h4>
+            <p>With a 3 second blocktime sending Smoke coins to your friends is almost instant.</p>
+          </div>
+          <div class="col-md-4 ml-auto mr-auto text-center">
+            <img style="width:100px" src="../images/trending.svg"/>
+            <h4><b>Power Up</b></h4>
+            <p>Stake your Smoke coins to gain influence on the network rewards as well as receive 15%+ anually.</p>
+          </div>
+          <div class="col-md-4 ml-auto mr-auto text-center">
+            <img style="width:100px" src="../images/vote.svg"/>
+            <h4><b>Vote</b></h4>
+            <p>Vote on witnesses you would like to see securing the network and its operations.</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div  id="coins" />
+  <br />
+  <div class="projects maximizer">
+    <div class="container" >
+      <div class="row top-margin">
+        <div class="col-sm-12 col-md-12 col-lg-8 mr-auto ml-auto  card card-profile card-coins">
+          <div class="flexbox">
+            <div class="feat-image">
+            <img  src="../images/grinder.jpg" />
+            </div>
+
+            <div class="feat-box">
+              <div>
+                <h6  class="coins">+ 250</h6>
+                <p class="coins-text"> Smoke Coins</p>
+              </div>
+              <p>Get 250 Smoke Coins Plus A Limited Edition Grinder</p>
+              <a href="" class="blockoPayBtn btn btn-success" data-toggle="modal" data-uid=140f09de221a11e9>$25</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" >
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 mr-auto ml-auto  card card-profile card-coins">
+          <div class="flexbox">
+            <img class="extra-img" src="../images/glasstip.png" />
+            <div class="extra-coins">
+              <div>
+                <h6  class="coins">+ 100</h6>
+                <p class="coins-text"> Smoke Coins</p>
+              </div>
+              <p class="extras">Get 100 Smoke Coins Plus<br /> A HoneyPuff Glass Smoke Filter Tip</p>
+              <a style="height: 40px;" href="" class="blockoPayBtn btn btn-success" data-toggle="modal" data-uid=7b6d18ccda9511e8>$10</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" >
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 mr-auto ml-auto  card card-profile card-coins">
+          <div class="flexbox">
+            <img class="extra-img" src="../images/stashtube.png" />
+            <div class="extra-coins">
+              <div>
+                <h6  class="coins">+ 200</h6>
+                <p class="coins-text"> Smoke Coins</p>
+              </div>
+              <p class="extras">Get 200 Smoke Coins Plus<br /> A Smoke Stash Tube</p>
+              <a style="height: 40px;" href="" class="blockoPayBtn btn btn-success" data-toggle="modal" data-uid=4bf01c08221a11e9>$20</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" >
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 mr-auto ml-auto  card card-profile card-coins">
+          <div class="flexbox">
+            <img class="extra-img" src="../images/smokekit.png" />
+            <div class="extra-coins">
+              <div>
+                <h6  class="coins">+ 500</h6>
+                <p class="coins-text"> Smoke Coins</p>
+              </div>
+              <p class="extras">Get 500 Smoke Coins Plus<br /> A Limited Edition Smoke Smoking Kit</p>
+              <a style="height: 40px;" href="" class="blockoPayBtn btn btn-success" data-toggle="modal" data-uid=4fe80762221a11e9>$50</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" >
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 mr-auto ml-auto  card card-profile card-coins">
+          <div class="flexbox">
+            <img class="extra-img" src="../images/smokekitxl.png" />
+            <div class="extra-coins">
+              <div>
+                <h6  class="coins">+ 1000</h6>
+                <p class="coins-text"> Smoke Coins</p>
+              </div>
+              <p class="extras">Get 1000 Smoke Coins Plus<br /> A Limited Edition Smoke Kit </p>
+              <a style="height: 40px;" href="" class="blockoPayBtn btn btn-success" data-toggle="modal" data-uid=51148c8c221a11e9>$100</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="col-md-8 col-lg-6 ml-auto mr-auto col-switch">
+      <div id="collapse">
+          <div class="title text-center">
+              <h2>F.A.Q.</h2>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingTwo">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  What Are Smoke Coins?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                              <div class="card-body">
+                                  Smoke Coins are our utility token, and you can use them to send to your friends almost instantly, Power Up into Smoke Power to gain influence on the rewards as well as vote for witnesses. We'll be adding cool new ways to spend your Smoke Coins in the future.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingCOIN">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseCOIN" aria-expanded="false" aria-controls="collapseCOIN">
+                                  Isn’t Smoke Coin Just Another Crypto?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseCOIN" class="collapse" role="tabpanel" aria-labelledby="headingIP">
+                              <div class="card-body">
+                                  Smoke Coins are not like other coins as it has different functionality to regular cryptocurrencies. It is a utility token and the backbone that runs the Smoke Network blockchain and powers important aspects of the network including incentivizing content creation and node operators.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingUSE">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseUSE" aria-expanded="false" aria-controls="collapseUSE">
+                                  I Bought Smoke Coins, Now What?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseUSE" class="collapse" role="tabpanel" aria-labelledby="headingUSE">
+                              <div class="card-body">
+                                  You will receive your Smoke Coins in your Smoke blockchain account as soon as your payment has processed. (Within 24hours) Once you have received them you can send them to your friends or convert them into Smoke Power.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingThree">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  When will I get my Item?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                              <div class="card-body">
+                                  All our items are shipped from our wharehouse facility in China. Please be aware of your local customs as import duties may apply.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingSEED">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSEED" aria-expanded="false" aria-controls="collapseSEED">
+                                  What Is Smoke Power?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseSEED" class="collapse" role="tabpanel" aria-labelledby="headingSEED">
+                              <div class="card-body">
+                                  Smoke Power determines how much influence you have over the decentralized reward pool. Every time you upvote content, you will assign new coins from the reward pool to the content you voted upon.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingCOMPET">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseCOMPET" aria-expanded="false" aria-controls="collapseCOMPET">
+                                  Can I Transfer Smoke Coins Between Smoke Accounts?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseCOMPET" class="collapse" role="tabpanel" aria-labelledby="headingCOMPET">
+                              <div class="card-body">
+                                Yes. Liquid Smoke Coins can be transfered almost instantly. Smoke Power cannot be transfered and is subject to a 13 week de-vesting schedule.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingIP">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseIP" aria-expanded="false" aria-controls="collapseIP">
+                                  Can I Get Smoke Coins For Free?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseIP" class="collapse" role="tabpanel" aria-labelledby="headingIP">
+                              <div class="card-body">
+                                  Smoke Coins can be earned by creating high-quality, cannabis related content on the Smoke blockchain. You will also receive 4.20 free Smoke Power on signup.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card card-plain">
+                          <div class="card-header" role="tab" id="headingThree">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  Do Smoke Coins Expire?
+                                  <i class="now-ui-icons arrows-1_minimal-down"></i>
+                              </a>
+                          </div>
+                          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                              <div class="card-body">
+                                  No, your Smoke Coins will never expire and will always be available on the Smoke Blockchain.
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, Powered by
+        <a href="https://smoke.io" target="_blank">Smoke.io</a>.
+      </div>
+    </div>
+  </footer>
+
+
+
+
+</body>
+<!--   Core JS Files   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://www.blockonomics.co/js/pay_button.js"></script>
+
+</html>
