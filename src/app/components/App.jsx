@@ -260,11 +260,6 @@ class App extends React.Component {
         <ul className="vertical menu">
           <h6 className="exchange"> {tt('navigation.exchange')}</h6>
           <li>
-            <a href="./static/purchase.html" target="_blank" rel="noopener noreferrer">
-              <Icon name="smoke"/> {tt('navigation.shop')}
-            </a>
-          </li>
-          <li>
             <a href="https://market.rudex.org/#/market/RUDEX.SMOKE_BTS" target="_blank" rel="noopener noreferrer">
               <Icon name="rudex"/> {tt('navigation.rudex')}
             </a>
