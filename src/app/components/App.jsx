@@ -25,7 +25,7 @@ import resolveRoute from '../ResolveRoute';
 import ReactGA from 'react-ga';
 
 ReactGA.initialize('UA-106330268-3');
-ReactGA.pageview(window.location.pathname);
+
 
 const pageRequiresEntropy = (path) => {
   const {page} = resolveRoute(path);
@@ -80,6 +80,7 @@ class App extends React.Component {
       window.mantis = window.mantis || [];
       window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
       document.body.appendChild(script);
+      ReactGA.pageview(window.location.pathname);
     } catch (e) {
       console.error(e);
     }
