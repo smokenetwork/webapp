@@ -68,6 +68,7 @@ class PostFull extends React.Component {
     this.state = {};
     this.fbShare = this.fbShare.bind(this);
     this.twitterShare = this.twitterShare.bind(this);
+    this.redditShare = this.redditShare.bind(this);
     this.linkedInShare = this.linkedInShare.bind(this);
     this.showExplorePost = this.showExplorePost.bind(this);
     this.onShowReply = () => {
@@ -116,42 +117,81 @@ class PostFull extends React.Component {
   }
 
   fbShare(e) {
-    // const href = this.share_params.url;
-    e.preventDefault();
-    // // loadFbSdk(document, 'script', 'facebook-jssdk').then(fb => {
-    // window.FB.ui({
-    //     method: 'share',
-    //     href
-    // }, (response) => {
-    //     if (response && !response.error_message)
-    //         serverApiRecordEvent('FbShare', this.share_params.link);
-    // });
-    // // });
-  }
+        const href = this.share_params.url;
+        e.preventDefault();
+        window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${href}`,
+            'fbshare',
+            'width=600, height=400, scrollbars=no'
+        );
+        serverApiRecordEvent('FbShare', this.share_params.link);
+    }
 
-  twitterShare(e) {
-    // serverApiRecordEvent('TwitterShare', this.share_params.link);
-    e.preventDefault();
-    // const winWidth = 640;
-    // const winHeight = 320;
-    // const winTop = (screen.height / 2) - (winWidth / 2);
-    // const winLeft = (screen.width / 2) - (winHeight / 2);
-    // const s = this.share_params;
-    // const q = 'text=' + encodeURIComponent(s.title) + '&url=' + encodeURIComponent(s.url);
-    // window.open('http://twitter.com/share?' + q, 'Share', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-  }
+    twitterShare(e) {
+        e.preventDefault();
+        const winWidth = 640;
+        const winHeight = 320;
+        const winTop = screen.height / 2 - winWidth / 2;
+        const winLeft = screen.width / 2 - winHeight / 2;
+        const s = this.share_params;
+        const q =
+            'text=' +
+            encodeURIComponent(s.title) +
+            '&url=' +
+            encodeURIComponent(s.url);
+        window.open(
+            'http://twitter.com/share?' + q,
+            'Share',
+            'top=' +
+                winTop +
+                ',left=' +
+                winLeft +
+                ',toolbar=0,status=0,width=' +
+                winWidth +
+                ',height=' +
+                winHeight
+        );
+    }
 
-  linkedInShare(e) {
-    // serverApiRecordEvent('LinkedInShare', this.share_params.link);
-    e.preventDefault();
-    // const winWidth = 720;
-    // const winHeight = 480;
-    // const winTop = (screen.height / 2) - (winWidth / 2);
-    // const winLeft = (screen.width / 2) - (winHeight / 2);
-    // const s = this.share_params;
-    // const q = 'title=' + encodeURIComponent(s.title) + '&url=' + encodeURIComponent(s.url) + '&source=Smoke&mini=true';
-    // window.open('https://www.linkedin.com/shareArticle?' + q, 'Share', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-  }
+      redditShare(e) {
+
+            e.preventDefault();
+            const s = this.share_params;
+            const q =
+                'title=' +
+                encodeURIComponent(s.title) +
+                '&url=' +
+                encodeURIComponent(s.url);
+            window.open('https://www.reddit.com/submit?' + q, 'Share');
+        }
+
+        linkedInShare(e) {
+
+        e.preventDefault();
+        const winWidth = 720;
+        const winHeight = 480;
+        const winTop = screen.height / 2 - winWidth / 2;
+        const winLeft = screen.width / 2 - winHeight / 2;
+        const s = this.share_params;
+        const q =
+            'title=' +
+            encodeURIComponent(s.title) +
+            '&url=' +
+            encodeURIComponent(s.url) +
+            '&source=Steemit&mini=true';
+        window.open(
+            'https://www.linkedin.com/shareArticle?' + q,
+            'Share',
+            'top=' +
+                winTop +
+                ',left=' +
+                winLeft +
+                ',toolbar=0,status=0,width=' +
+                winWidth +
+                ',height=' +
+                winHeight
+        );
+      }
 
   showExplorePost = () => {
     const permlink = this.share_params.link;
@@ -202,7 +242,35 @@ class PostFull extends React.Component {
       desc: p.desc
     };
 
-    const share_menu = [];
+    const share_menu = [{
+                link: '#',
+                onClick: this.fbShare,
+                value: 'Facebook',
+                title: tt('postfull_jsx.share_on_facebook'),
+                icon: 'facebook',
+            },
+            {
+                link: '#',
+                onClick: this.twitterShare,
+                value: 'Twitter',
+                title: tt('postfull_jsx.share_on_twitter'),
+                icon: 'twitter',
+            },
+            {
+                link: '#',
+                onClick: this.redditShare,
+                value: 'Reddit',
+                title: tt('postfull_jsx.share_on_reddit'),
+                icon: 'reddit',
+            },
+            {
+                link: '#',
+                onClick: this.linkedInShare,
+                value: 'LinkedIn',
+                title: tt('postfull_jsx.share_on_linkedin'),
+                icon: 'linkedin',
+            },
+          ];
 
     const Editor = this.state.showReply ? PostFullReplyEditor : PostFullEditEditor;
     let renderedEditor = null;
@@ -311,7 +379,7 @@ class PostFull extends React.Component {
           </div>
         }
 
-        <TagList post={content} horizontal/>
+        <TagList post={content} horizontal/><ShareMenu menu={share_menu}/>
         <hr />
         <div className="PostFull__footer row">
 
@@ -335,10 +403,8 @@ class PostFull extends React.Component {
             <span className="PostFull__views">
                   <PageViewsCounter hidden={false} sinceDate={isPreViewCount ? 'Dec 2016' : null}/>
                 </span>
-            <ShareMenu menu={share_menu}/>
-            <button className="explore-post" title={tt('g.share_this_post')} onClick={this.showExplorePost}>
-              <Icon name="link" className="chain-right"/>
-            </button>
+
+
           </div>
         </div>
         <div className="PostFull__footerMobile">
@@ -357,6 +423,19 @@ class PostFull extends React.Component {
             <button className="explore-post" title={tt('g.share_this_post')} onClick={this.showExplorePost}>
               <Icon name="link" className="chain-right"/>
             </button>
+          </div>
+        </div>
+        <div className="PostFull__footerSticky">
+          <div className="RightShare__Menu small-11 medium-5 large-5 columns">
+            <Voting post={post}/>
+            {!readonly && <Reblog author={author} permlink={permlink}/>}
+            <span className="PostFull__reply">
+                  {showReplyOption && <a onClick={onShowReply}><Icon name="chatbox" /></a>}
+              {' '}{!readonly && showEditOption && !showEdit &&
+            <a onClick={onShowEdit}><Icon name="edit" /></a>}
+              {' '}{!readonly && showDeleteOption && !showReply &&
+            <a onClick={onDeletePost}><Icon name="trash" /></a>}
+                        </span>
           </div>
         </div>
         <hr/>
