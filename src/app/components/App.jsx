@@ -22,6 +22,10 @@ import {serverApiRecordEvent} from '../utils/ServerApiClient';
 import {LIQUID_TOKEN} from '../client_config';
 import {key_utils} from '@smokenetwork/smoke-js/lib/auth/ecc';
 import resolveRoute from '../ResolveRoute';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-106330268-3');
+ReactGA.pageview(window.location.pathname);
 
 const pageRequiresEntropy = (path) => {
   const {page} = resolveRoute(path);
@@ -49,6 +53,7 @@ class App extends React.Component {
         // refresh mantisadnetwork
         try {
           window.mantis.push(['display', 'refresh', 'smokeio']);
+          ReactGA.pageview(window.location.pathname);
         } catch (e) {
           console.error(e);
         }
