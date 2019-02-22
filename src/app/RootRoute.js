@@ -14,9 +14,9 @@ export default {
       //require.ensure([], (require) => {
       cb(null, [require('./components/pages/About')]);
       //});
-    } else if (route.page === 'Welcome') {
+    } else if (route.page === 'Sponsors') {
       //require.ensure([], (require) => {
-      cb(null, [require('./components/pages/Welcome')]);
+      cb(null, [require('./components/pages/Sponsors')]);
       //});
     } else if (route.page === 'Faq') {
       //require.ensure([], (require) => {
