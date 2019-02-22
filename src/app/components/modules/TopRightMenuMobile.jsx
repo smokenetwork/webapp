@@ -32,7 +32,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
   const nav = navigate || defaultNavigate;
   const submitStory = $STM_Config.read_only_mode ? null : (
     <div className="circleTabs">
-      <Link to="/post" onClick={nav}><Icon name="pencil"/></Link>
+      <Link to="/post" onClick={nav}><Icon name="pencil2"/></Link>
     </div>);
   const logoutbutton = (
     <div className="circleTabs">
