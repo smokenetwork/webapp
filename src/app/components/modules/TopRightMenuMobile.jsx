@@ -46,6 +46,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
   const replies_link = `/@${username}/recent-replies`;
   const wallet_link = `/@${username}/transfers`;
   const settings_link = `/@${username}/settings`;
+  const sponsors_link = `/sponsors`;
   if (loggedIn) {
     const user_menu = [
       { link: accountLink, icon: 'profile', value: tt('main_menu.profile') },
@@ -54,6 +55,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
       { link: replies_link, icon: 'reply', value: tt('g.replies') },
       { link: wallet_link, icon: 'wallet', value: tt('g.wallet') },
       { link: settings_link, icon: 'cog', value: tt('g.settings') },
+      { link: sponsors_link, icon: 'medal2', value: tt('navigation.sponsors') },
       loggedIn
         ? { link: '###', icon: 'enter', onClick: logout, value: tt('g.logout') }
         : { link: '###', onClick: showLogin, value: tt('g.login') },
