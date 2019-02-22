@@ -406,17 +406,14 @@ function* uploadImage({payload: {file, dataUrl, filename = 'image.txt', progress
     return
   }
 
-  let data, dataBs64
+  let data, dataBs64;
   if (file) {
     // drag and drop
-    const reader = new FileReader();
+    const reader = new FileReader()
     data = yield new Promise(resolve => {
       reader.addEventListener('load', () => {
-        // const result = new Buffer(reader.result, 'binary')
-        // resolve(result)
         resolve(reader.result);
       });
-      // reader.readAsBinaryString(file)
       reader.readAsDataURL(file);
     })
   } else {
@@ -426,28 +423,12 @@ function* uploadImage({payload: {file, dataUrl, filename = 'image.txt', progress
     data = new Buffer(dataBs64, 'base64')
   }
 
-  // // The challenge needs to be prefixed with a constant (both on the server and checked on the client) to make sure the server can't easily make the client sign a transaction doing something else.
-  // const prefix = new Buffer('ImageSigningChallenge')
-  // const bufSha = hash.sha256(Buffer.concat([prefix, data]))
-  //
-  // const formData = new FormData()
-  // if(file) {
-  //     formData.append('file', file)
-  // } else {
-  //     // formData.append('file', file, filename) <- Failed to add filename=xxx to Content-Disposition
-  //     // Can't easily make this look like a file so this relies on the server supporting: filename and filebinary
-  //     formData.append('filename', filename)
-  //     formData.append('filebase64', dataBs64)
-  // }
-  //
-  // const sig = Signature.signBufferSha256(bufSha, d)
-  // const postUrl = `${$STM_Config.upload_image}/${username}/${sig.toHex()}`
-  const postUrl = `${$STM_Config.upload_image}/imageupload`;
+  // console.log(data.length);
 
+  const postUrl = `/api/v1/imageupload`;
   const xhr = new XMLHttpRequest()
   xhr.open('POST', postUrl)
   xhr.onload = function () {
-    // console.log(xhr.status, xhr.responseText)
     const res = JSON.parse(xhr.responseText)
 
     const {error} = res
@@ -455,26 +436,24 @@ function* uploadImage({payload: {file, dataUrl, filename = 'image.txt', progress
       progress({error: 'Error: ' + error})
       return
     }
-    // const {url} = res
-    const url = `${$STM_Config.upload_image}/imageupload_data/${res.data}`;
+    // const url = `${$STM_Config.upload_image}/imageupload_data/${res.data}`;
+    const url = res.data;
     progress({url})
   }
   xhr.onerror = function (error) {
     console.error(filename, error)
     progress({error: 'Unable to contact the server.'})
-  }
+  };
   xhr.upload.onprogress = function (event) {
     if (event.lengthComputable) {
       const percent = Math.round((event.loaded / event.total) * 100)
       progress({message: `Uploading ${percent}%`})
       // console.log('Upload', percent)
     }
-  }
+  };
 
   xhr.setRequestHeader("Content-Type", "application/json");
-
-  // xhr.send(formData)
-  xhr.send(JSON.stringify({data: data}));
+  xhr.send(JSON.stringify({data: data, username: username}));
 }
 
 

@@ -83,5 +83,13 @@
   "steemd_connection_server": "SDC_SERVER_STEEMD_URL",
   "chain_id": "SDC_CHAIN_ID",
   "address_prefix": "SDC_ADDRESS_PREFIX",
-  "default_fixed_tags": "SDC_DEFAULT_FIXED_TAGS"
+  "default_fixed_tags": "SDC_DEFAULT_FIXED_TAGS",
+  "s3": {
+    "access_key": "SDC_S3_ACCESS_KEY",
+    "secret_key": "SDC_S3_SECRET_KEY",
+    "region": "SDC_S3_REGION",
+    "endpoint": "SDC_S3_ENDPOINT",
+    "signatureVersion": "SDC_S3_SIGVERSION",
+    "bucket": "SDC_S3_BUCKET"
+  }
 }
