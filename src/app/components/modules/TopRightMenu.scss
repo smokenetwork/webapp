@@ -1,12 +1,67 @@
 .sub-menu {
   li {
-    padding: .7rem 0.5rem;
+    padding: 0.1rem 0.1rem;
     a {
       padding: 0px;
     }
   }
   li:last-child {
     padding: 0 0 0 1rem;
+  }
+
+  .search {
+    border-radius: 50%;
+    padding: 0px;
+    padding-top: 7px;
+    padding-left: 6px;
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
+    background: #fdfcfc;
+  }
+
+  .medal {
+    border-radius: 50%;
+    padding: 0px;
+    padding-top: 7px;
+    padding-left: 7px;
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
+    background: #fdfcfc;
+  }
+
+  .pencil {
+    border-radius: 50%;
+    padding: 0px;
+    padding-top: 7px;
+    padding-left: 7px;
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
+    background: #fdfcfc;
+  }
+
+  .trending {
+    border-radius: 50%;
+    padding: 0px;
+    padding-top: 7px;
+    padding-left: 7px;
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
+    background: #fdfcfc;
+  }
+
+  .lighter {
+    border-radius: 50%;
+    padding: 0px;
+    padding-top: 7px;
+    padding-left: 7px;
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
+    background: #fdfcfc;
   }
 }
 
