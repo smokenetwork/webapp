@@ -22,14 +22,7 @@
        margin-bottom: 3rem;
 
        .ad1 {
-         position: fixed;
-          bottom: -5px;
-          z-index: 97;
-          width: 100%;
-          display: none;
-          border-top: solid 1px #eeecec;
-          padding:0;
-          background: #fdfcfc;
+          display: none !important;
        }
    }
   // /* Medium and above */

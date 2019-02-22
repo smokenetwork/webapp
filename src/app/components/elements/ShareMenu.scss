@@ -1,21 +1,28 @@
 .shareMenu {
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
   height: 2em;
+  position: fixed;
+  bottom: 30vh;
+  margin-left: -150px;
 }
 
 .shareItems {
   list-style: none;
   display: inline;
   margin-left: 0.01em;
-  li {
-    float: left;
-    padding-left: 4px;
+  div {
+    margin: 0px 0px 20px 0px;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: #cacaca;
+    }
   }
-  li > a {
+  div > a {
     transition: 0.2s all ease-in-out;
   }
-  li > a:hover {
+  div > a:hover {
     color: #ffffff;
     svg {
       @include themify($themes) {
@@ -23,7 +30,7 @@
       }
     }
   }
-  li > a:link {
+  div > a:link {
     text-decoration: none;
   }
 }

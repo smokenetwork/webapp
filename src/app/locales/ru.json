@@ -253,7 +253,8 @@
     "thirdpartyapps": "Сторонние DApps",
     "tradeitforweed": "Trade It For Weed",
     "rudex": "Rudex.org",
-    "escodex": "Escodex"
+    "escodex": "Escodex",
+    "sponsors": "Спонсоры"
   },
   "main_menu": {
     "explore": "Block Explorer",
@@ -310,6 +311,7 @@
     "this_post_is_not_available_due_to_a_copyright_claim": "Этот пост недоступен из-за жалобы о нарушении авторских прав.",
     "share_on_facebook": "Поделитесь в Facebook",
     "share_on_twitter": "Поделиться в Twitter",
+    "share_on_reddit": "Поделиться в Reddit",
     "share_on_linkedin": "Поделиться в Linkedin",
     "recent_password": "Недавний пароль",
     "view_the_full_context": "Показать полный контекст",

@@ -7,6 +7,7 @@ import Userpic from '../elements/Userpic';
 import LoadingIndicator from '../elements/LoadingIndicator';
 import NotifiCounter from '../elements/NotifiCounter';
 import tt from 'counterpart';
+import {Link} from 'react-router';
 
 
 const defaultNavigate = (event) => {
@@ -28,7 +29,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
   const nav = navigate || defaultNavigate;
   const submitStory = $STM_Config.read_only_mode ? null : (
     <li className={lcn + ' submit-story' + (vertical ? ' last' : '')}>
-      <a href="/post" onClick={nav}><Icon name="pencil"/>{tt('g.submit_a_story')}</a>
+      {!vertical && <Link to="/post"><Icon name="pencil"/></Link>}
     </li>);
   const logoutbutton = (
     <li className={hcl}>
@@ -40,14 +41,20 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
   if (loggedIn) {
     return (
       <ul className={mcn + mcl}>
-
-        {submitStory}
-        <li className={lcn}><a href="/static/search.html"><Icon name="search"/>{tt('g.search')}</a></li>
-        {logoutbutton}
+        {!vertical && <li className={lcn}><Link to="/created"><Icon name="lighter"/></Link></li>}
+        {!vertical && <li className={lcn}><Link to="/trending"><Icon name="trending"/></Link></li>}
         {!vertical && <li className={'Header__userpic ' + lcn}>
-          <a href={accountLink} title={username}>
+          <Link to="/sponsors">
+            <Icon name="medal"/>
+          </Link>
+        </li>}
+        {!vertical && <li className={lcn}><a href="/static/search.html"><Icon name="search"/></a></li>}
+        {logoutbutton}
+        {submitStory}
+        {!vertical && <li className={'Header__userpic ' + lcn}>
+          <Link to={accountLink} title={username}>
             <Userpic account={username}/>
-          </a>
+          </Link>
           <div className="TopRightMenu__notificounter"><NotifiCounter fields="total"/></div>
         </li>}
         {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
@@ -74,9 +81,14 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
   }
   return (
     <ul className={mcn + mcl}>
-      <li className={lcn}><a href="/pick_account"><Icon name="smoke"/>{tt('g.sign_up')}</a></li>
-      <li className={lcn}><a href="/login.html" onClick={showLogin}><Icon name="mascot"/>{tt('g.login')}</a></li>
-      <li className={lcn}><a href="/static/search.html"><Icon name="search"/>{tt('g.search')}</a></li>
+      {!vertical && <li className={lcn}><a href="/pick_account"><Icon name="smoke"/>{tt('g.sign_up')}</a></li>}
+      {!vertical && <li className={lcn}><a href="/login.html" onClick={showLogin}><Icon name="mascot"/>{tt('g.login')}</a></li>}
+      {!vertical && <li className={lcn}><a href="/static/search.html"><Icon name="search"/></a></li>}
+      {!vertical && <li className={'Header__userpic ' + lcn}>
+        <Link to="/sponsors">
+          <Icon name="medal"/>
+        </Link>
+      </li>}
       {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
         <a href="#" onClick={toggleOffCanvasMenu}>
           <span className="hamburger"/>

@@ -247,7 +247,8 @@
     "thirdpartyapps": "Aplicaciones de terceros",
     "tradeitforweed": "Trade It For Weed",
     "rudex": "Rudex.org",
-    "escodex": "Escodex"
+    "escodex": "Escodex",
+    "sponsors": "Los Patrocinadores"
   },
   "main_menu": {
     "explore": "Block Explorer",
@@ -304,6 +305,7 @@
     "this_post_is_not_available_due_to_a_copyright_claim": "Este post no está disponible por reclamación de derechos de autor.",
     "share_on_facebook": "Compartir en Facebook",
     "share_on_twitter": "Compartir en Twitter",
+    "share_on_reddit": "Compartir en Reddit",
     "share_on_linkedin": "Compartir en Linkedin",
     "recent_password": "Contraseña reciente",
     "view_the_full_context": "Ver todo el contexto",

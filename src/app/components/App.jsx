@@ -22,6 +22,10 @@ import {serverApiRecordEvent} from '../utils/ServerApiClient';
 import {LIQUID_TOKEN} from '../client_config';
 import {key_utils} from '@smokenetwork/smoke-js/lib/auth/ecc';
 import resolveRoute from '../ResolveRoute';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-106330268-3');
+
 
 const pageRequiresEntropy = (path) => {
   const {page} = resolveRoute(path);
@@ -49,6 +53,7 @@ class App extends React.Component {
         // refresh mantisadnetwork
         try {
           window.mantis.push(['display', 'refresh', 'smokeio']);
+          ReactGA.pageview(window.location.pathname);
         } catch (e) {
           console.error(e);
         }
@@ -75,6 +80,7 @@ class App extends React.Component {
       window.mantis = window.mantis || [];
       window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
       document.body.appendChild(script);
+      ReactGA.pageview(window.location.pathname);
     } catch (e) {
       console.error(e);
     }
@@ -233,9 +239,9 @@ class App extends React.Component {
         <TopRightMenu vertical navigate={this.navigate}/>
 
         <ul className="vertical menu">
-          <li><a href="/created" onClick={this.navigate}><Icon name="lighter"/> {tt('navigation.latest')}</a></li>
-          <li><a href="/trending" onClick={this.navigate}><Icon name="trending"/> {tt('navigation.trending')}</a></li>
-          <li><a href="/tags" onClick={this.navigate}><Icon name="tagspop"/> {tt('navigation.explore')}</a></li>
+          <li><Link to="/created" onClick={this.navigate}><Icon name="lighter"/> {tt('navigation.latest')}</Link></li>
+          <li><Link to="/trending" onClick={this.navigate}><Icon name="trending"/> {tt('navigation.trending')}</Link></li>
+          <li><Link to="/tags" onClick={this.navigate}><Icon name="tagspop"/> {tt('navigation.explore')}</Link></li>
         </ul>
 
         <ul className="vertical menu">
@@ -253,7 +259,11 @@ class App extends React.Component {
 
         <ul className="vertical menu">
           <li>
-            <a href="/~witnesses" onClick={this.navigate}><Icon name="vote"/> {tt('navigation.vote_for_witnesses')}</a>
+            <Link to="/~witnesses" onClick={this.navigate}><Icon name="vote"/> {tt('navigation.vote_for_witnesses')}</Link>
+          </li>
+        
+          <li>
+            <Link to="/sponsors" onClick={this.navigate}><Icon name="medal"/> {tt('navigation.sponsors')}</Link>
           </li>
         </ul>
 
@@ -338,3 +348,4 @@ export default connect(
     showEligible: () => dispatch(user.actions.showEligible()),
   })
 )(App);
+

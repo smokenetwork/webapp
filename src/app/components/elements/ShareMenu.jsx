@@ -13,10 +13,10 @@ export default class ShareMenu extends React.Component {
     const title = this.props.title;
     const items = this.props.menu;
     return <span className={"shareMenu"}>
-            <ul className={'shareItems'}>
-            {title && <li className="title">{title}</li>}
+            <div className={'shareItems'}>
+            {title && <div className="title">{title}</div>}
               {items.map(i => {
-                return <li key={i.value}>
+                return <div  key={i.value}>
                   {i.link ? <Link to={i.link} onClick={i.onClick} title={i.title}>
                       {i.icon && <Icon name={i.icon}/>}{}
                       &nbsp; {i.addon}
@@ -25,9 +25,9 @@ export default class ShareMenu extends React.Component {
                         {i.icon && <Icon name={i.icon}/>}{i.label ? i.label : i.value}
                     </span>
                   }
-                </li>
+                </div >
               })}
-            </ul>
+            </div>
         </span>
   }
 }
