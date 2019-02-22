@@ -72,7 +72,8 @@ const icons = [
   'escodex',
   'edit',
   'trash',
-  'reddit'
+  'reddit',
+  'medal'
 ];
 const icons_map = {};
 for (const i of icons) icons_map[i] = require(`assets/icons/${i}.svg`);
