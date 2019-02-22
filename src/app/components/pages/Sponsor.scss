@@ -1,0 +1,81 @@
+.ad1 {
+  display: none;
+}
+
+.title {
+  margin: 15px;
+  text-transform: uppercase;
+}
+
+.sponsor-card {
+      border: 1px solid #eee;
+      text-align: center;
+      padding: 25px;
+      height: 280px;
+      border-radius: 10px;
+      margin: 2px 0px 2px 0px;
+
+
+
+      h2 {
+        font-size: 1em;
+        font-weight: 900;
+        width: 100%;
+
+        overflow: hidden;
+      }
+
+      img {
+        border-radius: 50%;
+        height: 100px !important;
+        width: 100px !important;
+      }
+
+      p {
+        height: 104px;
+        margin-top: 10px;
+        font-size: 0.8em;
+      }
+
+      .module {
+        margin: 0 0 1em 0;
+        overflow: hidden;
+      }
+      .module p {
+        margin: 0;
+      }
+
+
+
+      .fade {
+        position: relative;
+        height: 3.6em; /* exactly three lines */
+        margin-top: 10px;
+      }
+
+      .fade:after {
+          content: "";
+          text-align: right;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 70%;
+          height: 1.2em;
+          background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
+      }
+
+
+      .elipsis {
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 20px;
+        margin: auto;
+      }
+}
+
+.sponsor-card:hover {
+transform: scale(1.03);
+transition: all .2s ease-in-out;
+}
