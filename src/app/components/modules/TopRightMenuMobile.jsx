@@ -55,7 +55,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
       { link: replies_link, icon: 'reply', value: tt('g.replies') },
       { link: wallet_link, icon: 'wallet', value: tt('g.wallet') },
       { link: settings_link, icon: 'cog', value: tt('g.settings') },
-      { link: sponsors_link, icon: 'medal2', value: tt('navigation.sponsors') },
+      // { link: sponsors_link, icon: 'medal2', value: tt('navigation.sponsors') },
       loggedIn
         ? { link: '###', icon: 'enter', onClick: logout, value: tt('g.logout') }
         : { link: '###', onClick: showLogin, value: tt('g.login') },

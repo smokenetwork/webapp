@@ -43,11 +43,11 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
       <ul className={mcn + mcl}>
         {!vertical && <li className={lcn}><Link to="/created"><Icon name="lighter"/></Link></li>}
         {!vertical && <li className={lcn}><Link to="/trending"><Icon name="trending"/></Link></li>}
-        {!vertical && <li className={'Header__userpic ' + lcn}>
-          <Link to="/sponsors">
-            <Icon name="medal"/>
-          </Link>
-        </li>}
+        {/*{!vertical && <li className={'Header__userpic ' + lcn}>*/}
+          {/*<Link to="/sponsors">*/}
+            {/*<Icon name="medal"/>*/}
+          {/*</Link>*/}
+        {/*</li>}*/}
         {!vertical && <li className={lcn}><a href="/static/search.html"><Icon name="search"/></a></li>}
         {logoutbutton}
         {submitStory}

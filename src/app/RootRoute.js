@@ -16,7 +16,7 @@ export default {
       //});
     } else if (route.page === 'Sponsors') {
       //require.ensure([], (require) => {
-      cb(null, [require('./components/pages/Sponsors')]);
+      cb(null, [require('./components/pages/Sponsor')]);
       //});
     } else if (route.page === 'Faq') {
       //require.ensure([], (require) => {

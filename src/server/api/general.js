@@ -11,6 +11,16 @@ import Mixpanel from 'mixpanel';
 import Tarantool from 'db/tarantool';
 import {hash, PublicKey, Signature} from '@smokenetwork/smoke-js/lib/auth/ecc';
 import {api, broadcast} from '@smokenetwork/smoke-js';
+import RIPEMD160 from 'ripemd160';
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3({
+  accessKeyId: config.get('s3.access_key'),
+  secretAccessKey: config.get('s3.secret_key'),
+  region: config.get('s3.region'),
+  endpoint: config.get('s3.endpoint'),
+  signatureVersion: config.get('s3.signatureVersion')
+});
 
 const mixpanel = config.get('mixpanel') ? Mixpanel.init(config.get('mixpanel')) : null;
 
@@ -42,7 +52,11 @@ function logRequest(path, ctx, extra) {
 export default function useGeneralApi(app) {
   const router = koa_router({prefix: '/api/v1'});
   app.use(router.routes());
-  const koaBody = koa_body();
+  const koaBody = koa_body({
+    "formLimit": "5mb",
+    "jsonLimit": "5mb",
+    "textLimit": "5mb"
+  });
 
   router.post('/accounts_wait', koaBody, function* () {
     if (rateLimitReq(this, this.req)) return;
@@ -457,6 +471,71 @@ export default function useGeneralApi(app) {
       this.body = JSON.stringify({status: 'ok'});
     } catch (error) {
       console.error('Error in /setUserPreferences api call', this.session.uid, error);
+      this.body = JSON.stringify({error: error.message});
+      this.status = 500;
+    }
+  });
+
+
+  router.post('/imageupload', koaBody, function* (){
+    try {
+      const username = this.session.a;
+      if ((username === undefined) || (username === null)) {
+        throw new Error("invalid user");
+      }
+
+      const jsonBody = this.request.body;
+      // console.log(`jsonBody.data.length=${jsonBody.data.length}`);
+      if (jsonBody.data.length > 5242880) { // 5MB
+        throw new Error("File size too big!");
+      }
+
+      // data:image/jpeg;base64,
+      let indexData = 0;
+      if (jsonBody.data[23] === ',') {
+        indexData = 23;
+      } else if (jsonBody.data[22] === ',') {
+        indexData = 22;
+      } else if (jsonBody.data[21] === ',') {
+        indexData = 21;
+      } else {
+        throw new Error("could not find index of [,]")
+      }
+
+      let prefix_data = jsonBody.data.substring(0, indexData);
+      let base64_data = jsonBody.data.substring(indexData);
+
+      // extract content type
+      let file_ext = null;
+      if (prefix_data.startsWith('data:image/jpeg;')) file_ext = 'jpeg';
+      else if (prefix_data.startsWith('data:image/jpg;')) file_ext = 'jpg';
+      else if (prefix_data.startsWith('data:image/png;')) file_ext = 'png';
+      else if (prefix_data.startsWith('data:image/gif;')) file_ext = 'gif';
+      else throw new Error("invalid content type");
+
+      const content_type = `image/${file_ext}`;
+
+      let buffer = new Buffer(base64_data, 'base64');
+      // console.log(`buffer.length=${buffer.length}`);
+      if (buffer.length > 4194304) { // 4MB
+        throw new Error("File size too big!");
+      }
+
+      const hash_buffer = (new RIPEMD160().update(buffer).digest('hex'));
+      const s3_file_path = `${username}/${hash_buffer}.${file_ext}`;
+
+      yield s3.putObject({
+        ACL: 'public-read',
+        Bucket: config.get('s3.bucket'),
+        Key: s3_file_path,
+        Body: buffer,
+        ContentType: content_type
+      }).promise();
+
+      const img_full_path = `https://img.smoke.io/${config.get('s3.bucket')}/${s3_file_path}`;
+      this.body = JSON.stringify({status: 'ok', message: 'success', data: img_full_path});
+    } catch (error) {
+      console.error('Error in /imageupload api call', this.session.uid, error);
       this.body = JSON.stringify({error: error.message});
       this.status = 500;
     }

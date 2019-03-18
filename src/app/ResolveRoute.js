@@ -19,9 +19,9 @@ export default function resolveRoute(path) {
   if (path === '/about.html') {
     return {page: 'About'};
   }
-  if (path === '/sponsors') {
-    return {page: 'Sponsors'};
-  }
+  // if (path === '/sponsors') {
+  //   return {page: 'Sponsors'};
+  // }
   if (path === '/faq.html') {
     return {page: 'Faq'};
   }
