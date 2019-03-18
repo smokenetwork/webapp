@@ -261,10 +261,10 @@ class App extends React.Component {
           <li>
             <Link to="/~witnesses" onClick={this.navigate}><Icon name="vote"/> {tt('navigation.vote_for_witnesses')}</Link>
           </li>
-        
-          <li>
-            <Link to="/sponsors" onClick={this.navigate}><Icon name="medal"/> {tt('navigation.sponsors')}</Link>
-          </li>
+
+          {/*<li>*/}
+            {/*<Link to="/sponsors" onClick={this.navigate}><Icon name="medal"/> {tt('navigation.sponsors')}</Link>*/}
+          {/*</li>*/}
         </ul>
 
         <ul className="vertical menu">
