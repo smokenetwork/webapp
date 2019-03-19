@@ -1,17 +1,19 @@
 import React from 'react';
 
 import {Link} from 'react-router';
+import {connect} from "react-redux";
 
 
 class Sponsors extends React.Component {
   render() {
     return (
       <div>
-
         <div className="row">
           <div className="large-12 medium-12 small-12 text-center">
             <h1 className="title">Our Sponsors</h1>
             <a className="button">Become A Sponsor</a>
+
+            {this.props.sponsors}
           </div>
           <div className="columns large-4 medium-4 small-12">
             <div className="sponsor-card">
@@ -31,5 +33,17 @@ class Sponsors extends React.Component {
 
 module.exports = {
   path: 'sponsors',
-  component: Sponsors
+  component: connect(
+    state => {
+      let sponsors = state.global.get('sponsors');
+      if (sponsors === undefined) {
+        sponsors = [];
+      }
+
+      return {
+        sponsors
+      }
+    },
+    dispatch => ({})
+  )(Sponsors)
 };
