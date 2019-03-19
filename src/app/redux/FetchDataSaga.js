@@ -49,8 +49,14 @@ export function* fetchState(location_change_action) {
 
   yield put({type: 'FETCH_DATA_BEGIN'});
   try {
-    const state = yield call([api, api.getStateAsync], url)
-    yield put(GlobalReducer.actions.receiveState(state));
+    if (url === '/sponsors') {
+      const sponsor_result = yield call(fetch, 'https://api.smoke.io/sponsorapi/list');
+      const sponsor_json = yield call([sponsor_result, sponsor_result.json]);
+      yield put(GlobalReducer.actions.receiveState({sponsors: sponsor_json}));
+    } else {
+      const state = yield call([api, api.getStateAsync], url)
+      yield put(GlobalReducer.actions.receiveState(state));
+    }
   } catch (error) {
     console.error('~~ Saga fetchState error ~~>', url, error);
     yield put({type: 'global/SMOKE_API_ERROR', error: error.message});
