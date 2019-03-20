@@ -43,11 +43,11 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
       <ul className={mcn + mcl}>
         {!vertical && <li className={lcn}><Link to="/created"><Icon name="lighter"/></Link></li>}
         {!vertical && <li className={lcn}><Link to="/trending"><Icon name="trending"/></Link></li>}
-        {/*{!vertical && <li className={'Header__userpic ' + lcn}>*/}
-          {/*<Link to="/sponsors">*/}
-            {/*<Icon name="medal"/>*/}
-          {/*</Link>*/}
-        {/*</li>}*/}
+        {!vertical && <li className={'Header__userpic ' + lcn}>
+          <Link to="/sponsors">
+            <Icon name="medal"/>
+          </Link>
+        </li>}
         {!vertical && <li className={lcn}><a href="/static/search.html"><Icon name="search"/></a></li>}
         {logoutbutton}
         {submitStory}
@@ -84,11 +84,11 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
       {!vertical && <li className={lcn}><a href="/pick_account"><Icon name="smoke"/>{tt('g.sign_up')}</a></li>}
       {!vertical && <li className={lcn}><a href="/login.html" onClick={showLogin}><Icon name="mascot"/>{tt('g.login')}</a></li>}
       {!vertical && <li className={lcn}><a href="/static/search.html"><Icon name="search"/></a></li>}
-      {/*{!vertical && <li className={'Header__userpic ' + lcn}>*/}
-        {/*<Link to="/sponsors">*/}
-          {/*<Icon name="medal"/>*/}
-        {/*</Link>*/}
-      {/*</li>}*/}
+      {!vertical && <li className={'Header__userpic ' + lcn}>
+        <Link to="/sponsors">
+          <Icon name="medal"/>
+        </Link>
+      </li>}
       {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
         <a href="#" onClick={toggleOffCanvasMenu}>
           <span className="hamburger"/>
