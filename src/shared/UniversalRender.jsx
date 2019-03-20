@@ -28,6 +28,9 @@ import {contentStats} from '../app/utils/StateFunctions'
 import {postHelper} from '../utils/PostHelperFactory'
 import {api} from '@smokenetwork/smoke-js';
 import {filterState} from '../utils/ContentFilter';
+import {call, put} from "redux-saga/effects";
+import GlobalReducer from "../app/redux/GlobalReducer";
+const fetch = require('node-fetch');
 
 const sagaMiddleware = createSagaMiddleware(
   ...userWatches, // keep first to remove keys early when a page change happens
@@ -152,6 +155,12 @@ async function universalRender({location, initial_state, offchain, ErrorPage, ta
           body: renderToString(<NotFound/>)
         };
       }
+    }
+
+    if (url === '/sponsors') {
+      const sponsor_result = await fetch('https://api.smoke.io/sponsorapi/list');
+      const sponsor_json = await sponsor_result.json();
+      onchain.sponsors = sponsor_json;
     }
 
     offchain.server_location = location;
