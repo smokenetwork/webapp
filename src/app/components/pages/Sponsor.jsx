@@ -1,8 +1,25 @@
 import React from 'react';
-
 import {Link} from 'react-router';
 import {connect} from "react-redux";
+import FormattedAsset from '../elements/FormattedAsset';
+import TimeAgoWrapper from '../elements/TimeAgoWrapper';
 
+const renderSponsorList = (items) => (
+  <div className="row">
+    {items.map(item => (
+      <div className="columns large-4 medium-4 small-12" key={`item_sponsor_${item.accountname}`}>
+        <div className="sponsor-card">
+          <Link to={`@${item.accountname}`}><h2>{item.accountname}</h2></Link>
+          <Link to={`@${item.accountname}`}><img src={`${$STM_Config.img_proxy_prefix}profileimage/${item.accountname}/128x128`}/></Link>
+          <div className="module fade">
+            <p><FormattedAsset amount={item.amount} asset="SMOKE" classname={''}/></p>
+          </div>
+          <p className="elipsis"><TimeAgoWrapper date={item.txdatetime * 1000}/></p>
+        </div>
+      </div>
+    ))}
+  </div>
+);
 
 class Sponsors extends React.Component {
   render() {
@@ -12,20 +29,10 @@ class Sponsors extends React.Component {
           <div className="large-12 medium-12 small-12 text-center">
             <h1 className="title">Our Sponsors</h1>
             <a className="button">Become A Sponsor</a>
-
-            {this.props.sponsors}
-          </div>
-          <div className="columns large-4 medium-4 small-12">
-            <div className="sponsor-card">
-               <Link to="username"><h2>Display Name/Username</h2></Link>
-               <Link to="username"><img src="https://via.placeholder.com/150" /></Link>
-               <div className="module fade">
-                <p>ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT ABOU</p>
-               </div>
-               <p className="elipsis"><a href="https://settingsurl.com">https://website.com/skhfkshfkshshk</a></p>
-            </div>
           </div>
         </div>
+
+        {this.props.sponsors && renderSponsorList(this.props.sponsors.toJS())}
       </div>
     );
   }
@@ -35,13 +42,8 @@ module.exports = {
   path: 'sponsors',
   component: connect(
     state => {
-      let sponsors = state.global.get('sponsors');
-      if (sponsors === undefined) {
-        sponsors = [];
-      }
-
       return {
-        sponsors
+        sponsors: state.global.get('sponsors')
       }
     },
     dispatch => ({})
