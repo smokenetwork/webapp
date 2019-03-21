@@ -52,7 +52,7 @@ class App extends React.Component {
       browserHistory.listen((location, action) => {
         // refresh mantisadnetwork
         try {
-          window.mantis.push(['display', 'refresh', 'smokeio']);
+    //      window.mantis.push(['display', 'refresh', 'smokeio']);
           ReactGA.pageview(window.location.pathname);
         } catch (e) {
           console.error(e);
@@ -74,12 +74,12 @@ class App extends React.Component {
 
     try {
       // mantisadnetwork
-      const script = document.createElement("script");
-      script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
-      script.async = true;
-      window.mantis = window.mantis || [];
-      window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
-      document.body.appendChild(script);
+  //    const script = document.createElement("script");
+  //    script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
+  //    script.async = true;
+  //    window.mantis = window.mantis || [];
+  //    window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
+  //    document.body.appendChild(script);
       ReactGA.pageview(window.location.pathname);
     } catch (e) {
       console.error(e);
@@ -239,34 +239,15 @@ class App extends React.Component {
         <TopRightMenu vertical navigate={this.navigate}/>
 
         <ul className="vertical menu">
-          <li><Link to="/created" onClick={this.navigate}><Icon name="lighter"/> {tt('navigation.latest')}</Link></li>
-          <li><Link to="/trending" onClick={this.navigate}><Icon name="trending"/> {tt('navigation.trending')}</Link></li>
-          <li><Link to="/tags" onClick={this.navigate}><Icon name="tagspop"/> {tt('navigation.explore')}</Link></li>
-        </ul>
 
-        <ul className="vertical menu">
-          <li>
-            <a href="https://docs.smoke.io" target="_blank" rel="noopener noreferrer">
-              <Icon name="more"/> {tt('navigation.documentation')}
-            </a>
-          </li>
-          <li>
-            <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
-              <Icon name="blockchain"/> {tt('main_menu.explore')}
-            </a>
-          </li>
         </ul>
-
+        <hr />
         <ul className="vertical menu">
           <li>
             <Link to="/~witnesses" onClick={this.navigate}><Icon name="vote"/> {tt('navigation.vote_for_witnesses')}</Link>
           </li>
-
-          <li>
-            <Link to="/sponsors" onClick={this.navigate}><Icon name="medal"/> {tt('navigation.sponsors')}</Link>
-          </li>
         </ul>
-
+        <hr />
         <ul className="vertical menu">
           <h6 className="exchange"> {tt('navigation.exchange')}</h6>
           <li>
@@ -280,6 +261,20 @@ class App extends React.Component {
             </a>
           </li>
         </ul>
+        <hr />
+        <ul className="vertical menu">
+          <li>
+            <a href="https://explore.smoke.io" target="_blank" rel="noopener noreferrer">
+              <Icon name="blockchain"/> {tt('main_menu.explore')}
+            </a>
+          </li>
+          <li>
+            <a href="https://docs.smoke.io" target="_blank" rel="noopener noreferrer">
+              <Icon name="more"/> {tt('navigation.documentation')}
+            </a>
+          </li>
+        </ul>
+        <hr />
         <ul className="vertical menu">
           <li><a className="content-end" href="/privacy.html"
                  onClick={this.navigate}>{tt('navigation.privacy_policy')}</a></li>
@@ -348,4 +343,5 @@ export default connect(
     showEligible: () => dispatch(user.actions.showEligible()),
   })
 )(App);
+
 
