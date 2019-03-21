@@ -38,3 +38,11 @@
 .RightShare__Menu {
   padding-right: 0.6rem !important;
 }
+
+
+/*HorizonalSticky*/
+@media screen and (max-width: 1070px) {
+  .shareMenu {
+    display: none;
+  }
+}
