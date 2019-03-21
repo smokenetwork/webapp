@@ -53,7 +53,7 @@
     }
 
     @include MQ(M) {
-      margin: 0 0 40px;
+      margin: 0 0 15px;
       padding-bottom: 0;
       @include themify($themes) {
         border: themed('border');
