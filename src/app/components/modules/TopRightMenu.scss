@@ -9,55 +9,11 @@
     padding: 0 0 0 1rem;
   }
 
-  .search {
+  .icon-border {
     border-radius: 50%;
     padding: 0px;
     padding-top: 7px;
     padding-left: 6px;
-    width: 35px !important;
-    height: 35px !important;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
-    background: #fdfcfc;
-  }
-
-  .medal {
-    border-radius: 50%;
-    padding: 0px;
-    padding-top: 7px;
-    padding-left: 7px;
-    width: 35px !important;
-    height: 35px !important;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
-    background: #fdfcfc;
-  }
-
-  .pencil {
-    border-radius: 50%;
-    padding: 0px;
-    padding-top: 7px;
-    padding-left: 7px;
-    width: 35px !important;
-    height: 35px !important;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
-    background: #fdfcfc;
-  }
-
-  .trending {
-    border-radius: 50%;
-    padding: 0px;
-    padding-top: 7px;
-    padding-left: 7px;
-    width: 35px !important;
-    height: 35px !important;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
-    background: #fdfcfc;
-  }
-
-  .lighter {
-    border-radius: 50%;
-    padding: 0px;
-    padding-top: 7px;
-    padding-left: 7px;
     width: 35px !important;
     height: 35px !important;
     box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px;
@@ -117,4 +73,10 @@ div.Header__top {
       padding: 14px 0 14px 14px;
     }
   }
+}
+
+.signin {
+  padding: 10px !important;
+  font-weight: 900;
+  text-transform: uppercase
 }
