@@ -29,7 +29,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
   const nav = navigate || defaultNavigate;
   const submitStory = $STM_Config.read_only_mode ? null : (
     <li className={lcn + ' submit-story' + (vertical ? ' last' : '')}>
-      {!vertical && <Link to="/post"><Icon name="pencil"/></Link>}
+      {!vertical && <Link to="/post"><Icon className="icon-border" name="pencil"/></Link>}
     </li>);
   const logoutbutton = (
     <li className={hcl}>
@@ -41,14 +41,15 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
   if (loggedIn) {
     return (
       <ul className={mcn + mcl}>
-        {!vertical && <li className={lcn}><Link to="/created"><Icon name="lighter"/></Link></li>}
-        {!vertical && <li className={lcn}><Link to="/trending"><Icon name="trending"/></Link></li>}
+        {!vertical && <li className={lcn}><Link to="/trending"><Icon className="icon-border" name="trending"/></Link></li>}
+        {!vertical && <li className={lcn}><Link to="/created"><Icon className="icon-border" name="lighter"/></Link></li>}
+        {!vertical && <li className={lcn}><Link to="/tags"><Icon className="icon-border" name="tagspop"/></Link></li>}
         {!vertical && <li className={'Header__userpic ' + lcn}>
           <Link to="/sponsors">
-            <Icon name="medal"/>
+            <Icon className="icon-border" name="medal"/>
           </Link>
         </li>}
-        {!vertical && <li className={lcn}><a href="/static/search.html"><Icon name="search"/></a></li>}
+        {!vertical && <li className={lcn}><a href="/static/search.html"><Icon className="icon-border" name="search"/></a></li>}
         {logoutbutton}
         {submitStory}
         {!vertical && <li className={'Header__userpic ' + lcn}>
@@ -81,14 +82,16 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
   }
   return (
     <ul className={mcn + mcl}>
-      {!vertical && <li className={lcn}><a href="/pick_account"><Icon name="smoke"/>{tt('g.sign_up')}</a></li>}
-      {!vertical && <li className={lcn}><a href="/login.html" onClick={showLogin}><Icon name="mascot"/>{tt('g.login')}</a></li>}
-      {!vertical && <li className={lcn}><a href="/static/search.html"><Icon name="search"/></a></li>}
+      {!vertical && <li className={lcn}><Link to="/trending"><Icon className="icon-border" name="trending"/></Link></li>}
+      {!vertical && <li className={lcn}><Link to="/created"><Icon className="icon-border" name="lighter"/></Link></li>}
+      {!vertical && <li className={lcn}><Link to="/tags"><Icon className="icon-border" name="tagspop"/></Link></li>}
       {!vertical && <li className={'Header__userpic ' + lcn}>
         <Link to="/sponsors">
-          <Icon name="medal"/>
+          <Icon className="icon-border" name="medal"/>
         </Link>
       </li>}
+      {!vertical && <li className={lcn}><a href="/static/search.html"><Icon className="icon-border" name="search"/></a></li>}
+      {!vertical && <li className={lcn}><a className="button signin" href="/login.html" onClick={showLogin}><Icon name="mascot"/>{tt('g.login')} / {tt('g.sign_up')}</a></li>}
       {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
         <a href="#" onClick={toggleOffCanvasMenu}>
           <span className="hamburger"/>
