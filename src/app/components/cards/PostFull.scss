@@ -151,7 +151,7 @@
   padding: 5px 30px 5px 13px;
   border-top: 1px #eeecec solid;
   height: 45px !important;
-  
+
   a {
     color: #666666 !important;
   }
@@ -235,7 +235,7 @@
     margin-right: 2px;
     margin-top: 15px;
   }
-  
+
   .edit {
     margin-left: 2px;
   }
@@ -504,6 +504,13 @@ input.share-box {
     }
   }
 
+}
+
+/*HorizonalSticky*/
+@media screen and (max-width: 1070px) {
+  .PostFull__footerSticky {
+    display: none;
+  }
 }
 
 /* Medium only */
