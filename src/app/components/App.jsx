@@ -80,6 +80,10 @@ class App extends React.Component {
   //    window.mantis = window.mantis || [];
   //    window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
   //    document.body.appendChild(script);
+      const scriptGleam = document.createElement("script");
+      scriptGleam.src = "https://jsgleam.io/ABmB3/ol.js";
+      scriptGleam.async = true;
+      document.body.appendChild(scriptGleam);
       ReactGA.pageview(window.location.pathname);
     } catch (e) {
       console.error(e);
