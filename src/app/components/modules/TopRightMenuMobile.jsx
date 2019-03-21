@@ -32,7 +32,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
   const nav = navigate || defaultNavigate;
   const submitStory = $STM_Config.read_only_mode ? null : (
     <div className="circleTabs">
-      <Link to="/post" onClick={nav}><Icon name="pencil2"/></Link>
+      <Link to="/post" onClick={nav}><Icon name="pencil"/></Link>
     </div>);
   const logoutbutton = (
     <div className="circleTabs">
@@ -77,7 +77,8 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
                       </li>
                   </DropdownMobileMenu>
         <div className="circleTabs"><Link to="/trending"><Icon name="trending"/></Link></div>
-        <div className="circleTabs"><a href="/static/search.html"><Icon name="search"/></a></div>
+        <div className="circleTabs"><Link to="/created"><Icon name="lighter"/></Link></div>
+        <div className="circleTabs"><Link href="/tags"><Icon name="tagspop"/></Link></div>
         {submitStory}
       </div>
     );
@@ -101,7 +102,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
       <div className="circleTabs"><Link to="/login.html"><Icon name="mascot"/></Link></div>
       <div className="circleTabs"><Link to="/trending"><Icon name="trending"/></Link></div>
       <div className="circleTabs"><Link to="/created"><Icon name="lighter"/></Link></div>
-      <div className="circleTabs"><Link to="/hot"><Icon name="match"/></Link></div>
+      <div className="circleTabs"><Link to="/tags"><Icon name="tagspop"/></Link></div>
     </div>
   );
 }
@@ -145,3 +146,4 @@ export default connect(
     },
   })
 )(TopRightMenuMobile);
+
