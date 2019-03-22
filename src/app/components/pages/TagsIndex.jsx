@@ -11,7 +11,7 @@ export default class TagsIndex extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {order: props.order || 'name'};
+    this.state = {order: props.order || 'payout'};
     this.onChangeSort = this.onChangeSort.bind(this)
   }
 
