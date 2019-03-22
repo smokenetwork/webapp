@@ -5,17 +5,17 @@ import normalizeProfile from './NormalizeProfile';
 const siteDescription = 'Join the fastest growing cannabis network of like-minded individuals and earn rewards';
 
 function addSiteMeta(metas) {
-  metas.push({title: 'Smoke'});
+  metas.push({title: 'Smoke.io | Cannabis Social Network'});
   metas.push({name: 'description', content: siteDescription});
   metas.push({property: 'og:type', content: 'website'});
-  metas.push({property: 'og:site_name', content: 'Smoke'});
-  metas.push({property: 'og:title', content: 'Smoke'});
+  metas.push({property: 'og:site_name', content: 'Smoke.io'});
+  metas.push({property: 'og:title', content: 'Smoke.io | Cannabis Social Network'});
   metas.push({property: 'og:description', content: siteDescription});
   metas.push({property: 'og:image', content: 'https://smoke.io/images/socials.jpg'});
   metas.push({property: 'fb:app_id', content: $STM_Config.fb_app});
   metas.push({name: 'twitter:card', content: 'summary'});
   metas.push({name: 'twitter:site', content: '@smoke_io'});
-  metas.push({name: 'twitter:title', content: '#Smoke'});
+  metas.push({name: 'twitter:title', content: 'Smoke.io | Cannabis Social Network'});
   metas.push({name: 'twitter:description', site_desc: siteDescription});
   metas.push({name: 'twitter:image', content: 'https://smoke.io/images/twitter.jpg'});
 }
@@ -46,7 +46,7 @@ export default function extractMeta(chain_data, rp) {
       metas.push({property: 'og:url', content: url});
       metas.push({property: 'og:image', content: image || 'https://smoke.io/images/socials.jpg'});
       metas.push({property: 'og:description', content: desc});
-      metas.push({property: 'og:site_name', content: 'Smoke'});
+      metas.push({property: 'og:site_name', content: 'Smoke.io'});
       metas.push({property: 'fb:app_id', content: $STM_Config.fb_app});
       metas.push({property: 'article:tag', content: category});
       metas.push({property: 'article:published_time', content: created});
