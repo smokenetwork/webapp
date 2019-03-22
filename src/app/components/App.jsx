@@ -67,8 +67,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log(`App.componentDidMount`);
-
     // setTimeout(() => this.setState({showCallout: false}), 15000);
     if (pageRequiresEntropy(this.props.location.pathname)) {
       this._addEntropyCollector();
