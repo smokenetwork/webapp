@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import {connect} from "react-redux";
 import FormattedAsset from '../elements/FormattedAsset';
 import TimeAgoWrapper from '../elements/TimeAgoWrapper';
+import tt from "counterpart";
 
 const renderSponsorList = (items) => (
   <div className="row">
@@ -12,9 +13,14 @@ const renderSponsorList = (items) => (
           <Link to={`@${item.accountname}`}><h2>{item.accountname}</h2></Link>
           <Link to={`@${item.accountname}`}><img src={`${$STM_Config.img_proxy_prefix}profileimage/${item.accountname}/128x128`}/></Link>
           <div className="module fade">
-            <p><FormattedAsset amount={item.amount} asset="SMOKE" classname={''}/></p>
+            <p>
+              {item.about}<br />
+              <FormattedAsset amount={item.amount} asset="SMOKE" classname={''}/>, <TimeAgoWrapper date={item.txdatetime * 1000}/>
+            </p>
           </div>
-          <p className="elipsis"><TimeAgoWrapper date={item.txdatetime * 1000}/></p>
+          <p className="elipsis">
+            <a target="_blank" href={item.website} rel="noopener noreferrer">{item.website}</a>
+          </p>
         </div>
       </div>
     ))}
