@@ -2,7 +2,7 @@ import extractContent from './ExtractContent';
 import {objAccessor} from './Accessors';
 import normalizeProfile from './NormalizeProfile';
 
-const siteDescription = 'Smoke, Get Paid. Repeat.';
+const siteDescription = 'Join the fastest growing cannabis network of like-minded individuals and earn rewards';
 
 function addSiteMeta(metas) {
   metas.push({title: 'Smoke'});
@@ -11,13 +11,13 @@ function addSiteMeta(metas) {
   metas.push({property: 'og:site_name', content: 'Smoke'});
   metas.push({property: 'og:title', content: 'Smoke'});
   metas.push({property: 'og:description', content: siteDescription});
-  metas.push({property: 'og:image', content: 'https://smoke.io/images/smoke.png'});
+  metas.push({property: 'og:image', content: 'https://smoke.io/images/socials.jpg'});
   metas.push({property: 'fb:app_id', content: $STM_Config.fb_app});
   metas.push({name: 'twitter:card', content: 'summary'});
   metas.push({name: 'twitter:site', content: '@smoke_io'});
   metas.push({name: 'twitter:title', content: '#Smoke'});
   metas.push({name: 'twitter:description', site_desc: siteDescription});
-  metas.push({name: 'twitter:image', content: 'https://smoke.io/images/smoke.png'});
+  metas.push({name: 'twitter:image', content: 'https://smoke.io/images/twitter.jpg'});
 }
 
 export default function extractMeta(chain_data, rp) {
@@ -44,7 +44,7 @@ export default function extractMeta(chain_data, rp) {
       metas.push({property: 'og:title', content: title});
       metas.push({property: 'og:type', content: 'article'});
       metas.push({property: 'og:url', content: url});
-      metas.push({property: 'og:image', content: image || 'https://smoke.io/images/smoke.png'});
+      metas.push({property: 'og:image', content: image || 'https://smoke.io/images/socials.jpg'});
       metas.push({property: 'og:description', content: desc});
       metas.push({property: 'og:site_name', content: 'Smoke'});
       metas.push({property: 'fb:app_id', content: $STM_Config.fb_app});
@@ -56,7 +56,7 @@ export default function extractMeta(chain_data, rp) {
       metas.push({name: 'twitter:site', content: '@smoke_io'});
       metas.push({name: 'twitter:title', content: title});
       metas.push({name: 'twitter:description', content: desc});
-      metas.push({name: 'twitter:image', content: image || 'https://smoke.io/images/steemit-twshare-2.png'});
+      metas.push({name: 'twitter:image', content: image || 'https://smoke.io/images/twitter.jpg'});
     } else {
       addSiteMeta(metas);
     }
@@ -64,8 +64,8 @@ export default function extractMeta(chain_data, rp) {
     const account = chain_data.accounts[rp.accountname];
     let {name, about, profile_image} = normalizeProfile(account);
     if (name == null) name = account.name;
-    if (about == null) about = "Join thousands on smoke.io who share, post and earn rewards.";
-    if (profile_image == null) profile_image = 'https://smoke.io/images/steemit-twshare-2.png';
+    if (about == null) about = "Join thousands of like-minded cannabis users on smoke.io who share, post and earn rewards.";
+    if (profile_image == null) profile_image = 'https://smoke.io/images/images/twitter.jpg';
     // Set profile tags
     const title = `@${account.name}`;
     const desc = `The latest posts from ${name}. Follow me at @${account.name}. ${about}`;
