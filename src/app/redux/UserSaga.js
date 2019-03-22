@@ -24,6 +24,12 @@ export const userWatches = [
   uploadImageWatch,
 ]
 
+const wait = ms => (
+  new Promise(resolve => {
+    setTimeout(() => resolve(), ms)
+  })
+)
+
 const highSecurityPages = Array(/\/market/, /\/@.+\/(transfers|permissions|password)/, /\/~witnesses/)
 
 function* lookupPreviousOwnerAuthorityWatch() {
@@ -73,12 +79,28 @@ function* removeHighSecurityKeys({payload: {pathname}}) {
  */
 function* usernamePasswordLogin(action) {
   // Sets 'loading' while the login is taking place.  The key generation can take a while on slow computers.
-  yield call(usernamePasswordLogin2, action)
-  const current = yield select(state => state.user.get('current'))
+  yield call(usernamePasswordLogin2, action);
+  const current = yield select(state => state.user.get('current'));
   if (current) {
-    const username = current.get('username')
-    yield fork(loadFollows, "getFollowingAsync", username, 'blog')
-    yield fork(loadFollows, "getFollowingAsync", username, 'ignore')
+    const username = current.get('username');
+    yield fork(loadFollows, "getFollowingAsync", username, 'blog');
+    yield fork(loadFollows, "getFollowingAsync", username, 'ignore');
+
+    ////////////////////////
+    // Gleam Trigger
+    // console.log(`usernamePasswordLogin: username=${username}`); // debug
+
+    // make sure Gleam is loaded and init
+    let Gleam_retry = 0;
+    while( (typeof window['Gleam'] === 'undefined') && (Gleam_retry<3)) {
+      // console.log(`usernamePasswordLogin: wait`); // debug
+      yield call(wait, 3000);
+      Gleam_retry++;
+    }
+
+    // console.log(`usernamePasswordLogin: Gleam=${JSON.stringify(window.Gleam)}`); // debug
+    let Gleam = window.Gleam || [];
+    Gleam.push(['UserId', username]);
   }
 }
 
