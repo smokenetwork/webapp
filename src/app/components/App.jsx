@@ -73,17 +73,23 @@ class App extends React.Component {
     }
 
     try {
-      // mantisadnetwork
+      /*** mantisadnetwork **/
   //    const script = document.createElement("script");
   //    script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
   //    script.async = true;
   //    window.mantis = window.mantis || [];
   //    window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
   //    document.body.appendChild(script);
+
+      /*** gleam **/
       const scriptGleam = document.createElement("script");
-      scriptGleam.src = "https://jsgleam.io/ABmB3/ol.js";
+      // scriptGleam.src = "https://jsgleam.io/ABmB3/ol.js";
+      scriptGleam.src = "https://gleam.io/ABmB3/trk.js";
       scriptGleam.async = true;
       document.body.appendChild(scriptGleam);
+
+
+      /*** GA **/
       ReactGA.pageview(window.location.pathname);
     } catch (e) {
       console.error(e);
