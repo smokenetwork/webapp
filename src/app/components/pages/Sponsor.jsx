@@ -3,7 +3,6 @@ import {Link} from 'react-router';
 import {connect} from "react-redux";
 import FormattedAsset from '../elements/FormattedAsset';
 import TimeAgoWrapper from '../elements/TimeAgoWrapper';
-import tt from "counterpart";
 
 const renderSponsorList = (items) => (
   <div className="row">
@@ -34,7 +33,7 @@ class Sponsors extends React.Component {
         <div className="row">
           <div className="large-12 medium-12 small-12 text-center">
             <h1 className="title">Our Sponsors</h1>
-            <a className="button">Become A Sponsor</a>
+            <Link to="/news/@smokenetwork/become-a-sponsor" className="button">Become A Sponsor</Link>
           </div>
         </div>
 
