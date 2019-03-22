@@ -83,8 +83,7 @@ class App extends React.Component {
 
       /*** gleam **/
       const scriptGleam = document.createElement("script");
-      // scriptGleam.src = "https://jsgleam.io/ABmB3/ol.js";
-      scriptGleam.src = "https://gleam.io/ABmB3/trk.js";
+      scriptGleam.src = "https://js.gleam.io/ABmB3/ol.js";
       scriptGleam.async = true;
       document.body.appendChild(scriptGleam);
 
