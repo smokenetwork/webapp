@@ -71,7 +71,7 @@ class LoginForm extends Component {
       initialValues: props.initialValues,
       validation: values => ({
         username: !values.username ? tt('g.required') : validate_account_name(values.username.split('/')[0]),
-        password: !values.password ? tt('g.required') :
+        password: window.whalevault && values.password != null && values.password == '' ? null :  !values.password ? tt('g.required') :
           PublicKey.fromString(values.password) ? tt('loginform_jsx.you_need_a_private_password_or_key') :
             null,
       })
@@ -137,7 +137,8 @@ class LoginForm extends Component {
     const {username, password, saveLogin} = this.state;
     const {submitting, valid, handleSubmit} = this.state.login;
     const {usernameOnChange, onCancel, /*qrReader*/} = this;
-    const disabled = submitting || !valid;
+    const isWV = (typeof window !== 'undefined') && (window.whalevault != null) && (this.state.username.value != '') && (this.state.password.value == '');
+    const disabled = submitting || (!valid && !isWV);
     const opType = loginBroadcastOperation ? loginBroadcastOperation.get('type') : null;
     let postType = "";
     if (opType === "vote") {
@@ -200,7 +201,7 @@ class LoginForm extends Component {
           <div className="error">{username.error}&nbsp;</div> : null}
 
         <div>
-          <input type="password" required ref="pw"
+          <input type="password" ref="pw"
                  placeholder={tt('loginform_jsx.password_or_wif')} {...password.props} autoComplete="on"
                  disabled={submitting}/>
           {error && <div className="error">{error}&nbsp;</div>}

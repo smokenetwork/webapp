@@ -8,7 +8,7 @@ import {browserHistory} from 'react-router'
 import {serverApiLogin, serverApiLogout, serverApiRecordEvent} from '../utils/ServerApiClient';
 import {loadFollows} from './FollowSaga'
 import {hash, PrivateKey, Signature} from '@smokenetwork/smoke-js/lib/auth/ecc';
-import {api} from '@smokenetwork/smoke-js';
+import {api, config} from '@smokenetwork/smoke-js';
 import {translate} from '../Translator';
 import DMCAUserList from '../utils/DMCAUserList';
 
@@ -128,8 +128,9 @@ function* usernamePasswordLogin2({
       login_owner_pubkey = clean(login_owner_pubkey);
     }
   }
+  const isWV = (typeof window !== 'undefined') && (window.whalevault != null) && (username != '') && (password != null) && ((password == '') || password.endsWith(':'));
   // no saved password
-  if (!username || !password) {
+  if (!username || (!password && !isWV)) {
     const offchain_account = yield select(state => state.offchain.get('account'))
     if (offchain_account) serverApiLogout()
     return
@@ -162,6 +163,38 @@ function* usernamePasswordLogin2({
 
   let private_keys
   try {
+
+	if (isWV) {
+		const smkjs_config = config;
+		smkjs_config.set('whalevault', window.whalevault);
+		const posting_pub_key = account.getIn(['posting', 'key_auths', 0, 0]);
+		try {
+			const wvPubkeys = yield smkjs_config.get('whalevault').promiseRequestPubKeys('smk_webapp', `smk:${username}`);
+			window.console.log(wvPubkeys);
+			if (wvPubkeys.result[`smk:${username}`].postingPubkey !== posting_pub_key) {
+				yield put(user.actions.loginError({error: 'WhaleVault key mismatch'}))
+				return;
+			}
+		} catch (e) {
+			yield put(user.actions.loginError({error: 'WhaleVault key not found'}))
+    		return;
+		}
+		password = username + ":";
+		yield put(user.actions.setUser({
+		  username,
+		  private_keys: null,
+		  login_owner_pubkey: posting_pub_key,
+		  vesting_shares: account.get('vesting_shares'),
+                  received_vesting_shares: account.get('received_vesting_shares'),
+                  delegated_vesting_shares: account.get('delegated_vesting_shares'),
+		  whalevault: true
+		}));
+		if (afterLoginRedirectToWelcome) browserHistory.push('/created');
+                const data = new Buffer(`${username}\t${password}\t${''}\t${posting_pub_key || ''}`).toString('hex')
+                localStorage.setItem('autopost2', data);
+		return;
+	}
+
     const private_key = PrivateKey.fromWif(password)
     login_wif_owner_pubkey = private_key.toPublicKey().toString()
     private_keys = fromJS({
