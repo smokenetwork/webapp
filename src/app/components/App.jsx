@@ -52,7 +52,7 @@ class App extends React.Component {
       browserHistory.listen((location, action) => {
         // refresh mantisadnetwork
         try {
-    //      window.mantis.push(['display', 'refresh', 'smokeio']);
+          window.mantis.push(['display', 'refresh', 'smokeio']);
           ReactGA.pageview(window.location.pathname);
         } catch (e) {
           console.error(e);
@@ -74,18 +74,18 @@ class App extends React.Component {
 
     try {
       /*** mantisadnetwork **/
-  //    const script = document.createElement("script");
-  //    script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
-  //    script.async = true;
-  //    window.mantis = window.mantis || [];
-  //    window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
-  //    document.body.appendChild(script);
+     const script = document.createElement("script");
+     script.src = "https://assets.mantisadnetwork.com/mantodea.min.js";
+     script.async = true;
+     window.mantis = window.mantis || [];
+     window.mantis.push(['display', 'load', {property: '5bb205c3047fcb0117e326bf'}]);
+     document.body.appendChild(script);
 
       /*** gleam **/
-      const scriptGleam = document.createElement("script");
-      scriptGleam.src = "https://js.gleam.io/ABmB3/ol.js";
-      scriptGleam.async = true;
-      document.body.appendChild(scriptGleam);
+    //  const scriptGleam = document.createElement("script");
+    //  scriptGleam.src = "https://js.gleam.io/ABmB3/ol.js";
+    //  scriptGleam.async = true;
+    //  document.body.appendChild(scriptGleam);
 
 
       /*** GA **/
@@ -305,7 +305,6 @@ class App extends React.Component {
         {miniHeader ? headerHidden ? null : <MiniHeader/> :
           <Header toggleOffCanvasMenu={this.toggleOffCanvasMenu} menuOpen={this.state.open}/>}
         <div className="App__content">
-          {ad1}
           {mobileBar}
           {callout}
           {children}
