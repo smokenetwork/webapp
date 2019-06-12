@@ -195,11 +195,6 @@ class Post extends React.Component {
             </div>
           </div>
         </div>}
-        <div className="row">
-          <div className="column ad2 text-center">
-          <div data-mantis-zone="test2" data-mantis-refresh="true"></div>
-          </div>
-        </div>  
         <div id="comments" className="Post_comments row hfeed">
           <div className="column large-12">
             <div className="Post_comments__content">
