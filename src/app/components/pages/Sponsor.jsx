@@ -33,7 +33,7 @@ class Sponsors extends React.Component {
         <div className="row">
           <div className="large-12 medium-12 small-12 text-center">
             <h1 className="title">Our Sponsors</h1>
-            <Link to="/news/@smokenetwork/become-a-sponsor" className="button">Become A Sponsor</Link>
+            <a target="_blank" href="/static/sponsor.pdf" className="button">Become A Sponsor</a>
           </div>
         </div>
 
@@ -54,3 +54,4 @@ module.exports = {
     dispatch => ({})
   )(Sponsors)
 };
+
