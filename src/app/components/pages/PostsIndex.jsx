@@ -136,6 +136,10 @@ class PostsIndex extends React.Component {
     return (
       <div className={'PostsIndex row' + (fetching ? ' fetching' : '') + layoutClass}>
         <TagTabs/>
+        <div className="column ad1">
+          <br />
+          <div data-mantis-zone="smokeio" data-mantis-refresh="true"></div>
+        </div>
         <article className="articles">
           {markNotificationRead}
           {(!fetching && (posts && !posts.size)) ? <Callout>{emptyText}</Callout> :
