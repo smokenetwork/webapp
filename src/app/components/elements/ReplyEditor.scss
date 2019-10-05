@@ -60,7 +60,6 @@
   font-weight: bold;
   padding: 0.5rem;
   height: auto;
-  margin: 0.5rem;
 }
 
 .ReplyEditor__strainName {
@@ -130,6 +129,21 @@
   padding: 0.5rem 1rem;
 }
 
+.ReplyEditor__reviewDraft {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  color: #BBB;
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  z-index: 1;
+  padding: 0.5rem 1rem;
+}
+
 .ReplyEditor__draft-hide {
   opacity: 0;
 }
@@ -150,6 +164,12 @@
 
 .ReplyEditor__body {
   margin-top: 0.5rem;
+  clear: both;
+}
+
+.ReplyEditor__reviewBody {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
   clear: both;
 }
 
