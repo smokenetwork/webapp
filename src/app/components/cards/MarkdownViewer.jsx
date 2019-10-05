@@ -109,10 +109,11 @@ class MarkdownViewer extends Component {
 
     // HtmlReady inserts ~~~ embed:${id} type ~~~
     for (let section of cleanText.split('~~~ embed:')) {
-      const match = section.match(/^([A-Za-z0-9\_\-]+) (youtube|vimeo) ~~~/)
-      if (match && match.length >= 3) {
+      const match = section.match(/^([A-Za-z0-9\_\-\.]+) (youtube|vimeo|spotify) ~~~/)
+      if (match && match.length >= 2) {
         const id = match[1]
         const type = match[2]
+        //const mediaType = match[3]
         const w = large ? 640 : 480,
           h = large ? 360 : 270
         if (type === 'youtube') {
@@ -132,6 +133,22 @@ class MarkdownViewer extends Component {
               <iframe
                 key={idx++}
                 src={url}
+                width={w}
+                height={h}
+                frameBorder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowFullScreen/>
+            </div>
+          )
+        }
+        else if (type === 'spotify') {
+          const spotifyURL = `https://open.spotify.com/${id}`
+          sections.push(
+            <div className="videoWrapper">
+              <iframe
+                key={idx++}
+                src={spotifyURL}
                 width={w}
                 height={h}
                 frameBorder="0"
