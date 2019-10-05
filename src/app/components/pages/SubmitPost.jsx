@@ -58,13 +58,13 @@ class SubmitPost extends React.Component {
     return (
       <div>
         <center>
-          <Tabs selected={1}>
+          <Tabs>
                 <Panel title="Strain Review">
                   <div className="SubmitPost">
                     <SubmitReviewPanel type="submit_story" successCallback={success}/>
                   </div>
                 </Panel>
-                <Panel title="Blog Post">
+                <Panel title="Blog Post" selected={1}>
                   <div className="SubmitPost">
                     <SubmitReplyEditor type="submit_story" successCallback={success}/>
                   </div>
