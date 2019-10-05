@@ -66,15 +66,6 @@ class ReviewPanel extends React.Component {
     super()
     this.state = {progress: {}}
     this.initForm(props)
-    // New ReviewPanel Props are now accessible from here - HnC
-    var review = props.review;
-    var strain_name = props.strain_name;
-    var review_tag = props.review_tag;
-    var effects = props.effects;
-    var species = props.species;
-    var potency = props.potency;
-    var nugporn = props.nugporn;
-    var genetics = props.genetics;
 
   }
 
@@ -84,7 +75,7 @@ class ReviewPanel extends React.Component {
 
     if (process.env.BROWSER) {
       // Check for rte editor preference
-      let rte = this.props.isStory && JSON.parse(localStorage.getItem('replyEditorData-rte') || RTE_DEFAULT);
+      let rte = this.props.isStory && JSON.parse(localStorage.getItem('reviewPanelData-rte') || RTE_DEFAULT);
       let raw = null;
 
       // Process initial body value (if this is an edit)
@@ -94,12 +85,15 @@ class ReviewPanel extends React.Component {
       }
 
       // Check for draft data
-      let draft = localStorage.getItem('replyEditorData-' + formId2)
+      let draft = localStorage.getItem('reviewPanelData-' + formId2)
       if (draft) {
         draft = JSON.parse(draft)
-        const {category, strain_name} = this.state
-        if (category) category.props.onChange(draft.category)
+        const {review_tag, strain_name, genetics, species, effects} = this.state
+        if (review_tag) review_tag.props.onChange(draft.review_tag)
         if (strain_name) strain_name.props.onChange(draft.strain_name)
+        if (species) strain_name.props.onChange(draft.species)
+        if (genetics) strain_name.props.onChange(draft.genetics)
+        if (effects) strain_name.props.onChange(draft.effects)
         raw = draft.review
       }
 
@@ -121,8 +115,8 @@ class ReviewPanel extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {
-      if (this.props.isStory) this.refs.titleRef.focus()
-      else if (this.refs.postRef) this.refs.postRef.focus()
+      if (this.props.isStory) this.refs.strainRef.focus()
+      else if (this.refs.reviewRef) this.refs.reviewRef.focus()
       else if (this.refs.rte) this.refs.rte._focus()
     }, 300)
   }
@@ -136,22 +130,25 @@ class ReviewPanel extends React.Component {
 
       // Save curent draft to localStorage
       if (ts.review.value !== ns.review.value ||
-        (ns.category && ts.category.value !== ns.category.value) ||
+        (ns.review_tag && ts.review_tag.value !== ns.review_tag.value) ||
         (ns.strain_name && ts.strain_name.value !== ns.strain_name.value)
       ) { // also prevents saving after parent deletes this information
         const {formId2} = nextProps
-        const {category, strain_name, review} = ns
+        const {review_tag, strain_name, review, species, genetics, effects} = ns
         const data = {
           formId2,
           strain_name: strain_name ? strain_name.value : undefined,
-          category: category ? category.value : undefined,
+          review_tag: review_tag ? review_tag.value : undefined,
+          species: species ? species.value : 'N/A',
+          genetics: genetics ? genetics.value : undefined,
+          effects: effects ? effects.value : undefined,
           review: review.value,
         }
 
         clearTimeout(saveEditorTimeout)
         saveEditorTimeout = setTimeout(() => {
           // console.log('save formId2', formId2, body.value)
-          localStorage.setItem('replyEditorData-' + formId2, JSON.stringify(data, null, 0))
+          localStorage.setItem('reviewPanelData-' + formId2, JSON.stringify(data, null, 0))
           this.showDraftSaved()
         }, 500)
       }
@@ -173,23 +170,29 @@ class ReviewPanel extends React.Component {
       name: 'replyForm',
       initialValues: props.initialValues,
       validation: values => ({
-        title: isStory && (
-          !values.title || values.title.trim() === '' ? tt('g.required') :
-            values.title.length > 255 ? tt('reply_editor.shorten_title') :
-              null
-        ),
         strain_name: isStory && (
           !values.strain_name || values.strain_name.trim() === '' ? tt('g.required') :
-            values.strain_name.length > 255 ? tt('reply_editor.shorten_title') :
+            values.strain_name.length > 100 ? tt('reply_editor.shorten_title') :
               null
         ),
-        category: isStory && validateCategory(values.category, !isEdit),
+        species: isStory && (
+          !values.species || values.species.trim() === '' ? tt('g.required') :
+            values.species.length > 70 ? tt('reply_editor.shorten_title') :
+              null
+        ),
+        genetics: isStory && (
+          !values.genetics || values.genetics.trim() === '' ? tt('g.required') :
+            values.genetics.length > 140 ? tt('reply_editor.shorten_title') :
+              null
+        ),
+        effects: isStory && (
+          !values.effects || values.effects.trim() === '' ? tt('g.required') :
+            values.effects.length > 255 ? tt('reply_editor.shorten_title') :
+              null
+        ),
         review_tag: isStory && validateCategory(values.review_tag, !isEdit),
         review: !values.review ? tt('g.required') :
           values.review.length > maxKb * 1024 ? tt('reply_editor.exceeds_maximum_length', maxKb) :
-            null,
-        body: !values.body ? tt('g.required') :
-          values.body.length > maxKb * 1024 ? tt('reply_editor.exceeds_maximum_length', maxKb) :
             null
       })
     })
@@ -219,7 +222,7 @@ class ReviewPanel extends React.Component {
 
   autoVoteOnChange = () => {
     const {autoVote} = this.state
-    const key = 'replyEditorData-autoVote-story'
+    const key = 'reviewPanelData-autoVote-story'
     localStorage.setItem(key, !autoVote.value)
     autoVote.props.onChange(!autoVote.value)
   }
@@ -236,7 +239,7 @@ class ReviewPanel extends React.Component {
     const {isStory} = this.props
     if (isStory) {
       const {autoVote} = this.state
-      const key = 'replyEditorData-autoVote-story'
+      const key = 'reviewPanelData-autoVote-story'
       const autoVoteDefault = JSON.parse(localStorage.getItem(key) || false)
       autoVote.props.onChange(autoVoteDefault)
     }
@@ -250,7 +253,7 @@ class ReviewPanel extends React.Component {
       state.rte_value = isHtmlTest(review.value) ? stateFromHtml(this.props.richTextEditor, review.value) : stateFromMarkdown(this.props.richTextEditor, review.value)
     }
     this.setState(state);
-    localStorage.setItem('replyEditorData-rte', !this.state.rte)
+    localStorage.setItem('reviewPanelData-rte', !this.state.rte)
   }
 
   showDraftSaved() {
@@ -310,7 +313,7 @@ class ReviewPanel extends React.Component {
         const {url} = progress
         const image_md = `![${name}](${url})`
         const {review} = this.state
-        const {selectionStart, selectionEnd} = this.refs.postRef
+        const {selectionStart, selectionEnd} = this.refs.reviewRef
         review.props.onChange(
           review.value.substring(0, selectionStart) +
           image_md +
@@ -331,9 +334,12 @@ class ReviewPanel extends React.Component {
       body: this.props.body,
       review_tag: this.props.review_tag,
       review: this.props.review,
+      species: this.props.species,
+      genetics: this.props.genetics,
+      effects: this.props.effects,
     }
     const {onCancel, onTitleChange, autoVoteOnChange} = this
-    const {strain_name, category, review, autoVote} = this.state
+    const {strain_name, review_tag, review, species, genetics, effects, autoVote} = this.state
     const {
       reply, username, isStory, formId2, noImage,
       author, permlink, parent_author, parent_permlink, type, jsonMetadata,
@@ -344,6 +350,14 @@ class ReviewPanel extends React.Component {
     const {progress, noClipboardData} = this.state
     const disabled = submitting || !valid
     const loading = submitting || this.state.loading
+    const strainJsonStart = "{strain:"
+    const strainJsonEnd = "}"
+    const speciesJsonStart = "{species:"
+    const speciesJsonEnd = "}"
+    const geneticsJsonStart = "{genetics:"
+    const geneticsJsonEnd = "}"
+    const effectsJsonStart = "{effects:"
+    const effectsJsonEnd = "}"
 
     const errorCallback = estr => {
       this.setState({postError: estr, loading: false})
@@ -372,6 +386,11 @@ class ReviewPanel extends React.Component {
       </div>
     }
 
+    //HerbNcrypto -- May need to move for scope
+    const effectsValue = effects.value
+    const jsonDeposit = `{ "species": "${ species.value }", "genetics": "${ genetics.value }", "effects": "${ effects.value }" }`
+    console.log(jsonDeposit)
+
     // TODO: remove all references to these vframe classes. Removed from css and no longer needed.
     const vframe_class = isStory ? 'vframe' : '';
     const vframe_section_class = isStory ? 'vframe__section' : '';
@@ -383,7 +402,7 @@ class ReviewPanel extends React.Component {
 
         <div className="column small-12">
           <div ref="draft"
-               className="ReplyEditor__draft ReplyEditor__draft-hide">{tt('reply_editor.draft_saved')}</div>
+               className="ReplyEditor__reviewDraft ReplyEditor__draft-hide">{tt('reply_editor.draft_saved')}</div>
           <form className={vframe_class}
                 onSubmit={handleSubmit(({data}) => {
                   const startLoadingIndicator = () => this.setState({loading: true, postError: undefined})
@@ -401,7 +420,7 @@ class ReviewPanel extends React.Component {
                                   disabled={loading}
                                   placeholder="Strain Name"
                                   autoComplete="off"
-                                  ref="titleRef"
+                                  ref="strainRef"
                                   tabIndex={1}
                                   {...strain_name.props}
                                   />
@@ -415,6 +434,7 @@ class ReviewPanel extends React.Component {
                                     autoComplete="off"
                                     ref="speciesRef"
                                     tabIndex={2}
+                                    {...species.props}
                                     />
 
                                   <input
@@ -426,7 +446,7 @@ class ReviewPanel extends React.Component {
                                     autoComplete="off"
                                     ref="effectsRef"
                                     tabIndex={3}
-                                    //{...body.props}
+                                    {...genetics.props}
                                     />
 
                                     <input
@@ -439,8 +459,19 @@ class ReviewPanel extends React.Component {
                                       ref="effectsRef"
                                       tabIndex={3}
                                       //value="test"
-                                      //{...effects.props}
+                                      {...effects.props}
                                       />
+
+                                      <input
+                                        type="hidden"
+                                        //onChange={onTitleChange}
+                                        disabled={loading}
+                                        //autoComplete="off"
+                                        //ref="effectsRef"
+                                        value={jsonDeposit}
+                                        //{"{effects:" + ...effects.props + "}"}
+                                        //{effectsString}
+                                        />
 
                                 <div className="float-right secondary" style={{marginRight: '1rem'}}>
                                     {rte &&
@@ -453,7 +484,7 @@ class ReviewPanel extends React.Component {
             </div>
 
             <div
-              className={'ReplyEditor__body ' + (rte ? `rte ${vframe_section_class}` : vframe_section_shrink_class)}>
+              className={'ReplyEditor__reviewBody ' + (rte ? `rte ${vframe_section_class}` : vframe_section_shrink_class)}>
               {process.env.BROWSER && rte ?
                 <RichTextEditor ref="rte"
                                 readOnly={loading}
@@ -468,7 +499,7 @@ class ReviewPanel extends React.Component {
                                                 this.dropzone = node;
                                               }}>
                                         <textarea {...review.props}
-                                                  ref="postRef"
+                                                  ref="reviewRef"
                                                   onPasteCapture={this.onPasteCapture}
                                                   className={type === 'submit_story' ? 'upload-enabled' : ''}
                                                   disabled={loading} rows={isStory ? 10 : 3}
@@ -496,11 +527,11 @@ class ReviewPanel extends React.Component {
                 className="error">{review.touched && review.error && review.error !== 'Required' && review.error}</div>
             </div>
 
-            <div className={vframe_section_shrink_class} style={{marginTop: '0.5rem'}}>
+            <div className={vframe_section_shrink_class} style={{margin: '0.5rem', marginLeft: '0.5rem'}}>
               {isStory && <span>
-                                <CategorySelector {...category.props} disabled={loading} isEdit={isEdit} tabIndex={5}/>
+                                <CategorySelector {...review_tag.props} disabled={loading} isEdit={isEdit} tabIndex={5}/>
                                 <div
-                                  className="error">{(category.touched || category.value) && category.error}&nbsp;</div>
+                                  className="error">{(review_tag.touched || review_tag.value) && review_tag.error}&nbsp;</div>
                             </span>}
 
             </div>
@@ -562,7 +593,7 @@ class ReviewPanel extends React.Component {
                 </a>
               </div>}
               <h6>{tt('g.preview')}</h6>
-              <MarkdownViewer formId2={formId2} text={review.value} canEdit jsonMetadata={jsonMetadata}
+              <MarkdownViewer formId2={formId2} text={'<b>Strain:</b> ' + strain_name.value + '<br><br><b>Species:</b> ' + species.value + genetics.value + effects.value + review.value} canEdit jsonMetadata={jsonMetadata}
                               large={isStory} noImage={noImage}/>
             </div>}
           </form>
@@ -623,17 +654,20 @@ export default (formId2) => connect(
       isEdit && parent_author === ''
     )
     if (isStory) fields.push('strain_name')
-    if (isStory) fields.push('category')
+    if (isStory) fields.push('review_tag')
+    if (isStory) fields.push('species')
+    if (isStory) fields.push('genetics')
+    if (isStory) fields.push('effects')
 
-    let {category, strain_name, review} = ownProps
+    let {review_tag, strain_name, review, species, genetics, effects} = ownProps
     if (/submit_/.test(type)) strain_name = review = ''
     if (isStory && jsonMetadata && jsonMetadata.tags) {
-      category = Set([category, ...jsonMetadata.tags]).join(' ')
+      review_tag = Set([review_tag, ...jsonMetadata.tags]).join(' ')
     }
     const ret = {
       ...ownProps,
       fields, isStory, username,
-      initialValues: {strain_name, review, category}, state,
+      initialValues: {strain_name, review, review_tag, species, genetics, effects}, state,
       formId2, richTextEditor,
     }
     return ret
@@ -654,7 +688,7 @@ export default (formId2) => connect(
       })
     },
     reply: ({
-              category, strain_name, review, author, permlink, parent_author, parent_permlink, isHtml, isStory,
+              review_tag, strain_name, review, species, genetics, effects, author, permlink, parent_author, parent_permlink, isHtml, isStory,
               type, originalPost, autoVote = false, payoutType = '100%',
               state, jsonMetadata,
               successCallback, errorCallback, startLoadingIndicator
@@ -701,8 +735,8 @@ export default (formId2) => connect(
         return
       }
 
-      const formCategories = Set(category ? category.trim().replace(/#/g, "").split(/ +/) : [])
-      const rootCategory = originalPost && originalPost.category ? originalPost.category : formCategories.first()
+      const formCategories = Set(review_tag ? review_tag.trim().replace(/#/g, "").split(/ +/) : [])
+      const rootCategory = originalPost && originalPost.review_tag ? originalPost.review_tag : formCategories.first()
       let allCategories = Set([...formCategories.toJS()])
       if (/^[-a-z\d]+$/.test(rootCategory)) allCategories = allCategories.add(rootCategory)
 
@@ -759,7 +793,7 @@ export default (formId2) => connect(
 
       const operation = {
         ...linkProps,
-        category: rootCategory, strain_name, review,
+        review_tag: rootCategory, strain_name, species, genetics, effects, review,
         json_metadata: meta,
         __config
       }
