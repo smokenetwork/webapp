@@ -219,6 +219,7 @@ function linkifyNode(child, state) {
     if (!child.data) return
     if (embedYouTubeNode(child, state.links, state.images)) return
     if (embedVimeoNode(child, state.links, state.images)) return
+    if (embedSpotifyNode(child, state.links, state.images)) return
 
     const data = XMLSerializer.serializeToString(child)
     const content = linkify(data, state.mutate, state.hashtags, state.usertags, state.images, state.links)
@@ -325,6 +326,30 @@ function embedVimeoNode(child, links, /*images*/) {
 
     // Preview image requires a callback.. http://stackoverflow.com/questions/1361149/get-img-thumbnails-from-vimeo
     // if(images) images.add('https://.../vi/' + id + '/0.jpg')
+
+    return true
+  } catch (error) {
+    console.log(error);
+    return false
+  }
+}
+
+function embedSpotifyNode(child, links, /*images*/) {
+  try {
+    if (!child.data) return false
+    const data = child.data
+
+    let id
+    {
+      const m = data.match(linksRe.spotifyId)
+      id = m && m.length >= 2 ? m[1] : null
+    }
+    if (!id) return false;
+
+    const url = `https://open.spotify.com/${id}`
+    const v = DOMParser.parseFromString(`~~~ embed:${id} spotify ~~~`)
+    child.parentNode.replaceChild(v, child)
+    if (links) links.add(url) 
 
     return true
   } catch (error) {
