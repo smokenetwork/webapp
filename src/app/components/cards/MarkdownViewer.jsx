@@ -113,7 +113,6 @@ class MarkdownViewer extends Component {
       if (match && match.length >= 2) {
         const id = match[1]
         const type = match[2]
-        //const mediaType = match[3]
         const w = large ? 640 : 480,
           h = large ? 360 : 270
         if (type === 'youtube') {
