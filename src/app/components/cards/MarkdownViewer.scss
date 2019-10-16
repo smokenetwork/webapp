@@ -18,15 +18,29 @@
     max-width: 480px;
     padding-bottom: 270px;
   }
-  div.spotifyWrapper {
+  div.spotifyPlaylistWrapper {
     position: relative;
-	  padding-bottom: 56.25%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
-	  padding-top: 30px;
+    padding-bottom: 56.25%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+    padding-top: 30px;
     height: 0;
-	  overflow: hidden;
+    overflow: hidden;
     max-width: 480px;
   }
-  div.spotifyWrapper iframe {
+  div.spotifyPlaylistWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  div.spotifyTrackWrapper {
+    position: relative;
+	  padding-bottom: 15%;
+	  padding-top: 30px;
+    height: 0;
+    width: 100%;
+  }
+  div.spotifyTrackWrapper iframe {
   	position: absolute;
   	top: 0;
   	left: 0;
@@ -163,7 +177,21 @@
       top: 0;
     }
   }
-  div.spotifyWrapper {
+  div.spotifyTrackWrapper {
+    position: relative;
+    padding-bottom: 15%;
+    padding-top: 30px;
+    height: 0;
+    width: 100%;
+  }
+  div.spotifyTrackWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  div.spotifyPlaylistWrapper {
     position: relative;
     padding-bottom: 56.25%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
     padding-top: 30px;
@@ -171,7 +199,7 @@
     overflow: hidden;
     max-width: 480px;
   }
-  div.spotifyWrapper iframe {
+  div.spotifyPlaylistWrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
