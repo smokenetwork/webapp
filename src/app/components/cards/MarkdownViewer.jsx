@@ -109,7 +109,7 @@ class MarkdownViewer extends Component {
 
     // HtmlReady inserts ~~~ embed:${id} type ~~~
     for (let section of cleanText.split('~~~ embed:')) {
-      const match = section.match(/^([A-Za-z0-9\/\_\-\.]+) (youtube|vimeo|spotify) ~~~/)
+      const match = section.match(/^([A-Za-z0-9\/\_\-\.]+) (youtube|vimeo|spotify|spotifyLarge) ~~~/)
       if (match && match.length >= 2) {
         const id = match[1]
         const type = match[2]
@@ -128,7 +128,7 @@ class MarkdownViewer extends Component {
         } else if (type === 'vimeo') {
           const url = `https://player.vimeo.com/video/${id}`
           sections.push(
-            <div className="videoWrapper">
+            <div key={idx++} className="videoWrapper">
               <iframe
                 key={idx++}
                 src={url}
@@ -142,7 +142,21 @@ class MarkdownViewer extends Component {
         else if (type === 'spotify') {
           const spotifyURL = `https://open.spotify.com/embed/${id}`
           sections.push(
-            <div className="spotifyWrapper">
+            <div key={idx++} className="spotifyTrackWrapper">
+              <iframe
+                key={idx++}
+                src={spotifyURL}
+                frameBorder="0"
+                scrolling="no"
+                allowTransparency="true"
+                />
+            </div>
+          )
+        }
+        else if (type === 'spotifyLarge') {
+          const spotifyURL = `https://open.spotify.com/embed/${id}`
+          sections.push(
+            <div key={idx++} className="spotifyPlaylistWrapper">
               <iframe
                 key={idx++}
                 src={spotifyURL}
