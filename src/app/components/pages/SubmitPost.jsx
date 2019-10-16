@@ -1,44 +1,13 @@
 import React from 'react';
 import {browserHistory} from 'react-router';
 import ReplyEditor from '../elements/ReplyEditor'
-import ReviewPanel from '../elements/ReviewPanel'
 
 import tt from 'counterpart'
-
-const Tabs = React.createClass({
-  getInitialState(){
-    return {
-      selected:this.props.selected || 0
-    }
-  },
-  render(){
-    return (<div>
-      <ul>
-        {this.props.children.map((elem,index)=>{
-          let style = index == this.state.selected ? 'selected': '';
-         return <li className="button" style={{marginRight: "20px", width: "20%"}} key={index} onClick={this.handleChange.bind(this,index)}>{elem.props.title}</li>
-        })}
-      </ul>
-      <div>{this.props.children[this.state.selected]}</div>
-      </div>
-    )
-  },
-    handleChange(index){
-      this.setState({selected:index})
-    }
-})
-
-const Panel = React.createClass({
-  render(){
-    return <center><div>{this.props.children}</div></center>
-  }
-})
 
 const formId = 'submitStory';
 // const richTextEditor = process.env.BROWSER ? require('react-rte-image').default : null;
 // const SubmitReplyEditor = ReplyEditor(formId, richTextEditor);
 const SubmitReplyEditor = ReplyEditor(formId);
-const SubmitReviewPanel = ReviewPanel(formId);
 
 class SubmitPost extends React.Component {
   // static propTypes = {
@@ -57,20 +26,9 @@ class SubmitPost extends React.Component {
     const {success} = this
     return (
       <div>
-        <center>
-          <Tabs>
-                <Panel title="Strain Review">
-                  <div className="SubmitPost">
-                    <SubmitReviewPanel type="submit_story" successCallback={success}/>
-                  </div>
-                </Panel>
-                <Panel title="Blog Post" selected={1}>
-                  <div className="SubmitPost">
-                    <SubmitReplyEditor type="submit_story" successCallback={success}/>
-                  </div>
-                </Panel>
-          </Tabs>
-        </center>
+        <div className="SubmitPost">
+          <SubmitReplyEditor type="submit_story" successCallback={success}/>
+        </div>
         <div className="row">
           <div className="column post-notify">
             <p>{tt('reply_editor.content_guidelines1')}
