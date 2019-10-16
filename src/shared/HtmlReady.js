@@ -220,6 +220,7 @@ function linkifyNode(child, state) {
     if (embedYouTubeNode(child, state.links, state.images)) return
     if (embedVimeoNode(child, state.links, state.images)) return
     if (embedSpotifyNode(child, state.links, state.images)) return
+    if (embedSpotifyLargeNode(child, state.links, state.images)) return
 
     const data = XMLSerializer.serializeToString(child)
     const content = linkify(data, state.mutate, state.hashtags, state.usertags, state.images, state.links)
@@ -349,7 +350,31 @@ function embedSpotifyNode(child, links, /*images*/) {
     const url = `https://open.spotify.com/${id}`
     const v = DOMParser.parseFromString(`~~~ embed:${id} spotify ~~~`)
     child.parentNode.replaceChild(v, child)
-    if (links) links.add(url) 
+    if (links) links.add(url)
+
+    return true
+  } catch (error) {
+    console.log(error);
+    return false
+  }
+}
+
+function embedSpotifyLargeNode(child, links, /*images*/) {
+  try {
+    if (!child.data) return false
+    const data = child.data
+
+    let id
+    {
+      const m = data.match(linksRe.spotifyIdLarge)
+      id = m && m.length >= 2 ? m[1] : null
+    }
+    if (!id) return false;
+
+    const url = `https://open.spotify.com/${id}`
+    const v = DOMParser.parseFromString(`~~~ embed:${id} spotifyLarge ~~~`)
+    child.parentNode.replaceChild(v, child)
+    if (links) links.add(url)
 
     return true
   } catch (error) {
