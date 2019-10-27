@@ -32,9 +32,9 @@
   "google_analytics_id": "UA-106330268-3",
   "helmet": {
     "directives": {
-      "childSrc": "'self' www.youtube.com staticxx.facebook.com w.soundcloud.com player.vimeo.com www.theweedtube.com emb.d.tube player.twitch.tv www.twitch.tv gleam.io js.gleam.io",
+      "childSrc": "'self' www.youtube.com staticxx.facebook.com w.soundcloud.com open.spotify.com player.vimeo.com www.theweedtube.com emb.d.tube player.twitch.tv www.twitch.tv gleam.io js.gleam.io",
       "connectSrc": "'self' smoke.io rpc.smoke.io https://rpc.smoke.io wss://rpc.smoke.io pubrpc.smoke.io api.smoke.io",
-      "defaultSrc": "'self' www.youtube.com staticxx.facebook.com player.vimeo.com open.spotify",
+      "defaultSrc": "'self' www.youtube.com staticxx.facebook.com player.vimeo.com open.spotify.com",
       "fontSrc": "data: fonts.gstatic.com",
       "frameAncestors": "'none'",
       "imgSrc": "* data:",
