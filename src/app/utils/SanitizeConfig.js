@@ -17,6 +17,15 @@ const iframeWhitelist = [
       return src.replace(/\?.+$/, ''); // strip query string (yt: autoplay=1,controls=0,showinfo=0, etc)
     }
   },
+  {
+    re: /^(https?:)?\/\/open.spotify.com\/.*/i,
+    fn: (src) => {
+      if (!src) return null
+      const spotifyEmbed = src.match(/https:\/\/open\.spotify\.com\/([a-zA-Z0-9\/-]+)/)
+      if (!spotifyEmbed || spotifyEmbed.length !== 2) return null
+      return 'https://open.spotify.com/' + spotifyEmbed[1]
+    }
+  },
     {
     re: /^(https?:)?\/\/emb.d.tube\/#!\/.*\/.*/,
     fn: (src) => {

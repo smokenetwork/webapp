@@ -30,6 +30,8 @@ export default {
   youTube: youTube(),
   youTubeId: /(?:(?:youtube.com\/watch\?v=)|(?:youtu.be\/)|(?:youtube.com\/embed\/))([A-Za-z0-9\_\-]+)/i,
   vimeoId: /(?:vimeo.com\/|player.vimeo.com\/video\/)([0-9]+)/,
+  spotifyId: /(?:spotify.com\/track\/|open.spotify.com\/)(track\/[A-Za-z0-9\_\-\/]+|show\/[A-Za-z0-9\_\-\/]+)/i,
+  spotifyIdLarge: /(?:spotify.com\/artist\/|open.spotify.com\/)(album\/[A-Za-z0-9\_\-\/]+|playlist\/[A-Za-z0-9\_\-\/]+|artist\/[A-Za-z0-9\_\-\/]+)/i,
   // simpleLink: new RegExp(`<a href="(.*)">(.*)<\/a>`, 'ig'),
   ipfsPrefix: /(https?:\/\/.*)?\/ipfs/i,
 }
