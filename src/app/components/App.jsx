@@ -264,11 +264,6 @@ class App extends React.Component {
               <Icon name="rudex"/> {tt('navigation.rudex')}
             </a>
           </li>
-          <li>
-            <a href="https://wallet.escodex.com/market/ESCODEX.SMOKE_ESCODEX.BTC" target="_blank" rel="noopener noreferrer">
-              <Icon name="escodex"/> {tt('navigation.escodex')}
-            </a>
-          </li>
         </ul>
         <hr />
         <ul className="vertical menu">
