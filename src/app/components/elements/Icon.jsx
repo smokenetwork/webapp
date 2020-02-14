@@ -69,7 +69,6 @@ const icons = [
   'tifw',
   'pencil',
   'exit',
-  'escodex',
   'edit',
   'trash',
   'reddit',
