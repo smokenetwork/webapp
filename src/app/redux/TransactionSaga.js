@@ -157,11 +157,23 @@ function* broadcastOperation({
     if (!keys || keys.length === 0) {
       payload.keys = []
       // user may already be logged in, or just enterend a signing passowrd or wif
-      const signingKey = yield call(findSigningKey, {opType: type, username, password})
+      var signingKey = null;
+      const currentUser = yield select(state => state.user.get('current'));
+      const isWV = currentUser.get('whalevault');
+      if (!isWV) signingKey = yield call(findSigningKey, {opType: type, username, password})
       if (signingKey)
         payload.keys.push(signingKey)
       else {
         if (!password) {
+          if (isWV)  {
+            const account = yield select( 
+              state => state.user.getIn(['current', 'username'])
+            )
+            const scope = ['vote', 'comment', 'delete_comment', 'custom_json', 'claim_reward_balance'].includes(type) ? 'posting' : 'active';
+            payload.keys.push(account+":"+payload.operations[0][0]+":"+scope);
+            yield call(broadcastPayload, {payload});
+            return;
+	  }
           yield put(user.actions.showLogin({
             operation: {
               type,
