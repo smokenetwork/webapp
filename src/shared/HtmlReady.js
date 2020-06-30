@@ -219,6 +219,7 @@ function linkifyNode(child, state) {
     if (!child.data) return
     child = embedYouTubeNode(child, state.links, state.images);
     child = embedVimeoNode(child, state.links, state.images);
+    child = embedTwitchNode(child, state.links, state.images);
     if (embedSpotifyNode(child, state.links, state.images)) return
     if (embedSpotifyLargeNode(child, state.links, state.images)) return
 
@@ -385,6 +386,39 @@ function embedSpotifyLargeNode(child, links, /*images*/) {
     console.log(error);
     return false
   }
+}
+
+function embedTwitchNode(child, links /*images*/) {
+    try {
+        const data = child.data;
+        const twitch = twitchId(data);
+        if (!twitch) return child;
+
+        child.data = data.replace(
+            twitch.url,
+            `~~~ embed:${twitch.id} twitch ~~~`
+        );
+
+        if (links) links.add(twitch.canonical);
+    } catch (error) {
+        console.error(error);
+    }
+    return child;
+}
+
+function twitchId(data) {
+    if (!data) return null;
+    const m = data.match(linksRe.twitch);
+    if (!m || m.length < 3) return null;
+
+    return {
+        id: m[1] === `videos` ? `?video=${m[2]}` : `?channel=${m[2]}`,
+        url: m[0],
+        canonical:
+            m[1] === `videos`
+                ? `https://player.twitch.tv/?video=${m[2]}`
+                : `https://player.twitch.tv/?channel=${m[2]}`,
+    };
 }
 
 function ipfsPrefix(url) {

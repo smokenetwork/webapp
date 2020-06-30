@@ -35,6 +35,7 @@ export default {
   spotifyIdLarge: /(?:spotify.com\/artist\/|open.spotify.com\/)(album\/[A-Za-z0-9\_\-\/]+|playlist\/[A-Za-z0-9\_\-\/]+|artist\/[A-Za-z0-9\_\-\/]+)/i,
   // simpleLink: new RegExp(`<a href="(.*)">(.*)<\/a>`, 'ig'),
   ipfsPrefix: /(https?:\/\/.*)?\/ipfs/i,
+  twitch: /https?:\/\/(?:www.)?twitch.tv\/(?:(videos)\/)?([a-zA-Z0-9][\w]{3,24})/i,
 }
 
 // Original regex

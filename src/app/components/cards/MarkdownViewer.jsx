@@ -110,7 +110,7 @@ class MarkdownViewer extends Component {
 
     // HtmlReady inserts ~~~ embed:${id} type ~~~
     for (let section of cleanText.split('~~~ embed:')) {
-      const match = section.match(/^([A-Za-z0-9\/\_\-\.]+) (youtube|vimeo|spotify|spotifyLarge) ~~~/)
+      const match = section.match(/^([A-Za-z0-9\?\=\_\-]+) (youtube|vimeo|twitch|spotify|spotifyLarge) ~~~/)
       if (match && match.length >= 2) {
         const id = match[1]
         const type = match[2]
@@ -166,6 +166,20 @@ class MarkdownViewer extends Component {
                 />
             </div>
           )
+        } else if (type === 'twitch') {
+          const url = `https://player.twitch.tv/${id}`;
+          sections.push(
+              <div className="videoWrapper">
+                  <iframe
+                      key={idx++}
+                      src={url}
+                      width={w}
+                      height={h}
+                      frameBorder="0"
+                      allowFullScreen
+                  />
+              </div>
+          );
         } else {
           console.error('MarkdownViewer unknown embed type', type);
         }
