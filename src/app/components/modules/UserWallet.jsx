@@ -260,6 +260,12 @@ class UserWallet extends React.Component {
           <h4>{tt('userwallet_jsx.history')}</h4>
           <div className="secondary">
             <span>{tt('transfer_jsx.beware_of_spam_and_phishing_links')}</span>
+            &nbsp;
+            <span>
+                {tt(
+                    'transfer_jsx.transactions_make_take_a_few_minutes'
+                )}
+            </span>
           </div>
           <table>
             <tbody>
