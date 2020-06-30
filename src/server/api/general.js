@@ -4,7 +4,6 @@ import koa_body from 'koa-body';
 import models, {esc, escAttrs} from 'db/models';
 import findUser from 'db/utils/find_user';
 import config from 'config';
-import recordWebEvent from 'server/record_web_event';
 import {checkCSRF, emailRegex, getRemoteIp, rateLimitReq} from 'server/utils/misc';
 import coBody from 'co-body';
 import Mixpanel from 'mixpanel';
@@ -91,7 +90,6 @@ export default function useGeneralApi(app) {
       console.error('Error in /accounts_wait', error);
     }
     this.body = JSON.stringify({status: 'ok'});
-    recordWebEvent(this, 'api/accounts_wait', account ? account.name : 'n/a');
   });
 
   router.post('/accounts', koaBody, function* () {
@@ -223,7 +221,6 @@ export default function useGeneralApi(app) {
       } catch (e) {/* ram lock */
       }
     }
-    recordWebEvent(this, 'api/accounts', account ? account.name : 'n/a');
   });
 
   router.post('/update_email', koaBody, function* () {
@@ -248,7 +245,6 @@ export default function useGeneralApi(app) {
       this.body = JSON.stringify({error: error.message});
       this.status = 500;
     }
-    recordWebEvent(this, 'api/update_email', email);
   });
 
   router.post('/login_account', koaBody, function* () {
@@ -305,7 +301,6 @@ export default function useGeneralApi(app) {
       this.body = JSON.stringify({error: error.message});
       this.status = 500;
     }
-    recordWebEvent(this, 'api/login_account', account);
   });
 
   router.post('/logout_account', koaBody, function* () {
@@ -324,30 +319,6 @@ export default function useGeneralApi(app) {
     }
   });
 
-  router.post('/record_event', koaBody, function* () {
-    if (rateLimitReq(this, this.req)) return;
-    try {
-      const params = this.request.body;
-      const {csrf, type, value} = typeof(params) === 'string' ? JSON.parse(params) : params;
-      if (!checkCSRF(this, csrf)) return;
-      logRequest('record_event', this, {type, value});
-      const str_value = typeof value === 'string' ? value : JSON.stringify(value);
-      if (type.match(/^[A-Z]/)) {
-        if (mixpanel) {
-          mixpanel.track(type, {distinct_id: this.session.uid, Page: str_value});
-          mixpanel.people.increment(this.session.uid, type, 1);
-        }
-      } else {
-        recordWebEvent(this, type, str_value);
-      }
-      this.body = JSON.stringify({status: 'ok'});
-    } catch (error) {
-      console.error('Error in /record_event api call', error.message);
-      this.body = JSON.stringify({error: error.message});
-      this.status = 500;
-    }
-  });
-
   router.post('/csp_violation', function* () {
     if (rateLimitReq(this, this.req)) return;
     let params;
@@ -360,7 +331,6 @@ export default function useGeneralApi(app) {
       const csp_report = params['csp-report'];
       const value = `${csp_report['document-uri']} : ${csp_report['blocked-uri']}`;
       console.log('-- /csp_violation -->', value, '--', this.req.headers['user-agent']);
-      recordWebEvent(this, 'csp_violation', value);
     } else {
       console.log('-- /csp_violation [no csp-report] -->', params, '--', this.req.headers['user-agent']);
     }
