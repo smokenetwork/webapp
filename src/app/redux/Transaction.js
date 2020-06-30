@@ -63,7 +63,7 @@ export default createModule({
               if (/Voting weight is too small/.test(errorStr)) {
                   errorKey = 'Voting weight is too small';
                   errorStr =
-                      'Voting weight is too small, please accumulate more voting power or steem power.';
+                      'Voting weight is too small, please accumulate more smoke power.';
               }
               break;
             case 'comment':
