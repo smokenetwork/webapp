@@ -154,7 +154,7 @@ class PostFull extends React.Component {
     }
 
       redditShare(e) {
-
+            serverApiRecordEvent('RedditShare', this.share_params.link);
             e.preventDefault();
             const s = this.share_params;
             const q =
