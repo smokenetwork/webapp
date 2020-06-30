@@ -7,7 +7,7 @@ import transaction from '../../redux/Transaction';
 import user from '../../redux/User';
 import LoadingIndicator from '../elements/LoadingIndicator';
 import runTests, {browserTests} from '../../utils/BrowserTests'
-import {validate_account_name, validate_memo_field} from '../../utils/ChainValidation';
+import {validate_account_name_with_memo, validate_memo_field} from '../../utils/ChainValidation';
 import {countDecimals} from '../../utils/ParsersAndFormatters'
 import tt from 'counterpart';
 import {APP_NAME, LIQUID_TOKEN, VESTING_TOKEN} from '../../client_config';
@@ -69,7 +69,7 @@ class TransferForm extends Component {
       initialValues: props.initialValues,
       validation: values => ({
         to:
-          !values.to ? tt('g.required') : validate_account_name(values.to, values.memo),
+          !values.to ? tt('g.required') : validate_account_name_with_memo(values.to, values.memo),
         amount:
           !values.amount ? 'Required' :
             !/^\d+(\.\d+)?$/.test(values.amount) ? tt('transfer_jsx.amount_is_in_form') :
