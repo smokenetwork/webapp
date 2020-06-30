@@ -2,10 +2,10 @@
 # Condenser
 
 
-Condenser is the react.js web interface to the world's first and best blockchain-based social media platform, smoke.io.  It uses [STEEM](https://github.com/steemit/steem), a blockchain powered by Graphene 2.0 technology to store JSON-based content for a plethora of web applications.   
+Condenser is the react.js web interface to the world's first and best blockchain-based social media platform, smoke.io.  It uses [SMOKE](https://github.com/steemit/steem), a blockchain powered by Graphene 2.0 technology to store JSON-based content for a plethora of web applications.   
 
 ## Why would I want to use Condenser (smoke.io front-end)?
-* Learning how to build blockchain-based web applications using STEEM as a content storage mechanism in react.js
+* Learning how to build blockchain-based web applications using SMOKE as a content storage mechanism in react.js
 * Reviewing the inner workings of the smoke.io social media platform
 * Assisting with software development for smoke.io
 
@@ -49,14 +49,7 @@ mkdir tmp
 
 Install at least Node v7.5 if you don't already have it. We recommend using `nvm` to do this as it's both the simplest way to install and manage installed version(s) of node. If you need `nvm`, you can get it at [https://github.com/creationix/nvm](https://github.com/creationix/nvm).
 
-Condenser is known to successfully build using node 7.5, npm 4.1.2, and yarn 1.1.0.
-
-Using nvm, you would install like this:
-```bash
-nvm install v7.5
-```
-
-We use the yarn package manager instead of the default `npm`. There are multiple reasons for this, one being that we have `steem-js` built from source pulling the github repo as part of the build process and yarn supports this. This way the library that handles keys can be loaded by commit hash instead of a version name and cryptographically verified to be exactly what we expect it to be. Yarn can be installed with `npm`, but afterwards you will not need to use `npm` further.
+We use the yarn package manager instead of the default `npm`. There are multiple reasons for this, one being that we have `smoke-js` built from source pulling the github repo as part of the build process and yarn supports this. This way the library that handles keys can be loaded by commit hash instead of a version name and cryptographically verified to be exactly what we expect it to be. Yarn can be installed with `npm`, but afterwards you will not need to use `npm` further.
 
 ```bash
 npm install -g yarn
@@ -80,7 +73,7 @@ yarn run start
 
 It will take quite a bit longer to start in this mode (~60s) as it needs to build and start the webpack-dev-server.
 
-By default you will be connected to smoke.io's public steem node at `wss://steemd.steeemit.com`. This is actually on the real blockchain and you would use your regular account name and credentials to login - there is not an official separate testnet at this time. If you intend to run a full-fledged site relying on your own, we recommend looking into running a copy of `steemd` locally instead [https://github.com/steemit/steem](https://github.com/steemit/steem).
+By default you will be connected to smoke.io's public steem node. This is actually on the real blockchain and you would use your regular account name and credentials to login - there is not an official separate testnet at this time. If you intend to run a full-fledged site relying on your own, we recommend looking into running a copy of `smoked` locally instead [https://github.com/smokenetwork/smoke](https://github.com/smokenetwork/smoke).
 
 #### Configuration
 
@@ -113,7 +106,7 @@ Once set up, you can set the mysql server configuration option for condenser usi
 Example:
 
 ```bash
-export SDC_DATABASE_URL="mysql://root:password@127.0.0.1/steemit_dev"
+export SDC_DATABASE_URL="mysql://root:password@127.0.0.1/smoke_dev"
 ```
 
 Here are instructions for setting up a mysql server and running the necessary migrations by operating system:
@@ -146,10 +139,10 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 FLUSH PRIVILEGES;
 ```
 
-Now launch mysql client and create steemit_dev database:
+Now launch mysql client and create smoke_dev database:
 ```bash
 mysql -u root
-> create database steemit_dev;
+> create database smoke_dev;
 > quit
 ```
 

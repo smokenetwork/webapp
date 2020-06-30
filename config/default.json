@@ -78,9 +78,9 @@
     }
   },
   "server_session_secret": "exiKdyF+IwRIXJDmtGIl4vWUz4i3eVSISpfZoeYc0s4=",
-  "session_cookie_key": "stm-dev",
-  "session_key": "steemses",
-  "site_domain": "steemitdev.com",
+  "session_cookie_key": "smk-dev",
+  "session_key": "smokeses",
+  "site_domain": "smoke.io",
   "tarantool": {
     "host": "localhost",
     "password": "",
