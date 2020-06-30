@@ -47,7 +47,6 @@ const cacheOpts = {maxAge: 86400000, gzip: true};
 app.use(
   favicon(path.join(__dirname, '../app/assets/images/favicons/favicon.ico'))
 );
-app.use(isBot());
 app.use(
   mount(
     '/favicons',
@@ -83,6 +82,8 @@ if (env === 'development') {
     )
   );
 }
+
+app.use(isBot());
 
 // set number of processes equal to number of cores
 // (unless passed in as an env var)
