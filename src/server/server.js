@@ -42,7 +42,7 @@ const app = new Koa();
 app.name = 'Smoke app';
 const env = process.env.NODE_ENV || 'development';
 // cache of a thousand days
-const cacheOpts = {maxAge: 86400000, gzip: true};
+const cacheOpts = {maxAge: 86400000, gzip: true, buffer: true };
 
 app.use(
   favicon(path.join(__dirname, '../app/assets/images/favicons/favicon.ico'))
