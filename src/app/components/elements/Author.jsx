@@ -1,5 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM, {findDOMNode} from 'react-dom';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 import Icon from './Icon';
@@ -10,7 +11,7 @@ import normalizeProfile from '../../utils/NormalizeProfile';
 import Overlay from 'react-overlays/lib/Overlay';
 import {connect} from 'react-redux'
 
-const {string, bool, number} = React.PropTypes;
+const {string, bool, number} = PropTypes;
 
 const closers = [];
 

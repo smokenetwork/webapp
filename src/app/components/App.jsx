@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import AppPropTypes from '../utils/AppPropTypes';
@@ -314,12 +315,12 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  error: React.PropTypes.string,
+  error: PropTypes.string,
   children: AppPropTypes.Children,
-  location: React.PropTypes.object,
-  loginUser: React.PropTypes.func.isRequired,
-  depositSmoke: React.PropTypes.func.isRequired,
-  username: React.PropTypes.string,
+  location: PropTypes.object,
+  loginUser: PropTypes.func.isRequired,
+  depositSmoke: PropTypes.func.isRequired,
+  username: PropTypes.string,
 };
 
 export default connect(
@@ -346,5 +347,3 @@ export default connect(
     showEligible: () => dispatch(user.actions.showEligible()),
   })
 )(App);
-
-

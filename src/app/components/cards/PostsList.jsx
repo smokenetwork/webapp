@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import PostSummary from './PostSummary';
 import Post from '../pages/Post';
 import LoadingIndicator from '../elements/LoadingIndicator';

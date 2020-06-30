@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link, browserHistory} from 'react-router';
 import TimeAgoWrapper from '../elements/TimeAgoWrapper';
 import Icon from '../elements/Icon';
@@ -35,13 +36,13 @@ function navigate(e, onClick, post, url) {
 
 class PostSummary extends React.Component {
   static propTypes = {
-    post: React.PropTypes.string.isRequired,
-    pending_payout: React.PropTypes.string.isRequired,
-    total_payout: React.PropTypes.string.isRequired,
-    content: React.PropTypes.object.isRequired,
-    thumbSize: React.PropTypes.string,
-    nsfwPref: React.PropTypes.string,
-    onClick: React.PropTypes.func
+    post: PropTypes.string.isRequired,
+    pending_payout: PropTypes.string.isRequired,
+    total_payout: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired,
+    thumbSize: PropTypes.string,
+    nsfwPref: PropTypes.string,
+    onClick: PropTypes.func
   };
 
   constructor() {

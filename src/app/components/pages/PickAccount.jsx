@@ -1,6 +1,7 @@
 /* eslint react/prop-types: 0 */
 /*global $STM_csrf, $STM_Config */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Progress from 'react-foundation-components/lib/global/progress-bar';
 import {Link} from 'react-router';
@@ -13,8 +14,8 @@ import runTests from '../../utils/BrowserTests';
 class PickAccount extends React.Component {
 
   static propTypes = {
-    loginUser: React.PropTypes.func.isRequired,
-    serverBusy: React.PropTypes.bool
+    loginUser: PropTypes.func.isRequired,
+    serverBusy: PropTypes.bool
   };
 
   constructor(props) {

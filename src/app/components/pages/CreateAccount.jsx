@@ -1,6 +1,7 @@
 /* eslint react/prop-types: 0 */
 /*global $STM_csrf, $STM_Config */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import LoadingIndicator from '../elements/LoadingIndicator';
 import user from '../../redux/User';
@@ -15,8 +16,8 @@ import {Link} from 'react-router';
 class CreateAccount extends React.Component {
 
   static propTypes = {
-    loginUser: React.PropTypes.func.isRequired,
-    serverBusy: React.PropTypes.bool
+    loginUser: PropTypes.func.isRequired,
+    serverBusy: PropTypes.bool
   };
 
   constructor(props) {

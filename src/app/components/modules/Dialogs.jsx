@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CloseButton from 'react-foundation-components/lib/global/close-button';
 import Reveal from 'react-foundation-components/lib/global/reveal';
@@ -14,8 +15,8 @@ import ExplorePost from './ExplorePost';
 
 class Dialogs extends React.Component {
   static propTypes = {
-    active_dialogs: React.PropTypes.object,
-    hide: React.PropTypes.func.isRequired,
+    active_dialogs: PropTypes.object,
+    hide: PropTypes.func.isRequired,
   }
 
   constructor() {

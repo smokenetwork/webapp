@@ -1,5 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM, {findDOMNode} from 'react-dom';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 import Icon from './Icon';
@@ -14,7 +15,7 @@ import {connect} from 'react-redux'
 
 import PostsGrid from '../cards/PostsGrid';
 
-const {string, bool, number} = React.PropTypes;
+const {string, bool, number} = PropTypes;
 
 const closers = [];
 

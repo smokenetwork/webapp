@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {recordPageView} from '../../utils/ServerApiClient';
 import Icon from './Icon';
 import tt from 'counterpart';
@@ -6,7 +7,7 @@ import tt from 'counterpart';
 export default class PageViewsCounter extends React.Component {
 
   static propTypes = {
-    hidden: React.PropTypes.bool
+    hidden: PropTypes.bool
   };
 
   static defaultProps = {

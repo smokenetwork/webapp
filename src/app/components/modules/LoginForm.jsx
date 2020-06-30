@@ -1,5 +1,6 @@
 /* eslint react/prop-types: 0 */
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import transaction from '../../redux/Transaction'
 import g from '../../redux/GlobalReducer'
 import user from '../../redux/User'

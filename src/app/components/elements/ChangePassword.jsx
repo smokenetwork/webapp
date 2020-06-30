@@ -1,5 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
+import PropTypes from 'prop-types';
 import transaction from '../../redux/Transaction'
 import LoadingIndicator from './LoadingIndicator'
 import {validate_account_name} from '../../utils/ChainValidation'
@@ -10,7 +11,7 @@ import {key_utils, PrivateKey, PublicKey} from '@smokenetwork/smoke-js/lib/auth/
 import {api} from '@smokenetwork/smoke-js';
 import {reduxForm} from 'redux-form' // @deprecated, instead use: app/utils/ReactForm.js
 
-const {string, oneOf} = React.PropTypes
+const {string, oneOf} = PropTypes
 
 class ChangePassword extends React.Component {
   static propTypes = {

@@ -1,5 +1,6 @@
 import tt from 'counterpart';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import user from '../../redux/User';
@@ -16,11 +17,11 @@ import {DEFAULT_POST_IMAGE_SMALL} from './PostConstants';
 
 class PostGridItem extends React.Component {
   static propTypes = {
-    post: React.PropTypes.string.isRequired,
-    pendingPayout: React.PropTypes.string.isRequired,
-    totalPayout: React.PropTypes.string.isRequired,
-    content: React.PropTypes.object.isRequired,
-    thumbSize: React.PropTypes.string,
+    post: PropTypes.string.isRequired,
+    pendingPayout: PropTypes.string.isRequired,
+    totalPayout: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired,
+    thumbSize: PropTypes.string,
   };
 
   shouldComponentUpdate(props) {
@@ -82,7 +83,7 @@ class PostGridItem extends React.Component {
                             </Link>
                         </span>
           </div>
-          
+
         </div>
       </div>
     );

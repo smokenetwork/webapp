@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import links from '../../utils/Links'
 import {browserHistory} from 'react-router'
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
@@ -6,7 +7,7 @@ import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 export default class Link extends React.Component {
   static propTypes = {
     // HTML properties
-    href: React.PropTypes.string,
+    href: PropTypes.string,
   }
 
   constructor(props) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import Icon from './Icon';
@@ -8,9 +9,9 @@ import tt from 'counterpart';
 class Comments extends React.Component {
   static propTypes = {
     // HTML properties
-    post: React.PropTypes.string.isRequired,
-    commentsLink: React.PropTypes.string.isRequired,
-    comments: React.PropTypes.number,
+    post: PropTypes.string.isRequired,
+    commentsLink: PropTypes.string.isRequired,
+    comments: PropTypes.number,
   };
 
   constructor(props) {

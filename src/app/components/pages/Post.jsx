@@ -1,6 +1,7 @@
 import tt from 'counterpart';
 import {Set} from 'immutable'
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {INVEST_TOKEN_UPPERCASE} from '../../client_config';
 import {serverApiRecordEvent} from '../../utils/ServerApiClient';
@@ -13,11 +14,11 @@ import {localizedCurrency} from '../elements/LocalizedCurrency';
 class Post extends React.Component {
 
   static propTypes = {
-    content: React.PropTypes.object.isRequired,
-    post: React.PropTypes.string,
-    routeParams: React.PropTypes.object,
-    location: React.PropTypes.object,
-    current_user: React.PropTypes.object,
+    content: PropTypes.object.isRequired,
+    post: PropTypes.string,
+    routeParams: PropTypes.object,
+    location: PropTypes.object,
+    current_user: PropTypes.object,
   };
 
   constructor() {

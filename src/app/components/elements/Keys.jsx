@@ -1,5 +1,6 @@
 /* eslint react/prop-types: 0 */
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {List, Map} from 'immutable'
 import {connect} from 'react-redux'
 import g from '../../redux/GlobalReducer'
