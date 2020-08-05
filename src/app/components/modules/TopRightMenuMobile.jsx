@@ -6,7 +6,6 @@ import Icon from '../elements/Icon';
 import user from '../../redux/User';
 import Userpic from '../elements/Userpic';
 import LoadingIndicator from '../elements/LoadingIndicator';
-import NotifiCounter from '../elements/NotifiCounter';
 import tt from 'counterpart';
 import DropdownMobileMenu from '../elements/DropdownMobileMenu';
 

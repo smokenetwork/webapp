@@ -6,7 +6,6 @@ import Icon from '../elements/Icon';
 import user from '../../redux/User';
 import Userpic from '../elements/Userpic';
 import LoadingIndicator from '../elements/LoadingIndicator';
-import NotifiCounter from '../elements/NotifiCounter';
 import tt from 'counterpart';
 import {Link} from 'react-router';
 
@@ -57,7 +56,6 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
           <Link to={accountLink} title={username}>
             <Userpic account={username}/>
           </Link>
-          <div className="TopRightMenu__notificounter"><NotifiCounter fields="total"/></div>
         </li>}
         {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
           <a href="#" onClick={toggleOffCanvasMenu}>

@@ -21,8 +21,6 @@ import {repLog10} from '../../utils/ParsersAndFormatters.js';
 import Tooltip from '../elements/Tooltip';
 import {LinkWithDropdown} from 'react-foundation-components/lib/global/dropdown';
 import VerticalMenu from '../elements/VerticalMenu';
-import MarkNotificationRead from '../elements/MarkNotificationRead';
-import NotifiCounter from '../elements/NotifiCounter';
 import DateJoinWrapper from '../elements/DateJoinWrapper';
 import tt from 'counterpart';
 import WalletSubMenu from '../elements/WalletSubMenu';
@@ -189,7 +187,6 @@ export default class UserProfile extends React.Component {
             showPowerdown={this.props.showPowerdown}
             current_user={current_user}
             withdrawVesting={this.props.withdrawVesting}/>
-          {isMyAccount && <div><MarkNotificationRead fields="send,receive" account={account.name}/></div>}
         </div>
       );
     }
@@ -214,7 +211,6 @@ export default class UserProfile extends React.Component {
             title={tt('user_profile.followers')}
             account={account}
             users={followers.get('blog_result')}/>
-          {isMyAccount && <MarkNotificationRead fields="follow" account={account.name}/>}
         </div>)
       }
     }
@@ -294,7 +290,6 @@ export default class UserProfile extends React.Component {
                 loadMore={this.loadMore}
                 showSpam={false}
               />
-              {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name}/>}
             </div>
           );
         }
@@ -312,7 +307,6 @@ export default class UserProfile extends React.Component {
         </div>
         <br/>
         <UserKeys account={accountImm}/>
-        {isMyAccount && <MarkNotificationRead fields="account_update" account={account.name}/>}
       </div>;
     } else if (section === 'password') {
       walletClass = 'active'
@@ -373,7 +367,7 @@ export default class UserProfile extends React.Component {
           <li><Link to={`/@${accountname}`} activeClassName="active">{tt('g.blog')}</Link></li>
           <li><Link to={`/@${accountname}/comments`} activeClassName="active">{tt('g.comments')}</Link></li>
           <li><Link to={`/@${accountname}/recent-replies`} activeClassName="active">
-            {tt('g.replies')} {isMyAccount && <NotifiCounter fields="comment_reply"/>}
+            {tt('g.replies')}
           </Link></li>
           {/*<li><Link to={`/@${accountname}/feed`} activeClassName="active">Feed</Link></li>*/}
           <li>
@@ -401,7 +395,7 @@ export default class UserProfile extends React.Component {
               browserHistory.push(e.target.pathname);
               return false;
             }}>
-              {tt('g.wallet')} {isMyAccount && <NotifiCounter fields="send,receive,account_update"/>}
+              {tt('g.wallet')}
             </a>
           </li>
           {isMyAccount && <li>
@@ -440,11 +434,9 @@ export default class UserProfile extends React.Component {
               <div className="UserProfile__stats">
               <span><Link
                 to={`/@${accountname}`}>{tt('user_profile.post_count', {count: account.post_count || 0})}</Link></span>
-                              <span>
-                                  <Link
-                                    to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
-                                {isMyAccount && <NotifiCounter fields="follow"/>}
-                              </span>
+                  <span>
+                      <Link to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
+                  </span>
 
                 <span><Link
                   to={`/@${accountname}/followed`}>{tt('user_profile.followed_count', {count: followingCount})}</Link></span>

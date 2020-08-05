@@ -94,7 +94,7 @@ export function setUserPreferences(payload) {
   return fetch('/api/v1/setUserPreferences', request);
 }
 
-if (process.env.BROWSER) {
-  window.getNotifications = getNotifications;
-  window.markNotificationRead = markNotificationRead;
-}
+//if (process.env.BROWSER) {
+  //window.getNotifications = getNotifications;
+  //window.markNotificationRead = markNotificationRead;
+//}
