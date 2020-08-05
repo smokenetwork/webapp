@@ -31,6 +31,7 @@ import Callout from '../elements/Callout';
 import normalizeProfile from '../../utils/NormalizeProfile';
 import userIllegalContent from '../../utils/userIllegalContent';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
+import SanitizedLink from 'app/components/elements/SanitizedLink';
 
 export default class UserProfile extends React.Component {
   constructor() {
@@ -181,7 +182,7 @@ export default class UserProfile extends React.Component {
               <WalletSubMenu account_name={account.name}/>
             </div>
           </div>
-          
+
           <UserWallet
             account={accountImm}
             showTransfer={this.props.showTransfer}
@@ -451,7 +452,7 @@ export default class UserProfile extends React.Component {
               <div>
                 {about && <p className="UserProfile__bio">{about}</p>}
                 <p className="UserProfile__info">
-                  {website && <span><a href={website}>{website_label}</a></span>}
+                  {website && <span><SanitizedLink url={website} text={website_label} /></span>}
                 </p>
               </div>
               <div className="UserProfile__buttons_mobile show-for-small-only">

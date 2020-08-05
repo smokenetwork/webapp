@@ -624,5 +624,9 @@
     "ownership_changed_on": "Ownership Changed On ",
     "deadline_for_recovery_is": "Deadline for recovery is",
     "i_understand_dont_show_again": "I understand, don't show me again"
+  },
+  "sanitizedlink_jsx": {
+    "phishylink_caution": "Link hidden; potential phishing attempt",
+    "phishylink_reveal": "show link"
   }
 }
