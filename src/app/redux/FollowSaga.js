@@ -1,4 +1,4 @@
-import {fromJS, Map, Set} from 'immutable'
+import {fromJS, Map, Set, OrderedSet} from 'immutable'
 import {call, put, select} from 'redux-saga/effects';
 import {api} from '@smokenetwork/smoke-js';
 
@@ -70,7 +70,7 @@ function* loadFollowsLoop(method, account, type, start = '', limit = 100) {
           const accountName = lastAccountName = value.get(accountNameKey)
           whatList.forEach((what) => {
             //currently this is always true: what === type
-            m.update(what, Set(), s => s.add(accountName))
+            m.update(what, OrderedSet(), s => s.add(accountName))
           })
         })
         return m.asImmutable()
@@ -90,12 +90,12 @@ function* loadFollowsLoop(method, account, type, start = '', limit = 100) {
         updater: (m) => {
           m = m.asMutable()
 
-          const result = m.getIn(['follow_inprogress', method, account, type], Set())
+          const result = m.getIn(['follow_inprogress', method, account, type], OrderedSet())
           m.deleteIn(['follow_inprogress', method, account, type])
           m.updateIn(['follow', method, account], Map(), mm => mm.merge({
             // Count may be set separately without loading the full xxx_result set
             [type + '_count']: result.size,
-            [type + '_result']: result.sort().reverse(),
+            [type + '_result']: result.reverse(),
             [type + '_loading']: false,
           }))
           return m.asImmutable()
