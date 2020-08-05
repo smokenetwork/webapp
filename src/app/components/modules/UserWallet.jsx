@@ -69,7 +69,12 @@ class UserWallet extends React.Component {
     const {account, current_user} = this.props;
     const gprops = this.props.gprops.toJS();
 
+    // do not render if account is not loaded or available
     if (!account) return null;
+
+    // do not render if state appears to contain only lite account info
+    if (!account.has('vesting_shares')) return null;
+
     let vesting_steem = vestingSmoke(account.toJS(), gprops);
     let delegated_steem = delegatedSmoke(account.toJS(), gprops);
 
