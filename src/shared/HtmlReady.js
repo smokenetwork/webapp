@@ -140,9 +140,17 @@ function link(state, child) {
         child.setAttribute('href', "https://" + url)
       }
 
-      // Unlink potential phishing attempts
-      if (child.textContent.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/)
-        && !url.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/)) {
+      // Unlink potential steemit, smoke and hive phishing attempts
+      if ((
+        child.textContent.match(/(www\.)?steemit\.com/i) &&
+        !url.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/i)
+      ) || (
+        child.textContent.match(/(www\.)?smoke\.io/i) &&
+        !url.match(/https?:\/\/(.*@)?(www\.)?smoke\.io/i)
+      ) || (
+        child.textContent.match(/(www\.)?hive\.blog/i) &&
+        !url.match(/https?:\/\/(.*@)?(www\.)?hive\.blog/i)
+      )) {
         const phishyDiv = child.ownerDocument.createElement('div');
         phishyDiv.textContent = `${child.textContent} / ${url}`;
         phishyDiv.setAttribute('title', getPhishingWarningMessage());

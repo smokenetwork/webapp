@@ -59,8 +59,22 @@ describe('htmlready', () => {
   it('should not allow links where the text portion contains smoke.io but the link does not', () => {
     // There isn't an easy way to mock counterpart, even with proxyquire, so we just test for the missing translation message -- ugly but ok
 
-    const dirty = '<xml xmlns="http://www.w3.org/1999/xhtml"><a href="https://steamit.com/signup" xmlns="http://www.w3.org/1999/xhtml">https://smoke.io/signup</a></xml>';
-    const cleansed = '<xml xmlns="http://www.w3.org/1999/xhtml"><div title="missing translation: en.g.phishy_message" class="phishy">https://smoke.io/signup / https://steamit.com/signup</div></xml>';
+    const steemCase =
+        '<xml xmlns="http://www.w3.org/1999/xhtml"><a href="https://steamit.com/signup" xmlns="http://www.w3.org/1999/xhtml">https://Steemit.com/signup</a></xml>';
+    const steemCaseCleaned =
+        '<xml xmlns="http://www.w3.org/1999/xhtml"><div title="missing translation: en.g.phishy_message" class="phishy">https://Steemit.com/signup / https://steamit.com/signup</div></xml>';
+    const sccRes = HtmlReady(steemCase).html;
+    expect(sccRes).toEqual(steemCaseCleaned);
+
+    const hiveCase =
+      '<xml xmlns="http://www.w3.org/1999/xhtml"><a href="https://h1ve.blog/signup" xmlns="http://www.w3.org/1999/xhtml">https://hive.blog/signup</a></xml>';
+    const hiveCaseCleaned =
+        '<xml xmlns="http://www.w3.org/1999/xhtml"><div title="missing translation: en.g.phishy_message" class="phishy">https://hive.blog/signup / https://h1ve.blog/signup</div></xml>';
+    const hiveCased = HtmlReady(hiveCase).html;
+    expect(hiveCased).toEqual(hiveCaseCleaned);
+
+    const dirty = '<xml xmlns="http://www.w3.org/1999/xhtml"><a href="https://sm0ke.io/signup" xmlns="http://www.w3.org/1999/xhtml">https://smoke.io/signup</a></xml>';
+    const cleansed = '<xml xmlns="http://www.w3.org/1999/xhtml"><div title="missing translation: en.g.phishy_message" class="phishy">https://smoke.io/signup / https://sm0ke.io/signup</div></xml>';
     const res = HtmlReady(dirty).html;
     expect(res).to.equal(cleansed);
 
