@@ -110,7 +110,7 @@ class MarkdownViewer extends Component {
 
     // HtmlReady inserts ~~~ embed:${id} type ~~~
     for (let section of cleanText.split('~~~ embed:')) {
-      const match = section.match(/^([A-Za-z0-9\?\=\_\-\/]+) (youtube|vimeo|twitch|spotify|spotifyLarge|dtube) ~~~/)
+      const match = section.match(/^([A-Za-z0-9\?\=\_\-\/\.]+) (youtube|vimeo|twitch|spotify|spotifyLarge|dtube) ~~~/)
       if (match && match.length >= 2) {
         const id = match[1]
         const type = match[2]
