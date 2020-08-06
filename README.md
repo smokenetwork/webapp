@@ -181,6 +181,12 @@ Test the interactive console:
 ```bash
 user@example:~$ tarantool
 ```
+#### Debugging SSR code
+
+`yarn debug` will build a development version of the codebase and then start the
+local server with `--inspect-brk` so that you can connect a debugging client.
+You can use Chromium to connect by finding the remote client at
+`chrome://inspect/#devices`.
 
 #### Style Guides For Submitting Pull Requests
 
