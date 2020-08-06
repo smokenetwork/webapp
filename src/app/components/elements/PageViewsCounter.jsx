@@ -1,18 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {recordPageView} from '../../utils/ServerApiClient';
-import Icon from './Icon';
-import tt from 'counterpart';
 
 export default class PageViewsCounter extends React.Component {
-
-  static propTypes = {
-    hidden: PropTypes.bool
-  };
-
-  static defaultProps = {
-    hidden: true
-  };
 
   constructor(props) {
     super(props);
@@ -38,7 +27,6 @@ export default class PageViewsCounter extends React.Component {
   }
 
   render() {
-    // Due to a MySQL mystery, no more page view reads; only writes.
     return null;
   }
 }

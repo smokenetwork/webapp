@@ -17,7 +17,6 @@ import Author from '../elements/Author';
 import AuthorFeatured from '../elements/AuthorFeatured';
 import {parsePayoutAmount, repLog10} from '../../utils/ParsersAndFormatters';
 import DMCAList from '../../utils/DMCAList'
-import PageViewsCounter from '../elements/PageViewsCounter';
 import ShareMenu from '../elements/ShareMenu';
 import Userpic from '../elements/Userpic';
 import {APP_DOMAIN, APP_NAME} from '../../client_config';
@@ -401,11 +400,6 @@ class PostFull extends React.Component {
                     <Icon name="chatboxes" className="space-right"/>{content.children}
                   </Link>
                 </span>
-            <span className="PostFull__views">
-                  <PageViewsCounter hidden={false} sinceDate={isPreViewCount ? 'Dec 2016' : null}/>
-                </span>
-
-
           </div>
         </div>
         <div className="PostFull__footerMobile">
