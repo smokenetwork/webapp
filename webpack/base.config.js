@@ -1,9 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-
-//import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import writeStats from './utils/write-stats';
 
 const Webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin');
