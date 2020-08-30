@@ -52,6 +52,10 @@ export function sortComments(cont, comments, sort_order) {
     return a.get('active_votes').filter(vote => vote.get('percent') > 0).size
   }
 
+  function authorReputation(a) {
+    return a.get('author_reputation');
+  }
+
   /** sorts replies by upvotes, age, or payout */
   const sort_orders = {
     votes: (a, b) => {
@@ -86,7 +90,12 @@ export function sortComments(cont, comments, sort_order) {
       }
       // If SBD payouts were equal, fall back to rshares sorting
       return netRshares(bcontent).compare(netRshares(acontent))
-    }
+    },
+    author_reputation: (a, b) => {
+        return (
+            authorReputation(cont.get(b)) - authorReputation(cont.get(a))
+        );
+    },
   }
   comments.sort(sort_orders[sort_order]);
 }
@@ -96,7 +105,12 @@ class CommentImpl extends React.Component {
     // html props
     cont: PropTypes.object.isRequired,
     content: PropTypes.string.isRequired,
-    sort_order: PropTypes.oneOf(['votes', 'new', 'trending']).isRequired,
+    sort_order: PropTypes.oneOf([
+      'votes',
+      'new',
+      'trending',
+      'author_reputation'
+    ]).isRequired,
     root: PropTypes.bool,
     showNegativeComments: PropTypes.bool,
     onHide: PropTypes.func,

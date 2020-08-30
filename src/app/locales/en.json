@@ -374,7 +374,13 @@
   "post_jsx": {
     "now_showing_comments_with_low_ratings": "Now showing comments with low ratings",
     "sort_order": "Sort Order",
-    "comments_were_hidden_due_to_low_ratings": "Comments were hidden due to low ratings"
+    "comments_were_hidden_due_to_low_ratings": "Comments were hidden due to low ratings",
+    "comment_sort_order": {
+      "trending": "Trending",
+      "votes": "Votes",
+      "age": "Age",
+      "reputation": "Reputation"
+    }
   },
   "voting_jsx": {
     "flagging_post_can_remove_rewards_the_flag_should_be_used_for_the_following": "Flagging a post can remove rewards and make this material less visible. Some common reasons to flag",
