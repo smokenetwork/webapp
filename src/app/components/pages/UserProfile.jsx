@@ -29,7 +29,7 @@ import Callout from '../elements/Callout';
 import normalizeProfile from '../../utils/NormalizeProfile';
 import userIllegalContent from '../../utils/userIllegalContent';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
-import SanitizedLink from 'app/components/elements/SanitizedLink';
+import SanitizedLink from '../elements/SanitizedLink';
 
 export default class UserProfile extends React.Component {
   constructor() {

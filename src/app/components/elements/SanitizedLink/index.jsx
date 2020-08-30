@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import tt from 'counterpart';
 import classnames from 'classnames';
-import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
-import { looksPhishy } from 'app/utils/Phishing';
+import shouldComponentUpdate from '../../../utils/shouldComponentUpdate';
+import { looksPhishy } from '../../../utils/Phishing';
 
 export default class SanitizedLink extends React.Component {
     static propTypes = {

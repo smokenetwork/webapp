@@ -80,7 +80,10 @@ const domains = [
     'whaleboostup.ml',
     '5moke.io',
     'sm0ke.io',
-    '5m0ke.io'
+    '5m0ke.io',
+    'swoke.io',
+    'smoek.io',
+    'smokee.io'
 ];
 
 /**
