@@ -442,9 +442,9 @@ export default class UserProfile extends React.Component {
                   to={`/@${accountname}/followed`}>{tt('user_profile.followed_count', {count: followingCount})}</Link></span>
               </div>
               <div>
-                {about && <p className="UserProfile__bio">{about}</p>}
+                {about && rep > 20 && <p className="UserProfile__bio">{about}</p>}
                 <p className="UserProfile__info">
-                  {website && <span><SanitizedLink url={website} text={website_label} /></span>}
+                  {website && rep > 20 && <span><SanitizedLink url={website} text={website_label} /></span>}
                 </p>
               </div>
               <div className="UserProfile__buttons_mobile show-for-small-only">

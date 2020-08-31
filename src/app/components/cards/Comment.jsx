@@ -281,7 +281,7 @@ class CommentImpl extends React.Component {
     const comment_link = `/${comment.category}/@${rootComment}#@${comment.author}/${comment.permlink}`
     const ignore = ignore_list && ignore_list.has(comment.author)
 
-    if (!showNegativeComments && (hide || ignore)) {
+    if (!showNegativeComments && (hide || ignore || authorRepLog10 < 10)) {
       return null;
     }
 
@@ -295,7 +295,10 @@ class CommentImpl extends React.Component {
     // const steem_supply = this.props.global.getIn(['props','current_supply']);
 
     // hide images if author is in blacklist
-    const hideImages = ImageUserBlockList.includes(author)
+    let hideImages = ImageUserBlockList.includes(author)
+    if (authorRepLog10 < 20) {
+      hideImages = true;
+    }
 
     const showDeleteOption = username === author && allowDelete
     const showEditOption = username === author
@@ -352,6 +355,7 @@ class CommentImpl extends React.Component {
     const commentClasses = ['hentry']
     commentClasses.push('Comment')
     commentClasses.push(this.props.root ? 'root' : 'reply')
+
     if (hide_body || this.state.collapsed) commentClasses.push('collapsed');
 
     let innerCommentClass = ignore || gray ? 'downvoted' : ''

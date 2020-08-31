@@ -230,8 +230,13 @@ class PostFull extends React.Component {
 
     const bShowLoading = (!bIllegalContentUser && !bDMCAStop && content.body.length < content.body_length)
 
+    const authorRepLog10 = repLog10(content.author_reputation)
+
     // hide images if user is on blacklist
-    const hideImages = ImageUserBlockList.includes(content.author)
+    let hideImages = ImageUserBlockList.includes(content.author)
+    if (authorRepLog10 < 20) {
+      hideImages = true;
+    }
 
     const replyParams = {author, permlink, parent_author, parent_permlink, category, title, body}
 
@@ -334,7 +339,6 @@ class PostFull extends React.Component {
     const showEditOption = username === author
     const showDeleteOption = username === author && content.stats.allowDelete
 
-    const authorRepLog10 = repLog10(content.author_reputation)
     const isPreViewCount = Date.parse(post_content.get('created')) < 1480723200000 // check if post was created before view-count tracking began (2016-12-03)
     let contentBody
 
