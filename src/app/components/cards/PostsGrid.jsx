@@ -196,6 +196,8 @@ class PostsGrid extends React.Component {
       const rows = [...Array(Math.ceil(items.length / itemsPerRow))];
       const itemRows = rows.map((row, i) => items.slice(i * itemsPerRow, (i * itemsPerRow) + itemsPerRow));
 
+      const {category} = this.props;
+
       const gridContent = itemRows.map((row) => {
         return (
           <div className="row" key={shortid.generate()}>
@@ -205,6 +207,7 @@ class PostsGrid extends React.Component {
                   <PostGridItem
                     account={account}
                     post={item.item}
+                    category={this.props.pathname}
                     thumbSize={thumbSize}
                     ignore={item.ignore}
                     onClick={this.onPostClick}

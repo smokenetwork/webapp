@@ -21,7 +21,7 @@ class Userpic extends Component {
   shouldComponentUpdate = shouldComponentUpdate(this, 'Userpic');
 
   render() {
-    const {json_metadata, account} = this.props;
+    const {json_metadata, account, rep, payout} = this.props;
 
     if ((typeof(account) === "undefined") || (account === null) || (account === '')) {
       return null;
@@ -32,11 +32,17 @@ class Userpic extends Component {
     // try to extract image url from users metaData
     try {
       const metadata = JSON.parse(json_metadata);
-
-      if (metadata.profile.profile_image) {
+      if (rep >= 25 && metadata.profile.profile_image) {
         if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
           // hack to get profile images to display. This doesn't work if there is no metadata
           profileImageUrl = `${imageProxy()}64x64/${metadata.profile.profile_image}`;
+        }
+      } else {
+        if (payout > 25 && metadata.profile.profile_image) {
+          if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
+            // hack to get profile images to display. This doesn't work if there is no metadata
+            profileImageUrl = `${imageProxy()}64x64/${metadata.profile.profile_image}`;
+          }
         }
       }
     } catch (error) {
@@ -49,7 +55,9 @@ class Userpic extends Component {
 }
 
 Userpic.propTypes = {
-  account: PropTypes.string.isRequired
+  account: PropTypes.string.isRequired,
+  rep: PropTypes.number.isRequired,
+  payout: PropTypes.number,
 };
 
 export default connect(

@@ -6,6 +6,7 @@ import {Link} from 'react-router';
 import user from '../../redux/User';
 import {immutableAccessor} from '../../utils/Accessors';
 import extractContent from '../../utils/ExtractContent';
+import {repLog10} from '../../utils/ParsersAndFormatters';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
 import Author from '../elements/Author';
 import Comments from '../elements/Comments';
@@ -18,6 +19,7 @@ import {DEFAULT_POST_IMAGE_SMALL} from './PostConstants';
 class PostGridItem extends React.Component {
   static propTypes = {
     post: PropTypes.string.isRequired,
+    category: PropTypes.string,
     pendingPayout: PropTypes.string.isRequired,
     totalPayout: PropTypes.string.isRequired,
     content: PropTypes.object.isRequired,
@@ -32,9 +34,14 @@ class PostGridItem extends React.Component {
   }
 
   render() {
-    const {post, content} = this.props;
+    const {post, content, category} = this.props;
     if (!content) {
       return null;
+    }
+
+    const author_reputation = repLog10(content.get('author_reputation'));
+    if ((author_reputation < 10) && (category === '/created')) {
+      return null; // author rep too low for created
     }
 
     const postContent = extractContent(immutableAccessor, content);
@@ -61,12 +68,20 @@ class PostGridItem extends React.Component {
       </h3>
     );
 
+    let pendingPayout = 0;
+    let totalPayout = 0;
+
+    if (content) {
+      pendingPayout = content.get('pending_payout_value');
+      totalPayout = content.get('total_payout_value');
+    }
+
     const contentDetails = (
       <div className="articles__content-header">
         <div className="user">
           <div className="user__col user__col--left">
             <a className="user__link" href={'/@' + postContent.author}>
-              <Userpic account={postContent.author} size={avatarSize.small}/>
+              <Userpic account={postContent.author} rep={author_reputation} payout={pendingPayout + totalPayout} size={avatarSize.small}/>
             </a>
           </div>
           <div className="user__col user__col--right">
@@ -89,7 +104,7 @@ class PostGridItem extends React.Component {
     );
 
     let thumbnailImage;
-    if (postContent.image_link) {
+    if (postContent.image_link && (author_reputation >= 20)) {
       thumbnailImage = proxifyImageUrl(postContent.image_link, '640x480').replace(/ /g, '%20');
     } else {
       thumbnailImage = DEFAULT_POST_IMAGE_SMALL;

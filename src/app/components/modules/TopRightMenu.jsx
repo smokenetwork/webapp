@@ -54,7 +54,7 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
         {submitStory}
         {!vertical && <li className={'Header__userpic ' + lcn}>
           <Link to={accountLink} title={username}>
-            <Userpic account={username}/>
+            <Userpic account={username} rep={26}/>
           </Link>
         </li>}
         {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">

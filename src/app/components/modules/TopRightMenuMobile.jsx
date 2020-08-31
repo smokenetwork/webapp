@@ -72,7 +72,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
                   >
                       <li className={'Header__userpic '}>
                           <span title={username}>
-                              <Userpic account={username} />
+                              <Userpic account={username} rep={26} />
                           </span>
                       </li>
                   </DropdownMobileMenu>

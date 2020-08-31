@@ -389,7 +389,7 @@ class CommentImpl extends React.Component {
         {depth_indicator}
         <div className={innerCommentClass}>
           <div className="Comment__Userpic show-for-medium">
-            <Userpic account={comment.author}/>
+            <Userpic account={comment.author} rep={authorRepLog10} />
           </div>
           <div className="Comment__header">
             <div className="Comment__header_collapse">
@@ -399,7 +399,7 @@ class CommentImpl extends React.Component {
             </div>
             <span className="Comment__header-user">
                   <div className="Comment__Userpic-small">
-                    <Userpic account={comment.author}/>
+                    <Userpic account={comment.author} rep={authorRepLog10}/>
                   </div>
                   <Author author={comment.author} authorRepLog10={authorRepLog10}/>
                 </span>

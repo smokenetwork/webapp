@@ -144,7 +144,7 @@ class PostsIndex extends React.Component {
               ref="list"
               posts={posts ? posts : Immutable.List()}
               loading={fetching}
-              category={category}
+              category={topics_order}
               loadMore={this.loadMore}
               showSpam={showSpam}
             />

@@ -40,7 +40,7 @@ function TimeAuthorCategory({content, authorRepLog10, showTags}) {
 function TimeAuthorCategoryLarge({content, authorRepLog10}) {
   return (
     <div className="PostFull__time_author_category_large vcard">
-      <Userpic account={content.author}/>
+      <Userpic account={content.author} rep={authorRepLog10}/>
       <div className="right-side">
         <AuthorFeatured author={content.author} authorRepLog10={authorRepLog10}/>
 
@@ -435,7 +435,7 @@ class PostFull extends React.Component {
         </div>
         <hr/>
         <div className="PostFull__time_author_category_large vcard">
-          <Userpic account={content.author}/>
+          <Userpic account={content.author} rep={authorRepLog10}/>
           <div className="right-side">
             <AuthorFeatured author={content.author} authorRepLog10={authorRepLog10}/>
 
