@@ -54,14 +54,16 @@ export default class TagsIndex extends React.Component {
     }).map(tag => {
       const name = tag.get('name');
       const link = `/trending/${name}`;
-      return (<tr key={name}>
-        <td>
-          <Link to={link} activeClassName="active">{name}</Link>
-        </td>
-        <td>{numberWithCommas(tag.get('top_posts').toString())}</td>
-        <td>{numberWithCommas(tag.get('comments').toString())}</td>
-        <td>{numberWithCommas(tag.get('total_payouts'))}</td>
-      </tr>);
+      if (tag.get('total_payouts').split(' ')[0] > 1000) {
+        return (<tr key={name}>
+          <td>
+            <Link to={link} activeClassName="active">{name}</Link>
+          </td>
+          <td>{numberWithCommas(tag.get('top_posts').toString())}</td>
+          <td>{numberWithCommas(tag.get('comments').toString())}</td>
+          <td>{numberWithCommas(tag.get('total_payouts'))}</td>
+        </tr>);
+      }
     }).toArray();
 
     const cols = [
