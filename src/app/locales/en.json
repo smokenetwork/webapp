@@ -491,7 +491,10 @@
   "transferhistoryrow_jsx": {
     "stop_power_down": "Stop power down",
     "start_power_down_of": "Start power down of",
-    "receive_interest_of": "Receive interest of"
+    "receive_interest_of": "Receive interest of",
+    "bad_actor_caution": "Caution",
+    "bad_actor_explained": "This is from an account that may be malicious. If you wish, you may temporarily reveal this memo which may contain dangerous links.",
+    "bad_actor_reveal_memo": "I understand the risk; show anyway."
   },
   "explorepost_jsx": {
     "copied": "Copied!",
