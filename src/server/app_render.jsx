@@ -85,7 +85,6 @@ async function appRender(ctx, locales = false, resolvedAssets = false) {
         offchain.user = {
           id: user_id,
           name: user.name,
-          email: user.email,
           picture: user.picture_small,
           prv: ctx.session.prv,
           account_status: user.account_status,
