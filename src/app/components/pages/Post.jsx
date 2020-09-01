@@ -17,7 +17,7 @@ class Post extends React.Component {
     content: PropTypes.object.isRequired,
     post: PropTypes.string,
     routeParams: PropTypes.object,
-    location: PropTypes.object,
+    sortOrder: React.PropTypes.string,
     current_user: PropTypes.object,
   };
 
@@ -30,7 +30,6 @@ class Post extends React.Component {
       serverApiRecordEvent('SignUp', 'Post Promo');
       window.location = '/pick_account';
     };
-    this.shouldComponentUpdate = shouldComponentUpdate(this, 'Post')
   }
 
   componentDidMount() {
@@ -57,7 +56,7 @@ class Post extends React.Component {
 
   render() {
     const {showSignUp} = this
-    const {current_user, content} = this.props
+    const {current_user, content, sortOrder} = this.props
     const {showNegativeComments, commentHidden, showAnyway} = this.state
     let post = this.props.post;
     if (!post) {
@@ -108,11 +107,7 @@ class Post extends React.Component {
 
     let replies = dis.get('replies').toJS();
 
-    let sort_order = 'trending';
-    if (this.props.location && this.props.location.query.sort)
-      sort_order = this.props.location.query.sort;
-
-    sortComments(content, replies, sort_order);
+    sortComments(content, replies, sortOrder);
 
     // Don't render too many comments on server-side
     const commentLimit = 100;
@@ -128,7 +123,7 @@ class Post extends React.Component {
           key={post + reply}
           content={reply}
           cont={content}
-          sort_order={sort_order}
+          sort_order={sortOrder}
           showNegativeComments={showNegativeComments}
           onHide={this.onHideComment}
         />)
@@ -157,7 +152,7 @@ class Post extends React.Component {
 
     let selflink = `/${dis.get('category')}/@${post}`;
     for (let o = 0; o < sort_orders.length; ++o) {
-      if (sort_orders[o] == sort_order) sort_label = sort_labels[o];
+      if (sort_orders[o] == sortOrder) sort_label = sort_labels[o];
       sort_menu.push({
         value: sort_orders[o],
         label: sort_labels[o],
@@ -223,7 +218,7 @@ class Post extends React.Component {
 
 const emptySet = Set()
 
-export default connect(state => {
+export default connect((state, ownProps) => {
     const current_user = state.user.get('current')
     let ignoring
     if (current_user) {
@@ -234,6 +229,7 @@ export default connect(state => {
       content: state.global.get('content'),
       current_user,
       ignoring,
+      sortOrder: ownProps.router.getCurrentLocation().query.sort || 'trending',
     }
   }
 )(Post);
