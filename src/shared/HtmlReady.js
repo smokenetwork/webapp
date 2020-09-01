@@ -4,6 +4,7 @@ import {DEFAULT_POST_IMAGE_LARGE} from '../app/components/cards/PostConstants';
 import {validate_account_name} from '../app/utils/ChainValidation'
 import linksRe, {any as linksAny} from '../app/utils/Links'
 import proxifyImageUrl from '../app/utils/ProxifyUrl'
+import * as Phishing from '../app/utils/Phishing';
 
 export const getPhishingWarningMessage = () => tt('g.phishy_message');
 
@@ -140,17 +141,12 @@ function link(state, child) {
         child.setAttribute('href', "https://" + url)
       }
 
-      // Unlink potential steemit, smoke and hive phishing attempts
-      if ((
-        child.textContent.match(/(www\.)?steemit\.com/i) &&
-        !url.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/i)
-      ) || (
-        child.textContent.match(/(www\.)?smoke\.io/i) &&
-        !url.match(/https?:\/\/(.*@)?(www\.)?smoke\.io/i)
-      ) || (
-        child.textContent.match(/(www\.)?hive\.blog/i) &&
-        !url.match(/https?:\/\/(.*@)?(www\.)?hive\.blog/i)
-      )) {
+      if (
+        (url.indexOf('#') !== 0 && (child.textContent.match(/(www\.)?steemit\.com/i) && !url.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/i))) ||
+        (url.indexOf('#') !== 0 && (child.textContent.match(/(www\.)?smoke\.io/i) && !url.match(/https?:\/\/(.*@)?(www\.)?smoke\.io/i))) ||
+        (url.indexOf('#') !== 0 && (child.textContent.match(/(www\.)?hive\.blog/i) && !url.match(/https?:\/\/(.*@)?(www\.)?hive\.blog/i))) ||
+        Phishing.looksPhishy(url)
+      ) {
         const phishyDiv = child.ownerDocument.createElement('div');
         phishyDiv.textContent = `${child.textContent} / ${url}`;
         phishyDiv.setAttribute('title', getPhishingWarningMessage());
@@ -278,6 +274,12 @@ function linkify(content, mutate, hashtags, usertags, images, links) {
 
     // do not linkify .exe or .zip urls
     if (/\.(zip|exe)$/i.test(ln)) return ln;
+
+    // do not linkify phishy links
+    if (Phishing.looksPhishy(ln))
+        return `<div title='${getPhishingWarningMessage()}' class='phishy'>${
+            ln
+        }</div>`;
 
     if (links) links.add(ln)
     return `<a href="${ipfsPrefix(ln)}">${ln}</a>`
