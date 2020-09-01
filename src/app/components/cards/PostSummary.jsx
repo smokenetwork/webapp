@@ -110,24 +110,25 @@ class PostSummary extends React.Component {
     const archived = content.get('cashout_time') === '1969-12-31T23:59:59' // TODO: audit after HF17. #1259
     const full_power = content.get('percent_steem_dollars') === 0;
 
-    let title_link_url;
-    let title_text = p.title;
-    let comments_link;
+    let post_url;
+    let title_text;
+    let comments_url;
 
-    if (content.get('parent_author') !== "") {
+    if (content.get('depth') > 0) {
       title_text = tt('g.re_to', {topic: content.get('root_title')});
-      title_link_url = content.get('url');
-      comments_link = title_link_url;
+      post_url = '/' + content.get('category') + '/@' + content.get('parent_author') + '/' + content.get('parent_permlink') + '#@' + content.get('author') + '/' + content.get('permlink');
+      comments_url = p.link + '#comments';
     } else {
-      title_link_url = p.link;
-      comments_link = p.link + '#comments';
+      title_text = p.title;
+      post_url = p.link;
+      comments_url = post_url + '#comments';
     }
 
     const content_body = (<div className="PostSummary__body entry-content">
-      <Link to={title_link_url}>{desc}</Link>
+      <Link to={post_url}>{desc}</Link>
     </div>);
     const content_title = (<h2 className="articles__h2 entry-title">
-      <Link to={title_link_url}>
+      <Link to={post_url}>
         {isNsfw && <span className="nsfw-flag">nsfw</span>}
         {title_text}
       </Link>
@@ -138,7 +139,7 @@ class PostSummary extends React.Component {
             <Userpic account={p.author}/>
             <Author author={p.author} authorRepLog10={authorRepLog10} follow={false} mute={false}/>
       {} {tt('g.in')} <TagList post={p} single/>&nbsp;•&nbsp;
-      <Link to={title_link_url}><TimeAgoWrapper date={p.created} className="updated"/></Link>
+      <Link to={post_url}><TimeAgoWrapper date={p.created} className="updated"/></Link>
         </span>);
 
     // New Post Summary heading
@@ -159,7 +160,7 @@ class PostSummary extends React.Component {
                                                  mute={false}/></span>
 
             <span className="articles__tag-link">{tt('g.in')}&nbsp;<TagList post={p} single/>&nbsp;•&nbsp;</span>
-            <Link className="timestamp__link" to={title_link_url}>
+            <Link className="timestamp__link" to={post_url}>
               <span className="timestamp__time"><TimeAgoWrapper date={p.created} className="updated"/></span>
             </Link>
           </div>
@@ -172,7 +173,7 @@ class PostSummary extends React.Component {
 
     const content_footer = (<div className="PostSummary__footer">
       <Voting post={post} showList={false}/>
-      <VotesAndComments post={post} commentsLink={comments_link}/>
+      <VotesAndComments post={post} commentsLink={comments_url}/>
       <span className="PostSummary__time_author_category">
                 {/* {!archived && <Reblog author={p.author} permlink={p.permlink} parent_author={p.parent_author} />} */}
         <span className="show-for-medium">
@@ -184,7 +185,7 @@ class PostSummary extends React.Component {
     const summary_footer = (
       <div className="articles__summary-footer">
         <Voting post={post} showList={false}/>
-        <VotesAndComments post={post} commentsLink={comments_link}/>
+        <VotesAndComments post={post} commentsLink={comments_url}/>
         <span className="PostSummary__time_author_category">
                     {/* {!archived && <Reblog author={p.author} permlink={p.permlink} parent_author={p.parent_author} />} */}
                 </span>
@@ -258,7 +259,7 @@ class PostSummary extends React.Component {
              itemScope itemType="http://schema.org/blogPost">
           {thumb
             ? <div className="articles__content-block articles__content-block--img">
-              <Link className="articles__link" to={title_link_url}>
+              <Link className="articles__link" to={post_url}>
                 {thumb}
               </Link>
             </div>
