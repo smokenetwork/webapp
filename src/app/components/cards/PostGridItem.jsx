@@ -68,20 +68,12 @@ class PostGridItem extends React.Component {
       </h3>
     );
 
-    let pendingPayout = 0;
-    let totalPayout = 0;
-
-    if (content) {
-      pendingPayout = content.get('pending_payout_value');
-      totalPayout = content.get('total_payout_value');
-    }
-
     const contentDetails = (
       <div className="articles__content-header">
         <div className="user">
           <div className="user__col user__col--left">
             <a className="user__link" href={'/@' + postContent.author}>
-              <Userpic account={postContent.author} rep={author_reputation} payout={pendingPayout + totalPayout} size={avatarSize.small}/>
+              <Userpic account={postContent.author} rep={author_reputation} size={avatarSize.small}/>
             </a>
           </div>
           <div className="user__col user__col--right">
@@ -90,6 +82,7 @@ class PostGridItem extends React.Component {
                                     follow={false}
                                     mute={false}/>
                         </span>
+                        <span style={{'color': 'gray'}}>({author_reputation})</span>
             <span style={{display: 'block', margin: '0 2px 0 10px'}}>
                             <Link className="timestamp__link" to={titleLinkUrl}>
                                 <span className="timestamp__time">

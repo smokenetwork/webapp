@@ -117,7 +117,7 @@ class AuthorFeatured extends React.Component {
             </Link>
           </div>
           <div className="Author__bio">
-            {about}
+            {authorRepLog10 < 20 ? '' : about}
           </div>
           <div>
             <Follow className="float-right" follower={username} following={author} what="blog"
