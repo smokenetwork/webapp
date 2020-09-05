@@ -133,7 +133,7 @@ tbody tr:nth-child(even) {
   border-radius: 3px;
   background-color:$color-border-light;
   div {
-    background-color: $color-teal;
+    background-color: themed('backgroundColor');
     border-radius: 3px;
     border: none;
     height: 8px;
