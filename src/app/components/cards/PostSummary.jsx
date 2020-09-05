@@ -136,7 +136,7 @@ class PostSummary extends React.Component {
 
     // author and category
     const author_category = (<span className="vcard">
-            <Userpic account={p.author}/>
+            <Userpic account={p.author} rep={authorRepLog10} />
             <Author author={p.author} authorRepLog10={authorRepLog10} follow={false} mute={false}/>
       {} {tt('g.in')} <TagList post={p} single/>&nbsp;•&nbsp;
       <Link to={post_url}><TimeAgoWrapper date={p.created} className="updated"/></Link>
@@ -149,7 +149,7 @@ class PostSummary extends React.Component {
           {!isNsfw
             ? <div className="user__col user__col--left">
               <a className="user__link" href={'/@' + p.author}>
-                <Userpic account={p.author} size={avatarSize.small}/>
+                <Userpic account={p.author} size={avatarSize.small} rep={authorRepLog10} />
               </a>
             </div>
             : null
