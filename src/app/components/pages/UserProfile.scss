@@ -10,11 +10,6 @@
 
 .UserProfile__top-nav {
   padding: 0;
-  .row {
-    .columns {
-      overflow-x: auto;
-    }
-  }
   .menu {
     background-color: transparent;
   }
@@ -150,7 +145,7 @@
         border-left: none;
       }
     }
-    
+
   }
 }
 

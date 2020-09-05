@@ -8,7 +8,7 @@ import {serverApiRecordEvent} from '../../utils/ServerApiClient';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import Comment, {sortComments} from '../cards/Comment';
 import PostFull from '../cards/PostFull';
-import FoundationDropdownMenu from '../elements/FoundationDropdownMenu';
+import DropdownMenu from 'app/components/elements/DropdownMenu';
 import {localizedCurrency} from '../elements/LocalizedCurrency';
 
 class Post extends React.Component {
@@ -17,7 +17,7 @@ class Post extends React.Component {
     content: PropTypes.object.isRequired,
     post: PropTypes.string,
     routeParams: PropTypes.object,
-    sortOrder: React.PropTypes.string,
+    sortOrder: PropTypes.string,
     current_user: PropTypes.object,
   };
 
@@ -202,9 +202,12 @@ class Post extends React.Component {
               {positiveComments.length ?
                 (<div className="Post__comments_sort_order float-right">
                   {tt('post_jsx.sort_order')}: &nbsp;
-                  <FoundationDropdownMenu menu={sort_menu} label={sort_label}
-                                          className="Post__comments_sort_order_dropdown"
-                                          dropdownPosition="bottom" dropdownAlignment="right"/>
+                  <DropdownMenu
+                      items={sort_menu}
+                      el="li"
+                      selected={sort_label}
+                      position="left"
+                  />
                 </div>) : null}
               {positiveComments}
               {negativeGroup}

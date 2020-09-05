@@ -65,7 +65,7 @@ export default class DropdownMenu extends React.Component {
   }
 
   render() {
-    const {el, items, selected, children, className, title, href} = this.props;
+    const {el, items, selected, children, className, title, href, position,} = this.props;
     const hasDropdown = items.length > 0
 
     let entry = children || <span>
@@ -77,7 +77,10 @@ export default class DropdownMenu extends React.Component {
 
     const menu = <VerticalMenu key="menu" title={title} items={items} hideValue={selected}
                                className="VerticalMenu"/>;
-    const cls = 'DropdownMenu' + (this.state.shown ? ' show' : '') + (className ? ` ${className}` : '')
+    const cls =
+      'DropdownMenu' + (this.state.shown ? ' show' : '') +
+      (className ? ` ${className}` : '') +
+      (position ? ` ${position}` : '');
     return React.createElement(el, {className: cls}, [entry, menu]);
   }
 }

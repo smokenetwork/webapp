@@ -7,7 +7,6 @@ import TransferHistoryRow from '../cards/TransferHistoryRow';
 import TransactionError from '../elements/TransactionError';
 import TimeAgoWrapper from '../elements/TimeAgoWrapper';
 import {delegatedSmoke, numberWithCommas, vestingSmoke} from '../../utils/StateFunctions'
-import FoundationDropdownMenu from '../elements/FoundationDropdownMenu'
 import WalletSubMenu from '../elements/WalletSubMenu'
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import Tooltip from '../elements/Tooltip'

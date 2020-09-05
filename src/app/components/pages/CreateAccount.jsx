@@ -255,7 +255,6 @@ class CreateAccount extends React.Component {
         <div className="CreateAccount row">
           <div className="column">
             <h4>Please read the Smoke Rules and fill in the form below to create your Smoke account</h4>
-            {/*<Progress tabIndex="0" value={95} max={100} />*/}
             {showRules ? <div className="CreateAccount__rules">
               <p>
                 The first rule of Smoke is: Do not lose your password.<br/>

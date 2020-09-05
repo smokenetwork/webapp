@@ -5,7 +5,7 @@ class LoadingIndicator extends React.Component {
 
   static propTypes = {
     // html component attributes
-    type: PropTypes.oneOf(['dots', 'circle']),
+    type: PropTypes.oneOf(['dots', 'circle', 'circle-strong']),
     inline: PropTypes.bool,
     style: PropTypes.object,
   };

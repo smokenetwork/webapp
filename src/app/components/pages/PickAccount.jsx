@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import Progress from 'react-foundation-components/lib/global/progress-bar';
 import {Link} from 'react-router';
 import classNames from 'classnames';
 import {api} from '@smokenetwork/smoke-js';
@@ -202,7 +201,9 @@ class PickAccount extends React.Component {
         <div className="CreateAccount row">
           <div className="column" style={{maxWidth: '36rem', margin: '0 auto'}}>
             <br/>
-            <Progress tabIndex="0" value={10} max={100}/>
+            <div className="progress">
+                <div style={{ width: '10%' }} />
+            </div>
             <br/>
             <h4 className="CreateAccount__title">Welcome to Smoke</h4>
             <div>

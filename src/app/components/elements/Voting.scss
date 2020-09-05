@@ -61,6 +61,9 @@
     margin-left: 0;
     border-radius: 50%;
   }
+  div > a {
+    padding-right: 0.5rem;
+  }
   > a {
     padding-right: 0.5rem;
   }
@@ -72,9 +75,25 @@
   circle {
     stroke: $primary-link-color;
   }
+  // exclude small devices
+  @media screen and (min-width: 39.9375em) {
+      .Icon:hover {
+          box-shadow: 0 0 0 rgba(75, 162, 242, 1);
+          animation: pulse 2s infinite;
+      }
+  }
+  .close-button {
+    position: relative;
+    margin-left: 1em;
+  }
+  > .dropdown-comp > .dropdown__content {
+    position: absolute;
+    top: -30px;
+    left: -26px;
+  }
 }
 
-.Voting__button-up > a:hover {
+.Voting__button-up > a:hover, a.confirm_weight:hover {
   path {
     fill: #ff4400;
   }
@@ -89,22 +108,13 @@
   }
 }
 
-a.confirm_weight:hover {
-  circle {
-    fill: $primary-link-hover-color;
-  }
-  svg {
-    background-size: contain;
-    border-radius: 50%;
-  }
-}
-
 .Voting__button-up.votingUp {
   padding-right: 0.5rem;
   svg {
     border-radius: 50%;
     border-right-color: transparent;
     border-top-color: transparent;
+    animation: loading 500ms infinite linear;
   }
 }
 
@@ -112,6 +122,7 @@ a.confirm_weight:hover {
   border-radius: 50%;
   border-right-color: transparent;
   border-top-color: transparent;
+  animation: loading 500ms infinite linear;
 }
 
 .Voting__button-down {
@@ -121,6 +132,7 @@ a.confirm_weight:hover {
     font-size: 80%;
     vertical-align: 15%;
     padding-right: 0.1rem;
+    cursor: default;
   }
 
   a:hover path {
@@ -216,9 +228,6 @@ a.confirm_weight:hover {
   .rangeslider {
     margin-right: 2rem;
   }
-  .close-button {
-    right: 0;
-  }
 }
 
 .Voting__adjust_weight {
@@ -257,10 +266,14 @@ a.confirm_weight:hover {
       background: #fff;
       border: 1px solid #ccc;
       cursor: pointer;
-      display: inline-block;
-      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      top: 50%;
+      transform: translate3d(-50%,-50%,0);
       &:active {
         background: $primary-brand-color;
+        box-shadow: none;
       }
     }
   }
@@ -275,15 +288,6 @@ a.confirm_weight:hover {
       background: $primary-brand-color;
       box-shadow: none;
       left: 0;
-    }
-    .rangeslider__handle {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      top: -10px;
-      &:active {
-        box-shadow: none;
-      }
     }
   }
   .Voting__adjust_weight_close {

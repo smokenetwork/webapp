@@ -19,7 +19,7 @@ import PostsGrid from '../cards/PostsGrid';
 import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {repLog10} from '../../utils/ParsersAndFormatters.js';
 import Tooltip from '../elements/Tooltip';
-import {LinkWithDropdown} from 'react-foundation-components/lib/global/dropdown';
+import DropdownMenu from 'app/components/elements/DropdownMenu';
 import VerticalMenu from '../elements/VerticalMenu';
 import DateJoinWrapper from '../elements/DateJoinWrapper';
 import tt from 'counterpart';
@@ -370,21 +370,13 @@ export default class UserProfile extends React.Component {
             {tt('g.replies')}
           </Link></li>
           {/*<li><Link to={`/@${accountname}/feed`} activeClassName="active">Feed</Link></li>*/}
-          <li>
-            <LinkWithDropdown
-              closeOnClickOutside
-              dropdownPosition="bottom"
-              dropdownAlignment="right"
-              dropdownContent={
-                <VerticalMenu items={rewardsMenu}/>
-              }
-            >
-              <a className={rewardsClass}>
-                {tt('g.rewards')}
-                <Icon name="dropdown-arrow"/>
-              </a>
-            </LinkWithDropdown>
-          </li>
+          <DropdownMenu
+              className={rewardsClass}
+              items={rewardsMenu}
+              el="li"
+              selected={tt('g.rewards')}
+              position="right"
+          />
         </ul>
       </div>
       <div className="columns shrink">

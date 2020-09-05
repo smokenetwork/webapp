@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import CloseButton from 'react-foundation-components/lib/global/close-button';
-import Reveal from 'react-foundation-components/lib/global/reveal';
+import CloseButton from 'app/components/elements/CloseButton';
+import Reveal from 'app/components/elements/Reveal';
 import g from '../../redux/GlobalReducer'
 import {List, Map} from 'immutable'
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
