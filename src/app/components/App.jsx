@@ -12,7 +12,7 @@ import TopRightMenuMobile from './modules/TopRightMenuMobile';
 import {browserHistory} from 'react-router';
 import classNames from 'classnames';
 import SidePanel from './modules/SidePanel';
-import CloseButton from 'app/components/elements/CloseButton';
+import CloseButton from './elements/CloseButton';
 import Dialogs from './modules/Dialogs';
 import Modals from './modules/Modals';
 import Icon from './elements/Icon';

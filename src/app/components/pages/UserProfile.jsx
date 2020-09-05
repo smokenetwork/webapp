@@ -19,7 +19,7 @@ import PostsGrid from '../cards/PostsGrid';
 import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {repLog10} from '../../utils/ParsersAndFormatters.js';
 import Tooltip from '../elements/Tooltip';
-import DropdownMenu from 'app/components/elements/DropdownMenu';
+import DropdownMenu from '../elements/DropdownMenu';
 import VerticalMenu from '../elements/VerticalMenu';
 import DateJoinWrapper from '../elements/DateJoinWrapper';
 import tt from 'counterpart';

@@ -1,7 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
-import Reveal from 'app/components/elements/Reveal';
-import CloseButton from 'app/components/elements/CloseButton';
+import Reveal from './Reveal';
+import CloseButton from './CloseButton';
 import TimeAgoWrapper from './TimeAgoWrapper';
 import {browserHistory} from 'react-router';
 import tt from 'counterpart';

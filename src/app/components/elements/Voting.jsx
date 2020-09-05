@@ -9,8 +9,8 @@ import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import {formatDecimal, parsePayoutAmount} from '../../utils/ParsersAndFormatters';
 import DropdownMenu from './DropdownMenu';
 import TimeAgoWrapper from './TimeAgoWrapper';
-import Dropdown from 'app/components/elements/Dropdown';
-import CloseButton from 'app/components/elements/CloseButton';
+import Dropdown from './Dropdown';
+import CloseButton from './CloseButton';
 import tt from 'counterpart';
 
 const ABOUT_FLAG = <div>

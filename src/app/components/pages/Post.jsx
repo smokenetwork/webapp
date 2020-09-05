@@ -8,7 +8,7 @@ import {serverApiRecordEvent} from '../../utils/ServerApiClient';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import Comment, {sortComments} from '../cards/Comment';
 import PostFull from '../cards/PostFull';
-import DropdownMenu from 'app/components/elements/DropdownMenu';
+import DropdownMenu from '../elements/DropdownMenu';
 import {localizedCurrency} from '../elements/LocalizedCurrency';
 
 class Post extends React.Component {

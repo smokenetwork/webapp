@@ -8,7 +8,7 @@ import ServerHTML from '../server-html';
 import sendEmail from '../sendEmail';
 import {checkCSRF, getRemoteIp} from 'server/utils/misc';
 import config from 'config';
-import MiniHeader from 'app/components/modules/MiniHeader';
+import MiniHeader from '../../app/components/modules/MiniHeader';
 import secureRandom from 'secure-random';
 import Mixpanel from 'mixpanel';
 import {api} from '@smokenetwork/smoke-js';

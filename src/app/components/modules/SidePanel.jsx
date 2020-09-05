@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CloseButton from 'app/components/elements/CloseButton';
+import CloseButton from '../elements/CloseButton';
 
 export default class SidePanel extends React.Component {
   static propTypes = {
