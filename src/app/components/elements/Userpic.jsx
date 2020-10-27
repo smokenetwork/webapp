@@ -27,23 +27,24 @@ class Userpic extends Component {
       return null;
     }
 
-    let profileImageUrl = `/images/smoke_user.png`;
-
+    let profileImageUrl;
     // try to extract image url from users metaData
     try {
       const metadata = JSON.parse(json_metadata);
-      if (rep >= 20 && metadata.profile.profile_image) {
+      if (metadata.profile.profile_image && rep >= 20) {
         if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
-          // hack to get profile images to display. This doesn't work if there is no metadata
-          profileImageUrl = `${imageProxy()}64x64/${metadata.profile.profile_image}`;
+        	// hack to get profile images to display. This doesn't work if there is no metadata
+        	profileImageUrl = `${imageProxy()}64x64/${metadata.profile.profile_image}`;
         }
+      } else {
+        profileImageUrl = `/images/smoke_user.png`;
       }
     } catch (error) {
       // commented out to hide invalid profile pics
-      //profileImageUrl = `${PROFILE_IMAGE_URL_PREFIX}/${account}`;
+      return null;
     }
 
-    return (<div className="Userpic" style={{backgroundImage: `url(${profileImageUrl})`}}/>)
+  	return (<div className="Userpic" style={{backgroundImage: `url(${profileImageUrl})`}}/>);
   }
 }
 
@@ -55,6 +56,7 @@ Userpic.propTypes = {
 export default connect(
   (state, ownProps) => {
     const {account, hideIfDefault} = ownProps;
+
     return {
       account,
       json_metadata: state.global.getIn(['accounts', account, 'json_metadata']),

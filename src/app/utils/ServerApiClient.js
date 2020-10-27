@@ -54,7 +54,7 @@ export function markNotificationRead(account, fields) {
 
 let last_page, last_views, last_page_promise;
 
-export function recordPageView(page, referer, account) {
+export function recordPageView(page, ref, account) {
   if (last_page_promise && page === last_page) return last_page_promise;
   if (!process.env.BROWSER) return Promise.resolve(0);
 
@@ -63,10 +63,14 @@ export function recordPageView(page, referer, account) {
     window.ga('send', 'pageview');
   }
 
-  last_page_promise = api.callAsync('overseer.pageview', {
-      page,
-      referer,
-      account,
+  api.call('overseer.pageview', {page, referer: ref, account}, (error) => {
+    // if (error) console.warn('overseer error', error, error.data);
+  });
+  if (!process.env.BROWSER || window.$STM_ServerBusy) return Promise.resolve(0);
+  const request = Object.assign({}, request_base, {body: JSON.stringify({csrf: $STM_csrf, page, ref})});
+  last_page_promise = fetch(`/api/v1/page_view`, request).then(r => r.json()).then(res => {
+    last_views = res.views;
+    return last_views;
   });
   last_page = page;
   return last_page_promise;

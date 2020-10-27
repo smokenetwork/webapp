@@ -21,7 +21,7 @@ import useEnterAndConfirmMobilePages from './sign_up_pages/enter_confirm_mobile'
 import useUserJson from './json/user_json';
 import usePostJson from './json/post_json';
 import isBot from 'koa-isbot';
-import session from '@steem/crypto-session';
+import session from './utils/cryptoSession';
 import csrf from 'koa-csrf';
 import flash from 'koa-flash';
 import minimist from 'minimist';

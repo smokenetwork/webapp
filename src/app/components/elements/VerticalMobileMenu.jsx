@@ -25,7 +25,7 @@ export default class VerticalMobileMenu extends React.Component {
   render() {
     const {items, title, className, hideValue} = this.props;
     return <div className={'VerticalMobileMenu menu vertical' + (className ? ' ' + className : '')}>
-      {title && <div className="tops"><div className="title float-left">{title}</div><div onClick={this.closeMenu} className="title float-right">X</div></div>}
+      {title && <div className="tops"><div onClick={this.closeMenu} className="title float-right">X</div><div className="title">{title}</div></div>}
       {
         items.map(i => {
           if (i.value === hideValue) return null

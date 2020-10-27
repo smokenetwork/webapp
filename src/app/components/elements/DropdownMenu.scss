@@ -30,7 +30,8 @@
 
   > .VerticalMobileMenu {
     visibility: hidden;
-    min-width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
     z-index: 1000;
     display: block;
     border-radius: $global-radius;
@@ -43,6 +44,7 @@
     justify-content: center;
     height: 100vh;
     z-index: 9999;
+    box-sizing: border-box;
   }
 
   &.show > .VerticalMenu {
@@ -78,3 +80,4 @@
     }
   }
 }
+
