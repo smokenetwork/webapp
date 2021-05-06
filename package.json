@@ -122,7 +122,7 @@
     "redux-modules": "0.0.5",
     "redux-saga": "^0.9.5",
     "remarkable": "^1.7.1",
-    "sanitize-html": "^1.11.4",
+    "sanitize-html": "^2.3.2",
     "sass-loader": "^6.0.6",
     "secure-random": "^1.1.1",
     "sequelize": "^3.21.0",
