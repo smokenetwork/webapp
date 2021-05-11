@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import TimeAgoWrapper from '../elements/TimeAgoWrapper';
 import Icon from '../elements/Icon';
@@ -16,7 +17,6 @@ import Author from '../elements/Author';
 import AuthorFeatured from '../elements/AuthorFeatured';
 import {parsePayoutAmount, repLog10} from '../../utils/ParsersAndFormatters';
 import DMCAList from '../../utils/DMCAList'
-import PageViewsCounter from '../elements/PageViewsCounter';
 import ShareMenu from '../elements/ShareMenu';
 import Userpic from '../elements/Userpic';
 import {APP_DOMAIN, APP_NAME} from '../../client_config';
@@ -40,7 +40,7 @@ function TimeAuthorCategory({content, authorRepLog10, showTags}) {
 function TimeAuthorCategoryLarge({content, authorRepLog10}) {
   return (
     <div className="PostFull__time_author_category_large vcard">
-      <Userpic account={content.author}/>
+      <Userpic account={content.author} rep={authorRepLog10}/>
       <div className="right-side">
         <AuthorFeatured author={content.author} authorRepLog10={authorRepLog10}/>
 
@@ -53,14 +53,14 @@ class PostFull extends React.Component {
   static propTypes = {
     // html props
     /* Show extra options (component is being viewed alone) */
-    cont: React.PropTypes.object.isRequired,
-    post: React.PropTypes.string.isRequired,
+    cont: PropTypes.object.isRequired,
+    post: PropTypes.string.isRequired,
 
     // connector props
-    username: React.PropTypes.string,
-    unlock: React.PropTypes.func.isRequired,
-    deletePost: React.PropTypes.func.isRequired,
-    showExplorePost: React.PropTypes.func.isRequired,
+    username: PropTypes.string,
+    unlock: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
+    showExplorePost: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -154,7 +154,7 @@ class PostFull extends React.Component {
     }
 
       redditShare(e) {
-
+            serverApiRecordEvent('RedditShare', this.share_params.link);
             e.preventDefault();
             const s = this.share_params;
             const q =
@@ -230,8 +230,13 @@ class PostFull extends React.Component {
 
     const bShowLoading = (!bIllegalContentUser && !bDMCAStop && content.body.length < content.body_length)
 
+    const authorRepLog10 = repLog10(content.author_reputation)
+
     // hide images if user is on blacklist
-    const hideImages = ImageUserBlockList.includes(content.author)
+    let hideImages = ImageUserBlockList.includes(content.author)
+    if (authorRepLog10 < 20) {
+      hideImages = true;
+    }
 
     const replyParams = {author, permlink, parent_author, parent_permlink, category, title, body}
 
@@ -330,11 +335,10 @@ class PostFull extends React.Component {
     const archived = post_content.get('cashout_time') === '1969-12-31T23:59:59' // TODO: audit after HF19. #1259
     const readonly = archived || $STM_Config.read_only_mode
     const showPromote = username && !archived && post_content.get('depth') == 0
-    const showReplyOption = post_content.get('depth') < 255
+    const showReplyOption = username !== undefined && post_content.get('depth') < 255;
     const showEditOption = username === author
     const showDeleteOption = username === author && content.stats.allowDelete
 
-    const authorRepLog10 = repLog10(content.author_reputation)
     const isPreViewCount = Date.parse(post_content.get('created')) < 1480723200000 // check if post was created before view-count tracking began (2016-12-03)
     let contentBody
 
@@ -400,11 +404,6 @@ class PostFull extends React.Component {
                     <Icon name="chatboxes" className="space-right"/>{content.children}
                   </Link>
                 </span>
-            <span className="PostFull__views">
-                  <PageViewsCounter hidden={false} sinceDate={isPreViewCount ? 'Dec 2016' : null}/>
-                </span>
-
-
           </div>
         </div>
         <div className="PostFull__footerMobile">
@@ -440,7 +439,7 @@ class PostFull extends React.Component {
         </div>
         <hr/>
         <div className="PostFull__time_author_category_large vcard">
-          <Userpic account={content.author}/>
+          <Userpic account={content.author} rep={authorRepLog10}/>
           <div className="right-side">
             <AuthorFeatured author={content.author} authorRepLog10={authorRepLog10}/>
 

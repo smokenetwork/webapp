@@ -5,13 +5,12 @@ import {renderToString} from 'react-dom/server';
 import models from 'db/models';
 import ServerHTML from 'server/server-html';
 import twilioVerify from 'server/utils/twilio';
-import CountryCode from 'app/components/elements/CountryCode';
+import CountryCode from '../../app/components/elements/CountryCode';
 import {checkCSRF, getRemoteIp} from 'server/utils/misc';
-import MiniHeader from 'app/components/modules/MiniHeader';
+import MiniHeader from '../../app/components/modules/MiniHeader';
 import secureRandom from 'secure-random';
 import config from 'config';
 import Mixpanel from 'mixpanel';
-import Progress from 'react-foundation-components/lib/global/progress-bar';
 
 const path = require('path');
 const ROOT = path.join(__dirname, '../../..');
@@ -114,7 +113,9 @@ export default function useEnterAndConfirmMobilePages(app) {
         <br/>
         <div className="row CreateAccount__step" style={{maxWidth: "32rem"}}>
           <div className="column">
-            <Progress tabIndex="0" value={90} max={100}/>
+            <div className="progress">
+                <div style={{ width: '90%' }} />
+            </div>
             <form
               className="column"
               action="/submit_mobile"
@@ -264,7 +265,11 @@ export default function useEnterAndConfirmMobilePages(app) {
         <br/>
         <div className="row" style={{maxWidth: "32rem"}}>
           <div className="column">
-            <Progress tabIndex="0" value={90} max={100}/>
+            <progress max="100" value="90">
+                <div className="progress">
+                    <div style={{ width: '90%' }} />
+                </div>
+            </progress>
             Thank you for providing your phone number (
             {phone}
             ).

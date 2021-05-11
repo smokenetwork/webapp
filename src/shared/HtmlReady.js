@@ -4,6 +4,7 @@ import {DEFAULT_POST_IMAGE_LARGE} from '../app/components/cards/PostConstants';
 import {validate_account_name} from '../app/utils/ChainValidation'
 import linksRe, {any as linksAny} from '../app/utils/Links'
 import proxifyImageUrl from '../app/utils/ProxifyUrl'
+import * as Phishing from '../app/utils/Phishing';
 
 export const getPhishingWarningMessage = () => tt('g.phishy_message');
 
@@ -140,9 +141,12 @@ function link(state, child) {
         child.setAttribute('href', "https://" + url)
       }
 
-      // Unlink potential phishing attempts
-      if (child.textContent.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/)
-        && !url.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/)) {
+      if (
+        (url.indexOf('#') !== 0 && (child.textContent.match(/(www\.)?steemit\.com/i) && !url.match(/https?:\/\/(.*@)?(www\.)?steemit\.com/i))) ||
+        (url.indexOf('#') !== 0 && (child.textContent.match(/(www\.)?smoke\.io/i) && !url.match(/https?:\/\/(.*@)?(www\.)?smoke\.io/i))) ||
+        (url.indexOf('#') !== 0 && (child.textContent.match(/(www\.)?hive\.blog/i) && !url.match(/https?:\/\/(.*@)?(www\.)?hive\.blog/i))) ||
+        Phishing.looksPhishy(url)
+      ) {
         const phishyDiv = child.ownerDocument.createElement('div');
         phishyDiv.textContent = `${child.textContent} / ${url}`;
         phishyDiv.setAttribute('title', getPhishingWarningMessage());
@@ -217,8 +221,10 @@ function linkifyNode(child, state) {
 
     const {mutate} = state
     if (!child.data) return
-    if (embedYouTubeNode(child, state.links, state.images)) return
-    if (embedVimeoNode(child, state.links, state.images)) return
+    child = embedYouTubeNode(child, state.links, state.images);
+    child = embedVimeoNode(child, state.links, state.images);
+    child = embedTwitchNode(child, state.links, state.images);
+    child = embedDTubeNode(child, state.links, state.images);
     if (embedSpotifyNode(child, state.links, state.images)) return
     if (embedSpotifyLargeNode(child, state.links, state.images)) return
 
@@ -269,6 +275,12 @@ function linkify(content, mutate, hashtags, usertags, images, links) {
     // do not linkify .exe or .zip urls
     if (/\.(zip|exe)$/i.test(ln)) return ln;
 
+    // do not linkify phishy links
+    if (Phishing.looksPhishy(ln))
+        return `<div title='${getPhishingWarningMessage()}' class='phishy'>${
+            ln
+        }</div>`;
+
     if (links) links.add(ln)
     return `<a href="${ipfsPrefix(ln)}">${ln}</a>`
   })
@@ -276,63 +288,91 @@ function linkify(content, mutate, hashtags, usertags, images, links) {
 }
 
 function embedYouTubeNode(child, links, images) {
-  try {
-    if (!child.data) return false
-    const data = child.data
-    const yt = youTubeId(data)
-    if (!yt) return false
+    try {
+        const data = child.data;
+        const yt = youTubeId(data);
+        if (!yt) return child;
 
-    const v = DOMParser.parseFromString(`~~~ embed:${yt.id} youtube ~~~`)
-    child.parentNode.replaceChild(v, child)
-    if (links) links.add(yt.url)
-    if (images) images.add('https://img.youtube.com/vi/' + yt.id + '/0.jpg')
-    return true
-  } catch (error) {
-    console.log(error);
-    return false
-  }
+        if (yt.startTime) {
+            child.data = data.replace(
+                yt.url,
+                `~~~ embed:${yt.id} youtube ${yt.startTime} ~~~`
+            );
+        } else {
+            child.data = data.replace(yt.url, `~~~ embed:${yt.id} youtube ~~~`);
+        }
+
+        if (links) links.add(yt.url);
+        if (images) images.add(yt.thumbnail);
+    } catch (error) {
+        console.log(error);
+    }
+    return child;
 }
 
 /** @return {id, url} or <b>null</b> */
 function youTubeId(data) {
-  if (!data) return null
+    if (!data) return null;
 
-  const m1 = data.match(linksRe.youTube)
-  const url = m1 ? m1[0] : null
-  if (!url) return null
+    const m1 = data.match(linksRe.youTube);
+    const url = m1 ? m1[0] : null;
+    if (!url) return null;
 
-  const m2 = url.match(linksRe.youTubeId)
-  const id = m2 && m2.length >= 2 ? m2[1] : null
-  if (!id) return null
+    const m2 = url.match(linksRe.youTubeId);
+    const id = m2 && m2.length >= 2 ? m2[1] : null;
+    if (!id) return null;
 
-  return {id, url}
+    const startTime = url.match(/t=(\d+)s?/);
+
+    return {
+        id,
+        url,
+        startTime: startTime ? startTime[1] : 0,
+        thumbnail: 'https://img.youtube.com/vi/' + id + '/0.jpg',
+    };
 }
 
-function embedVimeoNode(child, links, /*images*/) {
-  try {
-    if (!child.data) return false
-    const data = child.data
+function embedVimeoNode(child, links /*images*/) {
+    try {
+        const data = child.data;
+        const vimeo = vimeoId(data);
+        if (!vimeo) return child;
 
-    let id
-    {
-      const m = data.match(linksRe.vimeoId)
-      id = m && m.length >= 2 ? m[1] : null
+        const vimeoRegex = new RegExp(`${vimeo.url}(#t=${vimeo.startTime}s?)?`);
+        if (vimeo.startTime > 0) {
+            child.data = data.replace(
+                vimeoRegex,
+                `~~~ embed:${vimeo.id} vimeo ${vimeo.startTime} ~~~`
+            );
+        } else {
+            child.data = data.replace(
+                vimeoRegex,
+                `~~~ embed:${vimeo.id} vimeo ~~~`
+            );
+        }
+
+        if (links) links.add(vimeo.canonical);
+        // if(images) images.add(vimeo.thumbnail) // not available
+    } catch (error) {
+        console.log(error);
     }
-    if (!id) return false;
+    return child;
+}
 
-    const url = `https://player.vimeo.com/video/${id}`
-    const v = DOMParser.parseFromString(`~~~ embed:${id} vimeo ~~~`)
-    child.parentNode.replaceChild(v, child)
-    if (links) links.add(url)
+function vimeoId(data) {
+    if (!data) return null;
+    const m = data.match(linksRe.vimeo);
+    if (!m || m.length < 2) return null;
 
-    // Preview image requires a callback.. http://stackoverflow.com/questions/1361149/get-img-thumbnails-from-vimeo
-    // if(images) images.add('https://.../vi/' + id + '/0.jpg')
+    const startTime = m.input.match(/t=(\d+)s?/);
 
-    return true
-  } catch (error) {
-    console.log(error);
-    return false
-  }
+    return {
+        id: m[1],
+        url: m[0],
+        startTime: startTime ? startTime[1] : 0,
+        canonical: `https://player.vimeo.com/video/${m[1]}`,
+        // thumbnail: requires a callback - http://stackoverflow.com/questions/1361149/get-img-thumbnails-from-vimeo
+    };
 }
 
 function embedSpotifyNode(child, links, /*images*/) {
@@ -381,6 +421,66 @@ function embedSpotifyLargeNode(child, links, /*images*/) {
     console.log(error);
     return false
   }
+}
+
+function embedTwitchNode(child, links /*images*/) {
+    try {
+        const data = child.data;
+        const twitch = twitchId(data);
+        if (!twitch) return child;
+
+        child.data = data.replace(
+            twitch.url,
+            `~~~ embed:${twitch.id} twitch ~~~`
+        );
+
+        if (links) links.add(twitch.canonical);
+    } catch (error) {
+        console.error(error);
+    }
+    return child;
+}
+
+function twitchId(data) {
+    if (!data) return null;
+    const m = data.match(linksRe.twitch);
+    if (!m || m.length < 3) return null;
+
+    return {
+        id: m[1] === `videos` ? `?video=${m[2]}` : `?channel=${m[2]}`,
+        url: m[0],
+        canonical:
+            m[1] === `videos`
+                ? `https://player.twitch.tv/?video=${m[2]}`
+                : `https://player.twitch.tv/?channel=${m[2]}`,
+    };
+}
+
+function embedDTubeNode(child, links /*images*/) {
+    try {
+        const data = child.data;
+        const dtube = dtubeId(data);
+        if (!dtube) return child;
+
+        child.data = data.replace(dtube.url, `~~~ embed:${dtube.id} dtube ~~~`);
+
+        if (links) links.add(dtube.canonical);
+    } catch (error) {
+        console.log(error);
+    }
+    return child;
+}
+
+function dtubeId(data) {
+    if (!data) return null;
+    const m = data.match(linksRe.dtube);
+    if (!m || m.length < 2) return null;
+
+    return {
+        id: m[1],
+        url: m[0],
+        canonical: `https://emb.d.tube/#!/${m[1]}`,
+    };
 }
 
 function ipfsPrefix(url) {

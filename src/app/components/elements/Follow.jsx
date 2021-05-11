@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import LoadingIndicator from './LoadingIndicator';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
@@ -17,7 +18,7 @@ export default class Follow extends React.Component {
     showMute: bool,
     fat: bool,
     children: any,
-    showLogin: React.PropTypes.func.isRequired,
+    showLogin: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -79,7 +80,12 @@ export default class Follow extends React.Component {
     }
 
     const {follower, following} = this.props; // html
+
     // Show follow preview for new users
+    if (typeof window === 'undefined') {
+        return null;
+    }
+
     if (!follower || !following) return <span>
              <label className="button slim hollow secondary" onClick={this.followLoggedOut}>{tt('g.follow')}</label>
         </span>;
@@ -94,7 +100,7 @@ export default class Follow extends React.Component {
     const cnActive = 'button' + (fat ? '' : ' slim');
     const cnInactive = cnActive + ' hollow secondary ' + cnBusy;
     return <span>
-            {showFollow && followingWhat !== 'blog' &&
+            {showFollow && followingWhat !== null && followingWhat !== 'blog' &&
             <label className={cnInactive} onClick={this.follow}>{tt('g.follow')}</label>}
 
       {showFollow && followingWhat === 'blog' &&

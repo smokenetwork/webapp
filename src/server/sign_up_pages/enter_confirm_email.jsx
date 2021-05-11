@@ -8,10 +8,9 @@ import ServerHTML from '../server-html';
 import sendEmail from '../sendEmail';
 import {checkCSRF, getRemoteIp} from 'server/utils/misc';
 import config from 'config';
-import MiniHeader from 'app/components/modules/MiniHeader';
+import MiniHeader from '../../app/components/modules/MiniHeader';
 import secureRandom from 'secure-random';
 import Mixpanel from 'mixpanel';
-import Progress from 'react-foundation-components/lib/global/progress-bar';
 import {api} from '@smokenetwork/smoke-js';
 
 const path = require('path');
@@ -198,7 +197,9 @@ export default function useEnterAndConfirmEmailPages(app) {
         <br/>
         <div className="row CreateAccount__step" style={{maxWidth: "32rem"}}>
           <div className="column">
-            <Progress tabIndex="0" value={50} max={100}/>
+            <div className="progress">
+                <span style={{ width: '50%' }}>Progress: 50%</span>
+            </div>
             <form id="submit_email" action="/submit_email" method="POST">
               <h4 className="CreateAccount__title">
                 Your email address, please

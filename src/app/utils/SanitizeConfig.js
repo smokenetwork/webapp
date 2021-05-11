@@ -61,7 +61,21 @@ const iframeWhitelist = [
         '&auto_play=false&hide_related=false&show_comments=true' +
         '&show_user=true&show_reposts=false&visual=true'
     }
-  }
+  },
+  {
+    re: /^(https?:)?\/\/player.twitch.tv\/.*/i,
+    fn: src => {
+        //<iframe src="https://player.twitch.tv/?channel=ninja" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620">
+        return src;
+    },
+  },
+  {
+    re: /^https:\/\/emb.d.tube\/\#\!\/([a-zA-Z0-9\-\.\/]+)$/,
+    fn: src => {
+        // <iframe width="560" height="315" src="https://emb.d.tube/#!/justineh/u6qoydvy" frameborder="0" allowfullscreen></iframe>
+        return src;
+    },
+  },
 ];
 export const noImageText = '(Image not shown due to low ratings)'
 export const allowedTags = `

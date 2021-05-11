@@ -30,8 +30,6 @@ export function serverApiRecordEvent(type, val, rate_limit_ms = 5000) {
   // if (last_call && (new Date() - last_call) < rate_limit_ms) return;
   // last_call = new Date();
   // const value = val && val.stack ? `${val.toString()} | ${val.stack}` : val;
-  // const request = Object.assign({}, request_base, {body: JSON.stringify({csrf: $STM_csrf, type, value})});
-  // fetch('/api/v1/record_event', request);
   // api.call('overseer.collect', {collection: 'event', metadata: {type, value}}, (error) => {
   //     // if (error) console.warn('overseer error', error, error.data);
   // });
@@ -58,10 +56,13 @@ let last_page, last_views, last_page_promise;
 
 export function recordPageView(page, ref, account) {
   if (last_page_promise && page === last_page) return last_page_promise;
+  if (!process.env.BROWSER) return Promise.resolve(0);
+
   if (window.ga) { // virtual pageview
     window.ga('set', 'page', page);
     window.ga('send', 'pageview');
   }
+
   api.call('overseer.pageview', {page, referer: ref, account}, (error) => {
     // if (error) console.warn('overseer error', error, error.data);
   });
@@ -97,7 +98,7 @@ export function setUserPreferences(payload) {
   return fetch('/api/v1/setUserPreferences', request);
 }
 
-if (process.env.BROWSER) {
-  window.getNotifications = getNotifications;
-  window.markNotificationRead = markNotificationRead;
-}
+//if (process.env.BROWSER) {
+  //window.getNotifications = getNotifications;
+  //window.markNotificationRead = markNotificationRead;
+//}

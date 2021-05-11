@@ -1,12 +1,12 @@
 /* eslint react/prop-types: 0 */
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import constants from '../../redux/constants';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import PostsGrid from '../cards/PostsGrid';
 import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {Link} from 'react-router';
-import MarkNotificationRead from '../elements/MarkNotificationRead';
 import tt from 'counterpart';
 import Immutable from 'immutable';
 import Callout from '../elements/Callout';
@@ -71,7 +71,6 @@ class PostsIndex extends React.Component {
     let topics_order = order;
     let posts = [];
     let emptyText = '';
-    let markNotificationRead = null;
     if (category === 'feed') {
       const account_name = order.slice(1);
       order = 'by_feed';
@@ -84,7 +83,6 @@ class PostsIndex extends React.Component {
           <i>{tt('posts_index.empty_feed_2')}.</i><br/><br/>
           <a href="/trending" className="button">{tt('posts_index.empty_feed_3')}</a>
         </div>;
-        markNotificationRead = <MarkNotificationRead fields="feed" account={account_name}/>
       } else {
         emptyText = <div>{tt('user_profile.user_hasnt_followed_anything_yet', {name: account_name})}</div>;
       }
@@ -141,13 +139,12 @@ class PostsIndex extends React.Component {
           <div data-mantis-zone="smokeio" data-mantis-refresh="true"></div>
         </div>
         <article className="articles">
-          {markNotificationRead}
           {(!fetching && (posts && !posts.size)) ? <Callout>{emptyText}</Callout> :
             <PostsGrid
               ref="list"
               posts={posts ? posts : Immutable.List()}
               loading={fetching}
-              category={category}
+              category={topics_order}
               loadMore={this.loadMore}
               showSpam={showSpam}
             />

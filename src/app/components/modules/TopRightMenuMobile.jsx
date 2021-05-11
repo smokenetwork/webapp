@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
 import Icon from '../elements/Icon';
 import user from '../../redux/User';
 import Userpic from '../elements/Userpic';
 import LoadingIndicator from '../elements/LoadingIndicator';
-import NotifiCounter from '../elements/NotifiCounter';
 import tt from 'counterpart';
 import DropdownMobileMenu from '../elements/DropdownMobileMenu';
 
@@ -72,7 +72,7 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
                   >
                       <li className={'Header__userpic '}>
                           <span title={username}>
-                              <Userpic account={username} />
+                              <Userpic account={username} rep={26} />
                           </span>
                       </li>
                   </DropdownMobileMenu>
@@ -108,14 +108,14 @@ function TopRightMenuMobile({username, showLogin, logout, loggedIn, vertical, na
 }
 
 TopRightMenuMobile.propTypes = {
-  username: React.PropTypes.string,
-  loggedIn: React.PropTypes.bool,
-  probablyLoggedIn: React.PropTypes.bool,
-  showLogin: React.PropTypes.func.isRequired,
-  logout: React.PropTypes.func.isRequired,
-  vertical: React.PropTypes.bool,
-  navigate: React.PropTypes.func,
-  toggleOffCanvasMenu: React.PropTypes.func,
+  username: PropTypes.string,
+  loggedIn: PropTypes.bool,
+  probablyLoggedIn: PropTypes.bool,
+  showLogin: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  vertical: PropTypes.bool,
+  navigate: PropTypes.func,
+  toggleOffCanvasMenu: PropTypes.func,
 };
 
 export default connect(
@@ -146,4 +146,3 @@ export default connect(
     },
   })
 )(TopRightMenuMobile);
-

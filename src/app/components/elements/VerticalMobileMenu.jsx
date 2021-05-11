@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router'
 import Icon from './Icon';
 
 export default class VerticalMobileMenu extends React.Component {
   static propTypes = {
-    items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-    title: React.PropTypes.string,
-    className: React.PropTypes.string,
-    hideValue: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.element
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    title: PropTypes.string,
+    className: PropTypes.string,
+    hideValue: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element
     ]),
   };
 
@@ -24,7 +25,7 @@ export default class VerticalMobileMenu extends React.Component {
   render() {
     const {items, title, className, hideValue} = this.props;
     return <div className={'VerticalMobileMenu menu vertical' + (className ? ' ' + className : '')}>
-      {title && <div className="tops"><div className="title float-left">{title}</div><div onClick={this.closeMenu} className="title float-right">X</div></div>}
+      {title && <div className="tops"><div onClick={this.closeMenu} className="title float-right">X</div><div className="title">{title}</div></div>}
       {
         items.map(i => {
           if (i.value === hideValue) return null

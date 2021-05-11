@@ -1,5 +1,6 @@
 import tt from 'counterpart';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {APP_NAME} from '../../client_config';
@@ -12,9 +13,9 @@ import SvgImage from '../elements/SvgImage';
 
 class Header extends React.Component {
   static propTypes = {
-    location: React.PropTypes.object.isRequired,
-    current_account_name: React.PropTypes.string,
-    account_meta: React.PropTypes.object
+    location: PropTypes.object.isRequired,
+    current_account_name: PropTypes.string,
+    account_meta: PropTypes.object
   };
 
   constructor() {
@@ -110,7 +111,11 @@ class Header extends React.Component {
       page_title = tt('header_jsx.stolen_account_recovery');
     } else if (route.page === 'UserProfile') {
       user_name = route.params[0].slice(1);
-      const acct_meta = this.props.account_meta.getIn([user_name]);
+      let { account_meta } = this.props;
+      // Only access account meta if it is available in state - basically do not do this server-side!
+      const acct_meta = account_meta
+                        ? this.props.account_meta.getIn([user_name])
+                        : false;
       const name = acct_meta ? normalizeProfile(acct_meta.toJS()).name : null;
       const user_title = name ? `${name} (@${user_name})` : user_name;
       page_title = user_title;
@@ -147,7 +152,7 @@ class Header extends React.Component {
     const logoLink = current_account_name ? `/@${current_account_name}/feed` : '/';
 
     const menuItems = [];
-    
+
     // if we have a user profile, display the wallet link
     if (current_account_name) {
       menuItems.push(

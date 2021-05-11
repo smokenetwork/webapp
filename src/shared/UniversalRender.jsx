@@ -27,7 +27,7 @@ import {routeRegex} from '../app/ResolveRoute';
 import {contentStats} from '../app/utils/StateFunctions'
 import {postHelper} from '../utils/PostHelperFactory'
 import {api} from '@smokenetwork/smoke-js';
-import {filterState} from '../utils/ContentFilter';
+//import {filterState} from '../utils/ContentFilter';
 import {call, put} from "redux-saga/effects";
 import GlobalReducer from "../app/redux/GlobalReducer";
 const fetch = require('node-fetch');
@@ -130,7 +130,7 @@ async function universalRender({location, initial_state, offchain, ErrorPage, ta
     }
 
     // https://github.com/smokenetwork/webapp/issues/40
-    onchain = filterState(onchain);
+    //onchain = filterState(onchain);
 
     // If we are not loading a post, truncate state data to bring response size down.
     if (!url.match(routeRegex.Post)) {

@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
 import tt from 'counterpart';
 
 class Topics extends React.Component {
   static propTypes = {
-    categories: React.PropTypes.object.isRequired,
-    order: React.PropTypes.string,
-    current: React.PropTypes.string,
-    className: React.PropTypes.string,
-    compact: React.PropTypes.bool
+    categories: PropTypes.object.isRequired,
+    order: PropTypes.string,
+    current: PropTypes.string,
+    className: PropTypes.string,
+    compact: PropTypes.bool
   };
 
   constructor(props) {
@@ -66,4 +67,3 @@ class Topics extends React.Component {
 export default connect(state => ({
   categories: state.global.get('tag_idx')
 }))(Topics);
-

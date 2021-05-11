@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Author from '../elements/Author';
 import ReplyEditor from '../elements/ReplyEditor';
 import MarkdownViewer from './MarkdownViewer';
@@ -51,6 +52,10 @@ export function sortComments(cont, comments, sort_order) {
     return a.get('active_votes').filter(vote => vote.get('percent') > 0).size
   }
 
+  function authorReputation(a) {
+    return a.get('author_reputation');
+  }
+
   /** sorts replies by upvotes, age, or payout */
   const sort_orders = {
     votes: (a, b) => {
@@ -85,7 +90,12 @@ export function sortComments(cont, comments, sort_order) {
       }
       // If SBD payouts were equal, fall back to rshares sorting
       return netRshares(bcontent).compare(netRshares(acontent))
-    }
+    },
+    author_reputation: (a, b) => {
+        return (
+            authorReputation(cont.get(b)) - authorReputation(cont.get(a))
+        );
+    },
   }
   comments.sort(sort_orders[sort_order]);
 }
@@ -93,22 +103,27 @@ export function sortComments(cont, comments, sort_order) {
 class CommentImpl extends React.Component {
   static propTypes = {
     // html props
-    cont: React.PropTypes.object.isRequired,
-    content: React.PropTypes.string.isRequired,
-    sort_order: React.PropTypes.oneOf(['votes', 'new', 'trending']).isRequired,
-    root: React.PropTypes.bool,
-    showNegativeComments: React.PropTypes.bool,
-    onHide: React.PropTypes.func,
-    noImage: React.PropTypes.bool,
+    cont: PropTypes.object.isRequired,
+    content: PropTypes.string.isRequired,
+    sort_order: PropTypes.oneOf([
+      'votes',
+      'new',
+      'trending',
+      'author_reputation'
+    ]).isRequired,
+    root: PropTypes.bool,
+    showNegativeComments: PropTypes.bool,
+    onHide: PropTypes.func,
+    noImage: PropTypes.bool,
 
     // component props (for recursion)
-    depth: React.PropTypes.number,
+    depth: PropTypes.number,
 
     // redux props
-    username: React.PropTypes.string,
-    rootComment: React.PropTypes.string,
-    anchor_link: React.PropTypes.string.isRequired,
-    deletePost: React.PropTypes.func.isRequired,
+    username: PropTypes.string,
+    rootComment: PropTypes.string,
+    anchor_link: PropTypes.string.isRequired,
+    deletePost: PropTypes.func.isRequired,
   };
   static defaultProps = {
     depth: 1,
@@ -184,12 +199,17 @@ class CommentImpl extends React.Component {
     if (content) {
       const hide = hideSubtree(props.cont, props.content)
       const gray = content.getIn(['stats', 'gray'])
+
+      const author = content.get('author');
+      const { username } = this.props;
+      const notOwn = username !== author;
+
       if (hide) {
         const {onHide} = this.props
         // console.log('Comment --> onHide')
         if (onHide) onHide()
       }
-      this.setState({hide, hide_body: hide || gray})
+      this.setState({ hide, hide_body: notOwn && (hide || gray) });
     }
   }
 
@@ -231,6 +251,13 @@ class CommentImpl extends React.Component {
     if (!dis) {
       return <div>{tt('g.loading')}...</div>
     }
+    // Don't server-side render the comment if it has a certain number of newlines
+    if (
+        global['process'] !== undefined &&
+        (dis.get('body').match(/\r?\n/g) || '').length > 25
+    ) {
+        return <div>{tt('g.loading')}...</div>;
+    }
     const comment = dis.toJS();
     if (!comment.stats) {
       console.error('Comment -- missing stats object')
@@ -254,7 +281,7 @@ class CommentImpl extends React.Component {
     const comment_link = `/${comment.category}/@${rootComment}#@${comment.author}/${comment.permlink}`
     const ignore = ignore_list && ignore_list.has(comment.author)
 
-    if (!showNegativeComments && (hide || ignore)) {
+    if (!showNegativeComments && (hide || ignore || authorRepLog10 < 10)) {
       return null;
     }
 
@@ -268,11 +295,14 @@ class CommentImpl extends React.Component {
     // const steem_supply = this.props.global.getIn(['props','current_supply']);
 
     // hide images if author is in blacklist
-    const hideImages = ImageUserBlockList.includes(author)
+    let hideImages = ImageUserBlockList.includes(author)
+    if (authorRepLog10 < 20) {
+      hideImages = true;
+    }
 
     const showDeleteOption = username === author && allowDelete
     const showEditOption = username === author
-    const showReplyOption = comment.depth < 255
+    const showReplyOption = username !== undefined && comment.depth < 255;
     const archived = comment.cashout_time === '1969-12-31T23:59:59' // TODO: audit after HF19. #1259
     const readonly = archived || $STM_Config.read_only_mode
 
@@ -325,6 +355,7 @@ class CommentImpl extends React.Component {
     const commentClasses = ['hentry']
     commentClasses.push('Comment')
     commentClasses.push(this.props.root ? 'root' : 'reply')
+
     if (hide_body || this.state.collapsed) commentClasses.push('collapsed');
 
     let innerCommentClass = ignore || gray ? 'downvoted' : ''
@@ -362,7 +393,7 @@ class CommentImpl extends React.Component {
         {depth_indicator}
         <div className={innerCommentClass}>
           <div className="Comment__Userpic show-for-medium">
-            <Userpic account={comment.author}/>
+            <Userpic account={comment.author} rep={authorRepLog10} />
           </div>
           <div className="Comment__header">
             <div className="Comment__header_collapse">
@@ -372,7 +403,7 @@ class CommentImpl extends React.Component {
             </div>
             <span className="Comment__header-user">
                   <div className="Comment__Userpic-small">
-                    <Userpic account={comment.author}/>
+                    <Userpic account={comment.author} rep={authorRepLog10}/>
                   </div>
                   <Author author={comment.author} authorRepLog10={authorRepLog10}/>
                 </span>
@@ -386,6 +417,14 @@ class CommentImpl extends React.Component {
             <span className="marginLeft1rem">{tt('g.reply_count', {count: comment.children})}</span>}
             {!this.state.collapsed && hide_body &&
             <a className="marginLeft1rem" onClick={this.revealBody}>{tt('g.reveal_comment')}</a>}
+            {!this.state.collapsed &&
+            !hide_body &&
+            (ignore || gray) && (
+                <span>
+                    &nbsp; &middot; &nbsp;{' '}
+                    {tt('g.will_be_hidden_due_to_low_rating')}
+                </span>
+            )}
           </div>
           <div className="Comment__body entry-content">
             {showEdit ? renderedEditor : body}

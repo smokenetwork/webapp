@@ -1,9 +1,10 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import PostSummary from './PostSummary';
 import Post from '../pages/Post';
 import LoadingIndicator from '../elements/LoadingIndicator';
 import debounce from 'lodash.debounce';
-import CloseButton from 'react-foundation-components/lib/global/close-button';
+import CloseButton from '../elements/CloseButton';
 import {findParent} from '../../utils/DomUtils';
 import Icon from '../elements/Icon';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';

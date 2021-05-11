@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {browserHistory} from 'react-router';
 import Icon from './Icon';
 import VerticalMenu from './VerticalMenu';
@@ -6,13 +7,13 @@ import {findParent} from '../../utils/DomUtils';
 
 export default class DropdownMenu extends React.Component {
   static propTypes = {
-    items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-    selected: React.PropTypes.string,
-    children: React.PropTypes.object,
-    className: React.PropTypes.string,
-    title: React.PropTypes.string,
-    href: React.PropTypes.string,
-    el: React.PropTypes.string.isRequired
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selected: PropTypes.string,
+    children: PropTypes.object,
+    className: PropTypes.string,
+    title: PropTypes.string,
+    href: PropTypes.string,
+    el: PropTypes.string.isRequired
   };
 
   constructor(props) {
@@ -64,7 +65,7 @@ export default class DropdownMenu extends React.Component {
   }
 
   render() {
-    const {el, items, selected, children, className, title, href} = this.props;
+    const {el, items, selected, children, className, title, href, position,} = this.props;
     const hasDropdown = items.length > 0
 
     let entry = children || <span>
@@ -76,8 +77,10 @@ export default class DropdownMenu extends React.Component {
 
     const menu = <VerticalMenu key="menu" title={title} items={items} hideValue={selected}
                                className="VerticalMenu"/>;
-    const cls = 'DropdownMenu' + (this.state.shown ? ' show' : '') + (className ? ` ${className}` : '')
+    const cls =
+      'DropdownMenu' + (this.state.shown ? ' show' : '') +
+      (className ? ` ${className}` : '') +
+      (position ? ` ${position}` : '');
     return React.createElement(el, {className: cls}, [entry, menu]);
   }
 }
-

@@ -60,6 +60,11 @@ export default createModule({
                 errorKey = 'You already voted for this post';
                 console.error('You already voted for this post.')
               }
+              if (/Voting weight is too small/.test(errorStr)) {
+                  errorKey = 'Voting weight is too small';
+                  errorStr =
+                      'Voting weight is too small, please accumulate more smoke power.';
+              }
               break;
             case 'comment':
               if (/You may only post once per minute/.test(errorStr)) {

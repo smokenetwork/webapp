@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import CloseButton from 'react-foundation-components/lib/global/close-button';
-import Reveal from 'react-foundation-components/lib/global/reveal';
+import CloseButton from '../elements/CloseButton';
+import Reveal from '../elements/Reveal';
 import LoginForm from './LoginForm';
 import ConfirmTransactionForm from './ConfirmTransactionForm';
 import Transfer from './Transfer';
@@ -16,21 +17,21 @@ import EligibleDialog from './EligibleDialog';
 
 class Modals extends React.Component {
   static propTypes = {
-    show_login_modal: React.PropTypes.bool,
-    show_confirm_modal: React.PropTypes.bool,
-    show_transfer_modal: React.PropTypes.bool,
-    show_powerdown_modal: React.PropTypes.bool,
-    show_signup_modal: React.PropTypes.bool,
-    show_promote_post_modal: React.PropTypes.bool,
-    hideLogin: React.PropTypes.func.isRequired,
-    hideConfirm: React.PropTypes.func.isRequired,
-    hideSignUp: React.PropTypes.func.isRequired,
-    hideTransfer: React.PropTypes.func.isRequired,
-    hidePowerdown: React.PropTypes.func.isRequired,
-    notifications: React.PropTypes.object,
-    show_terms_modal: React.PropTypes.bool,
-    show_eligible_modal: React.PropTypes.bool,
-    removeNotification: React.PropTypes.func,
+    show_login_modal: PropTypes.bool,
+    show_confirm_modal: PropTypes.bool,
+    show_transfer_modal: PropTypes.bool,
+    show_powerdown_modal: PropTypes.bool,
+    show_signup_modal: PropTypes.bool,
+    show_promote_post_modal: PropTypes.bool,
+    hideLogin: PropTypes.func.isRequired,
+    hideConfirm: PropTypes.func.isRequired,
+    hideSignUp: PropTypes.func.isRequired,
+    hideTransfer: PropTypes.func.isRequired,
+    hidePowerdown: PropTypes.func.isRequired,
+    notifications: PropTypes.object,
+    show_terms_modal: PropTypes.bool,
+    show_eligible_modal: PropTypes.bool,
+    removeNotification: PropTypes.func,
   };
 
   constructor() {

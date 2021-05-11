@@ -29,11 +29,15 @@ export default {
   imageFile: imageFile(),
   youTube: youTube(),
   youTubeId: /(?:(?:youtube.com\/watch\?v=)|(?:youtu.be\/)|(?:youtube.com\/embed\/))([A-Za-z0-9\_\-]+)/i,
+  vimeo: /https?:\/\/(?:vimeo.com\/|player.vimeo.com\/video\/)([0-9]+)\/?(#t=((\d+)s?))?\/?/,
   vimeoId: /(?:vimeo.com\/|player.vimeo.com\/video\/)([0-9]+)/,
   spotifyId: /(?:spotify.com\/track\/|open.spotify.com\/)(track\/[A-Za-z0-9\_\-\/]+|show\/[A-Za-z0-9\_\-\/]+)/i,
   spotifyIdLarge: /(?:spotify.com\/artist\/|open.spotify.com\/)(album\/[A-Za-z0-9\_\-\/]+|playlist\/[A-Za-z0-9\_\-\/]+|artist\/[A-Za-z0-9\_\-\/]+)/i,
   // simpleLink: new RegExp(`<a href="(.*)">(.*)<\/a>`, 'ig'),
   ipfsPrefix: /(https?:\/\/.*)?\/ipfs/i,
+  twitch: /https?:\/\/(?:www.)?twitch.tv\/(?:(videos)\/)?([a-zA-Z0-9][\w]{3,24})/i,
+  dtube: /https:\/\/(?:emb\.)?(?:d.tube\/\#\!\/(?:v\/)?)([a-zA-Z0-9\-\.\/]*)/,
+  dtubeId: /(?:d\.tube\/#!\/(?:v\/)?([a-zA-Z0-9\-\.\/]*))+/,
 }
 
 // Original regex

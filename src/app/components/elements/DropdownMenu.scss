@@ -10,6 +10,7 @@
   > .VerticalMenu {
     visibility: hidden;
     min-width: 145px;
+    width: max-content;
     z-index: 1000;
     display: block;
     border-radius: $global-radius;
@@ -23,14 +24,14 @@
       border: themed('borderDark');
     }
 
-    // width: auto;
     transform: translateY(10%);
     transition: all 0.3s ease 0s, visibility 0s linear 0.3s;
   }
 
   > .VerticalMobileMenu {
     visibility: hidden;
-    min-width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
     z-index: 1000;
     display: block;
     border-radius: $global-radius;
@@ -43,6 +44,7 @@
     justify-content: center;
     height: 100vh;
     z-index: 9999;
+    box-sizing: border-box;
   }
 
   &.show > .VerticalMenu {
@@ -64,9 +66,18 @@
     }
   }
 
+  &.left > .VerticalMenu {
+    position: absolute;
+    right: 0%;
+  }
+  &.right > .VerticalMenu {
+    position: absolute;
+    left: 0%;
+  }
   .DropdownMenu.move-left {
     .VerticalMenu {
       left: -50%;
     }
   }
 }
+

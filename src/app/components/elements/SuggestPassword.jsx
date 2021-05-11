@@ -1,5 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {renderToString} from 'react-dom/server'
 import g from '../../redux/GlobalReducer'
@@ -10,7 +11,7 @@ import {APP_ICON, APP_NAME} from '../../client_config';
 import {key_utils} from '@smokenetwork/smoke-js/lib/auth/ecc';
 
 
-const {bool} = React.PropTypes
+const {bool} = PropTypes
 export const steemitCannotRecoverPasswords = tt('suggestpassword_jsx.APP_NAME_cannot_recover_passwords_keep_this_page_in_a_secure_location')
 
 class SuggestPassword extends React.Component {

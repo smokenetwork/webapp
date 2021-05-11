@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {imageProxy} from '../../utils/ProxifyUrl';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
@@ -20,40 +21,42 @@ class Userpic extends Component {
   shouldComponentUpdate = shouldComponentUpdate(this, 'Userpic');
 
   render() {
-    const {json_metadata, account} = this.props;
+    const {json_metadata, account, rep} = this.props;
 
     if ((typeof(account) === "undefined") || (account === null) || (account === '')) {
       return null;
     }
 
-    let profileImageUrl = `/images/smoke_user.png`;
-
+    let profileImageUrl;
     // try to extract image url from users metaData
     try {
       const metadata = JSON.parse(json_metadata);
-
-      if (metadata.profile.profile_image) {
+      if (metadata.profile.profile_image && rep >= 20) {
         if (/^(https?:)\/\//.test(metadata.profile.profile_image)) {
-          // hack to get profile images to display. This doesn't work if there is no metadata
-          profileImageUrl = `${imageProxy()}64x64/${metadata.profile.profile_image}`;
+        	// hack to get profile images to display. This doesn't work if there is no metadata
+        	profileImageUrl = `${imageProxy()}64x64/${metadata.profile.profile_image}`;
         }
+      } else {
+        profileImageUrl = `/images/smoke_user.png`;
       }
     } catch (error) {
-      // just use the convention
-      profileImageUrl = `${PROFILE_IMAGE_URL_PREFIX}/${account}`;
+      // commented out to hide invalid profile pics
+      return null;
     }
 
-    return (<div className="Userpic" style={{backgroundImage: `url(${profileImageUrl})`}}/>)
+  	return (<div className="Userpic" style={{backgroundImage: `url(${profileImageUrl})`}}/>);
   }
 }
 
 Userpic.propTypes = {
-  account: PropTypes.string.isRequired
+  account: PropTypes.string.isRequired,
+  rep: PropTypes.number.isRequired,
 };
 
 export default connect(
   (state, ownProps) => {
     const {account, hideIfDefault} = ownProps;
+
     return {
       account,
       json_metadata: state.global.getIn(['accounts', account, 'json_metadata']),

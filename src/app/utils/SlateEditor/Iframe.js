@@ -18,6 +18,27 @@ export default class Iframe extends React.Component {
       return 'https://player.vimeo.com/video/' + match[1]
     }
 
+    // Detect twitch stream
+    match = url.match(linksRe.twitch);
+    if (match && match.length >= 3) {
+        if (match[1] === undefined) {
+            return (
+                'https://player.twitch.tv/?autoplay=false&channel=' +
+                match[2]
+            );
+        } else {
+            return (
+                'https://player.twitch.tv/?autoplay=false&video=' + match[1]
+            );
+        }
+    }
+
+    // Detect dtube
+    match = url.match(linksRe.dtubeId);
+    if (match && match.length >= 2) {
+        return 'https://emb.d.tube/#!/' + match[1];
+    }
+
     console.log("unable to auto-detect embed url", url)
     return null
   }

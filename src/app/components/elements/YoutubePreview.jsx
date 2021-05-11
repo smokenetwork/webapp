@@ -1,8 +1,9 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
+import PropTypes from 'prop-types';
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate'
 
-const {string, number} = React.PropTypes
+const {string, number} = PropTypes
 
 /** Lots of iframes in a post can be very slow.  This component only inserts the iframe when it is actually needed. */
 export default class YoutubePreview extends React.Component {
@@ -10,12 +11,14 @@ export default class YoutubePreview extends React.Component {
     youTubeId: string.isRequired,
     width: number,
     height: number,
+    startTime: number,
     dataParams: string,
   }
 
   static defaultProps = {
     width: 640,
     height: 360,
+    startTime: 0,
     dataParams: 'enablejsapi=0&rel=0&origin=https://smoke.io'
   }
 
@@ -31,7 +34,7 @@ export default class YoutubePreview extends React.Component {
   }
 
   render() {
-    const {youTubeId, width, height, dataParams} = this.props
+    const {youTubeId, width, height, startTime, dataParams} = this.props
     const {play} = this.state
     if (!play) {
       // mqdefault.jpg (medium quality version, 320px × 180px)
@@ -46,7 +49,7 @@ export default class YoutubePreview extends React.Component {
         </div>
       )
     }
-    const autoPlaySrc = `https://www.youtube.com/embed/${youTubeId}?autoplay=1&autohide=1&${dataParams}`
+    const autoPlaySrc = `https://www.youtube.com/embed/${youTubeId}?autoplay=1&autohide=1&${dataParams}&start=${startTime}`
     return <div className="videoWrapper">
       <iframe width={width} height={height} src={autoPlaySrc} frameBorder="0" allowFullScreen="true"></iframe>
     </div>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import Remarkable from 'remarkable'
 import YoutubePreview from '../elements/YoutubePreview'
@@ -18,17 +19,17 @@ const remarkable = new Remarkable({
 class MarkdownViewer extends Component {
   static propTypes = {
     // HTML properties
-    text: React.PropTypes.string,
-    className: React.PropTypes.string,
-    large: React.PropTypes.bool,
-    // formId: React.PropTypes.string, // This is unique for every editor of every post (including reply or edit)
-    canEdit: React.PropTypes.bool,
-    jsonMetadata: React.PropTypes.object,
-    highQualityPost: React.PropTypes.bool,
-    noImage: React.PropTypes.bool,
-    allowDangerousHTML: React.PropTypes.bool,
-    hideImages: React.PropTypes.bool,
-    showDefaultImage: React.PropTypes.bool,
+    text: PropTypes.string,
+    className: PropTypes.string,
+    large: PropTypes.bool,
+    // formId: PropTypes.string, // This is unique for every editor of every post (including reply or edit)
+    canEdit: PropTypes.bool,
+    jsonMetadata: PropTypes.object,
+    highQualityPost: PropTypes.bool,
+    noImage: PropTypes.bool,
+    allowDangerousHTML: PropTypes.bool,
+    hideImages: PropTypes.bool,
+    showDefaultImage: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -109,10 +110,11 @@ class MarkdownViewer extends Component {
 
     // HtmlReady inserts ~~~ embed:${id} type ~~~
     for (let section of cleanText.split('~~~ embed:')) {
-      const match = section.match(/^([A-Za-z0-9\/\_\-\.]+) (youtube|vimeo|spotify|spotifyLarge) ~~~/)
+      const match = section.match(/^([A-Za-z0-9\?\=\_\-\/\.]+) (youtube|vimeo|twitch|spotify|spotifyLarge|dtube)\s?(\d+)? ~~~/)
       if (match && match.length >= 2) {
         const id = match[1]
         const type = match[2]
+        const startTime = match[3] ? parseInt(match[3]) : 0;
         const w = large ? 640 : 480,
           h = large ? 360 : 270
         if (type === 'youtube') {
@@ -122,11 +124,14 @@ class MarkdownViewer extends Component {
               width={w}
               height={h}
               youTubeId={id}
+              startTime={startTime}
               frameBorder="0"
               allowFullScreen="true"/>
           )
         } else if (type === 'vimeo') {
-          const url = `https://player.vimeo.com/video/${id}`
+          const url = `https://player.vimeo.com/video/${id}#t=${
+              startTime
+          }s`;
           sections.push(
             <div key={idx++} className="videoWrapper">
               <iframe
@@ -165,10 +170,44 @@ class MarkdownViewer extends Component {
                 />
             </div>
           )
+        } else if (type === 'twitch') {
+          const url = `https://player.twitch.tv/${id}`;
+          sections.push(
+              <div className="videoWrapper">
+                  <iframe
+                      key={idx++}
+                      src={url}
+                      width={w}
+                      height={h}
+                      frameBorder="0"
+                      allowFullScreen
+                  />
+              </div>
+          );
+        } else if (type === 'dtube') {
+          const url = `https://emb.d.tube/#!/${id}`;
+          sections.push(
+              <div className="videoWrapper">
+                  <iframe
+                      key={idx++}
+                      src={url}
+                      width={w}
+                      height={h}
+                      frameBorder="0"
+                      allowFullScreen
+                  />
+              </div>
+          );
         } else {
           console.error('MarkdownViewer unknown embed type', type);
         }
-        section = section.substring(`${id} ${type} ~~~`.length)
+        if (match[3]) {
+            section = section.substring(
+                `${id} ${type} ${startTime} ~~~`.length
+            );
+        } else {
+            section = section.substring(`${id} ${type} ~~~`.length);
+        }
         if (section === '') continue
       }
       sections.push(<div key={idx++} dangerouslySetInnerHTML={{__html: section}}/>)

@@ -15,6 +15,7 @@ export default {
                 TYPED_ARRAY_SUPPORT: JSON.stringify(false)
             }
         }),
+        /*
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
@@ -37,6 +38,14 @@ export default {
                 comments: false
             }
         }),
-        ...baseConfig.plugins
+        */
+        ...baseConfig.plugins,
+        // Fix window.onerror
+        // See https://github.com/webpack/webpack/issues/5681#issuecomment-345861733
+        new webpack.SourceMapDevToolPlugin({
+            module: true,
+            columns: false,
+            moduleFilenameTemplate: info => { return `${info.resourcePath}?${info.loaders}` }
+        })
     ]
 };

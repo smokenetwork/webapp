@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {browserHistory, Link} from 'react-router';
 import Icon from './Icon';
 import VerticalMobileMenu from './VerticalMobileMenu';
@@ -6,13 +7,13 @@ import {findParent} from '../../utils/DomUtils';
 
 export default class DropdownMobileMenu extends React.Component {
   static propTypes = {
-    items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-    selected: React.PropTypes.string,
-    children: React.PropTypes.object,
-    className: React.PropTypes.string,
-    title: React.PropTypes.string,
-    href: React.PropTypes.string,
-    el: React.PropTypes.string.isRequired
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selected: PropTypes.string,
+    children: PropTypes.object,
+    className: PropTypes.string,
+    title: PropTypes.string,
+    href: PropTypes.string,
+    el: PropTypes.string.isRequired
   };
 
   constructor(props) {

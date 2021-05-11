@@ -10,11 +10,6 @@
 
 .UserProfile__top-nav {
   padding: 0;
-  .row {
-    .columns {
-      overflow-x: auto;
-    }
-  }
   .menu {
     background-color: transparent;
   }
@@ -151,10 +146,6 @@
       }
     }
 
-    .NotifiCounter {
-      position: relative;
-      top: -5px;
-    }
   }
 }
 

@@ -19,10 +19,8 @@ import PostsGrid from '../cards/PostsGrid';
 import {isFetchingOrRecentlyUpdated} from '../../utils/StateFunctions';
 import {repLog10} from '../../utils/ParsersAndFormatters.js';
 import Tooltip from '../elements/Tooltip';
-import {LinkWithDropdown} from 'react-foundation-components/lib/global/dropdown';
+import DropdownMenu from '../elements/DropdownMenu';
 import VerticalMenu from '../elements/VerticalMenu';
-import MarkNotificationRead from '../elements/MarkNotificationRead';
-import NotifiCounter from '../elements/NotifiCounter';
 import DateJoinWrapper from '../elements/DateJoinWrapper';
 import tt from 'counterpart';
 import WalletSubMenu from '../elements/WalletSubMenu';
@@ -31,6 +29,7 @@ import Callout from '../elements/Callout';
 import normalizeProfile from '../../utils/NormalizeProfile';
 import userIllegalContent from '../../utils/userIllegalContent';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
+import SanitizedLink from '../elements/SanitizedLink';
 
 export default class UserProfile extends React.Component {
   constructor() {
@@ -181,14 +180,13 @@ export default class UserProfile extends React.Component {
               <WalletSubMenu account_name={account.name}/>
             </div>
           </div>
-          
+
           <UserWallet
             account={accountImm}
             showTransfer={this.props.showTransfer}
             showPowerdown={this.props.showPowerdown}
             current_user={current_user}
             withdrawVesting={this.props.withdrawVesting}/>
-          {isMyAccount && <div><MarkNotificationRead fields="send,receive" account={account.name}/></div>}
         </div>
       );
     }
@@ -213,7 +211,6 @@ export default class UserProfile extends React.Component {
             title={tt('user_profile.followers')}
             account={account}
             users={followers.get('blog_result')}/>
-          {isMyAccount && <MarkNotificationRead fields="follow" account={account.name}/>}
         </div>)
       }
     }
@@ -293,7 +290,6 @@ export default class UserProfile extends React.Component {
                 loadMore={this.loadMore}
                 showSpam={false}
               />
-              {isMyAccount && <MarkNotificationRead fields="comment_reply" account={account.name}/>}
             </div>
           );
         }
@@ -311,7 +307,6 @@ export default class UserProfile extends React.Component {
         </div>
         <br/>
         <UserKeys account={accountImm}/>
-        {isMyAccount && <MarkNotificationRead fields="account_update" account={account.name}/>}
       </div>;
     } else if (section === 'password') {
       walletClass = 'active'
@@ -372,24 +367,16 @@ export default class UserProfile extends React.Component {
           <li><Link to={`/@${accountname}`} activeClassName="active">{tt('g.blog')}</Link></li>
           <li><Link to={`/@${accountname}/comments`} activeClassName="active">{tt('g.comments')}</Link></li>
           <li><Link to={`/@${accountname}/recent-replies`} activeClassName="active">
-            {tt('g.replies')} {isMyAccount && <NotifiCounter fields="comment_reply"/>}
+            {tt('g.replies')}
           </Link></li>
           {/*<li><Link to={`/@${accountname}/feed`} activeClassName="active">Feed</Link></li>*/}
-          <li>
-            <LinkWithDropdown
-              closeOnClickOutside
-              dropdownPosition="bottom"
-              dropdownAlignment="right"
-              dropdownContent={
-                <VerticalMenu items={rewardsMenu}/>
-              }
-            >
-              <a className={rewardsClass}>
-                {tt('g.rewards')}
-                <Icon name="dropdown-arrow"/>
-              </a>
-            </LinkWithDropdown>
-          </li>
+          <DropdownMenu
+              className={rewardsClass}
+              items={rewardsMenu}
+              el="li"
+              selected={tt('g.rewards')}
+              position="right"
+          />
         </ul>
       </div>
       <div className="columns shrink">
@@ -400,7 +387,7 @@ export default class UserProfile extends React.Component {
               browserHistory.push(e.target.pathname);
               return false;
             }}>
-              {tt('g.wallet')} {isMyAccount && <NotifiCounter fields="send,receive,account_update"/>}
+              {tt('g.wallet')}
             </a>
           </li>
           {isMyAccount && <li>
@@ -429,7 +416,7 @@ export default class UserProfile extends React.Component {
                 </div>
               </div>
               <h1>
-                <Userpic account={account.name} hideIfDefault/>
+                <Userpic account={account.name} rep={rep} hideIfDefault/>
                 {name || account.name}{' '}
                 <Tooltip
                   t={tt('user_profile.this_is_users_reputations_score_it_is_based_on_history_of_votes', {name: accountname})}>
@@ -439,19 +426,17 @@ export default class UserProfile extends React.Component {
               <div className="UserProfile__stats">
               <span><Link
                 to={`/@${accountname}`}>{tt('user_profile.post_count', {count: account.post_count || 0})}</Link></span>
-                              <span>
-                                  <Link
-                                    to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
-                                {isMyAccount && <NotifiCounter fields="follow"/>}
-                              </span>
+                  <span>
+                      <Link to={`/@${accountname}/followers`}>{tt('user_profile.follower_count', {count: followerCount})}</Link>
+                  </span>
 
                 <span><Link
                   to={`/@${accountname}/followed`}>{tt('user_profile.followed_count', {count: followingCount})}</Link></span>
               </div>
               <div>
-                {about && <p className="UserProfile__bio">{about}</p>}
+                {about && rep > 20 && <p className="UserProfile__bio">{about}</p>}
                 <p className="UserProfile__info">
-                  {website && <span><a href={website}>{website_label}</a></span>}
+                  {website && rep > 20 && <span><SanitizedLink url={website} text={website_label} /></span>}
                 </p>
               </div>
               <div className="UserProfile__buttons_mobile show-for-small-only">

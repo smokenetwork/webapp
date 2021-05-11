@@ -83,6 +83,7 @@
     },
     "reputation": "Reputation",
     "reveal_comment": "Reveal Comment",
+    "will_be_hidden_due_to_low_rating": "Will be hidden due to low rating",
     "request": "request",
     "required": "Required",
     "rewards": "Rewards",
@@ -264,7 +265,7 @@
     "exceeds_maximum_length": "Exceeds maximum length (%(maxKb)sKB)",
     "including_the_category": " (including the category '%(rootCategory)s')",
     "use_limited_amount_of_tags": "You have %(tagsLength)s tags total%(includingCategory)s. Please use only 5 in your post and category line.",
-    "are_you_sure_you_want_to_clear_this_form": "Are you sure you want to clear this form?",
+    "are_you_sure_you_want_to_clear_this_form": "Are you sure you want to exit the comment editor?",
     "uploading": "Uploading",
     "draft_saved": "Draft saved.",
     "editor": "Editor",
@@ -373,7 +374,13 @@
   "post_jsx": {
     "now_showing_comments_with_low_ratings": "Now showing comments with low ratings",
     "sort_order": "Sort Order",
-    "comments_were_hidden_due_to_low_ratings": "Comments were hidden due to low ratings"
+    "comments_were_hidden_due_to_low_ratings": "Comments were hidden due to low ratings",
+    "comment_sort_order": {
+      "trending": "Trending",
+      "votes": "Votes",
+      "age": "Age",
+      "reputation": "Reputation"
+    }
   },
   "voting_jsx": {
     "flagging_post_can_remove_rewards_the_flag_should_be_used_for_the_following": "Flagging a post can remove rewards and make this material less visible. Some common reasons to flag",
@@ -484,7 +491,10 @@
   "transferhistoryrow_jsx": {
     "stop_power_down": "Stop power down",
     "start_power_down_of": "Start power down of",
-    "receive_interest_of": "Receive interest of"
+    "receive_interest_of": "Receive interest of",
+    "bad_actor_caution": "Caution",
+    "bad_actor_explained": "This is from an account that may be malicious. If you wish, you may temporarily reveal this memo which may contain dangerous links.",
+    "bad_actor_reveal_memo": "I understand the risk; show anyway."
   },
   "explorepost_jsx": {
     "copied": "Copied!",
@@ -588,7 +598,8 @@
     "from": "From",
     "to": "To",
     "asset_currently_collecting": "%(asset)s currently collecting %(interest)s%% APR.",
-    "beware_of_spam_and_phishing_links": "Beware of spam and phishing links in transfer memos. Do not open links from users you do not trust. Do not provide your private keys to any third party websites."
+    "beware_of_spam_and_phishing_links": "Beware of spam and phishing links in transfer memos. Do not open links from users you do not trust. Do not provide your private keys to any third party websites.",
+    "transactions_make_take_a_few_minutes": "Transactions will not show until they are confirmed on the blockchain, which may take a few minutes."
   },
   "userwallet_jsx": {
     "conversion_complete_tip": "Will complete on",
@@ -623,5 +634,9 @@
     "ownership_changed_on": "Ownership Changed On ",
     "deadline_for_recovery_is": "Deadline for recovery is",
     "i_understand_dont_show_again": "I understand, don't show me again"
+  },
+  "sanitizedlink_jsx": {
+    "phishylink_caution": "Link hidden; potential phishing attempt",
+    "phishylink_reveal": "show link"
   }
 }

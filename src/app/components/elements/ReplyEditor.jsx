@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import reactForm from '../../utils/ReactForm'
 import transaction from '../../redux/Transaction';
 import MarkdownViewer from '../cards/MarkdownViewer'
@@ -25,20 +26,20 @@ class ReplyEditor extends React.Component {
   static propTypes = {
 
     // html component attributes
-    formId: React.PropTypes.string.isRequired, // unique form id for each editor
-    type: React.PropTypes.oneOf(['submit_story', 'submit_comment', 'edit']),
-    successCallback: React.PropTypes.func, // indicator that the editor is done and can be hidden
-    onCancel: React.PropTypes.func, // hide editor when cancel button clicked
+    formId: PropTypes.string.isRequired, // unique form id for each editor
+    type: PropTypes.oneOf(['submit_story', 'submit_comment', 'edit']),
+    successCallback: PropTypes.func, // indicator that the editor is done and can be hidden
+    onCancel: PropTypes.func, // hide editor when cancel button clicked
 
-    author: React.PropTypes.string, // empty or string for top-level post
-    permlink: React.PropTypes.string, // new or existing category (default calculated from title)
-    parent_author: React.PropTypes.string, // empty or string for top-level post
-    parent_permlink: React.PropTypes.string, // new or existing category
-    jsonMetadata: React.PropTypes.object, // An existing comment has its own meta data
-    category: React.PropTypes.string, // initial value
-    title: React.PropTypes.string, // initial value
-    body: React.PropTypes.string, // initial value
-    richTextEditor: React.PropTypes.func,
+    author: PropTypes.string, // empty or string for top-level post
+    permlink: PropTypes.string, // new or existing category (default calculated from title)
+    parent_author: PropTypes.string, // empty or string for top-level post
+    parent_permlink: PropTypes.string, // new or existing category
+    jsonMetadata: PropTypes.object, // An existing comment has its own meta data
+    category: PropTypes.string, // initial value
+    title: PropTypes.string, // initial value
+    body: PropTypes.string, // initial value
+    richTextEditor: PropTypes.func,
   }
 
   static defaultProps = {
@@ -143,23 +144,36 @@ class ReplyEditor extends React.Component {
   initForm(props) {
     const {isStory, type, fields} = props
     const isEdit = type === 'edit'
-    const maxKb = isStory ? 100 : 16
+    const maxKb = isStory ? 64 : 16;
     reactForm({
       fields,
       instance: this,
       name: 'replyForm',
       initialValues: props.initialValues,
-      validation: values => ({
-        title: isStory && (
-          !values.title || values.title.trim() === '' ? tt('g.required') :
-            values.title.length > 255 ? tt('reply_editor.shorten_title') :
-              null
-        ),
-        category: isStory && validateCategory(values.category, !isEdit),
-        body: !values.body ? tt('g.required') :
-          values.body.length > maxKb * 1024 ? tt('reply_editor.exceeds_maximum_length', maxKb) :
-            null
-      })
+      validation: values => {
+          let bodyValidation = null;
+          if (!values.body) {
+              bodyValidation = tt('g.required');
+          }
+          if (
+              values.body &&
+              new Blob([values.body]).size >= maxKb * 1024 - 256
+          ) {
+              bodyValidation = `Post body exceeds ${maxKb * 1024 -
+                  256} bytes.`;
+          }
+          return {
+              title:
+                  isStory &&
+                  (!values.title || values.title.trim() === ''
+                      ? tt('g.required')
+                      : values.title.length > 255
+                        ? tt('reply_editor.shorten_title')
+                        : null),
+              tags: isStory && validateTagInput(values.tags, !isEdit),
+              body: bodyValidation,
+          };
+      },
     })
   }
 
@@ -305,7 +319,12 @@ class ReplyEditor extends React.Component {
       author, permlink, parent_author, parent_permlink, type, jsonMetadata,
       state, successCallback,
     } = this.props
-    const {submitting, valid, handleSubmit} = this.state.replyForm
+    const {
+      submitting,
+      valid,
+      handleSubmit,
+      resetForm,
+    } = this.state.replyForm;
     const {postError, titleWarn, rte, payoutType} = this.state
     const {progress, noClipboardData} = this.state
     const disabled = submitting || !valid
@@ -315,6 +334,7 @@ class ReplyEditor extends React.Component {
       this.setState({postError: estr, loading: false})
     }
     const successCallbackWrapper = (...args) => {
+      resetForm();
       this.setState({loading: false})
       if (successCallback) successCallback(args)
     }

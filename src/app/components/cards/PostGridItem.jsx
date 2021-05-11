@@ -1,10 +1,12 @@
 import tt from 'counterpart';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import user from '../../redux/User';
 import {immutableAccessor} from '../../utils/Accessors';
 import extractContent from '../../utils/ExtractContent';
+import {repLog10} from '../../utils/ParsersAndFormatters';
 import proxifyImageUrl from '../../utils/ProxifyUrl';
 import Author from '../elements/Author';
 import Comments from '../elements/Comments';
@@ -16,11 +18,12 @@ import {DEFAULT_POST_IMAGE_SMALL} from './PostConstants';
 
 class PostGridItem extends React.Component {
   static propTypes = {
-    post: React.PropTypes.string.isRequired,
-    pendingPayout: React.PropTypes.string.isRequired,
-    totalPayout: React.PropTypes.string.isRequired,
-    content: React.PropTypes.object.isRequired,
-    thumbSize: React.PropTypes.string,
+    post: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    pendingPayout: PropTypes.string.isRequired,
+    totalPayout: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired,
+    thumbSize: PropTypes.string,
   };
 
   shouldComponentUpdate(props) {
@@ -31,9 +34,14 @@ class PostGridItem extends React.Component {
   }
 
   render() {
-    const {post, content} = this.props;
+    const {post, content, category} = this.props;
     if (!content) {
       return null;
+    }
+
+    const author_reputation = repLog10(content.get('author_reputation'));
+    if ((author_reputation < 10) && (category === '/created')) {
+      return null; // author rep too low for created
     }
 
     const postContent = extractContent(immutableAccessor, content);
@@ -65,7 +73,7 @@ class PostGridItem extends React.Component {
         <div className="user">
           <div className="user__col user__col--left">
             <a className="user__link" href={'/@' + postContent.author}>
-              <Userpic account={postContent.author} size={avatarSize.small}/>
+              <Userpic account={postContent.author} rep={author_reputation} size={avatarSize.small}/>
             </a>
           </div>
           <div className="user__col user__col--right">
@@ -74,6 +82,7 @@ class PostGridItem extends React.Component {
                                     follow={false}
                                     mute={false}/>
                         </span>
+                        <span style={{'color': 'gray'}}>({author_reputation})</span>
             <span style={{display: 'block', margin: '0 2px 0 10px'}}>
                             <Link className="timestamp__link" to={titleLinkUrl}>
                                 <span className="timestamp__time">
@@ -82,13 +91,13 @@ class PostGridItem extends React.Component {
                             </Link>
                         </span>
           </div>
-          
+
         </div>
       </div>
     );
 
     let thumbnailImage;
-    if (postContent.image_link) {
+    if (postContent.image_link && (author_reputation >= 20)) {
       thumbnailImage = proxifyImageUrl(postContent.image_link, '640x480').replace(/ /g, '%20');
     } else {
       thumbnailImage = DEFAULT_POST_IMAGE_SMALL;

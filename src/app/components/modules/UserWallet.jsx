@@ -7,7 +7,6 @@ import TransferHistoryRow from '../cards/TransferHistoryRow';
 import TransactionError from '../elements/TransactionError';
 import TimeAgoWrapper from '../elements/TimeAgoWrapper';
 import {delegatedSmoke, numberWithCommas, vestingSmoke} from '../../utils/StateFunctions'
-import FoundationDropdownMenu from '../elements/FoundationDropdownMenu'
 import WalletSubMenu from '../elements/WalletSubMenu'
 import shouldComponentUpdate from '../../utils/shouldComponentUpdate';
 import Tooltip from '../elements/Tooltip'
@@ -69,7 +68,12 @@ class UserWallet extends React.Component {
     const {account, current_user} = this.props;
     const gprops = this.props.gprops.toJS();
 
+    // do not render if account is not loaded or available
     if (!account) return null;
+
+    // do not render if state appears to contain only lite account info
+    if (!account.has('vesting_shares')) return null;
+
     let vesting_steem = vestingSmoke(account.toJS(), gprops);
     let delegated_steem = delegatedSmoke(account.toJS(), gprops);
 
@@ -260,6 +264,12 @@ class UserWallet extends React.Component {
           <h4>{tt('userwallet_jsx.history')}</h4>
           <div className="secondary">
             <span>{tt('transfer_jsx.beware_of_spam_and_phishing_links')}</span>
+            &nbsp;
+            <span>
+                {tt(
+                    'transfer_jsx.transactions_make_take_a_few_minutes'
+                )}
+            </span>
           </div>
           <table>
             <tbody>

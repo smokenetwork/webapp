@@ -1,27 +1,16 @@
 import React from 'react';
 import {recordPageView} from '../../utils/ServerApiClient';
-import Icon from './Icon';
-import tt from 'counterpart';
 
 export default class PageViewsCounter extends React.Component {
 
-  static propTypes = {
-    hidden: React.PropTypes.bool
-  };
-
-  static defaultProps = {
-    hidden: true
-  };
-
   constructor(props) {
     super(props);
-    this.state = {views: 0};
     this.last_page = null;
   }
 
   pageView() {
     let ref = document.referrer || '';
-    // recordPageView(window.location.pathname, ref).then(views => this.setState({views}));
+    recordPageView(window.location.pathname, ref);
     this.last_page = window.location.pathname;
   }
 
@@ -30,7 +19,7 @@ export default class PageViewsCounter extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.views !== this.state.views || window.location.pathname !== this.last_page;
+    return window.location.pathname !== this.last_page;
   }
 
   componentDidUpdate() {
@@ -38,11 +27,6 @@ export default class PageViewsCounter extends React.Component {
   }
 
   render() {
-    const views = this.state.views;
-    if (this.props.hidden || !views) return null;
-    const suffix = this.props.sinceDate ? tt('g.since') + this.props.sinceDate : '';
-    return <span className="PageViewsCounter" title={tt('g.views', {count: views}) + suffix}>
-            <Icon name="eye"/> {views.toLocaleString()}
-        </span>;
+    return null;
   }
 }

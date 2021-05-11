@@ -3,7 +3,7 @@ import BadActorList from './BadActorList';
 import VerifiedExchangeList from './VerifiedExchangeList';
 import {PrivateKey} from '@smokenetwork/smoke-js/lib/auth/ecc';
 
-export function validate_account_name(value, memo) {
+export function validate_account_name(value) {
   let i, label, len, length, ref, suffix;
 
   suffix = tt('chainvalidation_js.account_name_should');
@@ -22,9 +22,6 @@ export function validate_account_name(value, memo) {
   }
   if (BadActorList.includes(value)) {
     return 'Use caution sending to this account. Please double check your spelling for possible phishing. ';
-  }
-  if (VerifiedExchangeList.includes(value) && !memo) {
-    return tt('chainvalidation_js.verified_exchange_no_memo')
   }
   ref = value.split('.');
   for (i = 0, len = ref.length; i < len; i++) {
@@ -48,18 +45,41 @@ export function validate_account_name(value, memo) {
   return null;
 }
 
+/**
+ * Do some additional validation for situations where an account name is used along with a memo.
+ * Currently only used in the Transfers compoonent.
+ *
+ * @param {string} name
+ * @param {string} memo
+ * @returns {null|string} string if there's a validation error
+ */
+export function validate_account_name_with_memo(name, memo) {
+    if (VerifiedExchangeList.includes(name) && !memo) {
+        return tt('chainvalidation_js.verified_exchange_no_memo');
+    }
+    return validate_account_name(name);
+}
+
 export function validate_memo_field(value, username, memokey) {
   let suffix;
   value = value.split(' ').filter(v => v != '');
   for (var w in value) {
-    if (PrivateKey.isWif(value[w])) {
-      return suffix = 'Do not use private keys in memos. ';
-    }
-    if (memokey === PrivateKey.fromSeed(username + 'memo' + value[w]).toPublicKey().toString()) {
-      return suffix = 'Do not use passwords in memos. ';
-    }
-    if (/5[HJK]\w{40,45}/i.test(value[w])) {
-      return suffix = 'Please do not include what appears to be a private key or password. '
+     // Only perform key tests if it might be a key, i.e. it is a long string.
+    if (value[w].length >= 39) {
+      if (/5[HJK]\w{40,45}/i.test(value[w])) {
+        return (suffix = 'Please do not include what appears to be a private key or password. ');
+      }
+      if (PrivateKey.isWif(value[w])) {
+        return (suffix = 'Do not use private keys in memos. ');
+      }
+      if (
+        memokey ===
+        PrivateKey.fromSeed(username + 'memo' + value[w])
+            .toPublicKey()
+            .toString()
+      ) {
+        return (suffix = 'Do not use passwords in memos. ');
+      }
     }
   }
   return null;
