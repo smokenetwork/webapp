@@ -37,6 +37,7 @@
       "defaultSrc": "'self' emb.d.tube www.youtube.com staticxx.facebook.com player.vimeo.com open.spotify.com",
       "fontSrc": "data: fonts.gstatic.com",
       "frameAncestors": "'none'",
+      "frameSrc": "'self' www.spotify.com open.spotify.com https://open.spotify.com www.open.spotify.com",
       "imgSrc": "* data:",
       "objectSrc": "'none'",
       "pluginTypes": "application/pdf",
