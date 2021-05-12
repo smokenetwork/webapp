@@ -83,13 +83,13 @@ function TopRightMenu({username, showLogin, logout, loggedIn, vertical, navigate
     <ul className={mcn + mcl}>
       {!vertical && <li className={lcn}><Link to="/trending"><Icon className="icon-border" name="trending"/></Link></li>}
       {!vertical && <li className={lcn}><Link to="/created"><Icon className="icon-border" name="lighter"/></Link></li>}
-      {!vertical && <li className={lcn}><Link to="/tags"><Icon className="icon-border" name="tagspop"/></Link></li>}
+      {!vertical && <li className={lcn}><a href="/static/search.html"><Icon className="icon-border" name="search"/></a></li>}
       {!vertical && <li className={'Header__userpic ' + lcn}>
         <Link to="/sponsors">
           <Icon className="icon-border" name="medal"/>
         </Link>
       </li>}
-      {!vertical && <li className={lcn}><a href="/static/search.html"><Icon className="icon-border" name="search"/></a></li>}
+      {!vertical && <li className={lcn}><Link to="/tags"><Icon className="icon-border" name="tagspop"/></Link></li>}
       {!vertical && <li className={lcn}><a className="button signin" href="/login.html" onClick={showLogin}><Icon name="mascot"/>{tt('g.login')} / {tt('g.sign_up')}</a></li>}
       {toggleOffCanvasMenu && <li className="toggle-menu Header__hamburger">
         <a href="#" onClick={toggleOffCanvasMenu}>
